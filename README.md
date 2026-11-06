@@ -1,19 +1,17 @@
 # Alchemy
 
-A spatial UI design workbench for authoring button manifests and previewing live components on an infinite canvas.
+A design-to-build workbench. Four full-screen canvases, one job each, on a 2×2 grid:
 
-## What it does
+| | |
+|---|---|
+| **Ideation**: design bible pages, drawn as vector one-pagers | **Fab**: makes the pieces the other canvases use (visual identity, components, game blocks) |
+| **Live**: the web project running for real, in a device frame, with console and checks | **Web**: page and app layouts in three layers (wireframe → layout → preview) |
 
-You describe a button using a structured **manifest** — shape, colors, shadows, typography, spring physics for hover/press — and the workbench renders the live component alongside editors for every property. Everything lives on a pannable, zoomable whiteboard where tools float as draggable, resizable widget nodes connected by wires.
+Alt + WASD (or the arrow keys) moves between canvases.
 
-## Stack
-
-- **Next.js 14** (App Router)
-- **@xyflow/react** — infinite canvas, custom nodes and edges
-- **Zustand** — all state (manifest data + canvas layout)
-- **Framer Motion** — live button preview animations
-- **Tailwind CSS**
-- **TypeScript**
+Everything is a file on disk that the canvases and the agent (Claude Code) both read and write: design bibles in `design/`,
+vector assets and palettes in `vault/`, web projects in `projects/`. Edits made in one place show up live everywhere else.
+Web projects export as plain HTML/CSS or a Next.js page. The workbench is built with React and Tailwind, but its output uses neither.
 
 ## Getting started
 
@@ -22,44 +20,49 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). The canvas loads with a sample manifest already wired up.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Canvas controls
+## Controls
 
 | Action | How |
 |---|---|
-| Pan | Middle-click drag, right-click drag, or WASD |
-| Zoom | Scroll wheel |
-| Select | Left-click drag on empty canvas |
-| Move widget | Drag the title bar |
-| Resize widget | Drag the edge/corner handles |
-| Reposition wire elbow | Drag the gear dot on the wire |
-| Reattach wire source | Select wire → drag the source dot |
-
-## Project structure
-
-```
-lib/schema/     — ButtonManifest type system (Structural / Visual / Intent layers)
-lib/generator/  — generateFramerButton(): emits ready-to-use TSX from a manifest
-lib/store.ts    — Zustand store (manifests + React Flow nodes/edges)
-workbench/      — canvas widgets, edges, and shell UI
-app/page.tsx    — full-screen ReactFlow root
-```
-
-## Manifest model
-
-A manifest has three layers:
-
-- **Structural** — shape, diameter, label, z-depth
-- **Visual** — background color, shadow, typography, backdrop blur, shader ref
-- **Intent** — hover and press behaviors stored as spring/tween physics, not keyframes
-
-Plus a **variants block** (idle / hover / pressed) that the generator expands into Framer Motion variant objects.
+| Switch canvas | Alt + WASD / arrows |
+| Pan | Space + drag, or middle-drag |
+| Zoom | Mouse wheel (trackpad pinch) |
+| Fit / 100% | Ctrl + 0 / Ctrl + 1 |
+| Tools | V select · S shapes · T text · P pen · E eraser · Z floor zone · X place from vault · H read and pan |
+| Tool settings | Click the tool in the rail again |
+| Grid | G |
+| Undo / redo | Ctrl + Z / Ctrl + Shift + Z |
+| Duplicate / delete | Ctrl + D / Del |
+| Nudge | Arrows (Shift: ×5) |
+| Layers | 1 / 2 / 3, Ctrl + wheel, or the pips beside the minimap |
 
 ## Commands
 
 ```bash
-npm run dev     # dev server
-npm run build   # production build
-npm run lint    # ESLint
+npm run dev            # dev server on :3000
+npm run build          # production build
+npm run lint           # ESLint
+npm run design:check   # validate design bibles and report page fit
+npm run parts:build    # vault parts written as code (scripts/parts) → vault/assets
+npm run asset:render   # PNGs of vault assets in .render/ (needs inkscape + ImageMagick)
+npm run asset:info     # vault assets summarized in inches
+npm run page:render    # a bible page as an image, through the real artboard
 ```
+
+## Stack
+
+Next.js 14 (App Router) · React · Zustand · Framer Motion · Tailwind CSS · TypeScript (strict)
+
+## Layout
+
+```
+app/        — the root page, API routes for design/, vault/, projects/ (validated writes, mtime conflicts, SSE watches), /live
+lib/        — pure logic: design pages and vector geometry, vault, layers, the component library, the page generator, store
+workbench/  — canvases, hooks, shared UI (vector tools, sheet shell, panels)
+scripts/    — parts build, renders, checks, the pen bridge (USB tablet or reMarkable)
+design/ vault/ projects/  — content on disk
+```
+
+See `CLAUDE.md` for the full guide.
