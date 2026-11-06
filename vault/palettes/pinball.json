@@ -1,0 +1,46 @@
+{
+  "title": "Pinball",
+  "updated": "2026-11-04",
+  "colors": [
+    {
+      "name": "Ink",
+      "value": "#1f1b16"
+    },
+    {
+      "name": "White plastic",
+      "value": "#f4efe6"
+    },
+    {
+      "name": "Flipper rubber",
+      "value": "#b3202a"
+    },
+    {
+      "name": "Black rubber",
+      "value": "#2a2623"
+    },
+    {
+      "name": "Chrome",
+      "value": "#9aa0a6"
+    },
+    {
+      "name": "Coil copper",
+      "value": "#b8733a"
+    },
+    {
+      "name": "Playfield wood",
+      "value": "#c9a36b"
+    },
+    {
+      "name": "Cap red",
+      "value": "#d6332f"
+    },
+    {
+      "name": "Cap yellow",
+      "value": "#f2c230"
+    },
+    {
+      "name": "Cap blue",
+      "value": "#2f6fd6"
+    }
+  ]
+}

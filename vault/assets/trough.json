@@ -1,0 +1,54 @@
+{
+  "kind": "block",
+  "title": "Ball trough",
+  "updated": "2026-11-05",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "box",
+      "type": "rect",
+      "x": 304,
+      "y": 424,
+      "w": 576,
+      "h": 160,
+      "fill": "#9aa0a6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "floor",
+      "height": 96
+    },
+    {
+      "id": "well",
+      "type": "rect",
+      "x": 304,
+      "y": 436.8,
+      "w": 550.4,
+      "h": 134.4,
+      "fill": "#5b5f63",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "roof",
+      "lift": 96
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  },
+  "footprint": {
+    "cols": 9,
+    "rows": 3
+  },
+  "dims": {
+    "in": [
+      9,
+      2.5,
+      1.5
+    ],
+    "estimated": true,
+    "note": "Depends on ball capacity and maker. Visual estimate only."
+  }
+}

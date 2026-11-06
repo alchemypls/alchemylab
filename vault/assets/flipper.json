@@ -1,0 +1,73 @@
+{
+  "kind": "block",
+  "title": "Flipper",
+  "updated": "2026-11-05",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "rubber",
+      "type": "capsule",
+      "x": 436.8,
+      "y": 549.6,
+      "w": 192,
+      "h": 41.6,
+      "taper": 0.46,
+      "fill": "#b3202a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "floor",
+      "height": 25.6
+    },
+    {
+      "id": "bat",
+      "type": "capsule",
+      "x": 436.8,
+      "y": 554.7,
+      "w": 181.8,
+      "h": 31.4,
+      "taper": 0.28,
+      "fill": "#f4efe6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "plane": "roof",
+      "lift": 25.6
+    },
+    {
+      "id": "pivot",
+      "type": "ellipse",
+      "x": 436.8,
+      "y": 564,
+      "w": 12.8,
+      "h": 12.8,
+      "fill": "#9aa0a6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "plane": "roof",
+      "lift": 25.6
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  },
+  "footprint": {
+    "cols": 3,
+    "rows": 1
+  },
+  "dims": {
+    "in": [
+      3,
+      0.65,
+      0.4
+    ],
+    "mm": [
+      76,
+      17,
+      10
+    ],
+    "note": "Williams/Bally 3\" bat with its rubber ring. Pivot end round, tip about 0.3\" across."
+  }
+}

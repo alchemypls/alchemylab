@@ -1,0 +1,63 @@
+{
+  "kind": "block",
+  "title": "Saucer",
+  "updated": "2026-11-06",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "rim",
+      "type": "ellipse",
+      "x": 512,
+      "y": 588.8,
+      "w": 102.4,
+      "h": 102.4,
+      "fill": "#9aa0a6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "floor"
+    },
+    {
+      "id": "well",
+      "type": "ellipse",
+      "x": 512,
+      "y": 603.2,
+      "w": 73.6,
+      "h": 73.6,
+      "fill": "#5b5f63",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "floor"
+    },
+    {
+      "id": "hole",
+      "type": "ellipse",
+      "x": 512,
+      "y": 617.6,
+      "w": 44.8,
+      "h": 44.8,
+      "fill": "#1f1b16",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "floor"
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  },
+  "footprint": {
+    "cols": 2,
+    "rows": 2
+  },
+  "dims": {
+    "in": [
+      1.6,
+      1.6
+    ],
+    "estimated": true,
+    "note": "Cup about 1.6\" across with a 1.1\" hole."
+  }
+}

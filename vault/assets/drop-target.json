@@ -1,0 +1,53 @@
+{
+  "kind": "block",
+  "title": "Drop target",
+  "updated": "2026-11-06",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "slot",
+      "type": "rect",
+      "x": 492.8,
+      "y": 588.8,
+      "w": 57.6,
+      "h": 19.2,
+      "fill": "#2a2623",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "floor"
+    },
+    {
+      "id": "face",
+      "type": "rect",
+      "x": 489.6,
+      "y": 592,
+      "w": 54.4,
+      "h": 9.6,
+      "fill": "#d6332f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "floor",
+      "height": 64
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  },
+  "footprint": {
+    "cols": 1,
+    "rows": 1
+  },
+  "dims": {
+    "in": [
+      0.875,
+      0.2,
+      1
+    ],
+    "estimated": true,
+    "note": "Face about 7/8\" wide, 1\" above the playfield when up."
+  }
+}

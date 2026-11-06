@@ -1,0 +1,66 @@
+{
+  "kind": "block",
+  "title": "Spinner",
+  "updated": "2026-11-06",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "bracket-a",
+      "type": "rect",
+      "x": 492.8,
+      "y": 592,
+      "w": 12.8,
+      "h": 12.8,
+      "fill": "#7c8288",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "floor",
+      "height": 76.8
+    },
+    {
+      "id": "blade",
+      "type": "rect",
+      "plane": "left",
+      "x": 502.4,
+      "y": 539.2,
+      "w": 83.2,
+      "h": 64,
+      "fill": "#9aa0a6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "bracket-b",
+      "type": "rect",
+      "x": 595.2,
+      "y": 643.2,
+      "w": 12.8,
+      "h": 12.8,
+      "fill": "#7c8288",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "floor",
+      "height": 76.8
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  },
+  "footprint": {
+    "cols": 2,
+    "rows": 1
+  },
+  "dims": {
+    "in": [
+      1.75,
+      0.3,
+      1.2
+    ],
+    "estimated": true,
+    "note": "Blade about 1.3\" wide, hung about 0.2\" off the playfield."
+  }
+}

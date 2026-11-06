@@ -1,0 +1,117 @@
+{
+  "kind": "block",
+  "title": "Ramp",
+  "updated": "2026-11-06",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "rail-far",
+      "type": "poly",
+      "plane": "right",
+      "x": 236.8,
+      "y": 582.4,
+      "w": 640,
+      "h": 240,
+      "fill": "#cfe3ea",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "opacity": 0.9,
+      "pts": [
+        [
+          0,
+          0.9733333333333334
+        ],
+        [
+          0,
+          0.7733333333333333
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0.2
+        ]
+      ]
+    },
+    {
+      "id": "bed",
+      "type": "rect",
+      "x": 723.2,
+      "y": 425.6,
+      "w": 153.6,
+      "h": 640,
+      "fill": "#cfe3ea",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "roof",
+      "lift": 192,
+      "slope": -0.29,
+      "opacity": 0.9
+    },
+    {
+      "id": "lip",
+      "type": "rect",
+      "x": 105.6,
+      "y": 734.4,
+      "w": 153.6,
+      "h": 22.4,
+      "fill": "#9aa0a6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "floor"
+    },
+    {
+      "id": "rail-near",
+      "type": "poly",
+      "plane": "right",
+      "x": 83.2,
+      "y": 505.6,
+      "w": 640,
+      "h": 240,
+      "fill": "#cfe3ea",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "opacity": 0.9,
+      "pts": [
+        [
+          0,
+          0.9733333333333334
+        ],
+        [
+          0,
+          0.7733333333333333
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0.2
+        ]
+      ]
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  },
+  "footprint": {
+    "cols": 3,
+    "rows": 10
+  },
+  "dims": {
+    "in": [
+      2.4,
+      10,
+      3.75
+    ],
+    "estimated": true,
+    "note": "Ramp mouth about 2.4\" wide; 3\" rise over 10\" for the test bench."
+  }
+}

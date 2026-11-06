@@ -1,0 +1,55 @@
+{
+  "title": "Design Skeleton",
+  "kicker": "Full topic list",
+  "updated": "2026-10-30",
+  "blocks": [
+    {
+      "id": "pitch",
+      "type": "callout",
+      "text": "Roguelike pinball dungeon crawl: a tiny wizard hunts a dragon's evil tome through a real machine's layered tables.",
+      "tone": "pillar",
+      "span": 5
+    },
+    {
+      "id": "pillars",
+      "type": "cards",
+      "title": "Pillars",
+      "span": 7,
+      "items": [
+        {
+          "title": "Never out of sight",
+          "body": "The ball is always visible."
+        },
+        {
+          "title": "Every hit matters",
+          "body": "Real weight, always a step toward a goal."
+        },
+        {
+          "title": "Pure pinball",
+          "body": "Physics untouched, flippers only. RPG in the abstract."
+        }
+      ]
+    },
+    {
+      "id": "loop",
+      "type": "flow",
+      "title": "Core Loop",
+      "steps": [
+        "Shoot",
+        "Break mobs",
+        "Quest spawns mobs",
+        "Dungeon opens",
+        "Drop in",
+        "Beat encounter",
+        "Pick loot",
+        "Pop back up"
+      ],
+      "loop": true
+    },
+    {
+      "id": "skeleton",
+      "type": "topics",
+      "compact": true
+    }
+  ]
+}

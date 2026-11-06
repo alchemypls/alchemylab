@@ -1,0 +1,58 @@
+{
+  "kind": "shape",
+  "title": "Pop bumper plunger",
+  "updated": "2026-11-04",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "rod",
+      "type": "capsule",
+      "x": 464,
+      "y": 504,
+      "w": 96,
+      "h": 16,
+      "taper": 1,
+      "fill": "#9aa0a6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "groove",
+      "type": "rect",
+      "x": 540.8,
+      "y": 504,
+      "w": 3.8,
+      "h": 16,
+      "fill": "#7c8288",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1
+    },
+    {
+      "id": "yoke-hole",
+      "type": "rect",
+      "x": 473.6,
+      "y": 509.4,
+      "w": 14.1,
+      "h": 5.1,
+      "fill": "#2a2623",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "radius": 2
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "dims": {
+    "in": [
+      1.5,
+      0.25
+    ],
+    "mm": [
+      38,
+      6
+    ],
+    "note": "Side view."
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "kind": "block",
+  "title": "Standup target",
+  "updated": "2026-11-06",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "bracket",
+      "type": "rect",
+      "x": 512,
+      "y": 595.2,
+      "w": 25.6,
+      "h": 19.2,
+      "fill": "#7c8288",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "floor",
+      "height": 51.2
+    },
+    {
+      "id": "face",
+      "type": "rect",
+      "x": 481.6,
+      "y": 599.2,
+      "w": 48,
+      "h": 7.7,
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "floor",
+      "height": 70.4
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  },
+  "footprint": {
+    "cols": 1,
+    "rows": 1
+  },
+  "dims": {
+    "in": [
+      0.75,
+      0.5,
+      1.1
+    ],
+    "estimated": true,
+    "note": "Rectangular face about 3/4\" wide; switch and bracket behind it."
+  }
+}

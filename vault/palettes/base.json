@@ -1,0 +1,62 @@
+{
+  "title": "Base",
+  "colors": [
+    {
+      "name": "Ink",
+      "value": "#1f1b16"
+    },
+    {
+      "name": "Muted",
+      "value": "#6b6257"
+    },
+    {
+      "name": "Rule",
+      "value": "#d8cfc0"
+    },
+    {
+      "name": "Paper",
+      "value": "#f4efe6"
+    },
+    {
+      "name": "White",
+      "value": "#ffffff"
+    },
+    {
+      "name": "Accent",
+      "value": "#b4532a"
+    },
+    {
+      "name": "Decided",
+      "value": "#2f7d4f"
+    },
+    {
+      "name": "Hypothesis",
+      "value": "#c08a1e"
+    },
+    {
+      "name": "Blue",
+      "value": "#3b6ea8"
+    },
+    {
+      "name": "Violet",
+      "value": "#6d5a8a"
+    },
+    {
+      "name": "Teal",
+      "value": "#13a89a"
+    },
+    {
+      "name": "Magenta",
+      "value": "#d6006c"
+    },
+    {
+      "name": "Lime",
+      "value": "#dde06a"
+    },
+    {
+      "name": "Orange",
+      "value": "#f28a3c"
+    }
+  ],
+  "updated": "2026-11-03"
+}

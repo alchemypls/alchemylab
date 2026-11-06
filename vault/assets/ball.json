@@ -1,0 +1,65 @@
+{
+  "kind": "block",
+  "title": "Ball",
+  "updated": "2026-11-05",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "shadow",
+      "type": "ellipse",
+      "x": 512,
+      "y": 579.2,
+      "w": 57.6,
+      "h": 57.6,
+      "fill": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "floor",
+      "opacity": 0.25
+    },
+    {
+      "id": "ball",
+      "type": "ellipse",
+      "x": 478,
+      "y": 540,
+      "w": 68,
+      "h": 68,
+      "fill": "#9aa0a6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "upright": true
+    },
+    {
+      "id": "shine",
+      "type": "ellipse",
+      "x": 493,
+      "y": 549.6,
+      "w": 17.7,
+      "h": 12.2,
+      "fill": "#ffffff",
+      "strokeWidth": 1.5,
+      "upright": true,
+      "base": 46.2,
+      "opacity": 0.85
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  },
+  "footprint": {
+    "cols": 1,
+    "rows": 1
+  },
+  "dims": {
+    "in": [
+      1.0625
+    ],
+    "mm": [
+      27
+    ],
+    "note": "Standard steel pinball, 1-1/16\" diameter."
+  }
+}

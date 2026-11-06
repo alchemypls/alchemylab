@@ -1,0 +1,141 @@
+{
+  "kind": "shape",
+  "title": "Flipper switch",
+  "updated": "2026-11-04",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "stack",
+      "type": "rect",
+      "x": 464,
+      "y": 496,
+      "w": 25.6,
+      "h": 32,
+      "fill": "#2a2623",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "radius": 3
+    },
+    {
+      "id": "blade-top",
+      "type": "line",
+      "from": {
+        "x": 489.6,
+        "y": 505.6
+      },
+      "to": {
+        "x": 556.8,
+        "y": 504.3
+      },
+      "stroke": "#7c8288",
+      "strokeWidth": 4,
+      "arrow": "none"
+    },
+    {
+      "id": "blade-bottom",
+      "type": "line",
+      "from": {
+        "x": 489.6,
+        "y": 518.4
+      },
+      "to": {
+        "x": 556.8,
+        "y": 513.9
+      },
+      "stroke": "#7c8288",
+      "strokeWidth": 4,
+      "arrow": "none"
+    },
+    {
+      "id": "contact-top",
+      "type": "ellipse",
+      "x": 544.6,
+      "y": 504.6,
+      "w": 5.1,
+      "h": 5.1,
+      "fill": "#9aa0a6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "contact-bottom",
+      "type": "ellipse",
+      "x": 544.6,
+      "y": 509.1,
+      "w": 5.1,
+      "h": 5.1,
+      "fill": "#9aa0a6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "screw-a",
+      "type": "line",
+      "from": {
+        "x": 472.3,
+        "y": 492.8
+      },
+      "to": {
+        "x": 472.3,
+        "y": 531.2
+      },
+      "stroke": "#9aa0a6",
+      "strokeWidth": 3,
+      "arrow": "none"
+    },
+    {
+      "id": "screw-b",
+      "type": "line",
+      "from": {
+        "x": 481.3,
+        "y": 492.8
+      },
+      "to": {
+        "x": 481.3,
+        "y": 531.2
+      },
+      "stroke": "#9aa0a6",
+      "strokeWidth": 3,
+      "arrow": "none"
+    },
+    {
+      "id": "tab-a",
+      "type": "rect",
+      "x": 488.3,
+      "y": 502.4,
+      "w": 6.4,
+      "h": 3.8,
+      "fill": "#9aa0a6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1
+    },
+    {
+      "id": "tab-b",
+      "type": "rect",
+      "x": 488.3,
+      "y": 516.5,
+      "w": 6.4,
+      "h": 3.8,
+      "fill": "#9aa0a6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "dims": {
+    "in": [
+      1.5,
+      0.6,
+      0.5
+    ],
+    "mm": [
+      38,
+      15,
+      13
+    ],
+    "note": "Side view: two leaf blades on an insulator stack."
+  }
+}

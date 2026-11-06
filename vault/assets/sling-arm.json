@@ -1,0 +1,73 @@
+{
+  "kind": "shape",
+  "title": "Slingshot arm",
+  "updated": "2026-11-04",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "arm",
+      "type": "capsule",
+      "x": 432,
+      "y": 496,
+      "w": 147.2,
+      "h": 32,
+      "taper": 0.7,
+      "fill": "#7c8288",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "kicker",
+      "type": "rect",
+      "x": 572.8,
+      "y": 486.4,
+      "w": 19.2,
+      "h": 51.2,
+      "fill": "#7c8288",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "radius": 3
+    },
+    {
+      "id": "pivot",
+      "type": "ellipse",
+      "x": 442.2,
+      "y": 506.2,
+      "w": 11.5,
+      "h": 11.5,
+      "fill": "#f4efe6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "slot",
+      "type": "rect",
+      "x": 492.8,
+      "y": 508.8,
+      "w": 32,
+      "h": 6.4,
+      "fill": "#f4efe6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "radius": 3
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "dims": {
+    "in": [
+      2.5,
+      0.5,
+      0.25
+    ],
+    "mm": [
+      64,
+      13,
+      6
+    ],
+    "estimated": true,
+    "note": "Plan view: pivot, plunger slot, kicker blade."
+  }
+}

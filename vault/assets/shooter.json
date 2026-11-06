@@ -1,0 +1,73 @@
+{
+  "kind": "block",
+  "title": "Shooter plunger",
+  "updated": "2026-11-05",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "rod",
+      "type": "capsule",
+      "x": 236,
+      "y": 458,
+      "w": 545.6,
+      "h": 24,
+      "taper": 1,
+      "fill": "#9aa0a6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "roof",
+      "lift": 26.4,
+      "height": 24
+    },
+    {
+      "id": "spring",
+      "type": "capsule",
+      "x": 611.2,
+      "y": 641.6,
+      "w": 128,
+      "h": 32,
+      "taper": 1,
+      "fill": "#b8733a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "roof",
+      "lift": 22.4,
+      "height": 32,
+      "opacity": 0.85
+    },
+    {
+      "id": "knob",
+      "type": "ellipse",
+      "plane": "right",
+      "x": 737.6,
+      "y": 682.4,
+      "w": 70.4,
+      "h": 70.4,
+      "fill": "#2a2623",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  },
+  "footprint": {
+    "cols": 9,
+    "rows": 1
+  },
+  "dims": {
+    "in": [
+      8.625,
+      0.375
+    ],
+    "mm": [
+      219,
+      9.5
+    ],
+    "note": "Williams/Bally-compatible assembly, 8-5/8\" overall, 3/8\" rod."
+  }
+}

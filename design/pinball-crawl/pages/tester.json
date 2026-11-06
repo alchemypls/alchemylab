@@ -1,0 +1,2353 @@
+{
+  "title": "tester",
+  "updated": "2026-11-05",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "stroke-ono9",
+      "type": "stroke",
+      "points": [
+        [
+          424,
+          0
+        ],
+        [
+          425,
+          0
+        ]
+      ],
+      "pressures": [
+        0.06,
+        0.06
+      ],
+      "color": "#1f1b16",
+      "layer": "layer-1"
+    },
+    {
+      "id": "stroke-lk50",
+      "type": "stroke",
+      "points": [
+        [
+          548,
+          338
+        ]
+      ],
+      "pressures": [
+        0.02
+      ],
+      "color": "#1f1b16",
+      "layer": "layer-1"
+    },
+    {
+      "id": "stroke-yc5r",
+      "type": "stroke",
+      "points": [
+        [
+          432,
+          113
+        ]
+      ],
+      "pressures": [
+        0.02
+      ],
+      "color": "#1f1b16",
+      "layer": "layer-1"
+    },
+    {
+      "id": "zone-bksy",
+      "type": "zone",
+      "x": 1104,
+      "y": 168,
+      "cols": 24,
+      "rows": 37,
+      "cell": 24,
+      "fill": "#13a89a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "layer": "layer-1"
+    },
+    {
+      "id": "asset-tpx1",
+      "type": "asset",
+      "asset": "flipper",
+      "w": 96,
+      "h": 56,
+      "at": {
+        "x": 0.5,
+        "y": 0.5676
+      },
+      "x": 504,
+      "y": 640.21,
+      "layer": "layer-2",
+      "turn": 22
+    },
+    {
+      "id": "asset-9yc8",
+      "type": "asset",
+      "asset": "flipper",
+      "w": 96,
+      "h": 56,
+      "at": {
+        "x": 0.5,
+        "y": 0.5676
+      },
+      "x": 648,
+      "y": 712.21,
+      "layer": "layer-2",
+      "mirror": true
+    },
+    {
+      "id": "asset-c6at",
+      "type": "asset",
+      "asset": "slingshot",
+      "w": 168,
+      "h": 87,
+      "at": {
+        "x": 0.5,
+        "y": 0.5152
+      },
+      "x": 720,
+      "y": 717.18,
+      "layer": "layer-2",
+      "mirror": true
+    },
+    {
+      "id": "asset-a4jg",
+      "type": "asset",
+      "asset": "slingshot",
+      "w": 168,
+      "h": 90,
+      "at": {
+        "x": 0.5,
+        "y": 0.5333
+      },
+      "x": 432,
+      "y": 570,
+      "layer": "layer-2"
+    },
+    {
+      "id": "asset-x3fk",
+      "type": "asset",
+      "asset": "ball",
+      "w": 48,
+      "h": 38,
+      "at": {
+        "x": 0.5,
+        "y": 0.68
+      },
+      "x": 600,
+      "y": 634.16,
+      "layer": "layer-2"
+    },
+    {
+      "id": "asset-hdz5",
+      "type": "asset",
+      "asset": "shooter",
+      "w": 240,
+      "h": 135,
+      "at": {
+        "x": 0.5,
+        "y": 0.556
+      },
+      "x": 744,
+      "y": 752.94,
+      "layer": "layer-2",
+      "turn": 90
+    },
+    {
+      "id": "asset-76wm",
+      "type": "asset",
+      "asset": "pop-bumper",
+      "w": 144,
+      "h": 110,
+      "at": {
+        "x": 0.5,
+        "y": 0.6739
+      },
+      "x": 936,
+      "y": 321.871,
+      "layer": "layer-2"
+    },
+    {
+      "id": "asset-msxn",
+      "type": "asset",
+      "asset": "pop-bumper",
+      "w": 144,
+      "h": 110,
+      "at": {
+        "x": 0.5,
+        "y": 0.6739
+      },
+      "x": 1128,
+      "y": 393.87,
+      "layer": "layer-2"
+    },
+    {
+      "id": "asset-c6ky",
+      "type": "asset",
+      "asset": "pop-bumper",
+      "w": 144,
+      "h": 110,
+      "at": {
+        "x": 0.5,
+        "y": 0.6739
+      },
+      "x": 1104,
+      "y": 285.87,
+      "layer": "layer-2"
+    },
+    {
+      "id": "asset-vafy",
+      "type": "asset",
+      "asset": "trough",
+      "w": 288,
+      "h": 177,
+      "at": {
+        "x": 0.5,
+        "y": 0.5932
+      },
+      "x": 960,
+      "y": 603,
+      "layer": "layer-2",
+      "turn": 90
+    },
+    {
+      "id": "sm-floor",
+      "type": "zone",
+      "x": 2712,
+      "y": 180,
+      "cols": 21,
+      "rows": 42,
+      "cell": 24,
+      "fill": "#c9a36b",
+      "stroke": "#b08b55",
+      "strokeWidth": 0.5,
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-cab-l",
+      "type": "poly",
+      "x": 2712,
+      "y": 180,
+      "w": 252,
+      "h": 252,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0.901905,
+          0.004762
+        ],
+        [
+          0.804762,
+          0.019048
+        ],
+        [
+          0.7095239999999999,
+          0.042857
+        ],
+        [
+          0.617143,
+          0.07619
+        ],
+        [
+          0.528571,
+          0.118095
+        ],
+        [
+          0.444762,
+          0.168571
+        ],
+        [
+          0.365714,
+          0.226667
+        ],
+        [
+          0.293333,
+          0.293333
+        ],
+        [
+          0.226667,
+          0.365714
+        ],
+        [
+          0.168571,
+          0.444762
+        ],
+        [
+          0.118095,
+          0.528571
+        ],
+        [
+          0.07619,
+          0.617143
+        ],
+        [
+          0.042857,
+          0.7095239999999999
+        ],
+        [
+          0.019048,
+          0.804762
+        ],
+        [
+          0.004762,
+          0.901905
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#2a2623",
+      "stroke": "none",
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-cab-r",
+      "type": "poly",
+      "x": 2964,
+      "y": 306,
+      "w": 252,
+      "h": 252,
+      "pts": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0.098095,
+          0.004762
+        ],
+        [
+          0.19523800000000002,
+          0.019048
+        ],
+        [
+          0.290476,
+          0.042857
+        ],
+        [
+          0.382857,
+          0.07619
+        ],
+        [
+          0.471429,
+          0.118095
+        ],
+        [
+          0.555238,
+          0.168571
+        ],
+        [
+          0.634286,
+          0.226667
+        ],
+        [
+          0.706667,
+          0.293333
+        ],
+        [
+          0.773333,
+          0.365714
+        ],
+        [
+          0.8314290000000001,
+          0.444762
+        ],
+        [
+          0.8819049999999999,
+          0.528571
+        ],
+        [
+          0.92381,
+          0.617143
+        ],
+        [
+          0.9571430000000001,
+          0.7095239999999999
+        ],
+        [
+          0.980952,
+          0.804762
+        ],
+        [
+          0.995238,
+          0.901905
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#2a2623",
+      "stroke": "none",
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-wall",
+      "type": "poly",
+      "x": 2712,
+      "y": 180,
+      "w": 504,
+      "h": 1008,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0.25
+        ],
+        [
+          0.004286,
+          0.217381
+        ],
+        [
+          0.017143000000000002,
+          0.185238
+        ],
+        [
+          0.038095,
+          0.15428599999999998
+        ],
+        [
+          0.067143,
+          0.125
+        ],
+        [
+          0.103333,
+          0.097857
+        ],
+        [
+          0.14666700000000002,
+          0.07333300000000001
+        ],
+        [
+          0.195714,
+          0.051667
+        ],
+        [
+          0.25,
+          0.033571
+        ],
+        [
+          0.308571,
+          0.019048
+        ],
+        [
+          0.370476,
+          0.008570999999999999
+        ],
+        [
+          0.434762,
+          0.002143
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.565238,
+          0.002143
+        ],
+        [
+          0.629524,
+          0.008570999999999999
+        ],
+        [
+          0.691429,
+          0.019048
+        ],
+        [
+          0.75,
+          0.033571
+        ],
+        [
+          0.804286,
+          0.051667
+        ],
+        [
+          0.853333,
+          0.07333300000000001
+        ],
+        [
+          0.896667,
+          0.097857
+        ],
+        [
+          0.9328569999999999,
+          0.125
+        ],
+        [
+          0.9619049999999999,
+          0.15428599999999998
+        ],
+        [
+          0.982857,
+          0.185238
+        ],
+        [
+          0.995714,
+          0.217381
+        ],
+        [
+          1,
+          0.25
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-shooter-wall",
+      "type": "poly",
+      "x": 2892,
+      "y": 558,
+      "w": 1,
+      "h": 710.4,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-orbit-l",
+      "type": "poly",
+      "x": 2677.2,
+      "y": 257.4,
+      "w": 81.84,
+      "h": 517.2,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0.303944
+        ],
+        [
+          0,
+          0.303944
+        ],
+        [
+          0.017595,
+          0.259397
+        ],
+        [
+          0.067449,
+          0.215777
+        ],
+        [
+          0.14956,
+          0.173086
+        ],
+        [
+          0.26393,
+          0.132715
+        ],
+        [
+          0.41055699999999995,
+          0.0942
+        ],
+        [
+          0.5835779999999999,
+          0.059397000000000005
+        ],
+        [
+          0.7800590000000001,
+          0.027377999999999996
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-orbit-r",
+      "type": "poly",
+      "x": 2948.64,
+      "y": 421.68,
+      "w": 60,
+      "h": 488.64,
+      "pts": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0.263261
+        ],
+        [
+          1,
+          0.263261
+        ],
+        [
+          0.984,
+          0.225933
+        ],
+        [
+          0.932,
+          0.188605
+        ],
+        [
+          0.852,
+          0.15275
+        ],
+        [
+          0.736,
+          0.117878
+        ],
+        [
+          0.592,
+          0.084971
+        ],
+        [
+          0.42,
+          0.054028
+        ],
+        [
+          0.224,
+          0.02554
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-sep-l",
+      "type": "poly",
+      "x": 2016,
+      "y": 564,
+      "w": 1,
+      "h": 120,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-sep-r",
+      "type": "poly",
+      "x": 2424,
+      "y": 768,
+      "w": 1,
+      "h": 120,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-inlane-l",
+      "type": "poly",
+      "x": 2059.2,
+      "y": 578.4,
+      "w": 76.8,
+      "h": 163.2,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0.735294
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-inlane-r",
+      "type": "poly",
+      "x": 2318.4,
+      "y": 708,
+      "w": 76.8,
+      "h": 163.2,
+      "pts": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0.735294
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-apron-l",
+      "type": "poly",
+      "x": 1766.4,
+      "y": 652.8,
+      "w": 196.8,
+      "h": 62.4,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#d9c9a3",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-apron-r",
+      "type": "poly",
+      "x": 2049.6,
+      "y": 794.4,
+      "w": 184.8,
+      "h": 62.4,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#d9c9a3",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-wire-l",
+      "type": "poly",
+      "x": 2487.6,
+      "y": 322.2,
+      "w": 78,
+      "h": 537.6,
+      "pts": [
+        [
+          1,
+          0.11607100000000001
+        ],
+        [
+          1,
+          0.044643
+        ],
+        [
+          0.661538,
+          0
+        ],
+        [
+          0,
+          0.089286
+        ],
+        [
+          0,
+          0.8214290000000001
+        ],
+        [
+          0.307692,
+          0.919643
+        ],
+        [
+          0.307692,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#9aa0a6",
+      "strokeWidth": 4,
+      "opacity": 0.85,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-wire-r",
+      "type": "poly",
+      "x": 2829.6,
+      "y": 493.2,
+      "w": 78,
+      "h": 537.6,
+      "pts": [
+        [
+          0,
+          0.11607100000000001
+        ],
+        [
+          0,
+          0.044643
+        ],
+        [
+          0.338462,
+          0
+        ],
+        [
+          1,
+          0.089286
+        ],
+        [
+          1,
+          0.8214290000000001
+        ],
+        [
+          0.692308,
+          0.919643
+        ],
+        [
+          0.692308,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#9aa0a6",
+      "strokeWidth": 4,
+      "opacity": 0.85,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-ins-orbit-l",
+      "type": "poly",
+      "x": 2182.8,
+      "y": 463.8,
+      "w": 21.6,
+      "h": 31.2,
+      "pts": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#2f6fd6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-ins-ramp-l",
+      "type": "poly",
+      "x": 2224.8,
+      "y": 520.8,
+      "w": 21.6,
+      "h": 31.2,
+      "pts": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-ins-gate",
+      "type": "poly",
+      "x": 2392.8,
+      "y": 568.8,
+      "w": 21.6,
+      "h": 31.2,
+      "pts": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#d6332f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-ins-ramp-r",
+      "type": "poly",
+      "x": 2488.8,
+      "y": 652.8,
+      "w": 21.6,
+      "h": 31.2,
+      "pts": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-ins-orbit-r",
+      "type": "poly",
+      "x": 2596.8,
+      "y": 670.8,
+      "w": 21.6,
+      "h": 31.2,
+      "pts": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#2f6fd6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "layer": "sm-play",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-flipper-l",
+      "type": "asset",
+      "asset": "flipper",
+      "x": 1944,
+      "y": 688.21,
+      "w": 96,
+      "h": 56,
+      "at": {
+        "x": 0.5,
+        "y": 0.5676
+      },
+      "turn": 30,
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-flipper-r",
+      "type": "asset",
+      "asset": "flipper",
+      "x": 2064,
+      "y": 748.21,
+      "w": 96,
+      "h": 56,
+      "at": {
+        "x": 0.5,
+        "y": 0.5676
+      },
+      "turn": -30,
+      "mirror": true,
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-sling-l",
+      "type": "asset",
+      "asset": "slingshot",
+      "x": 1944,
+      "y": 582,
+      "w": 168,
+      "h": 90,
+      "at": {
+        "x": 0.5,
+        "y": 0.5333
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-sling-r",
+      "type": "asset",
+      "asset": "slingshot",
+      "x": 2208,
+      "y": 717.18,
+      "w": 168,
+      "h": 87,
+      "at": {
+        "x": 0.5,
+        "y": 0.5152
+      },
+      "mirror": true,
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-post-orbit-l",
+      "type": "asset",
+      "asset": "post",
+      "x": 2136,
+      "y": 484.06,
+      "w": 48,
+      "h": 44,
+      "at": {
+        "x": 0.5,
+        "y": 0.726
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-post-orbit-r",
+      "type": "asset",
+      "asset": "post",
+      "x": 2496,
+      "y": 664.06,
+      "w": 48,
+      "h": 44,
+      "at": {
+        "x": 0.5,
+        "y": 0.726
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-post-sep-l",
+      "type": "asset",
+      "asset": "post",
+      "x": 1992,
+      "y": 532.06,
+      "w": 48,
+      "h": 44,
+      "at": {
+        "x": 0.5,
+        "y": 0.726
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-post-sep-r",
+      "type": "asset",
+      "asset": "post",
+      "x": 2400,
+      "y": 736.06,
+      "w": 48,
+      "h": 44,
+      "at": {
+        "x": 0.5,
+        "y": 0.726
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-pop-1",
+      "type": "asset",
+      "asset": "pop-bumper",
+      "x": 2640,
+      "y": 309.87,
+      "w": 144,
+      "h": 110,
+      "at": {
+        "x": 0.5,
+        "y": 0.6739
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-pop-2",
+      "type": "asset",
+      "asset": "pop-bumper",
+      "x": 2736,
+      "y": 357.87,
+      "w": 144,
+      "h": 110,
+      "at": {
+        "x": 0.5,
+        "y": 0.6739
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-pop-3",
+      "type": "asset",
+      "asset": "pop-bumper",
+      "x": 2616,
+      "y": 369.87,
+      "w": 144,
+      "h": 110,
+      "at": {
+        "x": 0.5,
+        "y": 0.6739
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-lane-0",
+      "type": "asset",
+      "asset": "lane-guide",
+      "x": 2760,
+      "y": 292.08,
+      "w": 72,
+      "h": 44,
+      "at": {
+        "x": 0.5,
+        "y": 0.589
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-lane-1",
+      "type": "asset",
+      "asset": "lane-guide",
+      "x": 2808,
+      "y": 316.08,
+      "w": 72,
+      "h": 44,
+      "at": {
+        "x": 0.5,
+        "y": 0.589
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-lane-2",
+      "type": "asset",
+      "asset": "lane-guide",
+      "x": 2856,
+      "y": 340.08,
+      "w": 72,
+      "h": 44,
+      "at": {
+        "x": 0.5,
+        "y": 0.589
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-lane-3",
+      "type": "asset",
+      "asset": "lane-guide",
+      "x": 2904,
+      "y": 364.08,
+      "w": 72,
+      "h": 44,
+      "at": {
+        "x": 0.5,
+        "y": 0.589
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-ramp-l",
+      "type": "asset",
+      "asset": "ramp",
+      "x": 2232,
+      "y": 285.88,
+      "w": 312,
+      "h": 242,
+      "at": {
+        "x": 0.5,
+        "y": 0.6782
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-ramp-r",
+      "type": "asset",
+      "asset": "ramp",
+      "x": 2496,
+      "y": 417.88,
+      "w": 312,
+      "h": 242,
+      "at": {
+        "x": 0.5,
+        "y": 0.6782
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-spinner",
+      "type": "asset",
+      "asset": "spinner",
+      "x": 2280,
+      "y": 361.06,
+      "w": 72,
+      "h": 59,
+      "at": {
+        "x": 0.5,
+        "y": 0.6939
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-saucer",
+      "type": "asset",
+      "asset": "saucer",
+      "x": 2472,
+      "y": 492,
+      "w": 96,
+      "h": 48,
+      "at": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-mob-0",
+      "type": "asset",
+      "asset": "drop-target",
+      "x": 2400,
+      "y": 498,
+      "w": 48,
+      "h": 42,
+      "at": {
+        "x": 0.5,
+        "y": 0.7143
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-mob-1",
+      "type": "asset",
+      "asset": "drop-target",
+      "x": 2424,
+      "y": 510,
+      "w": 48,
+      "h": 42,
+      "at": {
+        "x": 0.5,
+        "y": 0.7143
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-mob-2",
+      "type": "asset",
+      "asset": "drop-target",
+      "x": 2448,
+      "y": 522,
+      "w": 48,
+      "h": 42,
+      "at": {
+        "x": 0.5,
+        "y": 0.7143
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-mob-3",
+      "type": "asset",
+      "asset": "drop-target",
+      "x": 2472,
+      "y": 534,
+      "w": 48,
+      "h": 42,
+      "at": {
+        "x": 0.5,
+        "y": 0.7143
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-shop-0",
+      "type": "asset",
+      "asset": "standup",
+      "x": 2496,
+      "y": 686.12,
+      "w": 48,
+      "h": 46,
+      "at": {
+        "x": 0.5,
+        "y": 0.7365
+      },
+      "turn": 90,
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-shop-1",
+      "type": "asset",
+      "asset": "standup",
+      "x": 2472,
+      "y": 698.12,
+      "w": 48,
+      "h": 46,
+      "at": {
+        "x": 0.5,
+        "y": 0.7365
+      },
+      "turn": 90,
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-shop-2",
+      "type": "asset",
+      "asset": "standup",
+      "x": 2448,
+      "y": 710.12,
+      "w": 48,
+      "h": 46,
+      "at": {
+        "x": 0.5,
+        "y": 0.7365
+      },
+      "turn": 90,
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-ball",
+      "type": "asset",
+      "asset": "ball",
+      "x": 2400,
+      "y": 790.16,
+      "w": 48,
+      "h": 38,
+      "at": {
+        "x": 0.5,
+        "y": 0.68
+      },
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-shooter",
+      "type": "asset",
+      "asset": "shooter",
+      "x": 2184,
+      "y": 800.94,
+      "w": 240,
+      "h": 135,
+      "at": {
+        "x": 0.5,
+        "y": 0.556
+      },
+      "turn": 90,
+      "layer": "sm-play"
+    },
+    {
+      "id": "sm-shot-l-ramp-r",
+      "type": "line",
+      "from": {
+        "x": 2016,
+        "y": 724.8
+      },
+      "to": {
+        "x": 2548.8,
+        "y": 633.6
+      },
+      "stroke": "#2f6fd6",
+      "strokeWidth": 2.5,
+      "arrow": "end",
+      "on": "sm-floor",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-shot-l-orbit-r",
+      "type": "line",
+      "from": {
+        "x": 2016,
+        "y": 724.8
+      },
+      "to": {
+        "x": 2632.8,
+        "y": 663.6
+      },
+      "stroke": "#2f6fd6",
+      "strokeWidth": 2.5,
+      "arrow": "end",
+      "on": "sm-floor",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-shot-l-gate",
+      "type": "line",
+      "from": {
+        "x": 2016,
+        "y": 724.8
+      },
+      "to": {
+        "x": 2421.6,
+        "y": 555.6
+      },
+      "stroke": "#2f6fd6",
+      "strokeWidth": 2.5,
+      "arrow": "end",
+      "on": "sm-floor",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-shot-l-shops",
+      "type": "line",
+      "from": {
+        "x": 2016,
+        "y": 724.8
+      },
+      "to": {
+        "x": 2479.2,
+        "y": 726
+      },
+      "stroke": "#2f6fd6",
+      "strokeWidth": 2.5,
+      "arrow": "end",
+      "on": "sm-floor",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-shot-r-ramp-l",
+      "type": "line",
+      "from": {
+        "x": 2102.4,
+        "y": 768
+      },
+      "to": {
+        "x": 2284.8,
+        "y": 501.6
+      },
+      "stroke": "#d6332f",
+      "strokeWidth": 2.5,
+      "arrow": "end",
+      "on": "sm-floor",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-shot-r-orbit-l",
+      "type": "line",
+      "from": {
+        "x": 2102.4,
+        "y": 768
+      },
+      "to": {
+        "x": 2218.8,
+        "y": 456.6
+      },
+      "stroke": "#d6332f",
+      "strokeWidth": 2.5,
+      "arrow": "end",
+      "on": "sm-floor",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-shot-r-gate",
+      "type": "line",
+      "from": {
+        "x": 2102.4,
+        "y": 768
+      },
+      "to": {
+        "x": 2440.8,
+        "y": 565.2
+      },
+      "stroke": "#d6332f",
+      "strokeWidth": 2.5,
+      "arrow": "end",
+      "on": "sm-floor",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-path-orbit",
+      "type": "poly",
+      "x": 2709,
+      "y": 211.5,
+      "w": 444,
+      "h": 486,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0.45679
+        ],
+        [
+          0,
+          0.45679
+        ],
+        [
+          0.004324000000000001,
+          0.397037
+        ],
+        [
+          0.017297,
+          0.338765
+        ],
+        [
+          0.037838,
+          0.281975
+        ],
+        [
+          0.067027,
+          0.228148
+        ],
+        [
+          0.103243,
+          0.178765
+        ],
+        [
+          0.14648599999999998,
+          0.133827
+        ],
+        [
+          0.195676,
+          0.094321
+        ],
+        [
+          0.24973,
+          0.061235000000000005
+        ],
+        [
+          0.30864899999999995,
+          0.034568
+        ],
+        [
+          0.370811,
+          0.015802
+        ],
+        [
+          0.434595,
+          0.003951
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.565405,
+          0.003951
+        ],
+        [
+          0.629189,
+          0.015802
+        ],
+        [
+          0.691351,
+          0.034568
+        ],
+        [
+          0.75027,
+          0.061235000000000005
+        ],
+        [
+          0.8043239999999999,
+          0.094321
+        ],
+        [
+          0.853514,
+          0.133827
+        ],
+        [
+          0.896757,
+          0.178765
+        ],
+        [
+          0.9329729999999999,
+          0.228148
+        ],
+        [
+          0.9621620000000001,
+          0.281975
+        ],
+        [
+          0.9827030000000001,
+          0.338765
+        ],
+        [
+          0.995676,
+          0.397037
+        ],
+        [
+          1,
+          0.45679
+        ],
+        [
+          0.9324319999999999,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "dash": true,
+      "layer": "sm-shots",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-title",
+      "type": "text",
+      "x": 1904,
+      "y": 48,
+      "w": 248,
+      "h": 36,
+      "text": "MAIN TABLE · SHOT MAP",
+      "size": 18,
+      "color": "#1f1b16",
+      "font": "sans",
+      "weight": 700,
+      "align": "right",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-sub",
+      "type": "text",
+      "x": 1904,
+      "y": 88,
+      "w": 272,
+      "h": 40,
+      "text": "Draft for Pinball Crawl. 21 × 42 in, 1 tile = 1 in. ",
+      "size": 12,
+      "color": "#5b5f63",
+      "font": "sans",
+      "align": "right",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-lanes",
+      "type": "text",
+      "x": 1904,
+      "y": 168,
+      "w": 248,
+      "h": 20,
+      "text": "TOP LANES",
+      "size": 14,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "right",
+      "weight": 700,
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-lanes-body",
+      "type": "text",
+      "x": 1904,
+      "y": 188,
+      "w": 248,
+      "h": 40,
+      "text": "Skill shot: flippers move the lit lane.",
+      "size": 12,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "right",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-lanes-lead",
+      "type": "line",
+      "from": {
+        "x": 2160,
+        "y": 179
+      },
+      "to": {
+        "el": "sm-lane-0"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-spin",
+      "type": "text",
+      "x": 1904,
+      "y": 360,
+      "w": 248,
+      "h": 20,
+      "text": "LEFT ORBIT · SPINNER",
+      "size": 14,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "right",
+      "weight": 700,
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-spin-body",
+      "type": "text",
+      "x": 1904,
+      "y": 380,
+      "w": 248,
+      "h": 40,
+      "text": "Loops over the top to the right orbit.",
+      "size": 12,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "right",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-spin-lead",
+      "type": "line",
+      "from": {
+        "x": 2160,
+        "y": 371
+      },
+      "to": {
+        "el": "sm-spinner"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-ramp-l",
+      "type": "text",
+      "x": 1904,
+      "y": 470,
+      "w": 248,
+      "h": 20,
+      "text": "CRYPT RAMP",
+      "size": 14,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "right",
+      "weight": 700,
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-ramp-l-body",
+      "type": "text",
+      "x": 1904,
+      "y": 490,
+      "w": 248,
+      "h": 40,
+      "text": "Wire return to the left inlane.",
+      "size": 12,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "right",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-ramp-l-lead",
+      "type": "line",
+      "from": {
+        "x": 2160,
+        "y": 481
+      },
+      "to": {
+        "el": "sm-ramp-l"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-ins",
+      "type": "text",
+      "x": 1904,
+      "y": 590,
+      "w": 248,
+      "h": 20,
+      "text": "SHOT ARROWS",
+      "size": 14,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "right",
+      "weight": 700,
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-ins-body",
+      "type": "text",
+      "x": 1904,
+      "y": 610,
+      "w": 248,
+      "h": 40,
+      "text": "Light for quests and jackpots.",
+      "size": 12,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "right",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-ins-lead",
+      "type": "line",
+      "from": {
+        "x": 2160,
+        "y": 601
+      },
+      "to": {
+        "el": "sm-ins-ramp-l"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-lanes-bot",
+      "type": "text",
+      "x": 1904,
+      "y": 752,
+      "w": 248,
+      "h": 20,
+      "text": "INLANES / OUTLANES",
+      "size": 14,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "right",
+      "weight": 700,
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-lanes-bot-body",
+      "type": "text",
+      "x": 1904,
+      "y": 772,
+      "w": 248,
+      "h": 40,
+      "text": "Outlane = drain. Inlane feeds the flipper.",
+      "size": 12,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "right",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-lanes-bot-lead",
+      "type": "line",
+      "from": {
+        "x": 2160,
+        "y": 763
+      },
+      "to": {
+        "el": "sm-post-sep-l"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-pops",
+      "type": "text",
+      "x": 2752,
+      "y": 168,
+      "w": 248,
+      "h": 20,
+      "text": "POP BUMPERS",
+      "size": 14,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "left",
+      "weight": 700,
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-pops-body",
+      "type": "text",
+      "x": 2752,
+      "y": 188,
+      "w": 248,
+      "h": 40,
+      "text": "Mob nest: every hit earns gold.",
+      "size": 12,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "left",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-pops-lead",
+      "type": "line",
+      "from": {
+        "x": 2744,
+        "y": 179
+      },
+      "to": {
+        "el": "sm-pop-2"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-ramp-r",
+      "type": "text",
+      "x": 2752,
+      "y": 330,
+      "w": 248,
+      "h": 20,
+      "text": "TOWER RAMP",
+      "size": 14,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "left",
+      "weight": 700,
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-ramp-r-body",
+      "type": "text",
+      "x": 2752,
+      "y": 350,
+      "w": 248,
+      "h": 40,
+      "text": "Wire return to the right inlane.",
+      "size": 12,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "left",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-ramp-r-lead",
+      "type": "line",
+      "from": {
+        "x": 2744,
+        "y": 341
+      },
+      "to": {
+        "el": "sm-ramp-r"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-gate",
+      "type": "text",
+      "x": 2752,
+      "y": 430,
+      "w": 248,
+      "h": 20,
+      "text": "DUNGEON GATE",
+      "size": 14,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "left",
+      "weight": 700,
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-gate-body",
+      "type": "text",
+      "x": 2752,
+      "y": 450,
+      "w": 248,
+      "h": 56,
+      "text": "Break the 4 mobs (drop targets); the saucer opens the dungeon.",
+      "size": 12,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "left",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-gate-lead",
+      "type": "line",
+      "from": {
+        "x": 2744,
+        "y": 441
+      },
+      "to": {
+        "el": "sm-saucer"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-orbit-r",
+      "type": "text",
+      "x": 2752,
+      "y": 560,
+      "w": 248,
+      "h": 20,
+      "text": "RIGHT ORBIT",
+      "size": 14,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "left",
+      "weight": 700,
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-orbit-r-body",
+      "type": "text",
+      "x": 2752,
+      "y": 580,
+      "w": 248,
+      "h": 40,
+      "text": "Loops to the left orbit.",
+      "size": 12,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "left",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-orbit-r-lead",
+      "type": "line",
+      "from": {
+        "x": 2744,
+        "y": 571
+      },
+      "to": {
+        "el": "sm-ins-orbit-r"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-shops",
+      "type": "text",
+      "x": 2752,
+      "y": 660,
+      "w": 248,
+      "h": 20,
+      "text": "SHOPS ×3",
+      "size": 14,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "left",
+      "weight": 700,
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-shops-body",
+      "type": "text",
+      "x": 2752,
+      "y": 680,
+      "w": 248,
+      "h": 40,
+      "text": "Shoot the one you can afford.",
+      "size": 12,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "left",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-shops-lead",
+      "type": "line",
+      "from": {
+        "x": 2744,
+        "y": 671
+      },
+      "to": {
+        "el": "sm-shop-1"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-plunger",
+      "type": "text",
+      "x": 2752,
+      "y": 860,
+      "w": 248,
+      "h": 20,
+      "text": "PLUNGER",
+      "size": 14,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "left",
+      "weight": 700,
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-plunger-body",
+      "type": "text",
+      "x": 2752,
+      "y": 880,
+      "w": 248,
+      "h": 40,
+      "text": "Plunge feeds the right orbit.",
+      "size": 12,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "left",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-plunger-lead",
+      "type": "line",
+      "from": {
+        "x": 2744,
+        "y": 871
+      },
+      "to": {
+        "el": "sm-shooter"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-key-l",
+      "type": "line",
+      "from": {
+        "x": 1912,
+        "y": 950
+      },
+      "to": {
+        "x": 1960,
+        "y": 950
+      },
+      "stroke": "#2f6fd6",
+      "strokeWidth": 2.5,
+      "arrow": "end",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-key-l-t",
+      "type": "text",
+      "x": 1968,
+      "y": 940,
+      "w": 184,
+      "h": 20,
+      "text": "from the left flipper",
+      "size": 12,
+      "color": "#1f1b16",
+      "font": "sans",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-key-r",
+      "type": "line",
+      "from": {
+        "x": 1912,
+        "y": 976
+      },
+      "to": {
+        "x": 1960,
+        "y": 976
+      },
+      "stroke": "#d6332f",
+      "strokeWidth": 2.5,
+      "arrow": "end",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-key-r-t",
+      "type": "text",
+      "x": 1968,
+      "y": 966,
+      "w": 184,
+      "h": 20,
+      "text": "from the right flipper",
+      "size": 12,
+      "color": "#1f1b16",
+      "font": "sans",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-key-p",
+      "type": "line",
+      "from": {
+        "x": 1912,
+        "y": 1002
+      },
+      "to": {
+        "x": 1960,
+        "y": 1002
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "dash": true,
+      "arrow": "none",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-key-p-t",
+      "type": "text",
+      "x": 1968,
+      "y": 992,
+      "w": 184,
+      "h": 20,
+      "text": "ball path",
+      "size": 12,
+      "color": "#1f1b16",
+      "font": "sans",
+      "layer": "sm-shots"
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer-1",
+      "name": "Layer 1"
+    },
+    {
+      "id": "layer-2",
+      "name": "Layer 2"
+    },
+    {
+      "id": "sm-play",
+      "name": "Shot map table"
+    },
+    {
+      "id": "sm-shots",
+      "name": "Shot map shots"
+    }
+  ],
+  "grid": {
+    "cell": 24
+  },
+  "size": {
+    "width": 3840,
+    "height": 2160
+  }
+}

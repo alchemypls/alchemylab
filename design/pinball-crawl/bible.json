@@ -1,0 +1,218 @@
+{
+  "title": "Pinball Dungeon Crawl",
+  "template": "game",
+  "pitch": "Roguelike pinball dungeon crawl: a tiny wizard hunts a dragon's evil tome through a real machine's layered tables.",
+  "created": "2026-10-30",
+  "topics": [
+    {
+      "id": "pitch",
+      "group": "Vision",
+      "title": "Pitch",
+      "status": "hypothesis",
+      "summary": "Roguelike pinball dungeon crawl: a tiny wizard hunts a dragon's evil tome through a real machine's layered tables."
+    },
+    {
+      "id": "fantasy",
+      "group": "Vision",
+      "title": "Player Fantasy",
+      "status": "decided",
+      "summary": "A tiny wizard searching for an evil tome held by an evil dragon."
+    },
+    {
+      "id": "pillars",
+      "group": "Vision",
+      "title": "Pillars",
+      "status": "decided",
+      "summary": "1. Never out of sight. 2. Every hit matters: real weight, always a step toward a goal. 3. Pure pinball: physics untouched, flippers only; the RPG happens in the abstract."
+    },
+    {
+      "id": "audience",
+      "group": "Vision",
+      "title": "Audience",
+      "status": "decided",
+      "summary": "Pinball people first, plus some roguelike die-hards. A short-to-medium game. When needs clash, make it feel like pinball."
+    },
+    {
+      "id": "references",
+      "group": "Vision",
+      "title": "References",
+      "status": "decided",
+      "summary": "Yoku's Island Express is close, but that's a side-scroller. This looks and works like a real pinball machine, and is very mechanical."
+    },
+    {
+      "id": "core-loop",
+      "group": "Play",
+      "title": "Core Loop",
+      "status": "decided",
+      "summary": "Shoot, break mobs for gold. Quest spawns new mobs; break them and a dungeon opens. Drop in, beat the encounter, hit 1 of 3 loot targets or exit, pop back up, next quest."
+    },
+    {
+      "id": "mechanics",
+      "group": "Play",
+      "title": "Core Mechanics",
+      "status": "decided",
+      "summary": "Pure pinball. Each flipper carries 1 item with an impact effect. Picking loot replaces the item on the last flipper to touch the ball; exiting takes nothing."
+    },
+    {
+      "id": "controls",
+      "group": "Play",
+      "title": "Controls & Feel",
+      "status": "decided",
+      "summary": "Flippers only. No extra button: spells and weapons come from flippers or are passive on the ball."
+    },
+    {
+      "id": "goals",
+      "group": "Play",
+      "title": "Goals",
+      "status": "decided",
+      "summary": "Complete 3 tiered dungeons in order, ending at the dragon's lair. Light quests open each dungeon and can change the field or open micro dungeons."
+    },
+    {
+      "id": "challenge",
+      "group": "Play",
+      "title": "Challenge",
+      "status": "hypothesis",
+      "summary": "Targets have health and armor. Early damage takes 1 fewer hit on unarmored, normal on armored. Shot order changes because of RPG effects."
+    },
+    {
+      "id": "failure",
+      "group": "Play",
+      "title": "Failure & Recovery",
+      "status": "decided",
+      "summary": "Permadeath: 1 wizard, 3 lives from the amulet; an item or two can add a life. Any drain, including in a dungeon, costs a life and wipes both flipper items and gold. Next ball, same map."
+    },
+    {
+      "id": "progression",
+      "group": "Play",
+      "title": "Progression",
+      "status": "decided",
+      "summary": "No XP. Progress is dungeon completion, which unlocks the next tier, plus loot. Early items are simple benefits, never wrong to hit; higher-level loot can be game changers."
+    },
+    {
+      "id": "economy",
+      "group": "Play",
+      "title": "Rewards & Economy",
+      "status": "hypothesis",
+      "summary": "Hits earn gold. Dungeon loot is 1 of 3 choices or none. 3 shops with an item on top: shoot the one you can afford, ball is held, press a flipper to drop to that side and equip it there."
+    },
+    {
+      "id": "setting",
+      "group": "World",
+      "title": "Setting",
+      "status": "hypothesis",
+      "summary": "Pinball dungeon crawl: towns, quest givers, dungeons, all inside a machine."
+    },
+    {
+      "id": "narrative",
+      "group": "World",
+      "title": "Story",
+      "status": "decided",
+      "summary": "Told by dot-matrix text and table changes. After dungeon 2 the dragon returns to its lair: landscape ruined, flames, 2 random town buildings destroyed and 2 left open, new trash mobs, a quick trick shot opens the lair."
+    },
+    {
+      "id": "characters",
+      "group": "World",
+      "title": "Characters",
+      "status": "decided",
+      "summary": "The ball is the tiny wizard. The evil dragon holds the tome."
+    },
+    {
+      "id": "structure",
+      "group": "World",
+      "title": "World & Level Structure",
+      "status": "hypothesis",
+      "summary": "Built vertically: main table on top, dungeon tables reached by rails, each with its own flippers and a sealed exit until the encounter is beaten. Town block is an inn + 3 shops. 3 dungeons per run, 3 types per tier. Terraforming unproven."
+    },
+    {
+      "id": "opposition",
+      "group": "World",
+      "title": "Opposition",
+      "status": "hypothesis",
+      "summary": "Bosses start as moving, evading targets. Breakable mobs, random-encounter spawns, puzzles (trick shots, ordered targets). Final boss: the dragon, with 3 lair layouts using different mini bosses and trash mobs."
+    },
+    {
+      "id": "art",
+      "group": "Presentation",
+      "title": "Art Direction",
+      "status": "decided",
+      "summary": "Looks like a real 3D pinball machine, very mechanical: metal wire rails, tables stacked vertically, rails going transparent as the ball travels."
+    },
+    {
+      "id": "audio",
+      "group": "Presentation",
+      "title": "Audio & Music",
+      "status": "decided",
+      "summary": "All real old-school pinball sounds."
+    },
+    {
+      "id": "ui",
+      "group": "Presentation",
+      "title": "UI & HUD",
+      "status": "hypothesis",
+      "summary": "Everything on the dot-matrix display. If that doesn't work well, use an overlay."
+    },
+    {
+      "id": "camera",
+      "group": "Presentation",
+      "title": "Camera",
+      "status": "decided",
+      "summary": "Whole main table on screen. Entering a dungeon: the rail turns transparent, camera follows and zooms as the ball rolls in from the top side, showing the table for 2-3 seconds, then settles into a pinball view."
+    },
+    {
+      "id": "onboarding",
+      "group": "Experience",
+      "title": "Onboarding",
+      "status": "decided",
+      "summary": "The first quest teaches it: dot-matrix says something like BREAK THE GOBLINS, targets flash, first dungeon is easy. The rest is introduced one piece at a time."
+    },
+    {
+      "id": "session",
+      "group": "Experience",
+      "title": "Session Shape",
+      "status": "hypothesis",
+      "summary": "Maybe 15 minutes a run. Unlike real pinball, there's a goal that ends the game, so the player is trying to finish, not just last. Worth exploring."
+    },
+    {
+      "id": "replay",
+      "group": "Experience",
+      "title": "Replayability",
+      "status": "hypothesis",
+      "summary": "Random loot and 3 dungeon types per tier. No carry-over between runs so far. Light terraforming from a few presets: use more if good, stay fixed if meh."
+    },
+    {
+      "id": "accessibility",
+      "group": "Experience",
+      "title": "Accessibility",
+      "status": "decided",
+      "summary": "Prototype baseline: only two buttons, remappable keys, ball speed option, and a dim mode that softens the machine lights."
+    },
+    {
+      "id": "platform",
+      "group": "Production",
+      "title": "Platform & Tech",
+      "status": "hypothesis",
+      "summary": "Engine open: Godot or C++. Option under discussion: 3D visuals, with each table its own 2D physics plane and rails as scripted paths."
+    },
+    {
+      "id": "scope",
+      "group": "Production",
+      "title": "Scope & MVP",
+      "status": "decided",
+      "summary": "Full idea stays the vision. First prototype: one main table, one dungeon, a few flipper items; no terraforming or dragon. Tests hit feel, rail drop and camera, loot choice."
+    },
+    {
+      "id": "business",
+      "group": "Production",
+      "title": "Business Model",
+      "status": "decided",
+      "summary": "Free portfolio piece: both the design docs and the prototype."
+    },
+    {
+      "id": "risks",
+      "group": "Production",
+      "title": "Risks",
+      "status": "decided",
+      "summary": "Physics feel, camera work, content load (9 unique dungeon tables), terraforming breaking tables."
+    }
+  ]
+}

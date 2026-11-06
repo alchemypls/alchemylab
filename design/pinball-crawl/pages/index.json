@@ -1,0 +1,1735 @@
+{
+  "title": "Pinball Dungeon Crawl",
+  "kicker": "Overview",
+  "updated": "2026-10-31",
+  "background": "#f4efe6",
+  "agent": {
+    "brief": "Layer 1 of the design doc: the one-page overview, doubling as the index. Facts live in bible.json; topic names, pitch and status dots here are bound to it.",
+    "rules": [
+      "Change design decisions in bible.json, not only on this page."
+    ]
+  },
+  "blocks": [],
+  "elements": [
+    {
+      "id": "title",
+      "type": "text",
+      "x": 56,
+      "y": 30,
+      "w": 1180,
+      "h": 84,
+      "text": "Pinball Dungeon Crawl",
+      "size": 64,
+      "weight": 600,
+      "font": "serif"
+    },
+    {
+      "id": "pitch",
+      "type": "text",
+      "x": 56,
+      "y": 116,
+      "w": 1180,
+      "h": 76,
+      "text": "",
+      "size": 25,
+      "font": "serif",
+      "bind": {
+        "topic": "pitch",
+        "field": "summary"
+      }
+    },
+    {
+      "id": "skeleton-link-box",
+      "type": "rect",
+      "x": 1644,
+      "y": 48,
+      "w": 220,
+      "h": 44,
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 22,
+      "fill": "#fbf8f2",
+      "link": "skeleton"
+    },
+    {
+      "id": "skeleton-link",
+      "type": "text",
+      "x": 1644,
+      "y": 48,
+      "w": 220,
+      "h": 44,
+      "text": "Full skeleton →",
+      "size": 17,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle",
+      "link": "skeleton"
+    },
+    {
+      "id": "head-rule",
+      "type": "line",
+      "from": {
+        "x": 56,
+        "y": 200
+      },
+      "to": {
+        "x": 1864,
+        "y": 200
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "arrow": "none"
+    },
+    {
+      "id": "pillars-label",
+      "type": "text",
+      "x": 56,
+      "y": 218,
+      "w": 560,
+      "h": 26,
+      "text": "Pillars",
+      "size": 15,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "pillar-0",
+      "type": "rect",
+      "x": 56,
+      "y": 250,
+      "w": 560,
+      "h": 92,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2
+    },
+    {
+      "id": "pillar-0-bar",
+      "type": "rect",
+      "x": 56,
+      "y": 250,
+      "w": 6,
+      "h": 92,
+      "fill": "#b4532a"
+    },
+    {
+      "id": "pillar-0-title",
+      "type": "text",
+      "x": 78,
+      "y": 260,
+      "w": 520,
+      "h": 34,
+      "text": "Never out of sight",
+      "size": 24,
+      "weight": 600,
+      "font": "serif"
+    },
+    {
+      "id": "pillar-0-body",
+      "type": "text",
+      "x": 78,
+      "y": 296,
+      "w": 520,
+      "h": 36,
+      "text": "The ball is always visible.",
+      "size": 18,
+      "color": "#6b6257"
+    },
+    {
+      "id": "pillar-1",
+      "type": "rect",
+      "x": 56,
+      "y": 354,
+      "w": 560,
+      "h": 92,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2
+    },
+    {
+      "id": "pillar-1-bar",
+      "type": "rect",
+      "x": 56,
+      "y": 354,
+      "w": 6,
+      "h": 92,
+      "fill": "#b4532a"
+    },
+    {
+      "id": "pillar-1-title",
+      "type": "text",
+      "x": 78,
+      "y": 364,
+      "w": 520,
+      "h": 34,
+      "text": "Every hit matters",
+      "size": 24,
+      "weight": 600,
+      "font": "serif"
+    },
+    {
+      "id": "pillar-1-body",
+      "type": "text",
+      "x": 78,
+      "y": 400,
+      "w": 520,
+      "h": 36,
+      "text": "Real weight, always a step toward a goal.",
+      "size": 18,
+      "color": "#6b6257"
+    },
+    {
+      "id": "pillar-2",
+      "type": "rect",
+      "x": 56,
+      "y": 458,
+      "w": 560,
+      "h": 92,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2
+    },
+    {
+      "id": "pillar-2-bar",
+      "type": "rect",
+      "x": 56,
+      "y": 458,
+      "w": 6,
+      "h": 92,
+      "fill": "#b4532a"
+    },
+    {
+      "id": "pillar-2-title",
+      "type": "text",
+      "x": 78,
+      "y": 468,
+      "w": 520,
+      "h": 34,
+      "text": "Pure pinball",
+      "size": 24,
+      "weight": 600,
+      "font": "serif"
+    },
+    {
+      "id": "pillar-2-body",
+      "type": "text",
+      "x": 78,
+      "y": 504,
+      "w": 520,
+      "h": 36,
+      "text": "Physics untouched, flippers only. RPG in the abstract.",
+      "size": 18,
+      "color": "#6b6257"
+    },
+    {
+      "id": "rules-label",
+      "type": "text",
+      "x": 56,
+      "y": 568,
+      "w": 560,
+      "h": 26,
+      "text": "A run",
+      "size": 15,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "rules",
+      "type": "text",
+      "x": 56,
+      "y": 600,
+      "w": 560,
+      "h": 190,
+      "text": "1 wizard, 3 lives from the amulet. Permadeath.\n\nAny drain costs a life, both flipper items and all gold. The map stays.\n\nA dungeon exit stays sealed until its encounter is beaten.",
+      "size": 20
+    },
+    {
+      "id": "machine-label",
+      "type": "text",
+      "x": 664,
+      "y": 218,
+      "w": 560,
+      "h": 26,
+      "text": "The machine",
+      "size": 15,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "main-table",
+      "type": "rect",
+      "x": 664,
+      "y": 250,
+      "w": 560,
+      "h": 120,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "radius": 10,
+      "link": "structure"
+    },
+    {
+      "id": "main-title",
+      "type": "text",
+      "x": 684,
+      "y": 262,
+      "w": 320,
+      "h": 36,
+      "text": "Main table",
+      "size": 26,
+      "weight": 600,
+      "font": "serif",
+      "link": "structure"
+    },
+    {
+      "id": "main-body",
+      "type": "text",
+      "x": 684,
+      "y": 300,
+      "w": 320,
+      "h": 62,
+      "text": "The area map, always fully on screen. Easy near the flippers, harder at the top.",
+      "size": 16,
+      "color": "#6b6257"
+    },
+    {
+      "id": "town",
+      "type": "rect",
+      "x": 1020,
+      "y": 266,
+      "w": 188,
+      "h": 88,
+      "fill": "#f4e6d8",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 6
+    },
+    {
+      "id": "town-text",
+      "type": "text",
+      "x": 1028,
+      "y": 270,
+      "w": 172,
+      "h": 80,
+      "text": "Town: inn + 3 shops",
+      "size": 17,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "dungeon-1",
+      "type": "rect",
+      "x": 764,
+      "y": 412,
+      "w": 360,
+      "h": 70,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "radius": 6
+    },
+    {
+      "id": "dungeon-1-title",
+      "type": "text",
+      "x": 780,
+      "y": 418,
+      "w": 328,
+      "h": 32,
+      "text": "Dungeon tier 1",
+      "size": 22,
+      "weight": 600,
+      "font": "serif"
+    },
+    {
+      "id": "dungeon-1-body",
+      "type": "text",
+      "x": 780,
+      "y": 450,
+      "w": 328,
+      "h": 26,
+      "text": "3 types, one per run",
+      "size": 16,
+      "color": "#6b6257"
+    },
+    {
+      "id": "dungeon-2",
+      "type": "rect",
+      "x": 764,
+      "y": 514,
+      "w": 360,
+      "h": 70,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "radius": 6
+    },
+    {
+      "id": "dungeon-2-title",
+      "type": "text",
+      "x": 780,
+      "y": 520,
+      "w": 328,
+      "h": 32,
+      "text": "Dungeon tier 2",
+      "size": 22,
+      "weight": 600,
+      "font": "serif"
+    },
+    {
+      "id": "dungeon-2-body",
+      "type": "text",
+      "x": 780,
+      "y": 552,
+      "w": 328,
+      "h": 26,
+      "text": "3 types, one per run",
+      "size": 16,
+      "color": "#6b6257"
+    },
+    {
+      "id": "ruin",
+      "type": "rect",
+      "x": 664,
+      "y": 614,
+      "w": 560,
+      "h": 90,
+      "fill": "#f7e3da",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "dash": true,
+      "radius": 6,
+      "link": "narrative"
+    },
+    {
+      "id": "ruin-text",
+      "type": "text",
+      "x": 680,
+      "y": 620,
+      "w": 528,
+      "h": 78,
+      "text": "After dungeon 2: the dragon returns to its lair. Flames, 2 of 4 town buildings destroyed, new trash mobs, a trick shot opens the lair.",
+      "size": 17,
+      "valign": "middle",
+      "link": "narrative"
+    },
+    {
+      "id": "lair",
+      "type": "rect",
+      "x": 764,
+      "y": 730,
+      "w": 360,
+      "h": 62,
+      "fill": "#1f1b16",
+      "radius": 6,
+      "link": "opposition"
+    },
+    {
+      "id": "lair-text",
+      "type": "text",
+      "x": 780,
+      "y": 734,
+      "w": 328,
+      "h": 54,
+      "text": "The dragon's lair: 3 layouts",
+      "size": 22,
+      "weight": 600,
+      "font": "serif",
+      "color": "#f4efe6",
+      "align": "center",
+      "valign": "middle",
+      "link": "opposition"
+    },
+    {
+      "id": "rail-1",
+      "type": "line",
+      "from": {
+        "el": "main-table"
+      },
+      "to": {
+        "el": "dungeon-1"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 3,
+      "arrow": "end",
+      "dash": true
+    },
+    {
+      "id": "rail-2",
+      "type": "line",
+      "from": {
+        "el": "dungeon-1"
+      },
+      "to": {
+        "el": "dungeon-2"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 3,
+      "arrow": "end",
+      "dash": true
+    },
+    {
+      "id": "rail-3",
+      "type": "line",
+      "from": {
+        "el": "dungeon-2"
+      },
+      "to": {
+        "el": "ruin"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 3,
+      "arrow": "end"
+    },
+    {
+      "id": "rail-4",
+      "type": "line",
+      "from": {
+        "el": "ruin"
+      },
+      "to": {
+        "el": "lair"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 3,
+      "arrow": "end"
+    },
+    {
+      "id": "loop-label",
+      "type": "text",
+      "x": 1272,
+      "y": 218,
+      "w": 592,
+      "h": 26,
+      "text": "Core loop",
+      "size": 15,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "step-0",
+      "type": "rect",
+      "x": 1272,
+      "y": 250,
+      "w": 124,
+      "h": 60,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "step-0-text",
+      "type": "text",
+      "x": 1278,
+      "y": 254,
+      "w": 112,
+      "h": 52,
+      "text": "Shoot",
+      "size": 16,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "step-1",
+      "type": "rect",
+      "x": 1428,
+      "y": 250,
+      "w": 124,
+      "h": 60,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "step-1-text",
+      "type": "text",
+      "x": 1434,
+      "y": 254,
+      "w": 112,
+      "h": 52,
+      "text": "Break mobs",
+      "size": 16,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "step-2",
+      "type": "rect",
+      "x": 1584,
+      "y": 250,
+      "w": 124,
+      "h": 60,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "step-2-text",
+      "type": "text",
+      "x": 1590,
+      "y": 254,
+      "w": 112,
+      "h": 52,
+      "text": "Quest spawns mobs",
+      "size": 16,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "step-3",
+      "type": "rect",
+      "x": 1740,
+      "y": 250,
+      "w": 124,
+      "h": 60,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "step-3-text",
+      "type": "text",
+      "x": 1746,
+      "y": 254,
+      "w": 112,
+      "h": 52,
+      "text": "Dungeon opens",
+      "size": 16,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "step-4",
+      "type": "rect",
+      "x": 1740,
+      "y": 356,
+      "w": 124,
+      "h": 60,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "step-4-text",
+      "type": "text",
+      "x": 1746,
+      "y": 360,
+      "w": 112,
+      "h": 52,
+      "text": "Drop in",
+      "size": 16,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "step-5",
+      "type": "rect",
+      "x": 1584,
+      "y": 356,
+      "w": 124,
+      "h": 60,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "step-5-text",
+      "type": "text",
+      "x": 1590,
+      "y": 360,
+      "w": 112,
+      "h": 52,
+      "text": "Beat encounter",
+      "size": 16,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "step-6",
+      "type": "rect",
+      "x": 1420,
+      "y": 356,
+      "w": 124,
+      "h": 60,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "step-6-text",
+      "type": "text",
+      "x": 1426,
+      "y": 360,
+      "w": 112,
+      "h": 52,
+      "text": "Pick loot",
+      "size": 16,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "step-7",
+      "type": "rect",
+      "x": 1272,
+      "y": 356,
+      "w": 124,
+      "h": 60,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "step-7-text",
+      "type": "text",
+      "x": 1278,
+      "y": 360,
+      "w": 112,
+      "h": 52,
+      "text": "Pop back up",
+      "size": 16,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "loop-0",
+      "type": "line",
+      "from": {
+        "el": "step-0"
+      },
+      "to": {
+        "el": "step-1"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "arrow": "end"
+    },
+    {
+      "id": "loop-1",
+      "type": "line",
+      "from": {
+        "el": "step-1"
+      },
+      "to": {
+        "el": "step-2"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "arrow": "end"
+    },
+    {
+      "id": "loop-2",
+      "type": "line",
+      "from": {
+        "el": "step-2"
+      },
+      "to": {
+        "el": "step-3"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "arrow": "end"
+    },
+    {
+      "id": "loop-3",
+      "type": "line",
+      "from": {
+        "el": "step-3"
+      },
+      "to": {
+        "el": "step-4"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "arrow": "end"
+    },
+    {
+      "id": "loop-4",
+      "type": "line",
+      "from": {
+        "el": "step-4"
+      },
+      "to": {
+        "el": "step-5"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "arrow": "end"
+    },
+    {
+      "id": "loop-5",
+      "type": "line",
+      "from": {
+        "el": "step-5"
+      },
+      "to": {
+        "el": "step-6"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "arrow": "end"
+    },
+    {
+      "id": "loop-6",
+      "type": "line",
+      "from": {
+        "el": "step-6"
+      },
+      "to": {
+        "el": "step-7"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "arrow": "end"
+    },
+    {
+      "id": "loop-back",
+      "type": "line",
+      "from": {
+        "el": "step-7"
+      },
+      "to": {
+        "el": "step-0"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "arrow": "end"
+    },
+    {
+      "id": "loot-label",
+      "type": "text",
+      "x": 1272,
+      "y": 444,
+      "w": 340,
+      "h": 26,
+      "text": "Flipper loot",
+      "size": 15,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "loot",
+      "type": "text",
+      "x": 1272,
+      "y": 476,
+      "w": 340,
+      "h": 316,
+      "text": "Each flipper holds 1 item. Effects happen on impact; physics never change.\n\nDungeon loot: hit 1 of 3 targets. It goes to the last flipper that touched the ball. Or exit with nothing.\n\nShop: shoot the item you can afford, the ball holds, press a flipper to equip that side.",
+      "size": 18
+    },
+    {
+      "id": "sketch",
+      "type": "image",
+      "src": "sketch-dungeon-table.png",
+      "x": 1630,
+      "y": 452,
+      "w": 234,
+      "h": 312,
+      "fit": "contain"
+    },
+    {
+      "id": "sketch-caption",
+      "type": "text",
+      "x": 1630,
+      "y": 766,
+      "w": 234,
+      "h": 26,
+      "text": "Dungeon table sketch",
+      "size": 14,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "index-rule",
+      "type": "line",
+      "from": {
+        "x": 56,
+        "y": 804
+      },
+      "to": {
+        "x": 1864,
+        "y": 804
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "arrow": "none"
+    },
+    {
+      "id": "group-0",
+      "type": "text",
+      "x": 56,
+      "y": 812,
+      "w": 285,
+      "h": 30,
+      "text": "Vision",
+      "size": 20,
+      "weight": 600,
+      "font": "serif"
+    },
+    {
+      "id": "dot-pitch",
+      "type": "status",
+      "x": 56,
+      "y": 847,
+      "size": 14,
+      "topic": "pitch",
+      "link": "pitch"
+    },
+    {
+      "id": "topic-pitch",
+      "type": "text",
+      "x": 78,
+      "y": 842,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "pitch",
+        "field": "title"
+      },
+      "link": "pitch"
+    },
+    {
+      "id": "dot-fantasy",
+      "type": "status",
+      "x": 56,
+      "y": 873,
+      "size": 14,
+      "topic": "fantasy",
+      "link": "fantasy"
+    },
+    {
+      "id": "topic-fantasy",
+      "type": "text",
+      "x": 78,
+      "y": 868,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "fantasy",
+        "field": "title"
+      },
+      "link": "fantasy"
+    },
+    {
+      "id": "dot-pillars",
+      "type": "status",
+      "x": 56,
+      "y": 899,
+      "size": 14,
+      "topic": "pillars",
+      "link": "pillars"
+    },
+    {
+      "id": "topic-pillars",
+      "type": "text",
+      "x": 78,
+      "y": 894,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "pillars",
+        "field": "title"
+      },
+      "link": "pillars"
+    },
+    {
+      "id": "dot-audience",
+      "type": "status",
+      "x": 56,
+      "y": 925,
+      "size": 14,
+      "topic": "audience",
+      "link": "audience"
+    },
+    {
+      "id": "topic-audience",
+      "type": "text",
+      "x": 78,
+      "y": 920,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "audience",
+        "field": "title"
+      },
+      "link": "audience"
+    },
+    {
+      "id": "dot-references",
+      "type": "status",
+      "x": 56,
+      "y": 951,
+      "size": 14,
+      "topic": "references",
+      "link": "references"
+    },
+    {
+      "id": "topic-references",
+      "type": "text",
+      "x": 78,
+      "y": 946,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "references",
+        "field": "title"
+      },
+      "link": "references"
+    },
+    {
+      "id": "group-1",
+      "type": "text",
+      "x": 357,
+      "y": 812,
+      "w": 285,
+      "h": 30,
+      "text": "Play",
+      "size": 20,
+      "weight": 600,
+      "font": "serif"
+    },
+    {
+      "id": "dot-core-loop",
+      "type": "status",
+      "x": 357,
+      "y": 847,
+      "size": 14,
+      "topic": "core-loop",
+      "link": "core-loop"
+    },
+    {
+      "id": "topic-core-loop",
+      "type": "text",
+      "x": 379,
+      "y": 842,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "core-loop",
+        "field": "title"
+      },
+      "link": "core-loop"
+    },
+    {
+      "id": "dot-mechanics",
+      "type": "status",
+      "x": 357,
+      "y": 873,
+      "size": 14,
+      "topic": "mechanics",
+      "link": "mechanics"
+    },
+    {
+      "id": "topic-mechanics",
+      "type": "text",
+      "x": 379,
+      "y": 868,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "mechanics",
+        "field": "title"
+      },
+      "link": "mechanics"
+    },
+    {
+      "id": "dot-controls",
+      "type": "status",
+      "x": 357,
+      "y": 899,
+      "size": 14,
+      "topic": "controls",
+      "link": "controls"
+    },
+    {
+      "id": "topic-controls",
+      "type": "text",
+      "x": 379,
+      "y": 894,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "controls",
+        "field": "title"
+      },
+      "link": "controls"
+    },
+    {
+      "id": "dot-goals",
+      "type": "status",
+      "x": 357,
+      "y": 925,
+      "size": 14,
+      "topic": "goals",
+      "link": "goals"
+    },
+    {
+      "id": "topic-goals",
+      "type": "text",
+      "x": 379,
+      "y": 920,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "goals",
+        "field": "title"
+      },
+      "link": "goals"
+    },
+    {
+      "id": "dot-challenge",
+      "type": "status",
+      "x": 357,
+      "y": 951,
+      "size": 14,
+      "topic": "challenge",
+      "link": "challenge"
+    },
+    {
+      "id": "topic-challenge",
+      "type": "text",
+      "x": 379,
+      "y": 946,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "challenge",
+        "field": "title"
+      },
+      "link": "challenge"
+    },
+    {
+      "id": "dot-failure",
+      "type": "status",
+      "x": 357,
+      "y": 977,
+      "size": 14,
+      "topic": "failure",
+      "link": "failure"
+    },
+    {
+      "id": "topic-failure",
+      "type": "text",
+      "x": 379,
+      "y": 972,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "failure",
+        "field": "title"
+      },
+      "link": "failure"
+    },
+    {
+      "id": "dot-progression",
+      "type": "status",
+      "x": 357,
+      "y": 1003,
+      "size": 14,
+      "topic": "progression",
+      "link": "progression"
+    },
+    {
+      "id": "topic-progression",
+      "type": "text",
+      "x": 379,
+      "y": 998,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "progression",
+        "field": "title"
+      },
+      "link": "progression"
+    },
+    {
+      "id": "dot-economy",
+      "type": "status",
+      "x": 357,
+      "y": 1029,
+      "size": 14,
+      "topic": "economy",
+      "link": "economy"
+    },
+    {
+      "id": "topic-economy",
+      "type": "text",
+      "x": 379,
+      "y": 1024,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "economy",
+        "field": "title"
+      },
+      "link": "economy"
+    },
+    {
+      "id": "group-2",
+      "type": "text",
+      "x": 659,
+      "y": 812,
+      "w": 285,
+      "h": 30,
+      "text": "World",
+      "size": 20,
+      "weight": 600,
+      "font": "serif"
+    },
+    {
+      "id": "dot-setting",
+      "type": "status",
+      "x": 659,
+      "y": 847,
+      "size": 14,
+      "topic": "setting",
+      "link": "setting"
+    },
+    {
+      "id": "topic-setting",
+      "type": "text",
+      "x": 681,
+      "y": 842,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "setting",
+        "field": "title"
+      },
+      "link": "setting"
+    },
+    {
+      "id": "dot-narrative",
+      "type": "status",
+      "x": 659,
+      "y": 873,
+      "size": 14,
+      "topic": "narrative",
+      "link": "narrative"
+    },
+    {
+      "id": "topic-narrative",
+      "type": "text",
+      "x": 681,
+      "y": 868,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "narrative",
+        "field": "title"
+      },
+      "link": "narrative"
+    },
+    {
+      "id": "dot-characters",
+      "type": "status",
+      "x": 659,
+      "y": 899,
+      "size": 14,
+      "topic": "characters",
+      "link": "characters"
+    },
+    {
+      "id": "topic-characters",
+      "type": "text",
+      "x": 681,
+      "y": 894,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "characters",
+        "field": "title"
+      },
+      "link": "characters"
+    },
+    {
+      "id": "dot-structure",
+      "type": "status",
+      "x": 659,
+      "y": 925,
+      "size": 14,
+      "topic": "structure",
+      "link": "structure"
+    },
+    {
+      "id": "topic-structure",
+      "type": "text",
+      "x": 681,
+      "y": 920,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "structure",
+        "field": "title"
+      },
+      "link": "structure"
+    },
+    {
+      "id": "dot-opposition",
+      "type": "status",
+      "x": 659,
+      "y": 951,
+      "size": 14,
+      "topic": "opposition",
+      "link": "opposition"
+    },
+    {
+      "id": "topic-opposition",
+      "type": "text",
+      "x": 681,
+      "y": 946,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "opposition",
+        "field": "title"
+      },
+      "link": "opposition"
+    },
+    {
+      "id": "group-3",
+      "type": "text",
+      "x": 960,
+      "y": 812,
+      "w": 285,
+      "h": 30,
+      "text": "Presentation",
+      "size": 20,
+      "weight": 600,
+      "font": "serif"
+    },
+    {
+      "id": "dot-art",
+      "type": "status",
+      "x": 960,
+      "y": 847,
+      "size": 14,
+      "topic": "art",
+      "link": "art"
+    },
+    {
+      "id": "topic-art",
+      "type": "text",
+      "x": 982,
+      "y": 842,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "art",
+        "field": "title"
+      },
+      "link": "art"
+    },
+    {
+      "id": "dot-audio",
+      "type": "status",
+      "x": 960,
+      "y": 873,
+      "size": 14,
+      "topic": "audio",
+      "link": "audio"
+    },
+    {
+      "id": "topic-audio",
+      "type": "text",
+      "x": 982,
+      "y": 868,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "audio",
+        "field": "title"
+      },
+      "link": "audio"
+    },
+    {
+      "id": "dot-ui",
+      "type": "status",
+      "x": 960,
+      "y": 899,
+      "size": 14,
+      "topic": "ui",
+      "link": "ui"
+    },
+    {
+      "id": "topic-ui",
+      "type": "text",
+      "x": 982,
+      "y": 894,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "ui",
+        "field": "title"
+      },
+      "link": "ui"
+    },
+    {
+      "id": "dot-camera",
+      "type": "status",
+      "x": 960,
+      "y": 925,
+      "size": 14,
+      "topic": "camera",
+      "link": "camera"
+    },
+    {
+      "id": "topic-camera",
+      "type": "text",
+      "x": 982,
+      "y": 920,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "camera",
+        "field": "title"
+      },
+      "link": "camera"
+    },
+    {
+      "id": "group-4",
+      "type": "text",
+      "x": 1261,
+      "y": 812,
+      "w": 285,
+      "h": 30,
+      "text": "Experience",
+      "size": 20,
+      "weight": 600,
+      "font": "serif"
+    },
+    {
+      "id": "dot-onboarding",
+      "type": "status",
+      "x": 1261,
+      "y": 847,
+      "size": 14,
+      "topic": "onboarding",
+      "link": "onboarding"
+    },
+    {
+      "id": "topic-onboarding",
+      "type": "text",
+      "x": 1283,
+      "y": 842,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "onboarding",
+        "field": "title"
+      },
+      "link": "onboarding"
+    },
+    {
+      "id": "dot-session",
+      "type": "status",
+      "x": 1261,
+      "y": 873,
+      "size": 14,
+      "topic": "session",
+      "link": "session"
+    },
+    {
+      "id": "topic-session",
+      "type": "text",
+      "x": 1283,
+      "y": 868,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "session",
+        "field": "title"
+      },
+      "link": "session"
+    },
+    {
+      "id": "dot-replay",
+      "type": "status",
+      "x": 1261,
+      "y": 899,
+      "size": 14,
+      "topic": "replay",
+      "link": "replay"
+    },
+    {
+      "id": "topic-replay",
+      "type": "text",
+      "x": 1283,
+      "y": 894,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "replay",
+        "field": "title"
+      },
+      "link": "replay"
+    },
+    {
+      "id": "dot-accessibility",
+      "type": "status",
+      "x": 1261,
+      "y": 925,
+      "size": 14,
+      "topic": "accessibility",
+      "link": "accessibility"
+    },
+    {
+      "id": "topic-accessibility",
+      "type": "text",
+      "x": 1283,
+      "y": 920,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "accessibility",
+        "field": "title"
+      },
+      "link": "accessibility"
+    },
+    {
+      "id": "group-5",
+      "type": "text",
+      "x": 1563,
+      "y": 812,
+      "w": 285,
+      "h": 30,
+      "text": "Production",
+      "size": 20,
+      "weight": 600,
+      "font": "serif"
+    },
+    {
+      "id": "dot-platform",
+      "type": "status",
+      "x": 1563,
+      "y": 847,
+      "size": 14,
+      "topic": "platform",
+      "link": "platform"
+    },
+    {
+      "id": "topic-platform",
+      "type": "text",
+      "x": 1585,
+      "y": 842,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "platform",
+        "field": "title"
+      },
+      "link": "platform"
+    },
+    {
+      "id": "dot-scope",
+      "type": "status",
+      "x": 1563,
+      "y": 873,
+      "size": 14,
+      "topic": "scope",
+      "link": "scope"
+    },
+    {
+      "id": "topic-scope",
+      "type": "text",
+      "x": 1585,
+      "y": 868,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "scope",
+        "field": "title"
+      },
+      "link": "scope"
+    },
+    {
+      "id": "dot-business",
+      "type": "status",
+      "x": 1563,
+      "y": 899,
+      "size": 14,
+      "topic": "business",
+      "link": "business"
+    },
+    {
+      "id": "topic-business",
+      "type": "text",
+      "x": 1585,
+      "y": 894,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "business",
+        "field": "title"
+      },
+      "link": "business"
+    },
+    {
+      "id": "dot-risks",
+      "type": "status",
+      "x": 1563,
+      "y": 925,
+      "size": 14,
+      "topic": "risks",
+      "link": "risks"
+    },
+    {
+      "id": "topic-risks",
+      "type": "text",
+      "x": 1585,
+      "y": 920,
+      "w": 261,
+      "h": 26,
+      "text": "",
+      "size": 16,
+      "weight": 600,
+      "valign": "middle",
+      "bind": {
+        "topic": "risks",
+        "field": "title"
+      },
+      "link": "risks"
+    }
+  ],
+  "size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "grid": {}
+}

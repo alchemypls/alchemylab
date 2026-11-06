@@ -1,0 +1,97 @@
+{
+  "kind": "block",
+  "title": "Pop bumper",
+  "updated": "2026-11-05",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "skirt",
+      "type": "ellipse",
+      "x": 512,
+      "y": 544,
+      "w": 128,
+      "h": 128,
+      "fill": "#f4efe6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "floor",
+      "height": 16
+    },
+    {
+      "id": "body",
+      "type": "ellipse",
+      "x": 512,
+      "y": 563.2,
+      "w": 89.6,
+      "h": 89.6,
+      "fill": "#f4efe6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "roof",
+      "lift": 16,
+      "height": 64,
+      "opacity": 0.9
+    },
+    {
+      "id": "cap",
+      "type": "ellipse",
+      "x": 512,
+      "y": 531.2,
+      "w": 153.6,
+      "h": 153.6,
+      "fill": "#d6332f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "roof",
+      "lift": 80,
+      "height": 41.6
+    },
+    {
+      "id": "decal",
+      "type": "ellipse",
+      "x": 512,
+      "y": 560,
+      "w": 96,
+      "h": 96,
+      "fill": "#f4efe6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "roof",
+      "lift": 121.6
+    },
+    {
+      "id": "star",
+      "type": "ellipse",
+      "x": 512,
+      "y": 579.2,
+      "w": 57.6,
+      "h": 57.6,
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "roof",
+      "lift": 121.6,
+      "n": 0.55
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  },
+  "footprint": {
+    "cols": 3,
+    "rows": 3
+  },
+  "dims": {
+    "in": [
+      2.4,
+      2.4,
+      1.9
+    ],
+    "estimated": true,
+    "note": "Cap 2.4\" dia × 0.65\"; skirt 2.0\" dia. Overall height estimated."
+  }
+}
