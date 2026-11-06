@@ -6,21 +6,30 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "design:check": "jiti scripts/design-check.ts",
+    "parts:build": "node scripts/run.cjs scripts/parts/build.ts",
+    "asset:render": "node scripts/run.cjs scripts/asset-render.tsx",
+    "asset:info": "node scripts/run.cjs scripts/asset-info.ts",
+    "page:render": "node scripts/run.cjs scripts/page-render.tsx"
   },
   "dependencies": {
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.16.0",
+    "next": "14.2.35",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.35"
+    "zustand": "^5.0.13"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.35",
+    "jiti": "^1.21.7",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.35"
+    "typescript": "^5"
   }
 }

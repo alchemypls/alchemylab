@@ -25,3 +25,18 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Scrollbars everywhere in the workbench: thin, dark, no arrow buttons, matching the panels.
+   scrollbar-color/width cover Firefox and Chrome 121+; the ::-webkit rules cover Safari and older Chromium.
+   Pages shown in Live are their own documents, so their scrollbars stay the browser's. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #404040 transparent;
+}
+*:hover { scrollbar-color: #525252 transparent; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #404040; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #525252; }
+::-webkit-scrollbar-button { display: none; }
+::-webkit-scrollbar-corner { background: transparent; }

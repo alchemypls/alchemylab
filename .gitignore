@@ -34,3 +34,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# design bible fit reports (written by the Design Page widget)
+design/*/.render.json
+
+# asset renders and the parts build's record of what it wrote (npm run asset:render / parts:build)
+.render/
+
+# emerge (code analysis, local)
+.emerge/

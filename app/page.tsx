@@ -1,101 +1,58 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useWorkbenchStore } from '@/lib/store';
+import { type Dir } from '@/lib/scenes';
+import { useProjectSync } from '@/lib/projectSync';
+import { SceneNavigator } from '@/workbench/shell/SceneNavigator';
+import { CanvasPanel } from '@/workbench/shell/CanvasPanel';
+import { FileVault } from '@/workbench/shell/FileVault';
+import { IdeationCanvas } from '@/workbench/canvases/IdeationCanvas';
+import { FabCanvas } from '@/workbench/canvases/FabCanvas';
+import { WebCanvas } from '@/workbench/canvases/WebCanvas';
+import { LiveCanvas } from '@/workbench/canvases/LiveCanvas';
+
+// The workbench: one full-screen canvas at a time (Alt + WASD / arrows moves between them), the panel above it.
+
+// Direction = the direction you're navigating TO. The incoming canvas enters from that side; the outgoing one leaves opposite.
+const enterFrom = (dir: Dir | null) => ({
+  x: dir === 'right' ? '100%' : dir === 'left' ? '-100%' : 0,
+  y: dir === 'down'  ? '100%' : dir === 'up'   ? '-100%' : 0,
+});
+const exitTo = (dir: Dir | null) => ({
+  x: dir === 'right' ? '-100%' : dir === 'left' ? '100%' : 0,
+  y: dir === 'down'  ? '-100%' : dir === 'up'   ? '100%' : 0,
+});
+const slideTransition = { type: 'tween' as const, ease: [0.4, 0, 0.2, 1] as [number, number, number, number], duration: 0.32 };
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const activeScene = useWorkbenchStore((s) => s.activeScene);
+  const slideDir    = useWorkbenchStore((s) => s.slideDir);
+  useProjectSync();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+  // Client-only: the open canvas, page and editor are this browser's persisted state (localStorage), which the
+  // server can't see, so a server render would mismatch on hydration. Render after mount.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return <div style={{ width: '100vw', height: '100vh', background: '#0a0a0a' }} />;
+
+  return (
+    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative', background: '#0a0a0a' }}>
+      {/* Only the active canvas is mounted; AnimatePresence keeps the outgoing one alive for its slide-out */}
+      <AnimatePresence mode="sync" custom={slideDir}>
+        <motion.div
+          key={activeScene} custom={slideDir}
+          initial={enterFrom(slideDir)} animate={{ x: 0, y: 0 }} exit={exitTo(slideDir)} transition={slideTransition}
+          style={{ position: 'absolute', inset: 0 }}
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          {activeScene === 'ideation' ? <IdeationCanvas /> : activeScene === 'fab' ? <FabCanvas /> : activeScene === 'web' ? <WebCanvas /> : <LiveCanvas />}
+        </motion.div>
+      </AnimatePresence>
+
+      <CanvasPanel />
+      <SceneNavigator />
+      <FileVault />
     </div>
   );
 }

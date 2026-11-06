@@ -1,0 +1,116 @@
+"use client";
+
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { Copy, FlipHorizontal2, PenLine, SquareDashedMousePointer, Trash2 } from 'lucide-react';
+import { BackIcon, FrontIcon } from './OrderIcons';
+import { useWorkbenchStore } from '@/lib/store';
+import { getSlideDir } from '@/lib/scenes';
+import { duplicateElements, PLANAR, removeElements, reorderElements, updateElement, type Plane, type VElement } from '@/lib/design/vector';
+import type { DesignPage } from '@/lib/design/types';
+import { useVault } from '@/workbench/hooks/useVault';
+import { PLANE_OPTIONS } from './ToolMenu';
+
+// The right-click menu on a vector sheet (Ideation and Fab): what can be done to the selection, or to the page when
+// nothing is under the pointer. Rendered on <body>, so the sheet's zoom doesn't move or scale it.
+
+export interface SheetMenuAt { x: number; y: number; ids: string[] }
+
+const ROW = 'w-full flex items-center gap-2 px-2.5 py-1.5 text-left text-[12px] rounded-md hover:bg-neutral-800/80 disabled:opacity-35 disabled:hover:bg-transparent';
+const KEY = 'ml-auto pl-4 text-[10px] font-mono text-neutral-500';
+
+export function SheetMenu({ at, page, apply, select, selectable, close }: {
+  at: SheetMenuAt; page: DesignPage;
+  apply: (next: DesignPage) => void; select: (ids: string[]) => void;
+  selectable: string[];   // what Select all picks: not on a hidden or locked layer, not switched off in Select's menu
+  close: () => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState({ x: at.x, y: at.y });
+  const vault = useVault().entries;
+  const setScene = useWorkbenchStore((s) => s.setActiveScene);
+  const scene = useWorkbenchStore((s) => s.activeScene);
+  const setEditor = useWorkbenchStore((s) => s.setFabEditor);
+  const setFabAsset = useWorkbenchStore((s) => s.setFabAsset);
+
+  // Kept on screen
+  useLayoutEffect(() => {
+    const r = ref.current?.getBoundingClientRect();
+    if (r) setPos({ x: Math.min(at.x, window.innerWidth - r.width - 8), y: Math.min(at.y, window.innerHeight - r.height - 8) });
+  }, [at]);
+  useEffect(() => {
+    const away = (e: Event) => { if (!ref.current?.contains(e.target as Node)) close(); };
+    const key = (e: KeyboardEvent) => { if (e.key === 'Escape') { e.stopPropagation(); close(); } };
+    window.addEventListener('pointerdown', away, true);
+    window.addEventListener('wheel', close, true);
+    window.addEventListener('keydown', key, true);
+    window.addEventListener('blur', close);
+    return () => {
+      window.removeEventListener('pointerdown', away, true);
+      window.removeEventListener('wheel', close, true);
+      window.removeEventListener('keydown', key, true);
+      window.removeEventListener('blur', close);
+    };
+  }, [close]);
+
+  const els = (page.elements ?? []).filter((e) => at.ids.includes(e.id));
+  const run = (f: () => void) => () => { f(); close(); };
+  const only: VElement | undefined = els.length === 1 ? els[0] : undefined;
+  const asset = only?.type === 'asset' ? vault.find((v) => v.id === only.asset)?.asset : undefined;
+  const planar = els.length > 0 && els.every((e) => PLANAR.includes(e.type));
+  const planeNow = planar && new Set(els.map((e) => ('plane' in e && e.plane) || 'none')).size === 1 ? (('plane' in els[0] && els[0].plane) || 'none') : null;
+  const lay = (v: 'none' | Plane) => {
+    let next = page;
+    for (const e of els) next = updateElement(next, e.id, { plane: v === 'none' ? undefined : v, rotate: undefined, lift: undefined, slope: undefined, slopeAlong: undefined } as Partial<VElement>);
+    apply(next);
+  };
+
+  return createPortal(
+    <div
+      ref={ref} role="menu"
+      // A portal still bubbles React events up its React parents: the sheet would take this press as a drawing gesture
+      // (and capture the pointer, so the button never gets its click)
+      onPointerDown={(e) => e.stopPropagation()} onPointerMove={(e) => e.stopPropagation()} onPointerUp={(e) => e.stopPropagation()}
+      onDoubleClick={(e) => e.stopPropagation()} onContextMenu={(e) => { e.preventDefault(); e.stopPropagation(); }}
+      className="fixed z-[100] min-w-[190px] p-1 rounded-lg border border-neutral-800 bg-neutral-950 shadow-[0_10px_40px_rgba(0,0,0,0.75)] text-neutral-200"
+      style={{ left: pos.x, top: pos.y }}
+    >
+      {els.length ? (
+        <>
+          <div className="px-2.5 pt-1 pb-1.5 text-[9px] uppercase tracking-widest text-amber-500">{only ? (asset ? asset.title : only.type) : `${els.length} selected`}</div>
+          <button className={ROW} onClick={run(() => { const r = duplicateElements(page, at.ids); apply(r.page); select(r.ids); })}><Copy size={14} />Duplicate<span className={KEY}>Ctrl D</span></button>
+          <button className={ROW} onClick={run(() => apply(reorderElements(page, at.ids, 'front')))}><FrontIcon size={14} />Bring to front</button>
+          <button className={ROW} onClick={run(() => apply(reorderElements(page, at.ids, 'back')))}><BackIcon size={14} />Send to back</button>
+          {planar && (
+            <div className="px-2.5 py-1.5">
+              <div className="text-[9px] uppercase tracking-widest text-neutral-500 mb-1">Plane</div>
+              <div className="flex rounded border border-neutral-700 overflow-hidden">
+                {PLANE_OPTIONS.map((o) => (
+                  <button
+                    key={o.value} onClick={run(() => lay(o.value))} aria-pressed={planeNow === o.value}
+                    className={`flex-1 py-0.5 text-[10px] ${planeNow === o.value ? 'bg-amber-500/20 text-amber-400' : 'text-neutral-400 hover:bg-neutral-800'}`}
+                  >{o.label}</button>
+                ))}
+              </div>
+            </div>
+          )}
+          {only?.type === 'asset' && (
+            <button className={ROW} onClick={run(() => apply(updateElement(page, only.id, { mirror: only.mirror ? undefined : true } as Partial<VElement>)))}>
+              <FlipHorizontal2 size={14} />{only.mirror ? 'Unmirror' : 'Mirror'}
+            </button>
+          )}
+          {asset && only?.type === 'asset' && (
+            <button className={ROW} onClick={run(() => { setEditor(asset.kind === 'block' ? 'blocks' : 'identity'); setFabAsset(only.asset); setScene('fab', getSlideDir(scene, 'fab')); })}>
+              <PenLine size={14} />Edit in Fab
+            </button>
+          )}
+          <div className="my-1 border-t border-neutral-800" />
+          <button className={`${ROW} text-red-300`} onClick={run(() => { apply(removeElements(page, at.ids)); select([]); })}><Trash2 size={14} />Delete<span className={KEY}>Del</span></button>
+        </>
+      ) : (
+        <button className={ROW} disabled={!selectable.length} onClick={run(() => select(selectable))}><SquareDashedMousePointer size={14} />Select all</button>
+      )}
+    </div>,
+    document.body,
+  );
+}

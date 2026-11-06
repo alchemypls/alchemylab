@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Alchemy
 
-## Getting Started
+A spatial UI design workbench for authoring button manifests and previewing live components on an infinite canvas.
 
-First, run the development server:
+## What it does
+
+You describe a button using a structured **manifest** — shape, colors, shadows, typography, spring physics for hover/press — and the workbench renders the live component alongside editors for every property. Everything lives on a pannable, zoomable whiteboard where tools float as draggable, resizable widget nodes connected by wires.
+
+## Stack
+
+- **Next.js 14** (App Router)
+- **@xyflow/react** — infinite canvas, custom nodes and edges
+- **Zustand** — all state (manifest data + canvas layout)
+- **Framer Motion** — live button preview animations
+- **Tailwind CSS**
+- **TypeScript**
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). The canvas loads with a sample manifest already wired up.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Canvas controls
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Action | How |
+|---|---|
+| Pan | Middle-click drag, right-click drag, or WASD |
+| Zoom | Scroll wheel |
+| Select | Left-click drag on empty canvas |
+| Move widget | Drag the title bar |
+| Resize widget | Drag the edge/corner handles |
+| Reposition wire elbow | Drag the gear dot on the wire |
+| Reattach wire source | Select wire → drag the source dot |
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+lib/schema/     — ButtonManifest type system (Structural / Visual / Intent layers)
+lib/generator/  — generateFramerButton(): emits ready-to-use TSX from a manifest
+lib/store.ts    — Zustand store (manifests + React Flow nodes/edges)
+workbench/      — canvas widgets, edges, and shell UI
+app/page.tsx    — full-screen ReactFlow root
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Manifest model
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+A manifest has three layers:
 
-## Deploy on Vercel
+- **Structural** — shape, diameter, label, z-depth
+- **Visual** — background color, shadow, typography, backdrop blur, shader ref
+- **Intent** — hover and press behaviors stored as spring/tween physics, not keyframes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Plus a **variants block** (idle / hover / pressed) that the generator expands into Framer Motion variant objects.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Commands
+
+```bash
+npm run dev     # dev server
+npm run build   # production build
+npm run lint    # ESLint
+```

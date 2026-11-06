@@ -1,0 +1,10 @@
+# Alchemy pen bridge — lets the logged-in desktop user read ONLY these pen tablets
+# (scripts/pen-bridge.py grabs them while a Hub sketch canvas has "Live pen" on).
+# Safer than joining the `input` group, which can read every keyboard too.
+#
+# Install:
+#   sudo cp scripts/udev/70-alchemy-pen.rules /etc/udev/rules.d/
+#   sudo udevadm control --reload && sudo udevadm trigger
+#
+# Huion Inspiroy H420X
+SUBSYSTEM=="input", ATTRS{idVendor}=="256c", ATTRS{idProduct}=="0064", TAG+="uaccess"
