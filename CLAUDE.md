@@ -199,6 +199,15 @@ workbench/
 
 ---
 
+## Git — commits are the user's call
+
+**Never commit or push, and never ask or offer to.** Not after finishing a task, not "should I commit?", not as a
+suggested next step. Earlier approval doesn't carry over: "go ahead" on a task means the task, never a commit.
+The only thing that allows a commit is the user running **`/nowyoumaycommitdonkey`**. It covers that one run: commit
+the work as the skill says, then the rule applies again. A push needs the same skill run, with `push` in its arguments.
+
+---
+
 ## Dev commands
 
 ```bash
