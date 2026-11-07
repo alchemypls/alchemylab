@@ -1,17 +1,19 @@
 "use client";
 
-import { Copy, Trash2 } from 'lucide-react';
+import { ClipboardCopy, Copy, Link2, Trash2, Unlink2, X } from 'lucide-react';
 import { BackIcon, FrontIcon } from './OrderIcons';
 import { useWorkbenchStore } from '@/lib/store';
 import { getSlideDir } from '@/lib/scenes';
-import type { VLayer } from '@/lib/design/layers';
+import { layerOf, layersOf, untouchable, type VLayer } from '@/lib/design/layers';
+import { ElementIcon, elementLabel } from './LayersPanel';
+import { putClip } from './vector/clipboard';
 import { useVaultAsset } from '@/workbench/hooks/useVault';
 import { TextInput } from './TextInput';
 import { Toggle } from './Toggle';
 import { BorderFields, Field, NumberField, Seg, SELECT_CLASS as SEL, SliderField, Swatches, Transparency } from './StyleFields';
 import { PLANE_OPTIONS, RoofFields, TEXT_SIZES, TEXT_WEIGHTS } from './ToolMenu';
 import { setPageField } from '@/lib/design/ops';
-import { duplicateElements, GRID_CELLS, PLANAR, planeOf, ROOF_LIFT, removeElements, reorderElements, ROTATABLE, updateElement, type VAsset, type VElement, type VLine, type VText, type VZone } from '@/lib/design/vector';
+import { copyElements, duplicateElements, GRID_CELLS, groupElements, ungroupElements, PLANAR, planeOf, ROOF_LIFT, removeElements, reorderElements, ROTATABLE, updateElement, type VAsset, type VElement, type VLine, type VText, type VZone } from '@/lib/design/vector';
 import { pageSize, type Bible, type DesignPage } from '@/lib/design/types';
 
 // Vector page editor side panel: properties of the selected element(s). Changes go through lib/design/vector.ts ops.
@@ -40,6 +42,7 @@ export function VectorInspector(props: Props) {
     <div className="p-3 flex flex-col gap-4 text-xs text-neutral-300">
       {picked.length === 0 && <PagePanel {...props} />}
       {picked.length > 0 && <Actions {...props} label={picked.length === 1 ? picked[0].type : `${picked.length} selected`} />}
+      {picked.length > 1 && <SelectionList {...props} picked={picked} />}
       {picked.length === 1 && <ElementPanel {...props} el={picked[0]} />}
     </div>
   );
@@ -132,12 +135,58 @@ function Actions({ page, selected, apply, select, label }: Props & { label: stri
   );
 }
 
+// More than one thing selected: weld or copy them, and the list of what's in it, by layer. A row picks just that one,
+// × drops it; a layer's "+ rest" adds what's left on it (a floor too big to box in, say).
+function SelectionList({ page, selected, apply, select, picked }: Props & { picked: VElement[] }) {
+  const all = page.elements ?? [], layers = layersOf(page), blocked = untouchable(page);
+  const groups = new Set(picked.map((e) => e.group).filter(Boolean));
+  const welded = groups.size === 1 && picked.every((e) => e.group);
+  return (
+    <>
+      <div className="flex flex-wrap gap-1">
+        {welded
+          ? <button className={`${BTN} flex items-center gap-1`} title="Take the group apart (Ctrl+Shift+G)" onClick={() => apply(ungroupElements(page, selected))}><Unlink2 size={13} />Ungroup</button>
+          : <button className={`${BTN} flex items-center gap-1`} title="Weld into one group: a click on any of it picks it all, and it moves as one (Ctrl+G)" onClick={() => apply(groupElements(page, selected))}><Link2 size={13} />Group</button>}
+        {!welded && groups.size > 0 && <button className={`${BTN} flex items-center gap-1`} title="Take every group in the selection apart (Ctrl+Shift+G)" onClick={() => apply(ungroupElements(page, selected))}><Unlink2 size={13} />Ungroup</button>}
+        <button className={`${BTN} flex items-center gap-1`} title="Copy, to paste on any page (Ctrl+C, then Ctrl+V there)" onClick={() => putClip(copyElements(page, selected))}><ClipboardCopy size={13} />Copy</button>
+      </div>
+      <div className="flex flex-col max-h-72 overflow-y-auto -mx-1 px-1">
+        {[...layers].reverse().map((l) => {
+          const mine = picked.filter((e) => layerOf(layers, e).id === l.id);
+          if (!mine.length) return null;
+          const rest = all.filter((e) => layerOf(layers, e).id === l.id && !selected.includes(e.id) && !blocked.has(e.id));
+          return (
+            <div key={l.id} className="flex flex-col mb-1.5">
+              <div className="flex items-center gap-1 text-[10px] text-neutral-500 uppercase tracking-wider py-0.5 sticky top-0 bg-neutral-900">
+                <span className="flex-1 truncate">{l.name}</span>
+                <span className="font-mono">{mine.length}</span>
+                {rest.length > 0 && <button className="normal-case tracking-normal text-amber-500/80 hover:text-amber-400 px-1" title={`Add the ${rest.length} other thing${rest.length > 1 ? 's' : ''} on this layer`} onClick={() => select([...selected, ...rest.map((e) => e.id)])}>+ rest {rest.length}</button>}
+              </div>
+              {[...mine].reverse().map((e) => (
+                <div key={e.id} className="group/row flex items-center gap-1 rounded hover:bg-neutral-800 pl-1">
+                  <ElementIcon el={e} />
+                  <button className="flex-1 min-w-0 text-left text-[11px] truncate px-1 text-neutral-300 hover:text-white" title="Pick just this one" onClick={() => select([e.id])}>{elementLabel(e)}</button>
+                  {e.group && <Link2 size={11} className="shrink-0 text-neutral-500" aria-label="In a group" />}
+                  <button className="shrink-0 w-4 h-4 rounded text-neutral-600 hover:text-red-300 opacity-0 group-hover/row:opacity-100" aria-label="Drop from the selection" title="Drop from the selection" onClick={() => select(selected.filter((i) => i !== e.id))}><X size={11} className="mx-auto" /></button>
+                </div>
+              ))}
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+}
+
 function ElementPanel({ page, bible, pages, el, apply }: Props & { el: VElement }) {
   const set = (patch: Record<string, unknown>, key?: string) => apply(updateElement(page, el.id, patch as Partial<VElement>), key && `${el.id}:${key}`);
   const topics = bible?.topics ?? [];
   const block = useVaultAsset(el.type === 'asset' ? el.asset : undefined)?.kind === 'block';   // its size and turn come from Fab
   return (
     <>
+      {el.type !== 'text' && el.type !== 'status' && (
+        <Field label="Name"><TextInput className="w-full" value={el.name ?? ''} placeholder={elementLabel({ ...el, name: undefined })} onChange={(v) => set({ name: v || undefined }, 'name')} /></Field>
+      )}
       {'w' in el && (
         <div className="grid grid-cols-4 gap-1">
           {(block ? ['x', 'y'] as const : ['x', 'y', 'w', 'h'] as const).map((k) => <NumberField key={k} label={k} value={el[k]} onChange={(v) => set({ [k]: v }, k)} />)}

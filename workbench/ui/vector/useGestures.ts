@@ -11,7 +11,7 @@ import { footingOf, placeAsset } from '@/lib/design/vault';
 import {
   addElement, boundsOf, cutStrokes, dragDelta, gridOf, ISO_DEG, latticeVertex, liftOf, magnet, newId, offPlane, onPlane, planeOf, PLANES, polyFrom,
   pullBox, pullBoxToLattice, pullZone, removeElements, ROOF_LIFT, rotatePt, rotationOf, rubElements, snap, snapAngle, standing, tenants, tidyStroke,
-  translateElements, updateElement, visualBounds,
+  translateElements, updateElement, visualBounds, withGroups,
   type Anchor, type FootingOf, type Lattice, type Pt, type VElement, type VLine,
 } from '@/lib/design/vector';
 import { isLineKind, shapeFields, strokeFields, textFields, zoneFields } from '@/lib/design/toolStyles';
@@ -146,9 +146,10 @@ export function useGestures({ svgRef, page, els, W, H, edit, penInput, lookOnly 
           if (!e.shiftKey) edit.select([]);
           return begin({ kind: 'marquee', start: p, cur: p });
         }
+        const welded = withGroups(els, [hit.id]);   // a group is picked as one
         const ids = edit.selected.includes(hit.id)
-          ? (e.shiftKey ? edit.selected.filter((i) => i !== hit.id) : edit.selected)
-          : (e.shiftKey ? [...edit.selected, hit.id] : [hit.id]);
+          ? (e.shiftKey ? edit.selected.filter((i) => !welded.includes(i)) : edit.selected)
+          : (e.shiftKey ? Array.from(new Set([...edit.selected, ...welded])) : welded);
         edit.select(ids);
         return begin({ kind: 'move', start: p, base: els, ids, carried: tenants(els, ids, fpOf).filter((t) => !ids.includes(t)), key });
       }
@@ -328,7 +329,7 @@ export function useGestures({ svgRef, page, els, W, H, edit, penInput, lookOnly 
         const b = visualBounds(x, els);
         return b.x >= m.x && b.y >= m.y && b.x + b.w <= m.x + m.w && b.y + b.h <= m.y + m.h;
       });
-      const ids = inside.map((x) => x.id);
+      const ids = withGroups(els, inside.map((x) => x.id)).filter((id) => !blocked.has(id));
       edit.select(e.shiftKey ? Array.from(new Set([...edit.selected, ...ids])) : ids);
     } else if (g.kind === 'create') {
       const m = g.plane && PLANES[g.plane], s0 = down(g.start, g.lift), c0 = down(g.cur, g.lift);   // a roof is drawn where it shows; it's stored on the floor

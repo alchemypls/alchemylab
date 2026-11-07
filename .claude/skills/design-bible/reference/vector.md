@@ -9,6 +9,14 @@ px (1920 × 1080 unless the page sets `size`). Later elements draw on top. A vec
 
 Every element: `id`, `type`, optional `link` (page or topic id; click opens it) and `opacity` (0–1).
 
+**`name`: give every element except `text`, `status` and `stroke` one.** It's what the user sees in the layer and
+selection lists on the canvas, where a bare type ("Line", "Poly") can't be told apart: `"left orbit shot"`,
+`"dungeon floor"`, `"right slingshot"`. Short, lowercase, what it is in the design, not its shape. Write it in the
+element itself, not only in page notes or markdown. `design:check` lists unnamed ones.
+
+`group`: elements sharing a `group` string are welded: a click picks them all and they move as one. Use one for a
+set that belongs together (a table and everything on it, a labelled callout).
+
 | type | fields |
 |---|---|
 | `rect` | `x y w h`, `fill`, `stroke`, `strokeWidth`, `dash`, `radius` |

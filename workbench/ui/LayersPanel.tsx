@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { Eye, EyeOff, Lock, Unlock } from 'lucide-react';
+import { Box, Circle, CircleDot, Eye, EyeOff, Grid3x3, Image as ImageIcon, Lock, Minus, MoveUpRight, Pentagon, PenLine, RectangleHorizontal, Shapes, Square, Sticker, Type, Unlock, type LucideIcon } from 'lucide-react';
+import { useVault } from '@/workbench/hooks/useVault';
 import { addLayer, layerOf, layersOf, moveLayer, moveToLayer, removeLayer, updateLayer, type VLayer } from '@/lib/design/layers';
 import type { DesignPage } from '@/lib/design/types';
 import type { VElement } from '@/lib/design/vector';
@@ -12,11 +13,29 @@ import type { VElement } from '@/lib/design/vector';
 const BTN = 'text-[11px] px-2 py-0.5 rounded border border-neutral-700 text-neutral-300 hover:bg-neutral-800 disabled:opacity-30';
 const ICON = 'w-5 h-5 shrink-0 rounded text-[11px] hover:bg-neutral-700/60';
 
-function label(el: VElement): string {
+const ICONS: Record<VElement['type'], LucideIcon> = {
+  rect: Square, ellipse: Circle, capsule: RectangleHorizontal, poly: Pentagon, line: MoveUpRight, text: Type,
+  image: ImageIcon, status: CircleDot, stroke: PenLine, zone: Grid3x3, asset: Box,
+};
+const ASSET_ICONS: Record<string, LucideIcon> = { block: Box, shape: Shapes, icon: Sticker };
+
+// What an element is in a list, at a glance: its type, and for a vault piece its kind (block, shape, icon)
+export function ElementIcon({ el }: { el: VElement }) {
+  const vault = useVault().entries;
+  const kind = el.type === 'asset' ? vault.find((v) => v.id === el.asset)?.asset.kind : undefined;
+  const Icon = el.type === 'line' && el.arrow === 'none' ? Minus : (kind && ASSET_ICONS[kind]) || ICONS[el.type] || Square;
+  const tint = el.type === 'zone' ? 'text-teal-400/80' : el.type === 'asset' ? 'text-amber-400/80' : el.type === 'text' ? 'text-sky-300/80' : 'text-neutral-500';
+  return <Icon size={11} className={`shrink-0 ${tint}`} aria-label={kind ?? el.type} />;
+}
+
+// What an element is called in a list
+export function elementLabel(el: VElement): string {
+  if (el.name?.trim()) return el.name;
   switch (el.type) {
     case 'text': return el.text.trim().slice(0, 28) || (el.bind ? `Bound ${el.bind.field}` : 'Text');
     case 'zone': return `Floor ${el.cols}×${el.rows}`;
-    case 'asset': return `Vault: ${el.asset}`;
+    case 'asset': return el.asset;
+    case 'line': return el.arrow === 'none' ? 'Line' : 'Arrow';
     case 'stroke': return 'Pen stroke';
     case 'status': return `Status: ${el.topic}`;
     default: return el.type[0].toUpperCase() + el.type.slice(1);
@@ -82,8 +101,8 @@ export function LayersPanel({ page, apply, active, setActive, selected, select, 
                   {[...mine].reverse().map((e) => (
                     <button
                       key={e.id} disabled={!usable} onClick={() => select([e.id])}
-                      className={`text-left text-[10px] truncate px-1 rounded ${selected.includes(e.id) ? 'text-amber-400' : 'text-neutral-400 hover:text-white'} disabled:opacity-50`}
-                    >{label(e)}</button>
+                      className={`flex items-center gap-1.5 text-left text-[10px] px-1 rounded ${selected.includes(e.id) ? 'text-amber-400' : 'text-neutral-400 hover:text-white'} disabled:opacity-50`}
+                    ><ElementIcon el={e} /><span className="truncate">{elementLabel(e)}</span></button>
                   ))}
                 </div>
               )}

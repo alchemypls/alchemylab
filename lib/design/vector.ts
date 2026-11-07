@@ -6,7 +6,8 @@
 // and any element can `link` to a page — that's what makes an overview double as an index.
 // Pure data + pure ops: the canvas tools and the agent produce the same shapes. Imports stay relative (CLI).
 
-import { ARTBOARD, type DesignPage } from './types';
+import { ARTBOARD, pageSize, type DesignPage } from './types';
+import { layersOf, type VLayer } from './layers';
 import { densify } from '../sketchErase';
 
 export interface Pt { x: number; y: number }
@@ -16,12 +17,14 @@ export type Anchor = Pt | { el: string };   // a fixed point, or attached to ano
 
 interface VBase {
   id: string; link?: string; opacity?: number;
+  name?: string;     // what it is, in lists and to the agent ("left orbit shot", "dungeon floor"). Text and status dots say it themselves
   layer?: string;    // lib/design/layers.ts
   rotate?: number;   // degrees clockwise around the box's center. Boxes only: rect, ellipse, text, image, asset
   erased?: Rub[];    // eraser marks, drawn as holes (rubElements). Not on pen strokes: those are cut for real
   upright?: boolean; // a flat shape in a block that stands up (a ball, a post, a sign): seen from above it keeps its shape,
   base?: number;     // centered over the floor under its bottom edge, which is `base` px above the floor (default 0)
   on?: string;       // painted on this floor (a zone id): follows it tile for tile when the view flips (flat, or in the floor plane when isometric)
+  group?: string;    // welded: elements sharing a group select and move as one (groupElements)
 }
 
 // One pass of the eraser over an element. Points are relative to the element's unturned box, so the hole moves and turns with it.
@@ -655,6 +658,83 @@ export function reorderElements(p: DesignPage, ids: string[], to: 'front' | 'bac
   const on = new Set(ids), all = elementsOf(p);
   const picked = all.filter((e) => on.has(e.id)), rest = all.filter((e) => !on.has(e.id));
   return withElements(p, to === 'front' ? [...rest, ...picked] : [...picked, ...rest]);
+}
+
+// Elements that should carry a `name`: everything but text, status dots and pen strokes, which say what they are
+export const NAMED: VType[] = ['rect', 'ellipse', 'capsule', 'poly', 'line', 'image', 'asset', 'zone'];
+export const unnamed = (els: VElement[]) => els.filter((e) => NAMED.includes(e.type) && !e.name?.trim());
+
+// ── Groups and the clipboard ────────────────────────────────────
+
+// The ids plus every element welded to one of them
+export function withGroups(all: VElement[], ids: string[]): string[] {
+  const groups = new Set(all.filter((e) => e.group && ids.includes(e.id)).map((e) => e.group));
+  if (!groups.size) return ids;
+  return Array.from(new Set([...ids, ...all.filter((e) => e.group && groups.has(e.group)).map((e) => e.id)]));
+}
+
+// Welds the elements into one new group (out of any group they were in)
+export function groupElements(p: DesignPage, ids: string[]): DesignPage {
+  const on = new Set(ids), group = `group-${rid()}`;
+  return withElements(p, elementsOf(p).map((e) => (on.has(e.id) ? { ...e, group } : e)));
+}
+
+export function ungroupElements(p: DesignPage, ids: string[]): DesignPage {
+  const on = new Set(ids);
+  return withElements(p, elementsOf(p).map((e) => { if (!on.has(e.id) || !e.group) return e; const c = { ...e }; delete c.group; return c; }));
+}
+
+// What Copy holds: the elements, with line ends on anything not copied pinned where they are, and the layers they're on
+export interface VClip { elements: VElement[]; layers: VLayer[] }
+export function copyElements(p: DesignPage, ids: string[]): VClip {
+  const all = elementsOf(p), on = new Set(ids);
+  const elements = all.filter((e) => on.has(e.id)).map((e) => {
+    const c = structuredClone(e);
+    if (c.type === 'line' && e.type === 'line') {
+      const [a, b] = lineEnds(e, all), loose = (x: Anchor) => isAttached(x) && !on.has(x.el);
+      if (loose(c.from)) c.from = { x: a.x, y: a.y };
+      if (loose(c.to)) c.to = { x: b.x, y: b.y };
+    }
+    return c;
+  });
+  const used = new Set(elements.map((e) => e.layer).filter(Boolean));
+  return { elements, layers: (p.layers ?? []).filter((l) => used.has(l.id)).map((l) => ({ id: l.id, name: l.name })) };
+}
+
+// Pastes a copy as new elements (attachments, floors and groups kept among themselves) and brings missing layers along.
+// Back on the page it came from it steps aside like Duplicate; on another page it keeps its place, moved inside the
+// page if it would hang off (in whole grid steps, so floors still line up with the page's lattice).
+export function pasteElements(p: DesignPage, clip: VClip): { page: DesignPage; ids: string[] } {
+  const all = elementsOf(p), map = new Map<string, string>(), groups = new Map<string, string>();
+  clip.elements.forEach((e) => map.set(e.id, newId(e.type)));
+  const remap = (a: Anchor): Anchor => (isAttached(a) ? (map.has(a.el) ? { el: map.get(a.el)! } : a) : a);
+  const copies = clip.elements.map((e) => {
+    const c = structuredClone(e); c.id = map.get(e.id)!;
+    if (c.type === 'line') { c.from = remap(c.from); c.to = remap(c.to); }
+    if (c.on) { if (map.has(c.on)) c.on = map.get(c.on); else delete c.on; }
+    if (c.group) { if (!groups.has(c.group)) groups.set(c.group, `group-${rid()}`); c.group = groups.get(c.group); }
+    return c;
+  });
+  const g = gridOf(p), sx = g.flat ? g.cell : 2 * g.cell, sy = g.cell, size = pageSize(p);
+  let dx = 0, dy = 0;
+  if (clip.elements.some((e) => all.some((x) => x.id === e.id))) {
+    const z = copies.some((c) => c.type === 'zone');
+    dx = z ? sx : 24; dy = z ? 0 : 24;
+  } else if (copies.length) {
+    const bs = copies.map((c) => visualBounds(c, copies));
+    const x0 = Math.min(...bs.map((b) => b.x)), y0 = Math.min(...bs.map((b) => b.y));
+    const x1 = Math.max(...bs.map((b) => b.x + b.w)), y1 = Math.max(...bs.map((b) => b.y + b.h));
+    // Whole steps toward the inside; a copy bigger than the page lines up with its top left
+    const fit = (lo: number, hi: number, max: number, step: number) => {
+      const d = lo < 0 || hi - lo > max ? -lo : hi > max ? max - hi : 0;
+      return d > 0 ? Math.ceil(d / step) * step : d < 0 ? Math.floor(d / step) * step : 0;
+    };
+    dx = fit(x0, x1, size.width, sx); dy = fit(y0, y1, size.height, sy);
+  }
+  const moved = translateElements({ ...p, elements: copies }, copies, copies.map((c) => c.id), dx, dy).elements ?? [];
+  const have = layersOf(p), missing = clip.layers.filter((l) => !have.some((h) => h.id === l.id));
+  const layers = missing.length ? [...have, ...missing] : p.layers;
+  return { page: { ...withElements(p, [...all, ...moved]), ...(layers ? { layers } : {}) }, ids: moved.map((c) => c.id) };
 }
 
 // Copies keep attachments between copied elements; attachments to anything else stay on the original

@@ -3,13 +3,14 @@
 //   npm run design:check -- <bible> → one bible
 // With no bible named, also checks vault/assets/ and vault/palettes/.
 // Prints errors/warnings per file plus the canvas's last fit report; exits 1 on any error or overflow.
-// Runs via jiti (already present through tailwind), so imports must stay relative.
+// Runs via jiti (a dev dependency), so imports must stay relative.
 
 import { readdirSync, readFileSync, existsSync } from 'fs';
 import path from 'path';
 import { pageHash, validateAsset, validateBible, validatePage, type BibleContext, type Issues } from '../lib/design/validate';
 import { validatePalette } from '../lib/design/palette';
 import { hiddenLayers } from '../lib/design/layers';
+import { unnamed, type VElement } from '../lib/design/vector';
 
 const ROOT = path.join(process.cwd(), 'design');
 const only = process.argv[2];
@@ -32,6 +33,12 @@ function report(file: string, run: () => Issues) {
 function hidden(file: string, page: unknown) {
   const h = hiddenLayers(page as Parameters<typeof hiddenLayers>[0]);
   if (h.length) console.log(`    hidden  ${h.map((l) => `"${l.name}" (${l.count})`).join(', ')}: hidden by the user, not shown`);
+}
+
+// Not an error, but the user picks pieces from lists on the canvas by these: say what each one is
+function names(page: unknown) {
+  const u = unnamed((page as { elements?: VElement[] }).elements ?? []);
+  if (u.length) console.log(`    unnamed ${u.length}: ${u.slice(0, 8).map((e) => e.id).join(', ')}${u.length > 8 ? ', …' : ''} (give each a "name")`);
 }
 
 const VAULT = path.join(process.cwd(), 'vault', 'assets');
@@ -64,7 +71,7 @@ for (const id of bibles) {
   for (const p of ctx.pages) {
     let page: unknown;
     report(`${id}/pages/${p}.json`, () => validatePage(page = read(`pages/${p}.json`), ctx));
-    if (page) hidden(p, page);
+    if (page) { hidden(p, page); names(page); }
   }
 
   const fit = existsSync(path.join(dir, '.render.json')) ? read('.render.json') : {};

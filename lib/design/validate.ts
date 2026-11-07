@@ -117,6 +117,7 @@ function validateElements(raw: unknown, ctx: BibleContext | undefined, errors: s
     const fields = NUMERIC[e.type as VType];
     if (!fields) { shapesOk = false; return errors.push(`${name}.type: unknown "${String(e.type)}" (${Object.keys(NUMERIC).join(', ')})`); }
     for (const f of fields) if (!num(e[f])) errors.push(`${name}.${f}: required number`);
+    if (e.name !== undefined && !isStr(e.name)) errors.push(`${name}.name: string`);
     if (e.rotate !== undefined && !num(e.rotate)) errors.push(`${name}.rotate: number of degrees`);
     else if (e.rotate && !ROTATABLE.includes(e.type as VType)) warnings.push(`${name}.rotate: ${String(e.type)} can't rotate (ignored)`);
 

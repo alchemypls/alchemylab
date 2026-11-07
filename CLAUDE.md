@@ -83,7 +83,7 @@ design/<bible>/      — design bibles (agent + user content): bible.json, pages
 lib/
   design/types.ts    — Bible / Topic / DesignPage / Block (semantic blocks, no x/y) / FitReport; ARTBOARD 1920×1080
   design/ops.ts      — pure edit ops (add/update/move/resize/duplicate/remove block, knowledge, topic) — all hand edits go through these
-  design/vector.ts   — vector page elements (rect/ellipse(superellipse n)/capsule/poly/line/text/image/status/stroke/zone), planes (floor/left/right isometric mapping), geometry, placement grid, pure ops; text + status bind live to bible topics; eraser marks (`erased`, drawn as masks: Fab rubs out anything, Ideation's eraser cuts ink only)
+  design/vector.ts   — vector page elements (rect/ellipse(superellipse n)/capsule/poly/line/text/image/status/stroke/zone), planes (floor/left/right isometric mapping), geometry, placement grid, pure ops; text + status bind live to bible topics; eraser marks (`erased`, drawn as masks: Fab rubs out anything, Ideation's eraser cuts ink only); groups (`group`: welded elements select and move as one) and the clipboard ops (copyElements/pasteElements: across pages, layers come along)
   design/layers.ts   — named layers on vector pages and vault assets: draw order, hidden/locked, stamping new elements, ops, validation
   design/palette.ts  — Palette format, BASE_PALETTE fallback, sheet layout, validatePalette
   design/vault.ts    — VaultAsset (a vector page with a kind: shape/icon/block), what part of it places and at what size, a block's footprint + footing (scaled to the floor's tiles), fitBlocks (placed blocks follow their vault size; Ideation only moves/tints/turns them), turnedAsset/shownBlock/blockPose (a placed block's `turn` + `mirror`: isometric = rebuilt by quarter turns, top-down = any angle; one place says how a posed block draws), blockProjection (iso↔flat: the floor plane maps tile for tile) + projectedElements (top-down, walls squash to their base edge), placeAsset, tint
@@ -145,7 +145,7 @@ workbench/
     DesignArtboard.tsx — block DesignPage → fixed artboard: blocks flow into a 12-col grid; measures + reports overflow; edit = select + span grip
     DesignInspector.tsx — block page edit panel: page fields, add block, per-type block fields, knowledge layer, topic status
     VectorArtboard.tsx — vector page as SVG: render, link navigation, fit report; edit = drawing tools (select/shapes/attached arrows/text/pen/erase). Its parts in vector/:
-    vector/           — gesture.ts (tool + gesture types, geometry helpers), useGestures.ts (the pointer engine), shapes.tsx (how each element draws, PosedAsset), overlays.tsx (selection, handles, footprints, previews)
+    vector/           — gesture.ts (tool + gesture types, geometry helpers), useGestures.ts (the pointer engine), shapes.tsx (how each element draws, PosedAsset), overlays.tsx (selection, handles, footprints, previews), clipboard.ts (Ctrl+C/X/V between any vector sheets, per browser)
     VectorKit.tsx     — the vector tools' UI every vector canvas shares, fed by useVectorTools: VectorRail, VectorToolMenu, VectorBox (layers + properties)
     SheetShell.tsx    — a full-screen canvas's frame: SheetSurface (pan/zoom), Sheet, Banner, EmptyNote, SaveDot
     fab/              — Fab's panel parts: AssetFile (file box, FootprintPicker, DimsInput), ComponentFilePicker

@@ -5,12 +5,13 @@ import { useSheetPen } from './useSheetPen';
 import { useToolStyles } from './useToolStyles';
 import { useVault } from './useVault';
 import { footingOf } from '@/lib/design/vault';
-import { duplicateElements, gridOf, regridZones, removeElements, SNAP, tenants, translateElements, updateElement, type FootingOf, type Lattice, type VElement } from '@/lib/design/vector';
+import { copyElements, duplicateElements, gridOf, groupElements, pasteElements, ungroupElements, regridZones, removeElements, SNAP, tenants, translateElements, updateElement, type FootingOf, type Lattice, type VElement } from '@/lib/design/vector';
 import { restylePatch, type Favorites, type ShapeKind, type ToolStyles, type ZoneTool } from '@/lib/design/toolStyles';
 import { pageSize, type DesignPage } from '@/lib/design/types';
 import { layersOf, stampLayer } from '@/lib/design/layers';
 import type { PagePen, VectorEdit, VTool } from '@/workbench/ui/VectorArtboard';
 import type { RailTool, ToolKey } from '@/workbench/ui/ToolRail';
+import { getClip, putClip } from '@/workbench/ui/vector/clipboard';
 
 // Everything the vector drawing tools need on a canvas: the tool in hand, the selection, the tool menu's
 // changes, the tablet pen and the drawing keys. A canvas supplies the page and how to edit it.
@@ -127,6 +128,16 @@ export function useVectorTools({ doc, tools, enabled, onDeselect }: {
     const has = (t: ToolKey) => tools.some((x) => x.key === t);
     if (mod && k === 'z') { done(); (e.shiftKey ? doc.redo : doc.undo)(); return; }
     if (mod && k === 'y') { done(); doc.redo(); return; }
+    // Copy, cut and paste, between pages too (vector/clipboard); Ctrl+G welds the selection into a group, Ctrl+Shift+G takes it apart
+    if (mod && enabled && cur && ['c', 'x', 'v', 'g'].includes(k)) {
+      if (k === 'v') { const clip = getClip(); if (!clip) return; done(); const r = pasteElements(cur, clip); apply(r.page); select(r.ids); return; }
+      if (!selected.length) return;
+      done();
+      if (k === 'g') { apply((e.shiftKey ? ungroupElements : groupElements)(cur, selected)); return; }
+      putClip(copyElements(cur, selected));
+      if (k === 'x') { apply(removeElements(cur, selected)); select([]); }
+      return;
+    }
     if (k === 'escape') { done(); select([]); onDeselect?.(); if (tool !== 'read' && has('select')) setTool('select'); return; }
     if (!mod && k === 'g' && enabled) { done(); setGridOn((on) => !on); return; }
     if (!mod && enabled && has('shape') && SHAPE_HOTKEYS[k]) { done(); changeTool('shape', { kind: SHAPE_HOTKEYS[k] }); setTool('shape'); return; }
