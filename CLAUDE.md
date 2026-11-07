@@ -68,7 +68,6 @@ scripts/
                        through the canvas's own PosedAsset (+ .render/sheet.png for several). Needs inkscape + ImageMagick
   page-render.tsx    — `npm run page:render -- <bible> <page> [--crop x,y,w,h] [--width px]`: .render/<bible>-<page>.png through the real
                        VectorArtboard (vault primed from disk; text swapped to plain SVG text, so wrapping is approximate)
-  pages/             — pages built as code (tester-shotmap.ts: the shot-map table on pinball-crawl/tester)
   asset-info.ts      — `npm run asset:info [-- <id>…]`: assets in inches, one line per asset or per element (read this, not the JSON)
   pen-bridge.py      — pen → JSON lines. `local`: grabs a USB tablet's evdev (EVIOCGRAB). `remarkable`: mirrors a Paper Pro pen over SSH (no grab — keeps inking on paper). Stdlib Python
   udev/70-alchemy-pen.rules — per-device `uaccess` rule so the bridge can read the tablet (never add the user to `input`)

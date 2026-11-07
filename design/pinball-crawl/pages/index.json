@@ -1,447 +1,2774 @@
 {
   "title": "Pinball Dungeon Crawl",
   "kicker": "Overview",
-  "updated": "2026-10-31",
+  "updated": "2026-11-07",
   "background": "#f4efe6",
   "agent": {
-    "brief": "Layer 1 of the design doc: the one-page overview, doubling as the index. Facts live in bible.json; topic names, pitch and status dots here are bound to it.",
+    "brief": "Layer 1 of the design doc and the index: the overview around the main table: pitch, pillars, the machine, core loop, rules and every topic, with the shot map in the middle. A showcase of the whole design on one page. Facts live in bible.json; pitch, topic names and status dots are bound to it.",
     "rules": [
-      "Change design decisions in bible.json, not only on this page."
+      "Change design decisions in bible.json, not only on this page.",
+      "The table (layers Table and Shots, group \"group-table\") comes from the shot map; its pieces are vault blocks: edit them on Fab."
     ]
   },
   "blocks": [],
+  "size": {
+    "width": 3840,
+    "height": 2160
+  },
+  "grid": {
+    "cell": 30
+  },
+  "layers": [
+    {
+      "id": "doc",
+      "name": "Overview"
+    },
+    {
+      "id": "sm-play",
+      "name": "Table"
+    },
+    {
+      "id": "sm-shots",
+      "name": "Shots"
+    }
+  ],
   "elements": [
+    {
+      "id": "sm-floor",
+      "type": "zone",
+      "x": 2220,
+      "y": 570,
+      "cols": 21,
+      "rows": 42,
+      "cell": 30,
+      "fill": "#c9a36b",
+      "stroke": "#b08b55",
+      "strokeWidth": 0.6,
+      "layer": "sm-play",
+      "name": "main table playfield",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-cab-l",
+      "type": "poly",
+      "x": 2220,
+      "y": 570,
+      "w": 315,
+      "h": 315,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0.901905,
+          0.004762
+        ],
+        [
+          0.804762,
+          0.019048
+        ],
+        [
+          0.7095239999999999,
+          0.042857
+        ],
+        [
+          0.617143,
+          0.07619
+        ],
+        [
+          0.528571,
+          0.118095
+        ],
+        [
+          0.444762,
+          0.168571
+        ],
+        [
+          0.365714,
+          0.226667
+        ],
+        [
+          0.293333,
+          0.293333
+        ],
+        [
+          0.226667,
+          0.365714
+        ],
+        [
+          0.168571,
+          0.444762
+        ],
+        [
+          0.118095,
+          0.528571
+        ],
+        [
+          0.07619,
+          0.617143
+        ],
+        [
+          0.042857,
+          0.7095239999999999
+        ],
+        [
+          0.019048,
+          0.804762
+        ],
+        [
+          0.004762,
+          0.901905
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#2a2623",
+      "stroke": "none",
+      "layer": "sm-play",
+      "name": "left cabinet corner",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-cab-r",
+      "type": "poly",
+      "x": 2535,
+      "y": 727.5,
+      "w": 315,
+      "h": 315,
+      "pts": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0.098095,
+          0.004762
+        ],
+        [
+          0.19523800000000002,
+          0.019048
+        ],
+        [
+          0.290476,
+          0.042857
+        ],
+        [
+          0.382857,
+          0.07619
+        ],
+        [
+          0.471429,
+          0.118095
+        ],
+        [
+          0.555238,
+          0.168571
+        ],
+        [
+          0.634286,
+          0.226667
+        ],
+        [
+          0.706667,
+          0.293333
+        ],
+        [
+          0.773333,
+          0.365714
+        ],
+        [
+          0.8314290000000001,
+          0.444762
+        ],
+        [
+          0.8819049999999999,
+          0.528571
+        ],
+        [
+          0.92381,
+          0.617143
+        ],
+        [
+          0.9571430000000001,
+          0.7095239999999999
+        ],
+        [
+          0.980952,
+          0.804762
+        ],
+        [
+          0.995238,
+          0.901905
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#2a2623",
+      "stroke": "none",
+      "layer": "sm-play",
+      "name": "right cabinet corner",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-wall",
+      "type": "poly",
+      "x": 2220,
+      "y": 570,
+      "w": 630,
+      "h": 1260,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0.25
+        ],
+        [
+          0.004286,
+          0.217381
+        ],
+        [
+          0.017143000000000002,
+          0.185238
+        ],
+        [
+          0.038095,
+          0.15428599999999998
+        ],
+        [
+          0.067143,
+          0.125
+        ],
+        [
+          0.103333,
+          0.097857
+        ],
+        [
+          0.14666700000000002,
+          0.07333300000000001
+        ],
+        [
+          0.195714,
+          0.051667
+        ],
+        [
+          0.25,
+          0.033571
+        ],
+        [
+          0.308571,
+          0.019048
+        ],
+        [
+          0.370476,
+          0.008570999999999999
+        ],
+        [
+          0.434762,
+          0.002143
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.565238,
+          0.002143
+        ],
+        [
+          0.629524,
+          0.008570999999999999
+        ],
+        [
+          0.691429,
+          0.019048
+        ],
+        [
+          0.75,
+          0.033571
+        ],
+        [
+          0.804286,
+          0.051667
+        ],
+        [
+          0.853333,
+          0.07333300000000001
+        ],
+        [
+          0.896667,
+          0.097857
+        ],
+        [
+          0.9328569999999999,
+          0.125
+        ],
+        [
+          0.9619049999999999,
+          0.15428599999999998
+        ],
+        [
+          0.982857,
+          0.185238
+        ],
+        [
+          0.995714,
+          0.217381
+        ],
+        [
+          1,
+          0.25
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 3.8,
+      "layer": "sm-play",
+      "name": "playfield wall",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-shooter-wall",
+      "type": "poly",
+      "x": 2445,
+      "y": 1042.5,
+      "w": 1.3,
+      "h": 888,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2.5,
+      "layer": "sm-play",
+      "name": "shooter lane wall",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-orbit-l",
+      "type": "poly",
+      "x": 2176.5,
+      "y": 666.8,
+      "w": 102.3,
+      "h": 646.5,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0.303944
+        ],
+        [
+          0,
+          0.303944
+        ],
+        [
+          0.017595,
+          0.259397
+        ],
+        [
+          0.067449,
+          0.215777
+        ],
+        [
+          0.14956,
+          0.173086
+        ],
+        [
+          0.26393,
+          0.132715
+        ],
+        [
+          0.41055699999999995,
+          0.0942
+        ],
+        [
+          0.5835779999999999,
+          0.059397000000000005
+        ],
+        [
+          0.7800590000000001,
+          0.027377999999999996
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2.5,
+      "layer": "sm-play",
+      "name": "left orbit rail",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-orbit-r",
+      "type": "poly",
+      "x": 2515.8,
+      "y": 872.1,
+      "w": 75,
+      "h": 610.8,
+      "pts": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0.263261
+        ],
+        [
+          1,
+          0.263261
+        ],
+        [
+          0.984,
+          0.225933
+        ],
+        [
+          0.932,
+          0.188605
+        ],
+        [
+          0.852,
+          0.15275
+        ],
+        [
+          0.736,
+          0.117878
+        ],
+        [
+          0.592,
+          0.084971
+        ],
+        [
+          0.42,
+          0.054028
+        ],
+        [
+          0.224,
+          0.02554
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2.5,
+      "layer": "sm-play",
+      "name": "right orbit rail",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-sep-l",
+      "type": "poly",
+      "x": 1350,
+      "y": 1050,
+      "w": 1.3,
+      "h": 150,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2.5,
+      "layer": "sm-play",
+      "name": "left lane divider",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-sep-r",
+      "type": "poly",
+      "x": 1860,
+      "y": 1305,
+      "w": 1.3,
+      "h": 150,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2.5,
+      "layer": "sm-play",
+      "name": "right lane divider",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-inlane-l",
+      "type": "poly",
+      "x": 1404,
+      "y": 1068,
+      "w": 96,
+      "h": 204,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0.735294
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2.5,
+      "layer": "sm-play",
+      "name": "left inlane guide",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-inlane-r",
+      "type": "poly",
+      "x": 1728,
+      "y": 1230,
+      "w": 96,
+      "h": 204,
+      "pts": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0.735294
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2.5,
+      "layer": "sm-play",
+      "name": "right inlane guide",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-apron-l",
+      "type": "poly",
+      "x": 1038,
+      "y": 1161,
+      "w": 246,
+      "h": 78,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#d9c9a3",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.9,
+      "layer": "sm-play",
+      "name": "apron, left",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-apron-r",
+      "type": "poly",
+      "x": 1392,
+      "y": 1338,
+      "w": 231,
+      "h": 78,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#d9c9a3",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.9,
+      "layer": "sm-play",
+      "name": "apron, right",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-wire-l",
+      "type": "poly",
+      "x": 1939.5,
+      "y": 747.8,
+      "w": 97.5,
+      "h": 672,
+      "pts": [
+        [
+          1,
+          0.11607100000000001
+        ],
+        [
+          1,
+          0.044643
+        ],
+        [
+          0.661538,
+          0
+        ],
+        [
+          0,
+          0.089286
+        ],
+        [
+          0,
+          0.8214290000000001
+        ],
+        [
+          0.307692,
+          0.919643
+        ],
+        [
+          0.307692,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#9aa0a6",
+      "strokeWidth": 5,
+      "opacity": 0.85,
+      "layer": "sm-play",
+      "name": "crypt ramp wire return",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-wire-r",
+      "type": "poly",
+      "x": 2367,
+      "y": 961.5,
+      "w": 97.5,
+      "h": 672,
+      "pts": [
+        [
+          0,
+          0.11607100000000001
+        ],
+        [
+          0,
+          0.044643
+        ],
+        [
+          0.338462,
+          0
+        ],
+        [
+          1,
+          0.089286
+        ],
+        [
+          1,
+          0.8214290000000001
+        ],
+        [
+          0.692308,
+          0.919643
+        ],
+        [
+          0.692308,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#9aa0a6",
+      "strokeWidth": 5,
+      "opacity": 0.85,
+      "layer": "sm-play",
+      "name": "tower ramp wire return",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-ins-orbit-l",
+      "type": "poly",
+      "x": 1558.5,
+      "y": 924.8,
+      "w": 27,
+      "h": 39,
+      "pts": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#2f6fd6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "layer": "sm-play",
+      "name": "left orbit arrow",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-ins-ramp-l",
+      "type": "poly",
+      "x": 1611,
+      "y": 996,
+      "w": 27,
+      "h": 39,
+      "pts": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "layer": "sm-play",
+      "name": "crypt ramp arrow",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-ins-gate",
+      "type": "poly",
+      "x": 1821,
+      "y": 1056,
+      "w": 27,
+      "h": 39,
+      "pts": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#d6332f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "layer": "sm-play",
+      "name": "dungeon gate arrow",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-ins-ramp-r",
+      "type": "poly",
+      "x": 1941,
+      "y": 1161,
+      "w": 27,
+      "h": 39,
+      "pts": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "layer": "sm-play",
+      "name": "tower ramp arrow",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-ins-orbit-r",
+      "type": "poly",
+      "x": 2076,
+      "y": 1183.5,
+      "w": 27,
+      "h": 39,
+      "pts": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "fill": "#2f6fd6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "layer": "sm-play",
+      "name": "right orbit arrow",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-flipper-l",
+      "type": "asset",
+      "asset": "flipper",
+      "x": 1260,
+      "y": 1206,
+      "w": 120,
+      "h": 69,
+      "at": {
+        "x": 0.5,
+        "y": 0.5676
+      },
+      "turn": 30,
+      "layer": "sm-play",
+      "name": "left flipper",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-flipper-r",
+      "type": "asset",
+      "asset": "flipper",
+      "x": 1410,
+      "y": 1281,
+      "w": 120,
+      "h": 69,
+      "at": {
+        "x": 0.5,
+        "y": 0.5676
+      },
+      "turn": -30,
+      "mirror": true,
+      "layer": "sm-play",
+      "name": "right flipper",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-sling-l",
+      "type": "asset",
+      "asset": "slingshot",
+      "x": 1260,
+      "y": 1072,
+      "w": 210,
+      "h": 113,
+      "at": {
+        "x": 0.5,
+        "y": 0.5333
+      },
+      "layer": "sm-play",
+      "name": "left slingshot",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-sling-r",
+      "type": "asset",
+      "asset": "slingshot",
+      "x": 1589,
+      "y": 1242,
+      "w": 210,
+      "h": 108,
+      "at": {
+        "x": 0.5,
+        "y": 0.5152
+      },
+      "mirror": true,
+      "layer": "sm-play",
+      "name": "right slingshot",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-post-orbit-l",
+      "type": "asset",
+      "asset": "post",
+      "x": 1500,
+      "y": 950,
+      "w": 60,
+      "h": 55,
+      "at": {
+        "x": 0.5,
+        "y": 0.726
+      },
+      "layer": "sm-play",
+      "name": "left orbit post",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-post-orbit-r",
+      "type": "asset",
+      "asset": "post",
+      "x": 1950,
+      "y": 1175,
+      "w": 60,
+      "h": 55,
+      "at": {
+        "x": 0.5,
+        "y": 0.726
+      },
+      "layer": "sm-play",
+      "name": "right orbit post",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-post-sep-l",
+      "type": "asset",
+      "asset": "post",
+      "x": 1320,
+      "y": 1010,
+      "w": 60,
+      "h": 55,
+      "at": {
+        "x": 0.5,
+        "y": 0.726
+      },
+      "layer": "sm-play",
+      "name": "left lane divider post",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-post-sep-r",
+      "type": "asset",
+      "asset": "post",
+      "x": 1830,
+      "y": 1265,
+      "w": 60,
+      "h": 55,
+      "at": {
+        "x": 0.5,
+        "y": 0.726
+      },
+      "layer": "sm-play",
+      "name": "right lane divider post",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-pop-1",
+      "type": "asset",
+      "asset": "pop-bumper",
+      "x": 2130,
+      "y": 732,
+      "w": 180,
+      "h": 138,
+      "at": {
+        "x": 0.5,
+        "y": 0.6739
+      },
+      "layer": "sm-play",
+      "name": "pop bumper 1",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-pop-2",
+      "type": "asset",
+      "asset": "pop-bumper",
+      "x": 2250,
+      "y": 792,
+      "w": 180,
+      "h": 138,
+      "at": {
+        "x": 0.5,
+        "y": 0.6739
+      },
+      "layer": "sm-play",
+      "name": "pop bumper 2",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-pop-3",
+      "type": "asset",
+      "asset": "pop-bumper",
+      "x": 2100,
+      "y": 807,
+      "w": 180,
+      "h": 138,
+      "at": {
+        "x": 0.5,
+        "y": 0.6739
+      },
+      "layer": "sm-play",
+      "name": "pop bumper 3",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-lane-0",
+      "type": "asset",
+      "asset": "lane-guide",
+      "x": 2280,
+      "y": 710,
+      "w": 90,
+      "h": 55,
+      "at": {
+        "x": 0.5,
+        "y": 0.589
+      },
+      "layer": "sm-play",
+      "name": "top lane guide 1",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-lane-1",
+      "type": "asset",
+      "asset": "lane-guide",
+      "x": 2340,
+      "y": 740,
+      "w": 90,
+      "h": 55,
+      "at": {
+        "x": 0.5,
+        "y": 0.589
+      },
+      "layer": "sm-play",
+      "name": "top lane guide 2",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-lane-2",
+      "type": "asset",
+      "asset": "lane-guide",
+      "x": 2400,
+      "y": 770,
+      "w": 90,
+      "h": 55,
+      "at": {
+        "x": 0.5,
+        "y": 0.589
+      },
+      "layer": "sm-play",
+      "name": "top lane guide 3",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-lane-3",
+      "type": "asset",
+      "asset": "lane-guide",
+      "x": 2460,
+      "y": 800,
+      "w": 90,
+      "h": 55,
+      "at": {
+        "x": 0.5,
+        "y": 0.589
+      },
+      "layer": "sm-play",
+      "name": "top lane guide 4",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-ramp-l",
+      "type": "asset",
+      "asset": "ramp",
+      "x": 1620,
+      "y": 702,
+      "w": 390,
+      "h": 303,
+      "at": {
+        "x": 0.5,
+        "y": 0.6782
+      },
+      "layer": "sm-play",
+      "name": "crypt ramp",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-ramp-r",
+      "type": "asset",
+      "asset": "ramp",
+      "x": 1950,
+      "y": 867,
+      "w": 390,
+      "h": 303,
+      "at": {
+        "x": 0.5,
+        "y": 0.6782
+      },
+      "layer": "sm-play",
+      "name": "tower ramp",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-spinner",
+      "type": "asset",
+      "asset": "spinner",
+      "x": 1679,
+      "y": 797,
+      "w": 90,
+      "h": 73,
+      "at": {
+        "x": 0.5,
+        "y": 0.6939
+      },
+      "layer": "sm-play",
+      "name": "left orbit spinner",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-saucer",
+      "type": "asset",
+      "asset": "saucer",
+      "x": 1920,
+      "y": 960,
+      "w": 120,
+      "h": 60,
+      "at": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "layer": "sm-play",
+      "name": "dungeon gate saucer",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-mob-0",
+      "type": "asset",
+      "asset": "drop-target",
+      "x": 1830,
+      "y": 967,
+      "w": 60,
+      "h": 53,
+      "at": {
+        "x": 0.5,
+        "y": 0.7143
+      },
+      "layer": "sm-play",
+      "name": "mob target 1",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-mob-1",
+      "type": "asset",
+      "asset": "drop-target",
+      "x": 1860,
+      "y": 982,
+      "w": 60,
+      "h": 53,
+      "at": {
+        "x": 0.5,
+        "y": 0.7143
+      },
+      "layer": "sm-play",
+      "name": "mob target 2",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-mob-2",
+      "type": "asset",
+      "asset": "drop-target",
+      "x": 1890,
+      "y": 997,
+      "w": 60,
+      "h": 53,
+      "at": {
+        "x": 0.5,
+        "y": 0.7143
+      },
+      "layer": "sm-play",
+      "name": "mob target 3",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-mob-3",
+      "type": "asset",
+      "asset": "drop-target",
+      "x": 1920,
+      "y": 1012,
+      "w": 60,
+      "h": 53,
+      "at": {
+        "x": 0.5,
+        "y": 0.7143
+      },
+      "layer": "sm-play",
+      "name": "mob target 4",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-shop-0",
+      "type": "asset",
+      "asset": "standup",
+      "x": 1950,
+      "y": 1203,
+      "w": 60,
+      "h": 57,
+      "at": {
+        "x": 0.5,
+        "y": 0.7365
+      },
+      "turn": 90,
+      "layer": "sm-play",
+      "name": "shop target 1",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-shop-1",
+      "type": "asset",
+      "asset": "standup",
+      "x": 1920,
+      "y": 1218,
+      "w": 60,
+      "h": 57,
+      "at": {
+        "x": 0.5,
+        "y": 0.7365
+      },
+      "turn": 90,
+      "layer": "sm-play",
+      "name": "shop target 2",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-shop-2",
+      "type": "asset",
+      "asset": "standup",
+      "x": 1890,
+      "y": 1233,
+      "w": 60,
+      "h": 57,
+      "at": {
+        "x": 0.5,
+        "y": 0.7365
+      },
+      "turn": 90,
+      "layer": "sm-play",
+      "name": "shop target 3",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-ball",
+      "type": "asset",
+      "asset": "ball",
+      "x": 1830,
+      "y": 1333,
+      "w": 60,
+      "h": 47,
+      "at": {
+        "x": 0.5,
+        "y": 0.68
+      },
+      "layer": "sm-play",
+      "name": "ball",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-shooter",
+      "type": "asset",
+      "asset": "shooter",
+      "x": 1560,
+      "y": 1346,
+      "w": 300,
+      "h": 169,
+      "at": {
+        "x": 0.5,
+        "y": 0.556
+      },
+      "turn": 90,
+      "layer": "sm-play",
+      "name": "plunger",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-shot-l-ramp-r",
+      "type": "line",
+      "from": {
+        "x": 1350,
+        "y": 1251
+      },
+      "to": {
+        "x": 2016,
+        "y": 1137
+      },
+      "stroke": "#2f6fd6",
+      "strokeWidth": 3.1,
+      "arrow": "end",
+      "on": "sm-floor",
+      "layer": "sm-shots",
+      "name": "shot: left flipper → tower ramp",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-shot-l-orbit-r",
+      "type": "line",
+      "from": {
+        "x": 1350,
+        "y": 1251
+      },
+      "to": {
+        "x": 2121,
+        "y": 1174.5
+      },
+      "stroke": "#2f6fd6",
+      "strokeWidth": 3.1,
+      "arrow": "end",
+      "on": "sm-floor",
+      "layer": "sm-shots",
+      "name": "shot: left flipper → right orbit",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-shot-l-gate",
+      "type": "line",
+      "from": {
+        "x": 1350,
+        "y": 1251
+      },
+      "to": {
+        "x": 1857,
+        "y": 1039.5
+      },
+      "stroke": "#2f6fd6",
+      "strokeWidth": 3.1,
+      "arrow": "end",
+      "on": "sm-floor",
+      "layer": "sm-shots",
+      "name": "shot: left flipper → dungeon gate",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-shot-l-shops",
+      "type": "line",
+      "from": {
+        "x": 1350,
+        "y": 1251
+      },
+      "to": {
+        "x": 1929,
+        "y": 1252.5
+      },
+      "stroke": "#2f6fd6",
+      "strokeWidth": 3.1,
+      "arrow": "end",
+      "on": "sm-floor",
+      "layer": "sm-shots",
+      "name": "shot: left flipper → shops",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-shot-r-ramp-l",
+      "type": "line",
+      "from": {
+        "x": 1458,
+        "y": 1305
+      },
+      "to": {
+        "x": 1686,
+        "y": 972
+      },
+      "stroke": "#d6332f",
+      "strokeWidth": 3.1,
+      "arrow": "end",
+      "on": "sm-floor",
+      "layer": "sm-shots",
+      "name": "shot: right flipper → crypt ramp",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-shot-r-orbit-l",
+      "type": "line",
+      "from": {
+        "x": 1458,
+        "y": 1305
+      },
+      "to": {
+        "x": 1603.5,
+        "y": 915.8
+      },
+      "stroke": "#d6332f",
+      "strokeWidth": 3.1,
+      "arrow": "end",
+      "on": "sm-floor",
+      "layer": "sm-shots",
+      "name": "shot: right flipper → left orbit",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-shot-r-gate",
+      "type": "line",
+      "from": {
+        "x": 1458,
+        "y": 1305
+      },
+      "to": {
+        "x": 1881,
+        "y": 1051.5
+      },
+      "stroke": "#d6332f",
+      "strokeWidth": 3.1,
+      "arrow": "end",
+      "on": "sm-floor",
+      "layer": "sm-shots",
+      "name": "shot: right flipper → dungeon gate",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-path-orbit",
+      "type": "poly",
+      "x": 2216.3,
+      "y": 609.4,
+      "w": 555,
+      "h": 607.5,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0.45679
+        ],
+        [
+          0,
+          0.45679
+        ],
+        [
+          0.004324000000000001,
+          0.397037
+        ],
+        [
+          0.017297,
+          0.338765
+        ],
+        [
+          0.037838,
+          0.281975
+        ],
+        [
+          0.067027,
+          0.228148
+        ],
+        [
+          0.103243,
+          0.178765
+        ],
+        [
+          0.14648599999999998,
+          0.133827
+        ],
+        [
+          0.195676,
+          0.094321
+        ],
+        [
+          0.24973,
+          0.061235000000000005
+        ],
+        [
+          0.30864899999999995,
+          0.034568
+        ],
+        [
+          0.370811,
+          0.015802
+        ],
+        [
+          0.434595,
+          0.003951
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.565405,
+          0.003951
+        ],
+        [
+          0.629189,
+          0.015802
+        ],
+        [
+          0.691351,
+          0.034568
+        ],
+        [
+          0.75027,
+          0.061235000000000005
+        ],
+        [
+          0.8043239999999999,
+          0.094321
+        ],
+        [
+          0.853514,
+          0.133827
+        ],
+        [
+          0.896757,
+          0.178765
+        ],
+        [
+          0.9329729999999999,
+          0.228148
+        ],
+        [
+          0.9621620000000001,
+          0.281975
+        ],
+        [
+          0.9827030000000001,
+          0.338765
+        ],
+        [
+          0.995676,
+          0.397037
+        ],
+        [
+          1,
+          0.45679
+        ],
+        [
+          0.9324319999999999,
+          1
+        ]
+      ],
+      "on": "sm-floor",
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.9,
+      "dash": true,
+      "layer": "sm-shots",
+      "name": "ball path: orbit loop",
+      "group": "group-table",
+      "plane": "floor"
+    },
+    {
+      "id": "sm-title",
+      "type": "text",
+      "x": 1210,
+      "y": 405,
+      "w": 310,
+      "h": 45,
+      "text": "MAIN TABLE · SHOT MAP",
+      "size": 22.5,
+      "color": "#1f1b16",
+      "font": "sans",
+      "weight": 700,
+      "align": "right",
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-sub",
+      "type": "text",
+      "x": 1210,
+      "y": 455,
+      "w": 340,
+      "h": 50,
+      "text": "Draft for Pinball Crawl. 21 × 42 in, 1 tile = 1 in. ",
+      "size": 15,
+      "color": "#5b5f63",
+      "font": "sans",
+      "align": "right",
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-lanes",
+      "type": "text",
+      "x": 1210,
+      "y": 555,
+      "w": 310,
+      "h": 25,
+      "text": "TOP LANES",
+      "size": 17.5,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "right",
+      "weight": 700,
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-lanes-body",
+      "type": "text",
+      "x": 1210,
+      "y": 580,
+      "w": 310,
+      "h": 50,
+      "text": "Skill shot: flippers move the lit lane.",
+      "size": 15,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "right",
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-lanes-lead",
+      "type": "line",
+      "from": {
+        "x": 1530,
+        "y": 568.8
+      },
+      "to": {
+        "el": "sm-lane-0"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "arrow": "none",
+      "layer": "sm-shots",
+      "name": "callout line: top lanes",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-spin",
+      "type": "text",
+      "x": 1210,
+      "y": 795,
+      "w": 310,
+      "h": 25,
+      "text": "LEFT ORBIT · SPINNER",
+      "size": 17.5,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "right",
+      "weight": 700,
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-spin-body",
+      "type": "text",
+      "x": 1210,
+      "y": 820,
+      "w": 310,
+      "h": 50,
+      "text": "Loops over the top to the right orbit.",
+      "size": 15,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "right",
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-spin-lead",
+      "type": "line",
+      "from": {
+        "x": 1530,
+        "y": 808.8
+      },
+      "to": {
+        "el": "sm-spinner"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "arrow": "none",
+      "layer": "sm-shots",
+      "name": "callout line: left orbit",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-ramp-l",
+      "type": "text",
+      "x": 1210,
+      "y": 932.5,
+      "w": 310,
+      "h": 25,
+      "text": "CRYPT RAMP",
+      "size": 17.5,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "right",
+      "weight": 700,
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-ramp-l-body",
+      "type": "text",
+      "x": 1210,
+      "y": 957.5,
+      "w": 310,
+      "h": 50,
+      "text": "Wire return to the left inlane.",
+      "size": 15,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "right",
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-ramp-l-lead",
+      "type": "line",
+      "from": {
+        "x": 1530,
+        "y": 946.3
+      },
+      "to": {
+        "el": "sm-ramp-l"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "arrow": "none",
+      "layer": "sm-shots",
+      "name": "callout line: crypt ramp",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-ins",
+      "type": "text",
+      "x": 1210,
+      "y": 1082.5,
+      "w": 310,
+      "h": 25,
+      "text": "SHOT ARROWS",
+      "size": 17.5,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "right",
+      "weight": 700,
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-ins-body",
+      "type": "text",
+      "x": 1210,
+      "y": 1107.5,
+      "w": 310,
+      "h": 50,
+      "text": "Light for quests and jackpots.",
+      "size": 15,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "right",
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-ins-lead",
+      "type": "line",
+      "from": {
+        "x": 1530,
+        "y": 1096.3
+      },
+      "to": {
+        "el": "sm-ins-ramp-l"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "arrow": "none",
+      "layer": "sm-shots",
+      "name": "callout line: shot arrows",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-lanes-bot",
+      "type": "text",
+      "x": 1210,
+      "y": 1285,
+      "w": 310,
+      "h": 25,
+      "text": "INLANES / OUTLANES",
+      "size": 17.5,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "right",
+      "weight": 700,
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-lanes-bot-body",
+      "type": "text",
+      "x": 1210,
+      "y": 1310,
+      "w": 310,
+      "h": 50,
+      "text": "Outlane = drain. Inlane feeds the flipper.",
+      "size": 15,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "right",
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-lanes-bot-lead",
+      "type": "line",
+      "from": {
+        "x": 1530,
+        "y": 1298.8
+      },
+      "to": {
+        "el": "sm-post-sep-l"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "arrow": "none",
+      "layer": "sm-shots",
+      "name": "callout line: inlanes / outlanes",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-pops",
+      "type": "text",
+      "x": 2270,
+      "y": 555,
+      "w": 310,
+      "h": 25,
+      "text": "POP BUMPERS",
+      "size": 17.5,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "left",
+      "weight": 700,
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-pops-body",
+      "type": "text",
+      "x": 2270,
+      "y": 580,
+      "w": 310,
+      "h": 50,
+      "text": "Mob nest: every hit earns gold.",
+      "size": 15,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "left",
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-pops-lead",
+      "type": "line",
+      "from": {
+        "x": 2260,
+        "y": 568.8
+      },
+      "to": {
+        "el": "sm-pop-2"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "arrow": "none",
+      "layer": "sm-shots",
+      "name": "callout line: pop bumpers",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-ramp-r",
+      "type": "text",
+      "x": 2270,
+      "y": 757.5,
+      "w": 310,
+      "h": 25,
+      "text": "TOWER RAMP",
+      "size": 17.5,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "left",
+      "weight": 700,
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-ramp-r-body",
+      "type": "text",
+      "x": 2270,
+      "y": 782.5,
+      "w": 310,
+      "h": 50,
+      "text": "Wire return to the right inlane.",
+      "size": 15,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "left",
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-ramp-r-lead",
+      "type": "line",
+      "from": {
+        "x": 2260,
+        "y": 771.3
+      },
+      "to": {
+        "el": "sm-ramp-r"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "arrow": "none",
+      "layer": "sm-shots",
+      "name": "callout line: tower ramp",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-gate",
+      "type": "text",
+      "x": 2270,
+      "y": 882.5,
+      "w": 310,
+      "h": 25,
+      "text": "DUNGEON GATE",
+      "size": 17.5,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "left",
+      "weight": 700,
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-gate-body",
+      "type": "text",
+      "x": 2270,
+      "y": 907.5,
+      "w": 310,
+      "h": 70,
+      "text": "Break the 4 mobs (drop targets); the saucer opens the dungeon.",
+      "size": 15,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "left",
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-gate-lead",
+      "type": "line",
+      "from": {
+        "x": 2260,
+        "y": 896.3
+      },
+      "to": {
+        "el": "sm-saucer"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "arrow": "none",
+      "layer": "sm-shots",
+      "name": "callout line: dungeon gate",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-orbit-r",
+      "type": "text",
+      "x": 2270,
+      "y": 1045,
+      "w": 310,
+      "h": 25,
+      "text": "RIGHT ORBIT",
+      "size": 17.5,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "left",
+      "weight": 700,
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-orbit-r-body",
+      "type": "text",
+      "x": 2270,
+      "y": 1070,
+      "w": 310,
+      "h": 50,
+      "text": "Loops to the left orbit.",
+      "size": 15,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "left",
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-orbit-r-lead",
+      "type": "line",
+      "from": {
+        "x": 2260,
+        "y": 1058.8
+      },
+      "to": {
+        "el": "sm-ins-orbit-r"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "arrow": "none",
+      "layer": "sm-shots",
+      "name": "callout line: right orbit",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-shops",
+      "type": "text",
+      "x": 2270,
+      "y": 1170,
+      "w": 310,
+      "h": 25,
+      "text": "SHOPS ×3",
+      "size": 17.5,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "left",
+      "weight": 700,
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-shops-body",
+      "type": "text",
+      "x": 2270,
+      "y": 1195,
+      "w": 310,
+      "h": 50,
+      "text": "Shoot the one you can afford.",
+      "size": 15,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "left",
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-shops-lead",
+      "type": "line",
+      "from": {
+        "x": 2260,
+        "y": 1183.8
+      },
+      "to": {
+        "el": "sm-shop-1"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "arrow": "none",
+      "layer": "sm-shots",
+      "name": "callout line: shops",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-plunger",
+      "type": "text",
+      "x": 2270,
+      "y": 1420,
+      "w": 310,
+      "h": 25,
+      "text": "PLUNGER",
+      "size": 17.5,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "left",
+      "weight": 700,
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-plunger-body",
+      "type": "text",
+      "x": 2270,
+      "y": 1445,
+      "w": 310,
+      "h": 50,
+      "text": "Plunge feeds the right orbit.",
+      "size": 15,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "left",
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-c-plunger-lead",
+      "type": "line",
+      "from": {
+        "x": 2260,
+        "y": 1433.8
+      },
+      "to": {
+        "el": "sm-shooter"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "arrow": "none",
+      "layer": "sm-shots",
+      "name": "callout line: plunger",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-key-l",
+      "type": "line",
+      "from": {
+        "x": 1220,
+        "y": 1532.5
+      },
+      "to": {
+        "x": 1280,
+        "y": 1532.5
+      },
+      "stroke": "#2f6fd6",
+      "strokeWidth": 3.1,
+      "arrow": "end",
+      "layer": "sm-shots",
+      "name": "key: left flipper shot",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-key-l-t",
+      "type": "text",
+      "x": 1290,
+      "y": 1520,
+      "w": 230,
+      "h": 25,
+      "text": "from the left flipper",
+      "size": 15,
+      "color": "#1f1b16",
+      "font": "sans",
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-key-r",
+      "type": "line",
+      "from": {
+        "x": 1220,
+        "y": 1565
+      },
+      "to": {
+        "x": 1280,
+        "y": 1565
+      },
+      "stroke": "#d6332f",
+      "strokeWidth": 3.1,
+      "arrow": "end",
+      "layer": "sm-shots",
+      "name": "key: right flipper shot",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-key-r-t",
+      "type": "text",
+      "x": 1290,
+      "y": 1552.5,
+      "w": 230,
+      "h": 25,
+      "text": "from the right flipper",
+      "size": 15,
+      "color": "#1f1b16",
+      "font": "sans",
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-key-p",
+      "type": "line",
+      "from": {
+        "x": 1220,
+        "y": 1597.5
+      },
+      "to": {
+        "x": 1280,
+        "y": 1597.5
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.9,
+      "dash": true,
+      "arrow": "none",
+      "layer": "sm-shots",
+      "name": "key: ball path",
+      "group": "group-table"
+    },
+    {
+      "id": "sm-key-p-t",
+      "type": "text",
+      "x": 1290,
+      "y": 1585,
+      "w": 230,
+      "h": 25,
+      "text": "ball path",
+      "size": 15,
+      "color": "#1f1b16",
+      "font": "sans",
+      "layer": "sm-shots",
+      "group": "group-table"
+    },
     {
       "id": "title",
       "type": "text",
       "x": 56,
-      "y": 30,
-      "w": 1180,
-      "h": 84,
+      "y": 42,
+      "w": 1652,
+      "h": 117.6,
       "text": "Pinball Dungeon Crawl",
-      "size": 64,
+      "size": 89.6,
       "weight": 600,
-      "font": "serif"
+      "font": "serif",
+      "layer": "doc"
     },
     {
       "id": "pitch",
       "type": "text",
       "x": 56,
-      "y": 116,
-      "w": 1180,
-      "h": 76,
+      "y": 162.4,
+      "w": 1652,
+      "h": 106.4,
       "text": "",
-      "size": 25,
+      "size": 35,
       "font": "serif",
       "bind": {
         "topic": "pitch",
         "field": "summary"
-      }
+      },
+      "layer": "doc"
     },
     {
       "id": "skeleton-link-box",
       "type": "rect",
-      "x": 1644,
-      "y": 48,
-      "w": 220,
-      "h": 44,
+      "x": 3476,
+      "y": 67.2,
+      "w": 308,
+      "h": 61.6,
       "stroke": "#1f1b16",
-      "strokeWidth": 2,
-      "radius": 22,
+      "strokeWidth": 2.8,
+      "radius": 30.8,
       "fill": "#fbf8f2",
-      "link": "skeleton"
+      "link": "skeleton",
+      "name": "link: full skeleton",
+      "layer": "doc"
     },
     {
       "id": "skeleton-link",
       "type": "text",
-      "x": 1644,
-      "y": 48,
-      "w": 220,
-      "h": 44,
+      "x": 3476,
+      "y": 67.2,
+      "w": 308,
+      "h": 61.6,
       "text": "Full skeleton →",
-      "size": 17,
+      "size": 23.8,
       "weight": 600,
       "align": "center",
       "valign": "middle",
-      "link": "skeleton"
+      "link": "skeleton",
+      "layer": "doc"
     },
     {
       "id": "head-rule",
       "type": "line",
       "from": {
         "x": 56,
-        "y": 200
+        "y": 280
       },
       "to": {
-        "x": 1864,
-        "y": 200
+        "x": 3784,
+        "y": 280
       },
       "stroke": "#1f1b16",
       "strokeWidth": 3,
-      "arrow": "none"
+      "arrow": "none",
+      "name": "header rule",
+      "layer": "doc"
     },
     {
       "id": "pillars-label",
       "type": "text",
       "x": 56,
-      "y": 218,
-      "w": 560,
-      "h": 26,
+      "y": 316,
+      "w": 784,
+      "h": 36.4,
       "text": "Pillars",
-      "size": 15,
+      "size": 21,
       "weight": 700,
       "color": "#6b6257",
-      "caps": true
+      "caps": true,
+      "layer": "doc"
     },
     {
       "id": "pillar-0",
       "type": "rect",
       "x": 56,
-      "y": 250,
-      "w": 560,
-      "h": 92,
+      "y": 360.8,
+      "w": 784,
+      "h": 128.8,
       "fill": "#fbf8f2",
       "stroke": "#d8cfc0",
-      "strokeWidth": 2
+      "strokeWidth": 2.8,
+      "name": "pillar card: never out of sight",
+      "layer": "doc"
     },
     {
       "id": "pillar-0-bar",
       "type": "rect",
       "x": 56,
-      "y": 250,
-      "w": 6,
-      "h": 92,
-      "fill": "#b4532a"
+      "y": 360.8,
+      "w": 8.4,
+      "h": 128.8,
+      "fill": "#b4532a",
+      "name": "pillar accent: never out of sight",
+      "layer": "doc"
     },
     {
       "id": "pillar-0-title",
       "type": "text",
-      "x": 78,
-      "y": 260,
-      "w": 520,
-      "h": 34,
+      "x": 86.8,
+      "y": 374.8,
+      "w": 728,
+      "h": 47.6,
       "text": "Never out of sight",
-      "size": 24,
+      "size": 33.6,
       "weight": 600,
-      "font": "serif"
+      "font": "serif",
+      "layer": "doc"
     },
     {
       "id": "pillar-0-body",
       "type": "text",
-      "x": 78,
-      "y": 296,
-      "w": 520,
-      "h": 36,
+      "x": 86.8,
+      "y": 425.2,
+      "w": 728,
+      "h": 50.4,
       "text": "The ball is always visible.",
-      "size": 18,
-      "color": "#6b6257"
+      "size": 25.2,
+      "color": "#6b6257",
+      "layer": "doc"
     },
     {
       "id": "pillar-1",
       "type": "rect",
       "x": 56,
-      "y": 354,
-      "w": 560,
-      "h": 92,
+      "y": 506.4,
+      "w": 784,
+      "h": 128.8,
       "fill": "#fbf8f2",
       "stroke": "#d8cfc0",
-      "strokeWidth": 2
+      "strokeWidth": 2.8,
+      "name": "pillar card: every hit matters",
+      "layer": "doc"
     },
     {
       "id": "pillar-1-bar",
       "type": "rect",
       "x": 56,
-      "y": 354,
-      "w": 6,
-      "h": 92,
-      "fill": "#b4532a"
+      "y": 506.4,
+      "w": 8.4,
+      "h": 128.8,
+      "fill": "#b4532a",
+      "name": "pillar accent: every hit matters",
+      "layer": "doc"
     },
     {
       "id": "pillar-1-title",
       "type": "text",
-      "x": 78,
-      "y": 364,
-      "w": 520,
-      "h": 34,
+      "x": 86.8,
+      "y": 520.4,
+      "w": 728,
+      "h": 47.6,
       "text": "Every hit matters",
-      "size": 24,
+      "size": 33.6,
       "weight": 600,
-      "font": "serif"
+      "font": "serif",
+      "layer": "doc"
     },
     {
       "id": "pillar-1-body",
       "type": "text",
-      "x": 78,
-      "y": 400,
-      "w": 520,
-      "h": 36,
+      "x": 86.8,
+      "y": 570.8,
+      "w": 728,
+      "h": 50.4,
       "text": "Real weight, always a step toward a goal.",
-      "size": 18,
-      "color": "#6b6257"
+      "size": 25.2,
+      "color": "#6b6257",
+      "layer": "doc"
     },
     {
       "id": "pillar-2",
       "type": "rect",
       "x": 56,
-      "y": 458,
-      "w": 560,
-      "h": 92,
+      "y": 652,
+      "w": 784,
+      "h": 128.8,
       "fill": "#fbf8f2",
       "stroke": "#d8cfc0",
-      "strokeWidth": 2
+      "strokeWidth": 2.8,
+      "name": "pillar card: pure pinball",
+      "layer": "doc"
     },
     {
       "id": "pillar-2-bar",
       "type": "rect",
       "x": 56,
-      "y": 458,
-      "w": 6,
-      "h": 92,
-      "fill": "#b4532a"
+      "y": 652,
+      "w": 8.4,
+      "h": 128.8,
+      "fill": "#b4532a",
+      "name": "pillar accent: pure pinball",
+      "layer": "doc"
     },
     {
       "id": "pillar-2-title",
       "type": "text",
-      "x": 78,
-      "y": 468,
-      "w": 520,
-      "h": 34,
+      "x": 86.8,
+      "y": 666,
+      "w": 728,
+      "h": 47.6,
       "text": "Pure pinball",
-      "size": 24,
+      "size": 33.6,
       "weight": 600,
-      "font": "serif"
+      "font": "serif",
+      "layer": "doc"
     },
     {
       "id": "pillar-2-body",
       "type": "text",
-      "x": 78,
-      "y": 504,
-      "w": 520,
-      "h": 36,
+      "x": 86.8,
+      "y": 716.4,
+      "w": 728,
+      "h": 50.4,
       "text": "Physics untouched, flippers only. RPG in the abstract.",
-      "size": 18,
-      "color": "#6b6257"
-    },
-    {
-      "id": "rules-label",
-      "type": "text",
-      "x": 56,
-      "y": 568,
-      "w": 560,
-      "h": 26,
-      "text": "A run",
-      "size": 15,
-      "weight": 700,
+      "size": 25.2,
       "color": "#6b6257",
-      "caps": true
-    },
-    {
-      "id": "rules",
-      "type": "text",
-      "x": 56,
-      "y": 600,
-      "w": 560,
-      "h": 190,
-      "text": "1 wizard, 3 lives from the amulet. Permadeath.\n\nAny drain costs a life, both flipper items and all gold. The map stays.\n\nA dungeon exit stays sealed until its encounter is beaten.",
-      "size": 20
+      "layer": "doc"
     },
     {
       "id": "machine-label",
       "type": "text",
-      "x": 664,
-      "y": 218,
-      "w": 560,
-      "h": 26,
+      "x": 56,
+      "y": 820,
+      "w": 784,
+      "h": 36.4,
       "text": "The machine",
-      "size": 15,
+      "size": 21,
       "weight": 700,
       "color": "#6b6257",
-      "caps": true
+      "caps": true,
+      "layer": "doc"
     },
     {
       "id": "main-table",
       "type": "rect",
-      "x": 664,
-      "y": 250,
-      "w": 560,
-      "h": 120,
+      "x": 56,
+      "y": 864.8,
+      "w": 784,
+      "h": 168,
       "fill": "#fbf8f2",
       "stroke": "#1f1b16",
-      "strokeWidth": 3,
-      "radius": 10,
-      "link": "structure"
+      "strokeWidth": 4.2,
+      "radius": 14,
+      "link": "structure",
+      "name": "world: main table",
+      "layer": "doc"
     },
     {
       "id": "main-title",
       "type": "text",
-      "x": 684,
-      "y": 262,
-      "w": 320,
-      "h": 36,
+      "x": 84,
+      "y": 881.6,
+      "w": 448,
+      "h": 50.4,
       "text": "Main table",
-      "size": 26,
+      "size": 36.4,
       "weight": 600,
       "font": "serif",
-      "link": "structure"
+      "link": "structure",
+      "layer": "doc"
     },
     {
       "id": "main-body",
       "type": "text",
-      "x": 684,
-      "y": 300,
-      "w": 320,
-      "h": 62,
+      "x": 84,
+      "y": 934.8,
+      "w": 448,
+      "h": 86.8,
       "text": "The area map, always fully on screen. Easy near the flippers, harder at the top.",
-      "size": 16,
-      "color": "#6b6257"
+      "size": 22.4,
+      "color": "#6b6257",
+      "layer": "doc"
     },
     {
       "id": "town",
       "type": "rect",
-      "x": 1020,
-      "y": 266,
-      "w": 188,
-      "h": 88,
+      "x": 554.4,
+      "y": 887.2,
+      "w": 263.2,
+      "h": 123.2,
       "fill": "#f4e6d8",
       "stroke": "#b4532a",
-      "strokeWidth": 2,
-      "radius": 6
+      "strokeWidth": 2.8,
+      "radius": 8.4,
+      "name": "world: town",
+      "layer": "doc"
     },
     {
       "id": "town-text",
       "type": "text",
-      "x": 1028,
-      "y": 270,
-      "w": 172,
-      "h": 80,
+      "x": 565.6,
+      "y": 892.8,
+      "w": 240.8,
+      "h": 112,
       "text": "Town: inn + 3 shops",
-      "size": 17,
+      "size": 23.8,
       "weight": 600,
       "align": "center",
-      "valign": "middle"
+      "valign": "middle",
+      "layer": "doc"
     },
     {
       "id": "dungeon-1",
       "type": "rect",
-      "x": 764,
-      "y": 412,
-      "w": 360,
-      "h": 70,
+      "x": 196,
+      "y": 1091.6,
+      "w": 504,
+      "h": 98,
       "fill": "#fbf8f2",
       "stroke": "#1f1b16",
-      "strokeWidth": 3,
-      "radius": 6
+      "strokeWidth": 4.2,
+      "radius": 8.4,
+      "name": "world: dungeon tier 1",
+      "layer": "doc"
     },
     {
       "id": "dungeon-1-title",
       "type": "text",
-      "x": 780,
-      "y": 418,
-      "w": 328,
-      "h": 32,
+      "x": 218.4,
+      "y": 1100,
+      "w": 459.2,
+      "h": 44.8,
       "text": "Dungeon tier 1",
-      "size": 22,
+      "size": 30.8,
       "weight": 600,
-      "font": "serif"
+      "font": "serif",
+      "layer": "doc"
     },
     {
       "id": "dungeon-1-body",
       "type": "text",
-      "x": 780,
-      "y": 450,
-      "w": 328,
-      "h": 26,
+      "x": 218.4,
+      "y": 1144.8,
+      "w": 459.2,
+      "h": 36.4,
       "text": "3 types, one per run",
-      "size": 16,
-      "color": "#6b6257"
+      "size": 22.4,
+      "color": "#6b6257",
+      "layer": "doc"
     },
     {
       "id": "dungeon-2",
       "type": "rect",
-      "x": 764,
-      "y": 514,
-      "w": 360,
-      "h": 70,
+      "x": 196,
+      "y": 1234.4,
+      "w": 504,
+      "h": 98,
       "fill": "#fbf8f2",
       "stroke": "#1f1b16",
-      "strokeWidth": 3,
-      "radius": 6
+      "strokeWidth": 4.2,
+      "radius": 8.4,
+      "name": "world: dungeon tier 2",
+      "layer": "doc"
     },
     {
       "id": "dungeon-2-title",
       "type": "text",
-      "x": 780,
-      "y": 520,
-      "w": 328,
-      "h": 32,
+      "x": 218.4,
+      "y": 1242.8,
+      "w": 459.2,
+      "h": 44.8,
       "text": "Dungeon tier 2",
-      "size": 22,
+      "size": 30.8,
       "weight": 600,
-      "font": "serif"
+      "font": "serif",
+      "layer": "doc"
     },
     {
       "id": "dungeon-2-body",
       "type": "text",
-      "x": 780,
-      "y": 552,
-      "w": 328,
-      "h": 26,
+      "x": 218.4,
+      "y": 1287.6,
+      "w": 459.2,
+      "h": 36.4,
       "text": "3 types, one per run",
-      "size": 16,
-      "color": "#6b6257"
+      "size": 22.4,
+      "color": "#6b6257",
+      "layer": "doc"
     },
     {
       "id": "ruin",
       "type": "rect",
-      "x": 664,
-      "y": 614,
-      "w": 560,
-      "h": 90,
+      "x": 56,
+      "y": 1374.4,
+      "w": 784,
+      "h": 126,
       "fill": "#f7e3da",
       "stroke": "#b4532a",
-      "strokeWidth": 2,
+      "strokeWidth": 2.8,
       "dash": true,
-      "radius": 6,
-      "link": "narrative"
+      "radius": 8.4,
+      "link": "narrative",
+      "name": "world: ruin",
+      "layer": "doc"
     },
     {
       "id": "ruin-text",
       "type": "text",
-      "x": 680,
-      "y": 620,
-      "w": 528,
-      "h": 78,
+      "x": 78.4,
+      "y": 1382.8,
+      "w": 739.2,
+      "h": 109.2,
       "text": "After dungeon 2: the dragon returns to its lair. Flames, 2 of 4 town buildings destroyed, new trash mobs, a trick shot opens the lair.",
-      "size": 17,
+      "size": 23.8,
       "valign": "middle",
-      "link": "narrative"
+      "link": "narrative",
+      "layer": "doc"
     },
     {
       "id": "lair",
       "type": "rect",
-      "x": 764,
-      "y": 730,
-      "w": 360,
-      "h": 62,
+      "x": 196,
+      "y": 1536.8,
+      "w": 504,
+      "h": 86.8,
       "fill": "#1f1b16",
-      "radius": 6,
-      "link": "opposition"
+      "radius": 8.4,
+      "link": "opposition",
+      "name": "world: dragon's lair",
+      "layer": "doc"
     },
     {
       "id": "lair-text",
       "type": "text",
-      "x": 780,
-      "y": 734,
-      "w": 328,
-      "h": 54,
+      "x": 218.4,
+      "y": 1542.4,
+      "w": 459.2,
+      "h": 75.6,
       "text": "The dragon's lair: 3 layouts",
-      "size": 22,
+      "size": 30.8,
       "weight": 600,
       "font": "serif",
       "color": "#f4efe6",
       "align": "center",
       "valign": "middle",
-      "link": "opposition"
+      "link": "opposition",
+      "layer": "doc"
     },
     {
       "id": "rail-1",
@@ -453,9 +2780,11 @@
         "el": "dungeon-1"
       },
       "stroke": "#b4532a",
-      "strokeWidth": 3,
+      "strokeWidth": 4.2,
       "arrow": "end",
-      "dash": true
+      "dash": true,
+      "name": "world path: table → dungeon 1",
+      "layer": "doc"
     },
     {
       "id": "rail-2",
@@ -467,9 +2796,11 @@
         "el": "dungeon-2"
       },
       "stroke": "#b4532a",
-      "strokeWidth": 3,
+      "strokeWidth": 4.2,
       "arrow": "end",
-      "dash": true
+      "dash": true,
+      "name": "world path: dungeon 1 → dungeon 2",
+      "layer": "doc"
     },
     {
       "id": "rail-3",
@@ -481,8 +2812,10 @@
         "el": "ruin"
       },
       "stroke": "#b4532a",
-      "strokeWidth": 3,
-      "arrow": "end"
+      "strokeWidth": 4.2,
+      "arrow": "end",
+      "name": "world path: dungeon 2 → ruin",
+      "layer": "doc"
     },
     {
       "id": "rail-4",
@@ -494,221 +2827,248 @@
         "el": "lair"
       },
       "stroke": "#b4532a",
-      "strokeWidth": 3,
-      "arrow": "end"
+      "strokeWidth": 4.2,
+      "arrow": "end",
+      "name": "world path: ruin → lair",
+      "layer": "doc"
     },
     {
       "id": "loop-label",
       "type": "text",
-      "x": 1272,
-      "y": 218,
-      "w": 592,
-      "h": 26,
+      "x": 2955.2,
+      "y": 316,
+      "w": 828.8,
+      "h": 36.4,
       "text": "Core loop",
-      "size": 15,
+      "size": 21,
       "weight": 700,
       "color": "#6b6257",
-      "caps": true
+      "caps": true,
+      "layer": "doc"
     },
     {
       "id": "step-0",
       "type": "rect",
-      "x": 1272,
-      "y": 250,
-      "w": 124,
-      "h": 60,
+      "x": 2955.2,
+      "y": 360.8,
+      "w": 173.6,
+      "h": 84,
       "fill": "#fbf8f2",
       "stroke": "#1f1b16",
-      "strokeWidth": 2,
-      "radius": 8
+      "strokeWidth": 2.8,
+      "radius": 11.2,
+      "name": "loop step: shoot",
+      "layer": "doc"
     },
     {
       "id": "step-0-text",
       "type": "text",
-      "x": 1278,
-      "y": 254,
-      "w": 112,
-      "h": 52,
+      "x": 2963.6,
+      "y": 366.4,
+      "w": 156.8,
+      "h": 72.8,
       "text": "Shoot",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "align": "center",
-      "valign": "middle"
+      "valign": "middle",
+      "layer": "doc"
     },
     {
       "id": "step-1",
       "type": "rect",
-      "x": 1428,
-      "y": 250,
-      "w": 124,
-      "h": 60,
+      "x": 3173.6,
+      "y": 360.8,
+      "w": 173.6,
+      "h": 84,
       "fill": "#fbf8f2",
       "stroke": "#1f1b16",
-      "strokeWidth": 2,
-      "radius": 8
+      "strokeWidth": 2.8,
+      "radius": 11.2,
+      "name": "loop step: break mobs",
+      "layer": "doc"
     },
     {
       "id": "step-1-text",
       "type": "text",
-      "x": 1434,
-      "y": 254,
-      "w": 112,
-      "h": 52,
+      "x": 3182,
+      "y": 366.4,
+      "w": 156.8,
+      "h": 72.8,
       "text": "Break mobs",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "align": "center",
-      "valign": "middle"
+      "valign": "middle",
+      "layer": "doc"
     },
     {
       "id": "step-2",
       "type": "rect",
-      "x": 1584,
-      "y": 250,
-      "w": 124,
-      "h": 60,
+      "x": 3392,
+      "y": 360.8,
+      "w": 173.6,
+      "h": 84,
       "fill": "#fbf8f2",
       "stroke": "#1f1b16",
-      "strokeWidth": 2,
-      "radius": 8
+      "strokeWidth": 2.8,
+      "radius": 11.2,
+      "name": "loop step: quest spawns mobs",
+      "layer": "doc"
     },
     {
       "id": "step-2-text",
       "type": "text",
-      "x": 1590,
-      "y": 254,
-      "w": 112,
-      "h": 52,
+      "x": 3400.4,
+      "y": 366.4,
+      "w": 156.8,
+      "h": 72.8,
       "text": "Quest spawns mobs",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "align": "center",
-      "valign": "middle"
+      "valign": "middle",
+      "layer": "doc"
     },
     {
       "id": "step-3",
       "type": "rect",
-      "x": 1740,
-      "y": 250,
-      "w": 124,
-      "h": 60,
+      "x": 3610.4,
+      "y": 360.8,
+      "w": 173.6,
+      "h": 84,
       "fill": "#fbf8f2",
       "stroke": "#1f1b16",
-      "strokeWidth": 2,
-      "radius": 8
+      "strokeWidth": 2.8,
+      "radius": 11.2,
+      "name": "loop step: dungeon opens",
+      "layer": "doc"
     },
     {
       "id": "step-3-text",
       "type": "text",
-      "x": 1746,
-      "y": 254,
-      "w": 112,
-      "h": 52,
+      "x": 3618.8,
+      "y": 366.4,
+      "w": 156.8,
+      "h": 72.8,
       "text": "Dungeon opens",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "align": "center",
-      "valign": "middle"
+      "valign": "middle",
+      "layer": "doc"
     },
     {
       "id": "step-4",
       "type": "rect",
-      "x": 1740,
-      "y": 356,
-      "w": 124,
-      "h": 60,
+      "x": 3610.4,
+      "y": 509.2,
+      "w": 173.6,
+      "h": 84,
       "fill": "#fbf8f2",
       "stroke": "#1f1b16",
-      "strokeWidth": 2,
-      "radius": 8
+      "strokeWidth": 2.8,
+      "radius": 11.2,
+      "name": "loop step: drop in",
+      "layer": "doc"
     },
     {
       "id": "step-4-text",
       "type": "text",
-      "x": 1746,
-      "y": 360,
-      "w": 112,
-      "h": 52,
+      "x": 3618.8,
+      "y": 514.8,
+      "w": 156.8,
+      "h": 72.8,
       "text": "Drop in",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "align": "center",
-      "valign": "middle"
+      "valign": "middle",
+      "layer": "doc"
     },
     {
       "id": "step-5",
       "type": "rect",
-      "x": 1584,
-      "y": 356,
-      "w": 124,
-      "h": 60,
+      "x": 3392,
+      "y": 509.2,
+      "w": 173.6,
+      "h": 84,
       "fill": "#fbf8f2",
       "stroke": "#1f1b16",
-      "strokeWidth": 2,
-      "radius": 8
+      "strokeWidth": 2.8,
+      "radius": 11.2,
+      "name": "loop step: beat encounter",
+      "layer": "doc"
     },
     {
       "id": "step-5-text",
       "type": "text",
-      "x": 1590,
-      "y": 360,
-      "w": 112,
-      "h": 52,
+      "x": 3400.4,
+      "y": 514.8,
+      "w": 156.8,
+      "h": 72.8,
       "text": "Beat encounter",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "align": "center",
-      "valign": "middle"
+      "valign": "middle",
+      "layer": "doc"
     },
     {
       "id": "step-6",
       "type": "rect",
-      "x": 1420,
-      "y": 356,
-      "w": 124,
-      "h": 60,
+      "x": 3162.4,
+      "y": 509.2,
+      "w": 173.6,
+      "h": 84,
       "fill": "#fbf8f2",
       "stroke": "#1f1b16",
-      "strokeWidth": 2,
-      "radius": 8
+      "strokeWidth": 2.8,
+      "radius": 11.2,
+      "name": "loop step: pick loot",
+      "layer": "doc"
     },
     {
       "id": "step-6-text",
       "type": "text",
-      "x": 1426,
-      "y": 360,
-      "w": 112,
-      "h": 52,
+      "x": 3170.8,
+      "y": 514.8,
+      "w": 156.8,
+      "h": 72.8,
       "text": "Pick loot",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "align": "center",
-      "valign": "middle"
+      "valign": "middle",
+      "layer": "doc"
     },
     {
       "id": "step-7",
       "type": "rect",
-      "x": 1272,
-      "y": 356,
-      "w": 124,
-      "h": 60,
+      "x": 2955.2,
+      "y": 509.2,
+      "w": 173.6,
+      "h": 84,
       "fill": "#fbf8f2",
       "stroke": "#1f1b16",
-      "strokeWidth": 2,
-      "radius": 8
+      "strokeWidth": 2.8,
+      "radius": 11.2,
+      "name": "loop step: pop back up",
+      "layer": "doc"
     },
     {
       "id": "step-7-text",
       "type": "text",
-      "x": 1278,
-      "y": 360,
-      "w": 112,
-      "h": 52,
+      "x": 2963.6,
+      "y": 514.8,
+      "w": 156.8,
+      "h": 72.8,
       "text": "Pop back up",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "align": "center",
-      "valign": "middle"
+      "valign": "middle",
+      "layer": "doc"
     },
     {
       "id": "loop-0",
@@ -720,8 +3080,10 @@
         "el": "step-1"
       },
       "stroke": "#b4532a",
-      "strokeWidth": 2,
-      "arrow": "end"
+      "strokeWidth": 2.8,
+      "arrow": "end",
+      "name": "loop arrow: shoot → break mobs",
+      "layer": "doc"
     },
     {
       "id": "loop-1",
@@ -733,8 +3095,10 @@
         "el": "step-2"
       },
       "stroke": "#b4532a",
-      "strokeWidth": 2,
-      "arrow": "end"
+      "strokeWidth": 2.8,
+      "arrow": "end",
+      "name": "loop arrow: break mobs → quest",
+      "layer": "doc"
     },
     {
       "id": "loop-2",
@@ -746,8 +3110,10 @@
         "el": "step-3"
       },
       "stroke": "#b4532a",
-      "strokeWidth": 2,
-      "arrow": "end"
+      "strokeWidth": 2.8,
+      "arrow": "end",
+      "name": "loop arrow: quest → dungeon opens",
+      "layer": "doc"
     },
     {
       "id": "loop-3",
@@ -759,8 +3125,10 @@
         "el": "step-4"
       },
       "stroke": "#b4532a",
-      "strokeWidth": 2,
-      "arrow": "end"
+      "strokeWidth": 2.8,
+      "arrow": "end",
+      "name": "loop arrow: dungeon opens → drop in",
+      "layer": "doc"
     },
     {
       "id": "loop-4",
@@ -772,8 +3140,10 @@
         "el": "step-5"
       },
       "stroke": "#b4532a",
-      "strokeWidth": 2,
-      "arrow": "end"
+      "strokeWidth": 2.8,
+      "arrow": "end",
+      "name": "loop arrow: drop in → encounter",
+      "layer": "doc"
     },
     {
       "id": "loop-5",
@@ -785,8 +3155,10 @@
         "el": "step-6"
       },
       "stroke": "#b4532a",
-      "strokeWidth": 2,
-      "arrow": "end"
+      "strokeWidth": 2.8,
+      "arrow": "end",
+      "name": "loop arrow: encounter → loot",
+      "layer": "doc"
     },
     {
       "id": "loop-6",
@@ -798,8 +3170,10 @@
         "el": "step-7"
       },
       "stroke": "#b4532a",
-      "strokeWidth": 2,
-      "arrow": "end"
+      "strokeWidth": 2.8,
+      "arrow": "end",
+      "name": "loop arrow: loot → pop back up",
+      "layer": "doc"
     },
     {
       "id": "loop-back",
@@ -811,925 +3185,1020 @@
         "el": "step-0"
       },
       "stroke": "#b4532a",
-      "strokeWidth": 2,
-      "arrow": "end"
+      "strokeWidth": 2.8,
+      "arrow": "end",
+      "name": "loop arrow: back to shoot",
+      "layer": "doc"
+    },
+    {
+      "id": "rules-label",
+      "type": "text",
+      "x": 2955.2,
+      "y": 638,
+      "w": 784,
+      "h": 36.4,
+      "text": "A run",
+      "size": 21,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true,
+      "layer": "doc"
+    },
+    {
+      "id": "rules",
+      "type": "text",
+      "x": 2955.2,
+      "y": 682.8,
+      "w": 784,
+      "h": 266,
+      "text": "1 wizard, 3 lives from the amulet. Permadeath.\n\nAny drain costs a life, both flipper items and all gold. The map stays.\n\nA dungeon exit stays sealed until its encounter is beaten.",
+      "size": 28,
+      "layer": "doc"
     },
     {
       "id": "loot-label",
       "type": "text",
-      "x": 1272,
-      "y": 444,
-      "w": 340,
-      "h": 26,
+      "x": 2955.2,
+      "y": 988,
+      "w": 476,
+      "h": 36.4,
       "text": "Flipper loot",
-      "size": 15,
+      "size": 21,
       "weight": 700,
       "color": "#6b6257",
-      "caps": true
+      "caps": true,
+      "layer": "doc"
     },
     {
       "id": "loot",
       "type": "text",
-      "x": 1272,
-      "y": 476,
-      "w": 340,
-      "h": 316,
+      "x": 2955.2,
+      "y": 1032.8,
+      "w": 476,
+      "h": 442.4,
       "text": "Each flipper holds 1 item. Effects happen on impact; physics never change.\n\nDungeon loot: hit 1 of 3 targets. It goes to the last flipper that touched the ball. Or exit with nothing.\n\nShop: shoot the item you can afford, the ball holds, press a flipper to equip that side.",
-      "size": 18
+      "size": 25.2,
+      "layer": "doc"
     },
     {
       "id": "sketch",
       "type": "image",
       "src": "sketch-dungeon-table.png",
-      "x": 1630,
-      "y": 452,
-      "w": 234,
-      "h": 312,
-      "fit": "contain"
+      "x": 3456.4,
+      "y": 999.2,
+      "w": 327.6,
+      "h": 436.8,
+      "fit": "contain",
+      "name": "sketch: dungeon table",
+      "layer": "doc"
     },
     {
       "id": "sketch-caption",
       "type": "text",
-      "x": 1630,
-      "y": 766,
-      "w": 234,
-      "h": 26,
+      "x": 3456.4,
+      "y": 1438.8,
+      "w": 327.6,
+      "h": 36.4,
       "text": "Dungeon table sketch",
-      "size": 14,
+      "size": 19.6,
       "color": "#6b6257",
-      "align": "center"
+      "align": "center",
+      "layer": "doc"
     },
     {
       "id": "index-rule",
       "type": "line",
       "from": {
         "x": 56,
-        "y": 804
+        "y": 1754
       },
       "to": {
-        "x": 1864,
-        "y": 804
+        "x": 3784,
+        "y": 1754
       },
       "stroke": "#1f1b16",
       "strokeWidth": 3,
-      "arrow": "none"
+      "arrow": "none",
+      "name": "footer rule",
+      "layer": "doc"
     },
     {
       "id": "group-0",
       "type": "text",
       "x": 56,
-      "y": 812,
-      "w": 285,
-      "h": 30,
+      "y": 1765.2,
+      "w": 399,
+      "h": 42,
       "text": "Vision",
-      "size": 20,
+      "size": 28,
       "weight": 600,
-      "font": "serif"
+      "font": "serif",
+      "layer": "doc"
     },
     {
       "id": "dot-pitch",
       "type": "status",
       "x": 56,
-      "y": 847,
-      "size": 14,
+      "y": 1814.2,
+      "size": 19.6,
       "topic": "pitch",
-      "link": "pitch"
+      "link": "pitch",
+      "layer": "doc"
     },
     {
       "id": "topic-pitch",
       "type": "text",
-      "x": 78,
-      "y": 842,
-      "w": 261,
-      "h": 26,
+      "x": 86.8,
+      "y": 1807.2,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "pitch",
         "field": "title"
       },
-      "link": "pitch"
+      "link": "pitch",
+      "layer": "doc"
     },
     {
       "id": "dot-fantasy",
       "type": "status",
       "x": 56,
-      "y": 873,
-      "size": 14,
+      "y": 1850.6,
+      "size": 19.6,
       "topic": "fantasy",
-      "link": "fantasy"
+      "link": "fantasy",
+      "layer": "doc"
     },
     {
       "id": "topic-fantasy",
       "type": "text",
-      "x": 78,
-      "y": 868,
-      "w": 261,
-      "h": 26,
+      "x": 86.8,
+      "y": 1843.6,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "fantasy",
         "field": "title"
       },
-      "link": "fantasy"
+      "link": "fantasy",
+      "layer": "doc"
     },
     {
       "id": "dot-pillars",
       "type": "status",
       "x": 56,
-      "y": 899,
-      "size": 14,
+      "y": 1887,
+      "size": 19.6,
       "topic": "pillars",
-      "link": "pillars"
+      "link": "pillars",
+      "layer": "doc"
     },
     {
       "id": "topic-pillars",
       "type": "text",
-      "x": 78,
-      "y": 894,
-      "w": 261,
-      "h": 26,
+      "x": 86.8,
+      "y": 1880,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "pillars",
         "field": "title"
       },
-      "link": "pillars"
+      "link": "pillars",
+      "layer": "doc"
     },
     {
       "id": "dot-audience",
       "type": "status",
       "x": 56,
-      "y": 925,
-      "size": 14,
+      "y": 1923.4,
+      "size": 19.6,
       "topic": "audience",
-      "link": "audience"
+      "link": "audience",
+      "layer": "doc"
     },
     {
       "id": "topic-audience",
       "type": "text",
-      "x": 78,
-      "y": 920,
-      "w": 261,
-      "h": 26,
+      "x": 86.8,
+      "y": 1916.4,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "audience",
         "field": "title"
       },
-      "link": "audience"
+      "link": "audience",
+      "layer": "doc"
     },
     {
       "id": "dot-references",
       "type": "status",
       "x": 56,
-      "y": 951,
-      "size": 14,
+      "y": 1959.8,
+      "size": 19.6,
       "topic": "references",
-      "link": "references"
+      "link": "references",
+      "layer": "doc"
     },
     {
       "id": "topic-references",
       "type": "text",
-      "x": 78,
-      "y": 946,
-      "w": 261,
-      "h": 26,
+      "x": 86.8,
+      "y": 1952.8,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "references",
         "field": "title"
       },
-      "link": "references"
+      "link": "references",
+      "layer": "doc"
     },
     {
       "id": "group-1",
       "type": "text",
-      "x": 357,
-      "y": 812,
-      "w": 285,
-      "h": 30,
+      "x": 677.3,
+      "y": 1765.2,
+      "w": 399,
+      "h": 42,
       "text": "Play",
-      "size": 20,
+      "size": 28,
       "weight": 600,
-      "font": "serif"
+      "font": "serif",
+      "layer": "doc"
     },
     {
       "id": "dot-core-loop",
       "type": "status",
-      "x": 357,
-      "y": 847,
-      "size": 14,
+      "x": 677.3,
+      "y": 1814.2,
+      "size": 19.6,
       "topic": "core-loop",
-      "link": "core-loop"
+      "link": "core-loop",
+      "layer": "doc"
     },
     {
       "id": "topic-core-loop",
       "type": "text",
-      "x": 379,
-      "y": 842,
-      "w": 261,
-      "h": 26,
+      "x": 708.1,
+      "y": 1807.2,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "core-loop",
         "field": "title"
       },
-      "link": "core-loop"
+      "link": "core-loop",
+      "layer": "doc"
     },
     {
       "id": "dot-mechanics",
       "type": "status",
-      "x": 357,
-      "y": 873,
-      "size": 14,
+      "x": 677.3,
+      "y": 1850.6,
+      "size": 19.6,
       "topic": "mechanics",
-      "link": "mechanics"
+      "link": "mechanics",
+      "layer": "doc"
     },
     {
       "id": "topic-mechanics",
       "type": "text",
-      "x": 379,
-      "y": 868,
-      "w": 261,
-      "h": 26,
+      "x": 708.1,
+      "y": 1843.6,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "mechanics",
         "field": "title"
       },
-      "link": "mechanics"
+      "link": "mechanics",
+      "layer": "doc"
     },
     {
       "id": "dot-controls",
       "type": "status",
-      "x": 357,
-      "y": 899,
-      "size": 14,
+      "x": 677.3,
+      "y": 1887,
+      "size": 19.6,
       "topic": "controls",
-      "link": "controls"
+      "link": "controls",
+      "layer": "doc"
     },
     {
       "id": "topic-controls",
       "type": "text",
-      "x": 379,
-      "y": 894,
-      "w": 261,
-      "h": 26,
+      "x": 708.1,
+      "y": 1880,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "controls",
         "field": "title"
       },
-      "link": "controls"
+      "link": "controls",
+      "layer": "doc"
     },
     {
       "id": "dot-goals",
       "type": "status",
-      "x": 357,
-      "y": 925,
-      "size": 14,
+      "x": 677.3,
+      "y": 1923.4,
+      "size": 19.6,
       "topic": "goals",
-      "link": "goals"
+      "link": "goals",
+      "layer": "doc"
     },
     {
       "id": "topic-goals",
       "type": "text",
-      "x": 379,
-      "y": 920,
-      "w": 261,
-      "h": 26,
+      "x": 708.1,
+      "y": 1916.4,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "goals",
         "field": "title"
       },
-      "link": "goals"
+      "link": "goals",
+      "layer": "doc"
     },
     {
       "id": "dot-challenge",
       "type": "status",
-      "x": 357,
-      "y": 951,
-      "size": 14,
+      "x": 677.3,
+      "y": 1959.8,
+      "size": 19.6,
       "topic": "challenge",
-      "link": "challenge"
+      "link": "challenge",
+      "layer": "doc"
     },
     {
       "id": "topic-challenge",
       "type": "text",
-      "x": 379,
-      "y": 946,
-      "w": 261,
-      "h": 26,
+      "x": 708.1,
+      "y": 1952.8,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "challenge",
         "field": "title"
       },
-      "link": "challenge"
+      "link": "challenge",
+      "layer": "doc"
     },
     {
       "id": "dot-failure",
       "type": "status",
-      "x": 357,
-      "y": 977,
-      "size": 14,
+      "x": 677.3,
+      "y": 1996.2,
+      "size": 19.6,
       "topic": "failure",
-      "link": "failure"
+      "link": "failure",
+      "layer": "doc"
     },
     {
       "id": "topic-failure",
       "type": "text",
-      "x": 379,
-      "y": 972,
-      "w": 261,
-      "h": 26,
+      "x": 708.1,
+      "y": 1989.2,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "failure",
         "field": "title"
       },
-      "link": "failure"
+      "link": "failure",
+      "layer": "doc"
     },
     {
       "id": "dot-progression",
       "type": "status",
-      "x": 357,
-      "y": 1003,
-      "size": 14,
+      "x": 677.3,
+      "y": 2032.6,
+      "size": 19.6,
       "topic": "progression",
-      "link": "progression"
+      "link": "progression",
+      "layer": "doc"
     },
     {
       "id": "topic-progression",
       "type": "text",
-      "x": 379,
-      "y": 998,
-      "w": 261,
-      "h": 26,
+      "x": 708.1,
+      "y": 2025.6,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "progression",
         "field": "title"
       },
-      "link": "progression"
+      "link": "progression",
+      "layer": "doc"
     },
     {
       "id": "dot-economy",
       "type": "status",
-      "x": 357,
-      "y": 1029,
-      "size": 14,
+      "x": 677.3,
+      "y": 2069,
+      "size": 19.6,
       "topic": "economy",
-      "link": "economy"
+      "link": "economy",
+      "layer": "doc"
     },
     {
       "id": "topic-economy",
       "type": "text",
-      "x": 379,
-      "y": 1024,
-      "w": 261,
-      "h": 26,
+      "x": 708.1,
+      "y": 2062,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "economy",
         "field": "title"
       },
-      "link": "economy"
+      "link": "economy",
+      "layer": "doc"
     },
     {
       "id": "group-2",
       "type": "text",
-      "x": 659,
-      "y": 812,
-      "w": 285,
-      "h": 30,
+      "x": 1298.7,
+      "y": 1765.2,
+      "w": 399,
+      "h": 42,
       "text": "World",
-      "size": 20,
+      "size": 28,
       "weight": 600,
-      "font": "serif"
+      "font": "serif",
+      "layer": "doc"
     },
     {
       "id": "dot-setting",
       "type": "status",
-      "x": 659,
-      "y": 847,
-      "size": 14,
+      "x": 1298.7,
+      "y": 1814.2,
+      "size": 19.6,
       "topic": "setting",
-      "link": "setting"
+      "link": "setting",
+      "layer": "doc"
     },
     {
       "id": "topic-setting",
       "type": "text",
-      "x": 681,
-      "y": 842,
-      "w": 261,
-      "h": 26,
+      "x": 1329.5,
+      "y": 1807.2,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "setting",
         "field": "title"
       },
-      "link": "setting"
+      "link": "setting",
+      "layer": "doc"
     },
     {
       "id": "dot-narrative",
       "type": "status",
-      "x": 659,
-      "y": 873,
-      "size": 14,
+      "x": 1298.7,
+      "y": 1850.6,
+      "size": 19.6,
       "topic": "narrative",
-      "link": "narrative"
+      "link": "narrative",
+      "layer": "doc"
     },
     {
       "id": "topic-narrative",
       "type": "text",
-      "x": 681,
-      "y": 868,
-      "w": 261,
-      "h": 26,
+      "x": 1329.5,
+      "y": 1843.6,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "narrative",
         "field": "title"
       },
-      "link": "narrative"
+      "link": "narrative",
+      "layer": "doc"
     },
     {
       "id": "dot-characters",
       "type": "status",
-      "x": 659,
-      "y": 899,
-      "size": 14,
+      "x": 1298.7,
+      "y": 1887,
+      "size": 19.6,
       "topic": "characters",
-      "link": "characters"
+      "link": "characters",
+      "layer": "doc"
     },
     {
       "id": "topic-characters",
       "type": "text",
-      "x": 681,
-      "y": 894,
-      "w": 261,
-      "h": 26,
+      "x": 1329.5,
+      "y": 1880,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "characters",
         "field": "title"
       },
-      "link": "characters"
+      "link": "characters",
+      "layer": "doc"
     },
     {
       "id": "dot-structure",
       "type": "status",
-      "x": 659,
-      "y": 925,
-      "size": 14,
+      "x": 1298.7,
+      "y": 1923.4,
+      "size": 19.6,
       "topic": "structure",
-      "link": "structure"
+      "link": "structure",
+      "layer": "doc"
     },
     {
       "id": "topic-structure",
       "type": "text",
-      "x": 681,
-      "y": 920,
-      "w": 261,
-      "h": 26,
+      "x": 1329.5,
+      "y": 1916.4,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "structure",
         "field": "title"
       },
-      "link": "structure"
+      "link": "structure",
+      "layer": "doc"
     },
     {
       "id": "dot-opposition",
       "type": "status",
-      "x": 659,
-      "y": 951,
-      "size": 14,
+      "x": 1298.7,
+      "y": 1959.8,
+      "size": 19.6,
       "topic": "opposition",
-      "link": "opposition"
+      "link": "opposition",
+      "layer": "doc"
     },
     {
       "id": "topic-opposition",
       "type": "text",
-      "x": 681,
-      "y": 946,
-      "w": 261,
-      "h": 26,
+      "x": 1329.5,
+      "y": 1952.8,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "opposition",
         "field": "title"
       },
-      "link": "opposition"
+      "link": "opposition",
+      "layer": "doc"
     },
     {
       "id": "group-3",
       "type": "text",
-      "x": 960,
-      "y": 812,
-      "w": 285,
-      "h": 30,
+      "x": 1920,
+      "y": 1765.2,
+      "w": 399,
+      "h": 42,
       "text": "Presentation",
-      "size": 20,
+      "size": 28,
       "weight": 600,
-      "font": "serif"
+      "font": "serif",
+      "layer": "doc"
     },
     {
       "id": "dot-art",
       "type": "status",
-      "x": 960,
-      "y": 847,
-      "size": 14,
+      "x": 1920,
+      "y": 1814.2,
+      "size": 19.6,
       "topic": "art",
-      "link": "art"
+      "link": "art",
+      "layer": "doc"
     },
     {
       "id": "topic-art",
       "type": "text",
-      "x": 982,
-      "y": 842,
-      "w": 261,
-      "h": 26,
+      "x": 1950.8,
+      "y": 1807.2,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "art",
         "field": "title"
       },
-      "link": "art"
+      "link": "art",
+      "layer": "doc"
     },
     {
       "id": "dot-audio",
       "type": "status",
-      "x": 960,
-      "y": 873,
-      "size": 14,
+      "x": 1920,
+      "y": 1850.6,
+      "size": 19.6,
       "topic": "audio",
-      "link": "audio"
+      "link": "audio",
+      "layer": "doc"
     },
     {
       "id": "topic-audio",
       "type": "text",
-      "x": 982,
-      "y": 868,
-      "w": 261,
-      "h": 26,
+      "x": 1950.8,
+      "y": 1843.6,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "audio",
         "field": "title"
       },
-      "link": "audio"
+      "link": "audio",
+      "layer": "doc"
     },
     {
       "id": "dot-ui",
       "type": "status",
-      "x": 960,
-      "y": 899,
-      "size": 14,
+      "x": 1920,
+      "y": 1887,
+      "size": 19.6,
       "topic": "ui",
-      "link": "ui"
+      "link": "ui",
+      "layer": "doc"
     },
     {
       "id": "topic-ui",
       "type": "text",
-      "x": 982,
-      "y": 894,
-      "w": 261,
-      "h": 26,
+      "x": 1950.8,
+      "y": 1880,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "ui",
         "field": "title"
       },
-      "link": "ui"
+      "link": "ui",
+      "layer": "doc"
     },
     {
       "id": "dot-camera",
       "type": "status",
-      "x": 960,
-      "y": 925,
-      "size": 14,
+      "x": 1920,
+      "y": 1923.4,
+      "size": 19.6,
       "topic": "camera",
-      "link": "camera"
+      "link": "camera",
+      "layer": "doc"
     },
     {
       "id": "topic-camera",
       "type": "text",
-      "x": 982,
-      "y": 920,
-      "w": 261,
-      "h": 26,
+      "x": 1950.8,
+      "y": 1916.4,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "camera",
         "field": "title"
       },
-      "link": "camera"
+      "link": "camera",
+      "layer": "doc"
     },
     {
       "id": "group-4",
       "type": "text",
-      "x": 1261,
-      "y": 812,
-      "w": 285,
-      "h": 30,
+      "x": 2541.3,
+      "y": 1765.2,
+      "w": 399,
+      "h": 42,
       "text": "Experience",
-      "size": 20,
+      "size": 28,
       "weight": 600,
-      "font": "serif"
+      "font": "serif",
+      "layer": "doc"
     },
     {
       "id": "dot-onboarding",
       "type": "status",
-      "x": 1261,
-      "y": 847,
-      "size": 14,
+      "x": 2541.3,
+      "y": 1814.2,
+      "size": 19.6,
       "topic": "onboarding",
-      "link": "onboarding"
+      "link": "onboarding",
+      "layer": "doc"
     },
     {
       "id": "topic-onboarding",
       "type": "text",
-      "x": 1283,
-      "y": 842,
-      "w": 261,
-      "h": 26,
+      "x": 2572.1,
+      "y": 1807.2,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "onboarding",
         "field": "title"
       },
-      "link": "onboarding"
+      "link": "onboarding",
+      "layer": "doc"
     },
     {
       "id": "dot-session",
       "type": "status",
-      "x": 1261,
-      "y": 873,
-      "size": 14,
+      "x": 2541.3,
+      "y": 1850.6,
+      "size": 19.6,
       "topic": "session",
-      "link": "session"
+      "link": "session",
+      "layer": "doc"
     },
     {
       "id": "topic-session",
       "type": "text",
-      "x": 1283,
-      "y": 868,
-      "w": 261,
-      "h": 26,
+      "x": 2572.1,
+      "y": 1843.6,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "session",
         "field": "title"
       },
-      "link": "session"
+      "link": "session",
+      "layer": "doc"
     },
     {
       "id": "dot-replay",
       "type": "status",
-      "x": 1261,
-      "y": 899,
-      "size": 14,
+      "x": 2541.3,
+      "y": 1887,
+      "size": 19.6,
       "topic": "replay",
-      "link": "replay"
+      "link": "replay",
+      "layer": "doc"
     },
     {
       "id": "topic-replay",
       "type": "text",
-      "x": 1283,
-      "y": 894,
-      "w": 261,
-      "h": 26,
+      "x": 2572.1,
+      "y": 1880,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "replay",
         "field": "title"
       },
-      "link": "replay"
+      "link": "replay",
+      "layer": "doc"
     },
     {
       "id": "dot-accessibility",
       "type": "status",
-      "x": 1261,
-      "y": 925,
-      "size": 14,
+      "x": 2541.3,
+      "y": 1923.4,
+      "size": 19.6,
       "topic": "accessibility",
-      "link": "accessibility"
+      "link": "accessibility",
+      "layer": "doc"
     },
     {
       "id": "topic-accessibility",
       "type": "text",
-      "x": 1283,
-      "y": 920,
-      "w": 261,
-      "h": 26,
+      "x": 2572.1,
+      "y": 1916.4,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "accessibility",
         "field": "title"
       },
-      "link": "accessibility"
+      "link": "accessibility",
+      "layer": "doc"
     },
     {
       "id": "group-5",
       "type": "text",
-      "x": 1563,
-      "y": 812,
-      "w": 285,
-      "h": 30,
+      "x": 3162.7,
+      "y": 1765.2,
+      "w": 399,
+      "h": 42,
       "text": "Production",
-      "size": 20,
+      "size": 28,
       "weight": 600,
-      "font": "serif"
+      "font": "serif",
+      "layer": "doc"
     },
     {
       "id": "dot-platform",
       "type": "status",
-      "x": 1563,
-      "y": 847,
-      "size": 14,
+      "x": 3162.7,
+      "y": 1814.2,
+      "size": 19.6,
       "topic": "platform",
-      "link": "platform"
+      "link": "platform",
+      "layer": "doc"
     },
     {
       "id": "topic-platform",
       "type": "text",
-      "x": 1585,
-      "y": 842,
-      "w": 261,
-      "h": 26,
+      "x": 3193.5,
+      "y": 1807.2,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "platform",
         "field": "title"
       },
-      "link": "platform"
+      "link": "platform",
+      "layer": "doc"
     },
     {
       "id": "dot-scope",
       "type": "status",
-      "x": 1563,
-      "y": 873,
-      "size": 14,
+      "x": 3162.7,
+      "y": 1850.6,
+      "size": 19.6,
       "topic": "scope",
-      "link": "scope"
+      "link": "scope",
+      "layer": "doc"
     },
     {
       "id": "topic-scope",
       "type": "text",
-      "x": 1585,
-      "y": 868,
-      "w": 261,
-      "h": 26,
+      "x": 3193.5,
+      "y": 1843.6,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "scope",
         "field": "title"
       },
-      "link": "scope"
+      "link": "scope",
+      "layer": "doc"
     },
     {
       "id": "dot-business",
       "type": "status",
-      "x": 1563,
-      "y": 899,
-      "size": 14,
+      "x": 3162.7,
+      "y": 1887,
+      "size": 19.6,
       "topic": "business",
-      "link": "business"
+      "link": "business",
+      "layer": "doc"
     },
     {
       "id": "topic-business",
       "type": "text",
-      "x": 1585,
-      "y": 894,
-      "w": 261,
-      "h": 26,
+      "x": 3193.5,
+      "y": 1880,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "business",
         "field": "title"
       },
-      "link": "business"
+      "link": "business",
+      "layer": "doc"
     },
     {
       "id": "dot-risks",
       "type": "status",
-      "x": 1563,
-      "y": 925,
-      "size": 14,
+      "x": 3162.7,
+      "y": 1923.4,
+      "size": 19.6,
       "topic": "risks",
-      "link": "risks"
+      "link": "risks",
+      "layer": "doc"
     },
     {
       "id": "topic-risks",
       "type": "text",
-      "x": 1585,
-      "y": 920,
-      "w": 261,
-      "h": 26,
+      "x": 3193.5,
+      "y": 1916.4,
+      "w": 365.4,
+      "h": 34,
       "text": "",
-      "size": 16,
+      "size": 22.4,
       "weight": 600,
       "valign": "middle",
       "bind": {
         "topic": "risks",
         "field": "title"
       },
-      "link": "risks"
+      "link": "risks",
+      "layer": "doc"
     }
-  ],
-  "size": {
-    "width": 1920,
-    "height": 1080
-  },
-  "grid": {}
+  ]
 }

@@ -1,3 +1,8 @@
+## 2026-11-07 — preview page
+Decided: nothing new. pages/index.json is now the overview drawn around the main table's shot map (3840 × 2160): header, pillars and the machine on the left, core loop, run rules and flipper loot on the right, every topic along the bottom. The table is welded as group-table on layers Table and Shots.
+Open: tuning the table callouts. Removed the tester page, the trough and the mechanism parts (coils, crank, link, switch, spring, sling arm): in git history if needed.
+Next: topic `mechanics` as a vector one-pager, as before.
+
 ## 2026-10-31 — overview drawn
 Decided: nothing new. The overview is now a vector page (pages/index.json), and the old block index moved to pages/skeleton.json.
 Open: same as genesis below.
