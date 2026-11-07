@@ -209,7 +209,7 @@ npm test         # unit tests (Vitest); npm run test:watch while working
 npm run parts:build / asset:render / asset:info / page:render   # vault parts as code, pictures of them and of pages, summaries (see scripts/)
 ```
 
-`npm test` runs the unit tests (Vitest, Node only, `*.test.ts` next to the code): the pure logic in `lib/` (geometry and edit ops, layers, the layout cascade, routes, validation, recipe CSS/markup and the page export) plus every content file on disk through the validators. A bug fix gets a test that failed before it. Canvas interactions aren't automated: verify UI changes by running dev and exercising the canvas.
+`npm test` runs the unit tests (Vitest, Node only, `*.test.ts` next to the code): the pure logic in `lib/` (geometry and edit ops, layers, the layout cascade, routes, validation, recipe CSS/markup and the page export) every content file on disk through the validators, the API routes against a temp folder (writes land, stale saves get 409, bad ids 400), and a drawing snapshot (`workbench/ui/VectorArtboard.test.tsx`: a sample page with every element type vs. the saved SVG; a deliberate look change updates it with `npx vitest run -u`). A bug fix gets a test that failed before it. Canvas interactions aren't automated: verify UI changes by running dev and exercising the canvas.
 
 ---
 
