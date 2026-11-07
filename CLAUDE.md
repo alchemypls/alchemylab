@@ -205,10 +205,11 @@ workbench/
 npm run dev      # start dev server on :3000
 npm run build    # production build
 npm run lint     # ESLint
+npm test         # unit tests (Vitest); npm run test:watch while working
 npm run parts:build / asset:render / asset:info / page:render   # vault parts as code, pictures of them and of pages, summaries (see scripts/)
 ```
 
-No test runner is configured. Verify UI changes by running dev and exercising the canvas manually.
+`npm test` runs the unit tests (Vitest, Node only, `*.test.ts` next to the code): the pure logic in `lib/` (geometry and edit ops, layers, the layout cascade, routes, validation, recipe CSS/markup and the page export) plus every content file on disk through the validators. A bug fix gets a test that failed before it. Canvas interactions aren't automated: verify UI changes by running dev and exercising the canvas.
 
 ---
 

@@ -684,6 +684,20 @@ export function ungroupElements(p: DesignPage, ids: string[]): DesignPage {
   return withElements(p, elementsOf(p).map((e) => { if (!on.has(e.id) || !e.group) return e; const c = { ...e }; delete c.group; return c; }));
 }
 
+// Fresh copies with new ids. What pointed inside the set points at the copies: arrow ends, a painted floor (`on`),
+// and groups, which become new groups of their own. What pointed outside stays on the same page (`samePage`), else goes.
+function cloneElements(els: VElement[], samePage: boolean): VElement[] {
+  const map = new Map(els.map((e) => [e.id, newId(e.type)])), groups = new Map<string, string>();
+  const remap = (a: Anchor): Anchor => (isAttached(a) && map.has(a.el) ? { el: map.get(a.el)! } : a);
+  return els.map((e) => {
+    const c = structuredClone(e); c.id = map.get(e.id)!;
+    if (c.type === 'line') { c.from = remap(c.from); c.to = remap(c.to); }
+    if (c.on) { if (map.has(c.on)) c.on = map.get(c.on); else if (!samePage) delete c.on; }
+    if (c.group) { if (!groups.has(c.group)) groups.set(c.group, `group-${rid()}`); c.group = groups.get(c.group); }
+    return c;
+  });
+}
+
 // What Copy holds: the elements, with line ends on anything not copied pinned where they are, and the layers they're on
 export interface VClip { elements: VElement[]; layers: VLayer[] }
 export function copyElements(p: DesignPage, ids: string[]): VClip {
@@ -705,16 +719,7 @@ export function copyElements(p: DesignPage, ids: string[]): VClip {
 // Back on the page it came from it steps aside like Duplicate; on another page it keeps its place, moved inside the
 // page if it would hang off (in whole grid steps, so floors still line up with the page's lattice).
 export function pasteElements(p: DesignPage, clip: VClip): { page: DesignPage; ids: string[] } {
-  const all = elementsOf(p), map = new Map<string, string>(), groups = new Map<string, string>();
-  clip.elements.forEach((e) => map.set(e.id, newId(e.type)));
-  const remap = (a: Anchor): Anchor => (isAttached(a) ? (map.has(a.el) ? { el: map.get(a.el)! } : a) : a);
-  const copies = clip.elements.map((e) => {
-    const c = structuredClone(e); c.id = map.get(e.id)!;
-    if (c.type === 'line') { c.from = remap(c.from); c.to = remap(c.to); }
-    if (c.on) { if (map.has(c.on)) c.on = map.get(c.on); else delete c.on; }
-    if (c.group) { if (!groups.has(c.group)) groups.set(c.group, `group-${rid()}`); c.group = groups.get(c.group); }
-    return c;
-  });
+  const all = elementsOf(p), copies = cloneElements(clip.elements, false);
   const g = gridOf(p), sx = g.flat ? g.cell : 2 * g.cell, sy = g.cell, size = pageSize(p);
   let dx = 0, dy = 0;
   if (clip.elements.some((e) => all.some((x) => x.id === e.id))) {
@@ -737,16 +742,9 @@ export function pasteElements(p: DesignPage, clip: VClip): { page: DesignPage; i
   return { page: { ...withElements(p, [...all, ...moved]), ...(layers ? { layers } : {}) }, ids: moved.map((c) => c.id) };
 }
 
-// Copies keep attachments between copied elements; attachments to anything else stay on the original
+// Copies keep attachments, floors and groups among themselves (cloneElements); attachments to anything else stay on the original
 export function duplicateElements(p: DesignPage, ids: string[], offset = 24): { page: DesignPage; ids: string[] } {
-  const all = elementsOf(p), on = new Set(ids), map = new Map<string, string>();
-  all.forEach((e) => { if (on.has(e.id)) map.set(e.id, newId(e.type)); });
-  const remap = (a: Anchor): Anchor => (isAttached(a) && map.has(a.el) ? { el: map.get(a.el)! } : a);
-  const copies = all.filter((e) => on.has(e.id)).map((e) => {
-    const c = structuredClone(e); c.id = map.get(e.id)!;
-    if (c.type === 'line') { c.from = remap(c.from); c.to = remap(c.to); }
-    return c;
-  });
+  const all = elementsOf(p), on = new Set(ids), copies = cloneElements(all.filter((e) => on.has(e.id)), true);
   // A copied zone steps one tile along its own grid, so it still fits the floors around it
   const z = copies.find((c): c is VZone => c.type === 'zone');
   const step = z ? fromGrid(z, { a: 1, b: 0 }) : { x: offset, y: offset };
