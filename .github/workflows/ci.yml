@@ -25,5 +25,7 @@ jobs:
         run: npm test
       - name: Content check (design bibles, vault)
         run: npm run -s design:check
+      - name: Parts match the vault
+        run: npm run -s parts:build -- --check
       - name: Build
         run: npm run build

@@ -2,6 +2,7 @@
 //   npm run parts:build                → every part
 //   npm run parts:build -- flipper ball → just these
 //   --force   overwrite a file that changed on disk (edited on Fab) since the part last wrote it
+//   --check   write nothing; fail if any part is invalid or its vault file doesn't match it (CI)
 // A file whose drawing already matches is left alone. Relative imports only.
 
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
@@ -10,7 +11,7 @@ import { validateAsset } from '../../lib/design/validate';
 import type { Part } from './kit';
 
 const DIR = path.join(process.cwd(), 'scripts', 'parts'), VAULT = path.join(process.cwd(), 'vault', 'assets');
-const args = process.argv.slice(2), force = args.includes('--force'), want = args.filter((a) => !a.startsWith('--'));
+const args = process.argv.slice(2), force = args.includes('--force'), check = args.includes('--check'), want = args.filter((a) => !a.startsWith('--'));
 
 const parts: Part[] = readdirSync(DIR)
   .filter((f) => f.endsWith('.ts') && !['kit.ts', 'build.ts'].includes(f))
@@ -27,7 +28,8 @@ for (const p of parts.filter((x) => !want.length || want.includes(x.id))) {
   const { errors, warnings } = validateAsset(asset);
   if (errors.length) { failed = true; console.log(`✗ ${p.id}: ${errors.join('; ')}`); continue; }
   const prev = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : null;
-  if (prev && same(prev, asset)) { remember(p.id, prev); console.log(`= ${p.id}`); continue; }
+  if (prev && same(prev, asset)) { if (!check) remember(p.id, prev); console.log(`= ${p.id}`); continue; }
+  if (check) { failed = true; console.log(`✗ ${p.id}: ${prev ? 'vault file differs from its part (edited on Fab? update the part, or build with --force)' : 'no vault file yet (npm run parts:build)'}`); continue; }
   if (prev && !force && !builtBefore(p.id, prev)) { console.log(`! ${p.id}: changed on disk since it was built (edited on Fab?). --force to overwrite`); continue; }
   writeFileSync(file, JSON.stringify(asset, null, 2) + '\n');
   remember(p.id, asset);

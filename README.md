@@ -50,7 +50,7 @@ pages, never edit them, and sharing turns itself off after 30 minutes. Don't dep
 npm run dev            # dev server on :3000
 npm run build          # production build
 npm run lint           # ESLint
-npm test               # unit tests (Vitest): geometry, layout, validation, export, and every content file
+npm test               # tests (Vitest): edit ops, the export, and the guards on your files
 npm run design:check   # validate design bibles and report page fit
 npm run parts:build    # vault parts written as code (scripts/parts) → vault/assets
 npm run asset:render   # PNGs of vault assets in .render/ (needs inkscape + ImageMagick)
