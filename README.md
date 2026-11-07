@@ -24,6 +24,10 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+Alchemy is a local tool: it reads and writes files in this folder and has no login, so it only answers the computer
+it runs on. To try a Live page on your phone, use **Share on this Wi-Fi** in the Live canvas's phone box: phones can view
+pages, never edit them, and sharing turns itself off after 30 minutes. Don't deploy it to a server.
+
 ## Controls
 
 | Action | How |

@@ -1,5 +1,5 @@
-// /live/<project>/<route…>: the project's page as a browser gets it (lib/live.ts). Served on every interface the dev
-// server listens on, so a phone on the same network can open it. Local dev tool only.
+// /live/<project>/<route…>: the project's page as a browser gets it (lib/live.ts). A phone on the same network gets it
+// through the read-only gateway while sharing is on (lib/server/phoneShare.ts). Local dev tool only.
 
 import { SLUG } from '@/lib/design/types';
 import { livePage } from '@/lib/live';

@@ -24,7 +24,7 @@ One canvas, one job (`lib/scenes.ts`, grid: Ideation | Fab over Live | Web). Eve
 | **Ideation** (`ideation`) | Design bible pages; the page is the canvas | `workbench/canvases/IdeationCanvas.tsx` |
 | **Fab** (`fab`) | One editor at a time makes assets for the other canvases: Visual Identity, Components, Blocks | `workbench/canvases/FabCanvas.tsx`, same layout as Ideation. Visual Identity edits vault shapes, icons and palettes; Blocks edits vault blocks (game pieces drawn on their footprint tiles, isometric grid with corner snapping); Components saves to the current project (`useCurrentProject`) |
 | **Web** (`web`) | Test page and app layouts, quick prototypes | `workbench/canvases/WebCanvas.tsx`, same shell as Ideation: one page of a web project at its device size, three layers (wireframe → layout → preview; 1/2/3, Ctrl + mouse wheel, pips on the minimap), the ones under it see-through. The wireframe is a vector page per tier (`PageSketch`), drawn with Ideation's tools (images stay in the browser: `src: idb:<id>`). Panel: project + page pickers, device bar; box under the minimap: **page** (intent, status, head, notes), **routes** (the route tree), **project**, **layers** (wireframe). Layout layer: pick a component in the **components** box and click the page (or drag it in), drag blocks to move, corner to resize (snaps to the tier's columns and rows; wider tiers write their own override), hide per tier, Del deletes; the selected block's fields fill the box; **variants** = alternative layouts. Preview is read-only so far. **code** box: the page's output as plain HTML or a Next.js page (copy, download, open the HTML in a tab) |
-| **Live** (`rnd`) | The web project running for real, like browser dev tools | `workbench/canvases/LiveCanvas.tsx`: the page served at `/live/<project>/<route>` (the HTML export + live reload + a console bridge, `lib/live.ts`) in a frame at a device's size. Devices are its layers: one per tier (1/2/3, Ctrl + wheel, pips), DeviceBar in the panel. Boxes: **console** (the page's logs/errors + load numbers), **checks** (`lib/liveChecks.ts`: broken links, overlaps, hidden blocks, missing text/alt), **phone** (LAN URLs: same page on a real phone, reloads itself on save). Following a link in the page opens that page on Web too |
+| **Live** (`rnd`) | The web project running for real, like browser dev tools | `workbench/canvases/LiveCanvas.tsx`: the page served at `/live/<project>/<route>` (the HTML export + live reload + a console bridge, `lib/live.ts`) in a frame at a device's size. Devices are its layers: one per tier (1/2/3, Ctrl + wheel, pips), DeviceBar in the panel. Boxes: **console** (the page's logs/errors + load numbers), **checks** (`lib/liveChecks.ts`: broken links, overlaps, hidden blocks, missing text/alt), **phone** (Share on this Wi-Fi: a read-only gateway for phones, Live pages only, off after 30 min; same page on a real phone, reloads itself on save). Following a link in the page opens that page on Web too |
 
 `workbench/shell/CanvasPanel.tsx` sits above every canvas (switcher, vault). A canvas adds its own controls with `CanvasPanelSlot` (`area="below"` for a tall box like properties).
 
@@ -54,7 +54,8 @@ app/
   api/vault/watch/route.ts  — SSE: one message per changed file under vault/
   api/projects/route.ts     — web projects (projects/<id>.json): list, get, PUT (validated, x-base-mtime → 409), DELETE
   api/projects/watch/route.ts — SSE: one message per changed project file (the Web canvas and every /live page listen)
-  api/lan/route.ts          — this machine's LAN addresses + port, for opening /live on a phone
+  api/lan/route.ts          — this machine's LAN addresses; PUT {on} turns phone sharing (lib/server/phoneShare.ts) on/off
+middleware.ts       — /api and /live answer only requests addressed to localhost (no DNS rebinding, a deployed copy refuses)
   live/[pid]/[[...path]]/route.ts — a project's page as a browser gets it (lib/live.ts)
   api/pen/route.ts  — pen bridge SSE stream (?source=local|remarkable): spawns scripts/pen-bridge.py per source on first client, kills on last (local dev only)
 
@@ -175,6 +176,11 @@ workbench/
 ## Architecture rules
 
 **Canvases are full-screen components, not widgets.** Each one renders its sheet with `useSheetView` (pan/zoom), its tool rail, and its panel with `SheetPanel` portaled into `CanvasPanel` (`CanvasPanelSlot`). Only the active canvas is mounted. Layers on a canvas are picked with pips left of the minimap, 1/2/3 and Ctrl + wheel.
+
+**Local only, safe by default.** The API reads and writes this computer's files with no login, so nothing else may reach
+it: `npm run dev`/`start` listen on 127.0.0.1, `middleware.ts` refuses requests not addressed to localhost, and phones
+get Live pages only through the read-only gateway (`lib/server/phoneShare.ts`: GET /live/… and the reload stream, off
+after 30 minutes). Keep it that way: never bind the app to the network or widen the gateway's allow-list.
 
 **Files on disk are the source of truth, shared with the agent.** Design bibles (`design/`), vault assets and palettes (`vault/`), web projects (`projects/`): each has an API route that validates writes and refuses stale ones (`x-base-mtime` → 409), and an SSE watch so the canvases follow edits made elsewhere (the agent, another tab). Browser storage holds only this browser's view (open canvas/page, tool styles, tracing images, vault order).
 

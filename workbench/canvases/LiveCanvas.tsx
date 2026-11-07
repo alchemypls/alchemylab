@@ -262,26 +262,50 @@ function ChecksBox({ checks, open }: { checks: ReturnType<typeof liveChecks>; op
   );
 }
 
+// Phones see Live pages through a read-only gateway that's off until you turn it on here (lib/server/phoneShare.ts):
+// the app itself only answers this computer.
 function PhoneBox({ path }: { path: string }) {
-  const [lan, setLan] = useState<{ hosts: string[]; port: string } | null>(null);
+  type Lan = { hosts: string[]; sharing: { port: number; until: number } | null; error?: string };
+  const [lan, setLan] = useState<Lan | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
-  useEffect(() => { fetch('/api/lan').then((r) => r.json()).then(setLan, () => setLan({ hosts: [], port: '' })); }, []);
-  const urls = (lan?.hosts ?? []).map((h) => `http://${h}:${lan!.port}${path}`);
+  const [now, setNow] = useState(() => Date.now());
+  const load = (r: Promise<Response>) => r.then((x) => x.json()).then(setLan, () => setLan({ hosts: [], sharing: null, error: 'Dev server unreachable' }));
+  useEffect(() => { load(fetch('/api/lan')); }, []);
+  useEffect(() => { const t = setInterval(() => setNow(Date.now()), 15000); return () => clearInterval(t); }, []);
+  const share = (on: boolean) => load(fetch('/api/lan', { method: 'PUT', body: JSON.stringify({ on }) }));
+  const s = lan?.sharing && lan.sharing.until > now ? lan.sharing : null;
+  const urls = s ? lan!.hosts.map((h) => `http://${h}:${s.port}${path}`) : [];
+  const BTN = 'text-[10px] font-mono px-2 py-0.5 rounded border border-neutral-700 hover:bg-neutral-800';
   return (
     <div className="p-3 flex flex-col gap-2 text-[11px] text-neutral-300">
       <span className="text-[10px] uppercase tracking-widest text-sky-400">Open on a phone</span>
       {!lan ? <p className="text-neutral-500">Looking up this computer&apos;s address…</p>
-      : !urls.length ? <p className="text-neutral-500">No network address found. Is this computer on wifi or ethernet?</p>
-      : urls.map((u) => (
-        <div key={u} className="flex items-center gap-2">
-          <code className="flex-1 min-w-0 break-all text-[12px] text-amber-200">{u}</code>
-          <button className="text-[10px] font-mono px-2 py-0.5 rounded border border-neutral-700 hover:bg-neutral-800" onClick={() => navigator.clipboard.writeText(u).then(() => { setCopied(u); setTimeout(() => setCopied(null), 1500); })}>{copied === u ? 'copied' : 'copy'}</button>
-        </div>
-      ))}
-      <p className="text-[10px] text-neutral-500 leading-relaxed">
-        The phone has to be on the same network. It reloads by itself when you change the page on Web. If it can&apos;t connect,
-        the computer&apos;s firewall may be blocking port {lan?.port || '3000'} (for ufw: <code>sudo ufw allow {lan?.port || '3000'}/tcp</code>).
-      </p>
+      : lan.error ? <p className="text-red-300">{lan.error}</p>
+      : !lan.hosts.length ? <p className="text-neutral-500">No network address found. Is this computer on wifi or ethernet?</p>
+      : !s ? (
+        <>
+          <p className="text-neutral-400 leading-relaxed">Alchemy only answers this computer. Sharing lets phones on this Wi-Fi view Live pages, and nothing else: they can&apos;t edit or delete anything.</p>
+          <button className={`${BTN} self-start text-sky-300`} onClick={() => share(true)}>Share on this Wi-Fi</button>
+        </>
+      ) : (
+        <>
+          {urls.map((u) => (
+            <div key={u} className="flex items-center gap-2">
+              <code className="flex-1 min-w-0 break-all text-[12px] text-amber-200">{u}</code>
+              <button className={BTN} onClick={() => navigator.clipboard.writeText(u).then(() => { setCopied(u); setTimeout(() => setCopied(null), 1500); })}>{copied === u ? 'copied' : 'copy'}</button>
+            </div>
+          ))}
+          <div className="flex items-center gap-2">
+            <span className="text-emerald-400">Sharing, view only</span>
+            <span className="text-neutral-500">· off in {Math.max(1, Math.round((s.until - now) / 60000))} min</span>
+            <button className={`${BTN} ml-auto`} onClick={() => share(false)}>Stop</button>
+          </div>
+          <p className="text-[10px] text-neutral-500 leading-relaxed">
+            Anyone on this network can view these pages while sharing is on. The phone reloads by itself when you change the page on Web.
+            If it can&apos;t connect, the firewall may be blocking port {s.port} (for ufw: <code>sudo ufw allow {s.port}/tcp</code>).
+          </p>
+        </>
+      )}
     </div>
   );
 }
