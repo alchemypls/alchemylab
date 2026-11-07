@@ -1,5 +1,7 @@
 # Alchemy
 
+[![CI](https://github.com/alchemypls/alchemylab/actions/workflows/ci.yml/badge.svg)](https://github.com/alchemypls/alchemylab/actions/workflows/ci.yml)
+
 A design-to-build workbench. Four full-screen canvases, one job each, on a 2×2 grid:
 
 | | |
