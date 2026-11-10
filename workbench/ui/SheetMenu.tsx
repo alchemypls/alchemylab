@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useCallback, useState, type MouseEvent } from 'react';
 import { ClipboardCopy, ClipboardPaste, Copy, CopyPlus, FlipHorizontal2, Link2, PenLine, SquareDashedMousePointer, Trash2, Unlink2 } from 'lucide-react';
 import { BackIcon, FrontIcon } from './OrderIcons';
 import { useWorkbenchStore } from '@/lib/store';
@@ -11,14 +10,26 @@ import type { DesignPage } from '@/lib/design/types';
 import { copyAsset, useVault } from '@/workbench/hooks/useVault';
 import { PLANE_OPTIONS } from './ToolMenu';
 import { getClip, putClip } from './vector/clipboard';
+import { MENU_KEY as KEY, MENU_ROW as ROW, MenuRule, PopMenu } from './PopMenu';
 
 // The right-click menu on a vector sheet (Ideation and Fab): what can be done to the selection, or to the page when
-// nothing is under the pointer. Rendered on <body>, so the sheet's zoom doesn't move or scale it.
+// nothing is under the pointer. Its frame is PopMenu.
 
 export interface SheetMenuAt { x: number; y: number; ids: string[] }
 
-const ROW = 'w-full flex items-center gap-2 px-2.5 py-1.5 text-left text-[12px] rounded-md hover:bg-neutral-800/80 disabled:opacity-35 disabled:hover:bg-transparent';
-const KEY = 'ml-auto pl-4 text-[10px] font-mono text-neutral-500';
+// Right-click on a row in a list (the layers box, the selection list): the sheet's menu for that row's element, or for
+// the whole selection when the row is part of it. `menu` goes anywhere in the list's tree (it renders on <body>).
+export function useRowMenu(page: DesignPage, apply: (next: DesignPage) => void, selected: string[], select: (ids: string[]) => void) {
+  const [at, setAt] = useState<SheetMenuAt | null>(null);
+  const close = useCallback(() => setAt(null), []);
+  const open = (id: string) => (e: MouseEvent) => {
+    e.preventDefault();
+    const ids = selected.includes(id) ? selected : [id];
+    select(ids); setAt({ x: e.clientX, y: e.clientY, ids });
+  };
+  const menu = at && <SheetMenu at={at} page={page} apply={apply} select={select} selectable={[]} close={close} />;
+  return { open, menu };
+}
 
 export function SheetMenu({ at, page, apply, select, selectable, close }: {
   at: SheetMenuAt; page: DesignPage;
@@ -26,33 +37,11 @@ export function SheetMenu({ at, page, apply, select, selectable, close }: {
   selectable: string[];   // what Select all picks: not on a hidden or locked layer, not switched off in Select's menu
   close: () => void;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [pos, setPos] = useState({ x: at.x, y: at.y });
   const vault = useVault().entries;
   const setScene = useWorkbenchStore((s) => s.setActiveScene);
   const scene = useWorkbenchStore((s) => s.activeScene);
   const setEditor = useWorkbenchStore((s) => s.setFabEditor);
   const setFabAsset = useWorkbenchStore((s) => s.setFabAsset);
-
-  // Kept on screen
-  useLayoutEffect(() => {
-    const r = ref.current?.getBoundingClientRect();
-    if (r) setPos({ x: Math.min(at.x, window.innerWidth - r.width - 8), y: Math.min(at.y, window.innerHeight - r.height - 8) });
-  }, [at]);
-  useEffect(() => {
-    const away = (e: Event) => { if (!ref.current?.contains(e.target as Node)) close(); };
-    const key = (e: KeyboardEvent) => { if (e.key === 'Escape') { e.stopPropagation(); close(); } };
-    window.addEventListener('pointerdown', away, true);
-    window.addEventListener('wheel', close, true);
-    window.addEventListener('keydown', key, true);
-    window.addEventListener('blur', close);
-    return () => {
-      window.removeEventListener('pointerdown', away, true);
-      window.removeEventListener('wheel', close, true);
-      window.removeEventListener('keydown', key, true);
-      window.removeEventListener('blur', close);
-    };
-  }, [close]);
 
   const els = (page.elements ?? []).filter((e) => at.ids.includes(e.id));
   const run = (f: () => void) => () => { f(); close(); };
@@ -69,16 +58,8 @@ export function SheetMenu({ at, page, apply, select, selectable, close }: {
     apply(next);
   };
 
-  return createPortal(
-    <div
-      ref={ref} role="menu"
-      // A portal still bubbles React events up its React parents: the sheet would take this press as a drawing gesture
-      // (and capture the pointer, so the button never gets its click)
-      onPointerDown={(e) => e.stopPropagation()} onPointerMove={(e) => e.stopPropagation()} onPointerUp={(e) => e.stopPropagation()}
-      onDoubleClick={(e) => e.stopPropagation()} onContextMenu={(e) => { e.preventDefault(); e.stopPropagation(); }}
-      className="fixed z-[100] min-w-[190px] p-1 rounded-lg border border-neutral-800 bg-neutral-950 shadow-[0_10px_40px_rgba(0,0,0,0.75)] text-neutral-200"
-      style={{ left: pos.x, top: pos.y }}
-    >
+  return (
+    <PopMenu x={at.x} y={at.y} close={close}>
       {els.length ? (
         <>
           <div className="px-2.5 pt-1 pb-1.5 text-[9px] uppercase tracking-widest text-amber-500">{only ? (asset ? asset.title : only.type) : `${els.length} selected`}</div>
@@ -125,7 +106,7 @@ export function SheetMenu({ at, page, apply, select, selectable, close }: {
               <CopyPlus size={14} />Make unique
             </button>
           )}
-          <div className="my-1 border-t border-neutral-800" />
+          <MenuRule />
           <button className={`${ROW} text-red-300`} onClick={run(() => { apply(removeElements(page, at.ids)); select([]); })}><Trash2 size={14} />Delete<span className={KEY}>Del</span></button>
         </>
       ) : (
@@ -134,7 +115,6 @@ export function SheetMenu({ at, page, apply, select, selectable, close }: {
           <button className={ROW} disabled={!clip} onClick={run(() => { if (!clip) return; const r = pasteElements(page, clip); apply(r.page); select(r.ids); })}><ClipboardPaste size={14} />Paste{clip && ` ${clip.elements.length}`}<span className={KEY}>Ctrl V</span></button>
         </>
       )}
-    </div>,
-    document.body,
+    </PopMenu>
   );
 }

@@ -2,17 +2,21 @@
 
 import { useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Copy, CopyPlus, Crosshair, Palette as PaletteIcon, PenLine, Trash2 } from 'lucide-react';
 import { useWorkbenchStore } from '@/lib/store';
+import { getSlideDir } from '@/lib/scenes';
 import { dimsText, type AssetKind, type VaultAsset } from '@/lib/design/vault';
 import type { Palette } from '@/lib/design/palette';
-import { assetUses, deleteAsset, deletePalette, usePalettes, useVault, type VaultFile } from '@/workbench/hooks/useVault';
+import { assetUses, copyAsset, createPalette, deleteAsset, deletePalette, usePalettes, useVault, type VaultFile } from '@/workbench/hooks/useVault';
+import { MENU_ROW as ROW, MenuRule, PopMenu } from '@/workbench/ui/PopMenu';
 import { AssetThumb } from '@/workbench/ui/AssetPicker';
 import { FlyoutChoice, GhostSlot, VaultEmpty, VaultSearch, VaultTabs, VaultWindow, gridStyle, packSlots, useSlotGrid } from '@/workbench/ui/vault/VaultParts';
 
 // The file vault (vault/ on disk) on Ideation and Fab, in the vault window: search, sort, a tab per kind, items
 // packed into slots (a long block takes two). On Ideation a pick arms placing: each click on the page puts one down
 // (a palette becomes the one every color picker shows). On Fab a pick opens the file in its editor. Hover for details;
-// drag to reorder (kept per browser), or out onto an Ideation page to place it there.
+// drag to reorder (kept per browser), or out onto an Ideation page to place it there. Right-click: place or open, edit
+// in Fab, duplicate, copy as another kind (a new file: the original and its placements stay), delete.
 
 type Tab = 'all' | AssetKind | 'palette';
 type Sort = 'custom' | 'name' | 'newest' | 'kind';
@@ -54,6 +58,7 @@ export function FileVault() {
   const setOpened = useWorkbenchStore((s) => s.setFabAsset);
   const swatch   = useWorkbenchStore((s) => s.swatchPalette);
   const setSwatch = useWorkbenchStore((s) => s.setSwatchPalette);
+  const setScene    = useWorkbenchStore((s) => s.setActiveScene);
   const assets = useVault(), palettes = usePalettes();
   const fab = scene === 'fab';
 
@@ -66,6 +71,7 @@ export function FileVault() {
   const [dragging, setDragging] = useState<string | null>(null);
   const [over, setOver] = useState<string | null>(null);
   const [card, setCard] = useState<{ item: Item; at: { x: number; y: number } } | null>(null);
+  const [menu, setMenu] = useState<{ item: Item; x: number; y: number } | null>(null);
   const hide = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { cols, rowsFit, areaRef } = useSlotGrid();
 
@@ -107,6 +113,23 @@ export function FileVault() {
       if (fab) { setEditor('identity'); setOpened(i.key); } else setSwatch(swatch === i.file.id ? undefined : i.file.id);
     } else if (fab) { setEditor(i.file.asset.kind === 'block' ? 'blocks' : 'identity'); setOpened(i.key); }
     else arm(armed === i.key ? null : i.key);
+  };
+  // Opens a vault file on Fab, in its editor, from wherever you are
+  const toFab = (key: string, kind: AssetKind | 'palette') => {
+    setEditor(kind === 'block' ? 'blocks' : 'identity'); setOpened(key);
+    if (!fab) setScene('fab', getSlideDir(scene, 'fab'));
+  };
+  const duplicate = async (i: Item, kind?: AssetKind) => {
+    if (i.type === 'asset') {
+      const r = await copyAsset(i.file.asset, kind);
+      if ('error' in r) window.alert(`Couldn't copy it: ${r.error}`); else toFab(r.id, kind ?? i.file.asset.kind);
+      return;
+    }
+    const root = i.title.replace(/\s+\d+$/, '');
+    let n = 2;
+    while (palettes.entries.some((p) => p.asset.title === `${root} ${n}`)) n++;
+    const r = await createPalette(`${root} ${n}`, i.file.asset);
+    if ('error' in r) window.alert(`Couldn't copy it: ${r.error}`); else toFab(`palette:${r.id}`, 'palette');
   };
   const remove = async (i: Item) => {
     setCard(null);
@@ -151,7 +174,8 @@ export function FileVault() {
                       onDragEnd={() => { setDragging(null); setOver(null); }}
                       onDrop={(e) => { e.preventDefault(); moveTo(i.key); setDragging(null); setOver(null); }}
                       onClick={() => { if (!dragging) pick(i); }}
-                      onMouseEnter={(e) => { if (dragging) return; if (hide.current) clearTimeout(hide.current); setCard({ item: i, at: anchorBy(e.currentTarget.getBoundingClientRect()) }); }}
+                      onContextMenu={(e) => { e.preventDefault(); setCard(null); setMenu({ item: i, x: e.clientX, y: e.clientY }); }}
+                      onMouseEnter={(e) => { if (dragging || menu) return; if (hide.current) clearTimeout(hide.current); setCard({ item: i, at: anchorBy(e.currentTarget.getBoundingClientRect()) }); }}
                       onMouseLeave={() => { hide.current = setTimeout(() => setCard(null), 180); }}
                     >
                       <Cell item={i} lit={lit(i)} dim={dragging === i.key} target={over === i.key && dragging !== i.key} />
@@ -163,6 +187,14 @@ export function FileVault() {
           </div>
         </div>
       </VaultWindow>
+
+      {open && menu && (
+        <VaultMenu
+          item={menu.item} x={menu.x} y={menu.y} fab={fab} lit={lit(menu.item)} close={() => setMenu(null)}
+          onPick={() => pick(menu.item)} onFab={() => toFab(menu.item.key, kindOf(menu.item))}
+          onDuplicate={(kind) => duplicate(menu.item, kind)} onDelete={() => remove(menu.item)}
+        />
+      )}
 
       <AnimatePresence>
         {open && card && (
@@ -227,5 +259,37 @@ function FileCard({ item, at, fab, lit, onEnter, onLeave, onPick, onDelete }: {
         <button onClick={onDelete} className="px-2 py-0.5 rounded text-[9px] font-medium border border-red-500/30 text-red-400/70 hover:bg-red-500/10 hover:text-red-400 hover:border-red-500/50">Delete</button>
       </div>
     </div>
+  );
+}
+
+// The right-click menu on a vault item. Every copy is a new file, opened on Fab; the original is left as it was.
+const KINDS: AssetKind[] = ['shape', 'icon', 'block'];
+function VaultMenu({ item, x, y, fab, lit, close, onPick, onFab, onDuplicate, onDelete }: {
+  item: Item; x: number; y: number; fab: boolean; lit: boolean; close: () => void;
+  onPick: () => void; onFab: () => void; onDuplicate: (kind?: AssetKind) => void; onDelete: () => void;
+}) {
+  const run = (f: () => void) => () => { close(); f(); };
+  const kind = kindOf(item);
+  return (
+    <PopMenu x={x} y={y} close={close}>
+      <div className="px-2.5 pt-1 pb-1.5 text-[9px] uppercase tracking-widest text-amber-500 truncate max-w-[220px]">{item.title} · {kind}</div>
+      {fab
+        ? <button className={ROW} onClick={run(onPick)}><PenLine size={14} />Open</button>
+        : <>
+            <button className={ROW} onClick={run(onPick)}>
+              {item.type === 'palette' ? <><PaletteIcon size={14} />{lit ? 'Stop using in color pickers' : 'Use in color pickers'}</> : <><Crosshair size={14} />{lit ? 'Stop placing' : 'Place'}</>}
+            </button>
+            <button className={ROW} title="Every placement of it changes" onClick={run(onFab)}><PenLine size={14} />Edit in Fab</button>
+          </>}
+      <MenuRule />
+      <button className={ROW} title="A new file with the same drawing, opened on Fab" onClick={run(() => onDuplicate())}><Copy size={14} />Duplicate</button>
+      {item.type === 'asset' && KINDS.filter((k) => k !== kind).map((k) => (
+        <button key={k} className={ROW} title={`A new ${k} with the same drawing, opened on Fab. This one and its placements stay as they are.`} onClick={run(() => onDuplicate(k))}>
+          <CopyPlus size={14} />Copy as {k}
+        </button>
+      ))}
+      <MenuRule />
+      <button className={`${ROW} text-red-300`} onClick={run(onDelete)}><Trash2 size={14} />Delete…</button>
+    </PopMenu>
   );
 }

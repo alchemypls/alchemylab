@@ -4,13 +4,15 @@ import { useState } from 'react';
 import type { DesignPage } from '@/lib/design/types';
 import type { Footprint } from '@/lib/design/vector';
 import { FOOTPRINT_MAX, type AssetKind, type VaultAsset } from '@/lib/design/vault';
-import { assetUses, deleteAsset } from '@/workbench/hooks/useVault';
-import { Field, Seg, Swatches } from '@/workbench/ui/StyleFields';
+import { assetUses, copyAsset, deleteAsset } from '@/workbench/hooks/useVault';
+import { Field, Swatches } from '@/workbench/ui/StyleFields';
 import { TextInput } from '@/workbench/ui/TextInput';
 
 // The open asset's own settings. Deleting warns where it's used, because those pages lose the drawing.
-// Changing the kind to or from block moves the file to the other editor.
-export function AssetFile({ id, asset, apply, moved }: { id: string; asset: VaultAsset; apply: (next: DesignPage, key?: string) => void; moved: (kind: AssetKind) => void }) {
+// The kind is fixed: it sets how every placement draws. "Copy as" makes a new file of another kind and opens it
+// (in the other editor when it crosses to or from block).
+const KINDS: AssetKind[] = ['shape', 'icon', 'block'];
+export function AssetFile({ id, asset, apply, opened }: { id: string; asset: VaultAsset; apply: (next: DesignPage, key?: string) => void; opened: (id: string, kind: AssetKind) => void }) {
   const remove = async () => {
     const uses = await assetUses(id);
     const where = uses.length ? `It's placed on:\n${uses.join('\n')}\n\nThose pages will show a red box instead. ` : '';
@@ -20,10 +22,16 @@ export function AssetFile({ id, asset, apply, moved }: { id: string; asset: Vaul
     <div className="p-3 flex flex-col gap-4 text-xs text-neutral-300">
       <Field label="Name"><TextInput className="w-full" value={asset.title} onChange={(title) => apply({ ...asset, title }, 'file:title')} /></Field>
       <Field label="Kind">
-        <Seg
-          options={[{ value: 'shape', label: 'Shape' }, { value: 'icon', label: 'Icon' }, { value: 'block', label: 'Block' }]} value={asset.kind}
-          onChange={(kind) => { apply({ ...asset, kind } as VaultAsset); if ((kind === 'block') !== (asset.kind === 'block')) moved(kind); }}
-        />
+        <div className="flex items-center gap-1">
+          <span className="text-amber-400 capitalize mr-1">{asset.kind}</span>
+          {KINDS.filter((k) => k !== asset.kind).map((k) => (
+            <button
+              key={k} className="px-2 py-0.5 rounded border border-neutral-700 text-[11px] text-neutral-400 hover:bg-neutral-800"
+              title={`A new file: a copy of this one as a${k === 'icon' ? 'n' : ''} ${k}. This one and its placements stay as they are.`}
+              onClick={async () => { const r = await copyAsset(asset, k); if ('id' in r) opened(r.id, k); }}
+            >Copy as {k}</button>
+          ))}
+        </div>
       </Field>
       {asset.kind === 'block' && <Field label="Footprint on a floor, in tiles">
         <FootprintPicker

@@ -266,7 +266,7 @@ export function FabCanvas() {
               ? <VectorBox vt={vt} page={page} layersOpen={layersOpen} apply={doc.apply} asset />
               : drawing
               ? (fileProps && fileHere && file.shown && fabAsset ? <>
-                  <AssetFile id={fabAsset} asset={file.shown} apply={assetDoc.apply} moved={(kind) => setEditor(kind === 'block' ? 'blocks' : 'identity')} />
+                  <AssetFile id={fabAsset} asset={file.shown} apply={assetDoc.apply} opened={(id, kind) => { setFabFile(id); setEditor(kind === 'block' ? 'blocks' : 'identity'); }} />
                   <div className="border-t border-neutral-700/60"><TraceFields t={tr} /></div>
                 </> : undefined)
               : <div className="flex flex-col text-neutral-300"><FabricatorHeader f={f} /><FabricatorSide f={f} /></div>

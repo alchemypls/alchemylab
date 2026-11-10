@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from 'react';
-import { Box, Circle, CircleDot, Eye, EyeOff, Grid3x3, Image as ImageIcon, Lock, Minus, MoveUpRight, Pentagon, PenLine, RectangleHorizontal, Shapes, Square, Sticker, Type, Unlock, type LucideIcon } from 'lucide-react';
+import { useCallback, useState } from 'react';
+import { ArrowDown, ArrowUp, Box, Circle, CircleDot, Eye, EyeOff, Grid3x3, Image as ImageIcon, Lock, Minus, MoveUpRight, Pentagon, PenLine, Pencil, RectangleHorizontal, Shapes, Square, SquareDashedMousePointer, Sticker, Trash2, Type, Unlock, type LucideIcon } from 'lucide-react';
 import { useVault } from '@/workbench/hooks/useVault';
+import { useRowMenu } from './SheetMenu';
+import { MENU_ROW as ROW, MenuRule, PopMenu } from './PopMenu';
 import { addLayer, layerOf, layersOf, moveLayer, moveToLayer, removeLayer, updateLayer, type VLayer } from '@/lib/design/layers';
 import type { DesignPage } from '@/lib/design/types';
 import type { VElement } from '@/lib/design/vector';
@@ -51,6 +53,9 @@ export function LayersPanel({ page, apply, active, setActive, selected, select, 
   const layers = layersOf(page), els = page.elements ?? [];
   const [open, setOpen] = useState<string | null>(null);
   const [renaming, setRenaming] = useState<string | null>(null);
+  const rowMenu = useRowMenu(page, apply, selected, select);
+  const [layerMenu, setLayerMenu] = useState<{ id: string; x: number; y: number } | null>(null);
+  const closeLayerMenu = useCallback(() => setLayerMenu(null), []);
   const on = (l: VLayer) => els.filter((e) => layerOf(layers, e).id === l.id);
   const cur = layers.find((l) => l.id === active);
 
@@ -60,16 +65,16 @@ export function LayersPanel({ page, apply, active, setActive, selected, select, 
     if (!l[key]) { const off = new Set(on(l).map((e) => e.id)); select(selected.filter((id) => !off.has(id))); }
   };
   const add = () => { const r = addLayer(page, active); apply(r.page); setActive(r.id); setRenaming(r.id); };
-  const remove = () => {
-    if (!cur) return;
-    const n = on(cur).length;
-    if (n && !window.confirm(`Delete "${cur.name}" and the ${n} thing${n === 1 ? '' : 's'} on it?`)) return;
-    apply(removeLayer(page, cur.id));
+  const remove = (l: VLayer) => {
+    const n = on(l).length;
+    if (n && !window.confirm(`Delete "${l.name}" and the ${n} thing${n === 1 ? '' : 's'} on it?`)) return;
+    apply(removeLayer(page, l.id));
     select([]);
   };
 
   return (
     <div className="p-3 flex flex-col gap-3 text-xs text-neutral-300">
+      {rowMenu.menu}
       <div className="flex flex-col gap-0.5">
         {[...layers].reverse().map((l) => {
           const mine = on(l), usable = !l.hidden && !l.locked;
@@ -78,7 +83,8 @@ export function LayersPanel({ page, apply, active, setActive, selected, select, 
               <div
                 className={`flex items-center gap-1 rounded px-1 py-0.5 ${l.id === active ? 'bg-amber-500/15 ring-1 ring-amber-600/60' : 'hover:bg-neutral-800'} ${usable ? 'cursor-pointer' : ''}`}
                 onClick={() => usable && setActive(l.id)}
-                title={usable ? 'Draw on this layer' : 'Hidden or locked: show and unlock it to draw on it'}
+                onContextMenu={(e) => { e.preventDefault(); setLayerMenu({ id: l.id, x: e.clientX, y: e.clientY }); }}
+                title={usable ? 'Draw on this layer. Right-click for more' : 'Hidden or locked: show and unlock it to draw on it'}
               >
                 <button className={`${ICON} text-neutral-500`} onClick={(e) => { e.stopPropagation(); setOpen(open === l.id ? null : l.id); }} aria-label="List what's on it">{open === l.id ? '▾' : '▸'}</button>
                 {renaming === l.id ? (
@@ -100,7 +106,7 @@ export function LayersPanel({ page, apply, active, setActive, selected, select, 
                   {!mine.length && <span className="text-[10px] text-neutral-600">Empty</span>}
                   {[...mine].reverse().map((e) => (
                     <button
-                      key={e.id} disabled={!usable} onClick={() => select([e.id])}
+                      key={e.id} disabled={!usable} onClick={() => select([e.id])} onContextMenu={rowMenu.open(e.id)}
                       className={`flex items-center gap-1.5 text-left text-[10px] px-1 rounded ${selected.includes(e.id) ? 'text-amber-400' : 'text-neutral-400 hover:text-white'} disabled:opacity-50`}
                     ><ElementIcon el={e} /><span className="truncate">{elementLabel(e)}</span></button>
                   ))}
@@ -114,8 +120,6 @@ export function LayersPanel({ page, apply, active, setActive, selected, select, 
         <button className={BTN} onClick={add}>+ Layer</button>
         <button className={BTN} disabled={!cur || layers[layers.length - 1].id === cur.id} onClick={() => cur && apply(moveLayer(page, cur.id, 1))} title="Move up">↑</button>
         <button className={BTN} disabled={!cur || layers[0].id === cur.id} onClick={() => cur && apply(moveLayer(page, cur.id, -1))} title="Move down">↓</button>
-        <span className="flex-1" />
-        <button className={`${BTN} !border-red-900 !text-red-300`} disabled={!cur || layers.length < 2} onClick={remove}>Delete</button>
       </div>
       {selected.length > 0 && cur && (
         <button className={`${BTN} self-start`} onClick={() => apply(moveToLayer(page, selected, cur.id))}>
@@ -127,6 +131,26 @@ export function LayersPanel({ page, apply, active, setActive, selected, select, 
           ? 'Hidden layers start hidden where this is placed, and each placement can show or hide layers. Use one for each version, like Outline and Filled.'
           : 'New drawing goes on the highlighted layer. The agent sees hidden layers too, and knows you hid them.'}
       </p>
+      {layerMenu && (() => {
+        const l = layers.find((x) => x.id === layerMenu.id);
+        if (!l) return null;
+        const n = layers.indexOf(l), mine = on(l), usable = !l.hidden && !l.locked;
+        const run = (f: () => void) => () => { closeLayerMenu(); f(); };
+        return (
+          <PopMenu x={layerMenu.x} y={layerMenu.y} close={closeLayerMenu}>
+            <div className="px-2.5 pt-1 pb-1.5 text-[9px] uppercase tracking-widest text-amber-500 truncate max-w-[220px]">{l.name} · {mine.length}</div>
+            <button className={ROW} onClick={run(() => setRenaming(l.id))}><Pencil size={14} />Rename</button>
+            <button className={ROW} disabled={!usable || !mine.length} onClick={run(() => { setActive(l.id); select(mine.map((e) => e.id)); })}><SquareDashedMousePointer size={14} />Select all on it</button>
+            <button className={ROW} onClick={run(() => toggle(l, 'hidden'))}>{l.hidden ? <Eye size={14} /> : <EyeOff size={14} />}{l.hidden ? 'Show' : 'Hide'}</button>
+            <button className={ROW} onClick={run(() => toggle(l, 'locked'))}>{l.locked ? <Unlock size={14} /> : <Lock size={14} />}{l.locked ? 'Unlock' : 'Lock'}</button>
+            <MenuRule />
+            <button className={ROW} disabled={n === layers.length - 1} onClick={run(() => apply(moveLayer(page, l.id, 1)))}><ArrowUp size={14} />Move up</button>
+            <button className={ROW} disabled={n === 0} onClick={run(() => apply(moveLayer(page, l.id, -1)))}><ArrowDown size={14} />Move down</button>
+            <MenuRule />
+            <button className={`${ROW} text-red-300`} disabled={layers.length < 2} title={layers.length < 2 ? 'A page keeps at least one layer' : undefined} onClick={run(() => remove(l))}><Trash2 size={14} />Delete layer…</button>
+          </PopMenu>
+        );
+      })()}
     </div>
   );
 }

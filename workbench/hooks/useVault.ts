@@ -80,12 +80,16 @@ async function create(type: VaultType, title: string, file: unknown): Promise<{ 
 const today = () => new Date().toISOString().slice(0, 10);
 export const createAsset   = (kind: AssetKind, title: string) => create('asset', title, newAsset(kind, title, today()));
 // A copy of an asset as its own new file ("Make unique"): "Pop bumper" → pop-bumper-2, "Pop bumper 2"
-export function copyAsset(from: VaultAsset) {
+// A new vault file from another, named "Title N". With a kind, the copy is that kind and the original stays as it was
+// (a kind sets how every placement draws, so it's never changed in place). Only a block keeps its footprint.
+export function copyAsset(from: VaultAsset, kind: AssetKind = from.kind) {
   const root = from.title.replace(/\s+\d+$/, ''), taken = (t: string) => state.asset.entries.some((e) => e.id === slug(t) || (e.asset as VaultAsset | undefined)?.title === t);
   let n = 2;
   while (taken(`${root} ${n}`)) n++;
   const title = `${root} ${n}`;
-  return create('asset', title, { ...structuredClone(from), title, updated: today() });
+  const copy = { ...structuredClone(from), kind, title, updated: today() } as VaultAsset;
+  if (kind !== 'block') delete (copy as { footprint?: unknown }).footprint;
+  return create('asset', title, copy);
 }
 export const createPalette = (title: string, from?: Palette) =>
   create('palette', title, from ? { ...from, title, updated: today() } : newPalette(title, today()));
