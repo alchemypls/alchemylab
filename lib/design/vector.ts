@@ -48,7 +48,10 @@ export type VRect    = VBase & ShapeStyle & Box & Planed & { type: 'rect'; radiu
 export type VEllipse = VBase & ShapeStyle & Box & Planed & {
   type: 'ellipse';
   n?: number;   // superellipse exponent |x|ⁿ+|y|ⁿ=1: 1 diamond, 2 ellipse (default), 4 squircle, high = box; below 1 pinches to a star
+  lobes?: number;       // scalloped into this many bumps (3–24): a bush, a cloud, a tree's crown. None: a smooth edge
+  lobeDepth?: number;   // how far the dips between bumps cut in, 0.05–0.8 of the radius; default 0.3
 };
+export const LOBE_DEPTH = 0.3;
 // Two circles joined by their outer tangents, along the box's length: the left end fills the height, the right is `taper` of it
 export type VCapsule = VBase & ShapeStyle & Box & Planed & { type: 'capsule'; taper?: number };   // taper 0.05–1, default 1 (a stadium)
 // Any outline: corners as fractions of the box (0–1 each way), so it resizes, turns and lies in planes like a rect
@@ -446,7 +449,7 @@ export function outlineOf(el: VElement): Pt[] {
     }
   };
   if (el.type === 'poly') return el.pts.map(([fx, fy]) => ({ x: b.x + fx * b.w, y: b.y + fy * b.h }));
-  if (el.type === 'ellipse') arc(b.x + b.w / 2, b.y + b.h / 2, b.w / 2, b.h / 2, 96, 2 / (b.n ?? 2));
+  if (el.type === 'ellipse') return ellipsePoints(el, 96);
   else if (el.type === 'capsule') {   // the hull of its two end circles is the capsule
     const r1 = b.h / 2, r2 = Math.max(0.05, Math.min(b.taper ?? 1, 1)) * r1;
     arc(b.x + r1, b.y + r1, r1, r1); arc(Math.max(b.x + b.w - r2, b.x + r1), b.y + r1, r2, r2);
@@ -465,13 +468,24 @@ export function hull(pts: Pt[]): Pt[] {   // monotone chain
   return [...half(p), ...half([...p].reverse())];
 }
 
-// Straight up on the page, in the shape's own box: where its top face sits (up) and the outline of its sides
-export function extrusion(el: VElement): { up: Pt; sides: string } | undefined {
+// Straight up on the page, in the shape's own box: where its top face sits (up) and the outline of its sides. A shape
+// with dents (a bush's bumps, a pinched star, a polygon) also gets `walls`: each edge swept up as its own quad, all
+// wound the same way so they fill as one, keeping the dents a hull would iron out. Filled shapes only (see Solid).
+export function extrusion(el: VElement): { up: Pt; sides: string; walls?: string } | undefined {
   const h = heightOf(el), m = planeOf(el);
   if (!h || !m) return undefined;
   const up = mapPt(invert(m), { x: 0, y: -h });
   const base = outlineOf(el), all = [...base, ...base.map((p) => ({ x: p.x + up.x, y: p.y + up.y }))];
-  return { up, sides: `M${hull(all).map((p) => `${p.x.toFixed(2)},${p.y.toFixed(2)}`).join(' L')} Z` };
+  const sides = `M${hull(all).map((p) => `${p.x.toFixed(2)},${p.y.toFixed(2)}`).join(' L')} Z`;
+  const dented = el.type === 'poly' || (el.type === 'ellipse' && (!!el.lobes || (el.n ?? 2) < 1));
+  if (!dented || !('fill' in el && el.fill)) return { up, sides };
+  const f = (p: Pt) => `${p.x.toFixed(2)},${p.y.toFixed(2)}`;
+  const walls = base.map((p, i) => {
+    const q = base[(i + 1) % base.length], quad = [p, q, { x: q.x + up.x, y: q.y + up.y }, { x: p.x + up.x, y: p.y + up.y }];
+    const area = (q.x - p.x) * up.y - (q.y - p.y) * up.x;
+    return `M${(area < 0 ? quad.reverse() : quad).map(f).join(' L')} Z`;
+  }).join('');
+  return { up, sides, walls };
 }
 
 // ── Shape paths ── in the element's own box, so planes, turns and eraser marks apply the same as for a rect
@@ -486,16 +500,27 @@ export function polyFrom(points: Pt[]): Pick<VPoly, 'x' | 'y' | 'w' | 'h' | 'pts
   return { x, y, w: Math.round(w * 10) / 10, h: Math.round(h * 10) / 10, pts: points.map((p) => [Math.round(((p.x - x) / w) * 1e4) / 1e4, Math.round(((p.y - y) / h) * 1e4) / 1e4]) };
 }
 
-// Superellipse |x/a|ⁿ + |y/b|ⁿ = 1, sampled. Points cluster where the curve bends, so a corner stays sharp.
-export function superellipsePath(b: Box, n: number): string {
-  const a = b.w / 2, r = b.h / 2, cx = b.x + a, cy = b.y + r, e = 2 / n, N = 144, pts: string[] = [];
+// An ellipse's outline, sampled: the superellipse |x/a|ⁿ + |y/b|ⁿ = 1 (points cluster where it bends, so a corner stays
+// sharp), scalloped when it has lobes. Each bump is a rounded arch between two dips; the bumps differ a little in size,
+// always the same way, so a bush looks grown rather than stamped.
+type EllipseShape = Box & { n?: number; lobes?: number; lobeDepth?: number };
+export const smoothEllipse = (el: EllipseShape) => (!el.n || el.n === 2) && !el.lobes;
+export function ellipsePoints(el: EllipseShape, N = 144): Pt[] {
+  const a = el.w / 2, r = el.h / 2, cx = el.x + a, cy = el.y + r, e = 2 / (el.n ?? 2);
   const pow = (v: number) => Math.sign(v) * Math.abs(v) ** e;
-  for (let i = 0; i < N; i++) {
-    const t = (i / N) * 2 * Math.PI;
-    pts.push(`${(cx + a * pow(Math.cos(t))).toFixed(2)},${(cy + r * pow(Math.sin(t))).toFixed(2)}`);
+  const L = el.lobes ? Math.max(3, Math.min(24, Math.round(el.lobes))) : 0, d = Math.max(0.05, Math.min(0.8, el.lobeDepth ?? LOBE_DEPTH));
+  const size = (k: number) => 0.86 + 0.14 * Math.abs(Math.sin(k * 2.39996 + 1));   // per bump, 0.86–1
+  const n = L ? Math.max(N, L * 16) : N, pts: Pt[] = [];
+  for (let i = 0; i < n; i++) {
+    const t = (i / n) * 2 * Math.PI;
+    let f = 1;
+    if (L) { const at = (t / (2 * Math.PI)) * L, k = Math.floor(at); f = 1 - d + d * Math.sqrt(Math.sin(Math.PI * (at - k))) * size(k); }
+    pts.push({ x: cx + a * f * pow(Math.cos(t)), y: cy + r * f * pow(Math.sin(t)) });
   }
-  return `M${pts.join(' L')} Z`;
+  return pts;
 }
+export const ellipsePath = (el: EllipseShape) => `M${ellipsePoints(el).map((p) => `${p.x.toFixed(2)},${p.y.toFixed(2)}`).join(' L')} Z`;
+export const superellipsePath = (b: Box, n: number) => ellipsePath({ ...b, n });
 
 // Two circles (left: radius h/2, right: taper × that) and their outer tangents
 export function capsulePath(b: Box, taper = 1): string {

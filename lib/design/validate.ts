@@ -136,6 +136,8 @@ function validateElements(raw: unknown, ctx: BibleContext | undefined, errors: s
     if (e.slope !== undefined && !(num(e.slope) && Math.abs(e.slope as number) < 1)) errors.push(`${name}.slope: number between -1 and 1 (rise per px)`);
     if (e.slopeAlong !== undefined && e.slopeAlong !== 'w' && e.slopeAlong !== 'h') errors.push(`${name}.slopeAlong: w | h`);
     if (e.type === 'ellipse' && e.n !== undefined && !(num(e.n) && (e.n as number) > 0)) errors.push(`${name}.n: positive number (2 = ellipse)`);
+    if (e.type === 'ellipse' && e.lobes !== undefined && !(num(e.lobes) && (e.lobes as number) >= 3 && (e.lobes as number) <= 24)) errors.push(`${name}.lobes: number of bumps, 3–24`);
+    if (e.type === 'ellipse' && e.lobeDepth !== undefined && !(num(e.lobeDepth) && (e.lobeDepth as number) > 0 && (e.lobeDepth as number) < 1)) errors.push(`${name}.lobeDepth: 0–1 of the radius`);
     if (e.type === 'poly' && !(Array.isArray(e.pts) && e.pts.length >= 2 && e.pts.every((p) => Array.isArray(p) && num(p[0]) && num(p[1]) && p[0] >= 0 && p[0] <= 1 && p[1] >= 0 && p[1] <= 1)))
       errors.push(`${name}.pts: at least 2 [x, y] corners, each a fraction 0–1 of the box`);
     if (e.type === 'capsule' && e.taper !== undefined && !(num(e.taper) && (e.taper as number) > 0 && (e.taper as number) <= 1)) errors.push(`${name}.taper: number in (0, 1]`);

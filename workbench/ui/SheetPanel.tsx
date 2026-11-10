@@ -3,6 +3,7 @@
 import type { ReactNode } from 'react';
 import { CanvasPanelSlot } from '@/workbench/shell/CanvasPanel';
 import { PageMap } from './PageMap';
+import { AUX_BAR, Docked } from './AuxDock';
 import { layersOf } from '@/lib/design/layers';
 import { useRef } from 'react';
 import { SliderField } from './StyleFields';
@@ -55,9 +56,9 @@ export function SheetPanel({ pickers, row, status, controls, panels, undo, redo,
           {controls}
           <PanelToggle onClick={sv.recenter} title={`Center the sheet, staying at ${Math.round(sv.view.scale * 100)}% zoom. Ctrl+0 fits it, Ctrl+1 is 100%.`}>recenter</PanelToggle>
         </div>
-        <div className="flex items-center gap-1">
-        {rail ?? (onMapFocus && page && <LayerPips page={page} focus={mapFocus ?? null} pick={onMapFocus} />)}
-        <div className="relative flex-1 min-w-0 rounded-lg border border-neutral-700/60">
+        {/* the pips float outside the panel, left of the map, so the map keeps the panel's full width */}
+        <Docked side="left" align="center" gap={14} aux={rail ?? (onMapFocus && page && <LayerPips page={page} focus={mapFocus ?? null} pick={onMapFocus} />)}>
+        <div className="relative rounded-lg border border-neutral-700/60">
           {map ?? <PageMap page={page} bible={bible ?? null} view={sv.visible} onCenter={sv.centerOn} focus={onMapFocus ? mapFocus : null} trace={trace?.box} />}
           {view && (
             <div className="absolute top-1.5 right-1.5 flex rounded-full overflow-hidden bg-neutral-900/80 backdrop-blur-sm text-[10px] font-mono">
@@ -71,7 +72,7 @@ export function SheetPanel({ pickers, row, status, controls, panels, undo, redo,
             </div>
           )}
         </div>
-        </div>
+        </Docked>
         {panels && <div className="flex items-center gap-1 [&>button]:flex-1 [&>button]:py-1">{panels}</div>}
       </CanvasPanelSlot>
       {below && (
@@ -106,8 +107,8 @@ function LayerPips({ page, focus, pick }: { page: DesignPage; focus: string | nu
   );
 }
 
-// Layer pips sit in this rail beside the minimap, so nothing covers the map (Web's layers too)
-export const MAP_RAIL = 'shrink-0 flex flex-col items-center gap-0.5 px-0.5 py-1 rounded-full bg-neutral-800/60 border border-neutral-700/60';
+// Layer pips sit in this rail, docked outside the panel left of the minimap, so nothing covers the map (Web's and Live's too)
+export const MAP_RAIL = `${AUX_BAR} flex-col`;
 
 const MINI_BTN = 'text-[11px] px-2 py-0.5 rounded border border-neutral-700 text-neutral-300 hover:bg-neutral-800 disabled:opacity-30';
 const TRACE_ACCEPT = 'image/png,image/jpeg,image/webp,image/gif,image/svg+xml';

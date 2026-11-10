@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import { PAPER, STATUS_COLOR } from './DesignArtboard';
 import { pageSize, type Bible, type DesignPage } from '@/lib/design/types';
-import { capsulePath, extrusion, lineEnds, polyPath, rotateTransform, superellipsePath, zoneCorners, type VElement } from '@/lib/design/vector';
+import { capsulePath, extrusion, lineEnds, ellipsePath, polyPath, rotateTransform, smoothEllipse, zoneCorners, type VElement } from '@/lib/design/vector';
 import { AssetDrawing, Erased, TraceImage } from './vector/shapes';
 import type { TraceBox } from '@/workbench/hooks/useTrace';
 import { drawOrder, layerOf, layersOf } from '@/lib/design/layers';
@@ -22,7 +22,7 @@ function Mark({ el, all, bible }: { el: VElement; all: VElement[]; bible: Bible 
       const paint = { fill: el.fill ?? 'none', fillOpacity: 0.6, stroke: el.stroke ?? (el.fill ? 'none' : BAR), ...THIN };
       const face = el.type === 'poly' ? <path d={polyPath(el)} {...paint} fill={el.open ? 'none' : paint.fill} />
         : el.type === 'capsule' ? <path d={capsulePath(el, el.taper)} {...paint} />
-        : el.type === 'ellipse' && el.n && el.n !== 2 ? <path d={superellipsePath(el, el.n)} {...paint} />
+        : el.type === 'ellipse' && !smoothEllipse(el) ? <path d={ellipsePath(el)} {...paint} />
         : el.type === 'rect' ? <rect x={el.x} y={el.y} width={el.w} height={el.h} rx={el.radius} {...paint} />
         : <ellipse cx={el.x + el.w / 2} cy={el.y + el.h / 2} rx={el.w / 2} ry={el.h / 2} {...paint} />;
       const ex = extrusion(el);   // a solid: its sides, shaded, then its face raised

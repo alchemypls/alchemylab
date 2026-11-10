@@ -3,7 +3,7 @@
 
 import type { LinePattern, Plane, TextBackground, VBrush, VElement, VType } from './vector';
 
-export type ShapeKind = 'rect' | 'rounded' | 'ellipse' | 'capsule' | 'poly' | 'line' | 'arrow' | 'double' | 'curve';
+export type ShapeKind = 'rect' | 'rounded' | 'ellipse' | 'bush' | 'capsule' | 'poly' | 'line' | 'arrow' | 'double' | 'curve';
 export const LINE_KINDS: ShapeKind[] = ['line', 'arrow', 'double', 'curve'];
 export const isLineKind = (k: ShapeKind) => LINE_KINDS.includes(k);
 
@@ -62,6 +62,7 @@ export const DEFAULT_FAVORITES: Favorites = {
     { id: 'card',   name: 'Filled card',  style: { kind: 'rounded', fill: '#ffffff', stroke: INK, strokeWidth: 2, opacity: 1 } },
     { id: 'arrow',  name: 'Arrow',        style: { kind: 'arrow', stroke: INK, strokeWidth: 3, opacity: 1 } },
     { id: 'route',  name: 'Dashed route', style: { kind: 'arrow', stroke: '#d6006c', strokeWidth: 3, dash: true, opacity: 1 } },
+    { id: 'bush',   name: 'Bush',         style: { kind: 'bush', fill: '#2f7d4f', stroke: INK, strokeWidth: 2, opacity: 1 } },
   ],
   text: [
     { id: 'title', name: 'Title',   style: { size: 64, weight: 700, font: 'serif', color: INK, align: 'left' } },
@@ -92,7 +93,7 @@ export function shapeFields(s: ShapeTool) {
   // An outline with no border color draws its border in the fill color, so it doesn't vanish
   return clean({
     fill: s.hollow ? undefined : s.fill, stroke: s.hollow ? s.stroke ?? s.fill ?? INK : s.stroke, strokeWidth: s.strokeWidth, dash: s.dash, opacity: seen(s.opacity),
-    radius: s.kind === 'rounded' ? 24 : undefined, taper: s.kind === 'capsule' ? 0.6 : undefined, plane: s.plane,
+    radius: s.kind === 'rounded' ? 24 : undefined, taper: s.kind === 'capsule' ? 0.6 : undefined, lobes: s.kind === 'bush' ? 9 : undefined, plane: s.plane,
     lift: s.plane === 'roof' ? s.lift : undefined, slope: s.plane === 'roof' ? s.slope : undefined, slopeAlong: s.plane === 'roof' ? s.slopeAlong : undefined,
   });
 }
@@ -104,51 +105,53 @@ export const strokeFields = (p: PenTool) => clean({
   color: p.color, width: p.size, brush: p.brush === 'ink' ? undefined : p.brush, opacity: p.brush === 'highlighter' ? 0.4 : undefined,
 });
 
-// A change in a tool's menu also restyles what's selected, if it's the kind of thing that tool makes.
-// Returns undefined when this change doesn't apply to this element. undefined values clear a field.
-export function restylePatch(el: VElement, tool: keyof ToolStyles, patch: Record<string, unknown>): Record<string, unknown> | undefined {
-  const picked = (keys: string[]) => {
-    const out: Record<string, unknown> = {};
-    for (const k of keys) if (k in patch) out[k] = k === 'opacity' ? seen(patch[k] as number) : patch[k];
-    return Object.keys(out).length ? out : undefined;
-  };
-  if (tool === 'shape' && (el.type === 'rect' || el.type === 'ellipse' || el.type === 'capsule' || el.type === 'poly')) {
-    const out = picked(['fill', 'stroke', 'strokeWidth', 'dash', 'opacity', 'plane', 'lift', 'slope', 'slopeAlong']) ?? {};
-    if (patch.hollow) { out.fill = undefined; out.stroke = el.stroke ?? el.fill ?? INK; }
-    return Object.keys(out).length ? out : undefined;
-  }
-  if (tool === 'shape' && el.type === 'line') return picked(['stroke', 'strokeWidth', 'dash', 'opacity']);
-  if (tool === 'text' && el.type === 'text') return picked(['size', 'weight', 'font', 'color', 'align', 'caps', 'bg', 'bgShape']);
-  if (tool === 'zone' && el.type === 'zone') return picked(['fill', 'stroke', 'strokeWidth', 'dash', 'opacity', 'noLines', 'cell', 'flat']);
-  if (tool === 'pen' && el.type === 'stroke') {
-    const out: Record<string, unknown> = {};
-    if ('color' in patch) out.color = patch.color;
-    if ('size' in patch) out.width = patch.size;
-    if ('brush' in patch) { out.brush = patch.brush === 'ink' ? undefined : patch.brush; out.opacity = patch.brush === 'highlighter' ? 0.4 : undefined; }
-    return Object.keys(out).length ? out : undefined;
-  }
-  return undefined;
-}
-
 // Same settings, ignoring fields that are simply unset
 export function sameStyle(a: object, b: object): boolean {
   const x = a as Record<string, unknown>, y = b as Record<string, unknown>;
   return Array.from(new Set([...Object.keys(x), ...Object.keys(y)])).every((k) => (x[k] || undefined) === (y[k] || undefined));
 }
 
-// Stored settings merged over the defaults, so a setting added later still has a value
-export function mergeSaved(raw: unknown): { styles: ToolStyles; favorites: Favorites } {
-  const r = (typeof raw === 'object' && raw ? raw : {}) as { styles?: Partial<ToolStyles>; favorites?: Partial<Favorites> };
+// A favorite clicked with something selected restyles it: only its look (colors, border, transparency, the text's
+// style, a bush's bumps), never its kind, size or plane. Undefined when the favorite's tool doesn't make this element.
+export function favoritePatch(el: VElement, t: keyof Favorites, style: object): Record<string, unknown> | undefined {
+  if (t === 'shape' && (el.type === 'rect' || el.type === 'ellipse' || el.type === 'capsule' || el.type === 'poly')) {
+    const s = style as ShapeTool, hollow = s.hollow || !s.fill;
+    return {
+      fill: hollow ? undefined : s.fill, stroke: hollow ? s.stroke ?? s.fill ?? INK : s.stroke, strokeWidth: s.strokeWidth, dash: s.dash, opacity: seen(s.opacity),
+      ...(el.type === 'ellipse' && s.kind === 'bush' && !el.lobes ? { lobes: 9 } : {}),
+    };
+  }
+  if (t === 'shape' && el.type === 'line') { const s = style as ShapeTool; return { stroke: s.stroke ?? INK, strokeWidth: s.strokeWidth, dash: s.dash, opacity: seen(s.opacity) }; }
+  if (t === 'text' && el.type === 'text') {
+    const s = style as TextTool;
+    return { size: s.size, weight: s.weight, font: s.font, color: s.color, align: s.align, caps: s.caps || undefined, bg: s.bg, bgShape: s.bg ? s.bgShape ?? 'block' : undefined };
+  }
+  if (t === 'zone' && el.type === 'zone') {
+    const s = style as ZoneTool;
+    return { fill: s.fill, stroke: s.stroke, strokeWidth: s.strokeWidth, dash: s.dash, opacity: seen(s.opacity), noLines: s.noLines || undefined };
+  }
+  return undefined;
+}
+
+// Stored settings merged over the defaults, so a setting added later still has a value. A built-in favorite added
+// later (listed nowhere in `known`) joins your saved ones once; one you've deleted stays deleted.
+export function mergeSaved(raw: unknown): { styles: ToolStyles; favorites: Favorites; known: string[] } {
+  const r = (typeof raw === 'object' && raw ? raw : {}) as { styles?: Partial<ToolStyles>; favorites?: Partial<Favorites>; known?: string[] };
   const s = r.styles ?? {}, f = r.favorites ?? {};
+  const known = new Set(Array.isArray(r.known) ? r.known : ['box', 'card', 'arrow', 'route', 'title', 'head', 'body', 'label', 'teal', 'magenta', 'yellow', 'orange']);
+  const mine = <K extends keyof Favorites>(k: K): Favorites[K] => {
+    const saved = f[k];
+    if (!Array.isArray(saved)) return DEFAULT_FAVORITES[k];
+    return [...saved, ...DEFAULT_FAVORITES[k].filter((d) => !known.has(d.id) && !saved.some((x) => x.id === d.id))] as Favorites[K];
+  };
   return {
+    known: Object.values(DEFAULT_FAVORITES).flatMap((list: { id: string }[]) => list.map((d) => d.id)),
     styles: {
       select: { ...DEFAULT_STYLES.select, ...s.select }, shape: { ...DEFAULT_STYLES.shape, ...s.shape }, text: { ...DEFAULT_STYLES.text, ...s.text },
       zone: { ...DEFAULT_STYLES.zone, ...s.zone }, pen: { ...DEFAULT_STYLES.pen, ...s.pen }, erase: { ...DEFAULT_STYLES.erase, ...s.erase },
     },
     favorites: {
-      shape: Array.isArray(f.shape) ? f.shape : DEFAULT_FAVORITES.shape,
-      text:  Array.isArray(f.text)  ? f.text  : DEFAULT_FAVORITES.text,
-      zone:  Array.isArray(f.zone)  ? f.zone  : DEFAULT_FAVORITES.zone,
+      shape: mine('shape'), text: mine('text'), zone: mine('zone'),
     },
   };
 }

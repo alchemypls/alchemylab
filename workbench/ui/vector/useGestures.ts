@@ -171,7 +171,7 @@ export function useGestures({ svgRef, page, els, W, H, edit, penInput, lookOnly 
           if (!near(g.pts[g.pts.length - 1], 3 / edit.scale)) begin({ ...g, pts: [...g.pts, q], cur: q });   // a double-click's second press adds nothing
           return;
         }
-        return begin({ kind: 'create', type: kind === 'ellipse' || kind === 'capsule' ? kind : 'rect', start: q, cur: q, plane: edit.styles.shape.plane, lift });
+        return begin({ kind: 'create', type: kind === 'ellipse' || kind === 'bush' ? 'ellipse' : kind === 'capsule' ? kind : 'rect', start: q, cur: q, plane: edit.styles.shape.plane, lift });
       }
       case 'text': {
         if (startHandle(e, key)) return;

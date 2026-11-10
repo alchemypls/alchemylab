@@ -6,18 +6,21 @@ import { Toggle } from './Toggle';
 import { BorderFields, Field, Seg, SELECT_CLASS as SEL, SliderField, Swatches, Transparency } from './StyleFields';
 import { PEN_SOURCES, type PenSource, type PenStatus } from '@/workbench/hooks/usePenBridge';
 import type { PenTurn } from '@/lib/penCalibration';
-import { capsulePath, GRID_CELLS, ROOF_LIFT, SLOPE_MAX, type Lattice, type Plane, type TextBackground, type VBrush } from '@/lib/design/vector';
+import { AuxBar, AuxButton, Docked } from './AuxDock';
+import { capsulePath, ellipsePath, GRID_CELLS, ROOF_LIFT, SLOPE_MAX, type Lattice, type Plane, type TextBackground, type VBrush } from '@/lib/design/vector';
 import {
   isFilled, isLineKind, sameStyle, SELECT_FILTERS, type EraseTool, type Favorite, type Favorites, type PenTool, type SelectTool, type ShapeKind, type ShapeTool, type TextTool, type ToolStyles, type ZoneTool,
 } from '@/lib/design/toolStyles';
 
 // The panel beside the tool rail, for the tool in hand: title, a bar of favorites ending in "…", then parameters.
-// Changing anything sets what the tool makes next and restyles the selection, if the tool makes that kind of thing.
+// Changing anything sets only what the tool makes next; something already drawn changes in its properties. The one
+// exception is a favorite: it also restyles the selection (its look only, see favoritePatch).
 
 export const SHAPE_KINDS: { kind: ShapeKind; icon: string; filled?: string; label: string }[] = [
   { kind: 'rect',    icon: '▭', filled: '■', label: 'Rectangle' },
   { kind: 'rounded', icon: '▢', filled: '■', label: 'Rounded rectangle' },
   { kind: 'ellipse', icon: '◯', filled: '●', label: 'Ellipse' },
+  { kind: 'bush',    icon: '✿', filled: '✿', label: 'Bush: an ellipse with a bumpy edge (a bush, a cloud, a tree top). Bumps and depth in its properties' },
   { kind: 'capsule', icon: '⬭', filled: '⬬', label: 'Capsule (C): two circles joined, one end can taper' },
   { kind: 'poly',    icon: '⬠', filled: '⬟', label: 'Polygon: click each corner; click the first, double-click or press Enter to finish' },
   { kind: 'line',    icon: '╱', label: 'Line' },
@@ -32,7 +35,6 @@ export const shapeIcon = (kind: ShapeKind, s: Pick<ShapeTool, 'fill' | 'hollow'>
   return (isFilled(s) && k?.filled) || k?.icon;
 };
 
-const BAR_SIZE = 4;
 export const TEXT_SIZES: [number, string][] = [[16, 'label'], [24, 'body'], [36, 'heading'], [64, 'title']];
 export const TEXT_WEIGHTS: [number, string][] = [[400, 'regular'], [500, 'medium'], [600, 'semibold'], [700, 'bold']];
 
@@ -59,17 +61,29 @@ export function ToolMenu({ tool, top, styles, favorites, change, applyFavorite, 
   const barTool = tool === 'shape' || tool === 'text' || tool === 'zone' ? tool : null;
   const current = barTool === 'zone' ? { ...styles.zone, cell: grid.cell, flat: grid.flat } : barTool ? styles[barTool] : null;
 
+  // Favorites float on the menu's right edge (an aux bar); the top row is the tool's own picks (Shapes: which shape)
+  const favBar = barTool && current && (
+    <FavoriteBar
+      tool={barTool} favorites={favorites[barTool] as Favorite<object>[]} current={current}
+      onPick={(s) => applyFavorite(barTool, s)} onSave={() => saveFavorite(barTool)} onRemove={(id) => removeFavorite(barTool, id)}
+    />
+  );
   return (
+    <Docked side="right" aux={favBar} className="absolute left-[61px] z-30" style={{ top }}>
     <div
-      className="absolute left-[61px] z-30 w-[208px] overflow-y-auto overflow-x-hidden bg-neutral-900/95 border border-neutral-700/60 rounded-xl backdrop-blur-sm text-xs text-neutral-300"
-      style={{ top, maxHeight: `calc(100vh - ${top + 16}px)` }}
+      className="w-[208px] overflow-y-auto overflow-x-hidden bg-neutral-900/95 border border-neutral-700/60 rounded-xl backdrop-blur-sm text-xs text-neutral-300"
+      style={{ maxHeight: `calc(100vh - ${top + 16}px)` }}
     >
       <div className="px-3 pt-2 pb-1.5 text-[10px] uppercase tracking-widest text-amber-500">{tool === 'erase' && !eraseAll ? 'Ink eraser' : TITLES[tool]}</div>
-      {barTool && current && (
-        <FavoriteBar
-          tool={barTool} favorites={favorites[barTool] as Favorite<object>[]} current={current}
-          onPick={(s) => applyFavorite(barTool, s)} onSave={() => saveFavorite(barTool)} onRemove={(id) => removeFavorite(barTool, id)}
-        />
+      {tool === 'shape' && (
+        <div className="grid grid-cols-10 gap-0.5 px-2 pb-2 border-b border-neutral-800">
+          {SHAPE_KINDS.map((k) => (
+            <button
+              key={k.kind} title={k.label} aria-label={k.label} aria-pressed={styles.shape.kind === k.kind} onClick={() => change('shape', { kind: k.kind })}
+              className={`h-7 rounded text-sm ${styles.shape.kind === k.kind ? 'bg-amber-500/20 text-amber-400' : 'text-neutral-400 hover:bg-neutral-800'}`}
+            >{shapeIcon(k.kind, styles.shape)}</button>
+          ))}
+        </div>
       )}
       {tool === 'pen' && <PenBar pen={pen} />}
       <div className="p-3 pt-2 flex flex-col gap-3">
@@ -88,11 +102,15 @@ export function ToolMenu({ tool, top, styles, favorites, change, applyFavorite, 
         {tool === 'erase' && <EraseParams s={styles.erase} set={(p) => change('erase', p)} all={eraseAll} />}
       </div>
     </div>
+    </Docked>
   );
 }
 
 // ── Bar ──
 
+// The tool's favorites, as an aux bar beside its menu: a click sets the tool (and restyles the selection: see
+// favoritePatch). ★ saves the current settings; … opens the full list, where favorites can be removed.
+const FAV_SHOWN = 8;
 function FavoriteBar({ tool, favorites, current, onPick, onSave, onRemove }: {
   tool: keyof Favorites; favorites: Favorite<object>[]; current: object;
   onPick: (s: object) => void; onSave: () => void; onRemove: (id: string) => void;
@@ -101,22 +119,19 @@ function FavoriteBar({ tool, favorites, current, onPick, onSave, onRemove }: {
   // A floor favorite without a tile size matches at any tile size
   const on = (f: Favorite<object>) => sameStyle(f.style, tool === 'zone' && !('cell' in f.style) ? { ...current, cell: undefined, flat: undefined } : current);
   return (
-    <>
-      <div className="flex items-center gap-1 px-3 pb-2 border-b border-neutral-800">
-        {favorites.slice(0, BAR_SIZE).map((f) => (
+    <div className="relative">
+      <AuxBar>
+        {favorites.slice(0, FAV_SHOWN).map((f) => (
           <button
             key={f.id} title={f.name} aria-label={f.name} onClick={() => onPick(f.style)}
-            className={`w-8 h-8 rounded-lg flex items-center justify-center bg-neutral-100 overflow-hidden ${on(f) ? 'ring-2 ring-amber-500' : 'ring-1 ring-neutral-700 hover:ring-neutral-400'}`}
+            className={`w-7 h-7 rounded-lg flex items-center justify-center bg-neutral-100 overflow-hidden ${on(f) ? 'ring-2 ring-amber-500' : 'ring-1 ring-neutral-700 hover:ring-neutral-400'}`}
           ><Chip tool={tool} style={f.style} /></button>
         ))}
-        <span className="flex-1" />
-        <button
-          title="All favorites" aria-label="All favorites" aria-expanded={more} onClick={() => setMore(!more)}
-          className={`w-7 h-8 rounded-lg text-sm ${more ? 'bg-amber-500/20 text-amber-400' : 'text-neutral-400 hover:bg-neutral-800'}`}
-        >…</button>
-      </div>
+        <AuxButton title="Save the current settings as a favorite" onClick={onSave}>★</AuxButton>
+        <AuxButton title="All favorites" on={more} onClick={() => setMore(!more)}>…</AuxButton>
+      </AuxBar>
       {more && (
-        <div className="border-b border-neutral-800 px-2 py-1.5 flex flex-col gap-0.5">
+        <div className="absolute left-full top-0 ml-1.5 w-[200px] bg-neutral-900/95 border border-neutral-700/60 rounded-xl backdrop-blur-sm px-2 py-1.5 flex flex-col gap-0.5 text-xs text-neutral-300">
           {favorites.map((f) => (
             <div key={f.id} className="flex items-center gap-1.5 rounded px-1 py-0.5 hover:bg-neutral-800">
               <button onClick={() => onPick(f.style)} className="flex items-center gap-2 flex-1 min-w-0 text-left">
@@ -127,10 +142,9 @@ function FavoriteBar({ tool, favorites, current, onPick, onSave, onRemove }: {
             </div>
           ))}
           {!favorites.length && <div className="px-1 py-0.5 text-neutral-500">No favorites yet.</div>}
-          <button onClick={onSave} className="mt-1 rounded border border-neutral-700 py-1 text-[11px] hover:bg-neutral-800">★ Save current settings</button>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
@@ -147,6 +161,7 @@ function Chip({ tool, style }: { tool: keyof Favorites; style: object }) {
     <svg viewBox="0 0 24 24" className="w-full h-full">
       {(kind === 'rect' || kind === 'rounded') && <rect x="4" y="6" width="16" height="12" rx={kind === 'rounded' ? 4 : 0} {...paint} />}
       {kind === 'ellipse' && <ellipse cx="12" cy="12" rx="8" ry="6" {...paint} />}
+      {kind === 'bush' && <path d={ellipsePath({ x: 3, y: 5, w: 18, h: 14, lobes: 7 })} strokeLinejoin="round" {...paint} />}
       {kind === 'poly' && <polygon points="12,4 20,10 17,19 7,19 4,10" {...paint} />}
       {kind === 'capsule' && <path d={capsulePath({ x: 3, y: 7, w: 18, h: 10 }, 0.6)} {...paint} />}
       {isLineKind(kind) && <path d={kind === 'curve' ? 'M4,18 Q6,6 20,6' : 'M4,18 L20,6'} {...paint} fill="none" />}
@@ -230,16 +245,6 @@ export const PLANE_OPTIONS: { value: 'none' | Plane; label: string }[] = [
 function ShapeParams({ s, set }: { s: ShapeTool; set: (p: Partial<ShapeTool>) => void }) {
   return (
     <>
-      <Field label="Shape">
-        <div className="grid grid-cols-9 gap-0.5">
-          {SHAPE_KINDS.map((k) => (
-            <button
-              key={k.kind} title={k.label} aria-label={k.label} aria-pressed={s.kind === k.kind} onClick={() => set({ kind: k.kind })}
-              className={`h-7 rounded text-sm ${s.kind === k.kind ? 'bg-amber-500/20 text-amber-400' : 'text-neutral-400 hover:bg-neutral-800'}`}
-            >{shapeIcon(k.kind, s)}</button>
-          ))}
-        </div>
-      </Field>
       {s.kind === 'poly' && <p className="text-[10px] text-neutral-500 leading-relaxed -mt-1">Click each corner. Click the first corner, double-click or press Enter to finish. Backspace takes back a corner, Esc drops it.</p>}
       {!isLineKind(s.kind) && (
         <Field label="Plane">

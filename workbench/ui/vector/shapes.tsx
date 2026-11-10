@@ -8,7 +8,7 @@ import { useAssetUrl } from '@/lib/assets';
 import { assetView, blockPose, projectedElements, tintElements, type VaultAsset } from '@/lib/design/vault';
 import type { Bible, TopicStatus } from '@/lib/design/types';
 import {
-  capsulePath, dashProps, extrusion, gridOf, lineControl, lineEnds, polyPath, rotateTransform, rubOrigin, superellipsePath, zoneCorners, zonePoint,
+  capsulePath, dashProps, ellipsePath, extrusion, gridOf, lineControl, lineEnds, polyPath, rotateTransform, rubOrigin, smoothEllipse, zoneCorners, zonePoint,
   type Box, type Lattice, type Pt, type VElement, type VLine, type VStroke, type VText, type VZone,
 } from '@/lib/design/vector';
 import type { TraceBox } from '@/workbench/hooks/useTrace';
@@ -69,8 +69,12 @@ function Solid({ el, hit, children }: { el: VElement; hit?: 'all'; children: Rea
   const s = el as { fill?: string; stroke?: string; strokeWidth?: number };
   return (
     <>
-      <path d={ex.sides} fill={s.fill ?? 'none'} stroke={s.stroke ?? 'none'} strokeWidth={s.strokeWidth ?? 2} strokeLinejoin="round" pointerEvents={hit} />
-      {s.fill && <path d={ex.sides} fill="#000" fillOpacity={0.22} pointerEvents="none" />}
+      {ex.walls ? <>
+        {/* the walls' outline drawn twice as thick, then their fill over it: only the outside edge of them all is left */}
+        <path d={ex.walls} fill="none" stroke={s.stroke ?? 'none'} strokeWidth={(s.strokeWidth ?? 2) * 2} strokeLinejoin="round" pointerEvents="none" />
+        <path d={ex.walls} fill={s.fill} pointerEvents={hit} />
+      </> : <path d={ex.sides} fill={s.fill ?? 'none'} stroke={s.stroke ?? 'none'} strokeWidth={s.strokeWidth ?? 2} strokeLinejoin="round" pointerEvents={hit} />}
+      {s.fill && <path d={ex.walls ?? ex.sides} fill="#000" fillOpacity={0.22} pointerEvents="none" />}
       <g transform={`translate(${ex.up.x} ${ex.up.y})`}>{children}</g>
     </>
   );
@@ -88,8 +92,8 @@ function Shape({ el, all, bible, bibleId, solid, inlineEdit }: {
       const paint = { fill: el.fill ?? 'none', stroke: el.stroke ?? 'none', strokeWidth: el.strokeWidth ?? 2, ...dashProps(el.dash, el.strokeWidth ?? 2), pointerEvents: hitAll };
       return (
         <Solid el={el} hit={hitAll}>
-          {el.n && el.n !== 2
-            ? <path d={superellipsePath(el, el.n)} strokeLinejoin="round" {...paint} />
+          {!smoothEllipse(el)
+            ? <path d={ellipsePath(el)} strokeLinejoin="round" {...paint} />
             : <ellipse cx={el.x + el.w / 2} cy={el.y + el.h / 2} rx={el.w / 2} ry={el.h / 2} {...paint} />}
         </Solid>
       );

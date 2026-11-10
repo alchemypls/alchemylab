@@ -7,13 +7,14 @@ import { getSlideDir } from '@/lib/scenes';
 import { layerOf, layersOf, untouchable, type VLayer } from '@/lib/design/layers';
 import { ElementIcon, elementLabel } from './LayersPanel';
 import { putClip } from './vector/clipboard';
+import { useRowMenu } from './SheetMenu';
 import { useVaultAsset } from '@/workbench/hooks/useVault';
 import { TextInput } from './TextInput';
 import { Toggle } from './Toggle';
 import { BorderFields, Field, NumberField, Seg, SELECT_CLASS as SEL, SliderField, Swatches, Transparency } from './StyleFields';
 import { PLANE_OPTIONS, RoofFields, TEXT_SIZES, TEXT_WEIGHTS } from './ToolMenu';
 import { setPageField } from '@/lib/design/ops';
-import { copyElements, duplicateElements, GRID_CELLS, groupElements, ungroupElements, PLANAR, planeOf, ROOF_LIFT, removeElements, reorderElements, ROTATABLE, updateElement, type VAsset, type VElement, type VLine, type VText, type VZone } from '@/lib/design/vector';
+import { copyElements, duplicateElements, GRID_CELLS, LOBE_DEPTH, groupElements, ungroupElements, PLANAR, planeOf, ROOF_LIFT, removeElements, reorderElements, ROTATABLE, updateElement, type VAsset, type VElement, type VLine, type VText, type VZone } from '@/lib/design/vector';
 import { pageSize, type Bible, type DesignPage } from '@/lib/design/types';
 
 // Vector page editor side panel: properties of the selected element(s). Changes go through lib/design/vector.ts ops.
@@ -141,8 +142,10 @@ function SelectionList({ page, selected, apply, select, picked }: Props & { pick
   const all = page.elements ?? [], layers = layersOf(page), blocked = untouchable(page);
   const groups = new Set(picked.map((e) => e.group).filter(Boolean));
   const welded = groups.size === 1 && picked.every((e) => e.group);
+  const rowMenu = useRowMenu(page, apply, selected, select);
   return (
     <>
+      {rowMenu.menu}
       <div className="flex flex-wrap gap-1">
         {welded
           ? <button className={`${BTN} flex items-center gap-1`} title="Take the group apart (Ctrl+Shift+G)" onClick={() => apply(ungroupElements(page, selected))}><Unlink2 size={13} />Ungroup</button>
@@ -163,7 +166,7 @@ function SelectionList({ page, selected, apply, select, picked }: Props & { pick
                 {rest.length > 0 && <button className="normal-case tracking-normal text-amber-500/80 hover:text-amber-400 px-1" title={`Add the ${rest.length} other thing${rest.length > 1 ? 's' : ''} on this layer`} onClick={() => select([...selected, ...rest.map((e) => e.id)])}>+ rest {rest.length}</button>}
               </div>
               {[...mine].reverse().map((e) => (
-                <div key={e.id} className="group/row flex items-center gap-1 rounded hover:bg-neutral-800 pl-1">
+                <div key={e.id} className="group/row flex items-center gap-1 rounded hover:bg-neutral-800 pl-1" onContextMenu={rowMenu.open(e.id)}>
                   <ElementIcon el={e} />
                   <button className="flex-1 min-w-0 text-left text-[11px] truncate px-1 text-neutral-300 hover:text-white" title="Pick just this one" onClick={() => select([e.id])}>{elementLabel(e)}</button>
                   {e.group && <Link2 size={11} className="shrink-0 text-neutral-500" aria-label="In a group" />}
@@ -247,6 +250,20 @@ function ElementPanel({ page, bible, pages, el, apply }: Props & { el: VElement 
               onChange={(v) => set({ n: v === 2 ? undefined : Math.round(v * 10) / 10 }, 'n')}
             />
           )}
+          {el.type === 'ellipse' && (
+            <SliderField
+              label="Bumps (a bush, a cloud)" value={el.lobes ?? 0} min={0} max={24} step={1}
+              notches={[[0, 'smooth'], [6, 'cloud'], [9, 'bush'], [16, 'shrub']]}
+              onChange={(v) => set({ lobes: v < 3 ? undefined : v, lobeDepth: v < 3 ? undefined : el.lobeDepth }, 'lobes')}
+            />
+          )}
+          {el.type === 'ellipse' && el.lobes && (
+            <SliderField
+              label="Bump depth" value={el.lobeDepth ?? LOBE_DEPTH} min={0.05} max={0.8} step={0.05}
+              notches={[[0.15, 'soft'], [LOBE_DEPTH, 'leafy'], [0.6, 'spiky']]}
+              onChange={(v) => set({ lobeDepth: v === LOBE_DEPTH ? undefined : Math.round(v * 100) / 100 }, 'lobeDepth')}
+            />
+          )}
           {el.type === 'capsule' && (
             <SliderField
               label="Taper (right end ÷ left end)" value={el.taper ?? 1} min={0.05} max={1} step={0.05}
@@ -263,6 +280,12 @@ function ElementPanel({ page, bible, pages, el, apply }: Props & { el: VElement 
         <>
           <Field label="Color"><Swatches value={el.color} noNone onChange={(color) => set({ color })} /></Field>
           <SliderField label="Size" value={el.width ?? 4} min={1} max={60} notches={[[2, 'fine'], [4, 'normal'], [8, 'bold'], [16, 'marker'], [32, 'wide']]} onChange={(v) => set({ width: v }, 'width')} />
+          <Field label="Brush">
+            <Seg
+              options={[{ value: 'ink', label: 'Ink' }, { value: 'marker', label: 'Marker' }, { value: 'highlighter', label: 'Highlighter' }]} value={el.brush ?? 'ink'}
+              onChange={(b) => set({ brush: b === 'ink' ? undefined : b, opacity: b === 'highlighter' ? 0.4 : undefined })}
+            />
+          </Field>
         </>
       )}
 

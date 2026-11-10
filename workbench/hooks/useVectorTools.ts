@@ -6,7 +6,7 @@ import { useToolStyles } from './useToolStyles';
 import { useVault } from './useVault';
 import { footingOf } from '@/lib/design/vault';
 import { copyElements, duplicateElements, gridOf, groupElements, pasteElements, ungroupElements, regridZones, removeElements, SNAP, tenants, translateElements, updateElement, type FootingOf, type Lattice, type VElement } from '@/lib/design/vector';
-import { restylePatch, type Favorites, type ShapeKind, type ToolStyles, type ZoneTool } from '@/lib/design/toolStyles';
+import { favoritePatch, type Favorites, type ShapeKind, type ToolStyles, type ZoneTool } from '@/lib/design/toolStyles';
 import { pageSize, type DesignPage } from '@/lib/design/types';
 import { layersOf, stampLayer } from '@/lib/design/layers';
 import type { PagePen, VectorEdit, VTool } from '@/workbench/ui/VectorArtboard';
@@ -78,27 +78,23 @@ export function useVectorTools({ doc, tools, enabled, onDeselect }: {
     if (t === 'read') { select([]); onDeselect?.(); }
   };
 
-  // A menu change sets what the tool makes next, and restyles the selection if the tool makes that kind of thing.
-  const restyleSelected = (cur: DesignPage, t: keyof ToolStyles, patch: Record<string, unknown>) => {
-    let next = cur;
-    for (const el of cur.elements ?? []) {
-      if (!selected.includes(el.id)) continue;
-      const p = restylePatch(el, t, patch);
-      if (p) next = updateElement(next, el.id, p as Partial<VElement>);
-    }
-    return next;
-  };
-  const changeTool = <K extends keyof ToolStyles>(t: K, patch: Partial<ToolStyles[K]>) => {
-    styles.setStyle(t, patch);
-    const cur = current.current;
-    if (!cur) return;
-    const next = restyleSelected(cur, t, patch);
-    if (next !== cur) apply(next, `tool:${t}:${Object.keys(patch).join()}`);
-  };
+  // A tool's menu sets only what that tool makes next. What's already drawn changes in its properties (the inspector).
+  const changeTool = <K extends keyof ToolStyles>(t: K, patch: Partial<ToolStyles[K]>) => styles.setStyle(t, patch);
   // Floors follow the page's grid, so changing it redraws every floor (and what stands on it)
   const setGrid = (patch: Partial<Lattice>) => {
     const cur = current.current;
     if (cur) apply(regridZones({ ...cur, grid: { ...cur.grid, ...patch } }, footing), `grid:${Object.keys(patch).join()}`);
+  };
+  // A favorite sets the tool and restyles what's selected (only its look: see favoritePatch). The one toolbar pick that
+  // touches the selection: everything else in a tool's menu only sets the next thing it makes.
+  const restyle = (page: DesignPage, t: keyof Favorites, style: object) => {
+    let next = page;
+    for (const el of page.elements ?? []) {
+      if (!selected.includes(el.id)) continue;
+      const p = favoritePatch(el, t, style);
+      if (p) next = updateElement(next, el.id, p as Partial<VElement>);
+    }
+    return next;
   };
   const applyFavorite = (t: keyof Favorites, style: object) => {
     const cur = current.current;
@@ -108,11 +104,16 @@ export function useVectorTools({ doc, tools, enabled, onDeselect }: {
       const cleared = { fill: undefined, stroke: undefined, dash: undefined, noLines: undefined, ...rest };
       const grid = cell ? { cell, flat } : {};   // a favorite saved without them leaves the grid alone
       styles.setStyle('zone', cleared);
-      if (cur) apply(restyleSelected(regridZones({ ...cur, grid: { ...cur.grid, ...grid } }, footing), 'zone', cleared));
+      if (!cur) return;
+      const next = restyle(cell ? regridZones({ ...cur, grid: { ...cur.grid, ...grid } }, footing) : cur, 'zone', cleared);
+      if (next !== cur) apply(next, 'favorite:zone');
       return;
     }
     const cleared = t === 'shape' ? { fill: undefined, stroke: undefined, dash: undefined, hollow: undefined } : { caps: undefined, bg: undefined, bgShape: undefined };
     changeTool(t, { ...cleared, ...style } as Partial<ToolStyles[typeof t]>);
+    if (!cur) return;
+    const next = restyle(cur, t, { ...cleared, ...style });
+    if (next !== cur) apply(next, `favorite:${t}`);
   };
   const saveFavorite = (t: keyof Favorites) => {
     const name = window.prompt('Name this favorite');
