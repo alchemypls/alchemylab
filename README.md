@@ -95,7 +95,6 @@ flowchart LR
 
 ## Why I built it
 
-- I didn't want to pay for Figma.
 - I wanted a space to test ideas and do R&D, and to make my own tools.
 - I wanted to work with agents using the same tools I use.
 - I wanted the output to be presentation-ready: vector design pages and live web components.
