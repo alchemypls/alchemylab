@@ -20,7 +20,7 @@ set that belongs together (a table and everything on it, a labelled callout).
 | type | fields |
 |---|---|
 | `rect` | `x y w h`, `fill`, `stroke`, `strokeWidth`, `dash`, `radius` |
-| `ellipse` | `x y w h`, `fill`, `stroke`, `strokeWidth`, `dash`, `n` (superellipse exponent: 1 diamond, 2 ellipse = default, 4 squircle, 10 near-box, below 1 a pinched star) |
+| `ellipse` | `x y w h`, `fill`, `stroke`, `strokeWidth`, `dash`, `n` (superellipse exponent: 1 diamond, 2 ellipse = default, 4 squircle, 10 near-box, below 1 a pinched star), `lobes` (3–24: a scalloped edge, for a bush, cloud or tree top) + `lobeDepth` (0.05–0.8 of the radius, default 0.3) |
 | `capsule` | `x y w h`, `fill`, `stroke`, `strokeWidth`, `dash`, `taper` (0–1, default 1) — two circles joined by tangents along `w`: the left end is `h` across, the right `taper × h` (a flipper is about 0.6) |
 | `poly` | `x y w h`, `pts: [[fx, fy], …]` (corners as 0–1 fractions of the box), `open` (a path, unfilled), `fill`, `stroke`, `strokeWidth`, `dash` — any outline; resizes, rotates and lies in planes like a rect |
 | `line` | `from`, `to` (each `{x, y}` or `{el: id}`), `stroke`, `strokeWidth`, `dash`, `arrow: none\|end\|both` (default end), `bend` (px) |

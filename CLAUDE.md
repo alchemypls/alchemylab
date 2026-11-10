@@ -83,7 +83,7 @@ design/<bible>/      — design bibles (agent + user content): bible.json, pages
 lib/
   design/types.ts    — Bible / Topic / DesignPage / Block (semantic blocks, no x/y) / FitReport; ARTBOARD 1920×1080
   design/ops.ts      — pure edit ops (add/update/move/resize/duplicate/remove block, knowledge, topic) — all hand edits go through these
-  design/vector.ts   — vector page elements (rect/ellipse(superellipse n)/capsule/poly/line/text/image/status/stroke/zone), planes (floor/left/right isometric mapping), geometry, placement grid, pure ops; text + status bind live to bible topics; eraser marks (`erased`, drawn as masks: Fab rubs out anything, Ideation's eraser cuts ink only); groups (`group`: welded elements select and move as one) and the clipboard ops (copyElements/pasteElements: across pages, layers come along)
+  design/vector.ts   — vector page elements (rect/ellipse(superellipse n, scalloped `lobes` for bushes)/capsule/poly/line/text/image/status/stroke/zone), planes (floor/left/right isometric mapping), solids (`extrusion`: a hull for convex shapes, walls swept edge by edge for dented ones), geometry, placement grid, pure ops; text + status bind live to bible topics; eraser marks (`erased`, drawn as masks: Fab rubs out anything, Ideation's eraser cuts ink only); groups (`group`: welded elements select and move as one) and the clipboard ops (copyElements/pasteElements: across pages, layers come along)
   design/layers.ts   — named layers on vector pages and vault assets: draw order, hidden/locked, stamping new elements, ops, validation
   design/palette.ts  — Palette format, BASE_PALETTE fallback, sheet layout, validatePalette
   design/vault.ts    — VaultAsset (a vector page with a kind: shape/icon/block), what part of it places and at what size, a block's footprint + footing (scaled to the floor's tiles), fitBlocks (placed blocks follow their vault size; Ideation only moves/tints/turns them), turnedAsset/shownBlock/blockPose (a placed block's `turn` + `mirror`: isometric = rebuilt by quarter turns, top-down = any angle; one place says how a posed block draws), blockProjection (iso↔flat: the floor plane maps tile for tile) + projectedElements (top-down, walls squash to their base edge), placeAsset, tint
@@ -148,16 +148,17 @@ workbench/
     vector/           — gesture.ts (tool + gesture types, geometry helpers), useGestures.ts (the pointer engine), shapes.tsx (how each element draws, PosedAsset), overlays.tsx (selection, handles, footprints, previews), clipboard.ts (Ctrl+C/X/V between any vector sheets, per browser)
     VectorKit.tsx     — the vector tools' UI every vector canvas shares, fed by useVectorTools: VectorRail, VectorToolMenu, VectorBox (layers + properties)
     SheetShell.tsx    — a full-screen canvas's frame: SheetSurface (pan/zoom), Sheet, Banner, EmptyNote, SaveDot
-    fab/              — Fab's panel parts: AssetFile (file box, FootprintPicker, DimsInput), ComponentFilePicker
+    fab/              — Fab's panel parts: AssetFile (file box, FootprintPicker, DimsInput; a file's kind is fixed, "Copy as" makes a new file of another kind), ComponentFilePicker
     VectorInspector.tsx — vector page properties panel: geometry, style, text + topic binding, link, z-order
     ToolRail.tsx      — left tool rail: one master tool list, each canvas or editor shows a subset
-    SheetPanel.tsx    — CanvasPanel contents for full-screen canvases: dropdowns, control row, minimap (layer pips in a rail beside it on the left, MAP_RAIL; `rail` for a canvas's own), panel toggles, box below; TraceFields (tracing image, in the page / file box), TraceMover
+    SheetPanel.tsx    — CanvasPanel contents for full-screen canvases: dropdowns, control row, minimap (layer pips docked outside the panel on its left, MAP_RAIL; `rail` for a canvas's own), panel toggles, box below; TraceFields (tracing image, in the page / file box), TraceMover
     Fabricator.tsx    — Fabricator parts (useFabricator, list, stage, options, styling): Library + project copies, layer style editor, theme editor
-    LayersPanel.tsx   — a vector page's layers in the box under the minimap: active layer, hide, lock, rename, reorder, per-layer element list
+    LayersPanel.tsx   — a vector page's layers in the box under the minimap: active layer, hide, lock, rename, reorder, per-layer element list; right-click a layer for its menu (rename, select all on it, hide, lock, move, delete)
     PaletteEditor.tsx — a palette on Fab: swatch sheet + panel fields (colors, name, use in pickers)
     AssetPicker.tsx   — AssetThumb: a vault asset drawn small, for the Vault panel
     vault/VaultParts.tsx — the vault window's parts: VaultWindow (drag, resize, kept in the store), VaultSearch + flyout chips, VaultTabs, slot grid (useSlotGrid, packSlots, GhostSlot)
-    SheetMenu.tsx     — right-click menu on a vector sheet (Ideation, Fab): duplicate, front/back, plane, Edit in Fab, delete; Select all on empty
+    AuxDock.tsx       — auxiliary bars that float outside a panel's edge: Docked (wrapper; side + align + gap), AuxBar (pill shell), AuxButton
+    SheetMenu.tsx     — right-click menu on a vector sheet (Ideation, Fab): duplicate, front/back, plane, Edit in Fab, delete; Select all on empty. useRowMenu: the same menu on a right-clicked row in the layers box or the selection list
     ToolMenu.tsx      — tool panel beside the rail: favorites bar + the tool's parameters; Snap to grid (styles.select.free) on select/shape/text
     StyleFields.tsx   — controls shared by ToolMenu and VectorInspector: notched sliders, swatches (palette in use), segmented picks, border fields, transparency
     web/              — the Web canvas's parts: CodeBox (output), WebLayers (sketchPage/pageSketch, WireframeLayer, LayoutLayer, PreviewLayer, PlacementCell), LayoutEditor (+ ComponentsBox, VariantsBox, newPlacement, readingOrder), BlockFields (BlockInspector), RouteTree, PageFields, ProjectFields, WebChrome (minimap, layer pips, column bands)
@@ -168,7 +169,8 @@ workbench/
     SceneNavigator.tsx      — scene grid navigation (arrows + labels)
     CanvasPanel.tsx         — top-right panel above all canvases: switcher, per-canvas slot (CanvasPanelSlot), vault button
     VaultButton.tsx         — file vault toggle, at the bottom of CanvasPanel (Ideation and Fab only)
-    FileVault.tsx           — the file vault window (vault/ on disk) on Ideation/Fab: search, sort, tabs per kind, slots (long blocks take two), hover card (size, delete), drag to reorder (per browser) or onto an Ideation page to place there (VAULT_DRAG). Ideation picks arm placing (store.vaultArmed) or set the color pickers' palette; Fab picks open the file
+    FileVault.tsx           — the file vault window (vault/ on disk) on Ideation/Fab: search, sort, tabs per kind, slots (long blocks take two), hover card (size, delete), drag to reorder (per browser) or onto an Ideation page to place there (VAULT_DRAG). Ideation picks arm placing (store.vaultArmed) or set the color pickers' palette; Fab picks open the file. Right-click (VaultMenu): place/open, Edit in Fab, Duplicate, Copy as another kind (new files, opened on Fab), delete
+    PopMenu (workbench/ui/PopMenu.tsx) — the frame every right-click menu shares (SheetMenu, VaultMenu): portal, kept on screen, closes on a press elsewhere/wheel/Esc
 ```
 
 ---
@@ -231,6 +233,7 @@ npm run parts:build / asset:render / asset:info / page:render   # vault parts as
 ## Patterns to follow
 
 - **Adding a canvas tool:** add it to the master list in `workbench/ui/ToolRail.tsx`, then to the canvas's subset (`toolsFor([...])`); drawing tools get their settings in `lib/design/toolStyles.ts` and a menu in `ToolMenu` (and `MENU_TOOLS` in `VectorKit`); the gesture goes in `vector/useGestures.ts`.
+- **Adding a small menu next to a panel (a hot bar, pips, a picker):** don't squeeze it inside the panel. Wrap the panel in `Docked` (`workbench/ui/AuxDock.tsx`) and give it an `AuxBar` of `AuxButton`s: it floats just outside the panel's edge (left/right/top/bottom) and moves with it. In use: the minimap's layer pips (left), the Shapes tool's shape picker (right of the tool menu).
 - **Adding a box under the minimap:** a `PanelToggle` in the canvas's `panels` and its contents in `below` (one box open at a time).
 - **Adding a file type on disk:** an API route (validate, mtime check, write + rename) + a watch route (`watchFolder`) + a hook or sync module that follows it over SSE.
 - **Adding a library component:** a recipe in `lib/library/recipes/`, added to a set in `sets.ts`; dynamic parts name a behavior from `lib/library/behaviors`.
