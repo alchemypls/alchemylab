@@ -370,13 +370,14 @@ function TabletFields({ pen }: { pen: PenControls }): ReactNode {
 function EraseParams({ s, set, all }: { s: EraseTool; set: (p: Partial<EraseTool>) => void; all?: boolean }) {
   return (
     <>
-      <SliderField label="Size" value={s.size} min={4} max={240} notches={[[16, 'small'], [32, 'normal'], [64, 'large'], [120, 'huge']]} onChange={(size) => set({ size })} />
+      {s.shape !== 'whole' && s.shape !== 'line' && <SliderField label="Size" value={s.size} min={4} max={240} notches={[[16, 'small'], [32, 'normal'], [64, 'large'], [120, 'huge']]} onChange={(size) => set({ size })} />}
       <Field label="Shape">
-        <Seg options={[{ value: 'round', label: 'Round' }, { value: 'square', label: 'Square' }, { value: 'whole', label: 'Whole' }]} value={s.shape} onChange={(shape) => set({ shape })} />
+        <Seg options={[{ value: 'round', label: 'Round' }, { value: 'square', label: 'Square' }, { value: 'line', label: 'Line' }, { value: 'whole', label: 'Whole' }]} value={s.shape} onChange={(shape) => set({ shape })} />
       </Field>
       <p className="text-[10px] text-neutral-500 leading-relaxed">
         {s.shape === 'whole' ? 'Removes anything it touches.'
-          : all ? 'Rubs out anything it passes over: pen strokes are cut, and shapes, lines, text and images get a hole that moves with them.'
+          : s.shape === 'line' ? `Drag a line (it snaps to the grid), then drag near it to pull it across the floor, toward you or away: the band it sweeps is rubbed out${all ? '' : ' (pen strokes only)'}. Esc drops the line.`
+          : all ? 'Rubs out anything it passes over: pen strokes are cut, shapes are cut to what is left (they become polygons; a hole inside stays a hole), lines, text and images get a hole that moves with them.'
           : 'Ink eraser: cuts pen strokes only, so the layout stays whole. Switch to Whole to remove shapes, text, floors and images.'}
       </p>
     </>

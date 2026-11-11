@@ -74,6 +74,16 @@ export function Selection({ els, selected, single, knobOnly, handle, line }: { e
 
 export function Preview({ g, line, pen }: { g: Gesture; line: number; pen?: ToolStyles['pen'] }) {
   const common = { fill: 'none', stroke: ACCENT, strokeWidth: line * 1.5, pointerEvents: 'none' as const };
+  if (g.kind === 'cut') {   // the line eraser: the line, and the band it would rub out
+    const up = (q: { x: number; y: number }) => ({ x: q.x + g.off.x, y: q.y + g.off.y });
+    return (
+      <g pointerEvents="none">
+        {(g.off.x !== 0 || g.off.y !== 0) && <polygon points={toPoints([g.a, g.b, up(g.b), up(g.a)])} fill="#dc2626" fillOpacity={0.18} stroke="#dc2626" strokeWidth={line} strokeDasharray={`${line * 4} ${line * 3}`} />}
+        <line x1={g.a.x} y1={g.a.y} x2={g.b.x} y2={g.b.y} stroke="#dc2626" strokeWidth={line * 2} strokeLinecap="round" />
+        {g.placed && [g.a, g.b].map((q, i) => <circle key={i} cx={q.x} cy={q.y} r={line * 3.5} fill="#fff" stroke="#dc2626" strokeWidth={line * 1.5} />)}
+      </g>
+    );
+  }
   if (g.kind === 'zone') {
     const span = zoneSpan(g.grid, g.start, g.cur);
     const z: VZone = { id: '', type: 'zone', ...span };

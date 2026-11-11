@@ -42,7 +42,11 @@ export type Gesture =
   | { kind: 'line'; from: Anchor; start: Pt; cur: Pt }
   | { kind: 'poly'; pts: Pt[]; cur: Pt; plane?: Plane; lift?: number }   // stays open across clicks until finished
   | { kind: 'pen'; points: [number, number][]; pressures?: number[] }
-  | { kind: 'erase'; key: string; last: Pt };
+  | { kind: 'erase'; key: string; last: Pt }
+  // The line eraser: drag a line (placed), then drag again to pull it across the floor (square to it on the ground; on a
+  // flat sheet, square to it); the band it sweeps goes. Stays between drags, like a polygon; `from` is where the
+  // pulling drag started, `off` how far the line has moved on the page
+  | { kind: 'cut'; a: Pt; b: Pt; placed: boolean; off: Pt; from?: Pt };
 
 // What the gestures need from a mouse event or a pen sample
 export type Press = { clientX: number; clientY: number; timeStamp: number; shiftKey?: boolean; pressure?: number };

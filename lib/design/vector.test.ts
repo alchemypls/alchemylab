@@ -2,8 +2,9 @@
 import { describe, expect, it } from 'vitest';
 import type { DesignPage } from './types';
 import { untouchable } from './layers';
+import { carve } from './carve';
 import {
-  copyElements, duplicateElements, groupElements, lineEnds, pasteElements, removeElements, tenants, withGroups,
+  copyElements, duplicateElements, groupElements, lineEnds, pasteElements, removeElements, rubArea, tenants, withGroups,
   type VElement, type VLine, type VRect, type VZone,
 } from './vector';
 
@@ -70,5 +71,42 @@ describe('what moves and what can be touched', () => {
       layers: [{ id: 'open', name: 'Open' }, { id: 'locked', name: 'Locked', locked: true }, { id: 'hidden', name: 'Hidden', hidden: true }],
     });
     expect(Array.from(untouchable(p)).sort()).toEqual(['b', 'c']);
+  });
+});
+
+describe('the line eraser', () => {
+  const band = [{ x: 0, y: 20 }, { x: 200, y: 20 }, { x: 200, y: 30 }, { x: 0, y: 30 }];
+  it('cuts pen strokes across the band and marks the shapes it crosses, in their own box', () => {
+    const p = page([rect('a', 10, 0), rect('far', 10, 300), { id: 's', type: 'stroke', points: [[50, 0], [50, 60]] }]);
+    const next = rubArea(p, band, undefined, true);
+    expect(el(next, 'a').erased).toEqual([{ pts: [-10, 20, 190, 20, 190, 30, -10, 30], size: 0, area: true }]);
+    expect(el(next, 'far').erased).toBeUndefined();
+    expect(next.elements!.filter((e) => e.type === 'stroke')).toHaveLength(2);   // one above the band, one below
+  });
+  it('leaves shapes alone where only ink may be cut (Ideation) and on locked layers', () => {
+    const p = page([rect('a', 10, 0), rect('b', 10, 0)]);
+    expect(rubArea(p, band, undefined, false)).toBe(p);
+    expect(el(rubArea(p, band, new Set(['b']), true), 'b').erased).toBeUndefined();
+  });
+});
+
+describe('erasing cuts the shape (Fab)', () => {
+  const band = (y0: number, y1: number) => ({ pts: [-10, y0, 110, y0, 110, y1, -10, y1], size: 0, area: true });
+  const sq = (more: Partial<VRect> = {}): VRect => rect('s', 0, 0, { w: 100, h: 100, ...more });
+  it('a band across splits it in two polygons, the first keeping its id', () => {
+    const out = carve(sq({ erased: [band(40, 60)] }), []);
+    expect(out.map((e) => [e.type, (e as VRect).y, (e as VRect).h])).toEqual([['poly', 0, 40], ['poly', 60, 40]]);
+    expect(out[0].id).toBe('s');
+    expect(out.every((e) => !e.erased)).toBe(true);
+  });
+  it('a hole inside stays a mark, a full rub removes it', () => {
+    const hole = carve(sq({ erased: [{ pts: [40, 40, 60, 40, 60, 60, 40, 60], size: 0, area: true }] }), []);
+    expect(hole).toHaveLength(1);
+    expect(hole[0].erased?.[0].area).toBe(true);
+    expect(carve(sq({ erased: [band(-10, 110)] }), [])).toEqual([]);
+  });
+  it('on the floor, what is left draws where it was', () => {
+    const [left] = carve(sq({ plane: 'floor', erased: [band(-10, 50)] }), []);
+    expect([(left as VRect).x, (left as VRect).y, (left as VRect).h]).toEqual([-50, 25, 50]);   // its new corner: 50 down the rows
   });
 });

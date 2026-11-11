@@ -9,13 +9,14 @@ import { untouchable } from '@/lib/design/layers';
 import type { DesignPage } from '@/lib/design/types';
 import { footingOf, placeAsset } from '@/lib/design/vault';
 import {
-  addElement, boundsOf, cutStrokes, dragDelta, gridOf, ISO_DEG, latticeVertex, liftOf, magnet, newId, offPlane, onPlane, planeOf, PLANES, polyFrom,
-  pullBox, pullBoxToLattice, pullZone, removeElements, ROOF_LIFT, rotatePt, rotationOf, rubElements, snap, snapAngle, standing, tenants, tidyStroke,
+  addElement, boundsOf, cutStrokes, dragDelta, gridOf, invert, ISO_DEG, latticeVertex, mapPt, liftOf, magnet, newId, offPlane, onPlane, planeOf, PLANES, polyFrom,
+  pullBox, pullBoxToLattice, pullZone, removeElements, ROOF_LIFT, rotatePt, rotationOf, rubArea, rubElements, snap, snapAngle, standing, tenants, tidyStroke,
   translateElements, updateElement, visualBounds, withGroups,
   type Anchor, type FootingOf, type Lattice, type Pt, type VElement, type VLine,
 } from '@/lib/design/vector';
 import { isLineKind, shapeFields, strokeFields, textFields, zoneFields } from '@/lib/design/toolStyles';
 import { useVault } from '@/workbench/hooks/useVault';
+import { carveElements } from '@/lib/design/carve';
 import type { SheetMenuAt } from '../SheetMenu';
 import { ACCENT } from '../DesignArtboard';
 import {
@@ -188,10 +189,33 @@ export function useGestures({ svgRef, page, els, W, H, edit, penInput, lookOnly 
       }
       case 'pen':
         return begin({ kind: 'pen', points: [[p.x, p.y]], pressures: e.pressure === undefined ? undefined : [e.pressure] });
-      case 'erase':
+      case 'erase': {
+        if (edit.styles.erase.shape === 'line') {   // near the placed line: pull it; anywhere else: a new line
+          const g = gesture.current;
+          if (g?.kind === 'cut' && g.placed && nearCut(g, p)) return begin({ ...g, from: p, off: { x: 0, y: 0 } });
+          const q = pullPt(p);
+          return begin({ kind: 'cut', a: q, b: q, placed: false, off: { x: 0, y: 0 } });
+        }
         begin({ kind: 'erase', key, last: p });
         eraseBetween(p, p, e, key);
+      }
     }
+  };
+
+  // ── Line eraser ── a pull goes across the floor, square to the line on the ground (an isometric sheet is worked on its
+  // flat floor: PLANES.floor), by half tiles while snapping
+  const nearCut = (g: { a: Pt; b: Pt }, p: Pt) => {
+    const dx = g.b.x - g.a.x, dy = g.b.y - g.a.y, len2 = dx * dx + dy * dy || 1;
+    const t = Math.max(0, Math.min(1, ((p.x - g.a.x) * dx + (p.y - g.a.y) * dy) / len2));
+    return Math.hypot(p.x - (g.a.x + t * dx), p.y - (g.a.y + t * dy)) <= 24 / (edit?.scale ?? 1);
+  };
+  const pullOf = (g: { a: Pt; b: Pt }, from: Pt, p: Pt): Pt => {
+    const m = lattice.flat ? undefined : PLANES.floor, inv = m && invert(m);
+    const flat = (q: Pt) => (inv ? mapPt(inv, q) : q), back = (q: Pt) => (m ? mapPt(m, q) : q);
+    const ab = flat({ x: g.b.x - g.a.x, y: g.b.y - g.a.y }), len = Math.hypot(ab.x, ab.y) || 1;
+    const n = { x: -ab.y / len, y: ab.x / len }, d = flat({ x: p.x - from.x, y: p.y - from.y });
+    const step = snapOn && gridShown ? lattice.cell / 2 : 1, t = Math.round((d.x * n.x + d.y * n.y) / step) * step;
+    return back({ x: n.x * t, y: n.y * t });
   };
 
   const previewFrame = useRef(0);
@@ -278,6 +302,10 @@ export function useGestures({ svgRef, page, els, W, H, edit, penInput, lookOnly 
       case 'erase':
         eraseBetween(g.last, p, e, g.key);
         g.last = p;
+        return;
+      case 'cut':
+        if (!g.placed) begin({ ...g, b: pullPt(p) });
+        else if (g.from) begin({ ...g, off: pullOf(g, g.from, p) });
     }
   };
 
@@ -296,9 +324,10 @@ export function useGestures({ svgRef, page, els, W, H, edit, penInput, lookOnly 
   };
   // While drawing a polygon: Enter finishes, Backspace takes back a corner, Esc drops it. Another tool drops it too.
   useEffect(() => {
-    if (preview?.kind !== 'poly') return;
+    if (preview?.kind !== 'poly' && preview?.kind !== 'cut') return;
     const key = (e: KeyboardEvent) => {
       const g = gesture.current;
+      if (g?.kind === 'cut' && e.key === 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); drop(); return; }
       if (g?.kind !== 'poly') return;
       if (e.key === 'Enter') { e.preventDefault(); e.stopImmediatePropagation(); finishPoly(); }
       else if (e.key === 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); drop(); }
@@ -310,12 +339,30 @@ export function useGestures({ svgRef, page, els, W, H, edit, penInput, lookOnly 
     window.addEventListener('keydown', key, true);
     return () => window.removeEventListener('keydown', key, true);
   }, [preview?.kind]); // eslint-disable-line react-hooks/exhaustive-deps -- reads the live gesture
-  useEffect(() => { if (gesture.current?.kind === 'poly') drop(); }, [edit?.tool, edit?.styles.shape.kind]);
+  useEffect(() => { if (gesture.current?.kind === 'poly' || gesture.current?.kind === 'cut') drop(); }, [edit?.tool, edit?.styles.shape.kind, edit?.styles.erase.shape]);
 
   const endGesture = (e: Press) => {
     const g = gesture.current;
     if (g?.kind === 'poly') return;   // a polygon finishes on its own (first corner, double-click, Enter)
+    if (g?.kind === 'cut') {   // first drag places the line and it stays; the pulling drag rubs out the band
+      if (!g.placed) return Math.hypot(g.b.x - g.a.x, g.b.y - g.a.y) < 4 ? drop() : begin({ ...g, placed: true });
+      if (!g.from) return;
+      drop();
+      if ((!g.off.x && !g.off.y) || !edit) return;
+      const cur = pageRef.current, up = (q: Pt) => ({ x: q.x + g.off.x, y: q.y + g.off.y });
+      let next = rubArea(cur, [g.a, g.b, up(g.b), up(g.a)], untouchable(cur), !!edit.eraseAll);
+      if (edit.eraseAll) { const was = new Set(cur.elements); next = carveElements(next, (next.elements ?? []).filter((x) => !was.has(x)).map((x) => x.id)); }
+      if (next !== cur) { pageRef.current = next; edit.apply(next); }
+      return;
+    }
     drop();
+    // An eraser stroke on Fab ends by cutting the shapes it rubbed: the marks become their outline (lib/design/carve)
+    if (g?.kind === 'erase' && edit?.eraseAll && rubs.current.key === g.key && rubs.current.open.size) {
+      const cur = pageRef.current, next = carveElements(cur, rubs.current.open.keys());
+      rubs.current = { key: '', open: new Map() };
+      if (next !== cur) { pageRef.current = next; edit.apply(next, g.key); }
+      return;
+    }
     if (!g || !edit) return;
     const cur = pageRef.current;
     const place = (el: VElement) => { edit.apply(addElement(cur, el)); edit.select([el.id]); };
@@ -371,7 +418,7 @@ export function useGestures({ svgRef, page, els, W, H, edit, penInput, lookOnly 
   const moveEraser = (p: Pt | null) => {
     const el = eraserRef.current, s = edit?.styles.erase;
     if (!el) return;
-    if (!p || !s || !edit || s.shape === 'whole') return el.setAttribute('display', 'none');
+    if (!p || !s || !edit || s.shape === 'whole' || s.shape === 'line') return el.setAttribute('display', 'none');
     const r = s.size / 2;
     el.setAttribute('display', 'inline');
     el.setAttribute('x', String(p.x - r)); el.setAttribute('y', String(p.y - r));

@@ -33,7 +33,7 @@ interface VBase {
 export interface Fx { kind: string; off?: boolean; [setting: string]: string | number | boolean | undefined }
 
 // One pass of the eraser over an element. Points are relative to the element's unturned box, so the hole moves and turns with it.
-export interface Rub { pts: number[]; size: number; square?: boolean }   // pts: x, y, x, y, …
+export interface Rub { pts: number[]; size: number; square?: boolean; area?: boolean }   // pts: x, y, x, y, …; area: they outline a region, rubbed out whole (the line eraser's band)
 export type LinePattern = boolean | 'dot';   // true = dashed
 export type TextBackground = 'block' | 'round' | 'pill' | 'ellipse';
 export type VBrush = 'ink' | 'marker' | 'highlighter';
@@ -144,9 +144,41 @@ export const dashProps = (dash: LinePattern | undefined, width: number) =>
 
 // Cuts every pen stroke under the eraser. r is half its size. Returns `p` itself when nothing was touched.
 export function cutStrokes(p: DesignPage, c: Pt, r: number, square = false, skip?: Set<string>): DesignPage {   // skip: ids it can't touch
-  const inside = ([x, y]: [number, number]) => square
-    ? Math.abs(x - c.x) <= r && Math.abs(y - c.y) <= r
-    : Math.hypot(x - c.x, y - c.y) <= r;
+  return cutStrokesWhere(p, ([x, y]) => (square ? Math.abs(x - c.x) <= r && Math.abs(y - c.y) <= r : Math.hypot(x - c.x, y - c.y) <= r), skip);
+}
+
+// Is p inside the polygon (even-odd)?
+export function inPolygon(p: Pt, poly: Pt[]): boolean {
+  let inside = false;
+  for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+    const a = poly[i], b = poly[j];
+    if ((a.y > p.y) !== (b.y > p.y) && p.x < ((b.x - a.x) * (p.y - a.y)) / (b.y - a.y) + a.x) inside = !inside;
+  }
+  return inside;
+}
+
+// The line eraser's band (a region on the page): pen strokes are cut along it; with `shapes`, everything else it
+// overlaps gets the band as an eraser mark, in its own box (so it stays put on the shape, planes included)
+export function rubArea(p: DesignPage, corners: Pt[], skip: Set<string> | undefined, shapes: boolean): DesignPage {
+  let next = cutStrokesWhere(p, ([x, y]) => inPolygon({ x, y }, corners), skip);
+  if (!shapes) return next;
+  const all = elementsOf(next), xs = corners.map((c) => c.x), ys = corners.map((c) => c.y);
+  const box = { x: Math.min(...xs), y: Math.min(...ys), w: Math.max(...xs) - Math.min(...xs), h: Math.max(...ys) - Math.min(...ys) };
+  let changed = false;
+  const out = all.map((e) => {
+    if (!RUBBABLE.includes(e.type) || skip?.has(e.id)) return e;
+    const v = visualBounds(e, all);
+    if (v.x > box.x + box.w || v.x + v.w < box.x || v.y > box.y + box.h || v.y + v.h < box.y) return e;
+    const b = boundsOf(e, all);
+    const pts = corners.flatMap((q) => { const r = toLocal(e, all, q); return [Math.round((r.x - b.x) * 10) / 10, Math.round((r.y - b.y) * 10) / 10]; });
+    changed = true;
+    return { ...e, erased: [...(e.erased ?? []), { pts, size: 0, area: true }] } as VElement;
+  });
+  if (changed) next = withElements(next, out);
+  return next;
+}
+
+function cutStrokesWhere(p: DesignPage, inside: (pt: [number, number]) => boolean, skip?: Set<string>): DesignPage {
   let changed = false;
   const out: VElement[] = [];
   for (const el of elementsOf(p)) {

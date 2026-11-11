@@ -29,7 +29,7 @@ export interface TextTool {
 // cell and flat live on the page's grid; they're only here so a favorite can carry them
 export interface ZoneTool { fill?: string; stroke?: string; strokeWidth: number; dash?: LinePattern; opacity: number; noLines?: boolean; cell?: number; flat?: boolean }
 export interface PenTool { size: number; brush: VBrush; color: string }
-export interface EraseTool { size: number; shape: 'round' | 'square' | 'whole' }
+export interface EraseTool { size: number; shape: 'round' | 'square' | 'whole' | 'line' }   // line: place a line, pull it up or down, the band goes
 export interface SelectTool {
   off: VType[];     // element types that can't be clicked
   free?: boolean;   // snapping off: moves, new shapes, resizes and line ends go exactly where the pointer is (floors still snap)

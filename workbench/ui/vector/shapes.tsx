@@ -54,6 +54,7 @@ export function Erased({ el, all, children }: { el: VElement; all: VElement[]; c
         <g transform={`translate(${o.x} ${o.y})`} fill="none" stroke="black">
           {el.erased.map((r, i) => {
             const pts = []; for (let k = 0; k + 1 < r.pts.length; k += 2) pts.push(`${r.pts[k]},${r.pts[k + 1]}`);
+            if (r.area) return <path key={i} d={`M${pts.join(' L')} Z`} fill="black" stroke="none" />;
             return <path key={i} d={`M${pts.join(' L')}${pts.length === 1 ? ` L${pts[0]}` : ''}`} strokeWidth={r.size} strokeLinecap={r.square ? 'square' : 'round'} strokeLinejoin={r.square ? 'miter' : 'round'} />;
           })}
         </g>
