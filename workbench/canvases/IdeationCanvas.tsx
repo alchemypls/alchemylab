@@ -20,6 +20,7 @@ import { removeBlock, resizeBlock } from '@/lib/design/ops';
 import { pageSize, type DesignPage } from '@/lib/design/types';
 import { fitBlocks, placeAsset } from '@/lib/design/vault';
 import { VAULT_DRAG } from '@/workbench/shell/FileVault';
+import { askText } from '@/workbench/ui/Ask';
 
 // The Ideation canvas: one page of a design bible (design/<bible>/pages/<page>.json) fills the screen,
 // live from disk. The agent writes the files (design-bible skill); this draws them and edits them by hand.
@@ -102,7 +103,7 @@ export function IdeationCanvas() {
   };
 
   const createPage = async () => {
-    const title = window.prompt('New page title');
+    const title = await askText('New page title', { ok: 'Create' });
     const id = title ? slug(title) : '';
     if (!title || !id || !bibleId) return;
     if (!pages.some((p) => p.id === id)) {

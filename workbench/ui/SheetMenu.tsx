@@ -11,6 +11,7 @@ import { copyAsset, useVault } from '@/workbench/hooks/useVault';
 import { PLANE_OPTIONS } from './ToolMenu';
 import { actionCtx, actionIcon, runAction } from './vector/actions';
 import { MENU_KEY as KEY, MENU_ROW as ROW, MenuRule, PopMenu } from './PopMenu';
+import { tell } from '@/workbench/ui/Ask';
 
 // The right-click menu on a vector sheet (Ideation and Fab): what can be done to the selection, or to the page when
 // nothing is under the pointer. Its frame is PopMenu. Most rows come from the action registry (lib/design/actions.ts);
@@ -95,7 +96,7 @@ export function SheetMenu({ at, page, apply, select, selectable, close }: {
               className={ROW} title={`Copy "${asset.title}" to a new vault piece, put this one placement on it, and open it on Fab. The others stay as they are.`}
               onClick={run(async () => {
                 const r = await copyAsset(asset);
-                if ('error' in r) { window.alert(`Couldn't make it unique: ${r.error}`); return; }
+                if ('error' in r) { void tell(`Couldn't make it unique: ${r.error}`); return; }
                 apply(updateElement(page, only.id, { asset: r.id } as Partial<VElement>));
                 toFab(r.id);
               })}

@@ -6,6 +6,7 @@ import { createPalette, deletePalette } from '@/workbench/hooks/useVault';
 import { HEX, LABEL_H, paletteCell, paletteSize, SWATCH, type Palette } from '@/lib/design/palette';
 import { Field } from './StyleFields';
 import { TextInput } from './TextInput';
+import { askConfirm } from '@/workbench/ui/Ask';
 
 // A vault palette on the Fab canvas: the sheet shows the colors as big swatches, the panel edits them.
 
@@ -69,7 +70,7 @@ export function PaletteFields({ id, palette, selected, select, apply, open }: {
     if ('id' in r) open(`palette:${r.id}`);
   };
   const remove = async () => {
-    if (!window.confirm(`Delete the palette "${palette.title}"? Colors already picked from it stay as they are. This can't be undone.`)) return;
+    if (!await askConfirm(`Delete the palette "${palette.title}"? Colors already picked from it stay as they are. This can't be undone.`, { ok: 'Delete', danger: true })) return;
     if (inUse === id) setInUse(undefined);
     await deletePalette(id);
   };

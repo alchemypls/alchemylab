@@ -3,6 +3,7 @@
 import { Trash2 } from 'lucide-react';
 import { useWorkbenchStore } from '@/lib/store';
 import { PROJECT_ACCENTS, type ProjectData } from '@/lib/project';
+import { askConfirm } from '@/workbench/ui/Ask';
 
 // The project's own fields, in the box under the Web canvas's minimap: name, accent, core intent, tags, the default
 // head pages fall back to, and deleting it (the shared vault is untouched).
@@ -46,7 +47,7 @@ export function ProjectFields({ project }: { project: ProjectData }) {
         <span className="text-[10px] text-neutral-500 font-mono">{project.pages.length} pages · created {new Date(meta.createdAt).toLocaleDateString()}</span>
         <button
           disabled={projectCount <= 1}
-          onClick={() => { if (window.confirm(`Delete project "${meta.name}" and all its pages, layouts and wireframes? The shared vault is untouched.`)) deleteProject(meta.id); }}
+          onClick={async () => { if (await askConfirm(`Delete project "${meta.name}" and all its pages, layouts and wireframes? The shared vault is untouched.`, { ok: 'Delete', danger: true })) deleteProject(meta.id); }}
           className="flex items-center gap-1 text-[11px] text-neutral-500 hover:text-red-400 disabled:opacity-30 disabled:hover:text-neutral-500"
           title={projectCount <= 1 ? "Can't delete the only project" : 'Delete project'}
         >

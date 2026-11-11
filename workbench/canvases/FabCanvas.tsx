@@ -23,6 +23,7 @@ import { paletteSheet, type Palette } from '@/lib/design/palette';
 import { gridOf } from '@/lib/design/vector';
 import { ASSET_KINDS, blockFloor, projectedElements, topDownView, KIND_LABEL, type AssetKind, type VaultAsset } from '@/lib/design/vault';
 import { pageSize, type DesignPage } from '@/lib/design/types';
+import { askText } from '@/workbench/ui/Ask';
 
 // The Fab canvas: one editor at a time makes assets for the other canvases, in the same layout as Ideation.
 // Visual Identity and Blocks draw with the vector tools; Components edits recipes on a stage.
@@ -136,7 +137,10 @@ export function FabCanvas() {
   }, [fabFile, openKind]); // eslint-disable-line react-hooks/exhaustive-deps -- runs per file; the rest are stable
 
   const newFile = async (kind: AssetKind | 'palette') => {
-    const title = window.prompt(`Name this ${kind}`)?.trim();
+    const titles = new Set([...entries.map((e) => e.asset.title), ...palettes.entries.map((e) => e.asset.title)]);
+    let free = `New ${kind}`;
+    for (let n = 2; titles.has(free); n++) free = `New ${kind} ${n}`;
+    const title = await askText(`Name this ${kind}`, { value: free, ok: 'Create' });
     if (!title) return;
     const r = kind === 'palette' ? await createPalette(title) : await createAsset(kind, title);
     if ('error' in r) return (paletteOpen ? pal : file).setSave({ kind: 'error', message: r.error });

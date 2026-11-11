@@ -6,6 +6,7 @@ import { useWorkbenchStore } from '@/lib/store';
 import { ROW_HEIGHT, getEffectiveLayers, isOverridden, resolvePlacement, type PageLayout, type PagePlacement, type PlacementGeom } from '@/lib/project';
 import { TIERS, TIER_COLUMNS, type Tier } from '@/lib/devices';
 import type { ProjectComponent } from '@/lib/library';
+import { askConfirm } from '@/workbench/ui/Ask';
 
 // The Web canvas's layout layer, editable: the page's placements on the tier's column grid. Drag a block to move it,
 // its corner to resize; both snap to columns and rows. Edits on a wider tier are that tier's own (mobile-first:
@@ -210,7 +211,7 @@ export function VariantsBox({ pid, path, layout }: { pid: string; path: string; 
           <span className="text-[12px] text-neutral-200 flex-1 truncate">{l.name}</span>
           <span className="text-[10px] font-mono text-neutral-500">{l.placements.length}</span>
           {layers.length > 1 && (
-            <button onClick={(e) => { e.stopPropagation(); if (window.confirm(`Delete layout "${l.name}" and its ${l.placements.length} blocks?`)) removeLayer(pid, path, l.id); }} className="text-neutral-500 hover:text-red-400 opacity-0 group-hover:opacity-100" title="Delete this variant"><X size={12} /></button>
+            <button onClick={async (e) => { e.stopPropagation(); if (await askConfirm(`Delete layout "${l.name}" and its ${l.placements.length} blocks?`, { ok: 'Delete', danger: true })) removeLayer(pid, path, l.id); }} className="text-neutral-500 hover:text-red-400 opacity-0 group-hover:opacity-100" title="Delete this variant"><X size={12} /></button>
           )}
         </div>
       ))}

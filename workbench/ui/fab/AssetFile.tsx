@@ -7,6 +7,7 @@ import { FOOTPRINT_MAX, type AssetKind, type VaultAsset } from '@/lib/design/vau
 import { assetUses, copyAsset, deleteAsset } from '@/workbench/hooks/useVault';
 import { Field, Swatches } from '@/workbench/ui/StyleFields';
 import { TextInput } from '@/workbench/ui/TextInput';
+import { askConfirm } from '@/workbench/ui/Ask';
 
 // The open asset's own settings. Deleting warns where it's used, because those pages lose the drawing.
 // The kind is fixed: it sets how every placement draws. "Copy as" makes a new file of another kind and opens it
@@ -16,7 +17,7 @@ export function AssetFile({ id, asset, apply, opened }: { id: string; asset: Vau
   const remove = async () => {
     const uses = await assetUses(id);
     const where = uses.length ? `It's placed on:\n${uses.join('\n')}\n\nThose pages will show a red box instead. ` : '';
-    if (window.confirm(`Delete "${asset.title}" from the vault? ${where}This can't be undone.`)) await deleteAsset(id);
+    if (await askConfirm(`Delete "${asset.title}" from the vault? ${where}This can't be undone.`, { ok: 'Delete', danger: true })) await deleteAsset(id);
   };
   return (
     <div className="p-3 flex flex-col gap-4 text-xs text-neutral-300">

@@ -8,6 +8,7 @@ import { MENU_ROW as ROW, MenuRule, PopMenu } from './PopMenu';
 import { addLayer, layerOf, layersOf, moveLayer, moveToLayer, removeLayer, updateLayer, type VLayer } from '@/lib/design/layers';
 import type { DesignPage } from '@/lib/design/types';
 import type { VElement } from '@/lib/design/vector';
+import { askConfirm } from '@/workbench/ui/Ask';
 
 // A vector page's layers, top first, in the box under the minimap. Click a layer to draw on it.
 // Each layer opens to list what's on it, and a click there selects it.
@@ -65,9 +66,9 @@ export function LayersPanel({ page, apply, active, setActive, selected, select, 
     if (!l[key]) { const off = new Set(on(l).map((e) => e.id)); select(selected.filter((id) => !off.has(id))); }
   };
   const add = () => { const r = addLayer(page, active); apply(r.page); setActive(r.id); setRenaming(r.id); };
-  const remove = (l: VLayer) => {
+  const remove = async (l: VLayer) => {
     const n = on(l).length;
-    if (n && !window.confirm(`Delete "${l.name}" and the ${n} thing${n === 1 ? '' : 's'} on it?`)) return;
+    if (n && !await askConfirm(`Delete "${l.name}" and the ${n} thing${n === 1 ? '' : 's'} on it?`, { ok: 'Delete', danger: true })) return;
     apply(removeLayer(page, l.id));
     select([]);
   };

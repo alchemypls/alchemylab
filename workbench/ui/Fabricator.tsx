@@ -13,6 +13,7 @@ import {
 import { RecipeView, RecipeStyles, themeScope, libScope } from './RecipeView';
 import { InstanceControls } from './InstanceControls';
 import { usePaletteInUse } from './StyleFields';
+import { askConfirm } from '@/workbench/ui/Ask';
 
 // The parts of the Fabricator: the Library and this Project's own copies, a live preview with the real
 // generated CSS, and styling one layer at a time (base / a variant option / a state) or the theme tokens.
@@ -441,7 +442,7 @@ function ThemeEditor({ pid, theme }: { pid: string; theme: Theme }) {
       <div className="flex items-center justify-between">
         <span className="text-[10px] text-neutral-400">{theme.name}</span>
         <button
-          onClick={() => { if (window.confirm('Reset this project\'s theme to the global base?')) reset(pid); }}
+          onClick={async () => { if (await askConfirm('Reset this project\'s theme to the global base?', { ok: 'Reset' })) reset(pid); }}
           className="flex items-center gap-1 text-[9px] text-neutral-500 hover:text-neutral-200 font-mono"
         >
           <RotateCcw size={10} /> reset to global

@@ -11,6 +11,7 @@ import { assetUses, copyAsset, createPalette, deleteAsset, deletePalette, usePal
 import { MENU_ROW as ROW, MenuRule, PopMenu } from '@/workbench/ui/PopMenu';
 import { AssetThumb } from '@/workbench/ui/AssetPicker';
 import { FlyoutChoice, GhostSlot, VaultEmpty, VaultSearch, VaultTabs, VaultWindow, gridStyle, packSlots, useSlotGrid } from '@/workbench/ui/vault/VaultParts';
+import { askConfirm, tell } from '@/workbench/ui/Ask';
 
 // The file vault (vault/ on disk) on Ideation and Fab, in the vault window: search, sort, a tab per kind, items
 // packed into slots (a long block takes two). On Ideation a pick arms placing: each click on the page puts one down
@@ -122,21 +123,21 @@ export function FileVault() {
   const duplicate = async (i: Item, kind?: AssetKind) => {
     if (i.type === 'asset') {
       const r = await copyAsset(i.file.asset, kind);
-      if ('error' in r) window.alert(`Couldn't copy it: ${r.error}`); else toFab(r.id, kind ?? i.file.asset.kind);
+      if ('error' in r) void tell(`Couldn't copy it: ${r.error}`); else toFab(r.id, kind ?? i.file.asset.kind);
       return;
     }
     const root = i.title.replace(/\s+\d+$/, '');
     let n = 2;
     while (palettes.entries.some((p) => p.asset.title === `${root} ${n}`)) n++;
     const r = await createPalette(`${root} ${n}`, i.file.asset);
-    if ('error' in r) window.alert(`Couldn't copy it: ${r.error}`); else toFab(`palette:${r.id}`, 'palette');
+    if ('error' in r) void tell(`Couldn't copy it: ${r.error}`); else toFab(`palette:${r.id}`, 'palette');
   };
   const remove = async (i: Item) => {
     setCard(null);
-    if (i.type === 'palette') { if (window.confirm(`Delete palette "${i.title}"? Colors already copied into pages stay.`)) await deletePalette(i.file.id); return; }
+    if (i.type === 'palette') { if (await askConfirm(`Delete palette "${i.title}"? Colors already copied into pages stay.`, { ok: 'Delete', danger: true })) await deletePalette(i.file.id); return; }
     const uses = await assetUses(i.file.id);
     const msg = uses.length ? `"${i.title}" is placed on ${uses.length} page${uses.length > 1 ? 's' : ''} (${uses.slice(0, 3).join(', ')}${uses.length > 3 ? '…' : ''}). Delete it anyway? Those placements will show as missing.` : `Delete "${i.title}"?`;
-    if (window.confirm(msg)) { await deleteAsset(i.file.id); if (armed === i.key) arm(null); }
+    if (await askConfirm(msg, { ok: 'Delete', danger: true })) { await deleteAsset(i.file.id); if (armed === i.key) arm(null); }
   };
 
   const error = assets.error ?? palettes.error;

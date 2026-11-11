@@ -176,6 +176,7 @@ workbench/
     CanvasPanel.tsx         — top-right panel above all canvases: switcher, per-canvas slot (CanvasPanelSlot), vault button
     VaultButton.tsx         — file vault toggle, at the bottom of CanvasPanel (Ideation and Fab only)
     FileVault.tsx           — the file vault window (vault/ on disk) on Ideation/Fab: search, sort, tabs per kind, slots (long blocks take two), hover card (size, delete), drag to reorder (per browser) or onto an Ideation page to place there (VAULT_DRAG). Ideation picks arm placing (store.vaultArmed) or set the color pickers' palette; Fab picks open the file. Right-click (VaultMenu): place/open, Edit in Fab, Duplicate, Copy as another kind (new files, opened on Fab), delete
+    Ask (workbench/ui/Ask.tsx) — the app's own name box / confirm / notice: await askText / askConfirm / tell (AskHost in app/page.tsx). Never window.prompt/confirm/alert: VS Code's browser refuses them
     PopMenu (workbench/ui/PopMenu.tsx) — the frame every right-click menu shares (SheetMenu, VaultMenu): portal, kept on screen, closes on a press elsewhere/wheel/Esc
 ```
 

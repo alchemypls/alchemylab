@@ -13,6 +13,7 @@ import type { PagePen, VectorEdit, VTool } from '@/workbench/ui/VectorArtboard';
 import type { RailTool, ToolKey } from '@/workbench/ui/ToolRail';
 import { actionCtx, runAction } from '@/workbench/ui/vector/actions';
 import { actionForKey } from '@/lib/design/actions';
+import { askText } from '@/workbench/ui/Ask';
 
 // Everything the vector drawing tools need on a canvas: the tool in hand, the selection, the tool menu's
 // changes, the tablet pen and the drawing keys. A canvas supplies the page and how to edit it.
@@ -116,11 +117,11 @@ export function useVectorTools({ doc, tools, enabled, onDeselect }: {
     const next = restyle(cur, t, { ...cleared, ...style });
     if (next !== cur) apply(next, `favorite:${t}`);
   };
-  const saveFavorite = (t: keyof Favorites) => {
-    const name = window.prompt('Name this favorite');
-    if (!name?.trim()) return;
+  const saveFavorite = async (t: keyof Favorites) => {
+    const name = await askText('Name this favorite', { ok: 'Save' });
+    if (!name) return;
     const style = t === 'zone' ? { ...styles.styles.zone, ...(current.current ? gridOf(current.current) : {}) } : styles.styles[t];
-    styles.addFavorite(t, name.trim(), style);
+    styles.addFavorite(t, name, style);
   };
 
   const onKey = (e: KeyboardEvent) => {

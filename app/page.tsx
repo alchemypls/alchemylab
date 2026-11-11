@@ -12,6 +12,7 @@ import { IdeationCanvas } from '@/workbench/canvases/IdeationCanvas';
 import { FabCanvas } from '@/workbench/canvases/FabCanvas';
 import { WebCanvas } from '@/workbench/canvases/WebCanvas';
 import { LiveCanvas } from '@/workbench/canvases/LiveCanvas';
+import { AskHost } from '@/workbench/ui/Ask';
 
 // The workbench: one full-screen canvas at a time (Alt + WASD / arrows moves between them), the panel above it.
 
@@ -53,6 +54,7 @@ export default function Home() {
       <CanvasPanel />
       <SceneNavigator />
       <FileVault />
+      <AskHost />
     </div>
   );
 }
