@@ -14,6 +14,7 @@ import { SLUG } from '@/lib/design/types';
 import { validateAsset } from '@/lib/design/validate';
 import { usesAsset } from '@/lib/design/vault';
 import { validatePalette } from '@/lib/design/palette';
+import { log } from '@/lib/server/log';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -30,6 +31,7 @@ const fail = (status: number, error: string, extra?: object) => Response.json({ 
 const mtime = (file: string) => fs.stat(file).then((s) => String(s.mtimeMs), () => null);
 const names = (dir: string) => fs.readdir(dir).catch(() => [] as string[]);
 const readJson = async (file: string) => JSON.parse(await fs.readFile(file, 'utf8'));
+const list = (xs: string[]) => (xs.length > 3 ? `${xs.slice(0, 3).join(', ')} +${xs.length - 3}` : xs.join(', '));
 
 // Which file a write or delete names: ?asset=id or ?palette=id
 function target(q: URLSearchParams): { type: VaultType; id: string } | Response {
@@ -70,18 +72,20 @@ export async function PUT(req: Request) {
   if (at instanceof Response) return at;
   const { dir, validate } = TYPES[at.type];
   const body = await req.json().catch(() => undefined);
-  const issues = validate(body);
-  if (issues.errors.length) return fail(422, issues.errors[0], issues);
-
   const file = path.join(dir, `${at.id}.json`);
+  const issues = validate(body);
+  if (issues.errors.length) { log.refused(file, 422, issues.errors[0], issues.errors); return fail(422, issues.errors[0], issues); }
+
   const current = await mtime(file), base = req.headers.get('x-base-mtime');
-  if (q.get('new') && current !== null) return fail(409, `"${at.id}" already exists`);
-  if (base !== null && current !== null && base !== current) return fail(409, 'Changed on disk since you loaded it');
+  if (q.get('new') && current !== null) return fail(409, `"${at.id}" already exists`);   // create() tries the next name: not worth a line
+  if (base !== null && current !== null && base !== current) { log.stale(file, base, current); return fail(409, 'Changed on disk since you loaded it'); }
+  const before = current === null ? undefined : await readJson(file).catch(() => null);
 
   await fs.mkdir(dir, { recursive: true });
   const tmp = `${file}.${process.pid}.tmp`;   // write + rename: readers never see a half-written file
   await fs.writeFile(tmp, JSON.stringify(body, null, 2) + '\n');
   await fs.rename(tmp, file);
+  log.saved(file, before, body, issues.warnings);
   return Response.json({ warnings: issues.warnings }, { headers: { 'x-mtime': (await mtime(file)) ?? '' } });
 }
 
@@ -89,7 +93,9 @@ export async function DELETE(req: Request) {
   const q = new URL(req.url).searchParams, at = target(q);
   if (at instanceof Response) return at;
   const pages = at.type === 'asset' ? await usedIn(at.id) : [];
-  if (pages.length && !q.get('force')) return fail(409, `Used on ${pages.length} page(s)`, { usedIn: pages });
-  await fs.rm(path.join(TYPES[at.type].dir, `${at.id}.json`), { force: true });
+  const file = path.join(TYPES[at.type].dir, `${at.id}.json`);
+  if (pages.length && !q.get('force')) { log.refused(file, 409, `delete refused: used on ${list(pages)}`); return fail(409, `Used on ${pages.length} page(s)`, { usedIn: pages }); }
+  await fs.rm(file, { force: true });
+  log.deleted(file, pages.length ? `(was on ${list(pages)})` : '');
   return Response.json({ usedIn: pages });
 }

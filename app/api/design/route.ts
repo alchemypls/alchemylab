@@ -15,6 +15,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { SLUG, type BibleSummary } from '@/lib/design/types';
 import { validateBible, validatePage, type BibleContext } from '@/lib/design/validate';
+import { log } from '@/lib/server/log';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -111,21 +112,24 @@ export async function PUT(req: Request) {
     if (bytes.length > MAX_ASSET_BYTES) return fail(413, 'Image is over 20 MB');
     await fs.mkdir(path.join(t.dir, 'assets'), { recursive: true });
     await fs.writeFile(path.join(t.dir, 'assets', asset), bytes);
+    log.uploaded(path.join(t.dir, 'assets', asset), bytes.length);
     return Response.json({ src: asset });
   }
 
   const body = await req.json().catch(() => undefined);
   const ctx = await context(t.dir);
   const issues = t.page ? validatePage(body, ctx) : validateBible(body, ctx);
-  if (issues.errors.length) return fail(422, issues.errors[0], issues);
+  if (issues.errors.length) { log.refused(t.file, 422, issues.errors[0], issues.errors); return fail(422, issues.errors[0], issues); }
 
   const base = req.headers.get('x-base-mtime');
   const current = await mtime(t.file);
-  if (base !== null && current !== null && base !== current) return fail(409, 'Changed on disk since you loaded it');
+  if (base !== null && current !== null && base !== current) { log.stale(t.file, base, current); return fail(409, 'Changed on disk since you loaded it'); }
+  const before = current === null ? undefined : await readJson(t.file).catch(() => null);
 
   await fs.mkdir(path.dirname(t.file), { recursive: true });
   const tmp = `${t.file}.${process.pid}.tmp`;   // write + rename: readers never see a half-written file
   await fs.writeFile(tmp, JSON.stringify(body, null, 2) + '\n');
   await fs.rename(tmp, t.file);
+  log.saved(t.file, before, body, issues.warnings);
   return Response.json({ warnings: issues.warnings }, { headers: { 'x-mtime': (await mtime(t.file)) ?? '' } });
 }

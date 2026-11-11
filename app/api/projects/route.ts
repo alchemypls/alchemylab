@@ -10,6 +10,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { SLUG } from '@/lib/design/types';
 import { PROJECTS_DIR, readProject, validateProject } from '@/lib/server/projects';
+import { log } from '@/lib/server/log';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -36,15 +37,16 @@ export async function PUT(req: Request) {
   const id = idOf(new URL(req.url).searchParams);
   if (!id) return fail(400, 'Bad project id');
   const body = await req.json().catch(() => undefined);
-  const error = validateProject(body);
-  if (error) return fail(422, error);
-  const file = fileOf(id);
+  const error = validateProject(body), file = fileOf(id);
+  if (error) { log.refused(file, 422, error); return fail(422, error); }
   const current = await mtime(file), base = req.headers.get('x-base-mtime');
-  if (base && current !== null && base !== current) return fail(409, 'Changed on disk since you loaded it');
+  if (base && current !== null && base !== current) { log.stale(file, base, current); return fail(409, 'Changed on disk since you loaded it'); }
+  const before = current === null ? undefined : (await readProject(id))?.project ?? null;
   await fs.mkdir(PROJECTS_DIR, { recursive: true });
   const tmp = `${file}.${process.pid}.tmp`;   // write + rename: readers never see a half-written file
   await fs.writeFile(tmp, JSON.stringify(body, null, 2) + '\n');
   await fs.rename(tmp, file);
+  log.saved(file, before, body);
   return new Response(null, { status: 204, headers: { 'x-mtime': (await mtime(file)) ?? '' } });
 }
 
@@ -52,5 +54,6 @@ export async function DELETE(req: Request) {
   const id = idOf(new URL(req.url).searchParams);
   if (!id) return fail(400, 'Bad project id');
   await fs.rm(fileOf(id), { force: true });
+  log.deleted(fileOf(id));
   return new Response(null, { status: 204 });
 }

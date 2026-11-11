@@ -3,6 +3,7 @@
 
 import { watch, mkdirSync, statSync, FSWatcher } from 'fs';
 import path from 'path';
+import { log } from './log';
 
 const DEBOUNCE_MS = 120; // editors/agents often write a file in several chunks
 
@@ -24,6 +25,7 @@ function start(root: string, hub: Hub, skip?: (base: string) => boolean) {
     clearTimeout(pending.get(file));
     pending.set(file, setTimeout(() => {
       pending.delete(file);
+      if (!file.endsWith('.tmp')) log.changed(path.join(root, file));   // the server's own writes are skipped there
       const line = JSON.stringify({ path: file });
       hub.clients.forEach((send) => send(line));
     }, DEBOUNCE_MS));
