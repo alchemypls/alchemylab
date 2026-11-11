@@ -165,19 +165,18 @@ const gridOfAsset = (a: VaultAsset) => !!gridOf(a).flat;
 export function AssetDrawing({ el, solid }: { el: Placement; solid?: boolean }) {
   const { entries, loaded } = useVault();
   const asset = entries.find((e) => e.id === el.asset)?.asset;
-  const hit = solid && <rect x={el.x} y={el.y} width={el.w} height={el.h} fill="transparent" pointerEvents="all" />;
-  if (!asset) return (
+  if (!asset) return (   // missing from the vault: its box is all there is to click
     <>
-      {hit}
+      {solid && <rect x={el.x} y={el.y} width={el.w} height={el.h} fill="transparent" pointerEvents="all" />}
       {loaded && <rect x={el.x} y={el.y} width={el.w} height={el.h} fill="#dc2626" fillOpacity={0.08} stroke="#dc2626" strokeWidth={2} strokeDasharray="8 6" vectorEffect="non-scaling-stroke"><title>{`"${el.asset}" isn't in the vault`}</title></rect>}
     </>
   );
-  return <>{hit}<PosedAsset asset={asset} el={el} /></>;
+  return <PosedAsset asset={asset} el={el} hit={solid} />;   // clicked where it's drawn, not anywhere in its box
 }
 
 // A vault asset drawn in a placement's box, as placed: projected onto the floor's view, turned, mirrored, tinted.
 // Pure (no vault lookup), so scripts draw assets with exactly this (scripts/asset-render.tsx).
-export function PosedAsset({ asset, el }: { asset: VaultAsset; el: Placement }) {
+export function PosedAsset({ asset, el, hit }: { asset: VaultAsset; el: Placement; hit?: boolean }) {
   // A projected block is drawn in the other view: the floor's, which is the one its sheet isn't
   const flat = el.projected ? !gridOfAsset(asset) : undefined, v = assetView(asset, flat, el);
   // A block is posed (turned, mirrored, projected); any other asset only flips sideways when mirrored
@@ -185,7 +184,7 @@ export function PosedAsset({ asset, el }: { asset: VaultAsset; el: Placement }) 
   const transform = pose ? pose.transform : el.mirror ? `matrix(-1 0 0 1 ${2 * v.x + v.w} 0)` : undefined;
   const els = tintElements(projectedElements(shown, flat), el.tint);
   return (
-    <svg data-asset={el.asset} x={el.x} y={el.y} width={el.w} height={el.h} viewBox={`${v.x} ${v.y} ${v.w} ${v.h}`} overflow="visible" pointerEvents="none">
+    <svg data-asset={el.asset} x={el.x} y={el.y} width={el.w} height={el.h} viewBox={`${v.x} ${v.y} ${v.w} ${v.h}`} overflow="visible" pointerEvents={hit ? 'visiblePainted' : 'none'}>
       <g transform={transform}>
         {drawOrder(els, layersOf(shown), el.layers).map((x) => (
           <g key={x.id} opacity={x.opacity} transform={rotateTransform(x, els)}><Filtered el={x}><Erased el={x} all={els}><Shape el={x} all={els} bible={null} bibleId="" solid={false} /></Erased></Filtered></g>
