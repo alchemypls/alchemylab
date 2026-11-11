@@ -3,13 +3,14 @@
 import { useState, type ReactNode } from 'react';
 import { Crosshair } from 'lucide-react';
 import { Toggle } from './Toggle';
+import { FxFields } from './FxFields';
 import { BorderFields, Field, Seg, SELECT_CLASS as SEL, SliderField, Swatches, Transparency } from './StyleFields';
 import { PEN_SOURCES, type PenSource, type PenStatus } from '@/workbench/hooks/usePenBridge';
 import type { PenTurn } from '@/lib/penCalibration';
 import { AuxBar, AuxButton, Docked } from './AuxDock';
 import { capsulePath, ellipsePath, GRID_CELLS, ROOF_LIFT, SLOPE_MAX, type Lattice, type Plane, type TextBackground, type VBrush } from '@/lib/design/vector';
 import {
-  isFilled, isLineKind, sameStyle, SELECT_FILTERS, type EraseTool, type Favorite, type Favorites, type PenTool, type SelectTool, type ShapeKind, type ShapeTool, type TextTool, type ToolStyles, type ZoneTool,
+  isFilled, isLineKind, sameStyle, shapeType, SELECT_FILTERS, type EraseTool, type Favorite, type Favorites, type PenTool, type SelectTool, type ShapeKind, type ShapeTool, type TextTool, type ToolStyles, type ZoneTool,
 } from '@/lib/design/toolStyles';
 
 // The panel beside the tool rail, for the tool in hand: title, a bar of favorites ending in "…", then parameters.
@@ -264,6 +265,7 @@ function ShapeParams({ s, set }: { s: ShapeTool; set: (p: Partial<ShapeTool>) =>
       {!isLineKind(s.kind) && isFilled(s) && <Field label="Fill color"><Swatches value={s.fill} onChange={(fill) => set(fill ? { fill } : { hollow: true })} /></Field>}
       <BorderFields label={isLineKind(s.kind) ? 'Line' : 'Border'} color={s.stroke} width={s.strokeWidth} dash={s.dash} noNone={isLineKind(s.kind)} set={set} />
       <Transparency opacity={s.opacity} onChange={(opacity) => set({ opacity })} />
+      <FxFields value={s.fx} types={[shapeType(s.kind)]} onChange={(fx) => set({ fx })} />
     </>
   );
 }

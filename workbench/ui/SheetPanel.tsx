@@ -9,6 +9,7 @@ import { useRef } from 'react';
 import { SliderField } from './StyleFields';
 import type { TraceControls } from '@/workbench/hooks/useTrace';
 import type { Bible, DesignPage } from '@/lib/design/types';
+import type { VElement } from '@/lib/design/vector';
 import type { useSheetView } from '@/workbench/hooks/useSheetView';
 
 // What a full-screen canvas keeps in the top-right panel: two dropdowns, a row of controls, the minimap,
@@ -26,7 +27,7 @@ export function PanelToggle({ on, onClick, title, children }: { on?: boolean; on
   );
 }
 
-export function SheetPanel({ pickers, row, status, controls, panels, undo, redo, canUndo, canRedo, sv, page, bible, below, mapFocus, onMapFocus, trace, view, map, rail }: {
+export function SheetPanel({ pickers, row, status, controls, panels, undo, redo, canUndo, canRedo, sv, page, bible, below, mapFocus, onMapFocus, trace, view, map, rail, belowAux, mapLook }: {
   pickers: ReactNode;
   row?: ReactNode;        // a second row under the pickers
   map?: ReactNode;        // a minimap of the canvas's own, in place of the vector page's
@@ -38,6 +39,8 @@ export function SheetPanel({ pickers, row, status, controls, panels, undo, redo,
   sv: ReturnType<typeof useSheetView>;
   page: DesignPage | null; bible?: Bible | null;
   below?: ReactNode;
+  belowAux?: ReactNode;   // a bar docked left of the box below (the selection's actions)
+  mapLook?: { elements: VElement[]; transform: string } | null;   // the sheet is showing a look-only view: the map follows it
   mapFocus?: string | null;   // the layer the minimap focuses on, null for all
   onMapFocus?: (layer: string | null) => void;   // given: the minimap shows layer pips
   trace?: TraceControls;   // given: the minimap outlines the tracing image (its settings live in the page box: TraceFields)
@@ -59,7 +62,7 @@ export function SheetPanel({ pickers, row, status, controls, panels, undo, redo,
         {/* the pips float outside the panel, left of the map, so the map keeps the panel's full width */}
         <Docked side="left" align="center" gap={14} aux={rail ?? (onMapFocus && page && <LayerPips page={page} focus={mapFocus ?? null} pick={onMapFocus} />)}>
         <div className="relative rounded-lg border border-neutral-700/60">
-          {map ?? <PageMap page={page} bible={bible ?? null} view={sv.visible} onCenter={sv.centerOn} focus={onMapFocus ? mapFocus : null} trace={trace?.box} />}
+          {map ?? <PageMap page={page} bible={bible ?? null} view={sv.visible} onCenter={sv.centerOn} focus={onMapFocus ? mapFocus : null} trace={trace?.box} look={mapLook} />}
           {view && (
             <div className="absolute top-1.5 right-1.5 flex rounded-full overflow-hidden bg-neutral-900/80 backdrop-blur-sm text-[10px] font-mono">
               {([false, true] as const).map((flat) => (
@@ -77,7 +80,10 @@ export function SheetPanel({ pickers, row, status, controls, panels, undo, redo,
       </CanvasPanelSlot>
       {below && (
         <CanvasPanelSlot area="below">
-          <div className="max-h-full overflow-y-auto bg-neutral-900/95 border border-neutral-700/60 rounded-xl backdrop-blur-sm pointer-events-auto">{below}</div>
+          {/* belowAux (the selection bar) floats outside the box on its left, like the pips by the map */}
+          <Docked side="left" gap={14} aux={belowAux} className="max-h-full flex flex-col">
+            <div className="min-h-0 overflow-y-auto bg-neutral-900/95 border border-neutral-700/60 rounded-xl backdrop-blur-sm pointer-events-auto">{below}</div>
+          </Docked>
         </CanvasPanelSlot>
       )}
     </>

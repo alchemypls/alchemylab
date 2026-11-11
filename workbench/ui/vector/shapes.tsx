@@ -4,11 +4,12 @@
 
 import { useId, type ReactNode } from 'react';
 import { drawOrder, layersOf } from '@/lib/design/layers';
+import { filterSteps } from '@/lib/design/fx';
 import { useAssetUrl } from '@/lib/assets';
 import { assetView, blockPose, projectedElements, tintElements, type VaultAsset } from '@/lib/design/vault';
 import type { Bible, TopicStatus } from '@/lib/design/types';
 import {
-  capsulePath, dashProps, ellipsePath, extrusion, gridOf, lineControl, lineEnds, polyPath, rotateTransform, rubOrigin, smoothEllipse, zoneCorners, zonePoint,
+  capsulePath, dashProps, ellipsePath, extrusion, reshapedPath, reshapes, gridOf, lineControl, lineEnds, polyPath, rotateTransform, rubOrigin, smoothEllipse, zoneCorners, zonePoint,
   type Box, type Lattice, type Pt, type VElement, type VLine, type VStroke, type VText, type VZone,
 } from '@/lib/design/vector';
 import type { TraceBox } from '@/workbench/hooks/useTrace';
@@ -36,7 +37,7 @@ export function Element({ el, all, bible, bibleId, editing, onOpen, inlineEdit }
   return (
     <g data-el={el.id} opacity={el.opacity} transform={rotateTransform(el, all)} className={link ? 'vlink' : undefined} onClick={link ? () => onOpen(link) : undefined}>
       {link && <title>Open {link}</title>}
-      <Erased el={el} all={all}><Shape el={el} all={all} bible={bible} bibleId={bibleId} solid={editing || !!link} inlineEdit={inlineEdit} /></Erased>
+      <Filtered el={el}><Erased el={el} all={all}><Shape el={el} all={all} bible={bible} bibleId={bibleId} solid={editing || !!link} inlineEdit={inlineEdit} /></Erased></Filtered>
     </g>
   );
 }
@@ -58,6 +59,20 @@ export function Erased({ el, all, children }: { el: VElement; all: VElement[]; c
         </g>
       </mask>
       <g mask={`url(#${id})`}>{children}</g>
+    </>
+  );
+}
+
+// An element with filter effects (blur…): drawn, then the filters over it, chained in the order they're listed
+function Filtered({ el, children }: { el: VElement; children: ReactNode }) {
+  const id = `fx${useId().replace(/:/g, '')}`, steps = filterSteps(el);
+  if (!steps.length) return <>{children}</>;
+  return (
+    <>
+      <filter id={id} x="-50%" y="-50%" width="200%" height="200%" colorInterpolationFilters="sRGB">
+        {steps.map(({ tag: Tag, attrs }, i) => <Tag key={i} {...attrs} in={i ? `fx${i - 1}` : 'SourceGraphic'} result={`fx${i}`} />)}
+      </filter>
+      <g filter={`url(#${id})`}>{children}</g>
     </>
   );
 }
@@ -85,6 +100,11 @@ function Shape({ el, all, bible, bibleId, solid, inlineEdit }: {
   inlineEdit?: InlineEdit;
 }) {
   const hitAll = solid ? 'all' as const : undefined;  // an unfilled shape still takes clicks when it can be clicked
+  // A shape effect (roughen…) changed its outline: it draws as that path, whatever shape it started as
+  if ((el.type === 'rect' || el.type === 'ellipse' || el.type === 'capsule' || el.type === 'poly') && reshapes(el)) {
+    const open = el.type === 'poly' && el.open, sw = el.strokeWidth ?? 2;
+    return <Solid el={el} hit={hitAll}><path d={reshapedPath(el)} fill={open ? 'none' : el.fill ?? 'none'} stroke={el.stroke ?? 'none'} strokeWidth={sw} strokeLinejoin="round" strokeLinecap="round" {...dashProps(el.dash, sw)} pointerEvents={hitAll} /></Solid>;
+  }
   switch (el.type) {
     case 'rect':
       return <Solid el={el} hit={hitAll}><rect x={el.x} y={el.y} width={el.w} height={el.h} rx={el.radius} fill={el.fill ?? 'none'} stroke={el.stroke ?? 'none'} strokeWidth={el.strokeWidth ?? 2} {...dashProps(el.dash, el.strokeWidth ?? 2)} pointerEvents={hitAll} /></Solid>;
@@ -158,7 +178,7 @@ export function PosedAsset({ asset, el }: { asset: VaultAsset; el: Placement }) 
     <svg data-asset={el.asset} x={el.x} y={el.y} width={el.w} height={el.h} viewBox={`${v.x} ${v.y} ${v.w} ${v.h}`} overflow="visible" pointerEvents="none">
       <g transform={transform}>
         {drawOrder(els, layersOf(shown), el.layers).map((x) => (
-          <g key={x.id} opacity={x.opacity} transform={rotateTransform(x, els)}><Erased el={x} all={els}><Shape el={x} all={els} bible={null} bibleId="" solid={false} /></Erased></g>
+          <g key={x.id} opacity={x.opacity} transform={rotateTransform(x, els)}><Filtered el={x}><Erased el={x} all={els}><Shape el={x} all={els} bible={null} bibleId="" solid={false} /></Erased></Filtered></g>
         ))}
       </g>
     </svg>

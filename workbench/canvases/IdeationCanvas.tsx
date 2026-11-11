@@ -14,6 +14,7 @@ import { useTrace } from '@/workbench/hooks/useTrace';
 import { toolsFor, type ToolKey } from '@/workbench/ui/ToolRail';
 import { VectorArtboard } from '@/workbench/ui/VectorArtboard';
 import { VectorBox, VectorRail, VectorToolMenu } from '@/workbench/ui/VectorKit';
+import { SelectionBar } from '@/workbench/ui/vector/actions';
 import { addElement, newId } from '@/lib/design/vector';
 import { removeBlock, resizeBlock } from '@/lib/design/ops';
 import { pageSize, type DesignPage } from '@/lib/design/types';
@@ -242,6 +243,7 @@ export function IdeationCanvas() {
               <PanelToggle on={layersOpen} onClick={() => { setLayersOpen(!layersOpen); setPageProps(false); if (tool === 'read') setTool('select'); }} title="This page's layers: draw on one, hide or lock others">layers</PanelToggle>
             </>
           )}
+          belowAux={isVector && showInspector && <SelectionBar page={fitted as DesignPage} selected={vt.selected} host={vt} />}
           below={showInspector && shown ? (
             isVector
               ? <VectorBox vt={vt} page={fitted as DesignPage} layersOpen={layersOpen} apply={apply} bible={bible} pages={pages} always>{pageProps && <TraceFields t={tr} />}</VectorBox>

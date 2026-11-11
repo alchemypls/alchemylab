@@ -15,6 +15,7 @@ import { useTrace } from '@/workbench/hooks/useTrace';
 import { menuTop, toolsFor, type ToolKey } from '@/workbench/ui/ToolRail';
 import { VectorArtboard } from '@/workbench/ui/VectorArtboard';
 import { VectorBox, VectorRail, VectorToolMenu } from '@/workbench/ui/VectorKit';
+import { SelectionBar } from '@/workbench/ui/vector/actions';
 import { AssetFile } from '@/workbench/ui/fab/AssetFile';
 import { ComponentFilePicker } from '@/workbench/ui/fab/ComponentFilePicker';
 import { addColor, PaletteFields, PaletteSheet, removeColor } from '@/workbench/ui/PaletteEditor';
@@ -73,6 +74,7 @@ export function FabCanvas() {
   const savePal = useCallback((p: Palette) => savePalette(paletteId ?? '', p), [paletteId]);
   const pal = useFileDraft(fabFile ?? '', pEntry?.asset ?? null, savePal);
   const assetDoc: VectorDoc = { ...file, apply: (p, key) => file.apply(p as VaultAsset, key) };
+
   const paletteDoc: VectorDoc = { shown: null, current: NO_PAGE, apply: () => {}, undo: pal.undo, redo: pal.redo };
   const doc = paletteOpen ? { ...paletteDoc, canUndo: pal.canUndo, canRedo: pal.canRedo }
     : config.id === 'components' ? STAGE_DOC : fileHere ? { ...assetDoc, canUndo: file.canUndo, canRedo: file.canRedo } : NO_DOC;
@@ -205,7 +207,7 @@ export function FabCanvas() {
 
       {active && (
         <SheetPanel
-          sv={sv} page={page}
+          sv={sv} page={page} mapLook={drawing ? shownTop : undefined}
           trace={drawing ? tr : undefined}
           view={drawing && page ? (topDownOf ? { flat: topDown, set: setTopDown } : { flat: !!gridOf(page).flat, set: (flat) => { vt.setGrid({ flat: flat || undefined }); vt.setGridOn(true); } }) : undefined}
           mapFocus={vt.mapLayer} onMapFocus={drawing ? vt.focusLayer : undefined}
@@ -259,6 +261,7 @@ export function FabCanvas() {
               {page && <PanelToggle on={layersOpen} onClick={() => { setLayersOpen(!layersOpen); setFileProps(false); }} title="Layers: draw on one, hide or lock others">layers</PanelToggle>}
             </>
           )}
+          belowAux={!paletteOpen && drawing && <SelectionBar page={page} selected={vt.selected} host={vt} />}
           below={
             paletteOpen
               ? (pal.shown && paletteId ? <PaletteFields id={paletteId} palette={pal.shown} selected={color} select={setColor} apply={pal.apply} open={setFabFile} /> : undefined)

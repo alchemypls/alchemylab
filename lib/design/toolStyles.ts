@@ -1,7 +1,8 @@
 // What each drawing tool will make next: its settings and saved favorites. Per viewer, not part of any page.
 // Pure data + conversion to element fields, so the menu, the artboard and tests agree. Imports stay relative (CLI).
 
-import type { LinePattern, Plane, TextBackground, VBrush, VElement, VType } from './vector';
+import { fxDef } from './fx';
+import type { Fx, LinePattern, Plane, TextBackground, VBrush, VElement, VType } from './vector';
 
 export type ShapeKind = 'rect' | 'rounded' | 'ellipse' | 'bush' | 'capsule' | 'poly' | 'line' | 'arrow' | 'double' | 'curve';
 export const LINE_KINDS: ShapeKind[] = ['line', 'arrow', 'double', 'curve'];
@@ -13,7 +14,11 @@ export interface ShapeTool {
   plane?: Plane;      // new box shapes lie in this plane (none: flat on the page)
   lift?: number;      // a new roof's height above the floor
   slope?: number; slopeAlong?: 'w' | 'h';   // and its pitch
+  fx?: Fx[];          // effects new shapes start with (roughen, blur…)
 }
+// The element type a shape kind makes
+export const shapeType = (k: ShapeKind): VType =>
+  isLineKind(k) ? 'line' : k === 'rect' || k === 'rounded' ? 'rect' : k === 'ellipse' || k === 'bush' ? 'ellipse' : k === 'capsule' ? 'capsule' : 'poly';
 // Filled means it has a fill color and isn't set to outline
 export const isFilled = (s: Pick<ShapeTool, 'fill' | 'hollow'>) => !s.hollow && !!s.fill;
 export interface TextTool {
@@ -83,9 +88,12 @@ const clean = <T extends object>(o: T): T =>
 
 const seen = (opacity?: number) => (opacity === undefined || opacity >= 1 ? undefined : opacity);
 
+// The tool's effects that fit this element type (a line drops roughen), copied so the element owns them
+const fxOn = (fx: Fx[] | undefined, t: VType) => { const l = fx?.filter((f) => fxDef(f.kind)?.on.includes(t)).map((f) => ({ ...f })); return l?.length ? l : undefined; };
+
 // The fields a new element takes from its tool
 export function shapeFields(s: ShapeTool) {
-  const line = { stroke: s.stroke ?? INK, strokeWidth: s.strokeWidth, dash: s.dash, opacity: seen(s.opacity) };
+  const line = { stroke: s.stroke ?? INK, strokeWidth: s.strokeWidth, dash: s.dash, opacity: seen(s.opacity), fx: fxOn(s.fx, 'line') };
   if (s.kind === 'line')   return clean({ ...line, arrow: 'none' as const });
   if (s.kind === 'arrow')  return clean({ ...line, arrow: 'end' as const });
   if (s.kind === 'double') return clean({ ...line, arrow: 'both' as const });
@@ -93,7 +101,7 @@ export function shapeFields(s: ShapeTool) {
   // An outline with no border color draws its border in the fill color, so it doesn't vanish
   return clean({
     fill: s.hollow ? undefined : s.fill, stroke: s.hollow ? s.stroke ?? s.fill ?? INK : s.stroke, strokeWidth: s.strokeWidth, dash: s.dash, opacity: seen(s.opacity),
-    radius: s.kind === 'rounded' ? 24 : undefined, taper: s.kind === 'capsule' ? 0.6 : undefined, lobes: s.kind === 'bush' ? 9 : undefined, plane: s.plane,
+    fx: fxOn(s.fx, shapeType(s.kind)), radius: s.kind === 'rounded' ? 24 : undefined, taper: s.kind === 'capsule' ? 0.6 : undefined, lobes: s.kind === 'bush' ? 9 : undefined, plane: s.plane,
     lift: s.plane === 'roof' ? s.lift : undefined, slope: s.plane === 'roof' ? s.slope : undefined, slopeAlong: s.plane === 'roof' ? s.slopeAlong : undefined,
   });
 }
@@ -108,7 +116,7 @@ export const strokeFields = (p: PenTool) => clean({
 // Same settings, ignoring fields that are simply unset
 export function sameStyle(a: object, b: object): boolean {
   const x = a as Record<string, unknown>, y = b as Record<string, unknown>;
-  return Array.from(new Set([...Object.keys(x), ...Object.keys(y)])).every((k) => (x[k] || undefined) === (y[k] || undefined));
+  return Array.from(new Set([...Object.keys(x), ...Object.keys(y)])).every((k) => JSON.stringify(x[k] || undefined) === JSON.stringify(y[k] || undefined));
 }
 
 // A favorite clicked with something selected restyles it: only its look (colors, border, transparency, the text's
@@ -118,10 +126,11 @@ export function favoritePatch(el: VElement, t: keyof Favorites, style: object): 
     const s = style as ShapeTool, hollow = s.hollow || !s.fill;
     return {
       fill: hollow ? undefined : s.fill, stroke: hollow ? s.stroke ?? s.fill ?? INK : s.stroke, strokeWidth: s.strokeWidth, dash: s.dash, opacity: seen(s.opacity),
+      fx: fxOn(s.fx, el.type),
       ...(el.type === 'ellipse' && s.kind === 'bush' && !el.lobes ? { lobes: 9 } : {}),
     };
   }
-  if (t === 'shape' && el.type === 'line') { const s = style as ShapeTool; return { stroke: s.stroke ?? INK, strokeWidth: s.strokeWidth, dash: s.dash, opacity: seen(s.opacity) }; }
+  if (t === 'shape' && el.type === 'line') { const s = style as ShapeTool; return { stroke: s.stroke ?? INK, strokeWidth: s.strokeWidth, dash: s.dash, opacity: seen(s.opacity), fx: fxOn(s.fx, 'line') }; }
   if (t === 'text' && el.type === 'text') {
     const s = style as TextTool;
     return { size: s.size, weight: s.weight, font: s.font, color: s.color, align: s.align, caps: s.caps || undefined, bg: s.bg, bgShape: s.bg ? s.bgShape ?? 'block' : undefined };

@@ -12,6 +12,7 @@ import { RecipeStyles, themeScope } from '@/workbench/ui/RecipeView';
 import { ToolRail, toolsFor } from '@/workbench/ui/ToolRail';
 import { VectorArtboard } from '@/workbench/ui/VectorArtboard';
 import { VectorBox, VectorRail, VectorToolMenu } from '@/workbench/ui/VectorKit';
+import { SelectionBar } from '@/workbench/ui/vector/actions';
 import { Columns, PAPER, ShadesIcon, WebLayerPips, WebMap } from '@/workbench/ui/web/WebChrome';
 import { RouteTree } from '@/workbench/ui/web/RouteTree';
 import { PageFields } from '@/workbench/ui/web/PageFields';
@@ -274,6 +275,7 @@ export function WebCanvas() {
               {laying && <PanelToggle on={box === 'variants'} onClick={toggle('variants')} title="Alternative layouts of this page">variants</PanelToggle>}
             </>
           }
+          belowAux={wiring && <SelectionBar page={draft.shown} selected={vt.selected} host={vt} />}
           below={boxContent}
         />
       )}

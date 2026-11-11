@@ -3,7 +3,7 @@
 // so editing the asset changes every page using it. Pure data + ops. Imports stay relative (CLI).
 
 import { pageSize, type DesignPage } from './types';
-import { coverPoints, dragDelta, fromGrid, gridOf, hull, invert, mapPt, offPlane, onPlane, outlineOf, PLANES, rotatePt, standing, toGrid, zonePoint, type Mat, visualBounds, newId, onZone, snap, type Box, type Footing, type Footprint, type Pt, type VAsset, type VElement, type VZone } from './vector';
+import { capsuleAsPoly, coverPoints, dragDelta, fromGrid, gridOf, invert, mapPt, offPlane, onPlane, PLANES, rotatePt, standing, toGrid, zonePoint, type Mat, visualBounds, newId, onZone, snap, type Box, type Footing, type Footprint, type Pt, type VAsset, type VElement, type VZone } from './vector';
 
 // A shape or icon is visual identity. A block is a game piece: drawn on top of its footprint, it stands on floor tiles.
 export const ASSET_KINDS = ['shape', 'icon', 'block'] as const;
@@ -117,12 +117,7 @@ function quarterTurn(a: VaultAsset): VaultAsset {
   const spin = (q: Pt): Pt => ({ x: H - q.y, y: q.x });   // columns become rows
   const move = (p: Pt) => fromFloor(spin(toFloor(p)));
   const r1 = (v: number) => Math.round(v * 100) / 100;
-  // A capsule only tapers one way; as a polygon it can face any way
-  const poly = (e: VElement): VElement => {
-    if (e.type !== 'capsule') return e;
-    const frac = (v: number) => Math.min(1, Math.max(0, Math.round(v * 1e4) / 1e4));
-    return { ...e, type: 'poly', taper: undefined, pts: hull(outlineOf(e)).map((p) => [frac((p.x - e.x) / e.w), frac((p.y - e.y) / e.h)]) } as unknown as VElement;
-  };
+  const poly = capsuleAsPoly;
   const turnRubs = (e: VElement, w: number, h: number, f: (x: number, y: number) => [number, number]) =>
     e.erased?.map((r) => ({ ...r, pts: r.pts.flatMap((_, i) => (i % 2 ? [] : f(r.pts[i], r.pts[i + 1]))) })) ?? undefined;
 

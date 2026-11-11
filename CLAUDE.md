@@ -89,6 +89,10 @@ lib/
   design/vault.ts    — VaultAsset (a vector page with a kind: shape/icon/block), what part of it places and at what size, a block's footprint + footing (scaled to the floor's tiles), fitBlocks (placed blocks follow their vault size; Ideation only moves/tints/turns them), turnedAsset/shownBlock/blockPose (a placed block's `turn` + `mirror`: isometric = rebuilt by quarter turns, top-down = any angle; one place says how a posed block draws), blockProjection (iso↔flat: the floor plane maps tile for tile) + projectedElements (top-down, walls squash to their base edge), placeAsset, tint
   server/fileWatch.ts — shared fs.watch → SSE for a folder
   design/toolStyles.ts — what each drawing tool makes next + favorites: types, defaults, conversion to element fields (saved per browser by useToolStyles)
+  design/lifecycle.ts — every tool, action and effect has a stage: lab → stable → retired. Retired leaves the menus, keeps drawing; nothing is deleted automatically
+  design/actions.ts  — the action registry: one-shot things done to the selection or page (duplicate, copy/paste, group, front/back, flip, quarter turn, delete), pure. The keys, the right-click menu, the inspector header and the selection bar all read it
+  design/transform.ts — flipElements / quarterTurn: a selection as one piece, about its middle (shapes lying in a plane flip in place)
+  design/fx/         — effects: an element's `fx` stack (index.ts: FX registry, the drawing pipeline, checkFx). One file per effect (roughen: reshapes the outline; blur: an SVG filter); its params drive the sliders and validation
   design/validate.ts — validatePage/validateBible (API writes + design:check), pageHash; relative imports only
   routes.ts          — a project's pages as a route tree (buildRouteTree), normalizePath, nameFromPath
   project.ts         — ProjectData/PageDef/PageHead/PagePlacement types, tier cascade (resolvePlacement), wireframes per tier
@@ -158,6 +162,8 @@ workbench/
     AssetPicker.tsx   — AssetThumb: a vault asset drawn small, for the Vault panel
     vault/VaultParts.tsx — the vault window's parts: VaultWindow (drag, resize, kept in the store), VaultSearch + flyout chips, VaultTabs, slot grid (useSlotGrid, packSlots, GhostSlot)
     AuxDock.tsx       — auxiliary bars that float outside a panel's edge: Docked (wrapper; side + align + gap), AuxBar (pill shell), AuxButton
+    FxFields.tsx      — an effect stack as controls (a card per effect, sliders from its params, + add): the inspector (selection) and the Shapes tool menu (next shape)
+    vector/actions.tsx — the action registry on screen: icons (optional, else the glyph), runAction (applies, selects, keeps the clipboard), SelectionBar (the `bar` actions, docked left of the properties box)
     SheetMenu.tsx     — right-click menu on a vector sheet (Ideation, Fab): duplicate, front/back, plane, Edit in Fab, delete; Select all on empty. useRowMenu: the same menu on a right-clicked row in the layers box or the selection list
     ToolMenu.tsx      — tool panel beside the rail: favorites bar + the tool's parameters; Snap to grid (styles.select.free) on select/shape/text
     StyleFields.tsx   — controls shared by ToolMenu and VectorInspector: notched sliders, swatches (palette in use), segmented picks, border fields, transparency
@@ -226,14 +232,24 @@ npm test         # unit tests (Vitest); npm run test:watch while working
 npm run parts:build / asset:render / asset:info / page:render   # vault parts as code, pictures of them and of pages, summaries (see scripts/)
 ```
 
-`npm test` runs a few tests (Vitest, Node only, `*.test.ts` next to the code), kept small on purpose: only what's easy to break and costly when it does. The edit ops every tool uses (duplicate, copy/paste, groups, floors carrying pieces, locked layers), the export (escaping, both formats ship the same, the mobile-first cascade), the API's guards on disk (stale saves 409, invalid 422, ids can't leave their folder, vault pieces in use), and the phone gateway's allow-list. CI also runs `design:check` (every content file) and `parts:build -- --check` (each part matches its vault file). Add a test when a bug is fixed (one that failed first) or a new guard appears, not for coverage. Canvas interactions aren't automated: verify UI changes by running dev and exercising the canvas.
+`npm test` runs a few tests (Vitest, Node only, `*.test.ts` next to the code), kept small on purpose: only what's easy to break and costly when it does. The edit ops every tool uses (duplicate, copy/paste, groups, floors carrying pieces, locked layers), the export (escaping, both formats ship the same, the mobile-first cascade), the API's guards on disk (stale saves 409, invalid 422, ids can't leave their folder, vault pieces in use), the phone gateway's allow-list, and every registered action and effect (tools.test.ts: the page still validates; flips and turns undo themselves). CI also runs `design:check` (every content file) and `parts:build -- --check` (each part matches its vault file). Add a test when a bug is fixed (one that failed first) or a new guard appears, not for coverage. Canvas interactions aren't automated: verify UI changes by running dev and exercising the canvas.
 
 ---
 
 ## Patterns to follow
 
-- **Adding a canvas tool:** add it to the master list in `workbench/ui/ToolRail.tsx`, then to the canvas's subset (`toolsFor([...])`); drawing tools get their settings in `lib/design/toolStyles.ts` and a menu in `ToolMenu` (and `MENU_TOOLS` in `VectorKit`); the gesture goes in `vector/useGestures.ts`.
-- **Adding a small menu next to a panel (a hot bar, pips, a picker):** don't squeeze it inside the panel. Wrap the panel in `Docked` (`workbench/ui/AuxDock.tsx`) and give it an `AuxBar` of `AuxButton`s: it floats just outside the panel's edge (left/right/top/bottom) and moves with it. In use: the minimap's layer pips (left), the Shapes tool's shape picker (right of the tool menu).
+- **Adding a rail tool:** add it to the master list in `workbench/ui/ToolRail.tsx`, then to the canvas's subset (`toolsFor([...])`); drawing tools get their settings in `lib/design/toolStyles.ts` and a menu in `ToolMenu` (and `MENU_TOOLS` in `VectorKit`); the gesture goes in `vector/useGestures.ts`.
+- **Adding a tool: pick its kind, then add one entry.** Every new tool starts at stage `lab` (a sky dot or tag in the UI);
+  `stable` once it's earned it; `retired` to take it out of the menus while files that use it keep drawing. Never delete
+  one automatically; that's the user's call.
+  - *An action* (done once to the selection: flip, align, boolean): a pure op in lib/design, then an entry in `ACTIONS`
+    (`lib/design/actions.ts`): label, glyph, keys, `bar` for the selection bar, `when`. Keys, menus and bar pick it up.
+  - *An effect* (a lasting look on an element: roughen, blur, shadow): a file in `lib/design/fx/` exporting an `FxDef`
+    (params with ranges; `shape` to reshape the outline or `filter` for an SVG filter), listed in `FX`. Sliders, validation,
+    the toolbar and solids pick it up.
+  - *A rail tool* (a new kind of drag on the sheet): the pattern above.
+  `lib/design/tools.test.ts` runs every action and effect on a page with one of everything; new entries are covered.
+- **Adding a small menu next to a panel (a hot bar, pips, a picker):** don't squeeze it inside the panel. Wrap the panel in `Docked` (`workbench/ui/AuxDock.tsx`) and give it an `AuxBar` of `AuxButton`s: it floats just outside the panel's edge (left/right/top/bottom) and moves with it. In use: the minimap's layer pips (left), the Shapes tool's favorites (right of the tool menu), the selection bar (left of the properties box).
 - **Adding a box under the minimap:** a `PanelToggle` in the canvas's `panels` and its contents in `below` (one box open at a time).
 - **Adding a file type on disk:** an API route (validate, mtime check, write + rename) + a watch route (`watchFolder`) + a hook or sync module that follows it over SSE.
 - **Adding a library component:** a recipe in `lib/library/recipes/`, added to a set in `sets.ts`; dynamic parts name a behavior from `lib/library/behaviors`.

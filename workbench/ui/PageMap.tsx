@@ -62,24 +62,25 @@ function Mark({ el, all, bible }: { el: VElement; all: VElement[]; bible: Bible 
   }
 }
 
-export function PageMap({ page, bible, view, onCenter, focus, trace }: {
+export function PageMap({ page, bible, view, onCenter, focus, trace, look }: {
   page: DesignPage | null;
   bible: Bible | null;
   view: { x: number; y: number; w: number; h: number };   // visible part of the page, in page units
   onCenter: (x: number, y: number) => void;
   focus?: string | null;   // a layer id: the other layers dim
+  look?: { elements: VElement[]; transform: string } | null;   // the sheet's look-only view (a block from above): the map shows that too
   trace?: TraceBox | null;
 }) {
   const { width: W, height: H } = pageSize(page);
   const marks = useMemo(() => {
-    const els = page?.elements ?? [], layers = layersOf(page);
+    const els = look?.elements ?? page?.elements ?? [], layers = layersOf(page);
     const dimming = !!focus && layers.some((l) => l.id === focus);
     return drawOrder(els, layers).map((el) => (
       <g key={el.id} transform={rotateTransform(el, els)} opacity={dimming && layerOf(layers, el).id !== focus ? 0.18 : undefined}>
         <Erased el={el} all={els}><Mark el={el} all={els} bible={bible} /></Erased>
       </g>
     ));
-  }, [page, bible, focus]);
+  }, [page, bible, focus, look]);
 
   const center = (e: React.PointerEvent<SVGSVGElement>) => {
     const r = e.currentTarget.getBoundingClientRect();
@@ -95,7 +96,7 @@ export function PageMap({ page, bible, view, onCenter, focus, trace }: {
     >
       <rect width={W} height={H} fill={page?.background ?? PAPER} />
       {trace && <TraceImage t={trace} />}
-      <g pointerEvents="none">{marks}</g>
+      <g pointerEvents="none" transform={look?.transform}>{marks}</g>
       {!showsAll && (
         <rect x={view.x} y={view.y} width={view.w} height={view.h} fill="#6366f1" fillOpacity={0.12} stroke="#6366f1" vectorEffect="non-scaling-stroke" strokeWidth={1.5} pointerEvents="none" />
       )}

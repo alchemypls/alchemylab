@@ -1,7 +1,6 @@
 "use client";
 
-import { ClipboardCopy, Copy, Link2, Trash2, Unlink2, X } from 'lucide-react';
-import { BackIcon, FrontIcon } from './OrderIcons';
+import { ClipboardCopy, Link2, Unlink2, X } from 'lucide-react';
 import { useWorkbenchStore } from '@/lib/store';
 import { getSlideDir } from '@/lib/scenes';
 import { layerOf, layersOf, untouchable, type VLayer } from '@/lib/design/layers';
@@ -11,10 +10,13 @@ import { useRowMenu } from './SheetMenu';
 import { useVaultAsset } from '@/workbench/hooks/useVault';
 import { TextInput } from './TextInput';
 import { Toggle } from './Toggle';
+import { FxFields } from './FxFields';
+import { actionsFor } from '@/lib/design/actions';
+import { actionCtx, actionIcon, runAction } from './vector/actions';
 import { BorderFields, Field, NumberField, Seg, SELECT_CLASS as SEL, SliderField, Swatches, Transparency } from './StyleFields';
 import { PLANE_OPTIONS, RoofFields, TEXT_SIZES, TEXT_WEIGHTS } from './ToolMenu';
 import { setPageField } from '@/lib/design/ops';
-import { copyElements, duplicateElements, GRID_CELLS, LOBE_DEPTH, groupElements, ungroupElements, PLANAR, planeOf, ROOF_LIFT, removeElements, reorderElements, ROTATABLE, updateElement, type VAsset, type VElement, type VLine, type VText, type VZone } from '@/lib/design/vector';
+import { copyElements, GRID_CELLS, LOBE_DEPTH, groupElements, ungroupElements, PLANAR, planeOf, ROOF_LIFT, ROTATABLE, updateElement, type VAsset, type VElement, type VLine, type VText, type VZone } from '@/lib/design/vector';
 import { pageSize, type Bible, type DesignPage } from '@/lib/design/types';
 
 // Vector page editor side panel: properties of the selected element(s). Changes go through lib/design/vector.ts ops.
@@ -122,15 +124,17 @@ function PlacedLayers({ el, layers, set }: { el: VAsset; layers: VLayer[]; set: 
   );
 }
 
+// The header's quick actions, from the registry (lib/design/actions.ts); the rest are on the right-click menu and the selection bar
+const HEADER_ACTIONS = ['front', 'back', 'duplicate', 'delete'];
 function Actions({ page, selected, apply, select, label }: Props & { label: string }) {
+  const ctx = actionCtx(page, selected);
   return (
     <div className="flex items-center justify-between gap-1">
       <span className="text-[10px] uppercase tracking-widest text-amber-500 truncate">{label}</span>
       <div className="flex gap-1 shrink-0">
-        <button className={BTN} title="Bring to front" aria-label="Bring to front" onClick={() => apply(reorderElements(page, selected, 'front'))}><FrontIcon /></button>
-        <button className={BTN} title="Send to back" aria-label="Send to back" onClick={() => apply(reorderElements(page, selected, 'back'))}><BackIcon /></button>
-        <button className={`${BTN} flex items-center gap-1`} title="Duplicate (Ctrl+D)" onClick={() => { const r = duplicateElements(page, selected); apply(r.page); select(r.ids); }}><Copy size={13} />Duplicate</button>
-        <button className={`${BTN} hover:!text-red-300`} title="Delete (Del)" aria-label="Delete" onClick={() => { apply(removeElements(page, selected)); select([]); }}><Trash2 size={13} /></button>
+        {actionsFor('selection', ctx).filter((a) => HEADER_ACTIONS.includes(a.id)).map((a) => (
+          <button key={a.id} className={`${BTN} ${a.group === 'remove' ? 'hover:!text-red-300' : ''}`} title={`${a.label}${a.keys ? ` (${a.keys})` : ''}`} aria-label={a.label} onClick={() => runAction(a, ctx, { apply, select })}>{actionIcon(a)}</button>
+        ))}
       </div>
     </div>
   );
@@ -315,6 +319,7 @@ function ElementPanel({ page, bible, pages, el, apply }: Props & { el: VElement 
         <LinkPicker value={el.link} pages={pages} topics={topics.map((t) => ({ id: t.id, title: t.title }))} onChange={(link) => set({ link })} />
       </Field>
       <Transparency opacity={el.opacity} onChange={(o) => set({ opacity: o >= 1 ? undefined : o }, 'opacity')} />
+      <FxFields value={el.fx} types={[el.type]} onChange={(fx, key) => set({ fx }, key)} />
     </>
   );
 }

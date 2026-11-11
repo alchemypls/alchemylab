@@ -32,6 +32,10 @@ set that belongs together (a table and everything on it, a labelled callout).
 | `zone` | `x y` (first corner), `cols rows`, `cell`, `flat`, `fill`, `stroke`, `strokeWidth`, `dash`, `noLines` — floor of tiles; always draws under everything else |
 
 - `dash` on shapes, lines and floors: `true` is dashed, `"dot"` is dotted.
+- **Effects: `fx`**, a list applied in order, each `{kind, …settings}` (missing settings take defaults; `off: true` keeps
+  it without drawing it). `roughen` (rect, ellipse, capsule, poly): `amount` 0–40 px, `size` 3–80 px between jags,
+  `seed` 0–99 — jagged edges for rock, grass, torn paper; solids sweep up from the rough outline. `blur` (anything but
+  floors and status dots): `radius` 0.5–40 px. The list and ranges live in `lib/design/fx/`; `design:check` validates them.
 - **Floors fit together on the page grid.** Isometric corners: `x = (a - b) * cell`, `y = (a + b) * cell / 2`, for whole
   `a, b`; flat: `x = a * cell`, `y = b * cell`. The tile at (a, b) spans a..a+1 and b..b+1. Use even `cell` values.
 - **Pieces stand on tiles.** An `asset`, `image`, `rect` or `ellipse` stands on a zone when its bottom center (middle on a flat

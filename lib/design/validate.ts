@@ -2,6 +2,7 @@
 // Imports stay relative: the CLI runs this outside Next's `@/` alias.
 // errors = the renderer would break or the data is wrong; warnings = dangling references, likely mistakes.
 
+import { checkFx } from './fx';
 import { ARTBOARD, GRID_COLUMNS, SLUG, type BlockType, type KnowledgeKind, type TopicStatus } from './types';
 import { outOfBounds, overlaps, PLANAR, ROTATABLE, visualBounds, type VElement, type VType } from './vector';
 import { ASSET_KINDS, FOOTPRINT_MAX, type AssetKind } from './vault';
@@ -140,6 +141,7 @@ function validateElements(raw: unknown, ctx: BibleContext | undefined, errors: s
     if (e.type === 'ellipse' && e.lobeDepth !== undefined && !(num(e.lobeDepth) && (e.lobeDepth as number) > 0 && (e.lobeDepth as number) < 1)) errors.push(`${name}.lobeDepth: 0–1 of the radius`);
     if (e.type === 'poly' && !(Array.isArray(e.pts) && e.pts.length >= 2 && e.pts.every((p) => Array.isArray(p) && num(p[0]) && num(p[1]) && p[0] >= 0 && p[0] <= 1 && p[1] >= 0 && p[1] <= 1)))
       errors.push(`${name}.pts: at least 2 [x, y] corners, each a fraction 0–1 of the box`);
+    if (e.fx !== undefined) checkFx(String(e.type), e.fx, name, errors, warnings);
     if (e.type === 'capsule' && e.taper !== undefined && !(num(e.taper) && (e.taper as number) > 0 && (e.taper as number) <= 1)) errors.push(`${name}.taper: number in (0, 1]`);
     if (e.type === 'text') {
       if (!isStr(e.text)) errors.push(`${name}.text: required string`);

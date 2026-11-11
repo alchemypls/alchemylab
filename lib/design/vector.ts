@@ -9,6 +9,7 @@
 import { ARTBOARD, pageSize, type DesignPage } from './types';
 import { layersOf, type VLayer } from './layers';
 import { densify } from '../sketchErase';
+import { reshape, reshapes } from './fx';
 
 export interface Pt { x: number; y: number }
 export interface Box extends Pt { w: number; h: number }
@@ -25,7 +26,11 @@ interface VBase {
   base?: number;     // centered over the floor under its bottom edge, which is `base` px above the floor (default 0)
   on?: string;       // painted on this floor (a zone id): follows it tile for tile when the view flips (flat, or in the floor plane when isometric)
   group?: string;    // welded: elements sharing a group select and move as one (groupElements)
+  fx?: Fx[];         // effects, applied in order (lib/design/fx): roughen reshapes the outline, blur paints over it
 }
+
+// One effect on an element: its kind and its settings (missing ones take the effect's defaults). off: kept, not drawn
+export interface Fx { kind: string; off?: boolean; [setting: string]: string | number | boolean | undefined }
 
 // One pass of the eraser over an element. Points are relative to the element's unturned box, so the hole moves and turns with it.
 export interface Rub { pts: number[]; size: number; square?: boolean }   // pts: x, y, x, y, …
@@ -458,8 +463,27 @@ export function outlineOf(el: VElement): Pt[] {
     if (!r) pts.push({ x: b.x, y: b.y }, { x: b.x + b.w, y: b.y }, { x: b.x + b.w, y: b.y + b.h }, { x: b.x, y: b.y + b.h });
     else for (const [cx, cy] of [[b.x + r, b.y + r], [b.x + b.w - r, b.y + r], [b.x + b.w - r, b.y + b.h - r], [b.x + r, b.y + b.h - r]]) arc(cx, cy, r, r, 16);
   }
-  return pts;
+  // Rounded boxes and capsules are sampled as whole circles at their corners/ends: their hull is the outline, in order
+  return el.type === 'capsule' || pts.length > 4 ? hull(pts) : pts;
 }
+
+// A capsule only tapers one way (narrow end right); as a polygon it can face any way. Anything else comes back as it is
+export function capsuleAsPoly(e: VElement): VElement {
+  if (e.type !== 'capsule') return e;
+  const frac = (v: number) => Math.min(1, Math.max(0, Math.round(v * 1e4) / 1e4));
+  return { ...e, type: 'poly', taper: undefined, pts: hull(outlineOf(e)).map((p) => [frac((p.x - e.x) / e.w), frac((p.y - e.y) / e.h)]) } as unknown as VElement;
+}
+
+// The outline as drawn: with its shape effects (roughen…) applied. Solids sweep up from this
+export function shapeOutline(el: VElement): Pt[] {
+  return reshape(el, outlineOf(el), !(el.type === 'poly' && el.open));
+}
+// A shape whose effects change its outline draws as this path instead of its own rect/ellipse/…
+export const reshapedPath = (el: VElement) => {
+  const pts = shapeOutline(el);
+  return `M${pts.map((p) => `${p.x.toFixed(2)},${p.y.toFixed(2)}`).join(' L')}${el.type === 'poly' && el.open ? '' : ' Z'}`;
+};
+export { reshapes };
 
 export function hull(pts: Pt[]): Pt[] {   // monotone chain
   const p = [...pts].sort((a, b) => a.x - b.x || a.y - b.y);
@@ -475,9 +499,9 @@ export function extrusion(el: VElement): { up: Pt; sides: string; walls?: string
   const h = heightOf(el), m = planeOf(el);
   if (!h || !m) return undefined;
   const up = mapPt(invert(m), { x: 0, y: -h });
-  const base = outlineOf(el), all = [...base, ...base.map((p) => ({ x: p.x + up.x, y: p.y + up.y }))];
+  const base = shapeOutline(el), all = [...base, ...base.map((p) => ({ x: p.x + up.x, y: p.y + up.y }))];
   const sides = `M${hull(all).map((p) => `${p.x.toFixed(2)},${p.y.toFixed(2)}`).join(' L')} Z`;
-  const dented = el.type === 'poly' || (el.type === 'ellipse' && (!!el.lobes || (el.n ?? 2) < 1));
+  const dented = el.type === 'poly' || reshapes(el) || (el.type === 'ellipse' && (!!el.lobes || (el.n ?? 2) < 1));
   if (!dented || !('fill' in el && el.fill)) return { up, sides };
   const f = (p: Pt) => `${p.x.toFixed(2)},${p.y.toFixed(2)}`;
   const walls = base.map((p, i) => {
