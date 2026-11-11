@@ -3,14 +3,18 @@
 // solid's sides, the top-down view, a resize. A mark wholly inside the shape can't be cut out of one outline: it stays
 // a mark (a hole), now an exact region. Lines, text and images keep their marks as masks. Pure; relative imports only.
 
-import { difference, type MultiPolygon, type Pair, type Polygon } from 'polygon-clipping';
+import * as clipping from 'polygon-clipping';
+import type { MultiPolygon, Pair, Polygon } from 'polygon-clipping';
 import type { DesignPage } from './types';
 import {
   boundsOf, mapPt, newId, outlineOf, planeOf, PLANES, polyFrom, ROOF_LIFT, rotatePt, rotationOf,
   type Plane, type Pt, type Rub, type VElement,
 } from './vector';
 
-const CARVABLE = ['rect', 'ellipse', 'capsule', 'poly'];
+// Its ESM build (what Next bundles) has only a default export, though its types declare named ones; Node's CJS has both
+const { difference } = (clipping as unknown as { default?: typeof clipping }).default ?? clipping;
+
+const CARVABLE =['rect', 'ellipse', 'capsule', 'poly'];
 export const carvable = (e: VElement) => CARVABLE.includes(e.type) && !(e.type === 'poly' && e.open) && !!e.erased?.length;
 
 const ring = (pts: Pt[]): Pair[] => pts.map((p) => [p.x, p.y]);
