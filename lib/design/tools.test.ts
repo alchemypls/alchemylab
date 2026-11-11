@@ -14,7 +14,7 @@ const ALL: VElement[] = [
   { id: 'c', type: 'capsule', x: 400, y: 300, w: 120, h: 40, taper: 0.5 },
   { id: 'p', type: 'poly', x: 50, y: 300, w: 100, h: 80, pts: [[0, 0], [1, 0.2], [0.4, 1]] },
   { id: 'f', type: 'rect', x: 0, y: 0, w: 64, h: 64, plane: 'floor', height: 32, fill: '#888' },
-  { id: 'rw', type: 'poly', x: 300, y: 520, w: 90, h: 60, pts: [[0, 0], [1, 0.3], [0.2, 1]], plane: 'roof', lift: 48, slope: 0.2, fill: '#ccc' },
+  { id: 'rw', type: 'poly', x: 300, y: 520, w: 90, h: 60, pts: [[0, 0], [1, 0.3], [0.2, 1]], plane: 'roof', lift: 48, slope: 0.2, walls: true, fill: '#ccc' },
   { id: 'l', type: 'line', from: { x: 10, y: 10 }, to: { el: 'r' }, bend: 20 },
   { id: 't', type: 'text', x: 600, y: 50, w: 200, h: 40, text: 'hi' },
   { id: 's', type: 'stroke', points: [[5, 5], [50, 60]] },

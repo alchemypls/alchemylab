@@ -3,7 +3,7 @@
 // so editing the asset changes every page using it. Pure data + ops. Imports stay relative (CLI).
 
 import { pageSize, type DesignPage } from './types';
-import { capsuleAsPoly, coverPoints, dragDelta, fromGrid, gridOf, invert, mapPt, offPlane, onPlane, PLANES, rotatePt, standing, toGrid, zonePoint, type Mat, visualBounds, newId, onZone, snap, type Box, type Footing, type Footprint, type Pt, type VAsset, type VElement, type VZone } from './vector';
+import { capsuleAsPoly, coverPoints, polyFrom, type VPoly, dragDelta, fromGrid, gridOf, invert, mapPt, offPlane, onPlane, PLANES, rotatePt, standing, toGrid, zonePoint, type Mat, visualBounds, newId, onZone, snap, type Box, type Footing, type Footprint, type Pt, type VAsset, type VElement, type VZone } from './vector';
 
 // A shape or icon is visual identity. A block is a game piece: drawn on top of its footprint, it stands on floor tiles.
 export const ASSET_KINDS = ['shape', 'icon', 'block'] as const;
@@ -40,6 +40,7 @@ export function newAsset(kind: AssetKind, title: string, today: string): VaultAs
 // what lies on the floor (a flipper, a bumper's base); anything drawn rising off it gets sheared, since a 2D drawing
 // has no height to project.
 const FLAT_TO_ISO = PLANES.floor, ISO_TO_FLAT = invert(PLANES.floor);   // the floor plane is exactly flat → isometric
+const WALL_BAND = 10;   // px a wall is thick when seen from above
 const bboxOf = (c: Pt[]): Box => {
   const x = Math.min(...c.map((p) => p.x)), y = Math.min(...c.map((p) => p.y));
   return { x, y, w: Math.max(...c.map((p) => p.x)) - x, h: Math.max(...c.map((p) => p.y)) - y };
@@ -52,7 +53,7 @@ export function blockProjection(a: VaultAsset, flat?: boolean): Mat | undefined 
 }
 
 // Seen from above, a block's walls stand edge-on: each shape in a wall plane squashes to its base edge on the floor,
-// drawn as a line in its color, like a floor plan. Floor-plane shapes map exactly; flat ones shear. Text on a wall is dropped.
+// drawn as a thin band in its own style, like a floor plan. Floor-plane shapes map exactly; flat ones shear. Text on a wall is dropped.
 export function projectedElements(a: VaultAsset, flat?: boolean): VElement[] {
   const els = a.elements ?? [];
   if (!flat || !blockProjection(a, flat)) return els;
@@ -66,12 +67,17 @@ export function projectedElements(a: VaultAsset, flat?: boolean): VElement[] {
     }
     if (plane !== 'left' && plane !== 'right') return [e];
     if (e.type === 'text') return [];
-    const b = e as Box & { fill?: string; stroke?: string; strokeWidth?: number }, m = PLANES[plane];
+    // A thin band along its base edge, laid out on the flat floor so it comes out even, wearing the wall's own fill,
+    // border and dash (a wall with neither gets an ink line)
+    const b = e as Box & { fill?: string; stroke?: string; strokeWidth?: number; dash?: VPoly['dash'] }, m = PLANES[plane];
+    const q0 = mapPt(ISO_TO_FLAT, onPlane(m, b, { x: b.x, y: b.y + b.h })), q1 = mapPt(ISO_TO_FLAT, onPlane(m, b, { x: b.x + b.w, y: b.y + b.h }));
+    const len = Math.hypot(q1.x - q0.x, q1.y - q0.y) || 1, nx = (-(q1.y - q0.y) / len) * WALL_BAND / 2, ny = ((q1.x - q0.x) / len) * WALL_BAND / 2;
+    const band = [{ x: q0.x + nx, y: q0.y + ny }, { x: q1.x + nx, y: q1.y + ny }, { x: q1.x - nx, y: q1.y - ny }, { x: q0.x - nx, y: q0.y - ny }].map((q) => mapPt(FLAT_TO_ISO, q));
+    const bare = !b.fill && !b.stroke;
     return [{
-      id: e.id, type: 'line', arrow: 'none', layer: e.layer, opacity: e.opacity,
-      from: onPlane(m, b, { x: b.x, y: b.y + b.h }), to: onPlane(m, b, { x: b.x + b.w, y: b.y + b.h }),
-      stroke: b.fill ?? b.stroke ?? '#1f1c17', strokeWidth: Math.max(b.strokeWidth ?? 2, 6),
-    }];
+      id: e.id, type: 'poly', layer: e.layer, opacity: e.opacity, ...polyFrom(band),
+      fill: b.fill, stroke: bare ? '#1f1c17' : b.stroke, strokeWidth: b.strokeWidth, dash: b.dash,
+    } as VElement];
   });
 }
 

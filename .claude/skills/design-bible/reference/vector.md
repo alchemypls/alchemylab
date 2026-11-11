@@ -57,7 +57,7 @@ stands): on a flat floor any angle; on an isometric floor it's redrawn at the ne
 `mirror: true` mirrors any placed asset; a block flips end to end along its columns and keeps its footprint (one flipper file gives left and right).
 In a block, a flat shape that stands up (a ball, a post) gets `upright: true` (and `base`: px its bottom sits above the
 floor): seen from above it keeps its shape instead of slanting. On a flat floor it shows from
-above: floor-plane shapes exactly, wall-plane shapes as their base edge (a line), wall text not at all. They
+above: floor-plane shapes exactly, wall-plane shapes as a thin band along their base edge (in their own fill, border and dash), wall text not at all. They
 can't contain `asset`, `image` or `status` elements, `bind` or `link`. Reference one with an `asset` element instead
 of redrawing it: editing the file changes every page using it. A shape places trimmed to its drawing; an icon places
 its whole sheet. `npm run -s design:check` validates them.
@@ -74,7 +74,8 @@ doesn't recolor pages.
 those tiles exactly (start at a tile corner). `left` and `right` are a block's two visible faces: `w` runs along the
 floor edge (down-right / up-right), `h` straight down. `roof` is the floor plane raised by `lift` px (default 64): keep x, y
 as its corner on the floor under it, and match `lift` to the walls' `h` so it caps them. `slope` (-0.9–0.9, px of rise per px) tips a roof up along `slopeAlong: h|w` (default h), away from
-(x, y); two roofs sloping up to a shared ridge make a gable. A shape in a plane doesn't rotate.
+(x, y); two roofs sloping up to a shared ridge make a gable. `walls: true` on a roof drops walls from its outline to
+the floor, following every bump of it (and its slope): a cave or a hut in one shape, no separate wall faces. A shape in a plane doesn't rotate.
 
 ## Rotation
 

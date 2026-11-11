@@ -211,7 +211,7 @@ function ElementPanel({ page, bible, pages, el, apply }: Props & { el: VElement 
       )}
       {PLANAR.includes(el.type) && (
         <Field label="Plane">
-          <Seg options={PLANE_OPTIONS} value={('plane' in el && el.plane) || 'none'} onChange={(v) => set({ plane: v === 'none' ? undefined : v, rotate: undefined, lift: undefined, slope: undefined, slopeAlong: undefined })} />
+          <Seg options={PLANE_OPTIONS} value={('plane' in el && el.plane) || 'none'} onChange={(v) => set({ plane: v === 'none' ? undefined : v, rotate: undefined, lift: undefined, slope: undefined, slopeAlong: undefined, walls: undefined })} />
         </Field>
       )}
       {(el.type === 'rect' || el.type === 'ellipse' || el.type === 'capsule' || el.type === 'poly') && (el.plane === 'floor' || el.plane === 'roof') && (
@@ -220,7 +220,7 @@ function ElementPanel({ page, bible, pages, el, apply }: Props & { el: VElement 
           notches={[[0, 'flat'], [16, '¼"'], [32, '½"'], [64, '1"'], [128, '2"']]} onChange={(v) => set({ height: v || undefined }, 'height')}
         />
       )}
-      {'plane' in el && el.plane === 'roof' && <RoofFields lift={el.lift ?? ROOF_LIFT} slope={el.slope ?? 0} along={el.slopeAlong ?? 'h'} set={(p, key) => set(p, key)} />}
+      {'plane' in el && el.plane === 'roof' && <RoofFields lift={el.lift ?? ROOF_LIFT} slope={el.slope ?? 0} along={el.slopeAlong ?? 'h'} walls={!!el.walls} set={(p, key) => set(p, key)} />}
       {ROTATABLE.includes(el.type) && !block && !planeOf(el) && (
         <SliderField
           label="Rotate °" value={el.rotate ?? 0} min={0} max={359} notches={[[0, 'none'], 45, 90, 180, 270]}

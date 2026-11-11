@@ -9,7 +9,7 @@ import { useAssetUrl } from '@/lib/assets';
 import { assetView, blockPose, projectedElements, tintElements, type VaultAsset } from '@/lib/design/vault';
 import type { Bible, TopicStatus } from '@/lib/design/types';
 import {
-  capsulePath, dashProps, ellipsePath, extrusion, reshapedPath, reshapes, gridOf, lineControl, lineEnds, polyPath, rotateTransform, rubOrigin, smoothEllipse, zoneCorners, zonePoint,
+  capsulePath, dashProps, ellipsePath, extrusion, roofWalls, reshapedPath, reshapes, gridOf, lineControl, lineEnds, polyPath, rotateTransform, rubOrigin, smoothEllipse, zoneCorners, zonePoint,
   type Box, type Lattice, type Pt, type VElement, type VLine, type VStroke, type VText, type VZone,
 } from '@/lib/design/vector';
 import type { TraceBox } from '@/workbench/hooks/useTrace';
@@ -79,11 +79,20 @@ function Filtered({ el, children }: { el: VElement; children: ReactNode }) {
 
 // A floor or roof shape with a height: its sides (in its color, shaded), then its face on top, raised
 function Solid({ el, hit, children }: { el: VElement; hit?: 'all'; children: ReactNode }) {
-  const ex = extrusion(el);
-  if (!ex) return <>{children}</>;
+  const ex = extrusion(el), down = roofWalls(el);
   const s = el as { fill?: string; stroke?: string; strokeWidth?: number };
+  // A roof's walls down to the floor: drawn first, like a dented solid's walls (outline twice as thick, fill over it, shade)
+  const walls = down && (
+    <>
+      <path d={down} fill="none" stroke={s.stroke ?? 'none'} strokeWidth={(s.strokeWidth ?? 2) * 2} strokeLinejoin="round" pointerEvents="none" />
+      <path d={down} fill={s.fill} pointerEvents={hit} />
+      {s.fill && <path d={down} fill="#000" fillOpacity={0.22} pointerEvents="none" />}
+    </>
+  );
+  if (!ex) return <>{walls}{children}</>;
   return (
     <>
+      {walls}
       {ex.walls ? <>
         {/* the walls' outline drawn twice as thick, then their fill over it: only the outside edge of them all is left */}
         <path d={ex.walls} fill="none" stroke={s.stroke ?? 'none'} strokeWidth={(s.strokeWidth ?? 2) * 2} strokeLinejoin="round" pointerEvents="none" />

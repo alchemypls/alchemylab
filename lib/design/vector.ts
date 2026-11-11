@@ -46,6 +46,7 @@ interface Planed {
   lift?: number;   // a roof: how far above the floor it sits, in px (default ROOF_LIFT). x, y stay its corner on the floor
   slope?: number;  // a roof: px it rises per px along `slopeAlong` (h by default), away from (x, y). Negative falls. |slope| < 1
   slopeAlong?: 'w' | 'h';
+  walls?: boolean;  // a roof: walls drop from its outline to the floor, following every bump of it (and its slope)
   height?: number; // on the floor or a roof (rect, ellipse, capsule): extruded this many px straight up into a solid (see extrusion)
 }
 
@@ -512,6 +513,24 @@ export function extrusion(el: VElement): { up: Pt; sides: string; walls?: string
   return { up, sides, walls };
 }
 
+// A roof's walls, in its own flat box: each outline edge dropped to the floor as a quad, all wound the same way so they
+// fill as one (like a dented solid's walls). A point p of the roof lies over the floor point F(p) (the unsloped floor,
+// no lift); `down` finds the local point that draws there through the roof's own matrix and lift.
+export function roofWalls(el: VElement): string | undefined {
+  if (!('plane' in el) || el.plane !== 'roof' || !el.walls || !('fill' in el) || !EXTRUDABLE.includes(el.type)) return undefined;
+  const m = planeOf(el)!, inv = invert(m), lift = liftOf(el), b = el as VElement & Box;
+  const down = (p: Pt): Pt => {
+    const f = mapPt(PLANES.floor, { x: p.x - b.x, y: p.y - b.y }), q = mapPt(inv, { x: f.x, y: f.y + lift });
+    return { x: b.x + q.x, y: b.y + q.y };
+  };
+  const base = shapeOutline(el), f = (p: Pt) => `${p.x.toFixed(2)},${p.y.toFixed(2)}`;
+  return base.map((p, i) => {
+    const q = base[(i + 1) % base.length], quad = [p, q, down(q), down(p)];
+    const area = quad.reduce((s, a, k) => { const c = quad[(k + 1) % 4]; return s + a.x * c.y - c.x * a.y; }, 0);
+    return `M${(area < 0 ? quad.reverse() : quad).map(f).join(' L')} Z`;
+  }).join('');
+}
+
 // ── Shape paths ── in the element's own box, so planes, turns and eraser marks apply the same as for a rect
 
 export const polyPath = (el: Box & { pts: [number, number][]; open?: boolean }) =>
@@ -582,7 +601,8 @@ export function coverPoints(el: VElement, all: VElement[]): Pt[] {
   if (m) {
     const rise = tall ? mapPt(invert(m), { x: 0, y: -tall }) : null;
     const local = rise ? [...corners, ...corners.map((p) => ({ x: p.x + rise.x, y: p.y + rise.y }))] : corners;
-    return local.map((p) => { const q = onPlane(m, b, p); return { x: q.x, y: q.y - up }; });
+    const out = local.map((p) => { const q = onPlane(m, b, p); return { x: q.x, y: q.y - up }; });
+    return 'walls' in el && el.walls && el.plane === 'roof' ? [...out, ...corners.map((p) => onPlane(PLANES.floor, b, p))] : out;   // its walls reach the floor
   }
   return deg ? corners.map((p) => rotatePt(p, center(b), deg)) : corners;
 }

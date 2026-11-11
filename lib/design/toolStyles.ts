@@ -14,6 +14,7 @@ export interface ShapeTool {
   plane?: Plane;      // new box shapes lie in this plane (none: flat on the page)
   lift?: number;      // a new roof's height above the floor
   slope?: number; slopeAlong?: 'w' | 'h';   // and its pitch
+  walls?: boolean;    // and whether walls drop from it to the floor
   fx?: Fx[];          // effects new shapes start with (roughen, blur…)
 }
 // The element type a shape kind makes
@@ -102,7 +103,7 @@ export function shapeFields(s: ShapeTool) {
   return clean({
     fill: s.hollow ? undefined : s.fill, stroke: s.hollow ? s.stroke ?? s.fill ?? INK : s.stroke, strokeWidth: s.strokeWidth, dash: s.dash, opacity: seen(s.opacity),
     fx: fxOn(s.fx, shapeType(s.kind)), radius: s.kind === 'rounded' ? 24 : undefined, taper: s.kind === 'capsule' ? 0.6 : undefined, lobes: s.kind === 'bush' ? 9 : undefined, plane: s.plane,
-    lift: s.plane === 'roof' ? s.lift : undefined, slope: s.plane === 'roof' ? s.slope : undefined, slopeAlong: s.plane === 'roof' ? s.slopeAlong : undefined,
+    lift: s.plane === 'roof' ? s.lift : undefined, slope: s.plane === 'roof' ? s.slope : undefined, slopeAlong: s.plane === 'roof' ? s.slopeAlong : undefined, walls: s.plane === 'roof' ? s.walls : undefined,
   });
 }
 export const textFields = (t: TextTool) => clean({ ...t, caps: t.caps || undefined, bgShape: t.bg ? t.bgShape ?? 'block' : undefined });

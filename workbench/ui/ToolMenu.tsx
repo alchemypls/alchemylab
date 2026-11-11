@@ -219,12 +219,16 @@ function SelectParams({ s, set }: { s: SelectTool; set: (p: Partial<SelectTool>)
 
 // How high a roof sits (in grid cells it lines up with walls of the same height) and its pitch.
 // Two roofs sloping toward each other's ridge make a gable.
-export function RoofFields({ lift, slope, along, set }: {
-  lift: number; slope: number; along: 'w' | 'h';
-  set: (p: { lift?: number; slope?: number; slopeAlong?: 'w' | 'h' }, key?: string) => void;
+export function RoofFields({ lift, slope, along, walls, set }: {
+  lift: number; slope: number; along: 'w' | 'h'; walls: boolean;
+  set: (p: { lift?: number; slope?: number; slopeAlong?: 'w' | 'h'; walls?: boolean }, key?: string) => void;
 }) {
   return (
     <>
+      <label className="flex items-center justify-between text-[11px] text-neutral-300" title="Walls drop from the roof's outline to the floor, following its shape">
+        Walls down to the floor
+        <Toggle size="sm" on={walls} onToggle={() => set({ walls: !walls || undefined })} />
+      </label>
       <SliderField label="Roof height px" value={lift} min={0} max={512} step={8} notches={[[32, '½'], [64, '1'], [128, '2'], [192, '3'], [256, '4']]} onChange={(v) => set({ lift: v }, 'lift')} />
       <SliderField
         label="Pitch (rise per run)" value={slope} min={-SLOPE_MAX} max={SLOPE_MAX} step={0.05}
@@ -252,7 +256,7 @@ function ShapeParams({ s, set }: { s: ShapeTool; set: (p: Partial<ShapeTool>) =>
           <Seg options={PLANE_OPTIONS} value={s.plane ?? 'none'} onChange={(v) => set({ plane: v === 'none' ? undefined : v })} />
         </Field>
       )}
-      {!isLineKind(s.kind) && s.plane === 'roof' && <RoofFields lift={s.lift ?? ROOF_LIFT} slope={s.slope ?? 0} along={s.slopeAlong ?? 'h'} set={(p) => set(p)} />}
+      {!isLineKind(s.kind) && s.plane === 'roof' && <RoofFields lift={s.lift ?? ROOF_LIFT} slope={s.slope ?? 0} along={s.slopeAlong ?? 'h'} walls={!!s.walls} set={(p) => set(p)} />}
       {!isLineKind(s.kind) && s.plane && <p className="text-[10px] text-neutral-500 leading-relaxed -mt-2">Drag along the plane: on the floor, corner to corner across the tiles. Shows best with the isometric grid on (G).</p>}
       {!isLineKind(s.kind) && (
         <Field label="Fill">
