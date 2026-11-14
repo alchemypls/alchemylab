@@ -7,7 +7,7 @@ import { drawOrder, layersOf } from '@/lib/design/layers';
 import { filterSteps } from '@/lib/design/fx';
 import { useAssetUrl } from '@/lib/assets';
 import { assetView, blockPose, projectedElements, tintElements, type VaultAsset } from '@/lib/design/vault';
-import type { Bible, TopicStatus } from '@/lib/design/types';
+import { linkTarget, type Bible, type TopicStatus } from '@/lib/design/types';
 import {
   capsulePath, dashProps, ellipsePath, extrusion, roofWalls, reshapedPath, reshapes, gridOf, lineControl, lineEnds, polyPath, rotateTransform, rubOrigin, smoothEllipse, zoneCorners, zonePoint,
   type Box, type Lattice, type Pt, type VElement, type VLine, type VStroke, type VText, type VZone,
@@ -33,11 +33,31 @@ export function Element({ el, all, bible, bibleId, editing, onOpen, inlineEdit }
   onOpen: (pageId: string) => void;
   inlineEdit?: InlineEdit;
 }) {
-  const link = !editing && el.link ? el.link : undefined;
+  const link = editing ? undefined : linkTarget(el.link, bible);   // a topic without a page yet isn't clickable
   return (
     <g data-el={el.id} opacity={el.opacity} transform={rotateTransform(el, all)} className={link ? 'vlink' : undefined} onClick={link ? () => onOpen(link) : undefined}>
       {link && <title>Open {link}</title>}
-      <Filtered el={el}><Erased el={el} all={all}><Shape el={el} all={all} bible={bible} bibleId={bibleId} solid={editing || !!link} inlineEdit={inlineEdit} /></Erased></Filtered>
+      <Filtered el={el}><Erased el={el} all={all}><Shape el={el} all={all} bible={bible} bibleId={bibleId} solid={editing || !!link} linked={!!link} inlineEdit={inlineEdit} /></Erased></Filtered>
+      {link && (el.type === 'asset' || el.type === 'image') && <LinkBadge x={el.x + el.w} y={el.y + el.h / 2} r={Math.min(Math.max(Math.min(el.w, el.h) * 0.1, 9), 16)} />}
+    </g>
+  );
+}
+
+// Opens a page: a small round arrow, after a text's words or at a placed piece's right side. Shapes carry none (their label does)
+const LINK_ARROW = 'M-0.32 0.32 L0.3 -0.3 M-0.12 -0.3 L0.3 -0.3 L0.3 0.12';
+function LinkGlyph() {
+  return (
+    <svg aria-hidden viewBox="-1 -1 2 2" style={{ display: 'inline-block', width: '0.72em', height: '0.72em', marginLeft: '0.35em', verticalAlign: '0.02em' }}>
+      <circle r={0.95} fill={ACCENT} />
+      <path d={LINK_ARROW} fill="none" stroke="#fff" strokeWidth={0.22} strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function LinkBadge({ x, y, r }: { x: number; y: number; r: number }) {
+  return (
+    <g transform={`translate(${x} ${y}) scale(${r})`} pointerEvents="none">
+      <circle r={1} fill={ACCENT} stroke="#fff" strokeWidth={0.18} />
+      <path d={LINK_ARROW} fill="none" stroke="#fff" strokeWidth={0.24} strokeLinecap="round" strokeLinejoin="round" />
     </g>
   );
 }
@@ -105,9 +125,9 @@ function Solid({ el, hit, children }: { el: VElement; hit?: 'all'; children: Rea
   );
 }
 
-function Shape({ el, all, bible, bibleId, solid, inlineEdit }: {
+function Shape({ el, all, bible, bibleId, solid, linked, inlineEdit }: {
   el: VElement; all: VElement[]; bible: Bible | null; bibleId: string; solid: boolean;
-  inlineEdit?: InlineEdit;
+  linked?: boolean; inlineEdit?: InlineEdit;
 }) {
   const hitAll = solid ? 'all' as const : undefined;  // an unfilled shape still takes clicks when it can be clicked
   // A shape effect (roughen…) changed its outline: it draws as that path, whatever shape it started as
@@ -149,7 +169,7 @@ function Shape({ el, all, bible, bibleId, solid, inlineEdit }: {
     }
     case 'asset': return <AssetDrawing el={el} solid={solid} />;
     case 'status': return <StatusDot el={el} status={bible?.topics.find((t) => t.id === el.topic)?.status ?? 'blank'} />;
-    case 'text': return <TextBox el={el} bible={bible} inlineEdit={inlineEdit} />;
+    case 'text': return <TextBox el={el} bible={bible} linked={linked} inlineEdit={inlineEdit} />;
   }
 }
 
@@ -266,7 +286,7 @@ function StatusDot({ el, status }: { el: Extract<VElement, { type: 'status' }>; 
   );
 }
 
-function TextBox({ el, bible, inlineEdit }: { el: VText; bible: Bible | null; inlineEdit?: InlineEdit }) {
+function TextBox({ el, bible, linked, inlineEdit }: { el: VText; bible: Bible | null; linked?: boolean; inlineEdit?: InlineEdit }) {
   const topic = el.bind ? bible?.topics.find((t) => t.id === el.bind!.topic) : undefined;
   const text = el.bind ? (topic?.[el.bind.field] ?? '') : el.text;
   const type: React.CSSProperties = {
@@ -288,7 +308,7 @@ function TextBox({ el, bible, inlineEdit }: { el: VText; bible: Bible | null; in
         />
       ) : (
         <div data-text={el.id} style={{ width: '100%', height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: justify }}>
-          <div style={{ ...type, flexShrink: 0 }}>{text}</div>
+          <div style={{ ...type, flexShrink: 0 }}>{text}{linked && <LinkGlyph />}</div>
         </div>
       )}
     </foreignObject>

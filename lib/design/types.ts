@@ -38,6 +38,14 @@ export interface Bible {
   topics:   Topic[];
 }
 
+// Where an element's `link` goes: a topic's id opens that topic's page, and goes nowhere until it has one; any other
+// id is a page. Without a bible (a vault sheet) a link is taken as it is
+export function linkTarget(link: string | undefined, bible: Bible | null | undefined): string | undefined {
+  if (!link) return undefined;
+  const topic = bible?.topics.find((t) => t.id === link);
+  return topic ? topic.page : link;
+}
+
 export type KnowledgeKind = 'decision' | 'hypothesis' | 'question' | 'evidence';
 
 export interface Knowledge {

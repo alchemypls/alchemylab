@@ -1,6 +1,6 @@
 // Edit ops every tool goes through. They break quietly: a wrong reference still draws, until something moves.
 import { describe, expect, it } from 'vitest';
-import type { DesignPage } from './types';
+import { linkTarget, type Bible, type DesignPage } from './types';
 import { untouchable } from './layers';
 import { carve } from './carve';
 import {
@@ -108,5 +108,16 @@ describe('erasing cuts the shape (Fab)', () => {
   it('on the floor, what is left draws where it was', () => {
     const [left] = carve(sq({ plane: 'floor', erased: [band(-10, 50)] }), []);
     expect([(left as VRect).x, (left as VRect).y, (left as VRect).h]).toEqual([-50, 25, 50]);   // its new corner: 50 down the rows
+  });
+});
+
+describe('links', () => {
+  it('a topic link opens the topic’s page, or nothing until it has one; other ids are pages', () => {
+    const bible = { topics: [{ id: 'replay', page: 'session' }, { id: 'pitch' }] } as unknown as Bible;
+    expect(linkTarget('replay', bible)).toBe('session');
+    expect(linkTarget('pitch', bible)).toBeUndefined();
+    expect(linkTarget('index', bible)).toBe('index');
+    expect(linkTarget('index', null)).toBe('index');
+    expect(linkTarget(undefined, bible)).toBeUndefined();
   });
 });

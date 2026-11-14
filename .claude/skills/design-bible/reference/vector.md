@@ -7,7 +7,9 @@ px (1920 × 1080 unless the page sets `size`). Later elements draw on top. A vec
 
 ## Elements
 
-Every element: `id`, `type`, optional `link` (page or topic id; click opens it) and `opacity` (0–1).
+Every element: `id`, `type`, optional `link` (page or topic id; click opens it. A topic id opens that topic's `page`, and
+isn't clickable until it has one. What opens a page shows a small arrow icon: after a text's words, on a placed
+block's or image's corner. Link a placed block (a tree, the dragon) to its page the same way) and `opacity` (0–1).
 
 **`name`: give every element except `text`, `status` and `stroke` one.** It's what the user sees in the layer and
 selection lists on the canvas, where a bare type ("Line", "Poly") can't be told apart: `"left orbit shot"`,
