@@ -84,6 +84,19 @@ describe('select', () => {
     const gone = S.removePieces(s, 0, sel).levels[0];
     expect([gone.walls, gone.objects]).toEqual([{ '1,0,a': 'w' }, undefined]);
   });
+  it('mirrors objects: drawn as the block posed, kept through a turn, saved valid', async () => {
+    const S = await import('./structure');
+    const flip = { ...newAsset('block', 'flip', '2026-01-01'), footprint: { cols: 3, rows: 1 }, elements: [{ id: 'r', type: 'rect', plane: 'floor', x: 512, y: 512, w: 192, h: 64 }] } as never;
+    let s = S.placeObject(S.newStructure(), 0, 'flip', 1, 2);
+    s = S.mirrorObjects(s, 0, [{ kind: 'object', key: '0' }]);
+    expect(s.levels[0].objects).toEqual([{ asset: 'flip', a: 1, b: 2, mirror: true }]);
+    const st = { ...newAsset('block', 's', '2026-01-01', 'structure'), structure: s };
+    const els = S.composeStructure(st, (id) => (id === 'flip' ? flip : undefined));
+    expect(els.filter((e) => e.type === 'asset')).toMatchObject([{ asset: 'flip', mirror: true }]);
+    expect(S.turnStructure(st, 1).structure!.levels[0].objects).toEqual([{ asset: 'flip', a: 3, b: 1, turn: 90, mirror: true }]);
+    expect(validateAsset(st).errors).toEqual([]);
+    expect(S.mirrorObjects(s, 0, [{ kind: 'object', key: '0' }]).levels[0].objects).toEqual([{ asset: 'flip', a: 1, b: 2 }]);
+  });
 });
 
 describe('roofs', () => {

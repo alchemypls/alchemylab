@@ -3,7 +3,7 @@
 // every structure using it. Floors fill tiles; walls stand on the grid lines between tiles; objects stand on tiles.
 // Levels stack: each sits `h` tiles above the one below. Pure. Imports stay relative (CLI).
 
-import { blockFloor, turnedAsset, type VaultAsset } from './vault';
+import { blockFloor, footingOf, placedSize, turnedAsset, type VaultAsset } from './vault';
 import { layerOf, layersOf } from './layers';
 import { fromGrid, translateElements, type Box, type Pt, type VElement } from './vector';
 import type { DesignPage } from './types';
@@ -17,7 +17,7 @@ export interface StructureLevel {
   h: number;                          // tiles up to the next level
   floors?: Record<string, string>;    // tile → floor atom
   walls?: Record<string, string>;     // edge → wall atom
-  objects?: { asset: string; a: number; b: number; turn?: number }[];   // an object's footprint from tile (a, b); turn: degrees, quarter turns
+  objects?: { asset: string; a: number; b: number; turn?: number; mirror?: boolean }[];   // an object's footprint from tile (a, b); turn: degrees, quarter turns; mirror: end to end, as a placed block mirrors
   roofs?: Roof[];                     // at the top of this level's walls (roof.ts)
 }
 export interface Structure { levels: StructureLevel[] }
@@ -142,6 +142,12 @@ export function composeStructure(st: VaultAsset, atomOf: AtomOf, levels?: number
     }
     standing.push(...wallSolid(specs, z, cell, at, `L${li}w`));
     (lv.objects ?? []).forEach((o, i) => {
+      if (o.mirror) {   // a mirror can't be rebuilt from the sheet's pieces: the block itself, posed as a page poses it
+        const raw = atomOf(o.asset), pose = { turn: o.turn, mirror: true }, fp = objFp(atomOf, o);
+        const { w, h } = raw ? placedSize(raw, cell, false, pose) : { w: 0, h: 0 }, foot = raw && footingOf(raw, false, pose)?.at, c = at(o.a + fp.cols / 2, o.b + fp.rows / 2, z);
+        if (raw && foot) standing.push({ key: o.a + o.b + (fp.cols + fp.rows) / 2 + 0.01, els: [{ id: `L${li}o${i}`, type: 'asset', asset: o.asset, x: c.x - w * foot.x, y: c.y - h * foot.y, w, h, at: foot, ...(o.turn && { turn: o.turn }), mirror: true } as VElement] });
+        return;
+      }
       const raw = atomOf(o.asset), atom = raw && (o.turn ? turnedAsset(raw, Math.round(o.turn / 90)) : raw), fp = atom?.footprint ?? { cols: 1, rows: 1 };
       if (atom) standing.push({ key: o.a + o.b + (fp.cols + fp.rows) / 2 + 0.01, els: place(atom, visible(atom), { a: 0, b: 0 }, o.a, o.b, `L${li}o${i}`) });
     });
@@ -306,6 +312,11 @@ export function turnObjects(s: Structure, level: number, ps: Piece[], dir: 1 | -
     return clean({ ...n, a: Math.max(0, Math.min(o.a, cols - f.cols)), b: Math.max(0, Math.min(o.b, rows - f.rows)) });
   }) }));
 }
+// Mirrors the picked objects end to end (a right flipper from a left one), on the same tiles
+export function mirrorObjects(s: Structure, level: number, ps: Piece[]): Structure {
+  const on = new Set(ps.filter((p) => p.kind === 'object').map((p) => Number(p.key)));
+  return withLevel(s, level, (l) => ({ ...l, objects: l.objects?.map((o, i) => (on.has(i) ? clean({ ...o, mirror: !o.mirror || undefined }) : o)) }));
+}
 export function addRoof(s: Structure, level: number, r: Roof): Structure {
   return withLevel(s, level, (l) => ({ ...l, roofs: [...(l.roofs ?? []), r] }));
 }
@@ -413,8 +424,8 @@ export function checkStructure(raw: unknown, errors: string[]) {
     if (!obj(l) || typeof l.h !== 'number' || !(l.h > 0)) return errors.push(`structure.levels[${i}].h: tiles up to the next level, > 0`);
     if (!rec(l.floors, false)) errors.push(`structure.levels[${i}].floors: {"a,b": floor id}`);
     if (!rec(l.walls, true)) errors.push(`structure.levels[${i}].walls: {"a,b,a" | "a,b,b": wall id}`);
-    if (l.objects !== undefined && !(Array.isArray(l.objects) && l.objects.every((o) => obj(o) && typeof o.asset === 'string' && Number.isInteger(o.a) && Number.isInteger(o.b) && (o.turn === undefined || (typeof o.turn === 'number' && o.turn % 90 === 0)))))
-      errors.push(`structure.levels[${i}].objects: [{asset, a, b, turn?: quarter turns in degrees}]`);
+    if (l.objects !== undefined && !(Array.isArray(l.objects) && l.objects.every((o) => obj(o) && typeof o.asset === 'string' && Number.isInteger(o.a) && Number.isInteger(o.b) && (o.turn === undefined || (typeof o.turn === 'number' && o.turn % 90 === 0)) && (o.mirror === undefined || typeof o.mirror === 'boolean'))))
+      errors.push(`structure.levels[${i}].objects: [{asset, a, b, turn?: quarter turns in degrees, mirror?}]`);
     const whole = (v: unknown) => Number.isInteger(v), opt = (v: unknown, ok: (x: number) => boolean) => v === undefined || (typeof v === 'number' && ok(v));
     if (l.roofs !== undefined && !(Array.isArray(l.roofs) && l.roofs.every((r) => obj(r) && typeof r.atom === 'string' && ROOF_SHAPES.includes(r.shape as never)
       && whole(r.a0) && whole(r.b0) && whole(r.a1) && whole(r.b1) && (r.a1 as number) >= (r.a0 as number) && (r.b1 as number) >= (r.b0 as number)

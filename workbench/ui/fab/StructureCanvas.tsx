@@ -7,7 +7,7 @@ import { useSheetView } from '@/workbench/hooks/useSheetView';
 import { createAsset, saveAsset, useVault } from '@/workbench/hooks/useVault';
 import { blockFloor, isStructure, partOf, type VaultAsset } from '@/lib/design/vault';
 import {
-  addLevel, addRoof, setRoofs, objFp, turnObjects, builtStructure, WALL_VIEWS, type WallView, clearTiles, edgeKey, fillTiles, fitFootprint, floorNewRooms, levelBase, levelEmpty, LEVELS_MAX, movePieces, paintFloors,
+  addLevel, addRoof, setRoofs, objFp, turnObjects, mirrorObjects, builtStructure, WALL_VIEWS, type WallView, clearTiles, edgeKey, fillTiles, fitFootprint, floorNewRooms, levelBase, levelEmpty, LEVELS_MAX, movePieces, paintFloors,
   paintWalls, parseKey, pieceAt, pieceId, piecesIn, placeObject, removeLevel, removePieces, roomAt, spanOf, structureOf, structureSize, swapPieces,
   tileKey, wallEdges, type Piece, type PieceKind, type Span, type Structure,
 } from '@/lib/design/structure';
@@ -152,6 +152,7 @@ export function StructureCanvas() {
     if (e.key === 'Escape') { if (drag) setDrag(null); else if (placing) setArmed(null); else setSel([]); return; }
     if ((e.key === 'Delete' || e.key === 'Backspace') && sel.length) { e.preventDefault(); remove(); return; }
     if ((k === ',' || k === '.') && s && sel.some((p) => p.kind === 'object')) { set(turnObjects(s, lv, sel, k === '.' ? 1 : -1, fp.cols, fp.rows, atomOf)); return; }
+    if (k === 'm' && s && sel.some((p) => p.kind === 'object')) { set(mirrorObjects(s, lv, sel)); return; }
     if (k === 'c') { setWallView(WALL_VIEWS[(WALL_VIEWS.indexOf(wallView) + 1) % WALL_VIEWS.length]); return; }
     if (e.key === 'PageUp') { e.preventDefault(); stepLevel(-1); return; }
     if (e.key === 'PageDown') { e.preventDefault(); stepLevel(1); return; }
@@ -332,7 +333,7 @@ export function StructureCanvas() {
     <div className="p-3 flex flex-col gap-2 text-[11px] text-neutral-400 leading-relaxed">
       {sel.length ? <>
         <span className="text-neutral-200">{[['floor', 'floor'], ['wall', 'wall'], ['object', 'object']].map(([k, w]) => count(k as PieceKind) && `${count(k as PieceKind)} ${w}${count(k as PieceKind) > 1 ? 's' : ''}`).filter(Boolean).join(' · ')}</span>
-        <span>Drag to move · Del deletes · , and . turn objects · pick one of the same part in the vault to swap it in.</span>
+        <span>Drag to move · Del deletes · , and . turn objects · M mirrors them · pick one of the same part in the vault to swap it in.</span>
         {selRoofV && s && <RoofFields v={selRoofV} set={(patch) => set(setRoofs(s, lv, sel, patch))} />}
         <button className="self-start text-[11px] px-2 py-0.5 rounded border border-red-900 text-red-300 hover:bg-red-950" onClick={remove}>Delete</button>
       </> : <span>Click a floor, wall or object (Shift adds); drag on empty ground for a box.</span>}
