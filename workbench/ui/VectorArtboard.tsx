@@ -27,8 +27,12 @@ type ArtboardProps = {
   penInput?: MutableRefObject<((s: PagePen) => void) | null>;
   trace?: TraceBox | null;   // a tracing image under the drawing (useTrace), not part of the page
   floor?: Pt[];   // a block's footprint on its own sheet (Fab), drawn under the drawing as a guide, not part of the page
+  guides?: { name: string; pts: Pt[] }[];   // more outlines like it: where an atom's parts go (a wall's faces, partGuides)
   lookOnly?: { elements: VElement[]; transform: string };   // look only (no edit): draw these instead, through this transform
+  under?: Underlay;   // look only, under the drawing: an atom's strip shown longer (strip.ts tileStrip, structure.ts wallStrip)
+  hide?: Pt[][];      // areas where the drawing is kept out of sight (the strip's tiles past the size shown)
 };
+export type Underlay = { elements: VElement[]; transform?: string };
 
 // Canvases re-render on every pan step and rebuild these props each time (new `edit` object, new callbacks), which redrew
 // the whole page per frame. The callbacks go through stable stand-ins that call the latest ones, and the drawing only
@@ -52,6 +56,9 @@ export function VectorArtboard(props: ArtboardProps) {
 }
 
 const NO_ELEMENTS: VElement[] = [];
+const Under = memo(function Under({ u }: { u: Underlay }) {
+  return <g pointerEvents="none" transform={u.transform}>{u.elements.map((el) => <Element key={el.id} el={el} all={u.elements} bible={null} bibleId="" editing={false} onOpen={() => {}} />)}</g>;
+});
 const sameish = (a: unknown, b: unknown, depth: number): boolean => {
   if (a === b) return true;
   if (depth === 0 || !a || !b || typeof a !== 'object' || typeof b !== 'object' || Array.isArray(a) !== Array.isArray(b)) return false;
@@ -59,7 +66,7 @@ const sameish = (a: unknown, b: unknown, depth: number): boolean => {
   return ka.length === kb.length && ka.every((k) => sameish((a as Record<string, unknown>)[k], (b as Record<string, unknown>)[k], depth - 1));
 };
 
-const Artboard = memo(function Artboard({ page, bible, bibleId, onOpen, onFit, edit, penInput, trace, floor, lookOnly }: ArtboardProps) {
+const Artboard = memo(function Artboard({ page, bible, bibleId, onOpen, onFit, edit, penInput, trace, floor, guides, lookOnly, under, hide }: ArtboardProps) {
   const els = lookOnly?.elements ?? page.elements ?? NO_ELEMENTS;
   const { width: W, height: H } = pageSize(page);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -108,8 +115,11 @@ const Artboard = memo(function Artboard({ page, bible, bibleId, onOpen, onFit, e
       <rect width={W} height={H} fill={page.background ?? PAPER} />
       {trace && <TraceImage t={trace} />}
       {floor && <polygon points={toPoints(floor)} fill={ACCENT} fillOpacity={0.12} stroke={ACCENT} strokeWidth={2} strokeDasharray="10 6" strokeLinejoin="round" vectorEffect="non-scaling-stroke" pointerEvents="none"><title>The block&apos;s footprint: where it stands on a floor</title></polygon>}
+      {guides?.map((q) => <polygon key={q.name} points={toPoints(q.pts)} fill="none" stroke={ACCENT} strokeWidth={1.5} strokeDasharray="4 6" strokeLinejoin="round" vectorEffect="non-scaling-stroke" pointerEvents="none"><title>{q.name}</title></polygon>)}
+      {under && <Under u={under} />}
       {g.gridShown && <GridLines g={g.lattice} line={1 / (edit?.scale ?? 1)} />}
-      {lookOnly ? <g transform={lookOnly.transform}>{drawn}</g> : drawn}
+      {hide?.length ? <clipPath id="vab-hide"><path clipRule="evenodd" d={`M0 0H${W}V${H}H0Z ${hide.map((q) => `M${toPoints(q).replace(/ /g, 'L')}Z`).join(' ')}`} /></clipPath> : null}
+      {lookOnly ? <g transform={lookOnly.transform}>{drawn}</g> : hide?.length ? <g clipPath="url(#vab-hide)">{drawn}</g> : drawn}
       {edit && <Crowded els={els} fpOf={fpOf} line={line} />}
       {edit && <Footprints els={els} selected={edit.selected} fpOf={fpOf} line={line} />}
       {edit && <Selection els={els} selected={edit.selected} single={single && fpOf(single) && !edit.styles.select.turnBlocks ? undefined : single} knobOnly={!!single && !!fpOf(single)} handle={11 / edit.scale} line={line} />}

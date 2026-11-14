@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Copy, CopyPlus, Crosshair, Palette as PaletteIcon, PenLine, Trash2 } from 'lucide-react';
 import { useWorkbenchStore } from '@/lib/store';
 import { getSlideDir } from '@/lib/scenes';
-import { dimsText, type AssetKind, type VaultAsset } from '@/lib/design/vault';
+import { dimsText, fabEditorFor, isStructure, type AssetKind, type VaultAsset } from '@/lib/design/vault';
 import type { Palette } from '@/lib/design/palette';
 import { assetUses, copyAsset, createPalette, deleteAsset, deletePalette, usePalettes, useVault, type VaultFile } from '@/workbench/hooks/useVault';
 import { MENU_ROW as ROW, MenuRule, PopMenu } from '@/workbench/ui/PopMenu';
@@ -55,6 +55,7 @@ export function FileVault() {
   const armed    = useWorkbenchStore((s) => s.vaultArmed);
   const arm      = useWorkbenchStore((s) => s.setVaultArmed);
   const setEditor = useWorkbenchStore((s) => s.setFabEditor);
+  const building = useWorkbenchStore((s) => s.activeScene === 'fab' && s.fabEditor === 'structures');   // picks are what to build with
   const opened   = useWorkbenchStore((s) => s.fabAsset);
   const setOpened = useWorkbenchStore((s) => s.setFabAsset);
   const swatch   = useWorkbenchStore((s) => s.swatchPalette);
@@ -108,22 +109,24 @@ export function FileVault() {
     setOrder(without); setSort('custom');
   };
 
-  const lit = (i: Item) => (i.type === 'palette' ? (fab ? opened === i.key : swatch === i.file.id) : fab ? opened === i.key : armed === i.key);
+  // On Structures, a floor, wall or object is picked to build with (armed), not opened
+  const builds = (i: Item) => building && i.type === 'asset' && i.file.asset.kind === 'block' && !isStructure(i.file.asset);
+  const lit = (i: Item) => (i.type === 'palette' ? (fab ? opened === i.key : swatch === i.file.id) : fab && !builds(i) ? opened === i.key : armed === i.key);
   const pick = (i: Item) => {
     if (i.type === 'palette') {
       if (fab) { setEditor('identity'); setOpened(i.key); } else setSwatch(swatch === i.file.id ? undefined : i.file.id);
-    } else if (fab) { setEditor(i.file.asset.kind === 'block' ? 'blocks' : 'identity'); setOpened(i.key); }
+    } else if (fab && !builds(i)) { setEditor(fabEditorFor(i.file.asset)); setOpened(i.key); }
     else arm(armed === i.key ? null : i.key);
   };
   // Opens a vault file on Fab, in its editor, from wherever you are
-  const toFab = (key: string, kind: AssetKind | 'palette') => {
-    setEditor(kind === 'block' ? 'blocks' : 'identity'); setOpened(key);
+  const toFab = (key: string, kind: AssetKind | 'palette', part?: VaultAsset['part']) => {
+    setEditor(kind === 'palette' ? 'identity' : fabEditorFor({ kind, part })); setOpened(key);
     if (!fab) setScene('fab', getSlideDir(scene, 'fab'));
   };
   const duplicate = async (i: Item, kind?: AssetKind) => {
     if (i.type === 'asset') {
       const r = await copyAsset(i.file.asset, kind);
-      if ('error' in r) void tell(`Couldn't copy it: ${r.error}`); else toFab(r.id, kind ?? i.file.asset.kind);
+      if ('error' in r) void tell(`Couldn't copy it: ${r.error}`); else toFab(r.id, kind ?? i.file.asset.kind, kind ? undefined : i.file.asset.part);
       return;
     }
     const root = i.title.replace(/\s+\d+$/, '');
@@ -192,7 +195,7 @@ export function FileVault() {
       {open && menu && (
         <VaultMenu
           item={menu.item} x={menu.x} y={menu.y} fab={fab} lit={lit(menu.item)} close={() => setMenu(null)}
-          onPick={() => pick(menu.item)} onFab={() => toFab(menu.item.key, kindOf(menu.item))}
+          onPick={() => pick(menu.item)} onFab={() => toFab(menu.item.key, kindOf(menu.item), menu.item.type === 'asset' ? menu.item.file.asset.part : undefined)}
           onDuplicate={(kind) => duplicate(menu.item, kind)} onDelete={() => remove(menu.item)}
         />
       )}
@@ -247,7 +250,7 @@ function FileCard({ item, at, fab, lit, onEnter, onLeave, onPick, onDelete }: {
         : <div className="h-8 rounded overflow-hidden flex">{item.file.asset.colors.map((c, n) => <span key={n} className="flex-1" style={{ background: c.value }} title={`${c.name} ${c.value}`} />)}</div>}
       <div className="flex items-baseline gap-2">
         <span className="text-xs font-medium text-neutral-200 truncate flex-1">{item.title}</span>
-        <span className="text-[8px] uppercase tracking-widest text-neutral-500">{item.type === 'palette' ? 'palette' : a!.kind}</span>
+        <span className="text-[8px] uppercase tracking-widest text-neutral-500">{item.type === 'palette' ? 'palette' : a!.kind === 'block' && a!.part && a!.part !== 'object' ? a!.part : a!.kind}</span>
       </div>
       <div className="font-mono text-[9px] text-neutral-500 flex flex-col gap-0.5">
         <span>{item.type === 'palette' ? `palettes/${item.file.id}.json · ${item.file.asset.colors.length} colors` : `assets/${item.file.id}.json`}</span>

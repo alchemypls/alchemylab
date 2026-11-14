@@ -5,7 +5,8 @@
 import { checkFx } from './fx';
 import { ARTBOARD, GRID_COLUMNS, SLUG, type BlockType, type KnowledgeKind, type TopicStatus } from './types';
 import { outOfBounds, overlaps, PLANAR, ROTATABLE, visualBounds, type VElement, type VType } from './vector';
-import { ASSET_KINDS, FOOTPRINT_MAX, type AssetKind } from './vault';
+import { ASSET_KINDS, FOOTPRINT_MAX, PARTS, type AssetKind, type BlockPart } from './vault';
+import { checkStructure } from './structure';
 import { validateLayers } from './layers';
 
 export interface Issues { errors: string[]; warnings: string[] }
@@ -206,6 +207,15 @@ export function validateAsset(raw: unknown): Issues {
   const tiles = (v: unknown) => Number.isInteger(v) && (v as number) >= 1 && (v as number) <= FOOTPRINT_MAX;
   if (raw.footprint !== undefined && !(isObj(raw.footprint) && tiles(raw.footprint.cols) && tiles(raw.footprint.rows)))
     errors.push(`footprint: {cols, rows}, whole numbers 1–${FOOTPRINT_MAX}`);
+  if (raw.part !== undefined) {
+    if (![...PARTS, 'structure'].includes(raw.part as BlockPart)) errors.push(`part: one of ${PARTS.join(' | ')} | structure`);
+    else if (raw.kind !== 'block') errors.push('part: only a block has a part');
+    else if (raw.part !== 'object' && raw.part !== 'structure' && isObj(raw.footprint) && (raw.footprint.cols !== 1 || raw.footprint.rows !== 1)) errors.push(`footprint: a ${raw.part} is drawn on one tile`);
+  }
+  if (raw.part === 'structure') checkStructure(raw.structure, errors);
+  else if (raw.structure !== undefined) errors.push('structure: only on a structure');
+  if (raw.wall !== undefined && !(raw.part === 'wall' && isObj(raw.wall) && num(raw.wall.h) && (raw.wall.h as number) > 0 && (raw.wall.t === undefined || (num(raw.wall.t) && (raw.wall.t as number) > 0 && (raw.wall.t as number) <= 1))))
+    errors.push('wall: {h: tiles tall, > 0; t?: tiles thick, 0–1}, on a wall part');
   if (raw.dims !== undefined) {
     const d = raw.dims, list = (v: unknown) => Array.isArray(v) && v.length >= 1 && v.length <= 3 && v.every((n) => num(n) && n > 0);
     if (!isObj(d) || !list(d.in) || (d.mm !== undefined && !list(d.mm)) || (d.estimated !== undefined && typeof d.estimated !== 'boolean') || (d.note !== undefined && !isStr(d.note)))

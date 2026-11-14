@@ -27,11 +27,12 @@ export function PanelToggle({ on, onClick, title, children }: { on?: boolean; on
   );
 }
 
-export function SheetPanel({ pickers, row, status, controls, panels, undo, redo, canUndo, canRedo, sv, page, bible, below, mapFocus, onMapFocus, trace, view, map, rail, belowAux, mapLook }: {
+export function SheetPanel({ pickers, row, status, controls, panels, undo, redo, canUndo, canRedo, sv, page, bible, below, mapFocus, onMapFocus, trace, view, map, rail, railTop, belowAux, mapLook }: {
   pickers: ReactNode;
   row?: ReactNode;        // a second row under the pickers
   map?: ReactNode;        // a minimap of the canvas's own, in place of the vector page's
   rail?: ReactNode;       // pips of the canvas's own left of the minimap, in place of the page's layer pips
+  railTop?: ReactNode;    // another bar above the pips (Blocks: a wall's strip sizes)
   status?: ReactNode;     // before undo
   controls?: ReactNode;   // before recenter
   panels?: ReactNode;     // under the minimap: toggles for what opens in the box below
@@ -60,7 +61,7 @@ export function SheetPanel({ pickers, row, status, controls, panels, undo, redo,
           <PanelToggle onClick={sv.recenter} title={`Center the sheet, staying at ${Math.round(sv.view.scale * 100)}% zoom. Ctrl+0 fits it, Ctrl+1 is 100%.`}>recenter</PanelToggle>
         </div>
         {/* the pips float outside the panel, left of the map, so the map keeps the panel's full width */}
-        <Docked side="left" align="center" gap={14} aux={rail ?? (onMapFocus && page && <LayerPips page={page} focus={mapFocus ?? null} pick={onMapFocus} />)}>
+        <Docked side="left" align="center" gap={14} aux={<div className="flex flex-col items-center gap-2">{railTop}{rail ?? (onMapFocus && page && <LayerPips page={page} focus={mapFocus ?? null} pick={onMapFocus} />)}</div>}>
         <div className="relative rounded-lg border border-neutral-700/60">
           {map ?? <PageMap page={page} bible={bible ?? null} view={sv.visible} onCenter={sv.centerOn} focus={onMapFocus ? mapFocus : null} trace={trace?.box} look={mapLook} />}
           {view && (

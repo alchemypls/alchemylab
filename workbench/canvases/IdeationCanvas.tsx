@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useWorkbenchStore } from '@/lib/store';
 import { useDesignEditor } from '@/workbench/hooks/useDesignEditor';
 import { useSheetView } from '@/workbench/hooks/useSheetView';
-import { useVault } from '@/workbench/hooks/useVault';
+import { usePlacedVault } from '@/workbench/hooks/useVault';
 import { useVectorTools } from '@/workbench/hooks/useVectorTools';
 import { DesignArtboard } from '@/workbench/ui/DesignArtboard';
 import { DesignInspector } from '@/workbench/ui/DesignInspector';
@@ -46,7 +46,7 @@ export function IdeationCanvas() {
   const [layersOpen, setLayersOpen] = useState(false);
   const armed = useWorkbenchStore((s) => s.vaultArmed);   // picked in the Vault panel: the next clicks place it
   const setArmed = useWorkbenchStore((s) => s.setVaultArmed);
-  const vault = useVault().entries;
+  const vault = usePlacedVault().entries;   // structures as built, so they're sized and placed like any block
   const placing = vault.find((e) => e.id === armed);
   // Placed blocks drawn at the size their Fab file gives them now; the next edit saves it
   const fitted = useMemo(() => (shown?.elements ? fitBlocks(shown, (id) => vault.find((e) => e.id === id)?.asset) : shown), [shown, vault]);

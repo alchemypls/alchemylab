@@ -2,7 +2,7 @@
 export type SceneId = 'ideation' | 'fab' | 'web' | 'rnd';
 
 // The Fab canvas's editors
-export type FabEditor = 'identity' | 'components' | 'blocks';
+export type FabEditor = 'identity' | 'components' | 'blocks' | 'structures';
 
 export interface SceneConfig {
   id:          SceneId;

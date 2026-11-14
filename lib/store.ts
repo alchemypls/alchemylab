@@ -141,7 +141,7 @@ interface WorkbenchState {
   // The file vault window (vault/ on disk), on Ideation and Fab
   fileVaultOpen: boolean;
   toggleFileVault: () => void;
-  vaultArmed: string | null;              // the vault asset Ideation places on the next click
+  vaultArmed: string | null;              // the vault asset Ideation places on the next click (Fab Structures: the floor, wall or object picked to build with)
   setVaultArmed: (id: string | null) => void;
   vaultPosition: { x: number; y: number };
   vaultSize:     { width: number; height: number };

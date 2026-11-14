@@ -3,7 +3,7 @@
 import { useRef, useState, type MutableRefObject } from 'react';
 import { useSheetPen } from './useSheetPen';
 import { useToolStyles } from './useToolStyles';
-import { useVault } from './useVault';
+import { usePlacedVault } from './useVault';
 import { footingOf } from '@/lib/design/vault';
 import { gridOf, regridZones, SNAP, tenants, translateElements, updateElement, type FootingOf, type Lattice, type VElement } from '@/lib/design/vector';
 import { favoritePatch, type Favorites, type ShapeKind, type ToolStyles, type ZoneTool } from '@/lib/design/toolStyles';
@@ -39,13 +39,15 @@ export function useVectorTools({ doc, tools, enabled, onDeselect }: {
 }) {
   const { shown, current } = doc;
   const [tool, setTool] = useState<ToolKey>('read');
-  // The layer new things go on: the one picked, else the top one that can be drawn on
+  // The layer new things go on: the one picked, else the top one that can be drawn on (an atom's: the first, its base
+  // face or tile; the ones after it are states drawn only where they apply)
   const [layerPick, setLayerPick] = useState<string>();
   // The layer the minimap focuses on (others dim), or null for all of them. Picking a layer moves the focus with it.
   const [mapLayer, setMapLayer] = useState<string | null>(null);
   const setLayer = (id: string) => { setLayerPick(id); setMapLayer((m) => (m ? id : m)); };
   const layers = layersOf(shown), usable = layers.filter((l) => !l.hidden && !l.locked);
-  const layer = (usable.find((l) => l.id === layerPick) ?? usable[usable.length - 1])?.id;
+  const atom = ['floor', 'wall', 'roof'].includes((shown as { part?: string } | null)?.part ?? '');
+  const layer = (usable.find((l) => l.id === layerPick) ?? usable[atom ? 0 : usable.length - 1])?.id;
   // Ctrl + wheel walks the minimap's layer pips (all layers, then top to bottom; down = +1), the same as clicking them:
   // the map focuses on the layer and you draw on it. Stops at the ends; a page without its own layers has no pips.
   const stepLayer = (d: 1 | -1) => {
@@ -59,7 +61,7 @@ export function useVectorTools({ doc, tools, enabled, onDeselect }: {
   // Every edit through here puts what it adds on that layer. Canvases pass this to the artboard.
   const apply = (next: DesignPage, key?: string) => doc.apply(stampLayer(current.current, next, layer), key);
   const [selected, select] = useState<string[]>([]);
-  const vault = useVault().entries;
+  const vault = usePlacedVault().entries;   // structures as built: their size and footing
   const footing: FootingOf = (e) => { if (e.type !== 'asset') return undefined; const a = vault.find((v) => v.id === e.asset)?.asset; return a && footingOf(a, undefined, e); };
   const [gridOn, setGridOn] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);

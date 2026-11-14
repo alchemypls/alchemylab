@@ -13,7 +13,7 @@ import {
   type Box, type Lattice, type Pt, type VElement, type VLine, type VStroke, type VText, type VZone,
 } from '@/lib/design/vector';
 import type { TraceBox } from '@/workbench/hooks/useTrace';
-import { useVault } from '@/workbench/hooks/useVault';
+import { usePlacedVault } from '@/workbench/hooks/useVault';
 import { ACCENT, INK, SANS, SERIF, STATUS_COLOR } from '../DesignArtboard';
 import { SketchStroke } from '../SketchStroke';
 import { toPoints } from './gesture';
@@ -163,7 +163,7 @@ const gridOfAsset = (a: VaultAsset) => !!gridOf(a).flat;
 
 // A vault asset in its box, live: it changes wherever it's placed when the asset changes.
 export function AssetDrawing({ el, solid }: { el: Placement; solid?: boolean }) {
-  const { entries, loaded } = useVault();
+  const { entries, loaded } = usePlacedVault();   // a structure comes built from its atoms, live
   const asset = entries.find((e) => e.id === el.asset)?.asset;
   if (!asset) return (   // missing from the vault: its box is all there is to click
     <>

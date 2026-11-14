@@ -1,5 +1,6 @@
 "use client";
 
+import { fabEditorFor } from '@/lib/design/vault';
 import { useCallback, useState, type MouseEvent } from 'react';
 import { CopyPlus, PenLine } from 'lucide-react';
 import { useWorkbenchStore } from '@/lib/store';
@@ -47,7 +48,7 @@ export function SheetMenu({ at, page, apply, select, selectable, close }: {
 
   const els = (page.elements ?? []).filter((e) => at.ids.includes(e.id));
   const run = (f: () => void) => () => { f(); close(); };
-  const toFab = (id: string) => { const a = vault.find((v) => v.id === id)?.asset ?? asset; setEditor(a?.kind === 'block' ? 'blocks' : 'identity'); setFabAsset(id); setScene('fab', getSlideDir(scene, 'fab')); };
+  const toFab = (id: string) => { const a = vault.find((v) => v.id === id)?.asset ?? asset; setEditor(fabEditorFor(a)); setFabAsset(id); setScene('fab', getSlideDir(scene, 'fab')); };
   const only: VElement | undefined = els.length === 1 ? els[0] : undefined;
   const ctx = actionCtx(page, at.ids, selectable), host = { apply, select };
   const acts = actionsFor(els.length ? 'selection' : 'page', ctx);

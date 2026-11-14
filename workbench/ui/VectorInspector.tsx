@@ -1,5 +1,6 @@
 "use client";
 
+import { fabEditorFor } from '@/lib/design/vault';
 import { ClipboardCopy, Link2, Unlink2, X } from 'lucide-react';
 import { useWorkbenchStore } from '@/lib/store';
 import { getSlideDir } from '@/lib/scenes';
@@ -92,7 +93,7 @@ function AssetFields({ el, set }: { el: VAsset; set: (p: Record<string, unknown>
         {asset && (
           <button
             className={BTN} title="Opens it on the Fab canvas. Edits change it everywhere it's placed."
-            onClick={() => { setFabEditor(asset.kind === 'block' ? 'blocks' : 'identity'); setFabAsset(el.asset); setActiveScene('fab', getSlideDir(activeScene, 'fab')); }}
+            onClick={() => { setFabEditor(fabEditorFor(asset)); setFabAsset(el.asset); setActiveScene('fab', getSlideDir(activeScene, 'fab')); }}
           >Edit in Fab</button>
         )}
       </div>

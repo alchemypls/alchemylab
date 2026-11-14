@@ -3,6 +3,7 @@
 // so editing the asset changes every page using it. Pure data + ops. Imports stay relative (CLI).
 
 import { pageSize, type DesignPage } from './types';
+import { newStructure, structureSize, structureTurner, type Structure } from './structure';
 import { capsuleAsPoly, coverPoints, polyFrom, type VPoly, dragDelta, fromGrid, gridOf, invert, mapPt, offPlane, onPlane, PLANES, rotatePt, standing, toGrid, zonePoint, type Mat, visualBounds, newId, onZone, snap, type Box, type Footing, type Footprint, type Pt, type VAsset, type VElement, type VZone } from './vector';
 
 // A shape or icon is visual identity. A block is a game piece: drawn on top of its footprint, it stands on floor tiles.
@@ -10,7 +11,10 @@ export const ASSET_KINDS = ['shape', 'icon', 'block'] as const;
 export type AssetKind = (typeof ASSET_KINDS)[number];
 export type VaultAsset = DesignPage & {
   kind: AssetKind;
-  footprint?: Footprint;   // a block's tiles on a floor, centered under it; default 1×1
+  part?: BlockPart;        // a block's part: what structures build with it, or a structure (see Parts). Default object
+  structure?: Structure;   // a structure's floors, walls, objects per level (lib/design/structure.ts). Its drawing is built from them
+  wall?: { h: number; t?: number };   // a wall part: how tall and thick, in tiles (thickness default walls.ts WALL_T)
+  footprint?: Footprint;   // a block's tiles on a floor, centered under it; default 1×1. Atoms are always 1×1
   dims?: Dims;             // the real thing's size: the spec the drawing is drawn to
 };
 
@@ -21,6 +25,56 @@ export const dimsText = (d: Dims, unit: 'in' | 'mm' = 'in') => { const v = unit 
 
 export const FOOTPRINT_MAX = 16;
 
+// ── Parts ── A block is one of four parts. Floors, walls and roofs are atoms: a structure is built from them on Fab and
+// they reshape to fit it (a wall's joints, a roof's slope); an object is a piece that never changes shape (a flipper, a
+// chest). Atoms are drawn on one tile. A part's layers are its states: a structure shows the one that fits where it is.
+//   floor  one tile, flat on the floor plane
+//   wall   one tile-long length on each face it can stand on: `left` runs along the floor's columns, `right` along its
+//          rows (empty right: the left one, mirrored). Joints stand on the grid corner where they meet, by how many
+//          walls meet there: end (1), corner (2 at an angle), tee (3), cross (4). Two in a line need none
+//   roof   one tile of its surface, flat (the roof slopes it), its eave (the low edge) and ridge (the top)
+export const PARTS = ['object', 'floor', 'wall', 'roof'] as const;
+export type Part = (typeof PARTS)[number];
+export type BlockPart = Part | 'structure';   // a structure: built from the others on Fab, placed like any block
+export const PART_LABEL: Record<BlockPart, string> = { object: 'Objects', floor: 'Floors', wall: 'Walls', roof: 'Roofs', structure: 'Structures' };
+export const PART_LAYERS: Record<Exclude<Part, 'object'>, { id: string; name: string }[]> = {
+  floor: [{ id: 'base', name: 'Tile' }],
+  wall: [{ id: 'faces', name: 'Faces' }, { id: 'end', name: 'Joint: end' }, { id: 'corner', name: 'Joint: corner' }, { id: 'tee', name: 'Joint: tee' }, { id: 'cross', name: 'Joint: cross' }],
+  roof: [{ id: 'surface', name: 'Surface' }, { id: 'eave', name: 'Eave' }, { id: 'ridge', name: 'Ridge' }],
+};
+export const WALL_H = 3;   // tiles, a new wall's height
+export const partOf = (a: VaultAsset): BlockPart | undefined => (a.kind === 'block' ? a.part ?? 'object' : undefined);
+export const isAtom = (a: VaultAsset) => { const p = partOf(a); return !!p && p !== 'object' && p !== 'structure'; };
+export const isStructure = (a?: VaultAsset) => !!a && partOf(a) === 'structure';
+// The Fab editor a vault file opens in
+export const fabEditorFor = (a?: Pick<VaultAsset, 'kind' | 'part'>): 'identity' | 'blocks' | 'structures' =>
+  a?.kind !== 'block' ? 'identity' : a.part === 'structure' ? 'structures' : 'blocks';
+
+// Where an atom's drawing goes on its sheet, as guides under it (Fab): a wall's two faces (left along the tile's front-left
+// edge, right along its front-right edge, meeting at the joint corner), a floor's or roof's tile is its footprint
+// n: strip tiles shown (structure.ts STRIP): each face's outline per tile, the single's first
+export function partGuides(a: VaultAsset, n = 1): { name: string; pts: Pt[] }[] {
+  if (partOf(a) !== 'wall') return [];
+  const [, c1, c2, c3] = blockFloor(a).corners, cell = gridOf(a).cell, up = (a.wall?.h ?? WALL_H) * cell;
+  const at = (p: Pt, dx: number, dy: number) => ({ x: p.x + dx, y: p.y + dy }), raise = (p: Pt) => ({ x: p.x, y: p.y - up });
+  return Array.from({ length: n }, (_, k) => {
+    const l = { x: -k * cell, y: -k * cell / 2 }, r = { x: k * cell, y: -k * cell / 2 }, L = [at(c3, l.x, l.y), at(c2, l.x, l.y)], R = [at(c2, r.x, r.y), at(c1, r.x, r.y)];
+    return [{ name: `Left face${k ? ` ${k + 1}` : ''}`, pts: [L[0], L[1], raise(L[1]), raise(L[0])] }, { name: `Right face${k ? ` ${k + 1}` : ''}`, pts: [R[0], R[1], raise(R[1]), raise(R[0])] }];
+  }).flat();
+}
+
+// A new atom's first drawing, on its layers: plain faces, a plain tile. Something to draw over, not a blank sheet
+function starter(a: VaultAsset): VElement[] {
+  const part = partOf(a), cell = gridOf(a).cell, [c0] = blockFloor(a).corners;
+  const edge = { stroke: '#1f1b16', strokeWidth: 1.5 };
+  if (part === 'floor' || part === 'roof') return [{ id: newId('rect'), type: 'rect', name: part === 'floor' ? 'tile' : 'surface', layer: part === 'floor' ? 'base' : 'surface', plane: 'floor', x: c0.x, y: c0.y, w: cell, h: cell, fill: part === 'floor' ? '#d9c9a3' : '#b3202a', ...edge }];
+  if (part !== 'wall') return [];
+  return partGuides(a).map((g, i) => {
+    const plane = i ? 'right' : 'left', o = g.pts[3];   // a face's box starts at its top left
+    return { id: newId('rect'), type: 'rect', name: g.name.toLowerCase(), layer: 'faces', plane, x: o.x, y: o.y, w: cell, h: (a.wall?.h ?? WALL_H) * cell, fill: i ? '#cdbb92' : '#e8dcc0', ...edge } as VElement;
+  });
+}
+
 export const KIND_LABEL: Record<AssetKind, string> = { shape: 'Shapes', icon: 'Icons', block: 'Blocks' };
 
 const MAX_PLACED = 480;   // a large drawing lands at this size at most
@@ -28,9 +82,17 @@ const ICON_PLACED = 96;
 
 const BLOCK_CELL = 64;   // a new block's tile size on its sheet. A floor's tile size scales it when placed
 
-export function newAsset(kind: AssetKind, title: string, today: string): VaultAsset {
+export function newAsset(kind: AssetKind, title: string, today: string, part?: BlockPart): VaultAsset {
   const base = { kind, title, updated: today, blocks: [], elements: [] };
   if (kind === 'icon') return { ...base, size: { width: 256, height: 256 }, grid: { cell: 16, flat: true } };
+  if (kind === 'block' && part === 'structure') {
+    const footprint = { cols: 6, rows: 6 }, structure = newStructure();
+    return { ...base, part, footprint, structure, size: structureSize(footprint, structure, BLOCK_CELL), grid: { cell: BLOCK_CELL } };
+  }
+  if (kind === 'block' && part && part !== 'object') {
+    const a: VaultAsset = { ...base, part, ...(part === 'wall' && { wall: { h: WALL_H } }), layers: PART_LAYERS[part as Exclude<Part, 'object'>], size: { width: 1024, height: 1024 }, grid: { cell: BLOCK_CELL } };
+    return { ...a, elements: starter(a) };
+  }
   if (kind === 'block') return { ...base, size: { width: 1024, height: 1024 }, grid: { cell: BLOCK_CELL } };
   return { ...base, size: { width: 1024, height: 1024 } };
 }
@@ -170,6 +232,8 @@ function quarterTurn(a: VaultAsset): VaultAsset {
 
 export function turnedAsset(a: VaultAsset, quarters: number): VaultAsset {
   if (a.kind !== 'block' || gridOf(a).flat) return a;
+  const built = structureTurner(a);   // a built structure turns its data and builds that
+  if (built) return built(quarters);
   let out = a;
   for (let i = 0; i < ((quarters % 4) + 4) % 4; i++) out = quarterTurn(out);
   return out;

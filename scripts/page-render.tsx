@@ -7,7 +7,7 @@ import path from 'path';
 import { spawnSync } from 'child_process';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { VectorArtboard } from '@/workbench/ui/VectorArtboard';
-import { primeVault } from '@/workbench/hooks/useVault';
+import { placedNow, primeVault } from '@/workbench/hooks/useVault';
 import { fitBlocks, type VaultAsset } from '@/lib/design/vault';
 import { pageSize, type DesignPage } from '@/lib/design/types';
 
@@ -23,7 +23,7 @@ const read = (dir: string) => readdirSync(dir).filter((f) => f.endsWith('.json')
   .map((f) => ({ id: f.slice(0, -5), mtime: null, asset: JSON.parse(readFileSync(path.join(dir, f), 'utf8')) }));
 const assets = read(path.join('vault', 'assets'));
 primeVault(assets, existsSync(path.join('vault', 'palettes')) ? read(path.join('vault', 'palettes')) : []);
-const byId = new Map(assets.map((e) => [e.id, e.asset as VaultAsset]));
+const byId = new Map(placedNow().entries.map((e) => [e.id, e.asset as VaultAsset]));   // structures built
 
 const dir = path.join('design', bible);
 const page = fitBlocks(JSON.parse(readFileSync(path.join(dir, 'pages', `${pageId}.json`), 'utf8')) as DesignPage, (id) => byId.get(id));

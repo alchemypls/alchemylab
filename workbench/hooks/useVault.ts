@@ -1,7 +1,9 @@
 "use client";
 
 import { useSyncExternalStore } from 'react';
-import { newAsset, type AssetKind, type VaultAsset } from '@/lib/design/vault';
+import { builtStructure } from '@/lib/design/structure';
+import { isStructure, newAsset, PART_LAYERS, WALL_H, type AssetKind, type BlockPart, type Part, type VaultAsset } from '@/lib/design/vault';
+import { layersOf } from '@/lib/design/layers';
 import { newPalette, type Palette } from '@/lib/design/palette';
 import type { SaveResult } from './useDesignDoc';
 
@@ -60,6 +62,20 @@ const useCollection = <T,>(type: VaultType) =>
 export const useVault = () => useCollection<VaultAsset>('asset');
 export const usePalettes = () => useCollection<Palette>('palette');
 export const useVaultAsset = (id: string | undefined) => useVault().entries.find((e) => e.id === id)?.asset;
+// The vault as placements see it: a structure is its drawing built from its atoms (lib/design/structure.ts), so it's
+// sized, footed, turned and drawn like any block. Built once per vault state; Fab's editors use the plain vault
+const placed = new WeakMap<Collection<VaultAsset>, Collection<VaultAsset>>();
+export function placedVault(c: Collection<VaultAsset>): Collection<VaultAsset> {
+  let out = placed.get(c);
+  if (!out) {
+    const atomOf = (id: string) => c.entries.find((e) => e.id === id)?.asset;
+    out = { ...c, entries: c.entries.map((e) => (isStructure(e.asset) ? { ...e, asset: builtStructure(e.asset, atomOf) } : e)) };
+    placed.set(c, out);
+  }
+  return out;
+}
+export const usePlacedVault = () => placedVault(useVault());
+export const placedNow = () => placedVault(state.asset as Collection<VaultAsset>);   // the same, outside React (scripts)
 
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
@@ -78,17 +94,21 @@ async function create(type: VaultType, title: string, file: unknown): Promise<{ 
   return { error: `Too many files named "${title}"` };
 }
 const today = () => new Date().toISOString().slice(0, 10);
-export const createAsset   = (kind: AssetKind, title: string) => create('asset', title, newAsset(kind, title, today()));
+export const createAsset   = (kind: AssetKind, title: string, part?: BlockPart) => create('asset', title, newAsset(kind, title, today(), part));
 // A copy of an asset as its own new file ("Make unique"): "Pop bumper" → pop-bumper-2, "Pop bumper 2"
 // A new vault file from another, named "Title N". With a kind, the copy is that kind and the original stays as it was
 // (a kind sets how every placement draws, so it's never changed in place). Only a block keeps its footprint.
-export function copyAsset(from: VaultAsset, kind: AssetKind = from.kind) {
+export function copyAsset(from: VaultAsset, kind: AssetKind = from.kind, part?: Part) {
   const root = from.title.replace(/\s+\d+$/, ''), taken = (t: string) => state.asset.entries.some((e) => e.id === slug(t) || (e.asset as VaultAsset | undefined)?.title === t);
   let n = 2;
   while (taken(`${root} ${n}`)) n++;
   const title = `${root} ${n}`;
   const copy = { ...structuredClone(from), kind, title, updated: today() } as VaultAsset;
-  if (kind !== 'block') delete (copy as { footprint?: unknown }).footprint;
+  if (kind !== 'block') { delete copy.footprint; delete copy.part; delete copy.wall; }
+  if (kind === 'block' && part) {   // another part: atoms stand on one tile; its state layers come along, kept drawings stay
+    if (part === 'object') delete copy.part; else { copy.part = part; delete copy.footprint; const have = layersOf(copy); copy.layers = [...have, ...PART_LAYERS[part].filter((l) => !have.some((x) => x.id === l.id))]; }
+    if (part === 'wall') copy.wall = from.wall ?? { h: WALL_H }; else delete copy.wall;
+  }
   return create('asset', title, copy);
 }
 export const createPalette = (title: string, from?: Palette) =>

@@ -15,7 +15,7 @@ import {
   type Anchor, type FootingOf, type Lattice, type Pt, type VElement, type VLine,
 } from '@/lib/design/vector';
 import { isLineKind, shapeFields, strokeFields, textFields, zoneFields } from '@/lib/design/toolStyles';
-import { useVault } from '@/workbench/hooks/useVault';
+import { usePlacedVault } from '@/workbench/hooks/useVault';
 import { carveElements } from '@/lib/design/carve';
 import type { SheetMenuAt } from '../SheetMenu';
 import { ACCENT } from '../DesignArtboard';
@@ -49,7 +49,7 @@ export function useGestures({ svgRef, page, els, W, H, edit, penInput, lookOnly 
   const [preview, setPreview] = useState<Gesture | null>(null);
   const [editingText, setEditingText] = useState<string | null>(null);
   const [menu, setMenu] = useState<SheetMenuAt | null>(null);   // the right-click menu
-  const vault = useVault().entries;
+  const vault = usePlacedVault().entries;   // structures as built: their size and footing
   const fpOf: FootingOf = (e) => { if (e.type !== 'asset') return undefined; const a = vault.find((v) => v.id === e.asset)?.asset; return a && footingOf(a, undefined, e); };
 
   const handlesOn = edit?.tool === 'select' || edit?.tool === 'shape' || edit?.tool === 'text' || edit?.tool === 'zone';

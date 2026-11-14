@@ -7,7 +7,7 @@ import { Eraser } from 'lucide-react';
 // The tool rail on the left of the full-screen canvases. One master list in one order: each canvas or
 // editor shows a subset, and a tool keeps its place relative to the others as the rail grows and shrinks.
 
-export type ToolKey = 'browse' | 'options' | 'select' | 'shape' | 'text' | 'zone' | 'asset' | 'pen' | 'erase' | 'read';
+export type ToolKey = 'browse' | 'options' | 'select' | 'shape' | 'text' | 'zone' | 'tile' | 'wall' | 'roof' | 'asset' | 'pen' | 'erase' | 'read';
 export interface RailTool { key: ToolKey; hotkey: string; icon: ReactNode; label: string }
 
 const ALL_TOOLS: RailTool[] = [
@@ -17,6 +17,9 @@ const ALL_TOOLS: RailTool[] = [
   { key: 'shape',   hotkey: 's', icon: '▭', label: 'Shapes' },
   { key: 'text',    hotkey: 't', icon: 'T', label: 'Text' },
   { key: 'zone',    hotkey: 'z', icon: '◇', label: 'Floor zone' },
+  { key: 'tile',    hotkey: 'f', icon: '▱', label: 'Floors: drag over tiles' },
+  { key: 'wall',    hotkey: 'w', icon: '▮', label: 'Walls: drag along grid lines (Shift: a room)' },
+  { key: 'roof',    hotkey: 'r', icon: '⌂', label: 'Roofs: click a room, or drag a box' },
   { key: 'asset',   hotkey: 'x', icon: '◈', label: 'Place from vault' },
   { key: 'pen',     hotkey: 'p', icon: '✎', label: 'Pen' },
   { key: 'erase',   hotkey: 'e', icon: <Eraser size={15} strokeWidth={1.8} className="inline-block align-[-2px]" />, label: 'Eraser' },

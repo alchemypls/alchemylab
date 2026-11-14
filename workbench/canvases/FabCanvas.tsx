@@ -21,7 +21,10 @@ import { ComponentFilePicker } from '@/workbench/ui/fab/ComponentFilePicker';
 import { addColor, PaletteFields, PaletteSheet, removeColor } from '@/workbench/ui/PaletteEditor';
 import { paletteSheet, type Palette } from '@/lib/design/palette';
 import { gridOf } from '@/lib/design/vector';
-import { ASSET_KINDS, blockFloor, projectedElements, topDownView, KIND_LABEL, type AssetKind, type VaultAsset } from '@/lib/design/vault';
+import { jointNoteFor, StateBar, StripBar, useAtomStrip } from '@/workbench/ui/fab/AtomBars';
+import { StructureCanvas } from '@/workbench/ui/fab/StructureCanvas';
+import { EditorPicker, EDITORS } from '@/workbench/ui/fab/EditorPicker';
+import { ASSET_KINDS, blockFloor, fabEditorFor, isStructure, partGuides, partOf, PART_LABEL, PARTS, projectedElements, topDownView, KIND_LABEL, type AssetKind, type Part, type VaultAsset } from '@/lib/design/vault';
 import { pageSize, type DesignPage } from '@/lib/design/types';
 import { askText } from '@/workbench/ui/Ask';
 
@@ -30,13 +33,9 @@ import { askText } from '@/workbench/ui/Ask';
 // Visual Identity's files are the vault's shapes, icons and palettes (a palette's file key is `palette:<id>`).
 // Blocks' files are the vault's blocks: game pieces drawn on top of their footprint, on an isometric grid.
 
-const EDITORS: { id: FabEditor; label: string; first: ToolKey; tools: ToolKey[] }[] = [
-  { id: 'identity',   label: 'Visual Identity', first: 'select', tools: ['select', 'shape', 'text', 'pen', 'erase', 'read'] },
-  { id: 'components', label: 'Components',      first: 'browse', tools: ['browse', 'options'] },
-  { id: 'blocks',     label: 'Blocks',          first: 'shape',  tools: ['select', 'shape', 'text', 'pen', 'erase', 'read'] },
-];
 
-const NEW_FILE: Record<string, AssetKind | 'palette'> = { '__new_shape__': 'shape', '__new_icon__': 'icon', '__new_palette__': 'palette', '__new_block__': 'block' };
+const NEW_FILE: Record<string, AssetKind | 'palette'> = { '__new_shape__': 'shape', '__new_icon__': 'icon', '__new_palette__': 'palette', ...Object.fromEntries(PARTS.map((p) => [`__new_${p}__`, 'block' as const])) };
+const newPart = (v: string) => PARTS.find((p) => v === `__new_${p}__`);
 const PALETTE_TOOLS: ToolKey[] = ['select'];
 const NO_PAGE = { current: null };
 type Doc = VectorDoc & { canUndo: boolean; canRedo: boolean };
@@ -45,7 +44,12 @@ const NO_DOC: Doc = { shown: null, current: NO_PAGE, apply: () => {}, undo: () =
 const STAGE: DesignPage = { title: 'Stage', blocks: [], elements: [], size: { width: 1280, height: 720 } };
 const STAGE_DOC: Doc = { ...NO_DOC, shown: STAGE, current: { current: STAGE } };
 
+// Structures has a canvas of its own (fab/StructureCanvas): built from data, not drawn
 export function FabCanvas() {
+  return useWorkbenchStore((s) => s.fabEditor) === 'structures' ? <StructureCanvas /> : <FabDrawCanvas />;
+}
+
+function FabDrawCanvas() {
   const active    = useWorkbenchStore((s) => s.activeScene === 'fab');
   const editor    = useWorkbenchStore((s) => s.fabEditor);
   const setEditor = useWorkbenchStore((s) => s.setFabEditor);
@@ -62,8 +66,8 @@ export function FabCanvas() {
   const pEntry = palettes.entries.find((e) => e.id === paletteId);
   const paletteOpen = config.id === 'identity' && !!paletteId;
   // The open file belongs to this editor: blocks to Blocks, everything else to Visual Identity
-  const isBlock = (a?: VaultAsset) => a?.kind === 'block';
-  const fileHere = config.id === 'blocks' ? !!entry && isBlock(entry.asset) : config.id === 'identity' ? !!pEntry || (!!entry && !isBlock(entry.asset)) : true;
+  const isBlock = (a?: VaultAsset) => a?.kind === 'block' && !isStructure(a);   // structures open in Structures
+  const fileHere = config.id === 'blocks' ? !!entry && isBlock(entry.asset) : config.id === 'identity' ? !!pEntry || (!!entry && entry.asset.kind !== 'block') : true;
   const drawing = config.id !== 'components' && !paletteOpen;
   const tools = toolsFor(paletteOpen ? PALETTE_TOOLS : config.tools);
   const [fileProps, setFileProps] = useState(false);
@@ -118,11 +122,11 @@ export function FabCanvas() {
     if (!bothLoaded || config.id === 'components' || fileHere) return;
     const mine = (id?: string) => !!id && (config.id === 'blocks'
       ? isBlock(entries.find((e) => e.id === id)?.asset)
-      : id.startsWith('palette:') ? palettes.entries.some((p) => `palette:${p.id}` === id) : entries.some((e) => e.id === id && !isBlock(e.asset)));
+      : id.startsWith('palette:') ? palettes.entries.some((p) => `palette:${p.id}` === id) : entries.some((e) => e.id === id && e.asset.kind !== 'block'));
     const remembered = lastFile.current[config.id], firstPalette = palettes.entries[0];
     setFabFile(mine(remembered) ? remembered : config.id === 'blocks'
       ? entries.find((e) => isBlock(e.asset))?.id
-      : entries.find((e) => !isBlock(e.asset))?.id ?? (firstPalette && `palette:${firstPalette.id}`));
+      : entries.find((e) => e.asset.kind !== 'block')?.id ?? (firstPalette && `palette:${firstPalette.id}`));
   }, [bothLoaded, config.id, fileHere, entries, palettes.entries, setFabFile]);
 
   // Each file opens fitted. Icons and blocks are drawn to a grid, so theirs starts on.
@@ -136,13 +140,14 @@ export function FabCanvas() {
     setGridOn(openKind === 'icon' || openKind === 'block');
   }, [fabFile, openKind]); // eslint-disable-line react-hooks/exhaustive-deps -- runs per file; the rest are stable
 
-  const newFile = async (kind: AssetKind | 'palette') => {
+  const newFile = async (kind: AssetKind | 'palette', part?: Part) => {
+    const label = part ?? kind;
     const titles = new Set([...entries.map((e) => e.asset.title), ...palettes.entries.map((e) => e.asset.title)]);
-    let free = `New ${kind}`;
-    for (let n = 2; titles.has(free); n++) free = `New ${kind} ${n}`;
-    const title = await askText(`Name this ${kind}`, { value: free, ok: 'Create' });
+    let free = `New ${label}`;
+    for (let n = 2; titles.has(free); n++) free = `New ${label} ${n}`;
+    const title = await askText(`Name this ${label}`, { value: free, ok: 'Create' });
     if (!title) return;
-    const r = kind === 'palette' ? await createPalette(title) : await createAsset(kind, title);
+    const r = kind === 'palette' ? await createPalette(title) : await createAsset(kind, title, part);
     if ('error' in r) return (paletteOpen ? pal : file).setSave({ kind: 'error', message: r.error });
     setFabFile(kind === 'palette' ? `palette:${r.id}` : r.id);
     if (kind !== 'palette') setTool('shape');
@@ -157,8 +162,15 @@ export function FabCanvas() {
   const topDownOf = useMemo(() => topBlock && topDownView(topBlock), [topBlock]);
   const shownTop = useMemo(() => (topDown && topBlock && topDownOf ? { ...topDownOf, elements: projectedElements(topBlock, true) } : undefined), [topDown, topBlock, topDownOf]);
 
+  const atomDraft = config.id === 'blocks' && fileHere && file.shown && isBlock(file.shown) ? file.shown : undefined;
+  // A floor, wall or roof: one strip shown 1, 2, 3 or 6 tiles long, its states on a bar (fab/AtomBars)
+  const atom = useAtomStrip(atomDraft);
+  const stripBar = atom && !shownTop && <StripBar s={atom} />;
+  const stateBar = atom && <StateBar atom={atom.atom} layer={vt.layer} pick={vt.focusLayer} />;
+
   const save = fileSave;
-  const banner = shownTop ? 'Top-down preview: how it stands on a flat floor. Switch to iso on the minimap to edit.' : vt.blocked(drawing && !!page) ?? (config.id !== 'components' && 'message' in save ? save.message : null);
+  const jointNote = atom && jointNoteFor(atom.atom, vt.layer);
+  const banner = shownTop ? 'Top-down preview: how it stands on a flat floor. Switch to iso on the minimap to edit.' : vt.blocked(drawing && !!page) ?? (config.id !== 'components' && 'message' in save ? save.message : null) ?? jointNote;
 
   return (
     <div className={CANVAS_BG}>
@@ -180,7 +192,8 @@ export function FabCanvas() {
                 bibleId="" bible={null} page={page} onOpen={() => {}} trace={tr.box}
                 edit={vt.edit({ scale: sv.view.scale, tool, eraseAll: true })}
                 floor={isBlock(file.shown ?? undefined) ? blockFloor(file.shown!).corners : undefined}
-                penInput={vt.penInput}
+                guides={isBlock(file.shown ?? undefined) ? partGuides(file.shown!, atom?.n ?? 1) : undefined}
+                penInput={vt.penInput} under={atom?.strip.under} hide={atom?.strip.hide}
               />
             ) : (
               <FabricatorStage f={f} className="w-full h-full" />
@@ -190,7 +203,7 @@ export function FabCanvas() {
         ) : (
           <EmptyNote>
             {!bothLoaded ? 'Loading…' : config.id === 'blocks'
-              ? <span>No blocks yet.<br /><span className="font-mono text-sm">Pick + New block in the file menu.</span></span>
+              ? <span>No blocks yet.<br /><span className="font-mono text-sm">Pick + New object, floor, wall or roof in the file menu.</span></span>
               : <span>The vault is empty.<br /><span className="font-mono text-sm">Pick + New shape, icon or palette in the file menu.</span></span>}
           </EmptyNote>
         )}
@@ -214,16 +227,12 @@ export function FabCanvas() {
           sv={sv} page={page} mapLook={drawing ? shownTop : undefined}
           trace={drawing ? tr : undefined}
           view={drawing && page ? (topDownOf ? { flat: topDown, set: setTopDown } : { flat: !!gridOf(page).flat, set: (flat) => { vt.setGrid({ flat: flat || undefined }); vt.setGridOn(true); } }) : undefined}
+          railTop={stripBar || undefined} rail={stateBar || undefined}
           mapFocus={vt.mapLayer} onMapFocus={drawing ? vt.focusLayer : undefined}
           undo={doc.undo} redo={doc.redo} canUndo={doc.canUndo} canRedo={doc.canRedo}
           pickers={
             <>
-              <select
-                value={config.id} className={PANEL_SELECT} title="Editor"
-                onChange={(e) => { setEditor(e.target.value as FabEditor); e.target.blur(); }}
-              >
-                {EDITORS.map((x) => <option key={x.id} value={x.id} className="bg-neutral-900">{x.label}</option>)}
-              </select>
+              <EditorPicker />
               {config.id === 'identity' ? (
                 <select
                   value={fabFile ?? ''} className={PANEL_SELECT} title="File"
@@ -242,11 +251,14 @@ export function FabCanvas() {
               ) : config.id === 'blocks' ? (
                 <select
                   value={fileHere ? fabFile ?? '' : ''} className={PANEL_SELECT} title="File"
-                  onChange={(e) => { const v = e.target.value; e.target.blur(); if (NEW_FILE[v]) newFile(NEW_FILE[v]); else setFabFile(v); }}
+                  onChange={(e) => { const v = e.target.value; e.target.blur(); if (NEW_FILE[v]) newFile(NEW_FILE[v], newPart(v)); else setFabFile(v); }}
                 >
                   {!fileHere && <option value="">—</option>}
-                  {entries.filter((x) => isBlock(x.asset)).map((x) => <option key={x.id} value={x.id}>{x.asset.title}</option>)}
-                  <option value="__new_block__">+ New block…</option>
+                  {PARTS.map((p) => {
+                    const items = entries.filter((x) => partOf(x.asset) === p);
+                    return items.length ? <optgroup key={p} label={PART_LABEL[p]}>{items.map((x) => <option key={x.id} value={x.id}>{x.asset.title}</option>)}</optgroup> : null;
+                  })}
+                  {PARTS.map((p) => <option key={p} value={`__new_${p}__`}>+ New {p}…</option>)}
                 </select>
               ) : <ComponentFilePicker f={f} />}
             </>
@@ -273,7 +285,7 @@ export function FabCanvas() {
               ? <VectorBox vt={vt} page={page} layersOpen={layersOpen} apply={doc.apply} asset />
               : drawing
               ? (fileProps && fileHere && file.shown && fabAsset ? <>
-                  <AssetFile id={fabAsset} asset={file.shown} apply={assetDoc.apply} opened={(id, kind) => { setFabFile(id); setEditor(kind === 'block' ? 'blocks' : 'identity'); }} />
+                  <AssetFile id={fabAsset} asset={file.shown} apply={assetDoc.apply} opened={(id, kind) => { setFabFile(id); setEditor(fabEditorFor({ kind })); }} />
                   <div className="border-t border-neutral-700/60"><TraceFields t={tr} /></div>
                 </> : undefined)
               : <div className="flex flex-col text-neutral-300"><FabricatorHeader f={f} /><FabricatorSide f={f} /></div>

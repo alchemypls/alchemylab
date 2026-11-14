@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import type { DesignPage } from '@/lib/design/types';
 import type { Footprint } from '@/lib/design/vector';
-import { FOOTPRINT_MAX, type AssetKind, type VaultAsset } from '@/lib/design/vault';
+import { WALL_T } from '@/lib/design/walls';
+import { FOOTPRINT_MAX, isStructure, partOf, PARTS, WALL_H, type AssetKind, type VaultAsset } from '@/lib/design/vault';
 import { assetUses, copyAsset, deleteAsset } from '@/workbench/hooks/useVault';
 import { Field, Swatches } from '@/workbench/ui/StyleFields';
 import { TextInput } from '@/workbench/ui/TextInput';
@@ -25,7 +26,7 @@ export function AssetFile({ id, asset, apply, opened }: { id: string; asset: Vau
       <Field label="Kind">
         <div className="flex items-center gap-1">
           <span className="text-amber-400 capitalize mr-1">{asset.kind}</span>
-          {KINDS.filter((k) => k !== asset.kind).map((k) => (
+          {!isStructure(asset) && KINDS.filter((k) => k !== asset.kind).map((k) => (
             <button
               key={k} className="px-2 py-0.5 rounded border border-neutral-700 text-[11px] text-neutral-400 hover:bg-neutral-800"
               title={`A new file: a copy of this one as a${k === 'icon' ? 'n' : ''} ${k}. This one and its placements stay as they are.`}
@@ -34,7 +35,34 @@ export function AssetFile({ id, asset, apply, opened }: { id: string; asset: Vau
           ))}
         </div>
       </Field>
-      {asset.kind === 'block' && <Field label="Footprint on a floor, in tiles">
+      {asset.kind === 'block' && !isStructure(asset) && <Field label="Part">
+        <div className="flex flex-wrap items-center gap-1">
+          <span className="text-amber-400 capitalize mr-1">{partOf(asset)}</span>
+          {PARTS.filter((p) => p !== partOf(asset)).map((p) => (
+            <button
+              key={p} className="px-2 py-0.5 rounded border border-neutral-700 text-[11px] text-neutral-400 hover:bg-neutral-800"
+              title={`A new file: a copy of this one as ${p === 'object' ? 'an object' : `a ${p}`}${p === 'object' ? '' : ', on one tile, with its state layers'}. This one stays as it is.`}
+              onClick={async () => { const r = await copyAsset(asset, 'block', p); if ('id' in r) opened(r.id, 'block'); }}
+            >Copy as {p}</button>
+          ))}
+        </div>
+      </Field>}
+      {partOf(asset) === 'wall' && <Field label="Height × thickness, in tiles">
+        <div className="flex items-center gap-1.5">
+          <input
+            type="number" min={0.25} step={0.25} value={asset.wall?.h ?? WALL_H} title="How tall"
+            onChange={(e) => { const h = Number(e.target.value); if (h > 0) apply({ ...asset, wall: { ...asset.wall, h } } as VaultAsset, 'file:wall-h'); }}
+            className="w-16 bg-neutral-900 border border-neutral-700 rounded px-1.5 py-0.5 text-neutral-200"
+          />
+          <span className="text-neutral-500">×</span>
+          <input
+            type="number" min={0.02} max={1} step={0.01} value={asset.wall?.t ?? WALL_T} title="How thick: walls in a structure are solid slabs this thick, joined where they meet"
+            onChange={(e) => { const t = Number(e.target.value); if (t > 0 && t <= 1) apply({ ...asset, wall: { h: asset.wall?.h ?? WALL_H, t } } as VaultAsset, 'file:wall-t'); }}
+            className="w-16 bg-neutral-900 border border-neutral-700 rounded px-1.5 py-0.5 text-neutral-200"
+          />
+        </div>
+      </Field>}
+      {(partOf(asset) === 'object' || isStructure(asset)) && <Field label="Footprint on a floor, in tiles">
         <FootprintPicker
           value={asset.footprint ?? { cols: 1, rows: 1 }}
           onChange={(fp) => apply({ ...asset, footprint: fp.cols === 1 && fp.rows === 1 ? undefined : fp } as VaultAsset, 'file:footprint')}   // 1×1 is the default, so it isn't written
@@ -43,6 +71,8 @@ export function AssetFile({ id, asset, apply, opened }: { id: string; asset: Vau
       <p className="text-[10px] text-neutral-500 leading-relaxed">
         A shape is placed trimmed to its drawing. An icon is placed with its whole sheet, so a set lines up.
         A block stands on its footprint (the tiles under the drawing) and lands at the size of the floor&apos;s tiles.
+        Floors, walls and roofs are drawn on one tile and fit together in a structure; each layer is a state it shows where it fits
+        (a wall&apos;s left and right faces, its joints).
         Edits change it everywhere it&apos;s placed.
       </p>
       <Field label="Real size (l × w × h)">
