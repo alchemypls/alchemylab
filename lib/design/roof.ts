@@ -7,9 +7,9 @@
 
 import { blockFloor, type VaultAsset } from './vault';
 import { layerOf, layersOf } from './layers';
-import { polyFrom, toGrid, type Pt, type VElement } from './vector';
+import { polyFrom, toGrid, translateElements, type Pt, type VElement } from './vector';
 import { faceColor, WALL_T } from './walls';
-import { mod, patchDetail, tileBase } from './strip';
+import { cutU, mirroredFace, mod, patchDetail, stripDetail, tileBase } from './strip';
 
 export const ROOF_SHAPES = ['flat', 'shed', 'gable', 'hip'] as const;
 export type RoofShape = (typeof ROOF_SHAPES)[number];
@@ -69,7 +69,7 @@ const darker = (hex: string, k = 0.7) => {
 
 // The roof's drawing on the structure's sheet, back to front. at: a grid point `z` tiles up, on the sheet. top: the walls'
 // top. wallAt: the wall atom on a grid line of this level (its color fills a gable end)
-export function roofElements(r: Roof, atom: VaultAsset, top: number, cell: number, at: (a: number, b: number, z: number) => Pt, wallAt: (line: 'a' | 'b', v: number, from: number, to: number) => VaultAsset | undefined, tag: string): VElement[] {
+export function roofElements(r: Roof, atom: VaultAsset, top: number, cell: number, at: At, wallAt: (line: 'a' | 'b', v: number, from: number, to: number) => VaultAsset | undefined, tag: string): VElement[] {
   const { A0, A1, B0, B1, planes, z } = roofPlanes(r, top);
   const ls = layersOf(atom), c0 = blockFloor(atom).corners[0];
   const surf = (atom.elements ?? []).filter((e) => layerOf(ls, e).id === 'surface' && !layerOf(ls, e).hidden && 'plane' in e && e.plane === 'floor' && 'w' in e);
@@ -127,18 +127,83 @@ export function roofElements(r: Roof, atom: VaultAsset, top: number, cell: numbe
   };
   infill('a', room.a0, true); infill('b', room.b0, true);
 
-  // The eave strip round the edge, following the roof's height along it
+  // The eave strip round the edge, following the roof's height along it. On a level edge toward you the eave layer's
+  // piece is laid along it (laidAlong: hanging from the single tile's front-left edge); with a base of its own (a band
+  // across the whole edge) that's the strip, else the plain strip goes under it. Sloped edges (a gable's or shed's
+  // rake) and the back ones get the plain strip, in the base's color
+  const eaveBase = edgeBase(atom, layerEls(atom, 'eave'), 'left').length > 0;
   const fascia = (line: 'a' | 'b', v: number, isBack: boolean) => {
     const from = line === 'a' ? B0 : A0, to = line === 'a' ? B1 : A1, n = Math.max(2, Math.ceil((to - from) * 8));
     const pts = Array.from({ length: n + 1 }, (_, i) => { const u = from + ((to - from) * i) / n; return line === 'a' ? { a: v, b: u } : { a: u, b: v }; });
-    const upper = pts.map((q) => at(q.a, q.b, z(q.a, q.b))), lower = pts.map((q) => at(q.a, q.b, z(q.a, q.b) - FASCIA)).reverse();
-    (isBack ? parts.back : parts.eaves).push(poly(`${tag}e${line}${v}`, [...upper, ...lower], eaveFill));
+    const zs = pts.map((q) => z(q.a, q.b)), level = Math.max(...zs) - Math.min(...zs) < 1e-6;
+    const drawn = !isBack && level ? laidAlong(atom, 'eave', line === 'a' ? 'b' : 'a', v, from, to, zs[0], cell, at, `${tag}e${line}`) : [];
+    const strip = drawn.length && eaveBase ? [] : [poly(`${tag}e${line}${v}`, [...pts.map((q, i) => at(q.a, q.b, zs[i])), ...pts.map((q, i) => at(q.a, q.b, zs[i] - FASCIA)).reverse()], eaveFill)];
+    (isBack ? parts.back : parts.eaves).push(...strip, ...drawn);
   };
   fascia('a', A0, true); fascia('b', B0, true);
 
   infill('a', room.a1, false); infill('b', room.b1, false); fascia('a', A1, false); fascia('b', B1, false);
   // Back to front: what's behind (back gable ends, back eaves), slopes facing away, the front gable ends, slopes facing
-  // the viewer, the front eaves
+  // the viewer, the ridge on top, the front eaves
   const order = (back: boolean) => faces.filter((x) => x.back === back).sort((x, y) => x.key - y.key).map((x) => x.el);
-  return [...parts.back, ...order(true), ...parts.walls, ...order(false), ...parts.eaves];
+  return [...parts.back, ...order(true), ...parts.walls, ...order(false), ...ridgeElements(r, atom, top, cell, at, tag), ...parts.eaves];
+}
+
+// Where a roof's ridge runs: a gable's along its ridge, the full length; a hip's along the middle of the longer side,
+// between where the hips meet it (none on a square). Sheds and flat roofs have none
+export function ridgeLine(r: Roof, top: number): { dir: 'a' | 'b'; v: number; from: number; to: number; z: number } | undefined {
+  const { A0, A1, B0, B1, z } = roofPlanes(r, top);
+  const dir = r.shape === 'gable' ? along(r) : r.shape === 'hip' ? (A1 - A0 >= B1 - B0 ? 'a' : 'b') : undefined;
+  if (!dir) return undefined;
+  const half = r.shape === 'hip' ? (dir === 'a' ? B1 - B0 : A1 - A0) / 2 : 0;
+  const v = dir === 'a' ? (B0 + B1) / 2 : (A0 + A1) / 2, from = (dir === 'a' ? A0 : B0) + half, to = (dir === 'a' ? A1 : B1) - half;
+  if (to - from < 1e-6) return undefined;
+  return { dir, v, from, to, z: dir === 'a' ? z(from, v) : z(v, from) };
+}
+
+// The roof atom's ridge piece laid along the ridge (ridgeLine). It's drawn like a wall face standing on the single tile's
+// front-left edge: that edge is the ridge line, a cap straddles it, crests stand above it
+function ridgeElements(r: Roof, atom: VaultAsset, top: number, cell: number, at: At, tag: string): VElement[] {
+  const line = ridgeLine(r, top);
+  return line ? laidAlong(atom, 'ridge', line.dir, line.v, line.from, line.to, line.z, cell, at, tag) : [];
+}
+
+// A roof layer's piece (the ridge's, the eave's) laid along a level line of the roof: drawn like a wall face on the
+// single tile's front-left edge, a strip of 6 tiles like a wall's (strip.ts), repeated from the line's near end (its last
+// whole tile) and cut where the line ends. A shape spanning the single's whole edge is its base: on every tile. A line
+// across the rows takes the right-face drawing, or the left one's mirror
+type At = (a: number, b: number, z: number) => Pt;
+const layerEls = (atom: VaultAsset, layer: string) => {
+  const ls = layersOf(atom);
+  return (atom.elements ?? []).filter((e) => { const l = layerOf(ls, e); return l.id === layer && !l.hidden && 'plane' in e && (e.plane === 'left' || e.plane === 'right'); });
+};
+// Its base: what spans the whole edge (on the left face, or the right)
+function edgeBase(atom: VaultAsset, els: VElement[], p: 'left' | 'right') {
+  const [, , c2, c3] = blockFloor(atom).corners, cell = blockFloor(atom).cell, x0 = p === 'left' ? c3.x : c2.x;
+  return els.filter((e) => 'plane' in e && e.plane === p && 'w' in e && Math.abs((e as { x: number }).x - x0) < 0.08 * cell && Math.abs(e.w - cell) < 0.08 * cell);
+}
+function laidAlong(atom: VaultAsset, layer: string, dir: 'a' | 'b', v: number, from: number, to: number, z: number, cell: number, at: At, tag: string): VElement[] {
+  const els = layerEls(atom, layer);
+  if (!els.length) return [];
+  const [, c1, c2, c3] = blockFloor(atom).corners, out: VElement[] = [];
+  const on = (p: 'left' | 'right') => { const base = edgeBase(atom, els, p); return { base, rest: els.filter((e) => 'plane' in e && e.plane === p && !base.includes(e)) }; };
+  const left = on('left'), right = on('right'), last = Math.floor(to + 1e-6) - 1;
+  for (let t = Math.floor(from); t < Math.ceil(to); t++) {
+    const lo = Math.max(from, t), hi = Math.min(to, t + 1);
+    if (hi - lo < 1e-6) continue;
+    let piece: VElement[], foot: Pt, P: Pt;
+    if (dir === 'a') {
+      piece = cutU([...left.base, ...stripDetail(atom, left.rest, 'left', mod(last - t))], c3.x + (lo - t) * cell, c3.x + (hi - t) * cell);
+      foot = c3; P = at(t, v, z);
+    } else {
+      const k = mod(last - t), own = right.base.length + right.rest.length > 0;
+      piece = own ? [...right.base, ...stripDetail(atom, right.rest, 'right', k)] : mirroredFace(atom, [...left.base, ...stripDetail(atom, left.rest, 'left', k)]);
+      piece = cutU(piece, c2.x + (t + 1 - hi) * cell, c2.x + (t + 1 - lo) * cell);
+      foot = c1; P = at(v, t, z);
+    }
+    if (!piece.length) continue;
+    const moved = translateElements({ title: '', blocks: [], elements: piece }, piece, piece.map((e) => e.id), P.x - foot.x, P.y - foot.y).elements ?? [];
+    out.push(...moved.map((e) => ({ ...e, id: `${tag}k${t}:${e.id}`, layer: undefined, group: e.group && `${tag}k${t}:${e.group}` }) as VElement));
+  }
+  return out;
 }

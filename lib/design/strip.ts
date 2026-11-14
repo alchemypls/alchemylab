@@ -6,7 +6,7 @@
 // repeating every STRIP. Blocks shows 1, 2, 3 or 6 tiles of it in place to draw on. Pure. Imports stay relative (CLI).
 
 import { blockFloor, type VaultAsset } from './vault';
-import { fromGrid, toGrid, translateElements, visualBounds, type Box, type Pt, type VElement } from './vector';
+import { capsuleAsPoly, fromGrid, newId, toGrid, translateElements, visualBounds, type Box, type Pt, type VElement } from './vector';
 import type { DesignPage } from './types';
 
 const moveBy = (els: VElement[], dx: number, dy: number) => {
@@ -20,11 +20,11 @@ const moveBy = (els: VElement[], dx: number, dy: number) => {
 // shows on every tile, what's on tile 0 only on the first. A run of walls repeats the strip, counted from its near end
 export const STRIP = 6;
 const stripShift = (face: 'left' | 'right', k: number, cell: number): Pt => (face === 'left' ? { x: -k * cell, y: -k * cell / 2 } : { x: k * cell, y: -k * cell / 2 });
-// The face's details on strip tile k, cut to it and moved onto tile 0
-export function stripDetail(atom: VaultAsset, els: VElement[], face: 'left' | 'right', k: number): VElement[] {
-  const { corners: [, , c2, c3], cell } = blockFloor(atom), s = stripShift(face, k, cell);
-  const U0 = (face === 'left' ? c3.x : c2.x) + s.x, U1 = U0 + cell, m = 4;
-  const cut = els.flatMap((e): VElement[] => {
+// What's drawn along a face (page x from U0 to U1), cut to it: whatever doesn't reach in is dropped, a shape lying on a
+// face is rubbed out past the ends, anything else kept whole
+export function cutU(els: VElement[], U0: number, U1: number): VElement[] {
+  const m = 4;
+  return els.flatMap((e): VElement[] => {
     const v = visualBounds(e, els);
     if (v.x + v.w <= U0 + 0.5 || v.x >= U1 - 0.5) return [];
     if (!('plane' in e) || (e.plane !== 'left' && e.plane !== 'right') || !('w' in e)) return [e];
@@ -33,7 +33,36 @@ export function stripDetail(atom: VaultAsset, els: VElement[], face: 'left' | 'r
     if (hi < b.w) rubs.push({ pts: [hi, -m, b.w + m, -m, b.w + m, b.h + m, hi, b.h + m], size: 0, area: true });
     return [rubs.length ? ({ ...e, erased: [...(e.erased ?? []), ...rubs] } as VElement) : e];
   });
-  return moveBy(cut, -s.x, -s.y);
+}
+// The face's details on strip tile k, cut to it and moved onto tile 0
+export function stripDetail(atom: VaultAsset, els: VElement[], face: 'left' | 'right', k: number): VElement[] {
+  const { corners: [, , c2, c3], cell } = blockFloor(atom), s = stripShift(face, k, cell), U0 = (face === 'left' ? c3.x : c2.x) + s.x;
+  return moveBy(cutU(els, U0, U0 + cell), -s.x, -s.y);
+}
+
+// A wall drawn only on its left face stands on the right face as its mirror: each shape lying on the left face is moved
+// to the same spot counted from the other end of the right face, and flipped end to end. Anything else on it stays off
+export function mirroredFace(a: VaultAsset, left: VElement[]): VElement[] {
+  const [, , c2, c3] = blockFloor(a).corners, cell = blockFloor(a).cell;
+  return left.flatMap((e0): VElement[] => {
+    if (!('plane' in e0) || e0.plane !== 'left') return [];
+    const e = capsuleAsPoly(e0) as VElement & Box;
+    const u0 = e.x - c3.x, t0 = c3.y + u0 / 2 - e.y, u1 = cell - u0 - e.w;   // along the face, height above its base
+    const out = { ...e, id: newId(e.type), plane: 'right', x: c2.x + u1, y: c2.y - u1 / 2 - t0 } as VElement & Box & Record<string, unknown>;
+    if (e.type === 'poly') out.pts = e.pts.map(([fx, fy]) => [Math.round((1 - fx) * 1e4) / 1e4, fy]);
+    if (e.erased) out.erased = e.erased.map((r) => ({ ...r, pts: r.pts.map((v, i) => (i % 2 ? v : Math.round((e.w - v) * 10) / 10)) }));
+    return [out as VElement];
+  });
+}
+
+// The strip's face tiles past n on the sheet (from `lo` to `hi` px above each face's foot), where Blocks keeps the
+// drawing out of sight
+export function faceBands(atom: VaultAsset, n: number, lo: number, hi: number, faces: ('left' | 'right')[]): Pt[][] {
+  if (n >= STRIP) return [];
+  const { corners: [, c1, c2, c3], cell } = blockFloor(atom), m = 0.25 * cell;
+  const yl = (x: number) => c2.y + (x - c2.x) / 2, yr = (x: number) => c2.y - (x - c2.x) / 2;   // the faces' foot lines
+  const band = (x0: number, x1: number, y: (x: number) => number): Pt[] => [{ x: x0, y: y(x0) - lo }, { x: x1, y: y(x1) - lo }, { x: x1, y: y(x1) - hi }, { x: x0, y: y(x0) - hi }];
+  return faces.map((f) => (f === 'left' ? band(c3.x - (STRIP - 1) * cell - m, c3.x - (n - 1) * cell, yl) : band(c1.x + (n - 1) * cell, c1.x + (STRIP - 1) * cell + m, yr)));
 }
 const inFloor = (e: VElement) => 'plane' in e && e.plane === 'floor' && 'w' in e;
 
@@ -81,8 +110,8 @@ export const STRIP_SIZES = [1, 2, 3, 6] as const;
 export function tileStrip(atom: VaultAsset, els: VElement[], n: number): { under?: { elements: VElement[] }; hide: Pt[][] } {
   const { corners: [c0], cell } = blockFloor(atom), m = 0.25;
   const p = (a: number, b: number) => { const g = fromGrid({ cell }, { a, b }); return { x: c0.x + g.x, y: c0.y + g.y }; };
-  const square = (from: number, to: number) => [p(from, from), p(to, from), p(to, to), p(from, to)];
-  const hide = n >= STRIP ? [] : [square(1 - STRIP - m, 1 + m), square(1 - n, 1 + m)];
+  const far = 1 - STRIP - m, near = 1 + m, k = 1 - n;   // the patch's tiles past n: an L round the n × n square
+  const hide = n >= STRIP ? [] : [[p(far, far), p(near, far), p(near, k), p(k, k), p(k, near), p(far, near)]];
   const base = tileBase(atom, els);
   if (n < 2 || !base) return { hide };
   const elements: VElement[] = [];

@@ -52,8 +52,16 @@ export const fabEditorFor = (a?: Pick<VaultAsset, 'kind' | 'part'>): 'identity' 
 
 // Where an atom's drawing goes on its sheet, as guides under it (Fab): a wall's two faces (left along the tile's front-left
 // edge, right along its front-right edge, meeting at the joint corner), a floor's or roof's tile is its footprint
-// n: strip tiles shown (structure.ts STRIP): each face's outline per tile, the single's first
+// n: strip tiles shown (strip.ts STRIP): each face's outline per tile, the single's first. A roof's ridge and eave pieces
+// are drawn like a wall face on the tile's front-left edge: the ridge stands on it (that edge is the ridge line), the
+// eave hangs from it (the roof's edge). Tiles above and below the edge
+export const RIDGE_GUIDE = { below: 0.15, above: 0.5 }, EAVE_GUIDE = { below: 0.4 };
 export function partGuides(a: VaultAsset, n = 1): { name: string; pts: Pt[] }[] {
+  if (partOf(a) === 'roof') {
+    const [, , c2, c3] = blockFloor(a).corners, cell = gridOf(a).cell, y = (p: Pt, k: number, v: number) => ({ x: p.x - k * cell, y: p.y - k * cell / 2 - v * cell });
+    const box = (k: number, lo: number, hi: number) => [y(c3, k, lo), y(c2, k, lo), y(c2, k, hi), y(c3, k, hi)], nth = (k: number) => (k ? ` ${k + 1}` : '');
+    return Array.from({ length: n }, (_, k) => [{ name: `Ridge${nth(k)}`, pts: box(k, -RIDGE_GUIDE.below, RIDGE_GUIDE.above) }, { name: `Eave${nth(k)}`, pts: box(k, -EAVE_GUIDE.below, 0) }]).flat();
+  }
   if (partOf(a) !== 'wall') return [];
   const [, c1, c2, c3] = blockFloor(a).corners, cell = gridOf(a).cell, up = (a.wall?.h ?? WALL_H) * cell;
   const at = (p: Pt, dx: number, dy: number) => ({ x: p.x + dx, y: p.y + dy }), raise = (p: Pt) => ({ x: p.x, y: p.y - up });
@@ -67,7 +75,15 @@ export function partGuides(a: VaultAsset, n = 1): { name: string; pts: Pt[] }[] 
 function starter(a: VaultAsset): VElement[] {
   const part = partOf(a), cell = gridOf(a).cell, [c0] = blockFloor(a).corners;
   const edge = { stroke: '#1f1b16', strokeWidth: 1.5 };
-  if (part === 'floor' || part === 'roof') return [{ id: newId('rect'), type: 'rect', name: part === 'floor' ? 'tile' : 'surface', layer: part === 'floor' ? 'base' : 'surface', plane: 'floor', x: c0.x, y: c0.y, w: cell, h: cell, fill: part === 'floor' ? '#d9c9a3' : '#b3202a', ...edge }];
+  if (part === 'floor' || part === 'roof') {
+    const tile = { id: newId('rect'), type: 'rect', name: part === 'floor' ? 'tile' : 'surface', layer: part === 'floor' ? 'base' : 'surface', plane: 'floor', x: c0.x, y: c0.y, w: cell, h: cell, fill: part === 'floor' ? '#d9c9a3' : '#b3202a', ...edge } as VElement;
+    if (part === 'floor') return [tile];
+    // and a ridge cap: a band straddling the ridge line (the tile's front-left edge), on the ridge layer
+    const c3 = blockFloor(a).corners[3];
+    // and an eave band hanging from the roof's edge (the same edge), on the eave layer
+    return [tile, { id: newId('rect'), type: 'rect', name: 'ridge cap', layer: 'ridge', plane: 'left', x: c3.x, y: c3.y - 0.1 * cell, w: cell, h: 0.18 * cell, fill: '#7d1620', ...edge } as VElement,
+      { id: newId('rect'), type: 'rect', name: 'eave band', layer: 'eave', plane: 'left', x: c3.x, y: c3.y, w: cell, h: 0.15 * cell, fill: '#7d161d', ...edge } as VElement];
+  }
   if (part !== 'wall') return [];
   return partGuides(a).map((g, i) => {
     const plane = i ? 'right' : 'left', o = g.pts[3];   // a face's box starts at its top left

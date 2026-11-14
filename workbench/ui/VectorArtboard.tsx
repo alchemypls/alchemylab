@@ -118,8 +118,8 @@ const Artboard = memo(function Artboard({ page, bible, bibleId, onOpen, onFit, e
       {guides?.map((q) => <polygon key={q.name} points={toPoints(q.pts)} fill="none" stroke={ACCENT} strokeWidth={1.5} strokeDasharray="4 6" strokeLinejoin="round" vectorEffect="non-scaling-stroke" pointerEvents="none"><title>{q.name}</title></polygon>)}
       {under && <Under u={under} />}
       {g.gridShown && <GridLines g={g.lattice} line={1 / (edit?.scale ?? 1)} />}
-      {hide?.length ? <clipPath id="vab-hide"><path clipRule="evenodd" d={`M0 0H${W}V${H}H0Z ${hide.map((q) => `M${toPoints(q).replace(/ /g, 'L')}Z`).join(' ')}`} /></clipPath> : null}
-      {lookOnly ? <g transform={lookOnly.transform}>{drawn}</g> : hide?.length ? <g clipPath="url(#vab-hide)">{drawn}</g> : drawn}
+      {hide?.length ? <mask id="vab-hide" maskUnits="userSpaceOnUse" x={0} y={0} width={W} height={H}><rect width={W} height={H} fill="#fff" />{hide.map((q, i) => <polygon key={i} points={toPoints(q)} fill="#000" />)}</mask> : null}
+      {lookOnly ? <g transform={lookOnly.transform}>{drawn}</g> : hide?.length ? <g mask="url(#vab-hide)">{drawn}</g> : drawn}
       {edit && <Crowded els={els} fpOf={fpOf} line={line} />}
       {edit && <Footprints els={els} selected={edit.selected} fpOf={fpOf} line={line} />}
       {edit && <Selection els={els} selected={edit.selected} single={single && fpOf(single) && !edit.styles.select.turnBlocks ? undefined : single} knobOnly={!!single && !!fpOf(single)} handle={11 / edit.scale} line={line} />}

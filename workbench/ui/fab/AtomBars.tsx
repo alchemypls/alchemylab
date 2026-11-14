@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from 'react';
 import { layerOf, layersOf } from '@/lib/design/layers';
-import { STRIP_SIZES, tileStrip } from '@/lib/design/strip';
+import { faceBands, STRIP_SIZES, tileStrip } from '@/lib/design/strip';
 import { wallStrip } from '@/lib/design/structure';
-import type { VaultAsset } from '@/lib/design/vault';
+import { blockFloor, EAVE_GUIDE, RIDGE_GUIDE, type VaultAsset } from '@/lib/design/vault';
 import { AuxBar, AuxButton } from '@/workbench/ui/AuxDock';
 
 // Blocks' bars for a floor, wall or roof atom, docked by the minimap: how much of its strip shows, and its states.
@@ -24,7 +24,7 @@ const STATE_ICON: Record<string, JSX.Element> = {
 const STATE_TIP: Record<string, string> = {
   faces: 'Faces: the wall itself (draw on the left or right plane for that face)',
   end: 'End: where a wall stops', corner: 'Corner: two walls meeting at an angle', tee: 'Tee: three walls meeting', cross: 'Cross: four walls meeting',
-  surface: 'Surface: the roof tile, laid on every slope', eave: 'Eave: the strip round the edge (its color)', ridge: 'Ridge: where slopes meet (not drawn on roofs yet)',
+  surface: 'Surface: the roof tile, laid on every slope', eave: 'Eave: the strip round the edge, drawn hanging from the tile’s front-left edge (a band across the whole edge runs its full length)', ridge: 'Ridge: the piece along the top, drawn standing on the tile’s front-left edge (a cap across the whole edge runs the full ridge)',
 };
 
 // An atom is drawn as one strip (lib/design/strip.ts): a wall's faces six tiles long, a floor's or roof's tile a 6 × 6
@@ -38,7 +38,10 @@ export function useAtomStrip(atom: VaultAsset | undefined) {
     if (!atom || !ok) return undefined;
     if (part === 'wall') return wallStrip(atom, n);
     const ls = layersOf(atom), id = part === 'roof' ? 'surface' : 'base';
-    return tileStrip(atom, (atom.elements ?? []).filter((e) => { const l = layerOf(ls, e); return l.id === id && !l.hidden; }), n);
+    const s = tileStrip(atom, (atom.elements ?? []).filter((e) => { const l = layerOf(ls, e); return l.id === id && !l.hidden; }), n);
+    if (part !== 'roof') return s;
+    const cell = blockFloor(atom).cell;   // and the ridge's and eave's strips, along the tile's front-left edge
+    return { ...s, hide: [...s.hide, ...faceBands(atom, n, -(EAVE_GUIDE.below + 0.25) * cell, (RIDGE_GUIDE.above + 0.25) * cell, ['left'])] };
   }, [atom, ok, part, n]);
   return atom && strip ? { atom, n, setN, strip, wall: part === 'wall' } : undefined;
 }

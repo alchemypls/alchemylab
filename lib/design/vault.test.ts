@@ -200,3 +200,32 @@ describe('floor patch', () => {
     expect(on('dot')).toEqual(['0', '6']);
   });
 });
+
+describe('roof ridge', () => {
+  it('the cap runs the whole ridge, a crest on the single repeats every 6 tiles from the near end', async () => {
+    const { roofElements } = await import('./roof');
+    const { blockFloor } = await import('./vault');
+    const rf = newAsset('block', 'r', 'x', 'roof'), { corners: [, , , c3], cell } = blockFloor(rf);
+    rf.elements!.push({ id: 'crest', type: 'rect', layer: 'ridge', plane: 'left', x: c3.x + 20, y: c3.y - 30, w: 20, h: 20, fill: '#000' } as never);
+    const at = (a: number, b: number, z: number) => ({ x: (a - b) * cell, y: ((a + b) * cell) / 2 - z * cell });
+    const els = roofElements({ a0: 0, b0: 0, a1: 7, b1: 2, atom: 'r', shape: 'gable', along: 'a' }, rf, 3, cell, at, () => undefined, 'R');
+    const ridge = (id: string) => els.filter((e) => e.id.startsWith('Rk') && e.id.endsWith(`:${id}`)).map((e) => Number(e.id.match(/^Rk(-?\d+):/)![1])).sort((x, y) => x - y);
+    expect(ridge(rf.elements!.find((e) => e.name === 'ridge cap')!.id)).toEqual([-1, 0, 1, 2, 3, 4, 5, 6, 7, 8]);   // with the overhang
+    expect(ridge('crest')).toEqual([1, 7]);
+  });
+});
+
+describe('roof eave', () => {
+  it('a level front eave carries the eave piece (its band the whole way, a mark every 6); a sloped one keeps the plain strip', async () => {
+    const { roofElements } = await import('./roof');
+    const { blockFloor } = await import('./vault');
+    const rf = newAsset('block', 'r', 'x', 'roof'), { corners: [, , , c3], cell } = blockFloor(rf);
+    rf.elements!.push({ id: 'drip', type: 'rect', layer: 'eave', plane: 'left', x: c3.x + 20, y: c3.y + 10, w: 10, h: 10, fill: '#000' } as never);
+    const at = (a: number, b: number, z: number) => ({ x: (a - b) * cell, y: ((a + b) * cell) / 2 - z * cell });
+    const els = roofElements({ a0: 0, b0: 0, a1: 7, b1: 2, atom: 'r', shape: 'gable', along: 'a' }, rf, 3, cell, at, () => undefined, 'R');
+    const on = (id: string) => els.filter((e) => e.id.startsWith('Reb') && e.id.endsWith(`:${id}`)).length;
+    expect(on(rf.elements!.find((e) => e.name === 'eave band')!.id)).toBe(10);   // b = 3.25: the front eave, overhang included
+    expect(on('drip')).toBe(2);
+    expect(els.some((e) => e.id === 'Rea8.25')).toBe(true);   // the front gable's rake: the plain strip
+  });
+});

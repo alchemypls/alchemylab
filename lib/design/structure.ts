@@ -5,10 +5,10 @@
 
 import { blockFloor, turnedAsset, type VaultAsset } from './vault';
 import { layerOf, layersOf } from './layers';
-import { capsuleAsPoly, fromGrid, newId, translateElements, type Box, type Pt, type VElement } from './vector';
+import { fromGrid, translateElements, type Box, type Pt, type VElement } from './vector';
 import type { DesignPage } from './types';
 import { roofElements, ROOF_SHAPES, type Roof } from './roof';
-import { mod, patchDetail, STRIP, stripDetail, tileBase } from './strip';
+import { faceBands, mirroredFace, mod, patchDetail, STRIP, stripDetail, tileBase } from './strip';
 import { faceBase, faceEls, wallSolid, WALL_T, type WallSpec } from './walls';
 
 // ── Data ── Keys name grid spots on the structure's footprint: a tile "a,b" (from its top corner), an edge "a,b,a" (from
@@ -57,20 +57,6 @@ function moved(els: VElement[], dx: number, dy: number, tag: string): VElement[]
   return (translateElements(page, els, els.map((e) => e.id), dx, dy).elements ?? []).map((e) => ({ ...e, id: `${tag}:${e.id}`, layer: undefined, group: e.group && `${tag}:${e.group}` }) as VElement);
 }
 
-// A wall drawn only on its left face stands on the right face as its mirror: each shape lying on the left face is moved
-// to the same spot counted from the other end of the right face, and flipped end to end. Anything else on it stays off
-function mirroredFace(a: VaultAsset, left: VElement[]): VElement[] {
-  const [, , c2, c3] = blockFloor(a).corners, cell = blockFloor(a).cell;
-  return left.flatMap((e0): VElement[] => {
-    if (!('plane' in e0) || e0.plane !== 'left') return [];
-    const e = capsuleAsPoly(e0) as VElement & Box;
-    const u0 = e.x - c3.x, t0 = c3.y + u0 / 2 - e.y, u1 = cell - u0 - e.w;   // along the face, height above its base
-    const out = { ...e, id: newId(e.type), plane: 'right', x: c2.x + u1, y: c2.y - u1 / 2 - t0 } as VElement & Box & Record<string, unknown>;
-    if (e.type === 'poly') out.pts = e.pts.map(([fx, fy]) => [Math.round((1 - fx) * 1e4) / 1e4, fy]);
-    if (e.erased) out.erased = e.erased.map((r) => ({ ...r, pts: r.pts.map((v, i) => (i % 2 ? v : Math.round((e.w - v) * 10) / 10)) }));
-    return [out as VElement];
-  });
-}
 
 // How far a wall is from its run's near end (the +columns or +rows end), walls of the same atom in a line
 const runIndex = (walls: Record<string, string>, a: number, b: number, d: Axis) => {
@@ -441,10 +427,8 @@ export function checkStructure(raw: unknown, errors: string[]) {
 // faces. under: the walls' solid for those tiles (look only, drawn under the atom's own drawing, its faces on the
 // atom's lines); hide: the strip tiles past n, where the drawing on the sheet is kept out of sight
 export function wallStrip(atom: VaultAsset, n: number): { under?: { elements: VElement[]; transform: string }; hide: Pt[][] } {
-  const { corners: [, c1, c2, c3], cell } = blockFloor(atom), h = (atom.wall?.h ?? LEVEL_H) * cell, m = 0.25 * cell;
-  const yl = (x: number) => c2.y + (x - c2.x) / 2, yr = (x: number) => c2.y - (x - c2.x) / 2;   // the faces' foot lines
-  const band = (x0: number, x1: number, y: (x: number) => number): Pt[] => [{ x: x0, y: y(x0) + m }, { x: x1, y: y(x1) + m }, { x: x1, y: y(x1) - h - m }, { x: x0, y: y(x0) - h - m }];
-  const hide = n >= STRIP ? [] : [band(c3.x - (STRIP - 1) * cell - m, c3.x - (n - 1) * cell, yl), band(c1.x + (n - 1) * cell, c1.x + (STRIP - 1) * cell + m, yr)];
+  const { corners: [, , c2], cell } = blockFloor(atom), h = (atom.wall?.h ?? LEVEL_H) * cell, m = 0.25 * cell;
+  const hide = faceBands(atom, n, -m, h + m, ['left', 'right']);
   if (n < 2) return { hide };
   const self = '__atom__', walls: Record<string, string> = {};
   for (let i = 0; i < n; i++) { walls[edgeKey(i, n, 'a')] = self; walls[edgeKey(n, i, 'b')] = self; }
