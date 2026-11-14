@@ -1,19 +1,20 @@
 {
   "title": "Pinball Dungeon Crawl",
   "kicker": "Overview",
-  "updated": "2026-11-07",
+  "updated": "2026-11-14",
   "background": "#f4efe6",
   "agent": {
-    "brief": "Layer 1 of the design doc and the index: the overview around the main table: pitch, pillars, the machine, core loop, rules and every topic, with the shot map in the middle. A showcase of the whole design on one page. Facts live in bible.json; pitch, topic names and status dots are bound to it.",
+    "brief": "Layer 1 of the design doc and the index, built top to bottom: pitch, pillars, the machine, core loop, rules and every topic; the main table with its shot map; below it, the dungeons the rails drop into from the table's three caves, with the dragon's lair in detail. Facts live in bible.json; pitch, topic names and status dots are bound to it.",
     "rules": [
       "Change design decisions in bible.json, not only on this page.",
-      "The table (layers Table and Shots, group \"group-table\") comes from the shot map; its pieces are vault blocks: edit them on Fab."
+      "The table (layers Table and Shots) is vault blocks on a floor; each dungeon (layer Dungeons) is a vault structure (dungeon-*): edit both on Fab.",
+      "Dungeon names and rules on this page are examples, not decisions."
     ]
   },
   "blocks": [],
   "size": {
-    "width": 3840,
-    "height": 2160
+    "width": 2880,
+    "height": 5760
   },
   "grid": {
     "cell": 30
@@ -30,14 +31,22 @@
     {
       "id": "sm-shots",
       "name": "Shots"
+    },
+    {
+      "id": "dungeons",
+      "name": "Dungeons"
+    },
+    {
+      "id": "rails",
+      "name": "Rails"
     }
   ],
   "elements": [
     {
       "id": "sm-floor",
       "type": "zone",
-      "x": 2220,
-      "y": 570,
+      "x": 1690,
+      "y": 1997,
       "cols": 21,
       "rows": 42,
       "cell": 30,
@@ -45,14 +54,13 @@
       "stroke": "#b08b55",
       "strokeWidth": 0.6,
       "layer": "sm-play",
-      "name": "main table playfield",
-      "group": "group-table"
+      "name": "main table playfield"
     },
     {
       "id": "sm-cab-l",
       "type": "poly",
-      "x": 2220,
-      "y": 570,
+      "x": 1690,
+      "y": 1997,
       "w": 315,
       "h": 315,
       "pts": [
@@ -134,14 +142,13 @@
       "stroke": "none",
       "layer": "sm-play",
       "name": "left cabinet corner",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-cab-r",
       "type": "poly",
-      "x": 2535,
-      "y": 727.5,
+      "x": 2005,
+      "y": 2154.5,
       "w": 315,
       "h": 315,
       "pts": [
@@ -223,14 +230,13 @@
       "stroke": "none",
       "layer": "sm-play",
       "name": "right cabinet corner",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-wall",
       "type": "poly",
-      "x": 2220,
-      "y": 570,
+      "x": 1690,
+      "y": 1997,
       "w": 630,
       "h": 1260,
       "pts": [
@@ -350,14 +356,13 @@
       "strokeWidth": 3.8,
       "layer": "sm-play",
       "name": "playfield wall",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-shooter-wall",
       "type": "poly",
-      "x": 2445,
-      "y": 1042.5,
+      "x": 1915,
+      "y": 2469.5,
       "w": 1.3,
       "h": 888,
       "pts": [
@@ -377,14 +382,13 @@
       "strokeWidth": 2.5,
       "layer": "sm-play",
       "name": "shooter lane wall",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-orbit-l",
       "type": "poly",
-      "x": 2176.5,
-      "y": 666.8,
+      "x": 1646.5,
+      "y": 2093.8,
       "w": 102.3,
       "h": 646.5,
       "pts": [
@@ -440,14 +444,13 @@
       "strokeWidth": 2.5,
       "layer": "sm-play",
       "name": "left orbit rail",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-orbit-r",
       "type": "poly",
-      "x": 2515.8,
-      "y": 872.1,
+      "x": 1985.8,
+      "y": 2299.1,
       "w": 75,
       "h": 610.8,
       "pts": [
@@ -503,14 +506,13 @@
       "strokeWidth": 2.5,
       "layer": "sm-play",
       "name": "right orbit rail",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-sep-l",
       "type": "poly",
-      "x": 1350,
-      "y": 1050,
+      "x": 820,
+      "y": 2477,
       "w": 1.3,
       "h": 150,
       "pts": [
@@ -530,14 +532,13 @@
       "strokeWidth": 2.5,
       "layer": "sm-play",
       "name": "left lane divider",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-sep-r",
       "type": "poly",
-      "x": 1860,
-      "y": 1305,
+      "x": 1330,
+      "y": 2732,
       "w": 1.3,
       "h": 150,
       "pts": [
@@ -557,14 +558,13 @@
       "strokeWidth": 2.5,
       "layer": "sm-play",
       "name": "right lane divider",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-inlane-l",
       "type": "poly",
-      "x": 1404,
-      "y": 1068,
+      "x": 874,
+      "y": 2495,
       "w": 96,
       "h": 204,
       "pts": [
@@ -588,14 +588,13 @@
       "strokeWidth": 2.5,
       "layer": "sm-play",
       "name": "left inlane guide",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-inlane-r",
       "type": "poly",
-      "x": 1728,
-      "y": 1230,
+      "x": 1198,
+      "y": 2657,
       "w": 96,
       "h": 204,
       "pts": [
@@ -619,14 +618,13 @@
       "strokeWidth": 2.5,
       "layer": "sm-play",
       "name": "right inlane guide",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-apron-l",
       "type": "poly",
-      "x": 1038,
-      "y": 1161,
+      "x": 508,
+      "y": 2588,
       "w": 246,
       "h": 78,
       "pts": [
@@ -653,14 +651,13 @@
       "strokeWidth": 1.9,
       "layer": "sm-play",
       "name": "apron, left",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-apron-r",
       "type": "poly",
-      "x": 1392,
-      "y": 1338,
+      "x": 862,
+      "y": 2765,
       "w": 231,
       "h": 78,
       "pts": [
@@ -687,14 +684,13 @@
       "strokeWidth": 1.9,
       "layer": "sm-play",
       "name": "apron, right",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-wire-l",
       "type": "poly",
-      "x": 1939.5,
-      "y": 747.8,
+      "x": 1409.5,
+      "y": 2174.8,
       "w": 97.5,
       "h": 672,
       "pts": [
@@ -735,14 +731,13 @@
       "opacity": 0.85,
       "layer": "sm-play",
       "name": "crypt ramp wire return",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-wire-r",
       "type": "poly",
-      "x": 2367,
-      "y": 961.5,
+      "x": 1837,
+      "y": 2388.5,
       "w": 97.5,
       "h": 672,
       "pts": [
@@ -783,14 +778,99 @@
       "opacity": 0.85,
       "layer": "sm-play",
       "name": "tower ramp wire return",
-      "group": "group-table",
       "plane": "floor"
+    },
+    {
+      "id": "sm-return-r",
+      "type": "poly",
+      "layer": "sm-play",
+      "name": "return wire, right: boss cave → right inlane",
+      "on": "sm-floor",
+      "plane": "floor",
+      "x": 1972,
+      "y": 2180,
+      "w": 252,
+      "h": 867,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0.5,
+          0.0104
+        ],
+        [
+          0.9048,
+          0.1107
+        ],
+        [
+          1,
+          0.263
+        ],
+        [
+          1,
+          0.955
+        ],
+        [
+          0.7381,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#b8733a",
+      "strokeWidth": 5,
+      "opacity": 0.9
+    },
+    {
+      "id": "sm-return-l",
+      "type": "poly",
+      "layer": "sm-play",
+      "name": "return wire, left: boss cave → left inlane",
+      "on": "sm-floor",
+      "plane": "floor",
+      "x": 1672,
+      "y": 2030,
+      "w": 282,
+      "h": 867,
+      "pts": [
+        [
+          1,
+          0
+        ],
+        [
+          0.5532,
+          0.0104
+        ],
+        [
+          0.1596,
+          0.1107
+        ],
+        [
+          0,
+          0.263
+        ],
+        [
+          0,
+          0.955
+        ],
+        [
+          0.234,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#b8733a",
+      "strokeWidth": 5,
+      "opacity": 0.9
     },
     {
       "id": "sm-ins-orbit-l",
       "type": "poly",
-      "x": 1558.5,
-      "y": 924.8,
+      "x": 1028.5,
+      "y": 2351.8,
       "w": 27,
       "h": 39,
       "pts": [
@@ -813,14 +893,13 @@
       "strokeWidth": 1.3,
       "layer": "sm-play",
       "name": "left orbit arrow",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-ins-ramp-l",
       "type": "poly",
-      "x": 1611,
-      "y": 996,
+      "x": 1081,
+      "y": 2423,
       "w": 27,
       "h": 39,
       "pts": [
@@ -843,14 +922,13 @@
       "strokeWidth": 1.3,
       "layer": "sm-play",
       "name": "crypt ramp arrow",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-ins-gate",
       "type": "poly",
-      "x": 1821,
-      "y": 1056,
+      "x": 1291,
+      "y": 2483,
       "w": 27,
       "h": 39,
       "pts": [
@@ -872,15 +950,14 @@
       "stroke": "#1f1b16",
       "strokeWidth": 1.3,
       "layer": "sm-play",
-      "name": "dungeon gate arrow",
-      "group": "group-table",
+      "name": "cave arrow",
       "plane": "floor"
     },
     {
       "id": "sm-ins-ramp-r",
       "type": "poly",
-      "x": 1941,
-      "y": 1161,
+      "x": 1411,
+      "y": 2588,
       "w": 27,
       "h": 39,
       "pts": [
@@ -903,14 +980,13 @@
       "strokeWidth": 1.3,
       "layer": "sm-play",
       "name": "tower ramp arrow",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-ins-orbit-r",
       "type": "poly",
-      "x": 2076,
-      "y": 1183.5,
+      "x": 1546,
+      "y": 2610.5,
       "w": 27,
       "h": 39,
       "pts": [
@@ -933,15 +1009,14 @@
       "strokeWidth": 1.3,
       "layer": "sm-play",
       "name": "right orbit arrow",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-flipper-l",
       "type": "asset",
       "asset": "flipper",
-      "x": 1260,
-      "y": 1206,
+      "x": 730,
+      "y": 2632.84,
       "w": 120,
       "h": 69,
       "at": {
@@ -950,15 +1025,14 @@
       },
       "turn": 30,
       "layer": "sm-play",
-      "name": "left flipper",
-      "group": "group-table"
+      "name": "left flipper"
     },
     {
       "id": "sm-flipper-r",
       "type": "asset",
       "asset": "flipper",
-      "x": 1410,
-      "y": 1281,
+      "x": 880,
+      "y": 2707.84,
       "w": 120,
       "h": 69,
       "at": {
@@ -968,15 +1042,14 @@
       "turn": -30,
       "mirror": true,
       "layer": "sm-play",
-      "name": "right flipper",
-      "group": "group-table"
+      "name": "right flipper"
     },
     {
       "id": "sm-sling-l",
       "type": "asset",
       "asset": "slingshot",
-      "x": 1260,
-      "y": 1072,
+      "x": 730,
+      "y": 2499.24,
       "w": 210,
       "h": 113,
       "at": {
@@ -984,15 +1057,14 @@
         "y": 0.5333
       },
       "layer": "sm-play",
-      "name": "left slingshot",
-      "group": "group-table"
+      "name": "left slingshot"
     },
     {
       "id": "sm-sling-r",
       "type": "asset",
       "asset": "slingshot",
-      "x": 1589,
-      "y": 1242,
+      "x": 1060,
+      "y": 2668.86,
       "w": 210,
       "h": 108,
       "at": {
@@ -1001,15 +1073,14 @@
       },
       "mirror": true,
       "layer": "sm-play",
-      "name": "right slingshot",
-      "group": "group-table"
+      "name": "right slingshot"
     },
     {
       "id": "sm-post-orbit-l",
       "type": "asset",
       "asset": "post",
-      "x": 1500,
-      "y": 950,
+      "x": 970,
+      "y": 2377.07,
       "w": 60,
       "h": 55,
       "at": {
@@ -1017,15 +1088,14 @@
         "y": 0.726
       },
       "layer": "sm-play",
-      "name": "left orbit post",
-      "group": "group-table"
+      "name": "left orbit post"
     },
     {
       "id": "sm-post-orbit-r",
       "type": "asset",
       "asset": "post",
-      "x": 1950,
-      "y": 1175,
+      "x": 1420,
+      "y": 2602.07,
       "w": 60,
       "h": 55,
       "at": {
@@ -1033,15 +1103,14 @@
         "y": 0.726
       },
       "layer": "sm-play",
-      "name": "right orbit post",
-      "group": "group-table"
+      "name": "right orbit post"
     },
     {
       "id": "sm-post-sep-l",
       "type": "asset",
       "asset": "post",
-      "x": 1320,
-      "y": 1010,
+      "x": 790,
+      "y": 2437.07,
       "w": 60,
       "h": 55,
       "at": {
@@ -1049,15 +1118,14 @@
         "y": 0.726
       },
       "layer": "sm-play",
-      "name": "left lane divider post",
-      "group": "group-table"
+      "name": "left lane divider post"
     },
     {
       "id": "sm-post-sep-r",
       "type": "asset",
       "asset": "post",
-      "x": 1830,
-      "y": 1265,
+      "x": 1300,
+      "y": 2692.07,
       "w": 60,
       "h": 55,
       "at": {
@@ -1065,63 +1133,14 @@
         "y": 0.726
       },
       "layer": "sm-play",
-      "name": "right lane divider post",
-      "group": "group-table"
-    },
-    {
-      "id": "sm-pop-1",
-      "type": "asset",
-      "asset": "pop-bumper",
-      "x": 2130,
-      "y": 732,
-      "w": 180,
-      "h": 138,
-      "at": {
-        "x": 0.5,
-        "y": 0.6739
-      },
-      "layer": "sm-play",
-      "name": "pop bumper 1",
-      "group": "group-table"
-    },
-    {
-      "id": "sm-pop-2",
-      "type": "asset",
-      "asset": "pop-bumper",
-      "x": 2250,
-      "y": 792,
-      "w": 180,
-      "h": 138,
-      "at": {
-        "x": 0.5,
-        "y": 0.6739
-      },
-      "layer": "sm-play",
-      "name": "pop bumper 2",
-      "group": "group-table"
-    },
-    {
-      "id": "sm-pop-3",
-      "type": "asset",
-      "asset": "pop-bumper",
-      "x": 2100,
-      "y": 807,
-      "w": 180,
-      "h": 138,
-      "at": {
-        "x": 0.5,
-        "y": 0.6739
-      },
-      "layer": "sm-play",
-      "name": "pop bumper 3",
-      "group": "group-table"
+      "name": "right lane divider post"
     },
     {
       "id": "sm-lane-0",
       "type": "asset",
       "asset": "lane-guide",
-      "x": 2280,
-      "y": 710,
+      "x": 1750,
+      "y": 2137.11,
       "w": 90,
       "h": 55,
       "at": {
@@ -1129,95 +1148,14 @@
         "y": 0.589
       },
       "layer": "sm-play",
-      "name": "top lane guide 1",
-      "group": "group-table"
-    },
-    {
-      "id": "sm-lane-1",
-      "type": "asset",
-      "asset": "lane-guide",
-      "x": 2340,
-      "y": 740,
-      "w": 90,
-      "h": 55,
-      "at": {
-        "x": 0.5,
-        "y": 0.589
-      },
-      "layer": "sm-play",
-      "name": "top lane guide 2",
-      "group": "group-table"
-    },
-    {
-      "id": "sm-lane-2",
-      "type": "asset",
-      "asset": "lane-guide",
-      "x": 2400,
-      "y": 770,
-      "w": 90,
-      "h": 55,
-      "at": {
-        "x": 0.5,
-        "y": 0.589
-      },
-      "layer": "sm-play",
-      "name": "top lane guide 3",
-      "group": "group-table"
-    },
-    {
-      "id": "sm-lane-3",
-      "type": "asset",
-      "asset": "lane-guide",
-      "x": 2460,
-      "y": 800,
-      "w": 90,
-      "h": 55,
-      "at": {
-        "x": 0.5,
-        "y": 0.589
-      },
-      "layer": "sm-play",
-      "name": "top lane guide 4",
-      "group": "group-table"
-    },
-    {
-      "id": "sm-ramp-l",
-      "type": "asset",
-      "asset": "ramp",
-      "x": 1620,
-      "y": 702,
-      "w": 390,
-      "h": 303,
-      "at": {
-        "x": 0.5,
-        "y": 0.6782
-      },
-      "layer": "sm-play",
-      "name": "crypt ramp",
-      "group": "group-table"
-    },
-    {
-      "id": "sm-ramp-r",
-      "type": "asset",
-      "asset": "ramp",
-      "x": 1950,
-      "y": 867,
-      "w": 390,
-      "h": 303,
-      "at": {
-        "x": 0.5,
-        "y": 0.6782
-      },
-      "layer": "sm-play",
-      "name": "tower ramp",
-      "group": "group-table"
+      "name": "top lane guide 1"
     },
     {
       "id": "sm-spinner",
       "type": "asset",
       "asset": "spinner",
-      "x": 1679,
-      "y": 797,
+      "x": 1150,
+      "y": 2223.85,
       "w": 90,
       "h": 73,
       "at": {
@@ -1225,15 +1163,14 @@
         "y": 0.6939
       },
       "layer": "sm-play",
-      "name": "left orbit spinner",
-      "group": "group-table"
+      "name": "left orbit spinner"
     },
     {
       "id": "sm-saucer",
       "type": "asset",
       "asset": "saucer",
-      "x": 1920,
-      "y": 960,
+      "x": 1900,
+      "y": 2162,
       "w": 120,
       "h": 60,
       "at": {
@@ -1241,15 +1178,14 @@
         "y": 0.5
       },
       "layer": "sm-play",
-      "name": "dungeon gate saucer",
-      "group": "group-table"
+      "name": "dungeon gate saucer"
     },
     {
       "id": "sm-mob-0",
       "type": "asset",
       "asset": "drop-target",
-      "x": 1830,
-      "y": 967,
+      "x": 1810,
+      "y": 2139.14,
       "w": 60,
       "h": 53,
       "at": {
@@ -1257,15 +1193,14 @@
         "y": 0.7143
       },
       "layer": "sm-play",
-      "name": "mob target 1",
-      "group": "group-table"
+      "name": "mob target 1"
     },
     {
       "id": "sm-mob-1",
       "type": "asset",
       "asset": "drop-target",
-      "x": 1860,
-      "y": 982,
+      "x": 1930,
+      "y": 2199.14,
       "w": 60,
       "h": 53,
       "at": {
@@ -1273,15 +1208,14 @@
         "y": 0.7143
       },
       "layer": "sm-play",
-      "name": "mob target 2",
-      "group": "group-table"
+      "name": "mob target 2"
     },
     {
       "id": "sm-mob-2",
       "type": "asset",
       "asset": "drop-target",
-      "x": 1890,
-      "y": 997,
+      "x": 1870,
+      "y": 2169.14,
       "w": 60,
       "h": 53,
       "at": {
@@ -1289,31 +1223,14 @@
         "y": 0.7143
       },
       "layer": "sm-play",
-      "name": "mob target 3",
-      "group": "group-table"
-    },
-    {
-      "id": "sm-mob-3",
-      "type": "asset",
-      "asset": "drop-target",
-      "x": 1920,
-      "y": 1012,
-      "w": 60,
-      "h": 53,
-      "at": {
-        "x": 0.5,
-        "y": 0.7143
-      },
-      "layer": "sm-play",
-      "name": "mob target 4",
-      "group": "group-table"
+      "name": "mob target 3"
     },
     {
       "id": "sm-shop-0",
       "type": "asset",
       "asset": "standup",
-      "x": 1950,
-      "y": 1203,
+      "x": 1420,
+      "y": 2630.02,
       "w": 60,
       "h": 57,
       "at": {
@@ -1322,15 +1239,14 @@
       },
       "turn": 90,
       "layer": "sm-play",
-      "name": "shop target 1",
-      "group": "group-table"
+      "name": "shop target 1"
     },
     {
       "id": "sm-shop-1",
       "type": "asset",
       "asset": "standup",
-      "x": 1920,
-      "y": 1218,
+      "x": 1390,
+      "y": 2645.02,
       "w": 60,
       "h": 57,
       "at": {
@@ -1339,15 +1255,14 @@
       },
       "turn": 90,
       "layer": "sm-play",
-      "name": "shop target 2",
-      "group": "group-table"
+      "name": "shop target 2"
     },
     {
       "id": "sm-shop-2",
       "type": "asset",
       "asset": "standup",
-      "x": 1890,
-      "y": 1233,
+      "x": 1360,
+      "y": 2660.02,
       "w": 60,
       "h": 57,
       "at": {
@@ -1356,15 +1271,14 @@
       },
       "turn": 90,
       "layer": "sm-play",
-      "name": "shop target 3",
-      "group": "group-table"
+      "name": "shop target 3"
     },
     {
       "id": "sm-ball",
       "type": "asset",
       "asset": "ball",
-      "x": 1830,
-      "y": 1333,
+      "x": 1300,
+      "y": 2760.04,
       "w": 60,
       "h": 47,
       "at": {
@@ -1372,15 +1286,14 @@
         "y": 0.68
       },
       "layer": "sm-play",
-      "name": "ball",
-      "group": "group-table"
+      "name": "ball"
     },
     {
       "id": "sm-shooter",
       "type": "asset",
       "asset": "shooter",
-      "x": 1560,
-      "y": 1346,
+      "x": 1030,
+      "y": 2773.04,
       "w": 300,
       "h": 169,
       "at": {
@@ -1389,147 +1302,132 @@
       },
       "turn": 90,
       "layer": "sm-play",
-      "name": "plunger",
-      "group": "group-table"
+      "name": "plunger"
     },
     {
       "id": "sm-shot-l-ramp-r",
       "type": "line",
       "from": {
-        "x": 1350,
-        "y": 1251
+        "x": 820,
+        "y": 2678
       },
       "to": {
-        "x": 2016,
-        "y": 1137
+        "el": "sm-ins-ramp-r"
       },
       "stroke": "#2f6fd6",
       "strokeWidth": 3.1,
       "arrow": "end",
       "on": "sm-floor",
       "layer": "sm-shots",
-      "name": "shot: left flipper → tower ramp",
-      "group": "group-table"
+      "name": "shot: left flipper → tower ramp"
     },
     {
       "id": "sm-shot-l-orbit-r",
       "type": "line",
       "from": {
-        "x": 1350,
-        "y": 1251
+        "x": 820,
+        "y": 2678
       },
       "to": {
-        "x": 2121,
-        "y": 1174.5
+        "el": "sm-ins-orbit-r"
       },
       "stroke": "#2f6fd6",
       "strokeWidth": 3.1,
       "arrow": "end",
       "on": "sm-floor",
       "layer": "sm-shots",
-      "name": "shot: left flipper → right orbit",
-      "group": "group-table"
+      "name": "shot: left flipper → right orbit"
     },
     {
       "id": "sm-shot-l-gate",
       "type": "line",
       "from": {
-        "x": 1350,
-        "y": 1251
+        "x": 820,
+        "y": 2678
       },
       "to": {
-        "x": 1857,
-        "y": 1039.5
+        "el": "sm-mob-3"
       },
       "stroke": "#2f6fd6",
       "strokeWidth": 3.1,
       "arrow": "end",
       "on": "sm-floor",
       "layer": "sm-shots",
-      "name": "shot: left flipper → dungeon gate",
-      "group": "group-table"
+      "name": "shot: left flipper → cave, tier 2"
     },
     {
       "id": "sm-shot-l-shops",
       "type": "line",
       "from": {
-        "x": 1350,
-        "y": 1251
+        "x": 820,
+        "y": 2678
       },
       "to": {
-        "x": 1929,
-        "y": 1252.5
+        "el": "sm-shop-1"
       },
       "stroke": "#2f6fd6",
       "strokeWidth": 3.1,
       "arrow": "end",
       "on": "sm-floor",
       "layer": "sm-shots",
-      "name": "shot: left flipper → shops",
-      "group": "group-table"
+      "name": "shot: left flipper → shops"
     },
     {
       "id": "sm-shot-r-ramp-l",
       "type": "line",
       "from": {
-        "x": 1458,
-        "y": 1305
+        "x": 928,
+        "y": 2732
       },
       "to": {
-        "x": 1686,
-        "y": 972
+        "el": "sm-ins-ramp-l"
       },
       "stroke": "#d6332f",
       "strokeWidth": 3.1,
       "arrow": "end",
       "on": "sm-floor",
       "layer": "sm-shots",
-      "name": "shot: right flipper → crypt ramp",
-      "group": "group-table"
+      "name": "shot: right flipper → crypt ramp"
     },
     {
       "id": "sm-shot-r-orbit-l",
       "type": "line",
       "from": {
-        "x": 1458,
-        "y": 1305
+        "x": 928,
+        "y": 2732
       },
       "to": {
-        "x": 1603.5,
-        "y": 915.8
+        "el": "sm-ins-orbit-l"
       },
       "stroke": "#d6332f",
       "strokeWidth": 3.1,
       "arrow": "end",
       "on": "sm-floor",
       "layer": "sm-shots",
-      "name": "shot: right flipper → left orbit",
-      "group": "group-table"
+      "name": "shot: right flipper → left orbit"
     },
     {
       "id": "sm-shot-r-gate",
       "type": "line",
       "from": {
-        "x": 1458,
-        "y": 1305
+        "x": 928,
+        "y": 2732
       },
       "to": {
-        "x": 1881,
-        "y": 1051.5
+        "el": "asset-r1jn"
       },
       "stroke": "#d6332f",
       "strokeWidth": 3.1,
       "arrow": "end",
       "on": "sm-floor",
       "layer": "sm-shots",
-      "name": "shot: right flipper → dungeon gate",
-      "group": "group-table"
+      "name": "shot: right flipper → cave, tier 1"
     },
     {
       "id": "sm-path-orbit",
       "type": "poly",
-      "x": 2216.3,
-      "y": 609.4,
+      "x": 1686.3,
+      "y": 2036.4,
       "w": 555,
       "h": 607.5,
       "pts": [
@@ -1654,14 +1552,13 @@
       "dash": true,
       "layer": "sm-shots",
       "name": "ball path: orbit loop",
-      "group": "group-table",
       "plane": "floor"
     },
     {
       "id": "sm-title",
       "type": "text",
-      "x": 1210,
-      "y": 405,
+      "x": 680,
+      "y": 1832,
       "w": 310,
       "h": 45,
       "text": "MAIN TABLE · SHOT MAP",
@@ -1670,14 +1567,13 @@
       "font": "sans",
       "weight": 700,
       "align": "right",
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-sub",
       "type": "text",
-      "x": 1210,
-      "y": 455,
+      "x": 680,
+      "y": 1882,
       "w": 340,
       "h": 50,
       "text": "Draft for Pinball Crawl. 21 × 42 in, 1 tile = 1 in. ",
@@ -1685,14 +1581,13 @@
       "color": "#5b5f63",
       "font": "sans",
       "align": "right",
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-lanes",
       "type": "text",
-      "x": 1210,
-      "y": 555,
+      "x": 680,
+      "y": 1982,
       "w": 310,
       "h": 25,
       "text": "TOP LANES",
@@ -1701,14 +1596,13 @@
       "font": "sans",
       "align": "right",
       "weight": 700,
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-lanes-body",
       "type": "text",
-      "x": 1210,
-      "y": 580,
+      "x": 680,
+      "y": 2007,
       "w": 310,
       "h": 50,
       "text": "Skill shot: flippers move the lit lane.",
@@ -1716,15 +1610,14 @@
       "color": "#4a453e",
       "font": "sans",
       "align": "right",
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-lanes-lead",
       "type": "line",
       "from": {
-        "x": 1530,
-        "y": 568.8
+        "x": 1000,
+        "y": 1995.8
       },
       "to": {
         "el": "sm-lane-0"
@@ -1733,14 +1626,103 @@
       "strokeWidth": 1.3,
       "arrow": "none",
       "layer": "sm-shots",
-      "name": "callout line: top lanes",
-      "group": "group-table"
+      "name": "callout line: top lanes"
+    },
+    {
+      "id": "sm-c-return",
+      "type": "text",
+      "x": 1290,
+      "y": 1800,
+      "w": 400,
+      "h": 25,
+      "text": "RETURN RAILS · DRAGON TOY",
+      "size": 17.5,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "left",
+      "weight": 700,
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-return-body",
+      "type": "text",
+      "x": 1290,
+      "y": 1825,
+      "w": 400,
+      "h": 70,
+      "text": "Every dungeon exit pipes back up through the boss cave. Wires run down both sides to the inlanes; the dragon snaps at the ball as it leaves.",
+      "size": 15,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "left",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-return-lead",
+      "type": "line",
+      "from": {
+        "x": 1480,
+        "y": 1900
+      },
+      "to": {
+        "el": "sm-dragon-toy"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "arrow": "none",
+      "layer": "sm-shots",
+      "name": "callout line: return rails"
+    },
+    {
+      "id": "sm-c-trees",
+      "type": "text",
+      "x": 680,
+      "y": 2100,
+      "w": 310,
+      "h": 25,
+      "text": "TREES",
+      "size": 17.5,
+      "color": "#1f1b16",
+      "font": "sans",
+      "align": "right",
+      "weight": 700,
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-trees-body",
+      "type": "text",
+      "x": 680,
+      "y": 2125,
+      "w": 310,
+      "h": 50,
+      "text": "Bumpers in the way: they bounce the ball around. No gold.",
+      "size": 15,
+      "color": "#4a453e",
+      "font": "sans",
+      "align": "right",
+      "layer": "sm-shots"
+    },
+    {
+      "id": "sm-c-trees-lead",
+      "type": "line",
+      "from": {
+        "x": 1000,
+        "y": 2113
+      },
+      "to": {
+        "el": "asset-wh5d"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "arrow": "none",
+      "layer": "sm-shots",
+      "name": "callout line: trees"
     },
     {
       "id": "sm-c-spin",
       "type": "text",
-      "x": 1210,
-      "y": 795,
+      "x": 680,
+      "y": 2222,
       "w": 310,
       "h": 25,
       "text": "LEFT ORBIT · SPINNER",
@@ -1749,14 +1731,13 @@
       "font": "sans",
       "align": "right",
       "weight": 700,
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-spin-body",
       "type": "text",
-      "x": 1210,
-      "y": 820,
+      "x": 680,
+      "y": 2247,
       "w": 310,
       "h": 50,
       "text": "Loops over the top to the right orbit.",
@@ -1764,15 +1745,14 @@
       "color": "#4a453e",
       "font": "sans",
       "align": "right",
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-spin-lead",
       "type": "line",
       "from": {
-        "x": 1530,
-        "y": 808.8
+        "x": 1000,
+        "y": 2235.8
       },
       "to": {
         "el": "sm-spinner"
@@ -1781,14 +1761,13 @@
       "strokeWidth": 1.3,
       "arrow": "none",
       "layer": "sm-shots",
-      "name": "callout line: left orbit",
-      "group": "group-table"
+      "name": "callout line: left orbit"
     },
     {
       "id": "sm-c-ramp-l",
       "type": "text",
-      "x": 1210,
-      "y": 932.5,
+      "x": 540,
+      "y": 2350,
       "w": 310,
       "h": 25,
       "text": "CRYPT RAMP",
@@ -1797,14 +1776,13 @@
       "font": "sans",
       "align": "right",
       "weight": 700,
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-ramp-l-body",
       "type": "text",
-      "x": 1210,
-      "y": 957.5,
+      "x": 540,
+      "y": 2375,
       "w": 310,
       "h": 50,
       "text": "Wire return to the left inlane.",
@@ -1812,31 +1790,30 @@
       "color": "#4a453e",
       "font": "sans",
       "align": "right",
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-ramp-l-lead",
       "type": "line",
       "from": {
-        "x": 1530,
-        "y": 946.3
+        "x": 860,
+        "y": 2363
       },
       "to": {
-        "el": "sm-ramp-l"
+        "x": 1053,
+        "y": 2356
       },
       "stroke": "#1f1b16",
       "strokeWidth": 1.3,
       "arrow": "none",
       "layer": "sm-shots",
-      "name": "callout line: crypt ramp",
-      "group": "group-table"
+      "name": "callout line: crypt ramp"
     },
     {
       "id": "sm-c-ins",
       "type": "text",
-      "x": 1210,
-      "y": 1082.5,
+      "x": 230,
+      "y": 2510,
       "w": 310,
       "h": 25,
       "text": "SHOT ARROWS",
@@ -1845,14 +1822,13 @@
       "font": "sans",
       "align": "right",
       "weight": 700,
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-ins-body",
       "type": "text",
-      "x": 1210,
-      "y": 1107.5,
+      "x": 230,
+      "y": 2535,
       "w": 310,
       "h": 50,
       "text": "Light for quests and jackpots.",
@@ -1860,15 +1836,14 @@
       "color": "#4a453e",
       "font": "sans",
       "align": "right",
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-ins-lead",
       "type": "line",
       "from": {
-        "x": 1530,
-        "y": 1096.3
+        "x": 550,
+        "y": 2523
       },
       "to": {
         "el": "sm-ins-ramp-l"
@@ -1877,14 +1852,13 @@
       "strokeWidth": 1.3,
       "arrow": "none",
       "layer": "sm-shots",
-      "name": "callout line: shot arrows",
-      "group": "group-table"
+      "name": "callout line: shot arrows"
     },
     {
       "id": "sm-c-lanes-bot",
       "type": "text",
-      "x": 1210,
-      "y": 1285,
+      "x": 230,
+      "y": 2712,
       "w": 310,
       "h": 25,
       "text": "INLANES / OUTLANES",
@@ -1893,14 +1867,13 @@
       "font": "sans",
       "align": "right",
       "weight": 700,
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-lanes-bot-body",
       "type": "text",
-      "x": 1210,
-      "y": 1310,
+      "x": 230,
+      "y": 2737,
       "w": 310,
       "h": 50,
       "text": "Outlane = drain. Inlane feeds the flipper.",
@@ -1908,15 +1881,14 @@
       "color": "#4a453e",
       "font": "sans",
       "align": "right",
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-lanes-bot-lead",
       "type": "line",
       "from": {
-        "x": 1530,
-        "y": 1298.8
+        "x": 550,
+        "y": 2725
       },
       "to": {
         "el": "sm-post-sep-l"
@@ -1925,63 +1897,59 @@
       "strokeWidth": 1.3,
       "arrow": "none",
       "layer": "sm-shots",
-      "name": "callout line: inlanes / outlanes",
-      "group": "group-table"
+      "name": "callout line: inlanes / outlanes"
     },
     {
       "id": "sm-c-pops",
       "type": "text",
-      "x": 2270,
-      "y": 555,
+      "x": 1756,
+      "y": 1886,
       "w": 310,
       "h": 25,
-      "text": "POP BUMPERS",
+      "text": "MOBS",
       "size": 17.5,
       "color": "#1f1b16",
       "font": "sans",
       "align": "left",
       "weight": 700,
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-pops-body",
       "type": "text",
-      "x": 2270,
-      "y": 580,
+      "x": 1756,
+      "y": 1911,
       "w": 310,
       "h": 50,
-      "text": "Mob nest: every hit earns gold.",
+      "text": "Red drop targets. Break them for gold; a quest spawns new ones.",
       "size": 15,
       "color": "#4a453e",
       "font": "sans",
       "align": "left",
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-pops-lead",
       "type": "line",
       "from": {
-        "x": 2260,
-        "y": 568.8
+        "x": 1790,
+        "y": 1975
       },
       "to": {
-        "el": "sm-pop-2"
+        "el": "sm-mob-0"
       },
       "stroke": "#1f1b16",
       "strokeWidth": 1.3,
       "arrow": "none",
       "layer": "sm-shots",
-      "name": "callout line: pop bumpers",
-      "group": "group-table"
+      "name": "callout line: pop bumpers"
     },
     {
       "id": "sm-c-ramp-r",
       "type": "text",
-      "x": 2270,
-      "y": 757.5,
-      "w": 310,
+      "x": 2420,
+      "y": 2330,
+      "w": 300,
       "h": 25,
       "text": "TOWER RAMP",
       "size": 17.5,
@@ -1989,94 +1957,89 @@
       "font": "sans",
       "align": "left",
       "weight": 700,
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-ramp-r-body",
       "type": "text",
-      "x": 2270,
-      "y": 782.5,
-      "w": 310,
+      "x": 2420,
+      "y": 2355,
+      "w": 300,
       "h": 50,
       "text": "Wire return to the right inlane.",
       "size": 15,
       "color": "#4a453e",
       "font": "sans",
       "align": "left",
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-ramp-r-lead",
       "type": "line",
       "from": {
-        "x": 2260,
-        "y": 771.3
+        "x": 2410,
+        "y": 2343
       },
       "to": {
-        "el": "sm-ramp-r"
+        "x": 1830,
+        "y": 2415
       },
       "stroke": "#1f1b16",
       "strokeWidth": 1.3,
       "arrow": "none",
       "layer": "sm-shots",
-      "name": "callout line: tower ramp",
-      "group": "group-table"
+      "name": "callout line: tower ramp"
     },
     {
       "id": "sm-c-gate",
       "type": "text",
-      "x": 2270,
-      "y": 882.5,
-      "w": 310,
+      "x": 2140,
+      "y": 1886,
+      "w": 340,
       "h": 25,
-      "text": "DUNGEON GATE",
+      "text": "CAVES ×3",
       "size": 17.5,
       "color": "#1f1b16",
       "font": "sans",
       "align": "left",
       "weight": 700,
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-gate-body",
       "type": "text",
-      "x": 2270,
-      "y": 907.5,
-      "w": 310,
+      "x": 2140,
+      "y": 1911,
+      "w": 340,
       "h": 70,
-      "text": "Break the 4 mobs (drop targets); the saucer opens the dungeon.",
+      "text": "Break the mobs in front of a cave and it opens. Each cave is one of the tier’s 3 dungeon types: shoot the one you want.",
       "size": 15,
       "color": "#4a453e",
       "font": "sans",
       "align": "left",
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-gate-lead",
       "type": "line",
       "from": {
-        "x": 2260,
-        "y": 896.3
+        "x": 2130,
+        "y": 1899
       },
       "to": {
-        "el": "sm-saucer"
+        "el": "asset-pa3f"
       },
       "stroke": "#1f1b16",
       "strokeWidth": 1.3,
       "arrow": "none",
       "layer": "sm-shots",
-      "name": "callout line: dungeon gate",
-      "group": "group-table"
+      "name": "callout line: dungeon gate"
     },
     {
       "id": "sm-c-orbit-r",
       "type": "text",
-      "x": 2270,
-      "y": 1045,
+      "x": 2190,
+      "y": 2472,
       "w": 310,
       "h": 25,
       "text": "RIGHT ORBIT",
@@ -2085,14 +2048,13 @@
       "font": "sans",
       "align": "left",
       "weight": 700,
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-orbit-r-body",
       "type": "text",
-      "x": 2270,
-      "y": 1070,
+      "x": 2190,
+      "y": 2497,
       "w": 310,
       "h": 50,
       "text": "Loops to the left orbit.",
@@ -2100,15 +2062,14 @@
       "color": "#4a453e",
       "font": "sans",
       "align": "left",
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-orbit-r-lead",
       "type": "line",
       "from": {
-        "x": 2260,
-        "y": 1058.8
+        "x": 2180,
+        "y": 2485.8
       },
       "to": {
         "el": "sm-ins-orbit-r"
@@ -2117,14 +2078,13 @@
       "strokeWidth": 1.3,
       "arrow": "none",
       "layer": "sm-shots",
-      "name": "callout line: right orbit",
-      "group": "group-table"
+      "name": "callout line: right orbit"
     },
     {
       "id": "sm-c-shops",
       "type": "text",
-      "x": 2270,
-      "y": 1170,
+      "x": 2190,
+      "y": 2597,
       "w": 310,
       "h": 25,
       "text": "SHOPS ×3",
@@ -2133,14 +2093,13 @@
       "font": "sans",
       "align": "left",
       "weight": 700,
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-shops-body",
       "type": "text",
-      "x": 2270,
-      "y": 1195,
+      "x": 2190,
+      "y": 2622,
       "w": 310,
       "h": 50,
       "text": "Shoot the one you can afford.",
@@ -2148,15 +2107,14 @@
       "color": "#4a453e",
       "font": "sans",
       "align": "left",
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-shops-lead",
       "type": "line",
       "from": {
-        "x": 2260,
-        "y": 1183.8
+        "x": 2180,
+        "y": 2610.8
       },
       "to": {
         "el": "sm-shop-1"
@@ -2165,14 +2123,13 @@
       "strokeWidth": 1.3,
       "arrow": "none",
       "layer": "sm-shots",
-      "name": "callout line: shops",
-      "group": "group-table"
+      "name": "callout line: shops"
     },
     {
       "id": "sm-c-plunger",
       "type": "text",
-      "x": 2270,
-      "y": 1420,
+      "x": 2190,
+      "y": 2847,
       "w": 310,
       "h": 25,
       "text": "PLUNGER",
@@ -2181,14 +2138,13 @@
       "font": "sans",
       "align": "left",
       "weight": 700,
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-plunger-body",
       "type": "text",
-      "x": 2270,
-      "y": 1445,
+      "x": 2190,
+      "y": 2872,
       "w": 310,
       "h": 50,
       "text": "Plunge feeds the right orbit.",
@@ -2196,15 +2152,14 @@
       "color": "#4a453e",
       "font": "sans",
       "align": "left",
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-c-plunger-lead",
       "type": "line",
       "from": {
-        "x": 2260,
-        "y": 1433.8
+        "x": 2180,
+        "y": 2860.8
       },
       "to": {
         "el": "sm-shooter"
@@ -2213,105 +2168,98 @@
       "strokeWidth": 1.3,
       "arrow": "none",
       "layer": "sm-shots",
-      "name": "callout line: plunger",
-      "group": "group-table"
+      "name": "callout line: plunger"
     },
     {
       "id": "sm-key-l",
       "type": "line",
       "from": {
-        "x": 1220,
-        "y": 1532.5
+        "x": 690,
+        "y": 2959.5
       },
       "to": {
-        "x": 1280,
-        "y": 1532.5
+        "x": 750,
+        "y": 2959.5
       },
       "stroke": "#2f6fd6",
       "strokeWidth": 3.1,
       "arrow": "end",
       "layer": "sm-shots",
-      "name": "key: left flipper shot",
-      "group": "group-table"
+      "name": "key: left flipper shot"
     },
     {
       "id": "sm-key-l-t",
       "type": "text",
-      "x": 1290,
-      "y": 1520,
+      "x": 760,
+      "y": 2947,
       "w": 230,
       "h": 25,
       "text": "from the left flipper",
       "size": 15,
       "color": "#1f1b16",
       "font": "sans",
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-key-r",
       "type": "line",
       "from": {
-        "x": 1220,
-        "y": 1565
+        "x": 690,
+        "y": 2992
       },
       "to": {
-        "x": 1280,
-        "y": 1565
+        "x": 750,
+        "y": 2992
       },
       "stroke": "#d6332f",
       "strokeWidth": 3.1,
       "arrow": "end",
       "layer": "sm-shots",
-      "name": "key: right flipper shot",
-      "group": "group-table"
+      "name": "key: right flipper shot"
     },
     {
       "id": "sm-key-r-t",
       "type": "text",
-      "x": 1290,
-      "y": 1552.5,
+      "x": 760,
+      "y": 2979.5,
       "w": 230,
       "h": 25,
       "text": "from the right flipper",
       "size": 15,
       "color": "#1f1b16",
       "font": "sans",
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "sm-key-p",
       "type": "line",
       "from": {
-        "x": 1220,
-        "y": 1597.5
+        "x": 690,
+        "y": 3024.5
       },
       "to": {
-        "x": 1280,
-        "y": 1597.5
+        "x": 750,
+        "y": 3024.5
       },
       "stroke": "#1f1b16",
       "strokeWidth": 1.9,
       "dash": true,
       "arrow": "none",
       "layer": "sm-shots",
-      "name": "key: ball path",
-      "group": "group-table"
+      "name": "key: ball path"
     },
     {
       "id": "sm-key-p-t",
       "type": "text",
-      "x": 1290,
-      "y": 1585,
+      "x": 760,
+      "y": 3012,
       "w": 230,
       "h": 25,
       "text": "ball path",
       "size": 15,
       "color": "#1f1b16",
       "font": "sans",
-      "layer": "sm-shots",
-      "group": "group-table"
+      "layer": "sm-shots"
     },
     {
       "id": "title",
@@ -2345,7 +2293,7 @@
     {
       "id": "skeleton-link-box",
       "type": "rect",
-      "x": 3476,
+      "x": 2516,
       "y": 67.2,
       "w": 308,
       "h": 61.6,
@@ -2360,7 +2308,7 @@
     {
       "id": "skeleton-link",
       "type": "text",
-      "x": 3476,
+      "x": 2516,
       "y": 67.2,
       "w": 308,
       "h": 61.6,
@@ -2380,7 +2328,7 @@
         "y": 280
       },
       "to": {
-        "x": 3784,
+        "x": 2824,
         "y": 280
       },
       "stroke": "#1f1b16",
@@ -2835,7 +2783,7 @@
     {
       "id": "loop-label",
       "type": "text",
-      "x": 2955.2,
+      "x": 980,
       "y": 316,
       "w": 828.8,
       "h": 36.4,
@@ -2849,7 +2797,7 @@
     {
       "id": "step-0",
       "type": "rect",
-      "x": 2955.2,
+      "x": 980,
       "y": 360.8,
       "w": 173.6,
       "h": 84,
@@ -2863,7 +2811,7 @@
     {
       "id": "step-0-text",
       "type": "text",
-      "x": 2963.6,
+      "x": 988.4,
       "y": 366.4,
       "w": 156.8,
       "h": 72.8,
@@ -2877,7 +2825,7 @@
     {
       "id": "step-1",
       "type": "rect",
-      "x": 3173.6,
+      "x": 1198.4,
       "y": 360.8,
       "w": 173.6,
       "h": 84,
@@ -2891,7 +2839,7 @@
     {
       "id": "step-1-text",
       "type": "text",
-      "x": 3182,
+      "x": 1206.8,
       "y": 366.4,
       "w": 156.8,
       "h": 72.8,
@@ -2905,7 +2853,7 @@
     {
       "id": "step-2",
       "type": "rect",
-      "x": 3392,
+      "x": 1416.8,
       "y": 360.8,
       "w": 173.6,
       "h": 84,
@@ -2919,7 +2867,7 @@
     {
       "id": "step-2-text",
       "type": "text",
-      "x": 3400.4,
+      "x": 1425.2,
       "y": 366.4,
       "w": 156.8,
       "h": 72.8,
@@ -2933,7 +2881,7 @@
     {
       "id": "step-3",
       "type": "rect",
-      "x": 3610.4,
+      "x": 1635.2,
       "y": 360.8,
       "w": 173.6,
       "h": 84,
@@ -2947,7 +2895,7 @@
     {
       "id": "step-3-text",
       "type": "text",
-      "x": 3618.8,
+      "x": 1643.6,
       "y": 366.4,
       "w": 156.8,
       "h": 72.8,
@@ -2961,7 +2909,7 @@
     {
       "id": "step-4",
       "type": "rect",
-      "x": 3610.4,
+      "x": 1635.2,
       "y": 509.2,
       "w": 173.6,
       "h": 84,
@@ -2975,7 +2923,7 @@
     {
       "id": "step-4-text",
       "type": "text",
-      "x": 3618.8,
+      "x": 1643.6,
       "y": 514.8,
       "w": 156.8,
       "h": 72.8,
@@ -2989,7 +2937,7 @@
     {
       "id": "step-5",
       "type": "rect",
-      "x": 3392,
+      "x": 1416.8,
       "y": 509.2,
       "w": 173.6,
       "h": 84,
@@ -3003,7 +2951,7 @@
     {
       "id": "step-5-text",
       "type": "text",
-      "x": 3400.4,
+      "x": 1425.2,
       "y": 514.8,
       "w": 156.8,
       "h": 72.8,
@@ -3017,7 +2965,7 @@
     {
       "id": "step-6",
       "type": "rect",
-      "x": 3162.4,
+      "x": 1187.2,
       "y": 509.2,
       "w": 173.6,
       "h": 84,
@@ -3031,7 +2979,7 @@
     {
       "id": "step-6-text",
       "type": "text",
-      "x": 3170.8,
+      "x": 1195.6,
       "y": 514.8,
       "w": 156.8,
       "h": 72.8,
@@ -3045,7 +2993,7 @@
     {
       "id": "step-7",
       "type": "rect",
-      "x": 2955.2,
+      "x": 980,
       "y": 509.2,
       "w": 173.6,
       "h": 84,
@@ -3059,7 +3007,7 @@
     {
       "id": "step-7-text",
       "type": "text",
-      "x": 2963.6,
+      "x": 988.4,
       "y": 514.8,
       "w": 156.8,
       "h": 72.8,
@@ -3193,7 +3141,7 @@
     {
       "id": "rules-label",
       "type": "text",
-      "x": 2955.2,
+      "x": 980,
       "y": 638,
       "w": 784,
       "h": 36.4,
@@ -3207,7 +3155,7 @@
     {
       "id": "rules",
       "type": "text",
-      "x": 2955.2,
+      "x": 980,
       "y": 682.8,
       "w": 784,
       "h": 266,
@@ -3218,7 +3166,7 @@
     {
       "id": "loot-label",
       "type": "text",
-      "x": 2955.2,
+      "x": 980,
       "y": 988,
       "w": 476,
       "h": 36.4,
@@ -3232,7 +3180,7 @@
     {
       "id": "loot",
       "type": "text",
-      "x": 2955.2,
+      "x": 980,
       "y": 1032.8,
       "w": 476,
       "h": 442.4,
@@ -3244,7 +3192,7 @@
       "id": "sketch",
       "type": "image",
       "src": "sketch-dungeon-table.png",
-      "x": 3456.4,
+      "x": 1481.2,
       "y": 999.2,
       "w": 327.6,
       "h": 436.8,
@@ -3255,7 +3203,7 @@
     {
       "id": "sketch-caption",
       "type": "text",
-      "x": 3456.4,
+      "x": 1481.2,
       "y": 1438.8,
       "w": 327.6,
       "h": 36.4,
@@ -3266,27 +3214,10 @@
       "layer": "doc"
     },
     {
-      "id": "index-rule",
-      "type": "line",
-      "from": {
-        "x": 56,
-        "y": 1754
-      },
-      "to": {
-        "x": 3784,
-        "y": 1754
-      },
-      "stroke": "#1f1b16",
-      "strokeWidth": 3,
-      "arrow": "none",
-      "name": "footer rule",
-      "layer": "doc"
-    },
-    {
       "id": "group-0",
       "type": "text",
-      "x": 56,
-      "y": 1765.2,
+      "x": 1950,
+      "y": 316,
       "w": 399,
       "h": 42,
       "text": "Vision",
@@ -3298,8 +3229,8 @@
     {
       "id": "dot-pitch",
       "type": "status",
-      "x": 56,
-      "y": 1814.2,
+      "x": 1950,
+      "y": 365,
       "size": 19.6,
       "topic": "pitch",
       "link": "pitch",
@@ -3308,8 +3239,8 @@
     {
       "id": "topic-pitch",
       "type": "text",
-      "x": 86.8,
-      "y": 1807.2,
+      "x": 1980.8,
+      "y": 358,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3326,8 +3257,8 @@
     {
       "id": "dot-fantasy",
       "type": "status",
-      "x": 56,
-      "y": 1850.6,
+      "x": 1950,
+      "y": 401.4,
       "size": 19.6,
       "topic": "fantasy",
       "link": "fantasy",
@@ -3336,8 +3267,8 @@
     {
       "id": "topic-fantasy",
       "type": "text",
-      "x": 86.8,
-      "y": 1843.6,
+      "x": 1980.8,
+      "y": 394.4,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3354,8 +3285,8 @@
     {
       "id": "dot-pillars",
       "type": "status",
-      "x": 56,
-      "y": 1887,
+      "x": 1950,
+      "y": 437.8,
       "size": 19.6,
       "topic": "pillars",
       "link": "pillars",
@@ -3364,8 +3295,8 @@
     {
       "id": "topic-pillars",
       "type": "text",
-      "x": 86.8,
-      "y": 1880,
+      "x": 1980.8,
+      "y": 430.8,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3382,8 +3313,8 @@
     {
       "id": "dot-audience",
       "type": "status",
-      "x": 56,
-      "y": 1923.4,
+      "x": 1950,
+      "y": 474.2,
       "size": 19.6,
       "topic": "audience",
       "link": "audience",
@@ -3392,8 +3323,8 @@
     {
       "id": "topic-audience",
       "type": "text",
-      "x": 86.8,
-      "y": 1916.4,
+      "x": 1980.8,
+      "y": 467.2,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3410,8 +3341,8 @@
     {
       "id": "dot-references",
       "type": "status",
-      "x": 56,
-      "y": 1959.8,
+      "x": 1950,
+      "y": 510.6,
       "size": 19.6,
       "topic": "references",
       "link": "references",
@@ -3420,8 +3351,8 @@
     {
       "id": "topic-references",
       "type": "text",
-      "x": 86.8,
-      "y": 1952.8,
+      "x": 1980.8,
+      "y": 503.6,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3438,8 +3369,8 @@
     {
       "id": "group-1",
       "type": "text",
-      "x": 677.3,
-      "y": 1765.2,
+      "x": 1950,
+      "y": 588,
       "w": 399,
       "h": 42,
       "text": "Play",
@@ -3451,8 +3382,8 @@
     {
       "id": "dot-core-loop",
       "type": "status",
-      "x": 677.3,
-      "y": 1814.2,
+      "x": 1950,
+      "y": 637,
       "size": 19.6,
       "topic": "core-loop",
       "link": "core-loop",
@@ -3461,8 +3392,8 @@
     {
       "id": "topic-core-loop",
       "type": "text",
-      "x": 708.1,
-      "y": 1807.2,
+      "x": 1980.8,
+      "y": 630,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3479,8 +3410,8 @@
     {
       "id": "dot-mechanics",
       "type": "status",
-      "x": 677.3,
-      "y": 1850.6,
+      "x": 1950,
+      "y": 673.4,
       "size": 19.6,
       "topic": "mechanics",
       "link": "mechanics",
@@ -3489,8 +3420,8 @@
     {
       "id": "topic-mechanics",
       "type": "text",
-      "x": 708.1,
-      "y": 1843.6,
+      "x": 1980.8,
+      "y": 666.4,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3507,8 +3438,8 @@
     {
       "id": "dot-controls",
       "type": "status",
-      "x": 677.3,
-      "y": 1887,
+      "x": 1950,
+      "y": 709.8,
       "size": 19.6,
       "topic": "controls",
       "link": "controls",
@@ -3517,8 +3448,8 @@
     {
       "id": "topic-controls",
       "type": "text",
-      "x": 708.1,
-      "y": 1880,
+      "x": 1980.8,
+      "y": 702.8,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3535,8 +3466,8 @@
     {
       "id": "dot-goals",
       "type": "status",
-      "x": 677.3,
-      "y": 1923.4,
+      "x": 1950,
+      "y": 746.2,
       "size": 19.6,
       "topic": "goals",
       "link": "goals",
@@ -3545,8 +3476,8 @@
     {
       "id": "topic-goals",
       "type": "text",
-      "x": 708.1,
-      "y": 1916.4,
+      "x": 1980.8,
+      "y": 739.2,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3563,8 +3494,8 @@
     {
       "id": "dot-challenge",
       "type": "status",
-      "x": 677.3,
-      "y": 1959.8,
+      "x": 1950,
+      "y": 782.6,
       "size": 19.6,
       "topic": "challenge",
       "link": "challenge",
@@ -3573,8 +3504,8 @@
     {
       "id": "topic-challenge",
       "type": "text",
-      "x": 708.1,
-      "y": 1952.8,
+      "x": 1980.8,
+      "y": 775.6,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3591,8 +3522,8 @@
     {
       "id": "dot-failure",
       "type": "status",
-      "x": 677.3,
-      "y": 1996.2,
+      "x": 1950,
+      "y": 819,
       "size": 19.6,
       "topic": "failure",
       "link": "failure",
@@ -3601,8 +3532,8 @@
     {
       "id": "topic-failure",
       "type": "text",
-      "x": 708.1,
-      "y": 1989.2,
+      "x": 1980.8,
+      "y": 812,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3619,8 +3550,8 @@
     {
       "id": "dot-progression",
       "type": "status",
-      "x": 677.3,
-      "y": 2032.6,
+      "x": 1950,
+      "y": 855.4,
       "size": 19.6,
       "topic": "progression",
       "link": "progression",
@@ -3629,8 +3560,8 @@
     {
       "id": "topic-progression",
       "type": "text",
-      "x": 708.1,
-      "y": 2025.6,
+      "x": 1980.8,
+      "y": 848.4,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3647,8 +3578,8 @@
     {
       "id": "dot-economy",
       "type": "status",
-      "x": 677.3,
-      "y": 2069,
+      "x": 1950,
+      "y": 891.8,
       "size": 19.6,
       "topic": "economy",
       "link": "economy",
@@ -3657,8 +3588,8 @@
     {
       "id": "topic-economy",
       "type": "text",
-      "x": 708.1,
-      "y": 2062,
+      "x": 1980.8,
+      "y": 884.8,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3675,8 +3606,8 @@
     {
       "id": "group-2",
       "type": "text",
-      "x": 1298.7,
-      "y": 1765.2,
+      "x": 2410,
+      "y": 316,
       "w": 399,
       "h": 42,
       "text": "World",
@@ -3688,8 +3619,8 @@
     {
       "id": "dot-setting",
       "type": "status",
-      "x": 1298.7,
-      "y": 1814.2,
+      "x": 2410,
+      "y": 365,
       "size": 19.6,
       "topic": "setting",
       "link": "setting",
@@ -3698,8 +3629,8 @@
     {
       "id": "topic-setting",
       "type": "text",
-      "x": 1329.5,
-      "y": 1807.2,
+      "x": 2440.8,
+      "y": 358,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3716,8 +3647,8 @@
     {
       "id": "dot-narrative",
       "type": "status",
-      "x": 1298.7,
-      "y": 1850.6,
+      "x": 2410,
+      "y": 401.4,
       "size": 19.6,
       "topic": "narrative",
       "link": "narrative",
@@ -3726,8 +3657,8 @@
     {
       "id": "topic-narrative",
       "type": "text",
-      "x": 1329.5,
-      "y": 1843.6,
+      "x": 2440.8,
+      "y": 394.4,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3744,8 +3675,8 @@
     {
       "id": "dot-characters",
       "type": "status",
-      "x": 1298.7,
-      "y": 1887,
+      "x": 2410,
+      "y": 437.8,
       "size": 19.6,
       "topic": "characters",
       "link": "characters",
@@ -3754,8 +3685,8 @@
     {
       "id": "topic-characters",
       "type": "text",
-      "x": 1329.5,
-      "y": 1880,
+      "x": 2440.8,
+      "y": 430.8,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3772,8 +3703,8 @@
     {
       "id": "dot-structure",
       "type": "status",
-      "x": 1298.7,
-      "y": 1923.4,
+      "x": 2410,
+      "y": 474.2,
       "size": 19.6,
       "topic": "structure",
       "link": "structure",
@@ -3782,8 +3713,8 @@
     {
       "id": "topic-structure",
       "type": "text",
-      "x": 1329.5,
-      "y": 1916.4,
+      "x": 2440.8,
+      "y": 467.2,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3800,8 +3731,8 @@
     {
       "id": "dot-opposition",
       "type": "status",
-      "x": 1298.7,
-      "y": 1959.8,
+      "x": 2410,
+      "y": 510.6,
       "size": 19.6,
       "topic": "opposition",
       "link": "opposition",
@@ -3810,8 +3741,8 @@
     {
       "id": "topic-opposition",
       "type": "text",
-      "x": 1329.5,
-      "y": 1952.8,
+      "x": 2440.8,
+      "y": 503.6,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3828,8 +3759,8 @@
     {
       "id": "group-3",
       "type": "text",
-      "x": 1920,
-      "y": 1765.2,
+      "x": 2410,
+      "y": 588,
       "w": 399,
       "h": 42,
       "text": "Presentation",
@@ -3841,8 +3772,8 @@
     {
       "id": "dot-art",
       "type": "status",
-      "x": 1920,
-      "y": 1814.2,
+      "x": 2410,
+      "y": 637,
       "size": 19.6,
       "topic": "art",
       "link": "art",
@@ -3851,8 +3782,8 @@
     {
       "id": "topic-art",
       "type": "text",
-      "x": 1950.8,
-      "y": 1807.2,
+      "x": 2440.8,
+      "y": 630,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3869,8 +3800,8 @@
     {
       "id": "dot-audio",
       "type": "status",
-      "x": 1920,
-      "y": 1850.6,
+      "x": 2410,
+      "y": 673.4,
       "size": 19.6,
       "topic": "audio",
       "link": "audio",
@@ -3879,8 +3810,8 @@
     {
       "id": "topic-audio",
       "type": "text",
-      "x": 1950.8,
-      "y": 1843.6,
+      "x": 2440.8,
+      "y": 666.4,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3897,8 +3828,8 @@
     {
       "id": "dot-ui",
       "type": "status",
-      "x": 1920,
-      "y": 1887,
+      "x": 2410,
+      "y": 709.8,
       "size": 19.6,
       "topic": "ui",
       "link": "ui",
@@ -3907,8 +3838,8 @@
     {
       "id": "topic-ui",
       "type": "text",
-      "x": 1950.8,
-      "y": 1880,
+      "x": 2440.8,
+      "y": 702.8,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3925,8 +3856,8 @@
     {
       "id": "dot-camera",
       "type": "status",
-      "x": 1920,
-      "y": 1923.4,
+      "x": 2410,
+      "y": 746.2,
       "size": 19.6,
       "topic": "camera",
       "link": "camera",
@@ -3935,8 +3866,8 @@
     {
       "id": "topic-camera",
       "type": "text",
-      "x": 1950.8,
-      "y": 1916.4,
+      "x": 2440.8,
+      "y": 739.2,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3953,8 +3884,8 @@
     {
       "id": "group-4",
       "type": "text",
-      "x": 2541.3,
-      "y": 1765.2,
+      "x": 1950,
+      "y": 969.2,
       "w": 399,
       "h": 42,
       "text": "Experience",
@@ -3966,8 +3897,8 @@
     {
       "id": "dot-onboarding",
       "type": "status",
-      "x": 2541.3,
-      "y": 1814.2,
+      "x": 1950,
+      "y": 1018.2,
       "size": 19.6,
       "topic": "onboarding",
       "link": "onboarding",
@@ -3976,8 +3907,8 @@
     {
       "id": "topic-onboarding",
       "type": "text",
-      "x": 2572.1,
-      "y": 1807.2,
+      "x": 1980.8,
+      "y": 1011.2,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -3994,8 +3925,8 @@
     {
       "id": "dot-session",
       "type": "status",
-      "x": 2541.3,
-      "y": 1850.6,
+      "x": 1950,
+      "y": 1054.6,
       "size": 19.6,
       "topic": "session",
       "link": "session",
@@ -4004,8 +3935,8 @@
     {
       "id": "topic-session",
       "type": "text",
-      "x": 2572.1,
-      "y": 1843.6,
+      "x": 1980.8,
+      "y": 1047.6,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -4022,8 +3953,8 @@
     {
       "id": "dot-replay",
       "type": "status",
-      "x": 2541.3,
-      "y": 1887,
+      "x": 1950,
+      "y": 1091,
       "size": 19.6,
       "topic": "replay",
       "link": "replay",
@@ -4032,8 +3963,8 @@
     {
       "id": "topic-replay",
       "type": "text",
-      "x": 2572.1,
-      "y": 1880,
+      "x": 1980.8,
+      "y": 1084,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -4050,8 +3981,8 @@
     {
       "id": "dot-accessibility",
       "type": "status",
-      "x": 2541.3,
-      "y": 1923.4,
+      "x": 1950,
+      "y": 1127.4,
       "size": 19.6,
       "topic": "accessibility",
       "link": "accessibility",
@@ -4060,8 +3991,8 @@
     {
       "id": "topic-accessibility",
       "type": "text",
-      "x": 2572.1,
-      "y": 1916.4,
+      "x": 1980.8,
+      "y": 1120.4,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -4078,8 +4009,8 @@
     {
       "id": "group-5",
       "type": "text",
-      "x": 3162.7,
-      "y": 1765.2,
+      "x": 2410,
+      "y": 823.6,
       "w": 399,
       "h": 42,
       "text": "Production",
@@ -4091,8 +4022,8 @@
     {
       "id": "dot-platform",
       "type": "status",
-      "x": 3162.7,
-      "y": 1814.2,
+      "x": 2410,
+      "y": 872.6,
       "size": 19.6,
       "topic": "platform",
       "link": "platform",
@@ -4101,8 +4032,8 @@
     {
       "id": "topic-platform",
       "type": "text",
-      "x": 3193.5,
-      "y": 1807.2,
+      "x": 2440.8,
+      "y": 865.6,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -4119,8 +4050,8 @@
     {
       "id": "dot-scope",
       "type": "status",
-      "x": 3162.7,
-      "y": 1850.6,
+      "x": 2410,
+      "y": 909,
       "size": 19.6,
       "topic": "scope",
       "link": "scope",
@@ -4129,8 +4060,8 @@
     {
       "id": "topic-scope",
       "type": "text",
-      "x": 3193.5,
-      "y": 1843.6,
+      "x": 2440.8,
+      "y": 902,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -4147,8 +4078,8 @@
     {
       "id": "dot-business",
       "type": "status",
-      "x": 3162.7,
-      "y": 1887,
+      "x": 2410,
+      "y": 945.4,
       "size": 19.6,
       "topic": "business",
       "link": "business",
@@ -4157,8 +4088,8 @@
     {
       "id": "topic-business",
       "type": "text",
-      "x": 3193.5,
-      "y": 1880,
+      "x": 2440.8,
+      "y": 938.4,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -4175,8 +4106,8 @@
     {
       "id": "dot-risks",
       "type": "status",
-      "x": 3162.7,
-      "y": 1923.4,
+      "x": 2410,
+      "y": 981.8,
       "size": 19.6,
       "topic": "risks",
       "link": "risks",
@@ -4185,8 +4116,8 @@
     {
       "id": "topic-risks",
       "type": "text",
-      "x": 3193.5,
-      "y": 1916.4,
+      "x": 2440.8,
+      "y": 974.8,
       "w": 365.4,
       "h": 34,
       "text": "",
@@ -4199,6 +4130,1871 @@
       },
       "link": "risks",
       "layer": "doc"
+    },
+    {
+      "id": "asset-jlis",
+      "type": "asset",
+      "asset": "pop-bumper-3",
+      "w": 180,
+      "h": 118,
+      "at": {
+        "x": 0.5,
+        "y": 0.6175
+      },
+      "x": 1450,
+      "y": 2284.14,
+      "layer": "sm-play",
+      "name": "tree bumper",
+      "link": "setting"
+    },
+    {
+      "id": "asset-k8j4",
+      "type": "asset",
+      "asset": "pop-bumper-3",
+      "w": 180,
+      "h": 118,
+      "at": {
+        "x": 0.5,
+        "y": 0.6175
+      },
+      "x": 1540,
+      "y": 2149.14,
+      "layer": "sm-play",
+      "name": "tree bumper",
+      "link": "setting"
+    },
+    {
+      "id": "asset-oq54",
+      "type": "asset",
+      "asset": "pop-bumper-3",
+      "w": 180,
+      "h": 118,
+      "at": {
+        "x": 0.5,
+        "y": 0.6175
+      },
+      "x": 1720,
+      "y": 2299.14,
+      "layer": "sm-play",
+      "name": "tree bumper",
+      "link": "setting"
+    },
+    {
+      "id": "asset-62tk",
+      "type": "asset",
+      "asset": "pop-bumper-3",
+      "w": 180,
+      "h": 118,
+      "at": {
+        "x": 0.5,
+        "y": 0.6175
+      },
+      "x": 1210,
+      "y": 2314.14,
+      "layer": "sm-play",
+      "name": "tree bumper",
+      "link": "setting"
+    },
+    {
+      "id": "asset-qj6v",
+      "type": "asset",
+      "asset": "pop-bumper-3",
+      "w": 180,
+      "h": 118,
+      "at": {
+        "x": 0.5,
+        "y": 0.6175
+      },
+      "x": 1390,
+      "y": 2434.14,
+      "layer": "sm-play",
+      "name": "tree bumper",
+      "link": "setting"
+    },
+    {
+      "id": "asset-2vq5",
+      "type": "asset",
+      "asset": "pop-bumper-3",
+      "w": 180,
+      "h": 118,
+      "at": {
+        "x": 0.5,
+        "y": 0.6175
+      },
+      "x": 1570,
+      "y": 2374.14,
+      "layer": "sm-play",
+      "name": "tree bumper",
+      "link": "setting"
+    },
+    {
+      "id": "asset-wh5d",
+      "type": "asset",
+      "asset": "pop-bumper-3",
+      "w": 180,
+      "h": 118,
+      "at": {
+        "x": 0.5,
+        "y": 0.6175
+      },
+      "x": 1300,
+      "y": 2209.14,
+      "layer": "sm-play",
+      "name": "tree bumper",
+      "link": "setting"
+    },
+    {
+      "id": "asset-pa3f",
+      "type": "asset",
+      "asset": "cave-dungeon",
+      "w": 139,
+      "h": 105,
+      "at": {
+        "x": 0.3885,
+        "y": 0.6022
+      },
+      "x": 1936,
+      "y": 2098.77,
+      "layer": "sm-play",
+      "name": "cave: rail to the dragon's lair"
+    },
+    {
+      "id": "sm-dragon-toy",
+      "type": "asset",
+      "asset": "dragon-toy",
+      "w": 120,
+      "h": 124,
+      "at": {
+        "x": 0.5,
+        "y": 0.759
+      },
+      "x": 1930,
+      "y": 2082.88,
+      "layer": "sm-play",
+      "name": "dragon toy on the boss cave",
+      "link": "opposition"
+    },
+    {
+      "id": "asset-ytn0",
+      "type": "asset",
+      "asset": "cave-dungeon",
+      "w": 139,
+      "h": 105,
+      "at": {
+        "x": 0.3885,
+        "y": 0.6022
+      },
+      "x": 1456,
+      "y": 2128.77,
+      "layer": "sm-play",
+      "name": "cave: rail to tier 1"
+    },
+    {
+      "id": "asset-8prm",
+      "type": "asset",
+      "asset": "cave-dungeon",
+      "w": 139,
+      "h": 105,
+      "at": {
+        "x": 0.3885,
+        "y": 0.6022
+      },
+      "x": 1546,
+      "y": 2443.77,
+      "layer": "sm-play",
+      "name": "cave: rail to tier 2"
+    },
+    {
+      "id": "asset-r1jn",
+      "type": "asset",
+      "asset": "drop-target",
+      "x": 1450,
+      "y": 2199.14,
+      "w": 60,
+      "h": 53,
+      "at": {
+        "x": 0.5,
+        "y": 0.7143
+      },
+      "layer": "sm-play",
+      "name": "mob target 4"
+    },
+    {
+      "id": "sm-mob-3",
+      "type": "asset",
+      "asset": "drop-target",
+      "x": 1540,
+      "y": 2514.14,
+      "w": 60,
+      "h": 53,
+      "at": {
+        "x": 0.5,
+        "y": 0.7143
+      },
+      "layer": "sm-play",
+      "name": "mob target 4"
+    },
+    {
+      "id": "sm-lane-1",
+      "type": "asset",
+      "asset": "lane-guide",
+      "x": 1810,
+      "y": 2167.11,
+      "w": 90,
+      "h": 55,
+      "at": {
+        "x": 0.5,
+        "y": 0.589
+      },
+      "layer": "sm-play",
+      "name": "top lane guide 2"
+    },
+    {
+      "id": "sm-lane-2",
+      "type": "asset",
+      "asset": "lane-guide",
+      "x": 1870,
+      "y": 2197.11,
+      "w": 90,
+      "h": 55,
+      "at": {
+        "x": 0.5,
+        "y": 0.589
+      },
+      "layer": "sm-play",
+      "name": "top lane guide 3"
+    },
+    {
+      "id": "sm-lane-3",
+      "type": "asset",
+      "asset": "lane-guide",
+      "x": 1930,
+      "y": 2227.11,
+      "w": 90,
+      "h": 55,
+      "at": {
+        "x": 0.5,
+        "y": 0.589
+      },
+      "layer": "sm-play",
+      "name": "top lane guide 4"
+    },
+    {
+      "id": "dg-ground",
+      "type": "poly",
+      "layer": "dungeons",
+      "name": "ground, cut away",
+      "x": 0,
+      "y": 3150,
+      "w": 2880,
+      "h": 2610,
+      "pts": [
+        [
+          0,
+          0.008
+        ],
+        [
+          0.025,
+          0.013965641697413763
+        ],
+        [
+          0.05,
+          0.000050471970932284725
+        ],
+        [
+          0.075,
+          0.012627518115105594
+        ],
+        [
+          0.1,
+          0.00978311931280198
+        ],
+        [
+          0.125,
+          0.000996382602492572
+        ],
+        [
+          0.15,
+          0.015549565355552833
+        ],
+        [
+          0.175,
+          0.004943428662527953
+        ],
+        [
+          0.2,
+          0.004523475023424826
+        ],
+        [
+          0.225,
+          0.015689221796016933
+        ],
+        [
+          0.25,
+          0.0012302367665986348
+        ],
+        [
+          0.275,
+          0.009331840028297246
+        ],
+        [
+          0.3,
+          0.012995017083331152
+        ],
+        [
+          0.325,
+          0.00001203975468948304
+        ],
+        [
+          0.35,
+          0.013649355657442633
+        ],
+        [
+          0.375,
+          0.008459899824839396
+        ],
+        [
+          0.4,
+          0.0017378038915947646
+        ],
+        [
+          0.425,
+          0.015884802390325053
+        ],
+        [
+          0.45,
+          0.003755286577998371
+        ],
+        [
+          0.475,
+          0.0057714991502435435
+        ],
+        [
+          0.5,
+          0.015214306781190474
+        ],
+        [
+          0.525,
+          0.0006150616128291446
+        ],
+        [
+          0.55,
+          0.010626507950811175
+        ],
+        [
+          0.575,
+          0.011884979852518232
+        ],
+        [
+          0.6,
+          0.0001965542114125398
+        ],
+        [
+          0.625,
+          0.014513517772067443
+        ],
+        [
+          0.65,
+          0.00712384437717039
+        ],
+        [
+          0.675,
+          0.002654005192734237
+        ],
+        [
+          0.7,
+          0.015999971922764852
+        ],
+        [
+          0.725,
+          0.0026856158811656545
+        ],
+        [
+          0.75,
+          0.007081721489734502
+        ],
+        [
+          0.775,
+          0.014538038023327347
+        ],
+        [
+          0.8,
+          0.0002060025879480234
+        ],
+        [
+          0.825,
+          0.011847869147807095
+        ],
+        [
+          0.85,
+          0.010666511519639394
+        ],
+        [
+          0.875,
+          0.0005988654801886524
+        ],
+        [
+          0.9,
+          0.015195885401994015
+        ],
+        [
+          0.925,
+          0.005812242729359097
+        ],
+        [
+          0.95,
+          0.0037194150176232325
+        ],
+        [
+          0.975,
+          0.015891859532257205
+        ],
+        [
+          1,
+          0.0017642714430735626
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "fill": "#2b2320",
+      "stroke": "none"
+    },
+    {
+      "id": "dg-label",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 80,
+      "y": 3200,
+      "w": 430,
+      "h": 32,
+      "text": "Below the table",
+      "size": 21,
+      "weight": 700,
+      "color": "#c9b9a0",
+      "caps": true
+    },
+    {
+      "id": "dg-sub",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 80,
+      "y": 3236,
+      "w": 430,
+      "h": 84,
+      "text": "Each cave leads to one of the current tier’s 3 dungeon types. Shown: one type from each tier.",
+      "size": 17,
+      "color": "#c9b9a0"
+    },
+    {
+      "id": "d1-floor",
+      "type": "zone",
+      "layer": "dungeons",
+      "name": "Tier 1 · Goblin warren: under the table",
+      "x": 530,
+      "y": 3440,
+      "cols": 11,
+      "rows": 15,
+      "cell": 30,
+      "fill": "#2b2320",
+      "stroke": "none"
+    },
+    {
+      "id": "d1-table",
+      "type": "asset",
+      "asset": "dungeon-goblin-warren",
+      "w": 789,
+      "h": 419,
+      "at": {
+        "x": 0.5,
+        "y": 0.5287
+      },
+      "x": 75.5,
+      "y": 3413.47,
+      "layer": "dungeons",
+      "name": "Tier 1 · Goblin warren"
+    },
+    {
+      "id": "d1-title",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 80,
+      "y": 3866,
+      "w": 780,
+      "h": 28,
+      "text": "Tier 1 · Goblin warren",
+      "size": 19,
+      "weight": 700,
+      "color": "#f4efe6",
+      "caps": true,
+      "align": "center"
+    },
+    {
+      "id": "d1-body",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 120,
+      "y": 3898,
+      "w": 700,
+      "h": 50,
+      "text": "Break the 3 goblins (drop targets): the loot and the exit light.",
+      "size": 16,
+      "color": "#c9b9a0",
+      "align": "center"
+    },
+    {
+      "id": "d2-floor",
+      "type": "zone",
+      "layer": "dungeons",
+      "name": "Tier 2 · The crypt: under the table",
+      "x": 1390,
+      "y": 3440,
+      "cols": 11,
+      "rows": 15,
+      "cell": 30,
+      "fill": "#2b2320",
+      "stroke": "none"
+    },
+    {
+      "id": "d2-table",
+      "type": "asset",
+      "asset": "dungeon-crypt",
+      "w": 789,
+      "h": 419,
+      "at": {
+        "x": 0.5,
+        "y": 0.5287
+      },
+      "x": 935.5,
+      "y": 3413.47,
+      "layer": "dungeons",
+      "name": "Tier 2 · The crypt"
+    },
+    {
+      "id": "d2-title",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 940,
+      "y": 3866,
+      "w": 780,
+      "h": 28,
+      "text": "Tier 2 · The crypt",
+      "size": 19,
+      "weight": 700,
+      "color": "#f4efe6",
+      "caps": true,
+      "align": "center"
+    },
+    {
+      "id": "d2-body",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 980,
+      "y": 3898,
+      "w": 700,
+      "h": 50,
+      "text": "Hit the 4 skeletons in order; a wrong one raises them all.",
+      "size": 16,
+      "color": "#c9b9a0",
+      "align": "center"
+    },
+    {
+      "id": "lair-floor",
+      "type": "zone",
+      "layer": "dungeons",
+      "name": "The dragon's lair: under the table",
+      "x": 2280,
+      "y": 3440,
+      "cols": 15,
+      "rows": 16,
+      "cell": 30,
+      "fill": "#2b2320",
+      "stroke": "none"
+    },
+    {
+      "id": "lair-table",
+      "type": "asset",
+      "asset": "dungeon-dragon-lair",
+      "w": 939,
+      "h": 494,
+      "at": {
+        "x": 0.5,
+        "y": 0.5243
+      },
+      "x": 1795.5,
+      "y": 3413.5,
+      "layer": "dungeons",
+      "name": "The dragon's lair",
+      "link": "opposition"
+    },
+    {
+      "id": "lair-title",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 1800,
+      "y": 3941,
+      "w": 930,
+      "h": 28,
+      "text": "The dragon's lair",
+      "size": 19,
+      "weight": 700,
+      "color": "#f4efe6",
+      "caps": true,
+      "align": "center"
+    },
+    {
+      "id": "lair-body",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 1840,
+      "y": 3973,
+      "w": 850,
+      "h": 50,
+      "text": "The final boss. Layout A of 3, in detail below.",
+      "size": 16,
+      "color": "#c9b9a0",
+      "align": "center"
+    },
+    {
+      "id": "rail-d1-under",
+      "type": "line",
+      "layer": "rails",
+      "name": "rail to Tier 1 · Goblin warren, under the playfield",
+      "from": {
+        "x": 1510,
+        "y": 2192
+      },
+      "to": {
+        "x": 1510,
+        "y": 2717
+      },
+      "stroke": "#3b3733",
+      "strokeWidth": 4,
+      "dash": true,
+      "arrow": "none",
+      "opacity": 0.8
+    },
+    {
+      "id": "rail-d1-pipe",
+      "type": "poly",
+      "layer": "rails",
+      "name": "rail to Tier 1 · Goblin warren: pipe",
+      "x": 740,
+      "y": 2717,
+      "w": 770,
+      "h": 870,
+      "pts": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0.5552
+        ],
+        [
+          0,
+          0.5552
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#2a2623",
+      "strokeWidth": 16
+    },
+    {
+      "id": "rail-d1-tube",
+      "type": "poly",
+      "layer": "rails",
+      "name": "rail to Tier 1 · Goblin warren: tube",
+      "x": 740,
+      "y": 2717,
+      "w": 770,
+      "h": 870,
+      "pts": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0.5552
+        ],
+        [
+          0,
+          0.5552
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#9aa0a6",
+      "strokeWidth": 10
+    },
+    {
+      "id": "rail-d1-shine",
+      "type": "poly",
+      "layer": "rails",
+      "name": "rail to Tier 1 · Goblin warren: shine",
+      "x": 740,
+      "y": 2717,
+      "w": 770,
+      "h": 870,
+      "pts": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0.5552
+        ],
+        [
+          0,
+          0.5552
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#e6e9ec",
+      "strokeWidth": 2.5
+    },
+    {
+      "id": "rail-d2-under",
+      "type": "line",
+      "layer": "rails",
+      "name": "rail to Tier 2 · The crypt, under the playfield",
+      "from": {
+        "x": 1600,
+        "y": 2507
+      },
+      "to": {
+        "x": 1600,
+        "y": 2672
+      },
+      "stroke": "#3b3733",
+      "strokeWidth": 4,
+      "dash": true,
+      "arrow": "none",
+      "opacity": 0.8
+    },
+    {
+      "id": "rail-d2-pipe",
+      "type": "poly",
+      "layer": "rails",
+      "name": "rail to Tier 2 · The crypt: pipe",
+      "x": 1600,
+      "y": 2672,
+      "w": 0,
+      "h": 915,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0.6208
+        ],
+        [
+          0,
+          0.6208
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#2a2623",
+      "strokeWidth": 16
+    },
+    {
+      "id": "rail-d2-tube",
+      "type": "poly",
+      "layer": "rails",
+      "name": "rail to Tier 2 · The crypt: tube",
+      "x": 1600,
+      "y": 2672,
+      "w": 0,
+      "h": 915,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0.6208
+        ],
+        [
+          0,
+          0.6208
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#9aa0a6",
+      "strokeWidth": 10
+    },
+    {
+      "id": "rail-d2-shine",
+      "type": "poly",
+      "layer": "rails",
+      "name": "rail to Tier 2 · The crypt: shine",
+      "x": 1600,
+      "y": 2672,
+      "w": 0,
+      "h": 915,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0.6208
+        ],
+        [
+          0,
+          0.6208
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#e6e9ec",
+      "strokeWidth": 2.5
+    },
+    {
+      "id": "rail-lair-under",
+      "type": "line",
+      "layer": "rails",
+      "name": "rail to The dragon's lair, under the playfield",
+      "from": {
+        "x": 1990,
+        "y": 2162
+      },
+      "to": {
+        "x": 1990,
+        "y": 2477
+      },
+      "stroke": "#3b3733",
+      "strokeWidth": 4,
+      "dash": true,
+      "arrow": "none",
+      "opacity": 0.8
+    },
+    {
+      "id": "rail-lair-pipe",
+      "type": "poly",
+      "layer": "rails",
+      "name": "rail to The dragon's lair: pipe",
+      "x": 1990,
+      "y": 2477,
+      "w": 620,
+      "h": 1170,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0.6863
+        ],
+        [
+          1,
+          0.6863
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#2a2623",
+      "strokeWidth": 16
+    },
+    {
+      "id": "rail-lair-tube",
+      "type": "poly",
+      "layer": "rails",
+      "name": "rail to The dragon's lair: tube",
+      "x": 1990,
+      "y": 2477,
+      "w": 620,
+      "h": 1170,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0.6863
+        ],
+        [
+          1,
+          0.6863
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#9aa0a6",
+      "strokeWidth": 10
+    },
+    {
+      "id": "rail-lair-shine",
+      "type": "poly",
+      "layer": "rails",
+      "name": "rail to The dragon's lair: shine",
+      "x": 1990,
+      "y": 2477,
+      "w": 620,
+      "h": 1170,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0.6863
+        ],
+        [
+          1,
+          0.6863
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#e6e9ec",
+      "strokeWidth": 2.5
+    },
+    {
+      "id": "rail-note",
+      "type": "text",
+      "layer": "rails",
+      "x": 2140,
+      "y": 2990,
+      "w": 640,
+      "h": 50,
+      "text": "Rails down (chrome) and return rails up (copper); dashed where they run under the playfield.",
+      "size": 15,
+      "color": "#4a453e"
+    },
+    {
+      "id": "return-d1-pipe",
+      "type": "poly",
+      "layer": "rails",
+      "name": "return rail from Tier 1 · Goblin warren: pipe",
+      "x": 530,
+      "y": 2447,
+      "w": 1520,
+      "h": 1039,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0.6939
+        ],
+        [
+          1,
+          0.6939
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#2a2623",
+      "strokeWidth": 14
+    },
+    {
+      "id": "return-d1-tube",
+      "type": "poly",
+      "layer": "rails",
+      "name": "return rail from Tier 1 · Goblin warren: tube",
+      "x": 530,
+      "y": 2447,
+      "w": 1520,
+      "h": 1039,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0.6939
+        ],
+        [
+          1,
+          0.6939
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#b8733a",
+      "strokeWidth": 8
+    },
+    {
+      "id": "return-d1-shine",
+      "type": "poly",
+      "layer": "rails",
+      "name": "return rail from Tier 1 · Goblin warren: shine",
+      "x": 530,
+      "y": 2447,
+      "w": 1520,
+      "h": 1039,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0.6939
+        ],
+        [
+          1,
+          0.6939
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#e6b98a",
+      "strokeWidth": 2
+    },
+    {
+      "id": "return-d2-pipe",
+      "type": "poly",
+      "layer": "rails",
+      "name": "return rail from Tier 2 · The crypt: pipe",
+      "x": 1390,
+      "y": 3168,
+      "w": 0,
+      "h": 318,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#2a2623",
+      "strokeWidth": 14
+    },
+    {
+      "id": "return-d2-tube",
+      "type": "poly",
+      "layer": "rails",
+      "name": "return rail from Tier 2 · The crypt: tube",
+      "x": 1390,
+      "y": 3168,
+      "w": 0,
+      "h": 318,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#b8733a",
+      "strokeWidth": 8
+    },
+    {
+      "id": "return-d2-shine",
+      "type": "poly",
+      "layer": "rails",
+      "name": "return rail from Tier 2 · The crypt: shine",
+      "x": 1390,
+      "y": 3168,
+      "w": 0,
+      "h": 318,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#e6b98a",
+      "strokeWidth": 2
+    },
+    {
+      "id": "return-lair-pipe",
+      "type": "poly",
+      "layer": "rails",
+      "name": "return rail from The dragon's lair: pipe",
+      "x": 2050,
+      "y": 3168,
+      "w": 230,
+      "h": 318,
+      "pts": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#2a2623",
+      "strokeWidth": 14
+    },
+    {
+      "id": "return-lair-tube",
+      "type": "poly",
+      "layer": "rails",
+      "name": "return rail from The dragon's lair: tube",
+      "x": 2050,
+      "y": 3168,
+      "w": 230,
+      "h": 318,
+      "pts": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#b8733a",
+      "strokeWidth": 8
+    },
+    {
+      "id": "return-lair-shine",
+      "type": "poly",
+      "layer": "rails",
+      "name": "return rail from The dragon's lair: shine",
+      "x": 2050,
+      "y": 3168,
+      "w": 230,
+      "h": 318,
+      "pts": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#e6b98a",
+      "strokeWidth": 2
+    },
+    {
+      "id": "return-under",
+      "type": "line",
+      "layer": "rails",
+      "name": "return rail, under the playfield to the boss cave",
+      "from": {
+        "x": 2050,
+        "y": 2447
+      },
+      "to": {
+        "x": 2014,
+        "y": 2142
+      },
+      "stroke": "#b8733a",
+      "strokeWidth": 4,
+      "dash": true,
+      "arrow": "none",
+      "opacity": 0.9
+    },
+    {
+      "id": "lx-title",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 80,
+      "y": 4200,
+      "w": 1400,
+      "h": 44,
+      "text": "The dragon's lair · detail",
+      "size": 28,
+      "weight": 700,
+      "color": "#f4efe6",
+      "caps": true
+    },
+    {
+      "id": "lx-sub",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 80,
+      "y": 4248,
+      "w": 1400,
+      "h": 40,
+      "text": "Layout A of 3. 15 × 16 in, 1 tile = 1 in. The ball rolls in from the rail at the top; the camera follows it in.",
+      "size": 17,
+      "color": "#c9b9a0"
+    },
+    {
+      "id": "lx-floor",
+      "type": "zone",
+      "layer": "dungeons",
+      "name": "The dragon's lair: under the table",
+      "x": 1467,
+      "y": 4420,
+      "cols": 15,
+      "rows": 16,
+      "cell": 54,
+      "fill": "#2b2320",
+      "stroke": "none"
+    },
+    {
+      "id": "lx-table",
+      "type": "asset",
+      "asset": "dungeon-dragon-lair",
+      "w": 1690,
+      "h": 888,
+      "at": {
+        "x": 0.5,
+        "y": 0.5243
+      },
+      "x": 595,
+      "y": 4372.92,
+      "layer": "dungeons",
+      "name": "The dragon's lair",
+      "link": "opposition"
+    },
+    {
+      "id": "lx-arrow",
+      "type": "line",
+      "layer": "dungeons",
+      "name": "the lair, in detail",
+      "from": {
+        "x": 2525,
+        "y": 4005
+      },
+      "to": {
+        "x": 1587,
+        "y": 4300
+      },
+      "stroke": "#f2c230",
+      "strokeWidth": 5,
+      "arrow": "end",
+      "bend": -60
+    },
+    {
+      "id": "lx-c-l0",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 80,
+      "y": 4498,
+      "w": 420,
+      "h": 26,
+      "text": "Exit · sealed",
+      "size": 18,
+      "weight": 700,
+      "color": "#f4efe6",
+      "caps": true,
+      "align": "right"
+    },
+    {
+      "id": "lx-c-l0-body",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 80,
+      "y": 4526,
+      "w": 420,
+      "h": 50,
+      "text": "Opens when the dragon falls; a return rail takes the ball back to the main table.",
+      "size": 15.5,
+      "color": "#c9b9a0",
+      "align": "right"
+    },
+    {
+      "id": "lx-c-l0-lead",
+      "type": "line",
+      "layer": "dungeons",
+      "name": "callout line: exit · sealed",
+      "from": {
+        "x": 512,
+        "y": 4511
+      },
+      "to": {
+        "x": 1467,
+        "y": 4528
+      },
+      "stroke": "#c9b9a0",
+      "strokeWidth": 1.3,
+      "arrow": "none"
+    },
+    {
+      "id": "lx-c-l1",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 80,
+      "y": 4594,
+      "w": 420,
+      "h": 26,
+      "text": "Fire lane",
+      "size": 18,
+      "weight": 700,
+      "color": "#f4efe6",
+      "caps": true,
+      "align": "right"
+    },
+    {
+      "id": "lx-c-l1-body",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 80,
+      "y": 4622,
+      "w": 420,
+      "h": 50,
+      "text": "Spinner on the left orbit. Spins stoke the flames.",
+      "size": 15.5,
+      "color": "#c9b9a0",
+      "align": "right"
+    },
+    {
+      "id": "lx-c-l1-lead",
+      "type": "line",
+      "layer": "dungeons",
+      "name": "callout line: fire lane",
+      "from": {
+        "x": 512,
+        "y": 4607
+      },
+      "to": {
+        "x": 1332,
+        "y": 4595.5
+      },
+      "stroke": "#c9b9a0",
+      "strokeWidth": 1.3,
+      "arrow": "none"
+    },
+    {
+      "id": "lx-c-l2",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 80,
+      "y": 4690,
+      "w": 420,
+      "h": 26,
+      "text": "Burnt tree bumpers",
+      "size": 18,
+      "weight": 700,
+      "color": "#f4efe6",
+      "caps": true,
+      "align": "right"
+    },
+    {
+      "id": "lx-c-l2-body",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 80,
+      "y": 4718,
+      "w": 420,
+      "h": 50,
+      "text": "In the way, like the trees up top. No gold.",
+      "size": 15.5,
+      "color": "#c9b9a0",
+      "align": "right"
+    },
+    {
+      "id": "lx-c-l2-lead",
+      "type": "line",
+      "layer": "dungeons",
+      "name": "callout line: burnt tree bumpers",
+      "from": {
+        "x": 512,
+        "y": 4703
+      },
+      "to": {
+        "x": 1143,
+        "y": 4717
+      },
+      "stroke": "#c9b9a0",
+      "strokeWidth": 1.3,
+      "arrow": "none"
+    },
+    {
+      "id": "lx-c-l3",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 80,
+      "y": 4786,
+      "w": 420,
+      "h": 26,
+      "text": "Slingshots",
+      "size": 18,
+      "weight": 700,
+      "color": "#f4efe6",
+      "caps": true,
+      "align": "right"
+    },
+    {
+      "id": "lx-c-l3-body",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 80,
+      "y": 4814,
+      "w": 420,
+      "h": 50,
+      "text": "Keep the ball moving across the lower field.",
+      "size": 15.5,
+      "color": "#c9b9a0",
+      "align": "right"
+    },
+    {
+      "id": "lx-c-l3-lead",
+      "type": "line",
+      "layer": "dungeons",
+      "name": "callout line: slingshots",
+      "from": {
+        "x": 512,
+        "y": 4799
+      },
+      "to": {
+        "x": 954,
+        "y": 4811.5
+      },
+      "stroke": "#c9b9a0",
+      "strokeWidth": 1.3,
+      "arrow": "none"
+    },
+    {
+      "id": "lx-c-r0",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 2380,
+      "y": 4687,
+      "w": 420,
+      "h": 26,
+      "text": "The dragon",
+      "size": 18,
+      "weight": 700,
+      "color": "#f4efe6",
+      "caps": true,
+      "align": "left"
+    },
+    {
+      "id": "lx-c-r0-body",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 2380,
+      "y": 4715,
+      "w": 420,
+      "h": 50,
+      "text": "Final boss: a moving, evading target sitting on its hoard (and the tome).",
+      "size": 15.5,
+      "color": "#c9b9a0",
+      "align": "left"
+    },
+    {
+      "id": "lx-c-r0-lead",
+      "type": "line",
+      "layer": "dungeons",
+      "name": "callout line: the dragon",
+      "from": {
+        "x": 2368,
+        "y": 4700
+      },
+      "to": {
+        "x": 1683,
+        "y": 4717
+      },
+      "stroke": "#c9b9a0",
+      "strokeWidth": 1.3,
+      "arrow": "none"
+    },
+    {
+      "id": "lx-c-r1",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 2380,
+      "y": 4795,
+      "w": 420,
+      "h": 26,
+      "text": "Rail drop",
+      "size": 18,
+      "weight": 700,
+      "color": "#f4efe6",
+      "caps": true,
+      "align": "left"
+    },
+    {
+      "id": "lx-c-r1-body",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 2380,
+      "y": 4823,
+      "w": 420,
+      "h": 50,
+      "text": "Where the ball lands from the cave above.",
+      "size": 15.5,
+      "color": "#c9b9a0",
+      "align": "left"
+    },
+    {
+      "id": "lx-c-r1-lead",
+      "type": "line",
+      "layer": "dungeons",
+      "name": "callout line: rail drop",
+      "from": {
+        "x": 2368,
+        "y": 4808
+      },
+      "to": {
+        "x": 2061,
+        "y": 4825
+      },
+      "stroke": "#c9b9a0",
+      "strokeWidth": 1.3,
+      "arrow": "none"
+    },
+    {
+      "id": "lx-c-r2",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 2380,
+      "y": 4891,
+      "w": 420,
+      "h": 26,
+      "text": "Scales ×4",
+      "size": 18,
+      "weight": 700,
+      "color": "#f4efe6",
+      "caps": true,
+      "align": "left"
+    },
+    {
+      "id": "lx-c-r2-body",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 2380,
+      "y": 4919,
+      "w": 420,
+      "h": 50,
+      "text": "Drop targets guarding it. Knock all 4 down to expose it.",
+      "size": 15.5,
+      "color": "#c9b9a0",
+      "align": "left"
+    },
+    {
+      "id": "lx-c-r2-lead",
+      "type": "line",
+      "layer": "dungeons",
+      "name": "callout line: scales ×4",
+      "from": {
+        "x": 2368,
+        "y": 4904
+      },
+      "to": {
+        "x": 1521,
+        "y": 4852
+      },
+      "stroke": "#c9b9a0",
+      "strokeWidth": 1.3,
+      "arrow": "none"
+    },
+    {
+      "id": "lx-c-r3",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 2380,
+      "y": 4987,
+      "w": 420,
+      "h": 26,
+      "text": "Loot ×3",
+      "size": 18,
+      "weight": 700,
+      "color": "#f4efe6",
+      "caps": true,
+      "align": "left"
+    },
+    {
+      "id": "lx-c-r3-body",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 2380,
+      "y": 5015,
+      "w": 420,
+      "h": 50,
+      "text": "Light when the dragon falls: hit 1 of 3, or take the exit.",
+      "size": 15.5,
+      "color": "#c9b9a0",
+      "align": "left"
+    },
+    {
+      "id": "lx-c-r3-lead",
+      "type": "line",
+      "layer": "dungeons",
+      "name": "callout line: loot ×3",
+      "from": {
+        "x": 2368,
+        "y": 5000
+      },
+      "to": {
+        "x": 1899,
+        "y": 4933
+      },
+      "stroke": "#c9b9a0",
+      "strokeWidth": 1.3,
+      "arrow": "none"
+    },
+    {
+      "id": "lx-c-r4",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 2380,
+      "y": 5083,
+      "w": 420,
+      "h": 26,
+      "text": "Flippers",
+      "size": 18,
+      "weight": 700,
+      "color": "#f4efe6",
+      "caps": true,
+      "align": "left"
+    },
+    {
+      "id": "lx-c-r4-body",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 2380,
+      "y": 5111,
+      "w": 420,
+      "h": 50,
+      "text": "The lair’s own pair. A drain here costs a life, both items and all gold.",
+      "size": 15.5,
+      "color": "#c9b9a0",
+      "align": "left"
+    },
+    {
+      "id": "lx-c-r4-lead",
+      "type": "line",
+      "layer": "dungeons",
+      "name": "callout line: flippers",
+      "from": {
+        "x": 2368,
+        "y": 5096
+      },
+      "to": {
+        "x": 1197,
+        "y": 5068
+      },
+      "stroke": "#c9b9a0",
+      "strokeWidth": 1.3,
+      "arrow": "none"
+    },
+    {
+      "id": "lx-shot-l-dragon",
+      "type": "line",
+      "layer": "dungeons",
+      "name": "shot: left flipper → the dragon",
+      "on": "lx-floor",
+      "from": {
+        "x": 981,
+        "y": 4960
+      },
+      "to": {
+        "x": 1683,
+        "y": 4717
+      },
+      "stroke": "#2f6fd6",
+      "strokeWidth": 3.5,
+      "arrow": "end"
+    },
+    {
+      "id": "lx-shot-l-loot",
+      "type": "line",
+      "layer": "dungeons",
+      "name": "shot: left flipper → loot",
+      "on": "lx-floor",
+      "from": {
+        "x": 981,
+        "y": 4960
+      },
+      "to": {
+        "x": 1899,
+        "y": 4933
+      },
+      "stroke": "#2f6fd6",
+      "strokeWidth": 3.5,
+      "arrow": "end"
+    },
+    {
+      "id": "lx-shot-r-scales",
+      "type": "line",
+      "layer": "dungeons",
+      "name": "shot: right flipper → scales",
+      "on": "lx-floor",
+      "from": {
+        "x": 1197,
+        "y": 5068
+      },
+      "to": {
+        "x": 1305,
+        "y": 4744
+      },
+      "stroke": "#d6332f",
+      "strokeWidth": 3.5,
+      "arrow": "end"
+    },
+    {
+      "id": "lx-shot-r-exit",
+      "type": "line",
+      "layer": "dungeons",
+      "name": "shot: right flipper → exit",
+      "on": "lx-floor",
+      "from": {
+        "x": 1197,
+        "y": 5068
+      },
+      "to": {
+        "x": 1467,
+        "y": 4528
+      },
+      "stroke": "#d6332f",
+      "strokeWidth": 3.5,
+      "arrow": "end"
+    },
+    {
+      "id": "lx-key-l",
+      "type": "line",
+      "layer": "dungeons",
+      "name": "key: left flipper shot",
+      "from": {
+        "x": 90,
+        "y": 5347
+      },
+      "to": {
+        "x": 150,
+        "y": 5347
+      },
+      "stroke": "#2f6fd6",
+      "strokeWidth": 3.5,
+      "arrow": "end"
+    },
+    {
+      "id": "lx-key-l-t",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 165,
+      "y": 5334,
+      "w": 300,
+      "h": 26,
+      "text": "from the left flipper",
+      "size": 15,
+      "color": "#c9b9a0"
+    },
+    {
+      "id": "lx-key-r",
+      "type": "line",
+      "layer": "dungeons",
+      "name": "key: right flipper shot",
+      "from": {
+        "x": 90,
+        "y": 5383
+      },
+      "to": {
+        "x": 150,
+        "y": 5383
+      },
+      "stroke": "#d6332f",
+      "strokeWidth": 3.5,
+      "arrow": "end"
+    },
+    {
+      "id": "lx-key-r-t",
+      "type": "text",
+      "layer": "dungeons",
+      "x": 165,
+      "y": 5370,
+      "w": 300,
+      "h": 26,
+      "text": "from the right flipper",
+      "size": 15,
+      "color": "#c9b9a0"
     }
   ]
 }

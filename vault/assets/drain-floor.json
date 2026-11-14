@@ -1,0 +1,36 @@
+{
+  "kind": "block",
+  "title": "Drain",
+  "updated": "2026-11-14",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "rect-ffvl",
+      "type": "rect",
+      "name": "tile",
+      "layer": "base",
+      "plane": "floor",
+      "x": 512,
+      "y": 576,
+      "w": 64,
+      "h": 64,
+      "fill": "#141110",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    }
+  ],
+  "part": "floor",
+  "layers": [
+    {
+      "id": "base",
+      "name": "Tile"
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "kind": "block",
+  "title": "Lair floor",
+  "updated": "2026-11-14",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "rect-frop",
+      "type": "rect",
+      "name": "tile",
+      "layer": "base",
+      "plane": "floor",
+      "x": 512,
+      "y": 576,
+      "w": 64,
+      "h": 64,
+      "fill": "#5a2c22",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "mark-0",
+      "type": "poly",
+      "layer": "base",
+      "plane": "floor",
+      "x": 505.6,
+      "y": 585.6,
+      "w": 32,
+      "h": 44.8,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0.4285714285714286
+        ],
+        [
+          0.8,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#e0662a",
+      "strokeWidth": 3
+    },
+    {
+      "id": "mark-1",
+      "type": "poly",
+      "layer": "base",
+      "plane": "floor",
+      "x": 448,
+      "y": 416,
+      "w": 76.8,
+      "h": 102.4,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0.5833333333333335,
+          0.24999999999999994
+        ],
+        [
+          0.4166666666666667,
+          0.6875
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#e0662a",
+      "strokeWidth": 3
+    },
+    {
+      "id": "mark-2",
+      "type": "poly",
+      "layer": "base",
+      "plane": "floor",
+      "x": 486.4,
+      "y": 268.8,
+      "w": 89.6,
+      "h": 32,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0.5000000000000001,
+          1
+        ],
+        [
+          1,
+          0.3999999999999986
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#e0662a",
+      "strokeWidth": 3
+    },
+    {
+      "id": "mark-3",
+      "type": "ellipse",
+      "layer": "base",
+      "plane": "floor",
+      "x": 665.6,
+      "y": 409.6,
+      "w": 25.6,
+      "h": 25.6,
+      "fill": "#3e1d17",
+      "stroke": "none"
+    }
+  ],
+  "part": "floor",
+  "layers": [
+    {
+      "id": "base",
+      "name": "Tile"
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  }
+}

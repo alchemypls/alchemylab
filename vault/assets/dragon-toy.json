@@ -1,0 +1,183 @@
+{
+  "kind": "block",
+  "title": "Dragon toy (on the boss cave)",
+  "updated": "2026-11-14",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "body",
+      "type": "ellipse",
+      "x": 518.4,
+      "y": 595.2,
+      "w": 83.2,
+      "h": 83.2,
+      "fill": "#9e2a22",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "roof",
+      "lift": 64,
+      "height": 28.8
+    },
+    {
+      "id": "back",
+      "type": "ellipse",
+      "x": 518.4,
+      "y": 611.2,
+      "w": 51.2,
+      "h": 51.2,
+      "fill": "#d9774a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "roof",
+      "lift": 92.8
+    },
+    {
+      "id": "wing-l",
+      "type": "ellipse",
+      "plane": "right",
+      "x": 454.4,
+      "y": 476.8,
+      "w": 76.8,
+      "h": 76.8,
+      "fill": "#6e1b16",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "wing-r",
+      "type": "ellipse",
+      "plane": "left",
+      "x": 505.6,
+      "y": 444.8,
+      "w": 76.8,
+      "h": 76.8,
+      "fill": "#6e1b16",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "neck",
+      "type": "rect",
+      "x": 499.2,
+      "y": 505.6,
+      "w": 25.6,
+      "h": 70.4,
+      "fill": "#9e2a22",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "upright": true,
+      "base": 83.2
+    },
+    {
+      "id": "head",
+      "type": "ellipse",
+      "x": 486.4,
+      "y": 489.6,
+      "w": 51.2,
+      "h": 32,
+      "fill": "#9e2a22",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "upright": true,
+      "base": 147.2
+    },
+    {
+      "id": "jaw",
+      "type": "ellipse",
+      "x": 489.6,
+      "y": 528.3,
+      "w": 38.4,
+      "h": 14.1,
+      "fill": "#d9774a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "upright": true,
+      "base": 134.4
+    },
+    {
+      "id": "mouth",
+      "type": "ellipse",
+      "x": 494.4,
+      "y": 517.4,
+      "w": 28.8,
+      "h": 9,
+      "fill": "#1f1b16",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "upright": true,
+      "base": 147.2
+    },
+    {
+      "id": "horn-l",
+      "type": "ellipse",
+      "x": 502.4,
+      "y": 464,
+      "w": 6.4,
+      "h": 22.4,
+      "fill": "#e8dcc0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "upright": true,
+      "base": 172.8
+    },
+    {
+      "id": "horn-r",
+      "type": "ellipse",
+      "x": 528,
+      "y": 476.8,
+      "w": 6.4,
+      "h": 22.4,
+      "fill": "#e8dcc0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "upright": true,
+      "base": 172.8
+    },
+    {
+      "id": "eye-l",
+      "type": "ellipse",
+      "x": 496.7,
+      "y": 493.4,
+      "w": 7.7,
+      "h": 7.7,
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "upright": true,
+      "base": 165.1
+    },
+    {
+      "id": "eye-r",
+      "type": "ellipse",
+      "x": 515.9,
+      "y": 503,
+      "w": 7.7,
+      "h": 7.7,
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "upright": true,
+      "base": 165.1
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  },
+  "footprint": {
+    "cols": 2,
+    "rows": 2
+  },
+  "dims": {
+    "in": [
+      2,
+      2,
+      2.2
+    ],
+    "estimated": true,
+    "note": "Sits on the boss cave; the jaw snaps at the ball coming out of the return rail."
+  }
+}

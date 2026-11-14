@@ -1,0 +1,104 @@
+{
+  "kind": "block",
+  "title": "Crypt floor",
+  "updated": "2026-11-14",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "rect-9n2n",
+      "type": "rect",
+      "name": "tile",
+      "layer": "base",
+      "plane": "floor",
+      "x": 512,
+      "y": 576,
+      "w": 64,
+      "h": 64,
+      "fill": "#77726a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "mark-0",
+      "type": "poly",
+      "layer": "base",
+      "plane": "floor",
+      "x": 576,
+      "y": 416,
+      "w": 57.599999999999994,
+      "h": 76.8,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0.6666666666666669,
+          0.33333333333333326
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#5f5a52",
+      "strokeWidth": 3
+    },
+    {
+      "id": "mark-1",
+      "type": "poly",
+      "layer": "base",
+      "plane": "floor",
+      "x": 249.60000000000002,
+      "y": 400,
+      "w": 76.79999999999998,
+      "h": 31.999999999999996,
+      "pts": [
+        [
+          0,
+          0.19999999999999998
+        ],
+        [
+          0.5833333333333336,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#5f5a52",
+      "strokeWidth": 3
+    },
+    {
+      "id": "mark-2",
+      "type": "ellipse",
+      "layer": "base",
+      "plane": "floor",
+      "x": 576,
+      "y": 315.2,
+      "w": 22.4,
+      "h": 22.4,
+      "fill": "#8f897c",
+      "stroke": "none"
+    }
+  ],
+  "part": "floor",
+  "layers": [
+    {
+      "id": "base",
+      "name": "Tile"
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  }
+}

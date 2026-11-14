@@ -1,0 +1,645 @@
+{
+  "title": "Platform & Tech",
+  "kicker": "Topic",
+  "updated": "2026-11-14",
+  "background": "#f4efe6",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "title",
+      "type": "text",
+      "x": 56,
+      "y": 36,
+      "w": 1300,
+      "h": 82,
+      "text": "",
+      "size": 60,
+      "weight": 600,
+      "font": "serif",
+      "bind": {
+        "topic": "platform",
+        "field": "title"
+      }
+    },
+    {
+      "id": "status",
+      "type": "status",
+      "x": 1840,
+      "y": 64,
+      "size": 22,
+      "topic": "platform"
+    },
+    {
+      "id": "back",
+      "type": "text",
+      "x": 1560,
+      "y": 52,
+      "w": 260,
+      "h": 40,
+      "text": "← Overview",
+      "size": 20,
+      "weight": 600,
+      "align": "right",
+      "valign": "middle",
+      "link": "index"
+    },
+    {
+      "id": "summary",
+      "type": "text",
+      "x": 56,
+      "y": 120,
+      "w": 1808,
+      "h": 104,
+      "text": "",
+      "size": 18,
+      "color": "#6b6257",
+      "bind": {
+        "topic": "platform",
+        "field": "summary"
+      }
+    },
+    {
+      "id": "rule",
+      "type": "line",
+      "name": "header rule",
+      "from": {
+        "x": 56,
+        "y": 236
+      },
+      "to": {
+        "x": 1864,
+        "y": 236
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "arrow": "none"
+    },
+    {
+      "id": "hand-label",
+      "type": "text",
+      "x": 56,
+      "y": 256,
+      "w": 900,
+      "h": 30,
+      "text": "Simulated vs scripted: a ball between tables",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "tab-a",
+      "type": "rect",
+      "name": "main table: simulated",
+      "x": 56,
+      "y": 316,
+      "w": 330,
+      "h": 230,
+      "fill": "#c9a36b",
+      "stroke": "#2f6fd6",
+      "strokeWidth": 4,
+      "radius": 10
+    },
+    {
+      "id": "tab-a-t",
+      "type": "text",
+      "x": 72,
+      "y": 328,
+      "w": 298,
+      "h": 28,
+      "text": "Main table",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "tab-a-sub",
+      "type": "text",
+      "x": 72,
+      "y": 358,
+      "w": 298,
+      "h": 26,
+      "text": "Ball, flippers, targets: real physics",
+      "size": 15,
+      "color": "#3b2f1e"
+    },
+    {
+      "id": "tab-a-fl",
+      "type": "capsule",
+      "name": "left flipper",
+      "x": 156,
+      "y": 506,
+      "w": 60,
+      "h": 14,
+      "taper": 0.5,
+      "fill": "#b3202a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "rotate": 20
+    },
+    {
+      "id": "tab-a-fr",
+      "type": "capsule",
+      "name": "right flipper",
+      "x": 228,
+      "y": 506,
+      "w": 60,
+      "h": 14,
+      "taper": 0.5,
+      "fill": "#b3202a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "rotate": 160
+    },
+    {
+      "id": "tab-a-tag",
+      "type": "text",
+      "x": 72,
+      "y": 552,
+      "w": 298,
+      "h": 24,
+      "text": "simulated: 2D physics (C++)",
+      "size": 14,
+      "weight": 700,
+      "color": "#2f6fd6",
+      "caps": true
+    },
+    {
+      "id": "tab-b",
+      "type": "rect",
+      "name": "dungeon table: simulated",
+      "x": 850,
+      "y": 316,
+      "w": 330,
+      "h": 230,
+      "fill": "#c9a36b",
+      "stroke": "#2f6fd6",
+      "strokeWidth": 4,
+      "radius": 10
+    },
+    {
+      "id": "tab-b-t",
+      "type": "text",
+      "x": 866,
+      "y": 328,
+      "w": 298,
+      "h": 28,
+      "text": "Dungeon table",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "tab-b-sub",
+      "type": "text",
+      "x": 866,
+      "y": 358,
+      "w": 298,
+      "h": 26,
+      "text": "Its own 2D plane, its own flippers",
+      "size": 15,
+      "color": "#3b2f1e"
+    },
+    {
+      "id": "tab-b-fl",
+      "type": "capsule",
+      "name": "left flipper",
+      "x": 950,
+      "y": 506,
+      "w": 60,
+      "h": 14,
+      "taper": 0.5,
+      "fill": "#b3202a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "rotate": 20
+    },
+    {
+      "id": "tab-b-fr",
+      "type": "capsule",
+      "name": "right flipper",
+      "x": 1022,
+      "y": 506,
+      "w": 60,
+      "h": 14,
+      "taper": 0.5,
+      "fill": "#b3202a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "rotate": 160
+    },
+    {
+      "id": "tab-b-tag",
+      "type": "text",
+      "x": 866,
+      "y": 552,
+      "w": 298,
+      "h": 24,
+      "text": "simulated: 2D physics (C++)",
+      "size": 14,
+      "weight": 700,
+      "color": "#2f6fd6",
+      "caps": true
+    },
+    {
+      "id": "ball-a",
+      "type": "ellipse",
+      "name": "the ball, on the main table",
+      "x": 300,
+      "y": 356,
+      "w": 20,
+      "h": 20,
+      "fill": "#c7ccd1",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "cave-a",
+      "type": "poly",
+      "name": "cave",
+      "x": 320,
+      "y": 330,
+      "w": 50,
+      "h": 36,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.1,
+          0.35
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.9,
+          0.35
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#d8cfc0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "path",
+      "type": "line",
+      "name": "rail: a scripted path",
+      "from": {
+        "x": 372,
+        "y": 350
+      },
+      "to": {
+        "x": 846,
+        "y": 420
+      },
+      "stroke": "#b8733a",
+      "strokeWidth": 8,
+      "arrow": "end",
+      "bend": -40
+    },
+    {
+      "id": "path-t",
+      "type": "text",
+      "x": 420,
+      "y": 430,
+      "w": 400,
+      "h": 80,
+      "text": "Rail, ramp or drop: a scripted path. The ball follows it on a timer, the camera follows the ball.",
+      "size": 15,
+      "color": "#7a4a22",
+      "align": "center"
+    },
+    {
+      "id": "path-tag",
+      "type": "text",
+      "x": 420,
+      "y": 402,
+      "w": 400,
+      "h": 24,
+      "text": "scripted",
+      "size": 14,
+      "weight": 700,
+      "color": "#b8733a",
+      "caps": true,
+      "align": "center"
+    },
+    {
+      "id": "hand-note",
+      "type": "text",
+      "x": 56,
+      "y": 592,
+      "w": 1124,
+      "h": 52,
+      "text": "Only playfields are simulated. Ramps on a table are scripted too: they hand the ball back at a set spot and speed, so a shot always comes out the same.",
+      "size": 16,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "stack-label",
+      "type": "text",
+      "x": 56,
+      "y": 668,
+      "w": 900,
+      "h": 30,
+      "text": "The stack",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "stack-0",
+      "type": "rect",
+      "name": "stack: godot",
+      "x": 56,
+      "y": 708,
+      "w": 358,
+      "h": 170,
+      "fill": "#fbf8f2",
+      "stroke": "#478cbf",
+      "strokeWidth": 3,
+      "radius": 10
+    },
+    {
+      "id": "stack-0-bar",
+      "type": "rect",
+      "name": "stack: godot band",
+      "x": 56,
+      "y": 708,
+      "w": 358,
+      "h": 10,
+      "fill": "#478cbf",
+      "stroke": "none",
+      "radius": 4
+    },
+    {
+      "id": "stack-0-t",
+      "type": "text",
+      "x": 74,
+      "y": 732,
+      "w": 322,
+      "h": 30,
+      "text": "Godot",
+      "size": 20,
+      "weight": 700
+    },
+    {
+      "id": "stack-0-b",
+      "type": "text",
+      "x": 74,
+      "y": 768,
+      "w": 322,
+      "h": 100,
+      "text": "Scenes, the 3D look, the camera, sound, the display above the table, scripted paths.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "stack-1",
+      "type": "rect",
+      "name": "stack: c++ extension",
+      "x": 438,
+      "y": 708,
+      "w": 358,
+      "h": 170,
+      "fill": "#fbf8f2",
+      "stroke": "#2f6fd6",
+      "strokeWidth": 3,
+      "radius": 10
+    },
+    {
+      "id": "stack-1-bar",
+      "type": "rect",
+      "name": "stack: c++ extension band",
+      "x": 438,
+      "y": 708,
+      "w": 358,
+      "h": 10,
+      "fill": "#2f6fd6",
+      "stroke": "none",
+      "radius": 4
+    },
+    {
+      "id": "stack-1-t",
+      "type": "text",
+      "x": 456,
+      "y": 732,
+      "w": 322,
+      "h": 30,
+      "text": "C++ extension",
+      "size": 20,
+      "weight": 700
+    },
+    {
+      "id": "stack-1-b",
+      "type": "text",
+      "x": 456,
+      "y": 768,
+      "w": 322,
+      "h": 100,
+      "text": "The pinball physics: ball, flippers, collisions, a fixed time step. Tuned for feel.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "stack-2",
+      "type": "rect",
+      "name": "stack: builds",
+      "x": 820,
+      "y": 708,
+      "w": 358,
+      "h": 170,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 3,
+      "radius": 10
+    },
+    {
+      "id": "stack-2-bar",
+      "type": "rect",
+      "name": "stack: builds band",
+      "x": 820,
+      "y": 708,
+      "w": 358,
+      "h": 10,
+      "fill": "#b4532a",
+      "stroke": "none",
+      "radius": 4
+    },
+    {
+      "id": "stack-2-t",
+      "type": "text",
+      "x": 838,
+      "y": 732,
+      "w": 322,
+      "h": 30,
+      "text": "Builds",
+      "size": 20,
+      "weight": 700
+    },
+    {
+      "id": "stack-2-b",
+      "type": "text",
+      "x": 838,
+      "y": 768,
+      "w": 322,
+      "h": 100,
+      "text": "PC (Windows, Linux, Mac) and the web on itch.io: a portfolio visitor plays in one click.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "decided-label",
+      "type": "text",
+      "x": 1240,
+      "y": 256,
+      "w": 624,
+      "h": 30,
+      "text": "Decided",
+      "size": 19,
+      "weight": 700,
+      "color": "#b4532a",
+      "caps": true
+    },
+    {
+      "id": "decided-bar",
+      "type": "rect",
+      "name": "decided accent",
+      "x": 1240,
+      "y": 292,
+      "w": 6,
+      "h": 135,
+      "fill": "#b4532a"
+    },
+    {
+      "id": "decided",
+      "type": "text",
+      "x": 1260,
+      "y": 292,
+      "w": 604,
+      "h": 135,
+      "text": "• Godot, with the pinball physics as a C++ extension.\n• Each table is its own 2D physics plane, drawn in 3D.\n• Only playfields are simulated; ramps, rails and drops are scripted paths.\n• Builds for PC and the web (itch.io).",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "fits-label",
+      "type": "text",
+      "x": 1240,
+      "y": 455,
+      "w": 624,
+      "h": 30,
+      "text": "How it fits",
+      "size": 19,
+      "weight": 700,
+      "color": "#5b5f63",
+      "caps": true
+    },
+    {
+      "id": "fits-bar",
+      "type": "rect",
+      "name": "how it fits accent",
+      "x": 1240,
+      "y": 491,
+      "w": 6,
+      "h": 189,
+      "fill": "#5b5f63"
+    },
+    {
+      "id": "fits",
+      "type": "text",
+      "x": 1260,
+      "y": 491,
+      "w": 604,
+      "h": 189,
+      "text": "• Pillar 3, pure pinball: the playfield is real physics.\n• Camera: it follows the ball along a rail, then settles on the next table.\n• Business: a free portfolio piece, playable in the browser.\n• Risks: physics feel is the top risk, so it gets the C++ and the tuning.",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "open-label",
+      "type": "text",
+      "x": 1240,
+      "y": 708,
+      "w": 624,
+      "h": 30,
+      "text": "Open",
+      "size": 19,
+      "weight": 700,
+      "color": "#2f6fd6",
+      "caps": true
+    },
+    {
+      "id": "open-bar",
+      "type": "rect",
+      "name": "open accent",
+      "x": 1240,
+      "y": 744,
+      "w": 6,
+      "h": 81,
+      "fill": "#2f6fd6"
+    },
+    {
+      "id": "open",
+      "type": "text",
+      "x": 1260,
+      "y": 744,
+      "w": 604,
+      "h": 81,
+      "text": "• The web build needs the C++ extension compiled for the browser: prove it early in the prototype.\n• The physics step rate and how flippers feel at it.",
+      "size": 18,
+      "color": "#1f1b16"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "k-engine",
+      "kind": "decision",
+      "text": "Godot, with the pinball physics as a C++ extension.",
+      "why": "Godot for speed to a prototype; C++ where feel depends on it."
+    },
+    {
+      "id": "k-physics",
+      "kind": "decision",
+      "text": "Each table is its own 2D physics plane drawn in 3D; only playfields are simulated."
+    },
+    {
+      "id": "k-paths",
+      "kind": "decision",
+      "text": "Ramps, rails and drops between tables are scripted paths that hand the ball back at a set spot and speed.",
+      "why": "A shot always comes out the same: tunable, and no 3D tunneling or jitter."
+    },
+    {
+      "id": "k-builds",
+      "kind": "decision",
+      "text": "Builds for PC and the web (itch.io).",
+      "why": "A portfolio visitor can play in one click."
+    },
+    {
+      "id": "k-web",
+      "kind": "question",
+      "text": "Does the C++ extension build and run in the web export? Prove it early."
+    },
+    {
+      "id": "k-step",
+      "kind": "question",
+      "text": "Physics step rate, and how the flippers feel at it."
+    }
+  ],
+  "agent": {
+    "brief": "Godot project; the ball and flipper physics live in a C++ GDExtension with a fixed time step. Each table is a separate 2D physics plane rendered in 3D. Anything off a playfield (ramps, rails, cave drops, return rails) is a scripted path with a fixed exit point and speed.",
+    "rules": [
+      "Never simulate ramps or rails: script them.",
+      "Keep both PC and web builds working."
+    ],
+    "open": [
+      "Web export with the C++ extension",
+      "Physics step rate"
+    ]
+  }
+}

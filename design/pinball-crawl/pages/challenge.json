@@ -1,0 +1,1187 @@
+{
+  "title": "Challenge",
+  "kicker": "Topic",
+  "updated": "2026-11-14",
+  "background": "#f4efe6",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "title",
+      "type": "text",
+      "x": 56,
+      "y": 36,
+      "w": 1300,
+      "h": 82,
+      "text": "",
+      "size": 60,
+      "weight": 600,
+      "font": "serif",
+      "bind": {
+        "topic": "challenge",
+        "field": "title"
+      }
+    },
+    {
+      "id": "status",
+      "type": "status",
+      "x": 1840,
+      "y": 64,
+      "size": 22,
+      "topic": "challenge"
+    },
+    {
+      "id": "back",
+      "type": "text",
+      "x": 1560,
+      "y": 52,
+      "w": 260,
+      "h": 40,
+      "text": "← Overview",
+      "size": 20,
+      "weight": 600,
+      "align": "right",
+      "valign": "middle",
+      "link": "index"
+    },
+    {
+      "id": "summary",
+      "type": "text",
+      "x": 56,
+      "y": 120,
+      "w": 1808,
+      "h": 104,
+      "text": "",
+      "size": 18,
+      "color": "#6b6257",
+      "bind": {
+        "topic": "challenge",
+        "field": "summary"
+      }
+    },
+    {
+      "id": "rule",
+      "type": "line",
+      "name": "header rule",
+      "from": {
+        "x": 56,
+        "y": 236
+      },
+      "to": {
+        "x": 1864,
+        "y": 236
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "arrow": "none"
+    },
+    {
+      "id": "hits-label",
+      "type": "text",
+      "x": 56,
+      "y": 256,
+      "w": 900,
+      "h": 30,
+      "text": "A hit, step by step: an armored mob",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "f0-card",
+      "type": "rect",
+      "name": "hit step 1: armor 2 · health 1",
+      "x": 56,
+      "y": 296,
+      "w": 252,
+      "h": 300,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "f0-floor",
+      "type": "rect",
+      "name": "playfield line",
+      "x": 86,
+      "y": 468,
+      "w": 192,
+      "h": 4,
+      "fill": "#c9a36b",
+      "stroke": "none"
+    },
+    {
+      "id": "f0-target",
+      "type": "rect",
+      "name": "mob (drop target)",
+      "x": 142,
+      "y": 336,
+      "w": 80,
+      "h": 132,
+      "fill": "#d6332f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 4
+    },
+    {
+      "id": "f0-plate",
+      "type": "rect",
+      "name": "armor plate",
+      "x": 136,
+      "y": 350,
+      "w": 92,
+      "h": 76,
+      "fill": "#9aa0a6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 3
+    },
+    {
+      "id": "f0-rivet-0",
+      "type": "ellipse",
+      "name": "rivet",
+      "x": 144,
+      "y": 358,
+      "w": 8,
+      "h": 8,
+      "fill": "#d7dce0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1
+    },
+    {
+      "id": "f0-rivet-1",
+      "type": "ellipse",
+      "name": "rivet",
+      "x": 206,
+      "y": 358,
+      "w": 8,
+      "h": 8,
+      "fill": "#d7dce0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1
+    },
+    {
+      "id": "f0-rivet-2",
+      "type": "ellipse",
+      "name": "rivet",
+      "x": 144,
+      "y": 410,
+      "w": 8,
+      "h": 8,
+      "fill": "#d7dce0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1
+    },
+    {
+      "id": "f0-rivet-3",
+      "type": "ellipse",
+      "name": "rivet",
+      "x": 206,
+      "y": 410,
+      "w": 8,
+      "h": 8,
+      "fill": "#d7dce0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1
+    },
+    {
+      "id": "f0-lamp-0",
+      "type": "ellipse",
+      "name": "armor lamp",
+      "x": 116,
+      "y": 488,
+      "w": 38,
+      "h": 22,
+      "fill": "#d7dce0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "f0-lamp-1",
+      "type": "ellipse",
+      "name": "armor lamp",
+      "x": 162,
+      "y": 488,
+      "w": 38,
+      "h": 22,
+      "fill": "#d7dce0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "f0-lamp-2",
+      "type": "ellipse",
+      "name": "health lamp",
+      "x": 208,
+      "y": 488,
+      "w": 38,
+      "h": 22,
+      "fill": "#ff5a4a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "f0-cap",
+      "type": "text",
+      "x": 68,
+      "y": 526,
+      "w": 228,
+      "h": 28,
+      "text": "Armor 2 · health 1",
+      "size": 18,
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "f0-sub",
+      "type": "text",
+      "x": 68,
+      "y": 556,
+      "w": 228,
+      "h": 26,
+      "text": "Plate on, 3 lamps lit",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "f1-card",
+      "type": "rect",
+      "name": "hit step 2: hit: armor 1",
+      "x": 346,
+      "y": 296,
+      "w": 252,
+      "h": 300,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "f1-floor",
+      "type": "rect",
+      "name": "playfield line",
+      "x": 376,
+      "y": 468,
+      "w": 192,
+      "h": 4,
+      "fill": "#c9a36b",
+      "stroke": "none"
+    },
+    {
+      "id": "f1-target",
+      "type": "rect",
+      "name": "mob (drop target)",
+      "x": 432,
+      "y": 336,
+      "w": 80,
+      "h": 132,
+      "fill": "#d6332f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 4
+    },
+    {
+      "id": "f1-plate",
+      "type": "rect",
+      "name": "armor plate",
+      "x": 426,
+      "y": 350,
+      "w": 92,
+      "h": 76,
+      "fill": "#9aa0a6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 3
+    },
+    {
+      "id": "f1-rivet-0",
+      "type": "ellipse",
+      "name": "rivet",
+      "x": 434,
+      "y": 358,
+      "w": 8,
+      "h": 8,
+      "fill": "#d7dce0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1
+    },
+    {
+      "id": "f1-rivet-1",
+      "type": "ellipse",
+      "name": "rivet",
+      "x": 496,
+      "y": 358,
+      "w": 8,
+      "h": 8,
+      "fill": "#d7dce0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1
+    },
+    {
+      "id": "f1-rivet-2",
+      "type": "ellipse",
+      "name": "rivet",
+      "x": 434,
+      "y": 410,
+      "w": 8,
+      "h": 8,
+      "fill": "#d7dce0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1
+    },
+    {
+      "id": "f1-rivet-3",
+      "type": "ellipse",
+      "name": "rivet",
+      "x": 496,
+      "y": 410,
+      "w": 8,
+      "h": 8,
+      "fill": "#d7dce0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1
+    },
+    {
+      "id": "f1-dent",
+      "type": "poly",
+      "name": "dent",
+      "x": 454,
+      "y": 372,
+      "w": 34,
+      "h": 28,
+      "pts": [
+        [
+          0,
+          0.4
+        ],
+        [
+          0.35,
+          0.55
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.62,
+          0.6
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.55,
+          0.8
+        ],
+        [
+          0.4,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "f1-lamp-0",
+      "type": "ellipse",
+      "name": "armor lamp",
+      "x": 406,
+      "y": 488,
+      "w": 38,
+      "h": 22,
+      "fill": "#d7dce0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "f1-lamp-1",
+      "type": "ellipse",
+      "name": "armor lamp, off",
+      "x": 452,
+      "y": 488,
+      "w": 38,
+      "h": 22,
+      "fill": "#5b544c",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "f1-lamp-2",
+      "type": "ellipse",
+      "name": "health lamp",
+      "x": 498,
+      "y": 488,
+      "w": 38,
+      "h": 22,
+      "fill": "#ff5a4a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "f1-cap",
+      "type": "text",
+      "x": 358,
+      "y": 526,
+      "w": 228,
+      "h": 28,
+      "text": "Hit: armor 1",
+      "size": 18,
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "f1-sub",
+      "type": "text",
+      "x": 358,
+      "y": 556,
+      "w": 228,
+      "h": 26,
+      "text": "No gold while armor is up",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "f1-arrow",
+      "type": "line",
+      "name": "next hit",
+      "from": {
+        "x": 314,
+        "y": 446
+      },
+      "to": {
+        "x": 340,
+        "y": 446
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 3,
+      "arrow": "end"
+    },
+    {
+      "id": "f2-card",
+      "type": "rect",
+      "name": "hit step 3: hit: plate pops",
+      "x": 636,
+      "y": 296,
+      "w": 252,
+      "h": 300,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "f2-floor",
+      "type": "rect",
+      "name": "playfield line",
+      "x": 666,
+      "y": 468,
+      "w": 192,
+      "h": 4,
+      "fill": "#c9a36b",
+      "stroke": "none"
+    },
+    {
+      "id": "f2-target",
+      "type": "rect",
+      "name": "mob (drop target)",
+      "x": 722,
+      "y": 336,
+      "w": 80,
+      "h": 132,
+      "fill": "#d6332f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 4
+    },
+    {
+      "id": "f2-plate",
+      "type": "rect",
+      "name": "armor plate, popping off",
+      "x": 778,
+      "y": 332,
+      "w": 92,
+      "h": 76,
+      "fill": "#9aa0a6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 3,
+      "rotate": 28,
+      "opacity": 0.9
+    },
+    {
+      "id": "f2-pop",
+      "type": "poly",
+      "name": "pop lines",
+      "x": 864,
+      "y": 328,
+      "w": 40,
+      "h": 40,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.3,
+          0
+        ],
+        [
+          0.6,
+          0.45
+        ],
+        [
+          1,
+          0.2
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#b4532a",
+      "strokeWidth": 2.5
+    },
+    {
+      "id": "f2-lamp-0",
+      "type": "ellipse",
+      "name": "armor lamp, off",
+      "x": 696,
+      "y": 488,
+      "w": 38,
+      "h": 22,
+      "fill": "#5b544c",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "f2-lamp-1",
+      "type": "ellipse",
+      "name": "armor lamp, off",
+      "x": 742,
+      "y": 488,
+      "w": 38,
+      "h": 22,
+      "fill": "#5b544c",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "f2-lamp-2",
+      "type": "ellipse",
+      "name": "health lamp",
+      "x": 788,
+      "y": 488,
+      "w": 38,
+      "h": 22,
+      "fill": "#ff5a4a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "f2-cap",
+      "type": "text",
+      "x": 648,
+      "y": 526,
+      "w": 228,
+      "h": 28,
+      "text": "Hit: plate pops",
+      "size": 18,
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "f2-sub",
+      "type": "text",
+      "x": 648,
+      "y": 556,
+      "w": 228,
+      "h": 26,
+      "text": "Armor gone, health shows",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "f2-arrow",
+      "type": "line",
+      "name": "next hit",
+      "from": {
+        "x": 604,
+        "y": 446
+      },
+      "to": {
+        "x": 630,
+        "y": 446
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 3,
+      "arrow": "end"
+    },
+    {
+      "id": "f3-card",
+      "type": "rect",
+      "name": "hit step 4: hit: down",
+      "x": 926,
+      "y": 296,
+      "w": 252,
+      "h": 300,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "f3-floor",
+      "type": "rect",
+      "name": "playfield line",
+      "x": 956,
+      "y": 468,
+      "w": 192,
+      "h": 4,
+      "fill": "#c9a36b",
+      "stroke": "none"
+    },
+    {
+      "id": "f3-target",
+      "type": "rect",
+      "name": "mob, dropped",
+      "x": 1012,
+      "y": 452,
+      "w": 80,
+      "h": 16,
+      "fill": "#d6332f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 3
+    },
+    {
+      "id": "f3-coin",
+      "type": "ellipse",
+      "name": "gold coin",
+      "x": 1034,
+      "y": 366,
+      "w": 36,
+      "h": 36,
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "f3-coin-t",
+      "type": "text",
+      "x": 992,
+      "y": 408,
+      "w": 120,
+      "h": 26,
+      "text": "+ gold",
+      "size": 18,
+      "weight": 700,
+      "align": "center",
+      "color": "#8a6a12"
+    },
+    {
+      "id": "f3-lamp-0",
+      "type": "ellipse",
+      "name": "armor lamp, off",
+      "x": 986,
+      "y": 488,
+      "w": 38,
+      "h": 22,
+      "fill": "#5b544c",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "f3-lamp-1",
+      "type": "ellipse",
+      "name": "armor lamp, off",
+      "x": 1032,
+      "y": 488,
+      "w": 38,
+      "h": 22,
+      "fill": "#5b544c",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "f3-lamp-2",
+      "type": "ellipse",
+      "name": "health lamp, off",
+      "x": 1078,
+      "y": 488,
+      "w": 38,
+      "h": 22,
+      "fill": "#5b544c",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "f3-cap",
+      "type": "text",
+      "x": 938,
+      "y": 526,
+      "w": 228,
+      "h": 28,
+      "text": "Hit: down",
+      "size": 18,
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "f3-sub",
+      "type": "text",
+      "x": 938,
+      "y": 556,
+      "w": 228,
+      "h": 26,
+      "text": "The mob breaks: gold",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "f3-arrow",
+      "type": "line",
+      "name": "next hit",
+      "from": {
+        "x": 894,
+        "y": 446
+      },
+      "to": {
+        "x": 920,
+        "y": 446
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 3,
+      "arrow": "end"
+    },
+    {
+      "id": "item-note",
+      "type": "text",
+      "x": 56,
+      "y": 612,
+      "w": 1124,
+      "h": 52,
+      "text": "With a +1 damage item every hit takes off 2 points, armor or health: this mob takes 2 hits instead of 3. Lamps: steel = armor, red = health.",
+      "size": 16,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "order-label",
+      "type": "text",
+      "x": 56,
+      "y": 690,
+      "w": 560,
+      "h": 30,
+      "text": "What changes shot order",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "order-0",
+      "type": "rect",
+      "name": "shot order: your loadout",
+      "x": 56,
+      "y": 730,
+      "w": 540,
+      "h": 94,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "order-0-t",
+      "type": "text",
+      "x": 72,
+      "y": 742,
+      "w": 508,
+      "h": 28,
+      "text": "Your loadout",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "order-0-b",
+      "type": "text",
+      "x": 72,
+      "y": 772,
+      "w": 508,
+      "h": 42,
+      "text": "A fire item makes the armored mob worth hitting first; a gold item makes the shops worth chasing.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "order-1",
+      "type": "rect",
+      "name": "shot order: weak spots",
+      "x": 56,
+      "y": 828,
+      "w": 540,
+      "h": 94,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "order-1-t",
+      "type": "text",
+      "x": 72,
+      "y": 840,
+      "w": 508,
+      "h": 28,
+      "text": "Weak spots",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "order-1-b",
+      "type": "text",
+      "x": 72,
+      "y": 870,
+      "w": 508,
+      "h": 42,
+      "text": "Some mobs only take damage from one side, so you pick the flipper that shoots them.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "order-2",
+      "type": "rect",
+      "name": "shot order: ordered puzzles",
+      "x": 56,
+      "y": 926,
+      "w": 540,
+      "h": 94,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "order-2-t",
+      "type": "text",
+      "x": 72,
+      "y": 938,
+      "w": 508,
+      "h": 28,
+      "text": "Ordered puzzles",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "order-2-b",
+      "type": "text",
+      "x": 72,
+      "y": 968,
+      "w": 508,
+      "h": 42,
+      "text": "Some encounters need targets in sequence, like the crypt’s 4 skeletons.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "tier-label",
+      "type": "text",
+      "x": 640,
+      "y": 690,
+      "w": 540,
+      "h": 30,
+      "text": "Tougher by tier",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "tier-0",
+      "type": "rect",
+      "name": "tougher by: more armor",
+      "x": 640,
+      "y": 730,
+      "w": 540,
+      "h": 94,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "tier-0-t",
+      "type": "text",
+      "x": 656,
+      "y": 742,
+      "w": 508,
+      "h": 28,
+      "text": "More armor",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "tier-0-b",
+      "type": "text",
+      "x": 656,
+      "y": 772,
+      "w": 508,
+      "h": 42,
+      "text": "Plates on more mobs, and thicker ones.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "tier-1",
+      "type": "rect",
+      "name": "tougher by: more health",
+      "x": 640,
+      "y": 828,
+      "w": 540,
+      "h": 94,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "tier-1-t",
+      "type": "text",
+      "x": 656,
+      "y": 840,
+      "w": 508,
+      "h": 28,
+      "text": "More health",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "tier-1-b",
+      "type": "text",
+      "x": 656,
+      "y": 870,
+      "w": 508,
+      "h": 42,
+      "text": "More lamps to put out, on bosses most.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "tier-2",
+      "type": "rect",
+      "name": "tougher by: harder shots",
+      "x": 640,
+      "y": 926,
+      "w": 540,
+      "h": 94,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "tier-2-t",
+      "type": "text",
+      "x": 656,
+      "y": 938,
+      "w": 508,
+      "h": 28,
+      "text": "Harder shots",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "tier-2-b",
+      "type": "text",
+      "x": 656,
+      "y": 968,
+      "w": 508,
+      "h": 42,
+      "text": "Moving targets, tight lanes, ordered puzzles.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "tier-note",
+      "type": "text",
+      "x": 640,
+      "y": 1024,
+      "w": 540,
+      "h": 46,
+      "text": "Each layout leans on one; a tier’s layouts land at a similar level.",
+      "size": 15,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "numbers-label",
+      "type": "text",
+      "x": 1240,
+      "y": 256,
+      "w": 624,
+      "h": 30,
+      "text": "The numbers",
+      "size": 19,
+      "weight": 700,
+      "color": "#b4532a",
+      "caps": true
+    },
+    {
+      "id": "numbers-bar",
+      "type": "rect",
+      "name": "the numbers accent",
+      "x": 1240,
+      "y": 292,
+      "w": 6,
+      "h": 162,
+      "fill": "#b4532a"
+    },
+    {
+      "id": "numbers",
+      "type": "text",
+      "x": 1260,
+      "y": 292,
+      "w": 604,
+      "h": 162,
+      "text": "• Basic mob: breaks in 1 hit, like a real drop target.\n• Armor: extra hits taken first. No gold until it’s gone.\n• Damage items: +1 takes 2 points off anything, armor too.\n• Tier 1 boss: about 5 hits with no items.\n• Later tiers: a similar level per tier, by a mix of armor, health and harder shots.",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "reading-label",
+      "type": "text",
+      "x": 1240,
+      "y": 482,
+      "w": 624,
+      "h": 30,
+      "text": "Reading a mob",
+      "size": 19,
+      "weight": 700,
+      "color": "#5b5f63",
+      "caps": true
+    },
+    {
+      "id": "reading-bar",
+      "type": "rect",
+      "name": "reading a mob accent",
+      "x": 1240,
+      "y": 518,
+      "w": 6,
+      "h": 108,
+      "fill": "#5b5f63"
+    },
+    {
+      "id": "reading",
+      "type": "text",
+      "x": 1260,
+      "y": 518,
+      "w": 604,
+      "h": 108,
+      "text": "• A metal plate means armor; it pops off when the armor is gone.\n• Lamps in front show what’s left: steel for armor, red for health.\n• Bosses too: their health is on the toy, never the display.",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "open-label",
+      "type": "text",
+      "x": 1240,
+      "y": 654,
+      "w": 624,
+      "h": 30,
+      "text": "Open",
+      "size": 19,
+      "weight": 700,
+      "color": "#2f6fd6",
+      "caps": true
+    },
+    {
+      "id": "open-bar",
+      "type": "rect",
+      "name": "open accent",
+      "x": 1240,
+      "y": 690,
+      "w": 6,
+      "h": 27,
+      "fill": "#2f6fd6"
+    },
+    {
+      "id": "open",
+      "type": "text",
+      "x": 1260,
+      "y": 690,
+      "w": 604,
+      "h": 27,
+      "text": "• The numbers for tier 2 and the lair, tuned in the prototype.",
+      "size": 18,
+      "color": "#1f1b16"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "k-one-hit",
+      "kind": "decision",
+      "text": "A basic mob breaks in 1 hit, like a real drop target.",
+      "why": "Pinball feel first: a drop target drops."
+    },
+    {
+      "id": "k-armor",
+      "kind": "decision",
+      "text": "Armor is extra hits taken before health, and pays no gold until it’s gone."
+    },
+    {
+      "id": "k-damage",
+      "kind": "decision",
+      "text": "Damage items count on armor too: +1 damage takes 2 points off anything.",
+      "why": "Replaces the earlier note that bonus damage was normal on armored targets. Damage is always good."
+    },
+    {
+      "id": "k-read",
+      "kind": "decision",
+      "text": "Armor shows as a metal plate that pops off; lamps in front of the mob show what’s left."
+    },
+    {
+      "id": "k-boss",
+      "kind": "decision",
+      "text": "A tier 1 boss takes about 5 hits with no items."
+    },
+    {
+      "id": "k-order",
+      "kind": "decision",
+      "text": "Shot order changes with the loadout, mob weak spots and ordered puzzles."
+    },
+    {
+      "id": "k-tiers",
+      "kind": "decision",
+      "text": "Tiers get tougher by a mix of armor, health and harder shots; each layout leans on a different one, a tier’s layouts at a similar level."
+    },
+    {
+      "id": "k-numbers",
+      "kind": "question",
+      "text": "Hit counts for tier 2 and the lair: tune in the prototype."
+    },
+    {
+      "id": "k-boss-read",
+      "kind": "decision",
+      "text": "Bosses show their health the same way, on the toy (plate and lamps), not on the display."
+    }
+  ],
+  "agent": {
+    "brief": "The hit model: every hit takes points off a mob, armor first, then health. Basic mobs have 1 health and no armor. Gold comes from health hits and breaks, never from armor.",
+    "rules": [
+      "A hit removes 1 point plus the flipper item’s bonus damage, from armor first, then health.",
+      "No gold while a mob has armor.",
+      "Armor is shown by a plate (pops at 0), remaining points by lamps in front of the mob."
+    ],
+    "open": [
+      "Tier 2 and lair numbers"
+    ]
+  }
+}

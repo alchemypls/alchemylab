@@ -1,0 +1,981 @@
+{
+  "title": "Rewards & Economy",
+  "kicker": "Topic",
+  "updated": "2026-11-14",
+  "background": "#f4efe6",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "title",
+      "type": "text",
+      "x": 56,
+      "y": 36,
+      "w": 1300,
+      "h": 82,
+      "text": "",
+      "size": 60,
+      "weight": 600,
+      "font": "serif",
+      "bind": {
+        "topic": "economy",
+        "field": "title"
+      }
+    },
+    {
+      "id": "status",
+      "type": "status",
+      "x": 1840,
+      "y": 64,
+      "size": 22,
+      "topic": "economy"
+    },
+    {
+      "id": "back",
+      "type": "text",
+      "x": 1560,
+      "y": 52,
+      "w": 260,
+      "h": 40,
+      "text": "← Overview",
+      "size": 20,
+      "weight": 600,
+      "align": "right",
+      "valign": "middle",
+      "link": "index"
+    },
+    {
+      "id": "summary",
+      "type": "text",
+      "x": 56,
+      "y": 120,
+      "w": 1808,
+      "h": 104,
+      "text": "",
+      "size": 18,
+      "color": "#6b6257",
+      "bind": {
+        "topic": "economy",
+        "field": "summary"
+      }
+    },
+    {
+      "id": "rule",
+      "type": "line",
+      "name": "header rule",
+      "from": {
+        "x": 56,
+        "y": 236
+      },
+      "to": {
+        "x": 1864,
+        "y": 236
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "arrow": "none"
+    },
+    {
+      "id": "in-label",
+      "type": "text",
+      "x": 56,
+      "y": 256,
+      "w": 600,
+      "h": 30,
+      "text": "Gold in",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "in-mob",
+      "type": "rect",
+      "name": "gold in: break a mob",
+      "x": 56,
+      "y": 296,
+      "w": 300,
+      "h": 132,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "in-mob-t",
+      "type": "text",
+      "x": 72,
+      "y": 308,
+      "w": 268,
+      "h": 28,
+      "text": "Break a mob",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "in-mob-b",
+      "type": "text",
+      "x": 72,
+      "y": 338,
+      "w": 268,
+      "h": 80,
+      "text": "Every break pays 1 gold. Trees and hits on armor pay nothing.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "in-mob-coin",
+      "type": "ellipse",
+      "name": "gold coin",
+      "x": 368,
+      "y": 316,
+      "w": 40,
+      "h": 40,
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "in-mob-coin-t",
+      "type": "text",
+      "x": 368,
+      "y": 316,
+      "w": 40,
+      "h": 40,
+      "text": "1",
+      "size": 18,
+      "weight": 700,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "in-dmd",
+      "type": "rect",
+      "name": "dot-matrix display",
+      "x": 420,
+      "y": 296,
+      "w": 330,
+      "h": 132,
+      "fill": "#1a1410",
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "radius": 8
+    },
+    {
+      "id": "in-dmd-t",
+      "type": "text",
+      "x": 436,
+      "y": 316,
+      "w": 298,
+      "h": 56,
+      "text": "GOLD  07",
+      "size": 40,
+      "weight": 700,
+      "font": "mono",
+      "color": "#ff8a2a",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "in-dmd-sub",
+      "type": "text",
+      "x": 436,
+      "y": 378,
+      "w": 298,
+      "h": 30,
+      "text": "shown on the display",
+      "size": 15,
+      "color": "#a26a3a",
+      "align": "center"
+    },
+    {
+      "id": "in-drain",
+      "type": "rect",
+      "name": "gold lost: a drain",
+      "x": 814,
+      "y": 296,
+      "w": 366,
+      "h": 132,
+      "fill": "#f7e3da",
+      "stroke": "#d6332f",
+      "strokeWidth": 2,
+      "radius": 10,
+      "dash": true
+    },
+    {
+      "id": "in-drain-t",
+      "type": "text",
+      "x": 830,
+      "y": 308,
+      "w": 334,
+      "h": 28,
+      "text": "Drain: gold to 0",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "in-drain-b",
+      "type": "text",
+      "x": 830,
+      "y": 338,
+      "w": 334,
+      "h": 80,
+      "text": "Any drain, in a dungeon too, costs a life, both flipper items and all gold.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "in-a1",
+      "type": "line",
+      "name": "flow arrow",
+      "from": {
+        "el": "in-mob"
+      },
+      "to": {
+        "el": "in-dmd"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 3,
+      "arrow": "end"
+    },
+    {
+      "id": "in-a2",
+      "type": "line",
+      "name": "flow arrow",
+      "from": {
+        "el": "in-dmd"
+      },
+      "to": {
+        "el": "in-drain"
+      },
+      "stroke": "#d6332f",
+      "strokeWidth": 3,
+      "arrow": "end"
+    },
+    {
+      "id": "out-label",
+      "type": "text",
+      "x": 56,
+      "y": 464,
+      "w": 600,
+      "h": 30,
+      "text": "Gold out: the town’s 3 shops",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "shop-0",
+      "type": "rect",
+      "name": "shop: cheap",
+      "x": 56,
+      "y": 504,
+      "w": 216,
+      "h": 196,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "shop-0-roof",
+      "type": "poly",
+      "name": "shop roof",
+      "x": 76,
+      "y": 518,
+      "w": 176,
+      "h": 44,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#b4532a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "shop-0-item",
+      "type": "ellipse",
+      "name": "item on top",
+      "x": 142,
+      "y": 570,
+      "w": 44,
+      "h": 44,
+      "fill": "#2f6fd6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "n": 4
+    },
+    {
+      "id": "shop-0-t",
+      "type": "text",
+      "x": 68,
+      "y": 622,
+      "w": 192,
+      "h": 30,
+      "text": "Cheap · ≈ 3",
+      "size": 20,
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "shop-0-s",
+      "type": "text",
+      "x": 68,
+      "y": 654,
+      "w": 192,
+      "h": 26,
+      "text": "always in reach",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "shop-1",
+      "type": "rect",
+      "name": "shop: mid",
+      "x": 296,
+      "y": 504,
+      "w": 216,
+      "h": 196,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "shop-1-roof",
+      "type": "poly",
+      "name": "shop roof",
+      "x": 316,
+      "y": 518,
+      "w": 176,
+      "h": 44,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#b4532a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "shop-1-item",
+      "type": "ellipse",
+      "name": "item on top",
+      "x": 382,
+      "y": 570,
+      "w": 44,
+      "h": 44,
+      "fill": "#2f6fd6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "n": 4
+    },
+    {
+      "id": "shop-1-t",
+      "type": "text",
+      "x": 308,
+      "y": 622,
+      "w": 192,
+      "h": 30,
+      "text": "Mid · ≈ 6",
+      "size": 20,
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "shop-1-s",
+      "type": "text",
+      "x": 308,
+      "y": 654,
+      "w": 192,
+      "h": 26,
+      "text": "a few mobs away",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "shop-2",
+      "type": "rect",
+      "name": "shop: dear",
+      "x": 536,
+      "y": 504,
+      "w": 216,
+      "h": 196,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "shop-2-roof",
+      "type": "poly",
+      "name": "shop roof",
+      "x": 556,
+      "y": 518,
+      "w": 176,
+      "h": 44,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#b4532a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "shop-2-item",
+      "type": "ellipse",
+      "name": "item on top",
+      "x": 622,
+      "y": 570,
+      "w": 44,
+      "h": 44,
+      "fill": "#2f6fd6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "n": 4
+    },
+    {
+      "id": "shop-2-t",
+      "type": "text",
+      "x": 548,
+      "y": 622,
+      "w": 192,
+      "h": 30,
+      "text": "Dear · ≈ 10",
+      "size": 20,
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "shop-2-s",
+      "type": "text",
+      "x": 548,
+      "y": 654,
+      "w": 192,
+      "h": 26,
+      "text": "worth saving for",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "buy-0",
+      "type": "rect",
+      "name": "buying: shoot the one you can afford",
+      "x": 56,
+      "y": 724,
+      "w": 254,
+      "h": 64,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "buy-0-t",
+      "type": "text",
+      "x": 64,
+      "y": 730,
+      "w": 238,
+      "h": 52,
+      "text": "Shoot the one you can afford",
+      "size": 16,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "buy-1",
+      "type": "rect",
+      "name": "buying: the ball is held",
+      "x": 342,
+      "y": 724,
+      "w": 254,
+      "h": 64,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "buy-1-t",
+      "type": "text",
+      "x": 350,
+      "y": 730,
+      "w": 238,
+      "h": 52,
+      "text": "The ball is held",
+      "size": 16,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "buy-a1",
+      "type": "line",
+      "name": "flow arrow",
+      "from": {
+        "el": "buy-0"
+      },
+      "to": {
+        "el": "buy-1"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 3,
+      "arrow": "end"
+    },
+    {
+      "id": "buy-2",
+      "type": "rect",
+      "name": "buying: press a flipper",
+      "x": 628,
+      "y": 724,
+      "w": 254,
+      "h": 64,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "buy-2-t",
+      "type": "text",
+      "x": 636,
+      "y": 730,
+      "w": 238,
+      "h": 52,
+      "text": "Press a flipper",
+      "size": 16,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "buy-a2",
+      "type": "line",
+      "name": "flow arrow",
+      "from": {
+        "el": "buy-1"
+      },
+      "to": {
+        "el": "buy-2"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 3,
+      "arrow": "end"
+    },
+    {
+      "id": "buy-3",
+      "type": "rect",
+      "name": "buying: equipped on that side",
+      "x": 914,
+      "y": 724,
+      "w": 254,
+      "h": 64,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "buy-3-t",
+      "type": "text",
+      "x": 922,
+      "y": 730,
+      "w": 238,
+      "h": 52,
+      "text": "Equipped on that side",
+      "size": 16,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "buy-a3",
+      "type": "line",
+      "name": "flow arrow",
+      "from": {
+        "el": "buy-2"
+      },
+      "to": {
+        "el": "buy-3"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 3,
+      "arrow": "end"
+    },
+    {
+      "id": "restock",
+      "type": "rect",
+      "name": "shops restock after each dungeon",
+      "x": 790,
+      "y": 504,
+      "w": 390,
+      "h": 196,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "restock-t",
+      "type": "text",
+      "x": 806,
+      "y": 516,
+      "w": 358,
+      "h": 28,
+      "text": "Restock",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "restock-b",
+      "type": "text",
+      "x": 806,
+      "y": 546,
+      "w": 358,
+      "h": 144,
+      "text": "All 3 shops get new items after each dungeon, when the ball comes back up. Prices keep their cheap / mid / dear spread.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "loot-label",
+      "type": "text",
+      "x": 56,
+      "y": 820,
+      "w": 600,
+      "h": 30,
+      "text": "Loot",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "loot-beat",
+      "type": "rect",
+      "name": "loot: beat the encounter",
+      "x": 56,
+      "y": 860,
+      "w": 340,
+      "h": 112,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "loot-beat-t",
+      "type": "text",
+      "x": 72,
+      "y": 872,
+      "w": 308,
+      "h": 28,
+      "text": "Beat the encounter",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "loot-beat-b",
+      "type": "text",
+      "x": 72,
+      "y": 902,
+      "w": 308,
+      "h": 60,
+      "text": "The dungeon’s exit and its 3 loot targets light.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "loot-pick",
+      "type": "rect",
+      "name": "loot: pick 1 of 3",
+      "x": 448,
+      "y": 860,
+      "w": 340,
+      "h": 112,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "loot-pick-t",
+      "type": "text",
+      "x": 464,
+      "y": 872,
+      "w": 308,
+      "h": 28,
+      "text": "Hit 1 of 3, or exit",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "loot-pick-b",
+      "type": "text",
+      "x": 464,
+      "y": 902,
+      "w": 308,
+      "h": 60,
+      "text": "Free, from the same pool as the shops. Exiting takes nothing.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "loot-equip",
+      "type": "rect",
+      "name": "loot: equip",
+      "x": 840,
+      "y": 860,
+      "w": 340,
+      "h": 112,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "loot-equip-t",
+      "type": "text",
+      "x": 856,
+      "y": 872,
+      "w": 308,
+      "h": 28,
+      "text": "Last flipper keeps it",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "loot-equip-b",
+      "type": "text",
+      "x": 856,
+      "y": 902,
+      "w": 308,
+      "h": 60,
+      "text": "It replaces the item on the last flipper to touch the ball.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "loot-a1",
+      "type": "line",
+      "name": "flow arrow",
+      "from": {
+        "el": "loot-beat"
+      },
+      "to": {
+        "el": "loot-pick"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 3,
+      "arrow": "end"
+    },
+    {
+      "id": "loot-a2",
+      "type": "line",
+      "name": "flow arrow",
+      "from": {
+        "el": "loot-pick"
+      },
+      "to": {
+        "el": "loot-equip"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 3,
+      "arrow": "end"
+    },
+    {
+      "id": "numbers-label",
+      "type": "text",
+      "x": 1240,
+      "y": 256,
+      "w": 624,
+      "h": 30,
+      "text": "The numbers",
+      "size": 19,
+      "weight": 700,
+      "color": "#b4532a",
+      "caps": true
+    },
+    {
+      "id": "numbers-bar",
+      "type": "rect",
+      "name": "the numbers accent",
+      "x": 1240,
+      "y": 292,
+      "w": 6,
+      "h": 162,
+      "fill": "#b4532a"
+    },
+    {
+      "id": "numbers",
+      "type": "text",
+      "x": 1260,
+      "y": 292,
+      "w": 604,
+      "h": 162,
+      "text": "• A mob break: 1 gold. Trees and hits on armor: 0.\n• Shops: cheap about 3, mid about 6, dear about 10.\n• Gold buys shop items only. No lives, no rerolls.\n• A drain: all gold lost.\n• Restock: after each dungeon.\n• Loot: 1 of 3 or none, from the shops’ pool.",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "fits-label",
+      "type": "text",
+      "x": 1240,
+      "y": 482,
+      "w": 624,
+      "h": 30,
+      "text": "How it fits",
+      "size": 19,
+      "weight": 700,
+      "color": "#5b5f63",
+      "caps": true
+    },
+    {
+      "id": "fits-bar",
+      "type": "rect",
+      "name": "how it fits accent",
+      "x": 1240,
+      "y": 518,
+      "w": 6,
+      "h": 81,
+      "fill": "#5b5f63"
+    },
+    {
+      "id": "fits",
+      "type": "text",
+      "x": 1260,
+      "y": 518,
+      "w": 604,
+      "h": 81,
+      "text": "• Mobs are the gold and the way into dungeons, so the same shots do both (structure).\n• Armor pays nothing until it’s gone (challenge).",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "open-label",
+      "type": "text",
+      "x": 1240,
+      "y": 627,
+      "w": 624,
+      "h": 30,
+      "text": "Open",
+      "size": 19,
+      "weight": 700,
+      "color": "#2f6fd6",
+      "caps": true
+    },
+    {
+      "id": "open-bar",
+      "type": "rect",
+      "name": "open accent",
+      "x": 1240,
+      "y": 663,
+      "w": 6,
+      "h": 108,
+      "fill": "#2f6fd6"
+    },
+    {
+      "id": "open",
+      "type": "text",
+      "x": 1260,
+      "y": 663,
+      "w": 604,
+      "h": 108,
+      "text": "• How many mobs a quest spawns: that sets the gold per visit.\n• Does the shared pool get better each tier? Progression says higher-level loot can be game changers.\n• Unspent gold carries between dungeons unless you drain. Confirm.",
+      "size": 18,
+      "color": "#1f1b16"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "k-gold",
+      "kind": "decision",
+      "text": "Every mob break pays 1 gold. Trees and hits on armor pay nothing."
+    },
+    {
+      "id": "k-spend",
+      "kind": "decision",
+      "text": "Gold only buys shop items.",
+      "why": "One use keeps the choice simple: which shop, not what to spend on."
+    },
+    {
+      "id": "k-prices",
+      "kind": "decision",
+      "text": "The 3 shops are cheap (about 3), mid (about 6) and dear (about 10).",
+      "why": "Something is always in reach; the dear one is worth saving for."
+    },
+    {
+      "id": "k-restock",
+      "kind": "decision",
+      "text": "Shops restock after each dungeon."
+    },
+    {
+      "id": "k-pool",
+      "kind": "decision",
+      "text": "Dungeon loot comes from the same pool as the shops; loot is free."
+    },
+    {
+      "id": "k-quest",
+      "kind": "question",
+      "text": "How many mobs does a quest spawn? That sets gold per shop visit."
+    },
+    {
+      "id": "k-tiered",
+      "kind": "question",
+      "text": "Does the shared pool get better each tier (progression: higher-level loot can be game changers)?"
+    },
+    {
+      "id": "k-carry",
+      "kind": "hypothesis",
+      "text": "Unspent gold carries between dungeons unless you drain."
+    }
+  ],
+  "agent": {
+    "brief": "Gold: +1 per mob break, nothing for trees or hits on armor, all lost on a drain. It only buys shop items: 3 shops at about 3 / 6 / 10, restocked after each dungeon. Loot is 1 of 3 free picks (or none) from the same item pool.",
+    "rules": [
+      "Buying holds the ball; the flipper pressed picks the side the item goes on.",
+      "Loot replaces the item on the last flipper to touch the ball; the exit takes nothing."
+    ],
+    "open": [
+      "Mobs per quest",
+      "Pool by tier",
+      "Gold carry-over"
+    ]
+  }
+}

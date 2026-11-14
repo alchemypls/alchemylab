@@ -1,0 +1,1507 @@
+{
+  "title": "World & Level Structure",
+  "kicker": "Topic",
+  "updated": "2026-11-14",
+  "background": "#f4efe6",
+  "grid": {
+    "cell": 12
+  },
+  "blocks": [],
+  "elements": [
+    {
+      "id": "title",
+      "type": "text",
+      "x": 56,
+      "y": 36,
+      "w": 1300,
+      "h": 82,
+      "text": "",
+      "size": 60,
+      "weight": 600,
+      "font": "serif",
+      "bind": {
+        "topic": "structure",
+        "field": "title"
+      }
+    },
+    {
+      "id": "status",
+      "type": "status",
+      "x": 1840,
+      "y": 64,
+      "size": 22,
+      "topic": "structure"
+    },
+    {
+      "id": "back",
+      "type": "text",
+      "x": 1560,
+      "y": 52,
+      "w": 260,
+      "h": 40,
+      "text": "← Overview",
+      "size": 20,
+      "weight": 600,
+      "align": "right",
+      "valign": "middle",
+      "link": "index"
+    },
+    {
+      "id": "summary",
+      "type": "text",
+      "x": 56,
+      "y": 120,
+      "w": 1808,
+      "h": 104,
+      "text": "",
+      "size": 18,
+      "color": "#6b6257",
+      "bind": {
+        "topic": "structure",
+        "field": "summary"
+      }
+    },
+    {
+      "id": "rule",
+      "type": "line",
+      "name": "header rule",
+      "from": {
+        "x": 56,
+        "y": 236
+      },
+      "to": {
+        "x": 1864,
+        "y": 236
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "arrow": "none"
+    },
+    {
+      "id": "xs-label",
+      "type": "text",
+      "x": 56,
+      "y": 256,
+      "w": 300,
+      "h": 30,
+      "text": "The machine, side on",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "xs-table",
+      "type": "rect",
+      "name": "main table (side on)",
+      "x": 120,
+      "y": 340,
+      "w": 1000,
+      "h": 36,
+      "fill": "#c9a36b",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2.5,
+      "radius": 4
+    },
+    {
+      "id": "xs-table-t",
+      "type": "text",
+      "x": 136,
+      "y": 382,
+      "w": 360,
+      "h": 26,
+      "text": "MAIN TABLE · flippers at the front (left)",
+      "size": 15,
+      "weight": 700,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "xs-flippers",
+      "type": "capsule",
+      "name": "flippers (side on)",
+      "x": 140,
+      "y": 326,
+      "w": 70,
+      "h": 14,
+      "taper": 0.5,
+      "fill": "#b3202a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "xs-cave-a",
+      "type": "poly",
+      "name": "cave a (side on)",
+      "x": 390,
+      "y": 294,
+      "w": 80,
+      "h": 46,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.08,
+          0.3
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.92,
+          0.3
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#d8cfc0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "xs-cave-a-mouth",
+      "type": "poly",
+      "name": "cave a mouth",
+      "x": 412,
+      "y": 314,
+      "w": 36,
+      "h": 26,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.15,
+          0.25
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.85,
+          0.25
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#1f1b16",
+      "stroke": "none"
+    },
+    {
+      "id": "xs-cave-a-t",
+      "type": "text",
+      "x": 360,
+      "y": 260,
+      "align": "center",
+      "w": 140,
+      "h": 24,
+      "text": "Cave A",
+      "size": 15,
+      "weight": 700,
+      "color": "#1f1b16",
+      "caps": true
+    },
+    {
+      "id": "xs-cave-b",
+      "type": "poly",
+      "name": "cave b (side on)",
+      "x": 620,
+      "y": 294,
+      "w": 80,
+      "h": 46,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.08,
+          0.3
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.92,
+          0.3
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#d8cfc0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "xs-cave-b-mouth",
+      "type": "poly",
+      "name": "cave b mouth",
+      "x": 642,
+      "y": 314,
+      "w": 36,
+      "h": 26,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.15,
+          0.25
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.85,
+          0.25
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#1f1b16",
+      "stroke": "none"
+    },
+    {
+      "id": "xs-cave-b-t",
+      "type": "text",
+      "x": 590,
+      "y": 260,
+      "align": "center",
+      "w": 140,
+      "h": 24,
+      "text": "Cave B",
+      "size": 15,
+      "weight": 700,
+      "color": "#1f1b16",
+      "caps": true
+    },
+    {
+      "id": "xs-cave-c",
+      "type": "poly",
+      "name": "boss cave (side on)",
+      "x": 880,
+      "y": 294,
+      "w": 80,
+      "h": 46,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.08,
+          0.3
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.92,
+          0.3
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#d8cfc0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "xs-cave-c-mouth",
+      "type": "poly",
+      "name": "boss cave mouth",
+      "x": 902,
+      "y": 314,
+      "w": 36,
+      "h": 26,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.15,
+          0.25
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.85,
+          0.25
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#1f1b16",
+      "stroke": "none"
+    },
+    {
+      "id": "xs-cave-c-t",
+      "type": "text",
+      "x": 966,
+      "y": 300,
+      "align": "left",
+      "w": 140,
+      "h": 24,
+      "text": "Boss cave",
+      "size": 15,
+      "weight": 700,
+      "color": "#1f1b16",
+      "caps": true
+    },
+    {
+      "id": "xs-toy",
+      "type": "asset",
+      "asset": "dragon-toy",
+      "name": "dragon toy on the boss cave",
+      "x": 896,
+      "y": 274,
+      "w": 48,
+      "h": 50,
+      "at": {
+        "x": 0.5,
+        "y": 0.759
+      }
+    },
+    {
+      "id": "xs-ground",
+      "type": "rect",
+      "name": "ground under the table",
+      "x": 56,
+      "y": 460,
+      "w": 1124,
+      "h": 570,
+      "fill": "#2b2320",
+      "stroke": "none",
+      "radius": 10
+    },
+    {
+      "id": "xs-ground-t",
+      "type": "text",
+      "x": 80,
+      "y": 476,
+      "w": 600,
+      "h": 26,
+      "text": "Below the table: one dungeon per cave",
+      "size": 16,
+      "weight": 700,
+      "color": "#c9b9a0",
+      "caps": true
+    },
+    {
+      "id": "xs-dungeon-a",
+      "type": "asset",
+      "asset": "dungeon-goblin-warren",
+      "w": 316,
+      "h": 167,
+      "at": {
+        "x": 0.5,
+        "y": 0.5287
+      },
+      "x": 72,
+      "y": 608,
+      "name": "dungeon table, type a"
+    },
+    {
+      "id": "xs-dungeon-b",
+      "type": "asset",
+      "asset": "dungeon-crypt",
+      "w": 316,
+      "h": 167,
+      "at": {
+        "x": 0.5,
+        "y": 0.5287
+      },
+      "x": 432,
+      "y": 608,
+      "name": "dungeon table, type b"
+    },
+    {
+      "id": "xs-dungeon-c",
+      "type": "asset",
+      "asset": "dungeon-dragon-lair",
+      "w": 376,
+      "h": 197,
+      "at": {
+        "x": 0.5,
+        "y": 0.5243
+      },
+      "x": 776,
+      "y": 600,
+      "name": "dungeon table, type c"
+    },
+    {
+      "id": "xs-rail-a-pipe",
+      "type": "poly",
+      "name": "rail down: cave a → type a: pipe",
+      "x": 338,
+      "y": 376,
+      "w": 92,
+      "h": 300.29290000000003,
+      "pts": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0.5128
+        ],
+        [
+          0,
+          0.5128
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#2a2623",
+      "strokeWidth": 12
+    },
+    {
+      "id": "xs-rail-a-tube",
+      "type": "poly",
+      "name": "rail down: cave a → type a: tube",
+      "x": 338,
+      "y": 376,
+      "w": 92,
+      "h": 300.29290000000003,
+      "pts": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0.5128
+        ],
+        [
+          0,
+          0.5128
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#9aa0a6",
+      "strokeWidth": 7
+    },
+    {
+      "id": "xs-rail-a-shine",
+      "type": "poly",
+      "name": "rail down: cave a → type a: shine",
+      "x": 338,
+      "y": 376,
+      "w": 92,
+      "h": 300.29290000000003,
+      "pts": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0.5128
+        ],
+        [
+          0,
+          0.5128
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#e6e9ec",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "xs-return-a-pipe",
+      "type": "poly",
+      "name": "return rail: type a → boss cave: pipe",
+      "x": 254,
+      "y": 510,
+      "w": 856,
+      "h": 124.29290000000003,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#2a2623",
+      "strokeWidth": 12
+    },
+    {
+      "id": "xs-return-a-tube",
+      "type": "poly",
+      "name": "return rail: type a → boss cave: tube",
+      "x": 254,
+      "y": 510,
+      "w": 856,
+      "h": 124.29290000000003,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#b8733a",
+      "strokeWidth": 7
+    },
+    {
+      "id": "xs-return-a-shine",
+      "type": "poly",
+      "name": "return rail: type a → boss cave: shine",
+      "x": 254,
+      "y": 510,
+      "w": 856,
+      "h": 124.29290000000003,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#e6b98a",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "xs-dungeon-a-cap",
+      "type": "text",
+      "x": 60,
+      "y": 826,
+      "w": 340,
+      "h": 26,
+      "text": "Type A",
+      "size": 17,
+      "weight": 700,
+      "color": "#f4efe6",
+      "caps": true,
+      "align": "center"
+    },
+    {
+      "id": "xs-dungeon-a-sub",
+      "type": "text",
+      "x": 60,
+      "y": 854,
+      "w": 340,
+      "h": 24,
+      "text": "e.g. goblin warren · tier 1",
+      "size": 15,
+      "color": "#c9b9a0",
+      "align": "center"
+    },
+    {
+      "id": "xs-rail-b-pipe",
+      "type": "poly",
+      "name": "rail down: cave b → type b: pipe",
+      "x": 660,
+      "y": 376,
+      "w": 38,
+      "h": 300.29290000000003,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0.5661
+        ],
+        [
+          1,
+          0.5661
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#2a2623",
+      "strokeWidth": 12
+    },
+    {
+      "id": "xs-rail-b-tube",
+      "type": "poly",
+      "name": "rail down: cave b → type b: tube",
+      "x": 660,
+      "y": 376,
+      "w": 38,
+      "h": 300.29290000000003,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0.5661
+        ],
+        [
+          1,
+          0.5661
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#9aa0a6",
+      "strokeWidth": 7
+    },
+    {
+      "id": "xs-rail-b-shine",
+      "type": "poly",
+      "name": "rail down: cave b → type b: shine",
+      "x": 660,
+      "y": 376,
+      "w": 38,
+      "h": 300.29290000000003,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0.5661
+        ],
+        [
+          1,
+          0.5661
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#e6e9ec",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "xs-return-b-pipe",
+      "type": "poly",
+      "name": "return rail: type b → boss cave: pipe",
+      "x": 614,
+      "y": 510,
+      "w": 496,
+      "h": 124.29290000000003,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#2a2623",
+      "strokeWidth": 12
+    },
+    {
+      "id": "xs-return-b-tube",
+      "type": "poly",
+      "name": "return rail: type b → boss cave: tube",
+      "x": 614,
+      "y": 510,
+      "w": 496,
+      "h": 124.29290000000003,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#b8733a",
+      "strokeWidth": 7
+    },
+    {
+      "id": "xs-return-b-shine",
+      "type": "poly",
+      "name": "return rail: type b → boss cave: shine",
+      "x": 614,
+      "y": 510,
+      "w": 496,
+      "h": 124.29290000000003,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#e6b98a",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "xs-dungeon-b-cap",
+      "type": "text",
+      "x": 420,
+      "y": 826,
+      "w": 340,
+      "h": 26,
+      "text": "Type B",
+      "size": 17,
+      "weight": 700,
+      "color": "#f4efe6",
+      "caps": true,
+      "align": "center"
+    },
+    {
+      "id": "xs-dungeon-b-sub",
+      "type": "text",
+      "x": 420,
+      "y": 854,
+      "w": 340,
+      "h": 24,
+      "text": "e.g. crypt · tier 2",
+      "size": 15,
+      "color": "#c9b9a0",
+      "align": "center"
+    },
+    {
+      "id": "xs-rail-c-pipe",
+      "type": "poly",
+      "name": "rail down: cave c → type c: pipe",
+      "x": 920,
+      "y": 376,
+      "w": 182,
+      "h": 316.2871,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0.5881
+        ],
+        [
+          1,
+          0.5881
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#2a2623",
+      "strokeWidth": 12
+    },
+    {
+      "id": "xs-rail-c-tube",
+      "type": "poly",
+      "name": "rail down: cave c → type c: tube",
+      "x": 920,
+      "y": 376,
+      "w": 182,
+      "h": 316.2871,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0.5881
+        ],
+        [
+          1,
+          0.5881
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#9aa0a6",
+      "strokeWidth": 7
+    },
+    {
+      "id": "xs-rail-c-shine",
+      "type": "poly",
+      "name": "rail down: cave c → type c: shine",
+      "x": 920,
+      "y": 376,
+      "w": 182,
+      "h": 316.2871,
+      "pts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0.5881
+        ],
+        [
+          1,
+          0.5881
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#e6e9ec",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "xs-return-c-pipe",
+      "type": "poly",
+      "name": "return rail: type c → boss cave: pipe",
+      "x": 970,
+      "y": 510,
+      "w": 140,
+      "h": 116.28710000000001,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#2a2623",
+      "strokeWidth": 12
+    },
+    {
+      "id": "xs-return-c-tube",
+      "type": "poly",
+      "name": "return rail: type c → boss cave: tube",
+      "x": 970,
+      "y": 510,
+      "w": 140,
+      "h": 116.28710000000001,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#b8733a",
+      "strokeWidth": 7
+    },
+    {
+      "id": "xs-return-c-shine",
+      "type": "poly",
+      "name": "return rail: type c → boss cave: shine",
+      "x": 970,
+      "y": 510,
+      "w": 140,
+      "h": 116.28710000000001,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#e6b98a",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "xs-dungeon-c-cap",
+      "type": "text",
+      "x": 794,
+      "y": 826,
+      "w": 340,
+      "h": 26,
+      "text": "Type C",
+      "size": 17,
+      "weight": 700,
+      "color": "#f4efe6",
+      "caps": true,
+      "align": "center"
+    },
+    {
+      "id": "xs-dungeon-c-sub",
+      "type": "text",
+      "x": 794,
+      "y": 854,
+      "w": 340,
+      "h": 24,
+      "text": "e.g. dragon's lair, layout A",
+      "size": 15,
+      "color": "#c9b9a0",
+      "align": "center"
+    },
+    {
+      "id": "xs-return-riser-pipe",
+      "type": "poly",
+      "name": "return rail: up into the boss cave: pipe",
+      "x": 940,
+      "y": 270,
+      "w": 170,
+      "h": 240,
+      "pts": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0.1176,
+          0
+        ],
+        [
+          0,
+          0.1083
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#2a2623",
+      "strokeWidth": 12
+    },
+    {
+      "id": "xs-return-riser-tube",
+      "type": "poly",
+      "name": "return rail: up into the boss cave: tube",
+      "x": 940,
+      "y": 270,
+      "w": 170,
+      "h": 240,
+      "pts": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0.1176,
+          0
+        ],
+        [
+          0,
+          0.1083
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#b8733a",
+      "strokeWidth": 7
+    },
+    {
+      "id": "xs-return-riser-shine",
+      "type": "poly",
+      "name": "return rail: up into the boss cave: shine",
+      "x": 940,
+      "y": 270,
+      "w": 170,
+      "h": 240,
+      "pts": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0.1176,
+          0
+        ],
+        [
+          0,
+          0.1083
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#e6b98a",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "xs-wires",
+      "type": "line",
+      "name": "wire rails: boss cave → inlanes, left and right",
+      "from": {
+        "x": 880,
+        "y": 322
+      },
+      "to": {
+        "x": 215,
+        "y": 328
+      },
+      "stroke": "#b8733a",
+      "strokeWidth": 4,
+      "arrow": "end",
+      "bend": -46
+    },
+    {
+      "id": "xs-wires-t",
+      "type": "text",
+      "x": 150,
+      "y": 290,
+      "w": 210,
+      "h": 40,
+      "text": "Wires to the inlanes; the dragon snaps at the ball.",
+      "size": 13,
+      "color": "#7a4a22",
+      "align": "left"
+    },
+    {
+      "id": "xs-key",
+      "type": "text",
+      "x": 80,
+      "y": 950,
+      "w": 1000,
+      "h": 48,
+      "text": "Chrome: rail down from a cave · copper: return rail up through the boss cave. Table sizes are drafts.",
+      "size": 15,
+      "color": "#c9b9a0"
+    },
+    {
+      "id": "decided-label",
+      "type": "text",
+      "x": 1240,
+      "y": 256,
+      "w": 624,
+      "h": 30,
+      "text": "Decided",
+      "size": 19,
+      "weight": 700,
+      "color": "#b4532a",
+      "caps": true
+    },
+    {
+      "id": "decided-bar",
+      "type": "rect",
+      "name": "decided accent",
+      "x": 1240,
+      "y": 292,
+      "w": 6,
+      "h": 372,
+      "fill": "#b4532a"
+    },
+    {
+      "id": "decided",
+      "type": "text",
+      "x": 1260,
+      "y": 292,
+      "w": 604,
+      "h": 372,
+      "text": "• Main table on top; dungeon tables below it, like a basement.\n• 3 caves. Break the mobs in front of one to open it; a rail drops the ball into its dungeon.\n• The cave picks the type: each leads to one of the current tier’s 3 types.\n• Each dungeon: own flippers, exit sealed until the encounter is beaten.\n• Every exit pipes back up through the boss cave’s top; wires run down both sides to the inlanes.\n• The lair: a trick shot opens the boss cave only; its layout is random.\n• The main table has 2–3 hand-made layouts; each run picks one.",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "test-label",
+      "type": "text",
+      "x": 1240,
+      "y": 690,
+      "w": 624,
+      "h": 30,
+      "text": "To test",
+      "size": 19,
+      "weight": 700,
+      "color": "#c08a1e",
+      "caps": true
+    },
+    {
+      "id": "test-bar",
+      "type": "rect",
+      "name": "to test accent",
+      "x": 1240,
+      "y": 726,
+      "w": 6,
+      "h": 54,
+      "fill": "#c08a1e"
+    },
+    {
+      "id": "test",
+      "type": "text",
+      "x": 1260,
+      "y": 726,
+      "w": 604,
+      "h": 54,
+      "text": "• A dragon toy on the boss cave snaps at the ball as it comes back up: a show moment that hands the ball back to the player.",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "open-label",
+      "type": "text",
+      "x": 1240,
+      "y": 806,
+      "w": 624,
+      "h": 30,
+      "text": "Open",
+      "size": 19,
+      "weight": 700,
+      "color": "#2f6fd6",
+      "caps": true
+    },
+    {
+      "id": "open-bar",
+      "type": "rect",
+      "name": "open accent",
+      "x": 1240,
+      "y": 842,
+      "w": 6,
+      "h": 89,
+      "fill": "#2f6fd6"
+    },
+    {
+      "id": "open",
+      "type": "text",
+      "x": 1260,
+      "y": 842,
+      "w": 604,
+      "h": 89,
+      "text": "• The other 2 dungeon types for each tier.\n• Final table sizes (drafts: main 21 × 42, dungeons 11 × 15, lair 15 × 16 in).",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "run-label",
+      "type": "text",
+      "x": 1240,
+      "y": 957,
+      "w": 624,
+      "h": 30,
+      "text": "A run",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "run-0",
+      "type": "rect",
+      "name": "run step: tier 1",
+      "x": 1240,
+      "y": 997,
+      "w": 138,
+      "h": 56,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "run-0-t",
+      "type": "text",
+      "x": 1246,
+      "y": 1001,
+      "w": 126,
+      "h": 48,
+      "text": "Tier 1",
+      "size": 16,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "run-1",
+      "type": "rect",
+      "name": "run step: tier 2",
+      "x": 1402,
+      "y": 997,
+      "w": 138,
+      "h": 56,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "run-1-t",
+      "type": "text",
+      "x": 1408,
+      "y": 1001,
+      "w": 126,
+      "h": 48,
+      "text": "Tier 2",
+      "size": 16,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "run-arrow-1",
+      "type": "line",
+      "name": "run arrow",
+      "from": {
+        "el": "run-0"
+      },
+      "to": {
+        "el": "run-1"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 2.5,
+      "arrow": "end"
+    },
+    {
+      "id": "run-2",
+      "type": "rect",
+      "name": "run step: dragon returns",
+      "x": 1564,
+      "y": 997,
+      "w": 138,
+      "h": 56,
+      "fill": "#f7e3da",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 8,
+      "dash": true
+    },
+    {
+      "id": "run-2-t",
+      "type": "text",
+      "x": 1570,
+      "y": 1001,
+      "w": 126,
+      "h": 48,
+      "text": "Dragon returns",
+      "size": 16,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "run-arrow-2",
+      "type": "line",
+      "name": "run arrow",
+      "from": {
+        "el": "run-1"
+      },
+      "to": {
+        "el": "run-2"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 2.5,
+      "arrow": "end"
+    },
+    {
+      "id": "run-3",
+      "type": "rect",
+      "name": "run step: the lair",
+      "x": 1726,
+      "y": 997,
+      "w": 138,
+      "h": 56,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "run-3-t",
+      "type": "text",
+      "x": 1732,
+      "y": 1001,
+      "w": 126,
+      "h": 48,
+      "text": "The lair",
+      "size": 16,
+      "weight": 600,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "run-arrow-3",
+      "type": "line",
+      "name": "run arrow",
+      "from": {
+        "el": "run-2"
+      },
+      "to": {
+        "el": "run-3"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 2.5,
+      "arrow": "end"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "k-vertical",
+      "kind": "decision",
+      "text": "Main table on top, dungeon tables below it like a basement, reached by rails."
+    },
+    {
+      "id": "k-caves",
+      "kind": "decision",
+      "text": "3 caves on the main table, each opened by breaking the mobs in front of it.",
+      "why": "Mobs are the gold targets, so opening a dungeon and earning gold are the same shots."
+    },
+    {
+      "id": "k-type",
+      "kind": "decision",
+      "text": "The cave picks the dungeon type: each leads to one of the current tier’s 3 types."
+    },
+    {
+      "id": "k-return",
+      "kind": "decision",
+      "text": "Every dungeon exit pipes back up through the top of the boss cave; wire rails run down the left and right to the inlanes.",
+      "why": "One return point, and the ball comes back to the flippers instead of loose on the field."
+    },
+    {
+      "id": "k-toy",
+      "kind": "hypothesis",
+      "text": "A dragon toy on the boss cave snaps at the ball as it comes back up and away to the flippers.",
+      "why": "Sells the dragon on the main table; resets the ball to the player."
+    },
+    {
+      "id": "k-types",
+      "kind": "question",
+      "text": "What are the other 2 dungeon types for each tier?"
+    },
+    {
+      "id": "k-sizes",
+      "kind": "question",
+      "text": "Final table sizes. Drafts: main 21 × 42 in, dungeons 11 × 15 in, lair 15 × 16 in."
+    },
+    {
+      "id": "k-lair",
+      "kind": "decision",
+      "text": "The lair is the exception to caves picking the type: a trick shot opens the boss cave only, and one of its 3 layouts is picked at random."
+    }
+  ],
+  "agent": {
+    "brief": "How the machine is stacked: main table on top, dungeon tables below, rails down from 3 caves and copper return rails up through the boss cave to wires that feed the inlanes. The dungeon tables are vault structures (dungeon-*), editable on Fab.",
+    "rules": [
+      "Decisions live in bible.json (topic structure) and this page’s knowledge; the drawing shows them.",
+      "Dungeon tables are placed vault structures: change them on Fab, not here."
+    ],
+    "open": [
+      "Other 2 types per tier",
+      "Final table sizes"
+    ]
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "kind": "block",
+  "title": "Pop bumper tree test 2",
+  "updated": "2026-11-09",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "skirt",
+      "type": "ellipse",
+      "x": 512,
+      "y": 544,
+      "w": 128,
+      "h": 128,
+      "fill": "#6a2f16",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "floor",
+      "height": 16,
+      "layer": "layer-1"
+    },
+    {
+      "id": "body",
+      "type": "ellipse",
+      "x": 510,
+      "y": 564,
+      "w": 85,
+      "h": 85,
+      "fill": "#7d391c",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "plane": "roof",
+      "lift": 16,
+      "height": 64,
+      "opacity": 0.9,
+      "layer": "layer-1"
+    },
+    {
+      "id": "line-bhlg",
+      "type": "line",
+      "from": {
+        "x": 550,
+        "y": 599
+      },
+      "to": {
+        "x": 518,
+        "y": 615
+      },
+      "stroke": "#1f1c17",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "layer-1",
+      "group": "group-v5zx"
+    },
+    {
+      "id": "line-pqjl",
+      "type": "line",
+      "from": {
+        "x": 514,
+        "y": 617
+      },
+      "to": {
+        "x": 482,
+        "y": 633
+      },
+      "stroke": "#1f1c17",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "layer-1",
+      "group": "group-v5zx"
+    },
+    {
+      "id": "line-el1m",
+      "type": "line",
+      "from": {
+        "x": 504,
+        "y": 600
+      },
+      "to": {
+        "x": 472,
+        "y": 616
+      },
+      "stroke": "#1f1c17",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "layer-1",
+      "group": "group-v5zx"
+    },
+    {
+      "id": "line-sws5",
+      "type": "line",
+      "from": {
+        "x": 526,
+        "y": 599
+      },
+      "to": {
+        "x": 494,
+        "y": 615
+      },
+      "stroke": "#1f1c17",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "layer-1",
+      "group": "group-v5zx"
+    },
+    {
+      "id": "ellipse-zr6d",
+      "type": "ellipse",
+      "x": 506,
+      "y": 517,
+      "w": 180,
+      "h": 163,
+      "stroke": "#1f1c17",
+      "strokeWidth": 2,
+      "lobes": 5,
+      "plane": "roof",
+      "layer": "layer-1",
+      "fill": "#2f7d4f"
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  },
+  "footprint": {
+    "cols": 3,
+    "rows": 3
+  },
+  "dims": {
+    "in": [
+      2.4,
+      2.4,
+      1.9
+    ],
+    "estimated": true,
+    "note": "Cap 2.4\" dia × 0.65\"; skirt 2.0\" dia. Overall height estimated."
+  },
+  "layers": [
+    {
+      "id": "layer-1",
+      "name": "Layer 1"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "kind": "block",
+  "title": "Moss floor",
+  "updated": "2026-11-14",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "rect-y8sr",
+      "type": "rect",
+      "name": "tile",
+      "layer": "base",
+      "plane": "floor",
+      "x": 512,
+      "y": 576,
+      "w": 64,
+      "h": 64,
+      "fill": "#58623f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "mark-0",
+      "type": "ellipse",
+      "layer": "base",
+      "plane": "floor",
+      "x": 492.8,
+      "y": 588.8,
+      "w": 32,
+      "h": 32,
+      "fill": "#4c5536",
+      "stroke": "none"
+    },
+    {
+      "id": "mark-1",
+      "type": "ellipse",
+      "layer": "base",
+      "plane": "floor",
+      "x": 441.6,
+      "y": 435.2,
+      "w": 44.8,
+      "h": 44.8,
+      "fill": "#4c5536",
+      "stroke": "none"
+    },
+    {
+      "id": "mark-2",
+      "type": "ellipse",
+      "layer": "base",
+      "plane": "floor",
+      "x": 441.6,
+      "y": 304,
+      "w": 25.6,
+      "h": 25.6,
+      "fill": "#8a8478",
+      "stroke": "none"
+    },
+    {
+      "id": "mark-3",
+      "type": "ellipse",
+      "layer": "base",
+      "plane": "floor",
+      "x": 684.8000000000001,
+      "y": 384,
+      "w": 19.2,
+      "h": 19.2,
+      "fill": "#8a8478",
+      "stroke": "none"
+    }
+  ],
+  "part": "floor",
+  "layers": [
+    {
+      "id": "base",
+      "name": "Tile"
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  }
+}

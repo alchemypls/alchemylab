@@ -1,0 +1,843 @@
+{
+  "title": "UI & HUD",
+  "kicker": "Topic",
+  "updated": "2026-11-14",
+  "background": "#f4efe6",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "title",
+      "type": "text",
+      "x": 56,
+      "y": 36,
+      "w": 1300,
+      "h": 82,
+      "text": "",
+      "size": 60,
+      "weight": 600,
+      "font": "serif",
+      "bind": {
+        "topic": "ui",
+        "field": "title"
+      }
+    },
+    {
+      "id": "status",
+      "type": "status",
+      "x": 1840,
+      "y": 64,
+      "size": 22,
+      "topic": "ui"
+    },
+    {
+      "id": "back",
+      "type": "text",
+      "x": 1560,
+      "y": 52,
+      "w": 260,
+      "h": 40,
+      "text": "← Overview",
+      "size": 20,
+      "weight": 600,
+      "align": "right",
+      "valign": "middle",
+      "link": "index"
+    },
+    {
+      "id": "summary",
+      "type": "text",
+      "x": 56,
+      "y": 120,
+      "w": 1808,
+      "h": 104,
+      "text": "",
+      "size": 18,
+      "color": "#6b6257",
+      "bind": {
+        "topic": "ui",
+        "field": "summary"
+      }
+    },
+    {
+      "id": "rule",
+      "type": "line",
+      "name": "header rule",
+      "from": {
+        "x": 56,
+        "y": 236
+      },
+      "to": {
+        "x": 1864,
+        "y": 236
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "arrow": "none"
+    },
+    {
+      "id": "screen-label",
+      "type": "text",
+      "x": 56,
+      "y": 256,
+      "w": 900,
+      "h": 30,
+      "text": "The screen",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "screen",
+      "type": "rect",
+      "name": "the screen (16:9)",
+      "x": 56,
+      "y": 296,
+      "w": 760,
+      "h": 428,
+      "fill": "#2b2320",
+      "stroke": "#1f1b16",
+      "strokeWidth": 4,
+      "radius": 10
+    },
+    {
+      "id": "dmd",
+      "type": "rect",
+      "name": "backbox display",
+      "x": 206,
+      "y": 314,
+      "w": 460,
+      "h": 70,
+      "fill": "#1a1410",
+      "stroke": "#5b544c",
+      "strokeWidth": 3,
+      "radius": 6
+    },
+    {
+      "id": "dmd-t",
+      "type": "text",
+      "x": 218,
+      "y": 320,
+      "w": 436,
+      "h": 58,
+      "text": "1,250,400   GOLD 07   ♥♥♥\nQUEST: BREAK THE GOBLINS",
+      "size": 17,
+      "weight": 700,
+      "font": "mono",
+      "color": "#ff8a2a",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "pf",
+      "type": "poly",
+      "name": "main table (camera view)",
+      "x": 166,
+      "y": 400,
+      "w": 540,
+      "h": 308,
+      "pts": [
+        [
+          0.18,
+          0
+        ],
+        [
+          0.82,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "fill": "#c9a36b",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "pf-tree-0",
+      "type": "ellipse",
+      "name": "tree",
+      "x": 353.2,
+      "y": 478.4,
+      "w": 36,
+      "h": 28,
+      "fill": "#2f6b3f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "lobes": 6
+    },
+    {
+      "id": "pf-tree-1",
+      "type": "ellipse",
+      "name": "tree",
+      "x": 445,
+      "y": 453.76,
+      "w": 36,
+      "h": 28,
+      "fill": "#2f6b3f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "lobes": 6
+    },
+    {
+      "id": "pf-tree-2",
+      "type": "ellipse",
+      "name": "tree",
+      "x": 407.2,
+      "y": 524.6,
+      "w": 36,
+      "h": 28,
+      "fill": "#2f6b3f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "lobes": 6
+    },
+    {
+      "id": "pf-tree-3",
+      "type": "ellipse",
+      "name": "tree",
+      "x": 504.4000000000001,
+      "y": 509.20000000000005,
+      "w": 36,
+      "h": 28,
+      "fill": "#2f6b3f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "lobes": 6
+    },
+    {
+      "id": "pf-cave-0",
+      "type": "poly",
+      "name": "cave",
+      "x": 301.20000000000005,
+      "y": 436.2,
+      "w": 32,
+      "h": 24,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.1,
+          0.35
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.9,
+          0.35
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#d8cfc0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "pf-cave-1",
+      "type": "poly",
+      "name": "cave",
+      "x": 420,
+      "y": 414.64,
+      "w": 32,
+      "h": 24,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.1,
+          0.35
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.9,
+          0.35
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#d8cfc0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "pf-cave-2",
+      "type": "poly",
+      "name": "cave",
+      "x": 549.6,
+      "y": 436.2,
+      "w": 32,
+      "h": 24,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.1,
+          0.35
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.9,
+          0.35
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#d8cfc0",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "flip-l",
+      "type": "capsule",
+      "name": "left flipper, item color",
+      "x": 356,
+      "y": 672,
+      "w": 70,
+      "h": 18,
+      "taper": 0.5,
+      "fill": "#2f6fd6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "rotate": 18
+    },
+    {
+      "id": "flip-r",
+      "type": "capsule",
+      "name": "right flipper, item color",
+      "x": 448,
+      "y": 672,
+      "w": 70,
+      "h": 18,
+      "taper": 0.5,
+      "fill": "#e0662a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "rotate": 162
+    },
+    {
+      "id": "ball",
+      "type": "ellipse",
+      "name": "the ball",
+      "x": 476,
+      "y": 556,
+      "w": 16,
+      "h": 16,
+      "fill": "#c7ccd1",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "c-dmd",
+      "type": "text",
+      "x": 850,
+      "y": 300,
+      "w": 330,
+      "h": 26,
+      "text": "Backbox display",
+      "size": 17,
+      "weight": 700,
+      "caps": true
+    },
+    {
+      "id": "c-dmd-b",
+      "type": "text",
+      "x": 850,
+      "y": 328,
+      "w": 330,
+      "h": 74,
+      "text": "Above the table, like a real machine. The only interface: no overlay.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "c-dmd-lead",
+      "type": "line",
+      "name": "callout line: backbox display",
+      "from": {
+        "x": 840,
+        "y": 313
+      },
+      "to": {
+        "el": "dmd"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "arrow": "none"
+    },
+    {
+      "id": "c-rest",
+      "type": "text",
+      "x": 850,
+      "y": 420,
+      "w": 330,
+      "h": 26,
+      "text": "At rest",
+      "size": 17,
+      "weight": 700,
+      "caps": true
+    },
+    {
+      "id": "c-rest-b",
+      "type": "text",
+      "x": 850,
+      "y": 448,
+      "w": 330,
+      "h": 74,
+      "text": "Score, gold, lives and the current quest, always.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "c-rest-lead",
+      "type": "line",
+      "name": "callout line: at rest",
+      "from": {
+        "x": 840,
+        "y": 433
+      },
+      "to": {
+        "x": 656,
+        "y": 360
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "arrow": "none"
+    },
+    {
+      "id": "c-flip",
+      "type": "text",
+      "x": 850,
+      "y": 560,
+      "w": 330,
+      "h": 26,
+      "text": "Item colors",
+      "size": 17,
+      "weight": 700,
+      "caps": true
+    },
+    {
+      "id": "c-flip-b",
+      "type": "text",
+      "x": 850,
+      "y": 588,
+      "w": 330,
+      "h": 74,
+      "text": "Each bat shows its item’s color; the name and details go on the display.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "c-flip-lead",
+      "type": "line",
+      "name": "callout line: item colors",
+      "from": {
+        "x": 840,
+        "y": 573
+      },
+      "to": {
+        "el": "flip-r"
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.3,
+      "arrow": "none"
+    },
+    {
+      "id": "run-label",
+      "type": "text",
+      "x": 56,
+      "y": 756,
+      "w": 900,
+      "h": 30,
+      "text": "The display through a run",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "p-0",
+      "type": "rect",
+      "name": "display: at rest",
+      "x": 56,
+      "y": 796,
+      "w": 262,
+      "h": 112,
+      "fill": "#1a1410",
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "radius": 6
+    },
+    {
+      "id": "p-0-t",
+      "type": "text",
+      "x": 66,
+      "y": 810,
+      "w": 242,
+      "h": 84,
+      "text": "1,250,400  GOLD 07\nBREAK THE GOBLINS",
+      "size": 18,
+      "weight": 700,
+      "font": "mono",
+      "color": "#ff8a2a",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "p-0-name",
+      "type": "text",
+      "x": 56,
+      "y": 918,
+      "w": 262,
+      "h": 26,
+      "text": "At rest",
+      "size": 17,
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "p-0-sub",
+      "type": "text",
+      "x": 56,
+      "y": 946,
+      "w": 262,
+      "h": 26,
+      "text": "Status line, always",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "p-1",
+      "type": "rect",
+      "name": "display: a break",
+      "x": 343,
+      "y": 796,
+      "w": 262,
+      "h": 112,
+      "fill": "#1a1410",
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "radius": 6
+    },
+    {
+      "id": "p-1-t",
+      "type": "text",
+      "x": 353,
+      "y": 810,
+      "w": 242,
+      "h": 84,
+      "text": "GOBLIN DOWN\n+1 GOLD",
+      "size": 18,
+      "weight": 700,
+      "font": "mono",
+      "color": "#ff8a2a",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "p-1-name",
+      "type": "text",
+      "x": 343,
+      "y": 918,
+      "w": 262,
+      "h": 26,
+      "text": "A break",
+      "size": 17,
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "p-1-sub",
+      "type": "text",
+      "x": 343,
+      "y": 946,
+      "w": 262,
+      "h": 26,
+      "text": "A few seconds, then back",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "p-2",
+      "type": "rect",
+      "name": "display: a shop",
+      "x": 630,
+      "y": 796,
+      "w": 262,
+      "h": 112,
+      "fill": "#1a1410",
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "radius": 6
+    },
+    {
+      "id": "p-2-t",
+      "type": "text",
+      "x": 640,
+      "y": 810,
+      "w": 242,
+      "h": 84,
+      "text": "FIRE STAFF · 6 GOLD\nPRESS A FLIPPER",
+      "size": 18,
+      "weight": 700,
+      "font": "mono",
+      "color": "#ff8a2a",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "p-2-name",
+      "type": "text",
+      "x": 630,
+      "y": 918,
+      "w": 262,
+      "h": 26,
+      "text": "A shop",
+      "size": 17,
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "p-2-sub",
+      "type": "text",
+      "x": 630,
+      "y": 946,
+      "w": 262,
+      "h": 26,
+      "text": "Ball held while you choose",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "p-3",
+      "type": "rect",
+      "name": "display: loot",
+      "x": 917,
+      "y": 796,
+      "w": 262,
+      "h": 112,
+      "fill": "#1a1410",
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "radius": 6
+    },
+    {
+      "id": "p-3-t",
+      "type": "text",
+      "x": 927,
+      "y": 810,
+      "w": 242,
+      "h": 84,
+      "text": "PICK 1 OF 3\nOR TAKE THE EXIT",
+      "size": 18,
+      "weight": 700,
+      "font": "mono",
+      "color": "#ff8a2a",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "p-3-name",
+      "type": "text",
+      "x": 917,
+      "y": 918,
+      "w": 262,
+      "h": 26,
+      "text": "Loot",
+      "size": 17,
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "p-3-sub",
+      "type": "text",
+      "x": 917,
+      "y": 946,
+      "w": 262,
+      "h": 26,
+      "text": "After an encounter",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "decided-label",
+      "type": "text",
+      "x": 1240,
+      "y": 256,
+      "w": 624,
+      "h": 30,
+      "text": "Decided",
+      "size": 19,
+      "weight": 700,
+      "color": "#b4532a",
+      "caps": true
+    },
+    {
+      "id": "decided-bar",
+      "type": "rect",
+      "name": "decided accent",
+      "x": 1240,
+      "y": 292,
+      "w": 6,
+      "h": 216,
+      "fill": "#b4532a"
+    },
+    {
+      "id": "decided",
+      "type": "text",
+      "x": 1260,
+      "y": 292,
+      "w": 604,
+      "h": 216,
+      "text": "• A dot-matrix display above the table, like a backbox.\n• At rest: score, gold, lives and the current quest.\n• Events take it over for a few seconds, then it returns.\n• Flipper items: a color on each bat; details on the display.\n• No overlay. If it doesn’t fit the display, simplify the game.\n• Boss health is on the toy, not the display.",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "fits-label",
+      "type": "text",
+      "x": 1240,
+      "y": 536,
+      "w": 624,
+      "h": 30,
+      "text": "How it fits",
+      "size": 19,
+      "weight": 700,
+      "color": "#5b5f63",
+      "caps": true
+    },
+    {
+      "id": "fits-bar",
+      "type": "rect",
+      "name": "how it fits accent",
+      "x": 1240,
+      "y": 572,
+      "w": 6,
+      "h": 108,
+      "fill": "#5b5f63"
+    },
+    {
+      "id": "fits",
+      "type": "text",
+      "x": 1260,
+      "y": 572,
+      "w": 604,
+      "h": 108,
+      "text": "• Pillar 1, never out of sight: the eyes stay on the table and the bats.\n• Challenge: mobs and bosses show health with plate and lamps.",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "open-label",
+      "type": "text",
+      "x": 1240,
+      "y": 708,
+      "w": 624,
+      "h": 30,
+      "text": "Open",
+      "size": 19,
+      "weight": 700,
+      "color": "#2f6fd6",
+      "caps": true
+    },
+    {
+      "id": "open-bar",
+      "type": "rect",
+      "name": "open accent",
+      "x": 1240,
+      "y": 744,
+      "w": 6,
+      "h": 81,
+      "fill": "#2f6fd6"
+    },
+    {
+      "id": "open",
+      "type": "text",
+      "x": 1260,
+      "y": 744,
+      "w": 604,
+      "h": 81,
+      "text": "• Item colors must read for color-blind players: add a symbol on the bat too?\n• How long an event holds the display.",
+      "size": 18,
+      "color": "#1f1b16"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "k-dmd",
+      "kind": "decision",
+      "text": "A dot-matrix display above the table, like a real backbox, is the whole interface."
+    },
+    {
+      "id": "k-rest",
+      "kind": "decision",
+      "text": "At rest the display shows score, gold, lives and the current quest; events take it over for a few seconds."
+    },
+    {
+      "id": "k-items",
+      "kind": "decision",
+      "text": "Each flipper shows its item as a color on the bat; names and details go on the display."
+    },
+    {
+      "id": "k-overlay",
+      "kind": "decision",
+      "text": "No overlay: if something doesn’t fit the display, simplify the game.",
+      "why": "Keeps it a real machine; replaces the earlier overlay fallback."
+    },
+    {
+      "id": "k-boss",
+      "kind": "decision",
+      "text": "Boss health shows on the toy (plate and lamps), not the display."
+    },
+    {
+      "id": "k-colorblind",
+      "kind": "question",
+      "text": "Do item colors need a symbol on the bat for color-blind players?"
+    },
+    {
+      "id": "k-hold",
+      "kind": "question",
+      "text": "How long does an event hold the display?"
+    }
+  ],
+  "agent": {
+    "brief": "All information goes through a dot-matrix display above the table (score, gold, lives, quest at rest; events briefly) and through the machine itself: item colors on the bats, plate and lamps on mobs and bosses. There is no overlay.",
+    "rules": [
+      "Never add an on-screen overlay; simplify instead.",
+      "The status line returns after every event."
+    ],
+    "open": [
+      "Color-blind item marks",
+      "Event hold time"
+    ]
+  }
+}

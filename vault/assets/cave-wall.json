@@ -1,0 +1,69 @@
+{
+  "kind": "block",
+  "title": "Cave wall",
+  "updated": "2026-11-14",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "face-0",
+      "type": "rect",
+      "name": "left face",
+      "layer": "faces",
+      "plane": "left",
+      "x": 448,
+      "y": 556.8,
+      "w": 64,
+      "h": 51.2,
+      "fill": "#5e534a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "face-1",
+      "type": "rect",
+      "name": "right face",
+      "layer": "faces",
+      "plane": "right",
+      "x": 512,
+      "y": 588.8,
+      "w": 64,
+      "h": 51.2,
+      "fill": "#4a403a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    }
+  ],
+  "part": "wall",
+  "wall": {
+    "h": 0.8
+  },
+  "layers": [
+    {
+      "id": "faces",
+      "name": "Faces"
+    },
+    {
+      "id": "end",
+      "name": "Joint: end"
+    },
+    {
+      "id": "corner",
+      "name": "Joint: corner"
+    },
+    {
+      "id": "tee",
+      "name": "Joint: tee"
+    },
+    {
+      "id": "cross",
+      "name": "Joint: cross"
+    }
+  ],
+  "size": {
+    "width": 1024,
+    "height": 1024
+  },
+  "grid": {
+    "cell": 64
+  }
+}

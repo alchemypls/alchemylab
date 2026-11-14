@@ -1,0 +1,1439 @@
+{
+  "title": "Setting",
+  "kicker": "Topic",
+  "updated": "2026-11-14",
+  "background": "#f4efe6",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "title",
+      "type": "text",
+      "x": 56,
+      "y": 36,
+      "w": 1300,
+      "h": 82,
+      "text": "",
+      "size": 60,
+      "weight": 600,
+      "font": "serif",
+      "bind": {
+        "topic": "setting",
+        "field": "title"
+      }
+    },
+    {
+      "id": "status",
+      "type": "status",
+      "x": 1840,
+      "y": 64,
+      "size": 22,
+      "topic": "setting"
+    },
+    {
+      "id": "back",
+      "type": "text",
+      "x": 1560,
+      "y": 52,
+      "w": 260,
+      "h": 40,
+      "text": "← Overview",
+      "size": 20,
+      "weight": 600,
+      "align": "right",
+      "valign": "middle",
+      "link": "index"
+    },
+    {
+      "id": "summary",
+      "type": "text",
+      "x": 56,
+      "y": 120,
+      "w": 1808,
+      "h": 104,
+      "text": "",
+      "size": 18,
+      "color": "#6b6257",
+      "bind": {
+        "topic": "setting",
+        "field": "summary"
+      }
+    },
+    {
+      "id": "rule",
+      "type": "line",
+      "name": "header rule",
+      "from": {
+        "x": 56,
+        "y": 236
+      },
+      "to": {
+        "x": 1864,
+        "y": 236
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "arrow": "none"
+    },
+    {
+      "id": "bg-sky",
+      "type": "rect",
+      "name": "backglass: night sky",
+      "x": 56,
+      "y": 256,
+      "w": 1124,
+      "h": 520,
+      "fill": "#3b2f5c",
+      "stroke": "#1f1b16",
+      "strokeWidth": 4,
+      "radius": 12
+    },
+    {
+      "id": "bg-glow",
+      "type": "ellipse",
+      "name": "backglass: fire glow behind the peak",
+      "x": 600,
+      "y": 276,
+      "w": 560,
+      "h": 420,
+      "fill": "#c0582e",
+      "stroke": "none",
+      "strokeWidth": 2,
+      "opacity": 0.35
+    },
+    {
+      "id": "bg-moon",
+      "type": "ellipse",
+      "name": "backglass: moon",
+      "x": 150,
+      "y": 326,
+      "w": 72,
+      "h": 72,
+      "fill": "#f4e9c8",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-star-0",
+      "type": "ellipse",
+      "name": "backglass: star",
+      "x": 260,
+      "y": 286,
+      "w": 6,
+      "h": 6,
+      "fill": "#f4e9c8",
+      "stroke": "none",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-star-1",
+      "type": "ellipse",
+      "name": "backglass: star",
+      "x": 330,
+      "y": 366,
+      "w": 6,
+      "h": 6,
+      "fill": "#f4e9c8",
+      "stroke": "none",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-star-2",
+      "type": "ellipse",
+      "name": "backglass: star",
+      "x": 470,
+      "y": 306,
+      "w": 6,
+      "h": 6,
+      "fill": "#f4e9c8",
+      "stroke": "none",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-star-3",
+      "type": "ellipse",
+      "name": "backglass: star",
+      "x": 1080,
+      "y": 326,
+      "w": 6,
+      "h": 6,
+      "fill": "#f4e9c8",
+      "stroke": "none",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-star-4",
+      "type": "ellipse",
+      "name": "backglass: star",
+      "x": 1010,
+      "y": 406,
+      "w": 6,
+      "h": 6,
+      "fill": "#f4e9c8",
+      "stroke": "none",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-star-5",
+      "type": "ellipse",
+      "name": "backglass: star",
+      "x": 560,
+      "y": 376,
+      "w": 6,
+      "h": 6,
+      "fill": "#f4e9c8",
+      "stroke": "none",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-peak",
+      "type": "poly",
+      "name": "backglass: the dragon’s peak",
+      "x": 610,
+      "y": 346,
+      "w": 540,
+      "h": 430,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.3,
+          0.32
+        ],
+        [
+          0.48,
+          0
+        ],
+        [
+          0.6,
+          0.22
+        ],
+        [
+          0.75,
+          0.4
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#231c1a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-wing-l",
+      "type": "poly",
+      "name": "backglass: dragon wing",
+      "x": 770,
+      "y": 276,
+      "w": 120,
+      "h": 90,
+      "pts": [
+        [
+          1,
+          1
+        ],
+        [
+          0.6,
+          0.1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0.35,
+          0.4
+        ],
+        [
+          0.2,
+          0.75
+        ]
+      ],
+      "fill": "#6e1b16",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-wing-r",
+      "type": "poly",
+      "name": "backglass: dragon wing",
+      "x": 880,
+      "y": 266,
+      "w": 130,
+      "h": 96,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.4,
+          0.05
+        ],
+        [
+          1,
+          0.1
+        ],
+        [
+          0.7,
+          0.45
+        ],
+        [
+          0.85,
+          0.8
+        ]
+      ],
+      "fill": "#6e1b16",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-dragon",
+      "type": "ellipse",
+      "name": "backglass: dragon body",
+      "x": 840,
+      "y": 336,
+      "w": 90,
+      "h": 44,
+      "fill": "#9e2a22",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-dragon-head",
+      "type": "poly",
+      "name": "backglass: dragon head",
+      "x": 915,
+      "y": 312,
+      "w": 64,
+      "h": 40,
+      "pts": [
+        [
+          0,
+          0.8
+        ],
+        [
+          0.3,
+          0.1
+        ],
+        [
+          0.75,
+          0.2
+        ],
+        [
+          1,
+          0.6
+        ],
+        [
+          0.6,
+          0.75
+        ],
+        [
+          0.3,
+          1
+        ]
+      ],
+      "fill": "#9e2a22",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-dragon-eye",
+      "type": "ellipse",
+      "name": "backglass: dragon eye",
+      "x": 942,
+      "y": 322,
+      "w": 9,
+      "h": 9,
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1
+    },
+    {
+      "id": "bg-fire",
+      "type": "poly",
+      "name": "backglass: dragon fire",
+      "x": 975,
+      "y": 334,
+      "w": 120,
+      "h": 60,
+      "pts": [
+        [
+          0,
+          0.2
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.4
+        ],
+        [
+          0.6,
+          0.5
+        ],
+        [
+          0.9,
+          0.9
+        ],
+        [
+          0.3,
+          0.7
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "fill": "#f2a33a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "bg-hills",
+      "type": "poly",
+      "name": "backglass: hills",
+      "x": 56,
+      "y": 556,
+      "w": 1124,
+      "h": 220,
+      "pts": [
+        [
+          0,
+          0.35
+        ],
+        [
+          0.12,
+          0.1
+        ],
+        [
+          0.28,
+          0.3
+        ],
+        [
+          0.42,
+          0.05
+        ],
+        [
+          0.55,
+          0.32
+        ],
+        [
+          0.7,
+          0.2
+        ],
+        [
+          0.85,
+          0.38
+        ],
+        [
+          1,
+          0.22
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "fill": "#3d4a2e",
+      "stroke": "none",
+      "strokeWidth": 0
+    },
+    {
+      "id": "bg-boss-cave",
+      "type": "poly",
+      "name": "backglass: boss cave",
+      "x": 846,
+      "y": 546,
+      "w": 70,
+      "h": 56,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.1,
+          0.35
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.9,
+          0.35
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#0d0a09",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-col-0",
+      "type": "poly",
+      "name": "backglass: ruined column",
+      "x": 300,
+      "y": 566,
+      "w": 26,
+      "h": 120,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0.1
+        ],
+        [
+          0.4,
+          0
+        ],
+        [
+          0.6,
+          0.15
+        ],
+        [
+          1,
+          0.05
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#a39b8b",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-col-1",
+      "type": "poly",
+      "name": "backglass: ruined column",
+      "x": 338,
+      "y": 596,
+      "w": 26,
+      "h": 90,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0.1
+        ],
+        [
+          0.4,
+          0
+        ],
+        [
+          0.6,
+          0.15
+        ],
+        [
+          1,
+          0.05
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#a39b8b",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-col-2",
+      "type": "poly",
+      "name": "backglass: ruined column",
+      "x": 376,
+      "y": 556,
+      "w": 26,
+      "h": 130,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0.1
+        ],
+        [
+          0.4,
+          0
+        ],
+        [
+          0.6,
+          0.15
+        ],
+        [
+          1,
+          0.05
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#a39b8b",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-col-3",
+      "type": "poly",
+      "name": "backglass: ruined column",
+      "x": 414,
+      "y": 616,
+      "w": 26,
+      "h": 70,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0.1
+        ],
+        [
+          0.4,
+          0
+        ],
+        [
+          0.6,
+          0.15
+        ],
+        [
+          1,
+          0.05
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#a39b8b",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-arch",
+      "type": "poly",
+      "name": "backglass: ruined arch",
+      "x": 450,
+      "y": 586,
+      "w": 110,
+      "h": 100,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0.3
+        ],
+        [
+          0.2,
+          0.05
+        ],
+        [
+          0.55,
+          0
+        ],
+        [
+          0.75,
+          0.15
+        ],
+        [
+          0.75,
+          0.45
+        ],
+        [
+          0.55,
+          0.35
+        ],
+        [
+          0.25,
+          0.4
+        ],
+        [
+          0.2,
+          1
+        ]
+      ],
+      "fill": "#a39b8b",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-cave-a",
+      "type": "poly",
+      "name": "backglass: cave A",
+      "x": 180,
+      "y": 656,
+      "w": 70,
+      "h": 52,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.1,
+          0.35
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.9,
+          0.35
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#0d0a09",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-cave-b",
+      "type": "poly",
+      "name": "backglass: cave B",
+      "x": 570,
+      "y": 676,
+      "w": 64,
+      "h": 48,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.1,
+          0.35
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.9,
+          0.35
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#0d0a09",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-tree-0",
+      "type": "ellipse",
+      "name": "backglass: tree",
+      "x": 90,
+      "y": 646,
+      "w": 80,
+      "h": 64,
+      "fill": "#2f6b3f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "lobes": 7,
+      "lobeDepth": 0.25
+    },
+    {
+      "id": "bg-tree-1",
+      "type": "ellipse",
+      "name": "backglass: tree",
+      "x": 250,
+      "y": 670,
+      "w": 64,
+      "h": 51.2,
+      "fill": "#2f6b3f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "lobes": 7,
+      "lobeDepth": 0.25
+    },
+    {
+      "id": "bg-tree-2",
+      "type": "ellipse",
+      "name": "backglass: tree",
+      "x": 520,
+      "y": 673,
+      "w": 70,
+      "h": 56,
+      "fill": "#2f6b3f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "lobes": 7,
+      "lobeDepth": 0.25
+    },
+    {
+      "id": "bg-tree-3",
+      "type": "ellipse",
+      "name": "backglass: tree",
+      "x": 980,
+      "y": 651,
+      "w": 90,
+      "h": 72,
+      "fill": "#2f6b3f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "lobes": 7,
+      "lobeDepth": 0.25
+    },
+    {
+      "id": "bg-tree-4",
+      "type": "ellipse",
+      "name": "backglass: tree",
+      "x": 1080,
+      "y": 651,
+      "w": 70,
+      "h": 56,
+      "fill": "#2f6b3f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "lobes": 7,
+      "lobeDepth": 0.25
+    },
+    {
+      "id": "bg-house-0",
+      "type": "rect",
+      "name": "backglass: inn",
+      "x": 660,
+      "y": 676,
+      "w": 70,
+      "h": 60,
+      "fill": "#c9a36b",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-roof-0",
+      "type": "poly",
+      "name": "backglass: inn roof",
+      "x": 654,
+      "y": 646,
+      "w": 82,
+      "h": 30,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#b4532a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-window-0",
+      "type": "rect",
+      "name": "backglass: lit window",
+      "x": 688,
+      "y": 688,
+      "w": 14,
+      "h": 14,
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1
+    },
+    {
+      "id": "bg-house-1",
+      "type": "rect",
+      "name": "backglass: shop",
+      "x": 740,
+      "y": 690,
+      "w": 50,
+      "h": 46,
+      "fill": "#c9a36b",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-roof-1",
+      "type": "poly",
+      "name": "backglass: shop roof",
+      "x": 734,
+      "y": 660,
+      "w": 62,
+      "h": 30,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#b4532a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-window-1",
+      "type": "rect",
+      "name": "backglass: lit window",
+      "x": 758,
+      "y": 702,
+      "w": 14,
+      "h": 14,
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1
+    },
+    {
+      "id": "bg-house-2",
+      "type": "rect",
+      "name": "backglass: shop",
+      "x": 800,
+      "y": 684,
+      "w": 50,
+      "h": 52,
+      "fill": "#c9a36b",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-roof-2",
+      "type": "poly",
+      "name": "backglass: shop roof",
+      "x": 794,
+      "y": 654,
+      "w": 62,
+      "h": 30,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#b4532a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-window-2",
+      "type": "rect",
+      "name": "backglass: lit window",
+      "x": 818,
+      "y": 696,
+      "w": 14,
+      "h": 14,
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1
+    },
+    {
+      "id": "bg-house-3",
+      "type": "rect",
+      "name": "backglass: shop",
+      "x": 862,
+      "y": 692,
+      "w": 50,
+      "h": 44,
+      "fill": "#c9a36b",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-roof-3",
+      "type": "poly",
+      "name": "backglass: shop roof",
+      "x": 856,
+      "y": 662,
+      "w": 62,
+      "h": 30,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#b4532a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-window-3",
+      "type": "rect",
+      "name": "backglass: lit window",
+      "x": 880,
+      "y": 704,
+      "w": 14,
+      "h": 14,
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1
+    },
+    {
+      "id": "bg-ball",
+      "type": "ellipse",
+      "name": "backglass: the wizard (the ball)",
+      "x": 110,
+      "y": 708,
+      "w": 40,
+      "h": 40,
+      "fill": "#c7ccd1",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-hat",
+      "type": "poly",
+      "name": "backglass: wizard hat",
+      "x": 108,
+      "y": 660,
+      "w": 44,
+      "h": 54,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "fill": "#2f6fd6",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "bg-title",
+      "type": "text",
+      "x": 80,
+      "y": 274,
+      "w": 620,
+      "h": 52,
+      "text": "PINBALL DUNGEON CRAWL",
+      "size": 36,
+      "weight": 800,
+      "font": "serif",
+      "color": "#f2c230"
+    },
+    {
+      "id": "bg-caption",
+      "type": "text",
+      "x": 56,
+      "y": 786,
+      "w": 1124,
+      "h": 26,
+      "text": "Backglass sketch: the ruined kingdom at night, the dragon on its peak above the boss cave, the wizard as the ball.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "place-0",
+      "type": "rect",
+      "name": "place: the town",
+      "x": 56,
+      "y": 830,
+      "w": 262,
+      "h": 140,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "place-0-t",
+      "type": "text",
+      "x": 72,
+      "y": 844,
+      "w": 230,
+      "h": 28,
+      "text": "The town",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "place-0-b",
+      "type": "text",
+      "x": 72,
+      "y": 878,
+      "w": 230,
+      "h": 84,
+      "text": "An inn and 3 shops, among the ruins. Quest givers live here.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "place-1",
+      "type": "rect",
+      "name": "place: the countryside",
+      "x": 343,
+      "y": 830,
+      "w": 262,
+      "h": 140,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "place-1-t",
+      "type": "text",
+      "x": 359,
+      "y": 844,
+      "w": 230,
+      "h": 28,
+      "text": "The countryside",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "place-1-b",
+      "type": "text",
+      "x": 359,
+      "y": 878,
+      "w": 230,
+      "h": 84,
+      "text": "Ruins among the trees: the main table, the trees its bumpers.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "place-2",
+      "type": "rect",
+      "name": "place: the buried halls",
+      "x": 630,
+      "y": 830,
+      "w": 262,
+      "h": 140,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "place-2-t",
+      "type": "text",
+      "x": 646,
+      "y": 844,
+      "w": 230,
+      "h": 28,
+      "text": "The buried halls",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "place-2-b",
+      "type": "text",
+      "x": 646,
+      "y": 878,
+      "w": 230,
+      "h": 84,
+      "text": "Caves into the kingdom’s old halls: the dungeons (goblin warren, crypt).",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "place-3",
+      "type": "rect",
+      "name": "place: the dragon’s peak",
+      "x": 917,
+      "y": 830,
+      "w": 262,
+      "h": 140,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "place-3-t",
+      "type": "text",
+      "x": 933,
+      "y": 844,
+      "w": 230,
+      "h": 28,
+      "text": "The dragon’s peak",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "place-3-b",
+      "type": "text",
+      "x": 933,
+      "y": 878,
+      "w": 230,
+      "h": 84,
+      "text": "At the back of the table. The boss cave leads into its lair.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "decided-label",
+      "type": "text",
+      "x": 1240,
+      "y": 256,
+      "w": 624,
+      "h": 30,
+      "text": "Decided",
+      "size": 19,
+      "weight": 700,
+      "color": "#b4532a",
+      "caps": true
+    },
+    {
+      "id": "decided-bar",
+      "type": "rect",
+      "name": "decided accent",
+      "x": 1240,
+      "y": 292,
+      "w": 6,
+      "h": 135,
+      "fill": "#b4532a"
+    },
+    {
+      "id": "decided",
+      "type": "text",
+      "x": 1260,
+      "y": 292,
+      "w": 604,
+      "h": 135,
+      "text": "• A fantasy world shown as a machine; no one in it knows.\n• Classic heroic fantasy, like an 80s table’s backglass.\n• The main table: a ruined kingdom’s countryside.\n• The caves lead into the kingdom’s buried halls.\n• The tome: the wizards’ spellbook, stolen by the dragon.",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "fits-label",
+      "type": "text",
+      "x": 1240,
+      "y": 455,
+      "w": 624,
+      "h": 30,
+      "text": "How it fits",
+      "size": 19,
+      "weight": 700,
+      "color": "#5b5f63",
+      "caps": true
+    },
+    {
+      "id": "fits-bar",
+      "type": "rect",
+      "name": "how it fits accent",
+      "x": 1240,
+      "y": 491,
+      "w": 6,
+      "h": 81,
+      "fill": "#5b5f63"
+    },
+    {
+      "id": "fits",
+      "type": "text",
+      "x": 1260,
+      "y": 491,
+      "w": 604,
+      "h": 81,
+      "text": "• Story: after dungeon 2 the dragon burns what’s left.\n• Art: a real machine; the backglass carries the look.\n• Opposition: goblins in the warren, skeletons in the crypt.",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "open-label",
+      "type": "text",
+      "x": 1240,
+      "y": 600,
+      "w": 624,
+      "h": 30,
+      "text": "Open",
+      "size": 19,
+      "weight": 700,
+      "color": "#2f6fd6",
+      "caps": true
+    },
+    {
+      "id": "open-bar",
+      "type": "rect",
+      "name": "open accent",
+      "x": 1240,
+      "y": 636,
+      "w": 6,
+      "h": 54,
+      "fill": "#2f6fd6"
+    },
+    {
+      "id": "open",
+      "type": "text",
+      "x": 1260,
+      "y": 636,
+      "w": 604,
+      "h": 54,
+      "text": "• The kingdom’s name, and what ruined it.\n• Who the quest givers in town are.",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "herbs-label",
+      "type": "text",
+      "x": 1240,
+      "y": 718,
+      "w": 624,
+      "h": 30,
+      "text": "Herbs & alchemy",
+      "size": 19,
+      "weight": 700,
+      "color": "#2f6b3f",
+      "caps": true
+    },
+    {
+      "id": "herbs-bar",
+      "type": "rect",
+      "name": "herbs & alchemy accent",
+      "x": 1240,
+      "y": 754,
+      "w": 6,
+      "h": 108,
+      "fill": "#2f6b3f"
+    },
+    {
+      "id": "herbs",
+      "type": "text",
+      "x": 1260,
+      "y": 754,
+      "w": 430,
+      "h": 108,
+      "text": "The trees are the kingdom’s old alchemy herbs, run wild among the ruins. Lore only: in play they still just bounce the ball, and pay no gold.",
+      "size": 16,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "herbs-floor",
+      "type": "zone",
+      "name": "herbs: tree floor",
+      "x": 1780,
+      "y": 775,
+      "cols": 3,
+      "rows": 3,
+      "cell": 30,
+      "fill": "#f4efe6",
+      "stroke": "none",
+      "noLines": true
+    },
+    {
+      "id": "herbs-tree",
+      "type": "asset",
+      "asset": "pop-bumper-3",
+      "w": 180,
+      "h": 118,
+      "at": {
+        "x": 0.5,
+        "y": 0.6175
+      },
+      "x": 1690,
+      "y": 747.135,
+      "name": "tree bumper: an old alchemy herb"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "k-frame",
+      "kind": "decision",
+      "text": "A fantasy world only shown as a machine; nobody in the story knows it’s a machine."
+    },
+    {
+      "id": "k-tone",
+      "kind": "decision",
+      "text": "Classic heroic fantasy, like the airbrushed backglass of an 80s fantasy table."
+    },
+    {
+      "id": "k-land",
+      "kind": "decision",
+      "text": "The main table is a ruined kingdom’s countryside: ruins among the trees, a town of an inn and 3 shops, caves into the buried halls, the dragon’s peak at the back."
+    },
+    {
+      "id": "k-tome",
+      "kind": "decision",
+      "text": "The tome is the wizards’ dangerous spellbook, stolen by the dragon."
+    },
+    {
+      "id": "k-herbs",
+      "kind": "decision",
+      "text": "The trees are the kingdom’s old alchemy herbs: lore only, no gameplay change."
+    },
+    {
+      "id": "k-name",
+      "kind": "question",
+      "text": "The kingdom’s name, and what ruined it."
+    },
+    {
+      "id": "k-givers",
+      "kind": "question",
+      "text": "Who are the quest givers in town?"
+    }
+  ],
+  "agent": {
+    "brief": "Where and what: a heroic-fantasy ruined kingdom, shown as a real pinball machine. The main table is its countryside (ruins, trees, town, caves, the dragon’s peak); dungeons are its buried halls; the tome is the wizards’ stolen spellbook.",
+    "rules": [
+      "Nothing in the fiction knows it’s a machine: no fourth-wall jokes.",
+      "Heroic, not cozy or grim, except the dragon’s return after dungeon 2."
+    ],
+    "open": [
+      "Kingdom name and its fall",
+      "Quest givers"
+    ]
+  }
+}

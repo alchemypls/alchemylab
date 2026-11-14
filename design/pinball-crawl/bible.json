@@ -1,22 +1,22 @@
 {
   "title": "Pinball Dungeon Crawl",
   "template": "game",
-  "pitch": "Roguelike pinball dungeon crawl: a tiny wizard hunts a dragon's evil tome through a real machine's layered tables.",
+  "pitch": "Real pinball, roguelike runs: break mobs for gold, shoot a cave, ride the rail down into a dungeon table, and reach the dragon in 15 minutes.",
   "created": "2026-10-30",
   "topics": [
     {
       "id": "pitch",
       "group": "Vision",
       "title": "Pitch",
-      "status": "hypothesis",
-      "summary": "Roguelike pinball dungeon crawl: a tiny wizard hunts a dragon's evil tome through a real machine's layered tables."
+      "status": "decided",
+      "summary": "Real pinball, roguelike runs: break mobs for gold, shoot a cave, ride the rail down into a dungeon table, and reach the dragon in 15 minutes."
     },
     {
       "id": "fantasy",
       "group": "Vision",
       "title": "Player Fantasy",
       "status": "decided",
-      "summary": "A tiny wizard searching for an evil tome held by an evil dragon."
+      "summary": "A tiny wizard searching for an evil tome, the wizards' dangerous spellbook, stolen and held by an evil dragon."
     },
     {
       "id": "pillars",
@@ -44,21 +44,22 @@
       "group": "Play",
       "title": "Core Loop",
       "status": "decided",
-      "summary": "Shoot, break mobs for gold. Quest spawns new mobs; break them and a dungeon opens. Drop in, beat the encounter, hit 1 of 3 loot targets or exit, pop back up, next quest."
+      "summary": "Shoot, break mobs (red drop targets) for gold. A quest spawns new mobs; break the ones in front of a cave and it opens. Shoot a cave to pick that dungeon, ride its rail down, beat the encounter, hit 1 of 3 loot targets or exit, ride the return rail back up, next quest."
     },
     {
       "id": "mechanics",
       "group": "Play",
       "title": "Core Mechanics",
       "status": "decided",
-      "summary": "Pure pinball. Each flipper carries 1 item with an impact effect. Picking loot replaces the item on the last flipper to touch the ball; exiting takes nothing."
+      "summary": "Pure pinball. Each flipper carries 1 item; the ball carries that item's effect from the moment the flipper hits it until the other flipper does. Items stay until replaced or a drain wipes both (the guardian ward breaks when it saves). Picking loot replaces the item on the last flipper to touch the ball; exiting takes nothing. Kinds: damage, elements, gold, control. Doubles don't stack. Prototype set: iron sword (+1 damage), fire staff (armor hits count double), coin purse (2 gold a break), guardian ward (saves one drain).",
+      "page": "mechanics"
     },
     {
       "id": "controls",
       "group": "Play",
       "title": "Controls & Feel",
       "status": "decided",
-      "summary": "Flippers only. No extra button: spells and weapons come from flippers or are passive on the ball."
+      "summary": "Flippers only. No extra button: spells and weapons come from the flipper items; the only passive is the amulet holding your lives."
     },
     {
       "id": "goals",
@@ -71,8 +72,9 @@
       "id": "challenge",
       "group": "Play",
       "title": "Challenge",
-      "status": "hypothesis",
-      "summary": "Targets have health and armor. Early damage takes 1 fewer hit on unarmored, normal on armored. Shot order changes because of RPG effects."
+      "status": "decided",
+      "summary": "Basic mobs break in 1 hit, like real drop targets. Armor is extra hits taken first and pays no gold until it's gone: a metal plate shows it and pops off, lamps in front show what's left, on bosses too (not on the display). Damage items count on armor too (+1 damage takes 2 points off anything). A tier 1 boss takes about 5 hits. Shot order changes with your loadout, mob weak spots and ordered puzzles. Tiers get tougher by a mix of armor, health and harder shots: each layout leans on a different one, at a similar level.",
+      "page": "challenge"
     },
     {
       "id": "failure",
@@ -92,22 +94,24 @@
       "id": "economy",
       "group": "Play",
       "title": "Rewards & Economy",
-      "status": "hypothesis",
-      "summary": "Hits earn gold. Dungeon loot is 1 of 3 choices or none. 3 shops with an item on top: shoot the one you can afford, ball is held, press a flipper to drop to that side and equip it there."
+      "status": "decided",
+      "summary": "Every mob break pays 1 gold; trees pay nothing, nor do hits on armor. Gold only buys shop items, and a drain loses all of it. 3 shops: one cheap (about 3), one mid (about 6), one dear (about 10); shoot the one you can afford, the ball is held, press a flipper to equip it on that side. Shops restock after each dungeon. Dungeon loot is 1 of 3 choices or none, from the same pool as the shops.",
+      "page": "economy"
     },
     {
       "id": "setting",
       "group": "World",
       "title": "Setting",
-      "status": "hypothesis",
-      "summary": "Pinball dungeon crawl: towns, quest givers, dungeons, all inside a machine."
+      "status": "decided",
+      "summary": "Classic heroic fantasy, like the airbrushed backglass of an 80s fantasy table. A fantasy world that's only shown as a machine; nobody in it knows. The main table is a ruined kingdom's countryside: ruins among the trees (the kingdom's old alchemy herbs, lore only), a town of an inn and 3 shops, caves into the kingdom's buried halls, the dragon's peak at the back. The dragon stole the wizards' dangerous spellbook, the tome.",
+      "page": "setting"
     },
     {
       "id": "narrative",
       "group": "World",
       "title": "Story",
       "status": "decided",
-      "summary": "Told by dot-matrix text and table changes. After dungeon 2 the dragon returns to its lair: landscape ruined, flames, 2 random town buildings destroyed and 2 left open, new trash mobs, a quick trick shot opens the lair."
+      "summary": "Told by dot-matrix text and table changes. After dungeon 2 the dragon returns to its lair: landscape ruined, flames, 2 random town buildings destroyed and 2 left open, new trash mobs, a quick trick shot opens the boss cave into the lair, one of its 3 layouts at random."
     },
     {
       "id": "characters",
@@ -120,22 +124,24 @@
       "id": "structure",
       "group": "World",
       "title": "World & Level Structure",
-      "status": "hypothesis",
-      "summary": "Built vertically: main table on top, dungeon tables reached by rails, each with its own flippers and a sealed exit until the encounter is beaten. Town block is an inn + 3 shops. 3 dungeons per run, 3 types per tier. Terraforming unproven."
+      "status": "decided",
+      "summary": "Built vertically: the main table on top, dungeon tables below it like a basement. 3 caves on the main table, each opened by breaking the mobs in front of it; a rail drops the ball into its dungeon. The cave picks the type: each leads to one of the current tier's 3 types. The lair is the exception: a trick shot opens the boss cave only, and its layout is random. Each dungeon has its own flippers and an exit sealed until the encounter is beaten. Every exit pipes back up through the top of the boss cave, then wire rails run down the left and right to the inlanes. Town block is an inn + 3 shops. 3 dungeons per run. Table sizes are drafts. The main table has 2–3 hand-made layouts; each run picks one.",
+      "page": "structure"
     },
     {
       "id": "opposition",
       "group": "World",
       "title": "Opposition",
-      "status": "hypothesis",
-      "summary": "Bosses start as moving, evading targets. Breakable mobs, random-encounter spawns, puzzles (trick shots, ordered targets). Final boss: the dragon, with 3 lair layouts using different mini bosses and trash mobs."
+      "status": "decided",
+      "summary": "Mobs are the red drop targets; trees are bumpers in the way, not enemies. Bosses fight in 2 phases: they move and dodge, then at half health drop their guard and a shield of targets goes up. They fight back only by changing the table (a post rises, a lane closes, a blocker drops), never the physics. Random encounters on the main table: mostly surprise mob waves, sometimes a wandering mini boss. Tier 1 goblin warren: break 3 goblins. Tier 2 crypt: hit 4 skeletons in order, a wrong one raises them all. Lair layout A: the dragon dodges on its hoard, then 4 scale targets shield it. The dragon is the final boss, with 3 lair layouts using different mini bosses and trash mobs.",
+      "page": "opposition"
     },
     {
       "id": "art",
       "group": "Presentation",
       "title": "Art Direction",
       "status": "decided",
-      "summary": "Looks like a real 3D pinball machine, very mechanical: metal wire rails, tables stacked vertically, rails going transparent as the ball travels."
+      "summary": "Looks like a real 3D pinball machine, very mechanical: metal wire rails, tables stacked vertically, rails going transparent as the ball travels. Pieces so far: tree bumpers, cave mouths, the dragon on its hoard, a dragon toy on the boss cave that snaps at the ball coming back up."
     },
     {
       "id": "audio",
@@ -148,8 +154,9 @@
       "id": "ui",
       "group": "Presentation",
       "title": "UI & HUD",
-      "status": "hypothesis",
-      "summary": "Everything on the dot-matrix display. If that doesn't work well, use an overlay."
+      "status": "decided",
+      "summary": "A dot-matrix display above the table, like a real backbox. At rest it shows score, gold, lives and the current quest; events (breaks, shops, loot, quests) take it over for a few seconds. Each flipper shows its item as a color on the bat; names and details go on the display. No overlay: if something doesn't fit the display, simplify the game. Boss health shows on the toy (plate and lamps), not the display.",
+      "page": "ui"
     },
     {
       "id": "camera",
@@ -169,15 +176,17 @@
       "id": "session",
       "group": "Experience",
       "title": "Session Shape",
-      "status": "hypothesis",
-      "summary": "Maybe 15 minutes a run. Unlike real pinball, there's a goal that ends the game, so the player is trying to finish, not just last. Worth exploring."
+      "status": "decided",
+      "summary": "About 15 minutes for a full run. Unlike real pinball there's a goal that ends the game, so the player is trying to finish, not just last. Losing all 3 lives ends the run. Score: pinball points for every hit all run, plus bonuses for each dungeon cleared, lives left and beating the dragon.",
+      "page": "session"
     },
     {
       "id": "replay",
       "group": "Experience",
       "title": "Replayability",
-      "status": "hypothesis",
-      "summary": "Random loot and 3 dungeon types per tier. No carry-over between runs so far. Light terraforming from a few presets: use more if good, stay fixed if meh."
+      "status": "decided",
+      "summary": "Each run: random loot, shop stock and encounters; 3 dungeon types per tier, picked by cave; the main table is one of 2–3 hand-made layouts. Between runs: a high-score table and unlocks (new items in the pool, new dungeon types). Power never carries over.",
+      "page": "session"
     },
     {
       "id": "accessibility",
@@ -190,8 +199,9 @@
       "id": "platform",
       "group": "Production",
       "title": "Platform & Tech",
-      "status": "hypothesis",
-      "summary": "Engine open: Godot or C++. Option under discussion: 3D visuals, with each table its own 2D physics plane and rails as scripted paths."
+      "status": "decided",
+      "summary": "Godot, with the pinball physics as a C++ extension. Each table is its own 2D physics plane drawn in 3D; only the playfield is simulated. Ramps, rails and drops between tables are scripted paths. Builds for PC and the web (itch.io), so a portfolio visitor can play in one click.",
+      "page": "platform"
     },
     {
       "id": "scope",

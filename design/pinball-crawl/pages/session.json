@@ -1,0 +1,1057 @@
+{
+  "title": "Session & Replay",
+  "kicker": "Topic",
+  "updated": "2026-11-14",
+  "background": "#f4efe6",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "title",
+      "type": "text",
+      "x": 56,
+      "y": 36,
+      "w": 1400,
+      "h": 82,
+      "text": "Session & Replay",
+      "size": 60,
+      "weight": 600,
+      "font": "serif"
+    },
+    {
+      "id": "back",
+      "type": "text",
+      "x": 1560,
+      "y": 52,
+      "w": 300,
+      "h": 40,
+      "text": "← Overview",
+      "size": 20,
+      "weight": 600,
+      "align": "right",
+      "valign": "middle",
+      "link": "index"
+    },
+    {
+      "id": "session-dot",
+      "type": "status",
+      "x": 56,
+      "y": 132,
+      "size": 18,
+      "topic": "session"
+    },
+    {
+      "id": "session-name",
+      "type": "text",
+      "x": 84,
+      "y": 124,
+      "w": 600,
+      "h": 30,
+      "text": "",
+      "size": 19,
+      "weight": 700,
+      "bind": {
+        "topic": "session",
+        "field": "title"
+      }
+    },
+    {
+      "id": "session-summary",
+      "type": "text",
+      "x": 56,
+      "y": 156,
+      "w": 884,
+      "h": 72,
+      "text": "",
+      "size": 15,
+      "color": "#6b6257",
+      "bind": {
+        "topic": "session",
+        "field": "summary"
+      }
+    },
+    {
+      "id": "replay-dot",
+      "type": "status",
+      "x": 980,
+      "y": 132,
+      "size": 18,
+      "topic": "replay"
+    },
+    {
+      "id": "replay-name",
+      "type": "text",
+      "x": 1008,
+      "y": 124,
+      "w": 600,
+      "h": 30,
+      "text": "",
+      "size": 19,
+      "weight": 700,
+      "bind": {
+        "topic": "replay",
+        "field": "title"
+      }
+    },
+    {
+      "id": "replay-summary",
+      "type": "text",
+      "x": 980,
+      "y": 156,
+      "w": 884,
+      "h": 72,
+      "text": "",
+      "size": 15,
+      "color": "#6b6257",
+      "bind": {
+        "topic": "replay",
+        "field": "summary"
+      }
+    },
+    {
+      "id": "rule",
+      "type": "line",
+      "name": "header rule",
+      "from": {
+        "x": 56,
+        "y": 240
+      },
+      "to": {
+        "x": 1864,
+        "y": 240
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "arrow": "none"
+    },
+    {
+      "id": "run-label",
+      "type": "text",
+      "x": 56,
+      "y": 260,
+      "w": 900,
+      "h": 30,
+      "text": "A run, about 15 minutes",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "seg-0",
+      "type": "rect",
+      "name": "run: main table",
+      "x": 56,
+      "y": 330,
+      "w": 224.8,
+      "h": 64,
+      "fill": "#c9a36b",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "seg-0-t",
+      "type": "text",
+      "x": 62,
+      "y": 336,
+      "w": 212.8,
+      "h": 52,
+      "text": "Main table",
+      "size": 15,
+      "weight": 700,
+      "color": "#1f1b16",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "seg-1",
+      "type": "rect",
+      "name": "run: dungeon 1",
+      "x": 280.8,
+      "y": 330,
+      "w": 187.33333333333334,
+      "h": 64,
+      "fill": "#58623f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "seg-1-t",
+      "type": "text",
+      "x": 286.8,
+      "y": 336,
+      "w": 175.33333333333334,
+      "h": 52,
+      "text": "Dungeon 1",
+      "size": 15,
+      "weight": 700,
+      "color": "#f4efe6",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "seg-2",
+      "type": "rect",
+      "name": "run: main table",
+      "x": 468.1333333333333,
+      "y": 330,
+      "w": 149.86666666666667,
+      "h": 64,
+      "fill": "#c9a36b",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "seg-2-t",
+      "type": "text",
+      "x": 474.1333333333333,
+      "y": 336,
+      "w": 137.86666666666667,
+      "h": 52,
+      "text": "Main table",
+      "size": 15,
+      "weight": 700,
+      "color": "#1f1b16",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "seg-3",
+      "type": "rect",
+      "name": "run: dungeon 2",
+      "x": 618,
+      "y": 330,
+      "w": 187.33333333333334,
+      "h": 64,
+      "fill": "#77726a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "seg-3-t",
+      "type": "text",
+      "x": 624,
+      "y": 336,
+      "w": 175.33333333333334,
+      "h": 52,
+      "text": "Dungeon 2",
+      "size": 15,
+      "weight": 700,
+      "color": "#f4efe6",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "seg-4",
+      "type": "rect",
+      "name": "run: dragon returns",
+      "x": 805.3333333333334,
+      "y": 330,
+      "w": 112.4,
+      "h": 64,
+      "fill": "#b4532a",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "seg-4-t",
+      "type": "text",
+      "x": 811.3333333333334,
+      "y": 336,
+      "w": 100.4,
+      "h": 52,
+      "text": "Dragon returns",
+      "size": 15,
+      "weight": 700,
+      "color": "#f4efe6",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "seg-5",
+      "type": "rect",
+      "name": "run: the lair",
+      "x": 917.7333333333333,
+      "y": 330,
+      "w": 262.26666666666665,
+      "h": 64,
+      "fill": "#5a2c22",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "seg-5-t",
+      "type": "text",
+      "x": 923.7333333333333,
+      "y": 336,
+      "w": 250.26666666666665,
+      "h": 52,
+      "text": "The lair",
+      "size": 15,
+      "weight": 700,
+      "color": "#f4efe6",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "tick-0",
+      "type": "line",
+      "name": "minute tick",
+      "from": {
+        "x": 56,
+        "y": 394
+      },
+      "to": {
+        "x": 56,
+        "y": 406
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "tick-0-t",
+      "type": "text",
+      "x": 16,
+      "y": 410,
+      "w": 80,
+      "h": 24,
+      "text": "0 min",
+      "size": 14,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "tick-5",
+      "type": "line",
+      "name": "minute tick",
+      "from": {
+        "x": 430.6666666666667,
+        "y": 394
+      },
+      "to": {
+        "x": 430.6666666666667,
+        "y": 406
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "tick-5-t",
+      "type": "text",
+      "x": 390.6666666666667,
+      "y": 410,
+      "w": 80,
+      "h": 24,
+      "text": "5 min",
+      "size": 14,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "tick-10",
+      "type": "line",
+      "name": "minute tick",
+      "from": {
+        "x": 805.3333333333334,
+        "y": 394
+      },
+      "to": {
+        "x": 805.3333333333334,
+        "y": 406
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "tick-10-t",
+      "type": "text",
+      "x": 765.3333333333334,
+      "y": 410,
+      "w": 80,
+      "h": 24,
+      "text": "10 min",
+      "size": 14,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "tick-15",
+      "type": "line",
+      "name": "minute tick",
+      "from": {
+        "x": 1180,
+        "y": 394
+      },
+      "to": {
+        "x": 1180,
+        "y": 406
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "tick-15-t",
+      "type": "text",
+      "x": 1140,
+      "y": 410,
+      "w": 80,
+      "h": 24,
+      "text": "15 min",
+      "size": 14,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "run-note-1",
+      "type": "text",
+      "x": 56,
+      "y": 296,
+      "w": 700,
+      "h": 26,
+      "text": "Quests and shops on the main table between dungeons; the lair is the finale.",
+      "size": 15,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "run-end",
+      "type": "rect",
+      "name": "run ends: permadeath",
+      "x": 56,
+      "y": 446,
+      "w": 540,
+      "h": 70,
+      "fill": "#f7e3da",
+      "stroke": "#d6332f",
+      "strokeWidth": 2,
+      "dash": true,
+      "radius": 8
+    },
+    {
+      "id": "run-end-t",
+      "type": "text",
+      "x": 72,
+      "y": 454,
+      "w": 508,
+      "h": 54,
+      "text": "Lose all 3 lives and the run ends, wherever you are.",
+      "size": 16,
+      "color": "#1f1b16",
+      "valign": "middle"
+    },
+    {
+      "id": "run-win",
+      "type": "rect",
+      "name": "run ends: the dragon falls",
+      "x": 640,
+      "y": 446,
+      "w": 540,
+      "h": 70,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "run-win-t",
+      "type": "text",
+      "x": 656,
+      "y": 454,
+      "w": 508,
+      "h": 54,
+      "text": "Beat the dragon and take back the tome: the run is won.",
+      "size": 16,
+      "color": "#1f1b16",
+      "valign": "middle"
+    },
+    {
+      "id": "score-label",
+      "type": "text",
+      "x": 56,
+      "y": 548,
+      "w": 900,
+      "h": 30,
+      "text": "The score",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "score-0",
+      "type": "rect",
+      "name": "score: points",
+      "x": 56,
+      "y": 588,
+      "w": 156,
+      "h": 150,
+      "fill": "#fbf8f2",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "score-0-t",
+      "type": "text",
+      "x": 68,
+      "y": 600,
+      "w": 132,
+      "h": 48,
+      "text": "Points",
+      "size": 16,
+      "weight": 700
+    },
+    {
+      "id": "score-0-b",
+      "type": "text",
+      "x": 68,
+      "y": 650,
+      "w": 132,
+      "h": 78,
+      "text": "Every hit, all run, like a real machine.",
+      "size": 14,
+      "color": "#6b6257"
+    },
+    {
+      "id": "score-1",
+      "type": "rect",
+      "name": "score: dungeon cleared",
+      "x": 228,
+      "y": 588,
+      "w": 156,
+      "h": 150,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "score-1-t",
+      "type": "text",
+      "x": 240,
+      "y": 600,
+      "w": 132,
+      "h": 48,
+      "text": "Dungeon cleared",
+      "size": 16,
+      "weight": 700
+    },
+    {
+      "id": "score-1-b",
+      "type": "text",
+      "x": 240,
+      "y": 650,
+      "w": 132,
+      "h": 78,
+      "text": "A bonus for each one beaten.",
+      "size": 14,
+      "color": "#6b6257"
+    },
+    {
+      "id": "score-plus-1",
+      "type": "text",
+      "x": 212,
+      "y": 646,
+      "w": 16,
+      "h": 30,
+      "text": "+",
+      "size": 22,
+      "weight": 700,
+      "color": "#b4532a",
+      "align": "center"
+    },
+    {
+      "id": "score-2",
+      "type": "rect",
+      "name": "score: lives left",
+      "x": 400,
+      "y": 588,
+      "w": 156,
+      "h": 150,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "score-2-t",
+      "type": "text",
+      "x": 412,
+      "y": 600,
+      "w": 132,
+      "h": 48,
+      "text": "Lives left",
+      "size": 16,
+      "weight": 700
+    },
+    {
+      "id": "score-2-b",
+      "type": "text",
+      "x": 412,
+      "y": 650,
+      "w": 132,
+      "h": 78,
+      "text": "A bonus per life at the end.",
+      "size": 14,
+      "color": "#6b6257"
+    },
+    {
+      "id": "score-plus-2",
+      "type": "text",
+      "x": 384,
+      "y": 646,
+      "w": 16,
+      "h": 30,
+      "text": "+",
+      "size": 22,
+      "weight": 700,
+      "color": "#b4532a",
+      "align": "center"
+    },
+    {
+      "id": "score-3",
+      "type": "rect",
+      "name": "score: the dragon",
+      "x": 572,
+      "y": 588,
+      "w": 156,
+      "h": 150,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 8
+    },
+    {
+      "id": "score-3-t",
+      "type": "text",
+      "x": 584,
+      "y": 600,
+      "w": 132,
+      "h": 48,
+      "text": "The dragon",
+      "size": 16,
+      "weight": 700
+    },
+    {
+      "id": "score-3-b",
+      "type": "text",
+      "x": 584,
+      "y": 650,
+      "w": 132,
+      "h": 78,
+      "text": "A big bonus for beating it.",
+      "size": 14,
+      "color": "#6b6257"
+    },
+    {
+      "id": "score-plus-3",
+      "type": "text",
+      "x": 556,
+      "y": 646,
+      "w": 16,
+      "h": 30,
+      "text": "+",
+      "size": 22,
+      "weight": 700,
+      "color": "#b4532a",
+      "align": "center"
+    },
+    {
+      "id": "hs",
+      "type": "rect",
+      "name": "high-score display (sketch)",
+      "x": 760,
+      "y": 588,
+      "w": 420,
+      "h": 150,
+      "fill": "#1a1410",
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "radius": 8
+    },
+    {
+      "id": "hs-t",
+      "type": "text",
+      "x": 776,
+      "y": 598,
+      "w": 388,
+      "h": 132,
+      "text": "HIGH SCORES\n1  WIZ   ........\n2  ---   ........\n3  ---   ........",
+      "size": 22,
+      "weight": 700,
+      "font": "mono",
+      "color": "#ff8a2a"
+    },
+    {
+      "id": "between-label",
+      "type": "text",
+      "x": 56,
+      "y": 768,
+      "w": 900,
+      "h": 30,
+      "text": "Each run vs between runs",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "between-0",
+      "type": "rect",
+      "name": "each run: each run",
+      "x": 56,
+      "y": 808,
+      "w": 262,
+      "h": 150,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "between-0-tag",
+      "type": "text",
+      "x": 72,
+      "y": 820,
+      "w": 230,
+      "h": 22,
+      "text": "fresh each run",
+      "size": 12,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "between-0-t",
+      "type": "text",
+      "x": 72,
+      "y": 844,
+      "w": 230,
+      "h": 28,
+      "text": "Each run",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "between-0-b",
+      "type": "text",
+      "x": 72,
+      "y": 876,
+      "w": 230,
+      "h": 72,
+      "text": "Random loot, shop stock and encounters. You pick dungeon types by cave.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "between-1",
+      "type": "rect",
+      "name": "each run: table layout",
+      "x": 343,
+      "y": 808,
+      "w": 262,
+      "h": 150,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "between-1-tag",
+      "type": "text",
+      "x": 359,
+      "y": 820,
+      "w": 230,
+      "h": 22,
+      "text": "fresh each run",
+      "size": 12,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "between-1-t",
+      "type": "text",
+      "x": 359,
+      "y": 844,
+      "w": 230,
+      "h": 28,
+      "text": "Table layout",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "between-1-b",
+      "type": "text",
+      "x": 359,
+      "y": 876,
+      "w": 230,
+      "h": 72,
+      "text": "The main table is 1 of 2–3 hand-made layouts, picked per run.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "between-2",
+      "type": "rect",
+      "name": "between runs: unlocks",
+      "x": 630,
+      "y": 808,
+      "w": 262,
+      "h": 150,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "between-2-tag",
+      "type": "text",
+      "x": 646,
+      "y": 820,
+      "w": 230,
+      "h": 22,
+      "text": "carries over",
+      "size": 12,
+      "weight": 700,
+      "color": "#b4532a",
+      "caps": true
+    },
+    {
+      "id": "between-2-t",
+      "type": "text",
+      "x": 646,
+      "y": 844,
+      "w": 230,
+      "h": 28,
+      "text": "Unlocks",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "between-2-b",
+      "type": "text",
+      "x": 646,
+      "y": 876,
+      "w": 230,
+      "h": 72,
+      "text": "Beating things adds new items to the pool and new dungeon types.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "between-3",
+      "type": "rect",
+      "name": "between runs: high scores",
+      "x": 917,
+      "y": 808,
+      "w": 262,
+      "h": 150,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "between-3-tag",
+      "type": "text",
+      "x": 933,
+      "y": 820,
+      "w": 230,
+      "h": 22,
+      "text": "carries over",
+      "size": 12,
+      "weight": 700,
+      "color": "#b4532a",
+      "caps": true
+    },
+    {
+      "id": "between-3-t",
+      "type": "text",
+      "x": 933,
+      "y": 844,
+      "w": 230,
+      "h": 28,
+      "text": "High scores",
+      "size": 18,
+      "weight": 700
+    },
+    {
+      "id": "between-3-b",
+      "type": "text",
+      "x": 933,
+      "y": 876,
+      "w": 230,
+      "h": 72,
+      "text": "The table keeps the best runs, like a real machine.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "between-note",
+      "type": "text",
+      "x": 56,
+      "y": 972,
+      "w": 1124,
+      "h": 26,
+      "text": "Power never carries over: every run starts with one wizard, 3 lives and empty flippers.",
+      "size": 16,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "decided-label",
+      "type": "text",
+      "x": 1240,
+      "y": 260,
+      "w": 624,
+      "h": 30,
+      "text": "Decided",
+      "size": 19,
+      "weight": 700,
+      "color": "#b4532a",
+      "caps": true
+    },
+    {
+      "id": "decided-bar",
+      "type": "rect",
+      "name": "decided accent",
+      "x": 1240,
+      "y": 296,
+      "w": 6,
+      "h": 162,
+      "fill": "#b4532a"
+    },
+    {
+      "id": "decided",
+      "type": "text",
+      "x": 1260,
+      "y": 296,
+      "w": 604,
+      "h": 162,
+      "text": "• A full run takes about 15 minutes, with a goal that ends it.\n• Score: points for every hit, plus bonuses for dungeons, lives left and the dragon.\n• High scores and unlocks carry over; power doesn’t.\n• The main table is 1 of 2–3 hand-made layouts per run.",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "fits-label",
+      "type": "text",
+      "x": 1240,
+      "y": 486,
+      "w": 624,
+      "h": 30,
+      "text": "How it fits",
+      "size": 19,
+      "weight": 700,
+      "color": "#5b5f63",
+      "caps": true
+    },
+    {
+      "id": "fits-bar",
+      "type": "rect",
+      "name": "how it fits accent",
+      "x": 1240,
+      "y": 522,
+      "w": 6,
+      "h": 108,
+      "fill": "#5b5f63"
+    },
+    {
+      "id": "fits",
+      "type": "text",
+      "x": 1260,
+      "y": 522,
+      "w": 604,
+      "h": 108,
+      "text": "• Scope: the first prototype has one main table, so no layouts yet.\n• Risks: hand-made layouts keep terraforming from breaking tables.",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "open-label",
+      "type": "text",
+      "x": 1240,
+      "y": 658,
+      "w": 624,
+      "h": 30,
+      "text": "Open",
+      "size": 19,
+      "weight": 700,
+      "color": "#2f6fd6",
+      "caps": true
+    },
+    {
+      "id": "open-bar",
+      "type": "rect",
+      "name": "open accent",
+      "x": 1240,
+      "y": 694,
+      "w": 6,
+      "h": 108,
+      "fill": "#2f6fd6"
+    },
+    {
+      "id": "open",
+      "type": "text",
+      "x": 1260,
+      "y": 694,
+      "w": 604,
+      "h": 108,
+      "text": "• What each unlock is, and what earns it.\n• Bonus sizes against points.\n• Can you pause and resume a run later, or is it one sitting?",
+      "size": 18,
+      "color": "#1f1b16"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "k-length",
+      "kind": "decision",
+      "text": "A full run takes about 15 minutes, with a goal that ends it."
+    },
+    {
+      "id": "k-score",
+      "kind": "decision",
+      "text": "Score: pinball points for every hit, plus bonuses for each dungeon cleared, lives left and beating the dragon."
+    },
+    {
+      "id": "k-carry",
+      "kind": "decision",
+      "text": "High scores and unlocks (new items in the pool, new dungeon types) carry over; power never does.",
+      "why": "Variety grows between runs; every run starts equal."
+    },
+    {
+      "id": "k-layouts",
+      "kind": "decision",
+      "text": "Terraforming is 2–3 hand-made main table layouts; each run picks one.",
+      "why": "Hand-made layouts can be tested, so they can’t break the table’s physics."
+    },
+    {
+      "id": "k-unlocks",
+      "kind": "question",
+      "text": "What is each unlock, and what earns it?"
+    },
+    {
+      "id": "k-bonus",
+      "kind": "question",
+      "text": "How big are the bonuses against points?"
+    },
+    {
+      "id": "k-resume",
+      "kind": "question",
+      "text": "Can a run be paused and resumed later?"
+    }
+  ],
+  "agent": {
+    "brief": "A run is about 15 minutes: main table, dungeon 1, main table, dungeon 2, the dragon returns, the lair. It ends when the dragon falls or the last life is lost. Score is points for every hit plus bonuses; high scores and unlocks persist, nothing else does.",
+    "rules": [
+      "Never carry power (items, gold, lives) between runs.",
+      "Pick the main table layout at the start of a run from the hand-made set."
+    ],
+    "open": [
+      "Unlock list",
+      "Bonus sizes",
+      "Resume"
+    ]
+  }
+}

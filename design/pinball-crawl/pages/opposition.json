@@ -1,0 +1,1226 @@
+{
+  "title": "Opposition",
+  "kicker": "Topic",
+  "updated": "2026-11-14",
+  "background": "#f4efe6",
+  "grid": {
+    "cell": 20
+  },
+  "blocks": [],
+  "elements": [
+    {
+      "id": "title",
+      "type": "text",
+      "x": 56,
+      "y": 36,
+      "w": 1300,
+      "h": 82,
+      "text": "",
+      "size": 60,
+      "weight": 600,
+      "font": "serif",
+      "bind": {
+        "topic": "opposition",
+        "field": "title"
+      }
+    },
+    {
+      "id": "status",
+      "type": "status",
+      "x": 1840,
+      "y": 64,
+      "size": 22,
+      "topic": "opposition"
+    },
+    {
+      "id": "back",
+      "type": "text",
+      "x": 1560,
+      "y": 52,
+      "w": 260,
+      "h": 40,
+      "text": "← Overview",
+      "size": 20,
+      "weight": 600,
+      "align": "right",
+      "valign": "middle",
+      "link": "index"
+    },
+    {
+      "id": "summary",
+      "type": "text",
+      "x": 56,
+      "y": 120,
+      "w": 1808,
+      "h": 104,
+      "text": "",
+      "size": 18,
+      "color": "#6b6257",
+      "bind": {
+        "topic": "opposition",
+        "field": "summary"
+      }
+    },
+    {
+      "id": "rule",
+      "type": "line",
+      "name": "header rule",
+      "from": {
+        "x": 56,
+        "y": 236
+      },
+      "to": {
+        "x": 1864,
+        "y": 236
+      },
+      "stroke": "#1f1b16",
+      "strokeWidth": 3,
+      "arrow": "none"
+    },
+    {
+      "id": "who-label",
+      "type": "text",
+      "x": 56,
+      "y": 256,
+      "w": 600,
+      "h": 30,
+      "text": "Who’s on the table",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "who-mob",
+      "type": "rect",
+      "name": "who: mobs",
+      "x": 56,
+      "y": 296,
+      "w": 262,
+      "h": 250,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "who-mob-floor",
+      "type": "zone",
+      "name": "mobs: floor",
+      "x": 187,
+      "y": 378,
+      "cols": 1,
+      "rows": 1,
+      "cell": 60,
+      "fill": "#fbf8f2",
+      "stroke": "none",
+      "noLines": true
+    },
+    {
+      "id": "who-mob-piece-0",
+      "type": "asset",
+      "asset": "drop-target",
+      "w": 120,
+      "h": 105,
+      "at": {
+        "x": 0.5,
+        "y": 0.7143
+      },
+      "x": 127,
+      "y": 333,
+      "name": "mobs: drop-target"
+    },
+    {
+      "id": "who-mob-t",
+      "type": "text",
+      "x": 72,
+      "y": 450,
+      "w": 230,
+      "h": 28,
+      "text": "Mobs",
+      "size": 18,
+      "color": "#1f1b16",
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "who-mob-b",
+      "type": "text",
+      "x": 72,
+      "y": 480,
+      "w": 230,
+      "h": 62,
+      "text": "Red drop targets. 1 hit, 1 gold; armor first if they have it.",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "who-tree",
+      "type": "rect",
+      "name": "who: trees",
+      "x": 336,
+      "y": 296,
+      "w": 262,
+      "h": 250,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "who-tree-floor",
+      "type": "zone",
+      "name": "trees: floor",
+      "x": 467,
+      "y": 363,
+      "cols": 3,
+      "rows": 3,
+      "cell": 30,
+      "fill": "#fbf8f2",
+      "stroke": "none",
+      "noLines": true
+    },
+    {
+      "id": "who-tree-piece-0",
+      "type": "asset",
+      "asset": "pop-bumper-3",
+      "w": 180,
+      "h": 118,
+      "at": {
+        "x": 0.5,
+        "y": 0.6175
+      },
+      "x": 377,
+      "y": 335.14,
+      "name": "trees: pop-bumper-3",
+      "link": "setting"
+    },
+    {
+      "id": "who-tree-t",
+      "type": "text",
+      "x": 352,
+      "y": 450,
+      "w": 230,
+      "h": 28,
+      "text": "Trees",
+      "size": 18,
+      "color": "#1f1b16",
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "who-tree-b",
+      "type": "text",
+      "x": 352,
+      "y": 480,
+      "w": 230,
+      "h": 62,
+      "text": "Bumpers in the way. They bounce the ball; no gold.",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "who-boss",
+      "type": "rect",
+      "name": "who: bosses",
+      "x": 616,
+      "y": 296,
+      "w": 262,
+      "h": 250,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "who-boss-floor",
+      "type": "zone",
+      "name": "bosses: floor",
+      "x": 747,
+      "y": 360.5,
+      "cols": 5,
+      "rows": 5,
+      "cell": 19,
+      "fill": "#fbf8f2",
+      "stroke": "none",
+      "noLines": true
+    },
+    {
+      "id": "who-boss-piece-0",
+      "type": "asset",
+      "asset": "dragon",
+      "w": 190,
+      "h": 122,
+      "at": {
+        "x": 0.5,
+        "y": 0.6094
+      },
+      "x": 652,
+      "y": 333.65,
+      "name": "bosses: dragon"
+    },
+    {
+      "id": "who-boss-t",
+      "type": "text",
+      "x": 632,
+      "y": 450,
+      "w": 230,
+      "h": 28,
+      "text": "Bosses",
+      "size": 18,
+      "color": "#1f1b16",
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "who-boss-b",
+      "type": "text",
+      "x": 632,
+      "y": 480,
+      "w": 230,
+      "h": 62,
+      "text": "A toy that moves and dodges, then shields. The dragon is the last.",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "who-mini",
+      "type": "rect",
+      "name": "who: encounters",
+      "x": 896,
+      "y": 296,
+      "w": 262,
+      "h": 250,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "who-mini-floor",
+      "type": "zone",
+      "name": "encounters: floor",
+      "x": 985,
+      "y": 366,
+      "cols": 3,
+      "rows": 1,
+      "cell": 42,
+      "fill": "#fbf8f2",
+      "stroke": "none",
+      "noLines": true
+    },
+    {
+      "id": "who-mini-piece-0",
+      "type": "asset",
+      "asset": "drop-target",
+      "w": 84,
+      "h": 74,
+      "at": {
+        "x": 0.5,
+        "y": 0.7143
+      },
+      "x": 943,
+      "y": 334.14,
+      "name": "encounters: drop-target"
+    },
+    {
+      "id": "who-mini-piece-1",
+      "type": "asset",
+      "asset": "drop-target",
+      "w": 84,
+      "h": 74,
+      "at": {
+        "x": 0.5,
+        "y": 0.7143
+      },
+      "x": 985,
+      "y": 355.14,
+      "name": "encounters: drop-target"
+    },
+    {
+      "id": "who-mini-piece-2",
+      "type": "asset",
+      "asset": "drop-target",
+      "w": 84,
+      "h": 74,
+      "at": {
+        "x": 0.5,
+        "y": 0.7143
+      },
+      "x": 1027,
+      "y": 376.14,
+      "name": "encounters: drop-target"
+    },
+    {
+      "id": "who-mini-t",
+      "type": "text",
+      "x": 912,
+      "y": 450,
+      "w": 230,
+      "h": 28,
+      "text": "Encounters",
+      "size": 18,
+      "color": "#1f1b16",
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "who-mini-b",
+      "type": "text",
+      "x": 912,
+      "y": 480,
+      "w": 230,
+      "h": 62,
+      "text": "Surprise mob waves on the main table; sometimes a wandering mini boss.",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "fight-label",
+      "type": "text",
+      "x": 56,
+      "y": 572,
+      "w": 600,
+      "h": 30,
+      "text": "A boss fight",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "ph-0",
+      "type": "rect",
+      "name": "boss fight: phase 1",
+      "x": 56,
+      "y": 612,
+      "w": 262,
+      "h": 200,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "ph-0-t",
+      "type": "text",
+      "x": 72,
+      "y": 740,
+      "w": 230,
+      "h": 26,
+      "text": "1 · Moves and dodges",
+      "size": 18,
+      "color": "#1f1b16",
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "ph-0-b",
+      "type": "text",
+      "x": 72,
+      "y": 768,
+      "w": 230,
+      "h": 40,
+      "text": "Hit it as it passes.",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "ph-0-boss",
+      "type": "ellipse",
+      "name": "boss toy",
+      "x": 155,
+      "y": 648,
+      "w": 64,
+      "h": 64,
+      "fill": "#9e2a22",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "ph-0-move",
+      "type": "line",
+      "name": "dodge path",
+      "from": {
+        "x": 96,
+        "y": 720
+      },
+      "to": {
+        "x": 278,
+        "y": 720
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 2.5,
+      "dash": true,
+      "arrow": "both",
+      "bend": 18
+    },
+    {
+      "id": "ph-1",
+      "type": "rect",
+      "name": "boss fight: phase 2",
+      "x": 336,
+      "y": 612,
+      "w": 262,
+      "h": 200,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "ph-1-t",
+      "type": "text",
+      "x": 352,
+      "y": 740,
+      "w": 230,
+      "h": 26,
+      "text": "2 · Half health: shield",
+      "size": 18,
+      "color": "#1f1b16",
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "ph-1-b",
+      "type": "text",
+      "x": 352,
+      "y": 768,
+      "w": 230,
+      "h": 40,
+      "text": "Break the targets to open a window.",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "ph-a1",
+      "type": "line",
+      "name": "next phase",
+      "from": {
+        "el": "ph-0"
+      },
+      "to": {
+        "el": "ph-1"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 3,
+      "arrow": "end"
+    },
+    {
+      "id": "ph-1-boss",
+      "type": "ellipse",
+      "name": "boss toy",
+      "x": 439,
+      "y": 652,
+      "w": 56,
+      "h": 56,
+      "fill": "#9e2a22",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "ph-1-shield-0",
+      "type": "rect",
+      "name": "shield target",
+      "x": 401,
+      "y": 640,
+      "w": 20,
+      "h": 30,
+      "fill": "#d6332f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "radius": 2
+    },
+    {
+      "id": "ph-1-shield-1",
+      "type": "rect",
+      "name": "shield target",
+      "x": 433,
+      "y": 674,
+      "w": 20,
+      "h": 30,
+      "fill": "#d6332f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "radius": 2
+    },
+    {
+      "id": "ph-1-shield-2",
+      "type": "rect",
+      "name": "shield target",
+      "x": 477,
+      "y": 680,
+      "w": 20,
+      "h": 30,
+      "fill": "#d6332f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "radius": 2
+    },
+    {
+      "id": "ph-1-shield-3",
+      "type": "rect",
+      "name": "shield target",
+      "x": 513,
+      "y": 652,
+      "w": 20,
+      "h": 30,
+      "fill": "#d6332f",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5,
+      "radius": 2
+    },
+    {
+      "id": "ph-2",
+      "type": "rect",
+      "name": "boss fight: falls",
+      "x": 616,
+      "y": 612,
+      "w": 262,
+      "h": 200,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "ph-2-t",
+      "type": "text",
+      "x": 632,
+      "y": 740,
+      "w": 230,
+      "h": 26,
+      "text": "3 · It falls",
+      "size": 18,
+      "color": "#1f1b16",
+      "weight": 700,
+      "align": "center"
+    },
+    {
+      "id": "ph-2-b",
+      "type": "text",
+      "x": 632,
+      "y": 768,
+      "w": 230,
+      "h": 40,
+      "text": "The exit and 3 loot targets light.",
+      "size": 15,
+      "color": "#6b6257",
+      "align": "center"
+    },
+    {
+      "id": "ph-a2",
+      "type": "line",
+      "name": "next phase",
+      "from": {
+        "el": "ph-1"
+      },
+      "to": {
+        "el": "ph-2"
+      },
+      "stroke": "#b4532a",
+      "strokeWidth": 3,
+      "arrow": "end"
+    },
+    {
+      "id": "ph-2-boss",
+      "type": "ellipse",
+      "name": "boss toy, fallen",
+      "x": 707,
+      "y": 682,
+      "w": 80,
+      "h": 32,
+      "fill": "#9e2a22",
+      "stroke": "#1f1b16",
+      "strokeWidth": 2
+    },
+    {
+      "id": "ph-2-lamp-0",
+      "type": "ellipse",
+      "name": "loot lamp, lit",
+      "x": 687,
+      "y": 642,
+      "w": 32,
+      "h": 20,
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "ph-2-lamp-1",
+      "type": "ellipse",
+      "name": "loot lamp, lit",
+      "x": 731,
+      "y": 642,
+      "w": 32,
+      "h": 20,
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "ph-2-lamp-2",
+      "type": "ellipse",
+      "name": "loot lamp, lit",
+      "x": 775,
+      "y": 642,
+      "w": 32,
+      "h": 20,
+      "fill": "#f2c230",
+      "stroke": "#1f1b16",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "back-card",
+      "type": "rect",
+      "name": "how bosses fight back",
+      "x": 896,
+      "y": 612,
+      "w": 262,
+      "h": 200,
+      "fill": "#f7e3da",
+      "stroke": "#d6332f",
+      "strokeWidth": 2,
+      "radius": 10,
+      "dash": true
+    },
+    {
+      "id": "back-t",
+      "type": "text",
+      "x": 912,
+      "y": 624,
+      "w": 230,
+      "h": 26,
+      "text": "It fights back",
+      "size": 18,
+      "color": "#1f1b16",
+      "weight": 700
+    },
+    {
+      "id": "back-b",
+      "type": "text",
+      "x": 912,
+      "y": 654,
+      "w": 230,
+      "h": 150,
+      "text": "• A post rises\n• A lane closes\n• A blocker drops in front of a shot\nThe table changes; the physics never do.",
+      "size": 15,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "dg-label",
+      "type": "text",
+      "x": 56,
+      "y": 838,
+      "w": 600,
+      "h": 30,
+      "text": "The dungeons so far",
+      "size": 19,
+      "weight": 700,
+      "color": "#6b6257",
+      "caps": true
+    },
+    {
+      "id": "dg-0",
+      "type": "rect",
+      "name": "dungeon: tier 1 · goblin warren",
+      "x": 56,
+      "y": 878,
+      "w": 262,
+      "h": 150,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "dg-0-t",
+      "type": "text",
+      "x": 72,
+      "y": 892,
+      "w": 230,
+      "h": 28,
+      "text": "Tier 1 · Goblin warren",
+      "size": 17,
+      "color": "#1f1b16",
+      "weight": 700
+    },
+    {
+      "id": "dg-0-b",
+      "type": "text",
+      "x": 72,
+      "y": 924,
+      "w": 230,
+      "h": 92,
+      "text": "Break the 3 goblins.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "dg-1",
+      "type": "rect",
+      "name": "dungeon: tier 2 · the crypt",
+      "x": 336,
+      "y": 878,
+      "w": 262,
+      "h": 150,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "dg-1-t",
+      "type": "text",
+      "x": 352,
+      "y": 892,
+      "w": 230,
+      "h": 28,
+      "text": "Tier 2 · The crypt",
+      "size": 17,
+      "color": "#1f1b16",
+      "weight": 700
+    },
+    {
+      "id": "dg-1-b",
+      "type": "text",
+      "x": 352,
+      "y": 924,
+      "w": 230,
+      "h": 92,
+      "text": "Hit 4 skeletons in order; a wrong one raises them all.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "dg-2",
+      "type": "rect",
+      "name": "dungeon: lair · layout a",
+      "x": 616,
+      "y": 878,
+      "w": 262,
+      "h": 150,
+      "fill": "#fbf8f2",
+      "stroke": "#d8cfc0",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "dg-2-t",
+      "type": "text",
+      "x": 632,
+      "y": 892,
+      "w": 230,
+      "h": 28,
+      "text": "Lair · layout A",
+      "size": 17,
+      "color": "#1f1b16",
+      "weight": 700
+    },
+    {
+      "id": "dg-2-b",
+      "type": "text",
+      "x": 632,
+      "y": 924,
+      "w": 230,
+      "h": 92,
+      "text": "The dragon dodges on its hoard, then 4 scales shield it.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "dg-3",
+      "type": "rect",
+      "name": "dungeon: into the lair",
+      "x": 896,
+      "y": 878,
+      "w": 262,
+      "h": 150,
+      "fill": "#fbf8f2",
+      "stroke": "#b4532a",
+      "strokeWidth": 2,
+      "radius": 10
+    },
+    {
+      "id": "dg-3-t",
+      "type": "text",
+      "x": 912,
+      "y": 892,
+      "w": 230,
+      "h": 28,
+      "text": "Into the lair",
+      "size": 17,
+      "color": "#1f1b16",
+      "weight": 700
+    },
+    {
+      "id": "dg-3-b",
+      "type": "text",
+      "x": 912,
+      "y": 924,
+      "w": 230,
+      "h": 92,
+      "text": "After dungeon 2, a trick shot opens the boss cave. 1 of 3 layouts, at random.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "decided-label",
+      "type": "text",
+      "x": 1240,
+      "y": 256,
+      "w": 624,
+      "h": 30,
+      "text": "Decided",
+      "size": 19,
+      "weight": 700,
+      "color": "#b4532a",
+      "caps": true
+    },
+    {
+      "id": "decided-bar",
+      "type": "rect",
+      "name": "decided accent",
+      "x": 1240,
+      "y": 292,
+      "w": 6,
+      "h": 135,
+      "fill": "#b4532a"
+    },
+    {
+      "id": "decided",
+      "type": "text",
+      "x": 1260,
+      "y": 292,
+      "w": 604,
+      "h": 135,
+      "text": "• Mobs are drop targets; trees are in the way, not enemies.\n• Bosses dodge, then at half health raise a shield.\n• They fight back by changing the table, not the physics.\n• Encounters: mob waves, sometimes a wandering mini boss.\n• The lair: a trick shot opens the boss cave; random layout.",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "open-label",
+      "type": "text",
+      "x": 1240,
+      "y": 455,
+      "w": 624,
+      "h": 30,
+      "text": "Open",
+      "size": 19,
+      "weight": 700,
+      "color": "#2f6fd6",
+      "caps": true
+    },
+    {
+      "id": "open-bar",
+      "type": "rect",
+      "name": "open accent",
+      "x": 1240,
+      "y": 491,
+      "w": 6,
+      "h": 108,
+      "fill": "#2f6fd6"
+    },
+    {
+      "id": "open",
+      "type": "text",
+      "x": 1260,
+      "y": 491,
+      "w": 604,
+      "h": 108,
+      "text": "• The other 2 dungeon types for each tier.\n• Lair layouts B and C: which mini bosses and trash mobs.\n• What the trick shot is that opens the boss cave.\n• How long a boss’s table change lasts, and how you undo it.",
+      "size": 18,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "beast-label",
+      "type": "text",
+      "x": 1240,
+      "y": 627,
+      "w": 624,
+      "h": 30,
+      "text": "Bestiary",
+      "size": 19,
+      "weight": 700,
+      "color": "#b4532a",
+      "caps": true
+    },
+    {
+      "id": "beast-goblin-floor",
+      "type": "zone",
+      "name": "bestiary: goblins floor",
+      "x": 1276,
+      "y": 696,
+      "cols": 1,
+      "rows": 1,
+      "cell": 30,
+      "fill": "#f4efe6",
+      "stroke": "none",
+      "noLines": true
+    },
+    {
+      "id": "beast-goblin-piece",
+      "type": "asset",
+      "asset": "drop-target",
+      "w": 60,
+      "h": 53,
+      "at": {
+        "x": 0.5,
+        "y": 0.7143
+      },
+      "x": 1246,
+      "y": 673.14,
+      "name": "bestiary: goblins"
+    },
+    {
+      "id": "beast-goblin-t",
+      "type": "text",
+      "x": 1324,
+      "y": 673,
+      "w": 540,
+      "h": 26,
+      "text": "Goblins",
+      "size": 18,
+      "weight": 700,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "beast-goblin-b",
+      "type": "text",
+      "x": 1324,
+      "y": 699,
+      "w": 540,
+      "h": 48,
+      "text": "Tier 1 mobs in the warren: drop targets, 1 hit, 1 gold.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "beast-skeleton-floor",
+      "type": "zone",
+      "name": "bestiary: skeletons floor",
+      "x": 1276,
+      "y": 780,
+      "cols": 1,
+      "rows": 1,
+      "cell": 30,
+      "fill": "#f4efe6",
+      "stroke": "none",
+      "noLines": true
+    },
+    {
+      "id": "beast-skeleton-piece",
+      "type": "asset",
+      "asset": "standup",
+      "w": 60,
+      "h": 52,
+      "at": {
+        "x": 0.5,
+        "y": 0.7122
+      },
+      "x": 1246,
+      "y": 757.97,
+      "name": "bestiary: skeletons"
+    },
+    {
+      "id": "beast-skeleton-t",
+      "type": "text",
+      "x": 1324,
+      "y": 757,
+      "w": 540,
+      "h": 26,
+      "text": "Skeletons",
+      "size": 18,
+      "weight": 700,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "beast-skeleton-b",
+      "type": "text",
+      "x": 1324,
+      "y": 783,
+      "w": 540,
+      "h": 48,
+      "text": "Tier 2, in the crypt: standups hit in order; a wrong one raises them all.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "beast-mini-floor",
+      "type": "zone",
+      "name": "bestiary: mini bosses floor",
+      "x": 1276,
+      "y": 864,
+      "cols": 1,
+      "rows": 1,
+      "cell": 30,
+      "fill": "#f4efe6",
+      "stroke": "none",
+      "noLines": true
+    },
+    {
+      "id": "beast-mini-piece",
+      "type": "asset",
+      "asset": "drop-target",
+      "w": 60,
+      "h": 53,
+      "at": {
+        "x": 0.5,
+        "y": 0.7143
+      },
+      "x": 1246,
+      "y": 841.14,
+      "name": "bestiary: mini bosses"
+    },
+    {
+      "id": "beast-mini-t",
+      "type": "text",
+      "x": 1324,
+      "y": 841,
+      "w": 540,
+      "h": 26,
+      "text": "Mini bosses",
+      "size": 18,
+      "weight": 700,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "beast-mini-b",
+      "type": "text",
+      "x": 1324,
+      "y": 867,
+      "w": 540,
+      "h": 48,
+      "text": "Wander the main table now and then; guard lair layouts B and C.",
+      "size": 15,
+      "color": "#6b6257"
+    },
+    {
+      "id": "beast-dragon-floor",
+      "type": "zone",
+      "name": "bestiary: the dragon floor",
+      "x": 1276,
+      "y": 940.5,
+      "cols": 5,
+      "rows": 5,
+      "cell": 9,
+      "fill": "#f4efe6",
+      "stroke": "none",
+      "noLines": true
+    },
+    {
+      "id": "beast-dragon-piece",
+      "type": "asset",
+      "asset": "dragon",
+      "w": 90,
+      "h": 58,
+      "at": {
+        "x": 0.5,
+        "y": 0.6094
+      },
+      "x": 1231,
+      "y": 927.65,
+      "name": "bestiary: the dragon"
+    },
+    {
+      "id": "beast-dragon-t",
+      "type": "text",
+      "x": 1324,
+      "y": 925,
+      "w": 540,
+      "h": 26,
+      "text": "The dragon",
+      "size": 18,
+      "weight": 700,
+      "color": "#1f1b16"
+    },
+    {
+      "id": "beast-dragon-b",
+      "type": "text",
+      "x": 1324,
+      "y": 951,
+      "w": 540,
+      "h": 48,
+      "text": "Final boss. Dodges on its hoard, then 4 scales shield it. Watches from the boss cave; holds the tome. Name: open.",
+      "size": 15,
+      "color": "#6b6257"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "k-mobs",
+      "kind": "decision",
+      "text": "Mobs are the red drop targets; trees are bumpers in the way, not enemies."
+    },
+    {
+      "id": "k-phases",
+      "kind": "decision",
+      "text": "Bosses fight in 2 phases: move and dodge, then at half health drop their guard and raise a shield of targets."
+    },
+    {
+      "id": "k-attacks",
+      "kind": "decision",
+      "text": "Bosses fight back only by changing the table: a post rises, a lane closes, a blocker drops.",
+      "why": "Pillar 3, pure pinball: the physics stay untouched, like a real machine’s toys."
+    },
+    {
+      "id": "k-encounters",
+      "kind": "decision",
+      "text": "Random encounters on the main table: mostly surprise mob waves, sometimes a wandering mini boss."
+    },
+    {
+      "id": "k-dungeons",
+      "kind": "decision",
+      "text": "Tier 1 goblin warren (3 goblins), tier 2 crypt (4 skeletons in order), lair layout A (the dragon dodges, then 4 scales shield it)."
+    },
+    {
+      "id": "k-lair",
+      "kind": "decision",
+      "text": "After dungeon 2 a trick shot opens the boss cave only; the lair layout is random."
+    },
+    {
+      "id": "k-types",
+      "kind": "question",
+      "text": "The other 2 dungeon types for each tier."
+    },
+    {
+      "id": "k-lair-bc",
+      "kind": "question",
+      "text": "Lair layouts B and C: which mini bosses and trash mobs."
+    },
+    {
+      "id": "k-trick",
+      "kind": "question",
+      "text": "What trick shot opens the boss cave?"
+    },
+    {
+      "id": "k-dragon-name",
+      "kind": "question",
+      "text": "The dragon’s name."
+    },
+    {
+      "id": "k-change",
+      "kind": "question",
+      "text": "How long does a boss’s table change last, and can the player undo it?"
+    }
+  ],
+  "agent": {
+    "brief": "Enemies are pinball parts: mobs are drop targets (1 hit, armor first), trees are bumpers, bosses are moving toys. A boss dodges until half health, then raises a shield of targets; breaking the shield opens a window to hit it. Bosses attack only by moving table parts.",
+    "rules": [
+      "Never change ball physics to make an enemy harder.",
+      "Every boss attack is a table change the player can see."
+    ],
+    "open": [
+      "Other dungeon types",
+      "Lair layouts B and C",
+      "The trick shot",
+      "Table change duration"
+    ]
+  }
+}
