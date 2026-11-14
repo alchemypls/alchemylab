@@ -174,7 +174,7 @@ workbench/
     ToolMenu.tsx      — tool panel beside the rail: favorites bar + the tool's parameters; Snap to grid (styles.select.free) on select/shape/text
     StyleFields.tsx   — controls shared by ToolMenu and VectorInspector: notched sliders, swatches (palette in use), segmented picks, border fields, transparency
     web/              — the Web canvas's parts: CodeBox (output), WebLayers (sketchPage/pageSketch, WireframeLayer, LayoutLayer, PreviewLayer, PlacementCell), LayoutEditor (+ ComponentsBox, VariantsBox, newPlacement, readingOrder), BlockFields (BlockInspector), RouteTree, PageFields, ProjectFields, WebChrome (minimap, layer pips, column bands)
-    PageMap.tsx       — Ideation minimap: elements simplified by type, viewport box, click to move
+    PageMap.tsx       — Ideation minimap: elements simplified by type (rails and arrows keep their width and bend, opacity kept), viewport box, click to move; a tall page's map is capped in height
     RecipeView.tsx    — renders a recipe live as native elements + RecipeStyles (generated CSS, scoped per project)
     InstanceControls.tsx — option/prop pickers for ONE use of a component (Fabricator preview, a Web layout block)
   shell/

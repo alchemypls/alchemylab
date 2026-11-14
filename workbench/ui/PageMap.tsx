@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import { PAPER, STATUS_COLOR } from './DesignArtboard';
 import { pageSize, type Bible, type DesignPage } from '@/lib/design/types';
-import { capsulePath, extrusion, lineEnds, ellipsePath, polyPath, rotateTransform, smoothEllipse, zoneCorners, type VElement } from '@/lib/design/vector';
+import { capsulePath, extrusion, lineControl, lineEnds, ellipsePath, polyPath, rotateTransform, smoothEllipse, zoneCorners, type VElement } from '@/lib/design/vector';
 import { AssetDrawing, Erased, TraceImage } from './vector/shapes';
 import type { TraceBox } from '@/workbench/hooks/useTrace';
 import { drawOrder, layerOf, layersOf } from '@/lib/design/layers';
@@ -13,6 +13,17 @@ import { drawOrder, layerOf, layersOf } from '@/lib/design/layers';
 
 const THIN = { vectorEffect: 'non-scaling-stroke' as const, strokeWidth: 1 };
 const BAR = '#8a8378';
+const MAP_MAX_H = 260;   // px: a tall page's map gets narrower instead of pushing the boxes below it down
+
+// A path at its own width (a thick rail stays thick) with a hairline over it (a thin one never vanishes)
+function Wide({ d, color, width }: { d: string; color: string; width?: number }) {
+  return (
+    <>
+      {!!width && width > 1 && <path d={d} fill="none" stroke={color} strokeWidth={width} strokeLinecap="round" strokeLinejoin="round" />}
+      <path d={d} fill="none" stroke={color} {...THIN} />
+    </>
+  );
+}
 
 function Mark({ el, all, bible }: { el: VElement; all: VElement[]; bible: Bible | null }) {
   switch (el.type) {
@@ -20,7 +31,8 @@ function Mark({ el, all, bible }: { el: VElement; all: VElement[]; bible: Bible 
       return <polygon points={zoneCorners(el).map((p) => `${p.x},${p.y}`).join(' ')} fill={el.fill ?? 'none'} fillOpacity={0.8} stroke={el.stroke ?? (el.fill ? 'none' : BAR)} {...THIN} />;
     case 'rect': case 'ellipse': case 'capsule': case 'poly': {
       const paint = { fill: el.fill ?? 'none', fillOpacity: 0.6, stroke: el.stroke ?? (el.fill ? 'none' : BAR), ...THIN };
-      const face = el.type === 'poly' ? <path d={polyPath(el)} {...paint} fill={el.open ? 'none' : paint.fill} />
+      if (el.type === 'poly' && el.open) return <Wide d={polyPath(el)} color={el.stroke ?? BAR} width={el.strokeWidth} />;   // a rail, a path
+      const face = el.type === 'poly' ? <path d={polyPath(el)} {...paint} />
         : el.type === 'capsule' ? <path d={capsulePath(el, el.taper)} {...paint} />
         : el.type === 'ellipse' && !smoothEllipse(el) ? <path d={ellipsePath(el)} {...paint} />
         : el.type === 'rect' ? <rect x={el.x} y={el.y} width={el.w} height={el.h} rx={el.radius} {...paint} />
@@ -36,14 +48,19 @@ function Mark({ el, all, bible }: { el: VElement; all: VElement[]; bible: Bible 
     }
     case 'text': {
       const h = Math.min(el.h, (el.size ?? 24) * 1.2);
-      return <rect x={el.x} y={el.y} width={el.w * 0.85} height={h} fill={el.color ?? BAR} opacity={0.35} />;
+      return (
+        <>
+          {el.bg && <rect x={el.x} y={el.y} width={el.w} height={el.h} rx={el.bgShape === 'pill' || el.bgShape === 'ellipse' ? el.h / 2 : el.bgShape === 'round' ? 8 : 0} fill={el.bg} fillOpacity={0.7} />}
+          <rect x={el.x} y={el.y} width={el.w * 0.85} height={h} fill={el.color ?? BAR} opacity={0.35} />
+        </>
+      );
     }
     case 'line': {
-      const [a, b] = lineEnds(el, all);
-      return <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke={el.stroke ?? BAR} {...THIN} />;
+      const [a, b] = lineEnds(el, all), c = lineControl(a, b, el.bend);   // a bent arrow stays bent
+      return <Wide d={`M${a.x},${a.y} ${c ? `Q${c.x},${c.y} ` : 'L'}${b.x},${b.y}`} color={el.stroke ?? BAR} width={el.strokeWidth} />;
     }
     case 'stroke':
-      return <polyline points={el.points.map((p) => p.join(',')).join(' ')} fill="none" stroke={el.color ?? BAR} {...THIN} />;
+      return <Wide d={`M${el.points.map((p) => p.join(',')).join(' L')}`} color={el.color ?? BAR} width={el.width} />;
     case 'image': {
       const s = Math.min(el.w, el.h) * 0.5, cx = el.x + el.w / 2, cy = el.y + el.h / 2;
       return (
@@ -76,7 +93,7 @@ export function PageMap({ page, bible, view, onCenter, focus, trace, look }: {
     const els = look?.elements ?? page?.elements ?? [], layers = layersOf(page);
     const dimming = !!focus && layers.some((l) => l.id === focus);
     return drawOrder(els, layers).map((el) => (
-      <g key={el.id} transform={rotateTransform(el, els)} opacity={dimming && layerOf(layers, el).id !== focus ? 0.18 : undefined}>
+      <g key={el.id} transform={rotateTransform(el, els)} opacity={(dimming && layerOf(layers, el).id !== focus ? 0.18 : 1) * (el.opacity ?? 1)}>
         <Erased el={el} all={els}><Mark el={el} all={els} bible={bible} /></Erased>
       </g>
     ));
@@ -90,7 +107,8 @@ export function PageMap({ page, bible, view, onCenter, focus, trace, look }: {
 
   return (
     <svg
-      viewBox={`0 0 ${W} ${H}`} className="block w-full rounded-lg cursor-pointer" style={{ aspectRatio: `${W} / ${H}` }}
+      viewBox={`0 0 ${W} ${H}`} className="block mx-auto rounded-lg cursor-pointer"
+      style={{ aspectRatio: `${W} / ${H}`, width: `min(100%, ${Math.round((MAP_MAX_H * W) / H)}px)` }}
       onPointerDown={(e) => { e.currentTarget.setPointerCapture(e.pointerId); center(e); }}
       onPointerMove={(e) => { if (e.buttons === 1) center(e); }}
     >

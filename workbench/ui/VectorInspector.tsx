@@ -28,6 +28,8 @@ const PAGE_SIZES = [
   { label: 'Standard, 1920 × 1080', width: 1920, height: 1080 },
   { label: 'Large, 3840 × 2160', width: 3840, height: 2160 },
   { label: 'Wide map, 5760 × 1920', width: 5760, height: 1920 },
+  { label: 'Tall, 1920 × 3840', width: 1920, height: 3840 },
+  { label: 'Tall map, 2880 × 5760', width: 2880, height: 5760 },   // a page read top to bottom: a table, what's below it
 ];
 
 interface Props {
