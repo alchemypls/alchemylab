@@ -16,6 +16,7 @@ export type VaultAsset = DesignPage & {
   wall?: { h: number; t?: number };   // a wall part: how tall and thick, in tiles (thickness default walls.ts WALL_T)
   footprint?: Footprint;   // a block's tiles on a floor, centered under it; default 1×1. Atoms are always 1×1
   dims?: Dims;             // the real thing's size: the spec the drawing is drawn to
+  project?: string;        // the workspace project it belongs to (lib/workspace.ts); unset = shared by every project
 };
 
 // A real-world bounding box: length × width × height (a cylinder: length × diameter). Inches first, mm alongside.

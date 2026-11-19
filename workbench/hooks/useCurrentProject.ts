@@ -1,11 +1,10 @@
 import { useWorkbenchStore } from '@/lib/store';
 import type { ProjectData } from '@/lib/project';
 
-// The web project the canvases work on: the one last opened on Web (lastProjectId), else the first there is.
-// There is always at least one: the store starts with one and never deletes the last.
-export function useCurrentProject(): { pid: string; project: ProjectData } {
-  const projects = useWorkbenchStore((s) => s.projects);
-  const last     = useWorkbenchStore((s) => s.lastProjectId);
-  const pid = projects[last] ? last : Object.keys(projects)[0] ?? last;
-  return { pid, project: projects[pid]! };
+// The web project of the workspace project open now (lastProjectId, picked in the panel header). Undefined when that
+// project has none (a game): the canvases that need one show NoWebProject instead.
+export function useCurrentProject(): { pid: string; project: ProjectData | undefined } {
+  const pid = useWorkbenchStore((s) => s.lastProjectId);
+  const project = useWorkbenchStore((s) => s.projects[pid]);
+  return { pid, project };
 }

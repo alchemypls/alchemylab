@@ -62,6 +62,22 @@ describe('saving to disk', () => {
   });
 });
 
+describe('projects (bibles) made and deleted from the picker', () => {
+  it("never overwrites a bible with a 'new' one, and a delete moves the folder to design/.trash, never erases it", async () => {
+    expect((await call(design.PUT, '/api/design?bible=gone&new=1', 'PUT', BIBLE)).status).toBe(200);
+    expect((await call(design.PUT, '/api/design?bible=gone&new=1', 'PUT', { ...BIBLE, title: 'Other' })).status).toBe(409);
+    await call(design.PUT, '/api/design?bible=gone&page=index', 'PUT', PAGE);
+    expect((await call(design.DELETE, '/api/design?bible=gone&page=index', 'DELETE')).status).toBe(400);
+    expect((await call(design.DELETE, '/api/design?bible=..%2Fprojects', 'DELETE')).status).toBe(400);
+    const r = await call(design.DELETE, '/api/design?bible=gone', 'DELETE');
+    expect(r.status).toBe(200);
+    const moved = (await r.json()).movedTo as string;
+    expect(existsSync(path.join(tmp, 'design/gone'))).toBe(false);
+    expect(onDisk(`${moved}/pages/index.json`).title).toBe('Overview');
+    expect((await (await call(design.GET, '/api/design')).json()).map((b: { id: string }) => b.id)).not.toContain('gone');
+  });
+});
+
 describe('the vault', () => {
   it("never overwrites with a 'new' piece, and won't delete one a page uses unless forced", async () => {
     expect((await call(vault.PUT, '/api/vault?asset=post&new=1', 'PUT', ASSET)).status).toBe(200);

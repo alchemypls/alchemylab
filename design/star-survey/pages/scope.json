@@ -1,0 +1,2031 @@
+{
+ "title": "Scope",
+ "kicker": "Production",
+ "topic": "scope",
+ "updated": "2026-11-19",
+ "background": "#0b0e16",
+ "blocks": [],
+ "elements": [
+  {
+   "id": "kicker",
+   "type": "text",
+   "x": 56,
+   "y": 30,
+   "w": 900,
+   "h": 26,
+   "text": "Production · decided",
+   "size": 16,
+   "weight": 700,
+   "font": "sans",
+   "color": "#F88F05",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "title",
+   "type": "text",
+   "x": 56,
+   "y": 58,
+   "w": 1300,
+   "h": 72,
+   "text": "",
+   "size": 52,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "top",
+   "bind": {
+    "topic": "scope",
+    "field": "title"
+   }
+  },
+  {
+   "id": "status",
+   "type": "status",
+   "x": 1840,
+   "y": 72,
+   "size": 22,
+   "topic": "scope"
+  },
+  {
+   "id": "back",
+   "type": "text",
+   "x": 1440,
+   "y": 40,
+   "w": 380,
+   "h": 30,
+   "text": "← Overview",
+   "size": 18,
+   "weight": 600,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "right",
+   "valign": "top",
+   "link": "index"
+  },
+  {
+   "id": "drift",
+   "type": "text",
+   "x": 56,
+   "y": 138,
+   "w": 1808,
+   "h": 60,
+   "text": "Everything decided ships in this rework, site and game. Applied one topic at a time, in this order; each step ends with a build and your look.",
+   "size": 22,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-1",
+   "type": "line",
+   "name": "rule",
+   "from": {
+    "x": 56,
+    "y": 212
+   },
+   "to": {
+    "x": 1864,
+    "y": 212
+   },
+   "stroke": "#262c3b",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-2",
+   "type": "text",
+   "x": 56,
+   "y": 232,
+   "w": 1100,
+   "h": 24,
+   "text": "Ships — the Apply order",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-3",
+   "type": "text",
+   "x": 56,
+   "y": 268,
+   "w": 40,
+   "h": 40,
+   "text": "1",
+   "size": 30,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-4",
+   "type": "text",
+   "x": 102,
+   "y": 270,
+   "w": 360,
+   "h": 24,
+   "text": "Foundations + bug fixes",
+   "size": 18,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-5",
+   "type": "text",
+   "x": 102,
+   "y": 296,
+   "w": 760,
+   "h": 34,
+   "text": "delete the * reset · tokens in @theme (color, type, spacing, shape, motion) · Button vars · dead CSS out · MotionConfig calm",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-6",
+   "type": "rect",
+   "name": "link 0 color",
+   "x": 886,
+   "y": 272,
+   "w": 54,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-7",
+   "type": "text",
+   "x": 886,
+   "y": 272,
+   "w": 54,
+   "h": 22,
+   "text": "color",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "color"
+  },
+  {
+   "id": "r-8",
+   "type": "rect",
+   "name": "link 0 type",
+   "x": 948,
+   "y": 272,
+   "w": 46,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-9",
+   "type": "text",
+   "x": 948,
+   "y": 272,
+   "w": 46,
+   "h": 22,
+   "text": "type",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "type"
+  },
+  {
+   "id": "r-10",
+   "type": "rect",
+   "name": "link 0 spacing",
+   "x": 1002,
+   "y": 272,
+   "w": 70,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-11",
+   "type": "text",
+   "x": 1002,
+   "y": 272,
+   "w": 70,
+   "h": 22,
+   "text": "spacing",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "spacing"
+  },
+  {
+   "id": "r-12",
+   "type": "rect",
+   "name": "link 0 shape",
+   "x": 1080,
+   "y": 272,
+   "w": 54,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-13",
+   "type": "text",
+   "x": 1080,
+   "y": 272,
+   "w": 54,
+   "h": 22,
+   "text": "shape",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "shape"
+  },
+  {
+   "id": "r-14",
+   "type": "rect",
+   "name": "link 0 motion",
+   "x": 1142,
+   "y": 272,
+   "w": 62,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-15",
+   "type": "text",
+   "x": 1142,
+   "y": 272,
+   "w": 62,
+   "h": 22,
+   "text": "motion",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "motion"
+  },
+  {
+   "id": "t-16",
+   "type": "text",
+   "x": 56,
+   "y": 334,
+   "w": 40,
+   "h": 40,
+   "text": "2",
+   "size": 30,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-17",
+   "type": "text",
+   "x": 102,
+   "y": 336,
+   "w": 360,
+   "h": 24,
+   "text": "Components",
+   "size": 18,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-18",
+   "type": "text",
+   "x": 102,
+   "y": 362,
+   "w": 760,
+   "h": 34,
+   "text": "Frame, Menu list, Leader, Plate · Button (action/quiet/danger) · Entry + text parts · PressBurst · Crystal, flip cards, sparkles out",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-19",
+   "type": "rect",
+   "name": "link 1 containers",
+   "x": 886,
+   "y": 338,
+   "w": 94,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-20",
+   "type": "text",
+   "x": 886,
+   "y": 338,
+   "w": 94,
+   "h": 22,
+   "text": "containers",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "containers"
+  },
+  {
+   "id": "r-21",
+   "type": "rect",
+   "name": "link 1 controls",
+   "x": 988,
+   "y": 338,
+   "w": 78,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-22",
+   "type": "text",
+   "x": 988,
+   "y": 338,
+   "w": 78,
+   "h": 22,
+   "text": "controls",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "controls"
+  },
+  {
+   "id": "r-23",
+   "type": "rect",
+   "name": "link 1 content",
+   "x": 1074,
+   "y": 338,
+   "w": 70,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-24",
+   "type": "text",
+   "x": 1074,
+   "y": 338,
+   "w": 70,
+   "h": 22,
+   "text": "content",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "content"
+  },
+  {
+   "id": "r-25",
+   "type": "rect",
+   "name": "link 1 effects",
+   "x": 1152,
+   "y": 338,
+   "w": 70,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-26",
+   "type": "text",
+   "x": 1152,
+   "y": 338,
+   "w": 70,
+   "h": 22,
+   "text": "effects",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "effects"
+  },
+  {
+   "id": "t-27",
+   "type": "text",
+   "x": 56,
+   "y": 400,
+   "w": 40,
+   "h": 40,
+   "text": "3",
+   "size": 30,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-28",
+   "type": "text",
+   "x": 102,
+   "y": 402,
+   "w": 360,
+   "h": 24,
+   "text": "Layouts + shell",
+   "size": 18,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-29",
+   "type": "text",
+   "x": 102,
+   "y": 428,
+   "w": 760,
+   "h": 34,
+   "text": "three layouts · hash sections · comms plate · game hand-off · dev-only HUD",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-30",
+   "type": "rect",
+   "name": "link 2 layouts",
+   "x": 886,
+   "y": 404,
+   "w": 70,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-31",
+   "type": "text",
+   "x": 886,
+   "y": 404,
+   "w": 70,
+   "h": 22,
+   "text": "layouts",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "layouts"
+  },
+  {
+   "id": "r-32",
+   "type": "rect",
+   "name": "link 2 shell",
+   "x": 964,
+   "y": 404,
+   "w": 54,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-33",
+   "type": "text",
+   "x": 964,
+   "y": 404,
+   "w": 54,
+   "h": 22,
+   "text": "shell",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "shell"
+  },
+  {
+   "id": "t-34",
+   "type": "text",
+   "x": 56,
+   "y": 466,
+   "w": 40,
+   "h": 40,
+   "text": "4",
+   "size": 30,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-35",
+   "type": "text",
+   "x": 102,
+   "y": 468,
+   "w": 360,
+   "h": 24,
+   "text": "Accessibility",
+   "size": 18,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-36",
+   "type": "text",
+   "x": 102,
+   "y": 494,
+   "w": 760,
+   "h": 34,
+   "text": "reading frames /60 · faint #9783A0 · landmarks, tablists, live region, titles · keyboard pass",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-37",
+   "type": "rect",
+   "name": "link 3 accessibility",
+   "x": 886,
+   "y": 470,
+   "w": 118,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-38",
+   "type": "text",
+   "x": 886,
+   "y": 470,
+   "w": 118,
+   "h": 22,
+   "text": "accessibility",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "accessibility"
+  },
+  {
+   "id": "t-39",
+   "type": "text",
+   "x": 56,
+   "y": 532,
+   "w": 40,
+   "h": 40,
+   "text": "5",
+   "size": 30,
+   "weight": 700,
+   "font": "sans",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-40",
+   "type": "text",
+   "x": 102,
+   "y": 534,
+   "w": 360,
+   "h": 24,
+   "text": "Orb stick",
+   "size": 18,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-41",
+   "type": "text",
+   "x": 102,
+   "y": 560,
+   "w": 760,
+   "h": 34,
+   "text": "OrbStick for site + game, touch and mouse · phone shell (rail dots, LINKS)",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-42",
+   "type": "rect",
+   "name": "link 4 responsive",
+   "x": 886,
+   "y": 536,
+   "w": 94,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-43",
+   "type": "text",
+   "x": 886,
+   "y": 536,
+   "w": 94,
+   "h": 22,
+   "text": "responsive",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "responsive"
+  },
+  {
+   "id": "t-44",
+   "type": "text",
+   "x": 56,
+   "y": 598,
+   "w": 40,
+   "h": 40,
+   "text": "6",
+   "size": 30,
+   "weight": 700,
+   "font": "sans",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-45",
+   "type": "text",
+   "x": 102,
+   "y": 600,
+   "w": 360,
+   "h": 24,
+   "text": "Fireworks + game calm",
+   "size": 18,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-46",
+   "type": "text",
+   "x": 102,
+   "y": 626,
+   "w": 760,
+   "h": 34,
+   "text": "7 sets · 4 patterns · 8 designs (you pick) · GOLD · calm: open fireworks, warp off, ¼ glitter/embers",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-47",
+   "type": "rect",
+   "name": "link 5 effects",
+   "x": 886,
+   "y": 602,
+   "w": 70,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-48",
+   "type": "text",
+   "x": 886,
+   "y": 602,
+   "w": 70,
+   "h": 22,
+   "text": "effects",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "effects"
+  },
+  {
+   "id": "t-49",
+   "type": "text",
+   "x": 56,
+   "y": 664,
+   "w": 40,
+   "h": 40,
+   "text": "7",
+   "size": 30,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-50",
+   "type": "text",
+   "x": 102,
+   "y": 666,
+   "w": 360,
+   "h": 24,
+   "text": "Content",
+   "size": 18,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-51",
+   "type": "text",
+   "x": 102,
+   "y": 692,
+   "w": 760,
+   "h": 34,
+   "text": "entry links + comms URLs · Cori's site lines · voice pass on all copy",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-52",
+   "type": "rect",
+   "name": "link 6 content",
+   "x": 886,
+   "y": 668,
+   "w": 70,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-53",
+   "type": "text",
+   "x": 886,
+   "y": 668,
+   "w": 70,
+   "h": 22,
+   "text": "content",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "content"
+  },
+  {
+   "id": "r-54",
+   "type": "rect",
+   "name": "link 6 pitch",
+   "x": 964,
+   "y": 668,
+   "w": 54,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-55",
+   "type": "text",
+   "x": 964,
+   "y": 668,
+   "w": 54,
+   "h": 22,
+   "text": "pitch",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "pitch"
+  },
+  {
+   "id": "t-56",
+   "type": "text",
+   "x": 56,
+   "y": 730,
+   "w": 40,
+   "h": 40,
+   "text": "8",
+   "size": 30,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-57",
+   "type": "text",
+   "x": 102,
+   "y": 732,
+   "w": 360,
+   "h": 24,
+   "text": "Docs refresh",
+   "size": 18,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-58",
+   "type": "text",
+   "x": 102,
+   "y": 758,
+   "w": 760,
+   "h": 34,
+   "text": "README + site CLAUDE.md: the pitch, the real design system (pointing at this bible)",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-59",
+   "type": "rect",
+   "name": "link 7 stack",
+   "x": 886,
+   "y": 734,
+   "w": 54,
+   "h": 22,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-60",
+   "type": "text",
+   "x": 886,
+   "y": 734,
+   "w": 54,
+   "h": 22,
+   "text": "stack",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle",
+   "link": "stack"
+  },
+  {
+   "id": "t-61",
+   "type": "text",
+   "x": 56,
+   "y": 796,
+   "w": 1100,
+   "h": 20,
+   "text": "gold = site · teal = game",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-62",
+   "type": "text",
+   "x": 1240,
+   "y": 232,
+   "w": 624,
+   "h": 24,
+   "text": "Needs from you",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "r-63",
+   "type": "rect",
+   "name": "need 0 tint",
+   "x": 1240,
+   "y": 268,
+   "w": 624,
+   "h": 50,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-64",
+   "type": "rect",
+   "name": "need 0 line",
+   "x": 1240,
+   "y": 268,
+   "w": 624,
+   "h": 50,
+   "fill": "none",
+   "stroke": "#F88F05",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-65",
+   "type": "line",
+   "name": "need 0 tick",
+   "from": {
+    "x": 1246,
+    "y": 268
+   },
+   "to": {
+    "x": 1240,
+    "y": 268
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-66",
+   "type": "line",
+   "name": "need 0 tick",
+   "from": {
+    "x": 1240,
+    "y": 268
+   },
+   "to": {
+    "x": 1240,
+    "y": 274
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-67",
+   "type": "line",
+   "name": "need 0 tick",
+   "from": {
+    "x": 1858,
+    "y": 268
+   },
+   "to": {
+    "x": 1864,
+    "y": 268
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-68",
+   "type": "line",
+   "name": "need 0 tick",
+   "from": {
+    "x": 1864,
+    "y": 268
+   },
+   "to": {
+    "x": 1864,
+    "y": 274
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-69",
+   "type": "line",
+   "name": "need 0 tick",
+   "from": {
+    "x": 1246,
+    "y": 318
+   },
+   "to": {
+    "x": 1240,
+    "y": 318
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-70",
+   "type": "line",
+   "name": "need 0 tick",
+   "from": {
+    "x": 1240,
+    "y": 318
+   },
+   "to": {
+    "x": 1240,
+    "y": 312
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-71",
+   "type": "line",
+   "name": "need 0 tick",
+   "from": {
+    "x": 1858,
+    "y": 318
+   },
+   "to": {
+    "x": 1864,
+    "y": 318
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-72",
+   "type": "line",
+   "name": "need 0 tick",
+   "from": {
+    "x": 1864,
+    "y": 318
+   },
+   "to": {
+    "x": 1864,
+    "y": 312
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-73",
+   "type": "text",
+   "x": 1256,
+   "y": 274,
+   "w": 220,
+   "h": 20,
+   "text": "URLs",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#F88F05",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-74",
+   "type": "text",
+   "x": 1256,
+   "y": 294,
+   "w": 592,
+   "h": 20,
+   "text": "GitHub, résumé, contact address; repo / live / PR links per entry",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-75",
+   "type": "rect",
+   "name": "need 1 tint",
+   "x": 1240,
+   "y": 330,
+   "w": 624,
+   "h": 50,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-76",
+   "type": "rect",
+   "name": "need 1 line",
+   "x": 1240,
+   "y": 330,
+   "w": 624,
+   "h": 50,
+   "fill": "none",
+   "stroke": "#F88F05",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-77",
+   "type": "line",
+   "name": "need 1 tick",
+   "from": {
+    "x": 1246,
+    "y": 330
+   },
+   "to": {
+    "x": 1240,
+    "y": 330
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-78",
+   "type": "line",
+   "name": "need 1 tick",
+   "from": {
+    "x": 1240,
+    "y": 330
+   },
+   "to": {
+    "x": 1240,
+    "y": 336
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-79",
+   "type": "line",
+   "name": "need 1 tick",
+   "from": {
+    "x": 1858,
+    "y": 330
+   },
+   "to": {
+    "x": 1864,
+    "y": 330
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-80",
+   "type": "line",
+   "name": "need 1 tick",
+   "from": {
+    "x": 1864,
+    "y": 330
+   },
+   "to": {
+    "x": 1864,
+    "y": 336
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-81",
+   "type": "line",
+   "name": "need 1 tick",
+   "from": {
+    "x": 1246,
+    "y": 380
+   },
+   "to": {
+    "x": 1240,
+    "y": 380
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-82",
+   "type": "line",
+   "name": "need 1 tick",
+   "from": {
+    "x": 1240,
+    "y": 380
+   },
+   "to": {
+    "x": 1240,
+    "y": 374
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-83",
+   "type": "line",
+   "name": "need 1 tick",
+   "from": {
+    "x": 1858,
+    "y": 380
+   },
+   "to": {
+    "x": 1864,
+    "y": 380
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-84",
+   "type": "line",
+   "name": "need 1 tick",
+   "from": {
+    "x": 1864,
+    "y": 380
+   },
+   "to": {
+    "x": 1864,
+    "y": 374
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-85",
+   "type": "text",
+   "x": 1256,
+   "y": 336,
+   "w": 220,
+   "h": 20,
+   "text": "Cori's site lines",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#F88F05",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-86",
+   "type": "text",
+   "x": 1256,
+   "y": 356,
+   "w": 592,
+   "h": 20,
+   "text": "one or two per section, in the voice",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-87",
+   "type": "rect",
+   "name": "need 2 tint",
+   "x": 1240,
+   "y": 392,
+   "w": 624,
+   "h": 50,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-88",
+   "type": "rect",
+   "name": "need 2 line",
+   "x": 1240,
+   "y": 392,
+   "w": 624,
+   "h": 50,
+   "fill": "none",
+   "stroke": "#F88F05",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-89",
+   "type": "line",
+   "name": "need 2 tick",
+   "from": {
+    "x": 1246,
+    "y": 392
+   },
+   "to": {
+    "x": 1240,
+    "y": 392
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-90",
+   "type": "line",
+   "name": "need 2 tick",
+   "from": {
+    "x": 1240,
+    "y": 392
+   },
+   "to": {
+    "x": 1240,
+    "y": 398
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-91",
+   "type": "line",
+   "name": "need 2 tick",
+   "from": {
+    "x": 1858,
+    "y": 392
+   },
+   "to": {
+    "x": 1864,
+    "y": 392
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-92",
+   "type": "line",
+   "name": "need 2 tick",
+   "from": {
+    "x": 1864,
+    "y": 392
+   },
+   "to": {
+    "x": 1864,
+    "y": 398
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-93",
+   "type": "line",
+   "name": "need 2 tick",
+   "from": {
+    "x": 1246,
+    "y": 442
+   },
+   "to": {
+    "x": 1240,
+    "y": 442
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-94",
+   "type": "line",
+   "name": "need 2 tick",
+   "from": {
+    "x": 1240,
+    "y": 442
+   },
+   "to": {
+    "x": 1240,
+    "y": 436
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-95",
+   "type": "line",
+   "name": "need 2 tick",
+   "from": {
+    "x": 1858,
+    "y": 442
+   },
+   "to": {
+    "x": 1864,
+    "y": 442
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-96",
+   "type": "line",
+   "name": "need 2 tick",
+   "from": {
+    "x": 1864,
+    "y": 442
+   },
+   "to": {
+    "x": 1864,
+    "y": 436
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-97",
+   "type": "text",
+   "x": 1256,
+   "y": 398,
+   "w": 220,
+   "h": 20,
+   "text": "8 firework designs",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#F88F05",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-98",
+   "type": "text",
+   "x": 1256,
+   "y": 418,
+   "w": 592,
+   "h": 20,
+   "text": "picked in the SilkSandbox",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-99",
+   "type": "rect",
+   "name": "need 3 tint",
+   "x": 1240,
+   "y": 454,
+   "w": 624,
+   "h": 50,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-100",
+   "type": "rect",
+   "name": "need 3 line",
+   "x": 1240,
+   "y": 454,
+   "w": 624,
+   "h": 50,
+   "fill": "none",
+   "stroke": "#F88F05",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-101",
+   "type": "line",
+   "name": "need 3 tick",
+   "from": {
+    "x": 1246,
+    "y": 454
+   },
+   "to": {
+    "x": 1240,
+    "y": 454
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-102",
+   "type": "line",
+   "name": "need 3 tick",
+   "from": {
+    "x": 1240,
+    "y": 454
+   },
+   "to": {
+    "x": 1240,
+    "y": 460
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-103",
+   "type": "line",
+   "name": "need 3 tick",
+   "from": {
+    "x": 1858,
+    "y": 454
+   },
+   "to": {
+    "x": 1864,
+    "y": 454
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-104",
+   "type": "line",
+   "name": "need 3 tick",
+   "from": {
+    "x": 1864,
+    "y": 454
+   },
+   "to": {
+    "x": 1864,
+    "y": 460
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-105",
+   "type": "line",
+   "name": "need 3 tick",
+   "from": {
+    "x": 1246,
+    "y": 504
+   },
+   "to": {
+    "x": 1240,
+    "y": 504
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-106",
+   "type": "line",
+   "name": "need 3 tick",
+   "from": {
+    "x": 1240,
+    "y": 504
+   },
+   "to": {
+    "x": 1240,
+    "y": 498
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-107",
+   "type": "line",
+   "name": "need 3 tick",
+   "from": {
+    "x": 1858,
+    "y": 504
+   },
+   "to": {
+    "x": 1864,
+    "y": 504
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-108",
+   "type": "line",
+   "name": "need 3 tick",
+   "from": {
+    "x": 1864,
+    "y": 504
+   },
+   "to": {
+    "x": 1864,
+    "y": 498
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-109",
+   "type": "text",
+   "x": 1256,
+   "y": 460,
+   "w": 220,
+   "h": 20,
+   "text": "Page edge",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#F88F05",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-110",
+   "type": "text",
+   "x": 1256,
+   "y": 480,
+   "w": 592,
+   "h": 20,
+   "text": "16 / 24 / 48 — a look before step 1",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-111",
+   "type": "rect",
+   "name": "need 4 tint",
+   "x": 1240,
+   "y": 516,
+   "w": 624,
+   "h": 50,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-112",
+   "type": "rect",
+   "name": "need 4 line",
+   "x": 1240,
+   "y": 516,
+   "w": 624,
+   "h": 50,
+   "fill": "none",
+   "stroke": "#F88F05",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-113",
+   "type": "line",
+   "name": "need 4 tick",
+   "from": {
+    "x": 1246,
+    "y": 516
+   },
+   "to": {
+    "x": 1240,
+    "y": 516
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-114",
+   "type": "line",
+   "name": "need 4 tick",
+   "from": {
+    "x": 1240,
+    "y": 516
+   },
+   "to": {
+    "x": 1240,
+    "y": 522
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-115",
+   "type": "line",
+   "name": "need 4 tick",
+   "from": {
+    "x": 1858,
+    "y": 516
+   },
+   "to": {
+    "x": 1864,
+    "y": 516
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-116",
+   "type": "line",
+   "name": "need 4 tick",
+   "from": {
+    "x": 1864,
+    "y": 516
+   },
+   "to": {
+    "x": 1864,
+    "y": 522
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-117",
+   "type": "line",
+   "name": "need 4 tick",
+   "from": {
+    "x": 1246,
+    "y": 566
+   },
+   "to": {
+    "x": 1240,
+    "y": 566
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-118",
+   "type": "line",
+   "name": "need 4 tick",
+   "from": {
+    "x": 1240,
+    "y": 566
+   },
+   "to": {
+    "x": 1240,
+    "y": 560
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-119",
+   "type": "line",
+   "name": "need 4 tick",
+   "from": {
+    "x": 1858,
+    "y": 566
+   },
+   "to": {
+    "x": 1864,
+    "y": 566
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-120",
+   "type": "line",
+   "name": "need 4 tick",
+   "from": {
+    "x": 1864,
+    "y": 566
+   },
+   "to": {
+    "x": 1864,
+    "y": 560
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-121",
+   "type": "text",
+   "x": 1256,
+   "y": 522,
+   "w": 220,
+   "h": 20,
+   "text": "References",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#F88F05",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-122",
+   "type": "text",
+   "x": 1256,
+   "y": 542,
+   "w": 592,
+   "h": 20,
+   "text": "yes / no on the four proposed",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-123",
+   "type": "text",
+   "x": 1240,
+   "y": 590,
+   "w": 624,
+   "h": 24,
+   "text": "Waits",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-124",
+   "type": "text",
+   "x": 1240,
+   "y": 620,
+   "w": 624,
+   "h": 140,
+   "text": "Left-handed orb mirror (hypothesis) · Icons & Imagery · States (loading, first visit, returning) · Performance budget · real routes per section · new sections or content.",
+   "size": 14,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-125",
+   "type": "line",
+   "name": "rule",
+   "from": {
+    "x": 56,
+    "y": 830
+   },
+   "to": {
+    "x": 1864,
+    "y": 830
+   },
+   "stroke": "#262c3b",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-126",
+   "type": "text",
+   "x": 56,
+   "y": 846,
+   "w": 600,
+   "h": 24,
+   "text": "How each step lands",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-127",
+   "type": "text",
+   "x": 56,
+   "y": 878,
+   "w": 1808,
+   "h": 80,
+   "text": "Re-scan the topic's values → change the code by the page's merge map (values not in it: stop and ask) → build → you look on your dev server → re-count raw values → log \"apply: <topic> — N raw → tokens\". Never committed by the agent.",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  }
+ ],
+ "knowledge": [
+  {
+   "id": "k-ships",
+   "kind": "decision",
+   "text": "Ships in this rework — site: foundations + bug fixes, components + layouts, shell + accessibility, content (links + Cori lines); game: orb stick, fireworks re-key, game calm mode; and a docs refresh."
+  },
+  {
+   "id": "k-order",
+   "kind": "decision",
+   "text": "Apply order: 1 foundations + bugs · 2 components · 3 layouts + shell · 4 accessibility · 5 orb stick · 6 fireworks + game calm · 7 content · 8 docs.",
+   "why": "Foundations first: every later step uses the tokens; content last because it waits on the user's URLs and lines."
+  },
+  {
+   "id": "k-waits",
+   "kind": "decision",
+   "text": "Waits: left-handed mirror, icons & imagery, states, performance, real routes, new sections."
+  }
+ ],
+ "agent": {
+  "brief": "The Apply plan. One step per session; each step follows site-survey Mode 4.",
+  "rules": [
+   "Before step 1: the user looks at the page edge (Spacing h-edge).",
+   "Step 6 needs the 8 designs from the user; step 7 needs URLs and Cori lines. Don't start those parts without them; never invent URLs.",
+   "After each step: log `apply: <topic> — N raw → tokens, left on purpose: …`."
+  ],
+  "open": [
+   "URLs",
+   "Cori site lines",
+   "8 firework designs",
+   "Page edge look",
+   "References"
+  ]
+ }
+}

@@ -265,5 +265,6 @@
     ],
     "estimated": true,
     "note": "Boss toy on its hoard: a moving, evading target. Size is a guess."
-  }
+  },
+  "project": "pinball-crawl"
 }

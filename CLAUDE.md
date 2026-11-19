@@ -23,10 +23,12 @@ One canvas, one job (`lib/scenes.ts`, grid: Ideation | Fab over Live | Web). Eve
 |---|---|---|
 | **Ideation** (`ideation`) | Design bible pages; the page is the canvas | `workbench/canvases/IdeationCanvas.tsx` |
 | **Fab** (`fab`) | One editor at a time makes assets for the other canvases: Visual Identity, Components, Blocks, Structures | `workbench/canvases/FabCanvas.tsx`, same layout as Ideation. Visual Identity edits vault shapes, icons and palettes; Blocks edits vault blocks (game pieces drawn on their footprint tiles, isometric grid with corner snapping; an atom is one shared strip: a wall's faces 6 tiles long, a floor's or roof's tile a 6 × 6 patch; the 1×/2×/3×/6× bar above the state bar shows that much of it, drawn on in place (strip.ts, structure.ts wallStrip; structures and roofs repeat it every 6)); Components saves to the current project (`useCurrentProject`); Structures (`workbench/ui/fab/StructureCanvas.tsx`, its own canvas) builds set pieces Sims style from atoms: the vault is its catalog (a floor/wall pick is the brush, an object pick is armed to place, or drag one onto the sheet), select (move by tiles, Del, a vault pick swaps), floor/wall/roof/erase tools (roofs: click a room or drag a box; shape, pitch, overhang, ridge in the tool menu; `roofs` toggle hides them), wall views while building (C: up / cut, lowered in front of rooms / down), levels on the minimap pips |
-| **Web** (`web`) | Test page and app layouts, quick prototypes | `workbench/canvases/WebCanvas.tsx`, same shell as Ideation: one page of a web project at its device size, three layers (wireframe → layout → preview; 1/2/3, Ctrl + mouse wheel, pips on the minimap), the ones under it see-through. The wireframe is a vector page per tier (`PageSketch`), drawn with Ideation's tools (images stay in the browser: `src: idb:<id>`). Panel: project + page pickers, device bar; box under the minimap: **page** (intent, status, head, notes), **routes** (the route tree), **project**, **layers** (wireframe). Layout layer: pick a component in the **components** box and click the page (or drag it in), drag blocks to move, corner to resize (snaps to the tier's columns and rows; wider tiers write their own override), hide per tier, Del deletes; the selected block's fields fill the box; **variants** = alternative layouts. Preview is read-only so far. **code** box: the page's output as plain HTML or a Next.js page (copy, download, open the HTML in a tab) |
+| **Web** (`web`) | Test page and app layouts, quick prototypes | `workbench/canvases/WebCanvas.tsx`, same shell as Ideation: one page of a web project at its device size, three layers (wireframe → layout → preview; 1/2/3, Ctrl + mouse wheel, pips on the minimap), the ones under it see-through. The wireframe is a vector page per tier (`PageSketch`), drawn with Ideation's tools (images stay in the browser: `src: idb:<id>`). Panel: page picker, device bar; box under the minimap: **page** (intent, status, head, notes), **routes** (the route tree), **layers** (wireframe). Layout layer: pick a component in the **components** box and click the page (or drag it in), drag blocks to move, corner to resize (snaps to the tier's columns and rows; wider tiers write their own override), hide per tier, Del deletes; the selected block's fields fill the box; **variants** = alternative layouts. Preview is read-only so far. **code** box: the page's output as plain HTML or a Next.js page (copy, download, open the HTML in a tab) |
 | **Live** (`rnd`) | The web project running for real, like browser dev tools | `workbench/canvases/LiveCanvas.tsx`: the page served at `/live/<project>/<route>` (the HTML export + live reload + a console bridge, `lib/live.ts`) in a frame at a device's size. Devices are its layers: one per tier (1/2/3, Ctrl + wheel, pips), DeviceBar in the panel. Boxes: **console** (the page's logs/errors + load numbers), **checks** (`lib/liveChecks.ts`: broken links, overlaps, hidden blocks, missing text/alt), **phone** (Share on this Wi-Fi: a read-only gateway for phones, Live pages only, off after 30 min; same page on a real phone, reloads itself on save). Following a link in the page opens that page on Web too |
 
-`workbench/shell/CanvasPanel.tsx` sits above every canvas (switcher, vault). A canvas adds its own controls with `CanvasPanelSlot` (`area="below"` for a tall box like properties).
+`workbench/shell/CanvasPanel.tsx` sits above every canvas (switcher, the **project picker**, vault). A canvas adds its own controls with `CanvasPanelSlot` (`area="below"` for a tall box like properties).
+
+**The workspace project** (`lib/workspace.ts`) is what the header picker switches: one id ties `design/<id>/` (the bible, on Ideation), `projects/<id>.json` (the web project, on Web/Live/Fab Components) and the vault items marked `project: <id>`. Either file can be missing (a game has no web project: Web and Live say so and offer to make one). `store.lastProjectId` is the open one. The picker's menu: the projects (archived ones apart), New project… (an empty bible ± a web project), Project settings… (`workbench/shell/ProjectSettings.tsx`: name, accent, archived in both files; template and source in the bible; the web project's intent/tags/default head; archive; delete, which moves the bible to `design/.trash/` and leaves the project's vault items shared). The vault shows the open project's items and shared ones (no `project`); a search reaches every project's, listed after with their project's name. New vault files take the open project; right-click moves one here or makes it shared.
 
 ---
 
@@ -47,7 +49,7 @@ One canvas, one job (`lib/scenes.ts`, grid: Ideation | Fab over Live | Web). Eve
 ```
 app/
   page.tsx          — root: the active canvas (slide transition), CanvasPanel, SceneNavigator, FileVault; starts project sync
-  api/design/route.ts       — design bible files (design/<bible>/): list, bible.json, pages, assets; PUT writes (validated, x-base-mtime → 409 on conflict)
+  api/design/route.ts       — design bible files (design/<bible>/): list, bible.json, pages, assets; PUT writes (validated, x-base-mtime → 409 on conflict; &new=1 → 409 if it exists); DELETE a bible moves its folder to design/.trash/
   api/design/watch/route.ts — SSE: one message per changed file under design/ (shared fs.watch)
   api/design/fit/route.ts   — PUT: page fit report (with pageHash) → design/<bible>/.render.json
   api/vault/route.ts        — vault assets and palettes (?type=palette / ?palette=id): list, PUT (validated, x-base-mtime → 409), DELETE (409 + usedIn unless force), ?uses=id
@@ -69,16 +71,20 @@ scripts/
                        through the canvas's own PosedAsset (+ .render/sheet.png for several). Needs inkscape + ImageMagick
   page-render.tsx    — `npm run page:render -- <bible> <page> [--crop x,y,w,h] [--width px]`: .render/<bible>-<page>.png through the real
                        VectorArtboard (vault primed from disk; text swapped to plain SVG text, so wrapping is approximate)
+  bible-export.tsx   — `npm run bible:export -- <bible> [--html]`: the bible's vector pages as one PDF to share (.render/<bible>.pdf): the real
+                       VectorArtboard printed by headless Chrome, each PDF page the artboard's size, topic links jump between pages, images
+                       embedded; eraser masks shrunk to their content first (a full-size mask makes Chrome rasterize). Block pages are left out
   asset-info.ts      — `npm run asset:info [-- <id>…]`: assets in inches, one line per asset or per element (read this, not the JSON)
   pen-bridge.py      — pen → JSON lines. `local`: grabs a USB tablet's evdev (EVIOCGRAB). `remarkable`: mirrors a Paper Pro pen over SSH (no grab — keeps inking on paper). Stdlib Python
   udev/70-alchemy-pen.rules — per-device `uaccess` rule so the bridge can read the tablet (never add the user to `input`)
 
-vault/assets/<id>.json — global vector assets (shapes, icons, blocks): made on Fab, placed on pages with an `asset` element, so an edit shows everywhere. The agent can write them too
+vault/assets/<id>.json — vector assets (shapes, icons, blocks): made on Fab, placed on pages with an `asset` element, so an edit shows everywhere. `project` = the workspace project it belongs to (unset = shared). The agent can write them too
 vault/palettes/<id>.json — named colors. Every color picker shows the one in use (store.swatchPalette); Components' theme colors pick from it. Picks copy the value
 projects/<id>.json — web projects (ProjectData): written by the Web canvas through lib/projectSync.ts, served by /live. The agent can read and edit them (keep the shape; wireframe images stay in the browser as `idb:` refs)
 
 design/<bible>/      — design bibles (agent + user content): bible.json, pages/*.json, assets/, log.md. Written by the
-                       design-bible skill (.claude/skills/design-bible/), rendered by the Ideation canvas
+                       design-bible skill (.claude/skills/design-bible/; templates game/web), rendered by the Ideation canvas.
+                       An existing codebase: the site-survey skill (survey.json + as-is pages kept apart, then decide, bridge, apply)
 
 lib/
   design/types.ts    — Bible / Topic / DesignPage / Block (semantic blocks, no x/y) / FitReport; ARTBOARD 1920×1080; linkTarget (a link naming a topic opens its page, and isn't clickable until it has one; what opens a page shows a small arrow icon: after a text's words, on a placed piece's or image's corner)
@@ -134,7 +140,8 @@ workbench/
     FabCanvas.tsx                — editor + file dropdowns; the rail shows each editor's tools. Same shell as Ideation
     WebCanvas.tsx                — a web project's page in layers (wireframe, layout, preview), see-through; route tree + page fields in the panel box
   hooks/
-    useCurrentProject.ts   — the project the canvases work on (lastProjectId, else the first)
+    useCurrentProject.ts   — the open workspace project's web project (lastProjectId), undefined when it has none
+    useWorkspace.ts        — every workspace project (bibles on disk + web projects, lib/workspace.ts) and the open one; read/write/trash a bible whole
     useDesignDoc.ts        — loads a bible + page from design/, follows disk over SSE, saves with mtime conflict checks
     useDesignEditor.ts     — useFileDraft (any file: local draft, undo, autosave, conflicts) + useDesignEditor (useDesignDoc + draft + fit reports)
     useVault.ts            — vault assets + palettes live from disk, one shared copy and watch; create, save, delete
@@ -173,13 +180,13 @@ workbench/
     SheetMenu.tsx     — right-click menu on a vector sheet (Ideation, Fab): duplicate, front/back, plane, Edit in Fab, delete; Select all on empty. useRowMenu: the same menu on a right-clicked row in the layers box or the selection list
     ToolMenu.tsx      — tool panel beside the rail: favorites bar + the tool's parameters; Snap to grid (styles.select.free) on select/shape/text
     StyleFields.tsx   — controls shared by ToolMenu and VectorInspector: notched sliders, swatches (palette in use), segmented picks, border fields, transparency
-    web/              — the Web canvas's parts: CodeBox (output), WebLayers (sketchPage/pageSketch, WireframeLayer, LayoutLayer, PreviewLayer, PlacementCell), LayoutEditor (+ ComponentsBox, VariantsBox, newPlacement, readingOrder), BlockFields (BlockInspector), RouteTree, PageFields, ProjectFields, WebChrome (minimap, layer pips, column bands)
+    web/              — the Web canvas's parts: CodeBox (output), WebLayers (sketchPage/pageSketch, WireframeLayer, LayoutLayer, PreviewLayer, PlacementCell), LayoutEditor (+ ComponentsBox, VariantsBox, newPlacement, readingOrder), BlockFields (BlockInspector), RouteTree, PageFields, NoWebProject (Web/Live when the project has no web project), WebChrome (minimap, layer pips, column bands)
     PageMap.tsx       — Ideation minimap: elements simplified by type (rails and arrows keep their width and bend, opacity kept), viewport box, click to move; a tall page's map is capped in height
     RecipeView.tsx    — renders a recipe live as native elements + RecipeStyles (generated CSS, scoped per project)
     InstanceControls.tsx — option/prop pickers for ONE use of a component (Fabricator preview, a Web layout block)
   shell/
     SceneNavigator.tsx      — scene grid navigation (arrows + labels)
-    CanvasPanel.tsx         — top-right panel above all canvases: switcher, per-canvas slot (CanvasPanelSlot), vault button
+    CanvasPanel.tsx         — top-right panel above all canvases: switcher, project picker (ProjectPicker.tsx; settings in ProjectSettings.tsx), per-canvas slot (CanvasPanelSlot), vault button
     VaultButton.tsx         — file vault toggle, at the bottom of CanvasPanel (Ideation and Fab only)
     FileVault.tsx           — the file vault window (vault/ on disk) on Ideation/Fab: search, sort, tabs per kind, slots (long blocks take two), hover card (size, delete), drag to reorder (per browser) or onto an Ideation page to place there (VAULT_DRAG). Ideation picks arm placing (store.vaultArmed) or set the color pickers' palette; Fab picks open the file. Right-click (VaultMenu): place/open, Edit in Fab, Duplicate, Copy as another kind (new files, opened on Fab), delete
     Ask (workbench/ui/Ask.tsx) — the app's own name box / confirm / notice: await askText / askConfirm / tell (AskHost in app/page.tsx). Never window.prompt/confirm/alert: VS Code's browser refuses them
@@ -199,7 +206,7 @@ after 30 minutes). Keep it that way: never bind the app to the network or widen 
 
 **Files on disk are the source of truth, shared with the agent.** Design bibles (`design/`), vault assets and palettes (`vault/`), web projects (`projects/`): each has an API route that validates writes and refuses stale ones (`x-base-mtime` → 409), and an SSE watch so the canvases follow edits made elsewhere (the agent, another tab). Browser storage holds only this browser's view (open canvas/page, tool styles, tracing images, vault order).
 
-**Projects.** Everything page-shaped — pages, layouts, wireframes, components, theme, the device — lives per project in `ProjectData`, one file per project in `projects/`. The store keeps the working copy (`store.projects`), so canvases edit through the store's actions as before; `lib/projectSync.ts` writes changes to disk and pulls outside changes in. Web, Live and Fab's Components follow `lastProjectId` (`useCurrentProject`) and `project.activePath`, so picking a page anywhere switches them together.
+**Projects.** Everything page-shaped — pages, layouts, wireframes, components, theme, the device — lives per project in `ProjectData`, one file per project in `projects/`. The store keeps the working copy (`store.projects`), so canvases edit through the store's actions as before; `lib/projectSync.ts` writes changes to disk and pulls outside changes in. Web, Live and Fab's Components follow `lastProjectId` (`useCurrentProject`, the workspace project picked in the panel header) and `project.activePath`, so picking a page anywhere switches them together.
 
 **Component library (v2) — copy, don't link.** `lib/library` holds global recipes and the global theme. A project owns copies: `project.components[id]` (`ProjectComponent`, with `origin`) and `project.theme`. Editing a project's copy never reaches the library or another project. Within a project every placement references the project's one copy; a placement carries only its own `options` (variant picks) and `props` (text etc.). To make one use look different: set its options → or add an option to the component → or duplicate the component. Native-first output: real `<button>`/`<input>`/…, CSS variables, `[data-*]` variants, browser pseudo-classes — no runtime dependencies.
 
@@ -236,7 +243,7 @@ npm run dev      # start dev server on :3000
 npm run build    # production build
 npm run lint     # ESLint
 npm test         # unit tests (Vitest); npm run test:watch while working
-npm run parts:build / asset:render / asset:info / page:render   # vault parts as code, pictures of them and of pages, summaries (see scripts/)
+npm run parts:build / asset:render / asset:info / page:render / bible:export   # vault parts as code, pictures of them and of pages, summaries (see scripts/)
 ```
 
 `npm test` runs a few tests (Vitest, Node only, `*.test.ts` next to the code), kept small on purpose: only what's easy to break and costly when it does. The edit ops every tool uses (duplicate, copy/paste, groups, floors carrying pieces, locked layers), the export (escaping, both formats ship the same, the mobile-first cascade), the API's guards on disk (stale saves 409, invalid 422, ids can't leave their folder, vault pieces in use), the phone gateway's allow-list, and every registered action and effect (tools.test.ts: the page still validates; flips and turns undo themselves). CI also runs `design:check` (every content file) and `parts:build -- --check` (each part matches its vault file). Add a test when a bug is fixed (one that failed first) or a new guard appears, not for coverage. Canvas interactions aren't automated: verify UI changes by running dev and exercising the canvas.

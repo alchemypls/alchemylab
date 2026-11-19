@@ -1,0 +1,50 @@
+{
+  "title": "Star-Survey",
+  "colors": [
+    {
+      "name": "plum",
+      "value": "#38194C"
+    },
+    {
+      "name": "wine",
+      "value": "#941E43"
+    },
+    {
+      "name": "ember",
+      "value": "#E54F29"
+    },
+    {
+      "name": "flame",
+      "value": "#F88F05"
+    },
+    {
+      "name": "gold",
+      "value": "#FFD03B"
+    },
+    {
+      "name": "signal",
+      "value": "#3DBDB4"
+    },
+    {
+      "name": "void",
+      "value": "#0D0612"
+    },
+    {
+      "name": "surface",
+      "value": "#1A0D24"
+    },
+    {
+      "name": "text",
+      "value": "#FFF4E3"
+    },
+    {
+      "name": "text-muted",
+      "value": "#C9B8C4"
+    },
+    {
+      "name": "text-faint",
+      "value": "#9783A0"
+    }
+  ],
+  "project": "star-survey"
+}

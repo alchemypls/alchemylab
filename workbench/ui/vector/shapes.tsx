@@ -35,8 +35,8 @@ export function Element({ el, all, bible, bibleId, editing, onOpen, inlineEdit }
 }) {
   const link = editing ? undefined : linkTarget(el.link, bible);   // a topic without a page yet isn't clickable
   return (
-    <g data-el={el.id} opacity={el.opacity} transform={rotateTransform(el, all)} className={link ? 'vlink' : undefined} onClick={link ? () => onOpen(link) : undefined}>
-      {link && <title>Open {link}</title>}
+    <g data-el={el.id} data-link={link} opacity={el.opacity} transform={rotateTransform(el, all)} className={link ? 'vlink' : undefined} onClick={link ? () => onOpen(link) : undefined}>
+      {link && <title>{`Open ${link}`}</title>}
       <Filtered el={el}><Erased el={el} all={all}><Shape el={el} all={all} bible={bible} bibleId={bibleId} solid={editing || !!link} linked={!!link} inlineEdit={inlineEdit} /></Erased></Filtered>
       {link && (el.type === 'asset' || el.type === 'image') && <LinkBadge x={el.x + el.w} y={el.y + el.h / 2} r={Math.min(Math.max(Math.min(el.w, el.h) * 0.1, 9), 16)} />}
     </g>

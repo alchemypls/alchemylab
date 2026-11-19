@@ -5,6 +5,7 @@ import { useWorkbenchStore } from '@/lib/store';
 import { useFileDraft } from '@/workbench/hooks/useDesignEditor';
 import { useSheetView } from '@/workbench/hooks/useSheetView';
 import { createAsset, saveAsset, useVault } from '@/workbench/hooks/useVault';
+import { inProject } from '@/lib/workspace';
 import { blockFloor, isStructure, partOf, type VaultAsset } from '@/lib/design/vault';
 import {
   addLevel, addRoof, setRoofs, objFp, turnObjects, mirrorObjects, builtStructure, WALL_VIEWS, type WallView, clearTiles, edgeKey, fillTiles, fitFootprint, floorNewRooms, levelBase, levelEmpty, LEVELS_MAX, movePieces, paintFloors,
@@ -73,7 +74,8 @@ export function StructureCanvas() {
   const fabFile = useWorkbenchStore((s) => s.fabAsset), setFabFile = useWorkbenchStore((s) => s.setFabAsset);
   const armed = useWorkbenchStore((s) => s.vaultArmed), setArmed = useWorkbenchStore((s) => s.setVaultArmed);
   const { entries, loaded } = useVault();
-  const structures = entries.filter((e) => isStructure(e.asset));
+  const projectId = useWorkbenchStore((s) => s.lastProjectId);
+  const structures = entries.filter((e) => isStructure(e.asset) && (inProject(e.asset, projectId) || e.id === fabFile));   // this project's and shared
   const entry = structures.find((e) => e.id === fabFile);
   const atomOf = useCallback((id: string) => entries.find((e) => e.id === id)?.asset, [entries]);
 

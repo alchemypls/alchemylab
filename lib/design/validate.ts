@@ -234,7 +234,7 @@ export function validateBible(raw: unknown, ctx?: BibleContext): Issues {
   const errors: string[] = [], warnings: string[] = [];
   if (!isObj(raw)) return { errors: ['bible is not an object'], warnings };
   for (const f of ['title', 'pitch', 'created'] as const) if (!isStr(raw[f])) errors.push(`${f}: required string`);
-  if (raw.template !== 'game') errors.push('template: "game"');
+  if (raw.template !== 'game' && raw.template !== 'web') errors.push('template: "game" or "web"');
   if (!Array.isArray(raw.topics)) return { errors: [...errors, 'topics: required array'], warnings };
 
   const ids = new Set<string>();

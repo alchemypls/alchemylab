@@ -1,0 +1,1259 @@
+{
+ "title": "Identity",
+ "kicker": "Identity",
+ "topic": "pitch",
+ "updated": "2026-11-19",
+ "background": "#0b0e16",
+ "blocks": [],
+ "elements": [
+  {
+   "id": "kicker",
+   "type": "text",
+   "x": 56,
+   "y": 30,
+   "w": 900,
+   "h": 26,
+   "text": "Identity · decided",
+   "size": 16,
+   "weight": 700,
+   "font": "sans",
+   "color": "#F88F05",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "title",
+   "type": "text",
+   "x": 56,
+   "y": 58,
+   "w": 1300,
+   "h": 72,
+   "text": "Identity",
+   "size": 52,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "back",
+   "type": "text",
+   "x": 1440,
+   "y": 40,
+   "w": 380,
+   "h": 30,
+   "text": "← Overview",
+   "size": 18,
+   "weight": 600,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "right",
+   "valign": "top",
+   "link": "index"
+  },
+  {
+   "id": "s-1",
+   "type": "status",
+   "x": 56,
+   "y": 156,
+   "size": 16,
+   "topic": "pitch"
+  },
+  {
+   "id": "t-2",
+   "type": "text",
+   "x": 82,
+   "y": 150,
+   "w": 400,
+   "h": 24,
+   "text": "Pitch",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true,
+   "link": "pitch"
+  },
+  {
+   "id": "pitch-text",
+   "type": "text",
+   "x": 56,
+   "y": 184,
+   "w": 1808,
+   "h": 90,
+   "text": "\"A software engineer's portfolio you can fly: steer a luna moth under the real night sky, tie its stars with silk for fireworks, and read the work in quiet AR readouts over it.\"",
+   "size": 30,
+   "weight": 600,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-3",
+   "type": "line",
+   "name": "rule",
+   "from": {
+    "x": 56,
+    "y": 296
+   },
+   "to": {
+    "x": 1864,
+    "y": 296
+   },
+   "stroke": "#262c3b",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "s-4",
+   "type": "status",
+   "x": 56,
+   "y": 322,
+   "size": 16,
+   "topic": "audience"
+  },
+  {
+   "id": "t-5",
+   "type": "text",
+   "x": 82,
+   "y": 316,
+   "w": 560,
+   "h": 24,
+   "text": "Audience",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-6",
+   "type": "text",
+   "x": 56,
+   "y": 350,
+   "w": 580,
+   "h": 60,
+   "text": "Recruiters and hiring managers first: from a résumé or LinkedIn link, 1–2 minutes, desktop or phone. Engineers and curious players second.",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-7",
+   "type": "rect",
+   "name": "step 0 tint",
+   "x": 56,
+   "y": 440,
+   "w": 176,
+   "h": 62,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-8",
+   "type": "rect",
+   "name": "step 0 line",
+   "x": 56,
+   "y": 440,
+   "w": 176,
+   "h": 62,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-9",
+   "type": "line",
+   "name": "step 0 tick",
+   "from": {
+    "x": 62,
+    "y": 440
+   },
+   "to": {
+    "x": 56,
+    "y": 440
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-10",
+   "type": "line",
+   "name": "step 0 tick",
+   "from": {
+    "x": 56,
+    "y": 440
+   },
+   "to": {
+    "x": 56,
+    "y": 446
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-11",
+   "type": "line",
+   "name": "step 0 tick",
+   "from": {
+    "x": 226,
+    "y": 440
+   },
+   "to": {
+    "x": 232,
+    "y": 440
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-12",
+   "type": "line",
+   "name": "step 0 tick",
+   "from": {
+    "x": 232,
+    "y": 440
+   },
+   "to": {
+    "x": 232,
+    "y": 446
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-13",
+   "type": "line",
+   "name": "step 0 tick",
+   "from": {
+    "x": 62,
+    "y": 502
+   },
+   "to": {
+    "x": 56,
+    "y": 502
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-14",
+   "type": "line",
+   "name": "step 0 tick",
+   "from": {
+    "x": 56,
+    "y": 502
+   },
+   "to": {
+    "x": 56,
+    "y": 496
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-15",
+   "type": "line",
+   "name": "step 0 tick",
+   "from": {
+    "x": 226,
+    "y": 502
+   },
+   "to": {
+    "x": 232,
+    "y": 502
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-16",
+   "type": "line",
+   "name": "step 0 tick",
+   "from": {
+    "x": 232,
+    "y": 502
+   },
+   "to": {
+    "x": 232,
+    "y": 496
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-17",
+   "type": "text",
+   "x": 68,
+   "y": 450,
+   "w": 160,
+   "h": 14,
+   "text": "MOVE 0",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-18",
+   "type": "text",
+   "x": 68,
+   "y": 466,
+   "w": 160,
+   "h": 32,
+   "text": "résumé / LinkedIn link → /#work",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-19",
+   "type": "line",
+   "name": "step arrow 0",
+   "from": {
+    "x": 232,
+    "y": 471
+   },
+   "to": {
+    "x": 252,
+    "y": 471
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "r-20",
+   "type": "rect",
+   "name": "step 1 tint",
+   "x": 252,
+   "y": 440,
+   "w": 176,
+   "h": 62,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-21",
+   "type": "rect",
+   "name": "step 1 line",
+   "x": 252,
+   "y": 440,
+   "w": 176,
+   "h": 62,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-22",
+   "type": "line",
+   "name": "step 1 tick",
+   "from": {
+    "x": 258,
+    "y": 440
+   },
+   "to": {
+    "x": 252,
+    "y": 440
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-23",
+   "type": "line",
+   "name": "step 1 tick",
+   "from": {
+    "x": 252,
+    "y": 440
+   },
+   "to": {
+    "x": 252,
+    "y": 446
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-24",
+   "type": "line",
+   "name": "step 1 tick",
+   "from": {
+    "x": 422,
+    "y": 440
+   },
+   "to": {
+    "x": 428,
+    "y": 440
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-25",
+   "type": "line",
+   "name": "step 1 tick",
+   "from": {
+    "x": 428,
+    "y": 440
+   },
+   "to": {
+    "x": 428,
+    "y": 446
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-26",
+   "type": "line",
+   "name": "step 1 tick",
+   "from": {
+    "x": 258,
+    "y": 502
+   },
+   "to": {
+    "x": 252,
+    "y": 502
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-27",
+   "type": "line",
+   "name": "step 1 tick",
+   "from": {
+    "x": 252,
+    "y": 502
+   },
+   "to": {
+    "x": 252,
+    "y": 496
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-28",
+   "type": "line",
+   "name": "step 1 tick",
+   "from": {
+    "x": 422,
+    "y": 502
+   },
+   "to": {
+    "x": 428,
+    "y": 502
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-29",
+   "type": "line",
+   "name": "step 1 tick",
+   "from": {
+    "x": 428,
+    "y": 502
+   },
+   "to": {
+    "x": 428,
+    "y": 496
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-30",
+   "type": "text",
+   "x": 264,
+   "y": 450,
+   "w": 160,
+   "h": 14,
+   "text": "MOVE 1",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-31",
+   "type": "text",
+   "x": 264,
+   "y": 466,
+   "w": 160,
+   "h": 32,
+   "text": "rail or orb → Projects",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-32",
+   "type": "line",
+   "name": "step arrow 1",
+   "from": {
+    "x": 428,
+    "y": 471
+   },
+   "to": {
+    "x": 448,
+    "y": 471
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "r-33",
+   "type": "rect",
+   "name": "step 2 tint",
+   "x": 448,
+   "y": 440,
+   "w": 176,
+   "h": 62,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-34",
+   "type": "rect",
+   "name": "step 2 line",
+   "x": 448,
+   "y": 440,
+   "w": 176,
+   "h": 62,
+   "fill": "none",
+   "stroke": "#FFD03B",
+   "strokeWidth": 1,
+   "opacity": 0.8
+  },
+  {
+   "id": "l-35",
+   "type": "line",
+   "name": "step 2 tick",
+   "from": {
+    "x": 454,
+    "y": 440
+   },
+   "to": {
+    "x": 448,
+    "y": 440
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-36",
+   "type": "line",
+   "name": "step 2 tick",
+   "from": {
+    "x": 448,
+    "y": 440
+   },
+   "to": {
+    "x": 448,
+    "y": 446
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-37",
+   "type": "line",
+   "name": "step 2 tick",
+   "from": {
+    "x": 618,
+    "y": 440
+   },
+   "to": {
+    "x": 624,
+    "y": 440
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-38",
+   "type": "line",
+   "name": "step 2 tick",
+   "from": {
+    "x": 624,
+    "y": 440
+   },
+   "to": {
+    "x": 624,
+    "y": 446
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-39",
+   "type": "line",
+   "name": "step 2 tick",
+   "from": {
+    "x": 454,
+    "y": 502
+   },
+   "to": {
+    "x": 448,
+    "y": 502
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-40",
+   "type": "line",
+   "name": "step 2 tick",
+   "from": {
+    "x": 448,
+    "y": 502
+   },
+   "to": {
+    "x": 448,
+    "y": 496
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-41",
+   "type": "line",
+   "name": "step 2 tick",
+   "from": {
+    "x": 618,
+    "y": 502
+   },
+   "to": {
+    "x": 624,
+    "y": 502
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-42",
+   "type": "line",
+   "name": "step 2 tick",
+   "from": {
+    "x": 624,
+    "y": 502
+   },
+   "to": {
+    "x": 624,
+    "y": 496
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-43",
+   "type": "text",
+   "x": 460,
+   "y": 450,
+   "w": 160,
+   "h": 14,
+   "text": "MOVE 2",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-44",
+   "type": "text",
+   "x": 460,
+   "y": 466,
+   "w": 160,
+   "h": 32,
+   "text": "row → detail + REPO ↗",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-45",
+   "type": "text",
+   "x": 56,
+   "y": 514,
+   "w": 580,
+   "h": 40,
+   "text": "Never through the game: PLAY is the reward, not the gate.",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "s-46",
+   "type": "status",
+   "x": 700,
+   "y": 322,
+   "size": 16,
+   "topic": "pillars"
+  },
+  {
+   "id": "t-47",
+   "type": "text",
+   "x": 726,
+   "y": 316,
+   "w": 600,
+   "h": 24,
+   "text": "Pillars",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-48",
+   "type": "text",
+   "x": 700,
+   "y": 350,
+   "w": 44,
+   "h": 60,
+   "text": "1",
+   "size": 48,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-49",
+   "type": "text",
+   "x": 748,
+   "y": 356,
+   "w": 330,
+   "h": 28,
+   "text": "The sky is the scene",
+   "size": 19,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-50",
+   "type": "text",
+   "x": 748,
+   "y": 388,
+   "w": 330,
+   "h": 100,
+   "text": "The UI steps back: thin lines, see-through frames. If it competes with the sky, the moth or the fireworks, it loses.",
+   "size": 14,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-51",
+   "type": "text",
+   "x": 1092,
+   "y": 350,
+   "w": 44,
+   "h": 60,
+   "text": "2",
+   "size": 48,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-52",
+   "type": "text",
+   "x": 1140,
+   "y": 356,
+   "w": 330,
+   "h": 28,
+   "text": "Work in two moves",
+   "size": 19,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-53",
+   "type": "text",
+   "x": 1140,
+   "y": 388,
+   "w": 330,
+   "h": 100,
+   "text": "Any section, entry or link is two moves from anywhere. Reading never waits on playing.",
+   "size": 14,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-54",
+   "type": "text",
+   "x": 1484,
+   "y": 350,
+   "w": 44,
+   "h": 60,
+   "text": "3",
+   "size": 48,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-55",
+   "type": "text",
+   "x": 1532,
+   "y": 356,
+   "w": 330,
+   "h": 28,
+   "text": "Fireworks are the one motif",
+   "size": 19,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-56",
+   "type": "text",
+   "x": 1532,
+   "y": 388,
+   "w": 330,
+   "h": 100,
+   "text": "One idea ties site and game: palette sets, the press ring, the payouts. No second ornament system.",
+   "size": 14,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-57",
+   "type": "text",
+   "x": 700,
+   "y": 514,
+   "w": 1164,
+   "h": 40,
+   "text": "It will never: gate the résumé behind play · add a second decorative system (glass, sparkles, tarot) · shout.",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-58",
+   "type": "line",
+   "name": "rule",
+   "from": {
+    "x": 56,
+    "y": 566
+   },
+   "to": {
+    "x": 1864,
+    "y": 566
+   },
+   "stroke": "#262c3b",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "s-59",
+   "type": "status",
+   "x": 56,
+   "y": 592,
+   "size": 16,
+   "topic": "voice"
+  },
+  {
+   "id": "t-60",
+   "type": "text",
+   "x": 82,
+   "y": 586,
+   "w": 600,
+   "h": 24,
+   "text": "Voice — calm, precise, warm",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "r-61",
+   "type": "rect",
+   "name": "voice ground",
+   "x": 56,
+   "y": 622,
+   "w": 1100,
+   "h": 290,
+   "fill": "#120a1a",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 4
+  },
+  {
+   "id": "t-62",
+   "type": "text",
+   "x": 76,
+   "y": 640,
+   "w": 110,
+   "h": 18,
+   "text": "readouts",
+   "size": 12,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-63",
+   "type": "text",
+   "x": 196,
+   "y": 640,
+   "w": 950,
+   "h": 56,
+   "text": "SIMULATION // READY   ·   CAREER // 02   ·   LOCKED · VEGA",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-64",
+   "type": "text",
+   "x": 76,
+   "y": 706,
+   "w": 110,
+   "h": 18,
+   "text": "buttons",
+   "size": 12,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-65",
+   "type": "text",
+   "x": 196,
+   "y": 706,
+   "w": 950,
+   "h": 56,
+   "text": "LAUNCH SHIP   ·   ← DISENGAGE   ·   REPO ↗   ·   LINKS",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-66",
+   "type": "text",
+   "x": 76,
+   "y": 772,
+   "w": 110,
+   "h": 18,
+   "text": "progress",
+   "size": 12,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-67",
+   "type": "text",
+   "x": 196,
+   "y": 772,
+   "w": 950,
+   "h": 56,
+   "text": "3 of 5 stars tied.   ·   Lyra is complete.",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-68",
+   "type": "text",
+   "x": 76,
+   "y": 838,
+   "w": 110,
+   "h": 18,
+   "text": "Cori",
+   "size": 12,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-69",
+   "type": "text",
+   "x": 196,
+   "y": 838,
+   "w": 950,
+   "h": 56,
+   "text": "That one's Vega. Tie it to the bright one on your left.   ·   Nice. Three more tonight, if you like.",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-70",
+   "type": "text",
+   "x": 1196,
+   "y": 622,
+   "w": 724,
+   "h": 24,
+   "text": "Rules",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-71",
+   "type": "text",
+   "x": 1196,
+   "y": 652,
+   "w": 724,
+   "h": 150,
+   "text": "Short sentences. Numbers over adjectives. Caps only for readouts, buttons and the rail. Cori: warm, one or two lines, always useful. No exclamation marks, no emoji, no \"Oops\".",
+   "size": 14,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-72",
+   "type": "text",
+   "x": 1196,
+   "y": 800,
+   "w": 724,
+   "h": 24,
+   "text": "Never",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-73",
+   "type": "text",
+   "x": 1196,
+   "y": 830,
+   "w": 724,
+   "h": 60,
+   "text": "\"Unleash your potential in an epic cosmic journey!\"",
+   "size": 17,
+   "weight": 600,
+   "font": "sans",
+   "color": "#E54F29",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-74",
+   "type": "line",
+   "name": "rule",
+   "from": {
+    "x": 56,
+    "y": 932
+   },
+   "to": {
+    "x": 1864,
+    "y": 932
+   },
+   "stroke": "#262c3b",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "s-75",
+   "type": "status",
+   "x": 56,
+   "y": 954,
+   "size": 16,
+   "topic": "references"
+  },
+  {
+   "id": "t-76",
+   "type": "text",
+   "x": 82,
+   "y": 948,
+   "w": 400,
+   "h": 24,
+   "text": "References (proposed)",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-77",
+   "type": "text",
+   "x": 356,
+   "y": 948,
+   "w": 1564,
+   "h": 100,
+   "text": "Sci-fi AR HUD (your image) — thin lines, ticks, leaders; we stay warm, not cold blue · Bruno Simon's portfolio — explore to find the work; ours is two moves without playing · Outer Wilds — calm wonder under real skies; ours is a portfolio first · Sky: Children of the Light — a gentle flyer lighting things; ours has a sparse scientific UI.",
+   "size": 14,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  }
+ ],
+ "knowledge": [
+  {
+   "id": "k-pitch",
+   "kind": "decision",
+   "text": "Pitch: a software engineer's portfolio you can fly: steer a luna moth under the real night sky, tie its stars with silk for fireworks, and read the work in quiet AR readouts over it."
+  },
+  {
+   "id": "k-audience",
+   "kind": "decision",
+   "text": "Audience: recruiters and hiring managers first (from a résumé/LinkedIn link, 1–2 min, desktop or phone); engineers and players second.",
+   "why": "They decide; they must reach Work, Projects and the résumé without playing."
+  },
+  {
+   "id": "k-pillars",
+   "kind": "decision",
+   "text": "Pillars: 1 the sky is the scene · 2 work in two moves · 3 fireworks are the one motif."
+  },
+  {
+   "id": "k-never",
+   "kind": "decision",
+   "text": "Never: gate the résumé behind play; add a second decorative system; shout."
+  },
+  {
+   "id": "k-voice",
+   "kind": "decision",
+   "text": "Voice: calm, precise, warm — instrument readouts with a friendly guide. Short sentences, numbers over adjectives, caps only for readouts/buttons/rail, no exclamation marks or emoji. Never: \"Unleash your potential in an epic cosmic journey!\""
+  },
+  {
+   "id": "h-references",
+   "kind": "hypothesis",
+   "text": "References: sci-fi AR HUD (user image), Bruno Simon's portfolio, Outer Wilds, Sky: Children of the Light — differences as written on the page."
+  }
+ ],
+ "agent": {
+  "brief": "Identity settles arguments: when a choice is unclear, the pillars in order win. Copy follows the voice rules.",
+  "rules": [
+   "Copy check on every Apply step: eyebrows/buttons/rail caps, everything else sentence case; no \"!\" or emoji; Cori lines ≤ 2 sentences.",
+   "Any change that puts play between a visitor and Work/Projects/résumé breaks pillar 2: refuse it.",
+   "The site README.md and CLAUDE.md \"The Concept\" get this pitch (Docs refresh, Scope)."
+  ],
+  "open": [
+   "References (proposed)"
+  ]
+ }
+}

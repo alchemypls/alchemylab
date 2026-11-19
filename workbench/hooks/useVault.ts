@@ -6,6 +6,7 @@ import { isStructure, newAsset, PART_LAYERS, WALL_H, type AssetKind, type BlockP
 import { layersOf } from '@/lib/design/layers';
 import { newPalette, type Palette } from '@/lib/design/palette';
 import type { SaveResult } from './useDesignDoc';
+import { useWorkbenchStore } from '@/lib/store';
 
 // The vault's files, live from disk. One copy and one watch for the whole app, because every placed
 // asset and every color picker reads from it. Agent writes and edits from Fab show everywhere.
@@ -80,10 +81,12 @@ export const placedNow = () => placedVault(state.asset as Collection<VaultAsset>
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
 // Makes a new file. A name already taken gets a number, so nothing is overwritten.
+// A new file belongs to the project open in the workspace (lib/workspace.ts), unless it already names one
 async function create(type: VaultType, title: string, file: unknown): Promise<{ id: string } | { error: string }> {
   const base = slug(title);
   if (!base) return { error: `"${title}" can't be a file name` };
-  const body = JSON.stringify(file);
+  const project = useWorkbenchStore.getState().lastProjectId;
+  const body = JSON.stringify(project && !(file as { project?: string }).project ? { ...(file as object), project } : file);
   for (let n = 1; n < 100; n++) {
     const id = n === 1 ? base : `${base}-${n}`;
     const res = await fetch(`/api/vault?${type}=${id}&new=1`, { method: 'PUT', body }).catch(() => null);
@@ -104,6 +107,7 @@ export function copyAsset(from: VaultAsset, kind: AssetKind = from.kind, part?: 
   while (taken(`${root} ${n}`)) n++;
   const title = `${root} ${n}`;
   const copy = { ...structuredClone(from), kind, title, updated: today() } as VaultAsset;
+  delete copy.project;   // a copy belongs to the project you're in
   if (kind !== 'block') { delete copy.footprint; delete copy.part; delete copy.wall; }
   if (kind === 'block' && part) {   // another part: atoms stand on one tile; its state layers come along, kept drawings stay
     if (part === 'object') delete copy.part; else { copy.part = part; delete copy.footprint; const have = layersOf(copy); copy.layers = [...have, ...PART_LAYERS[part].filter((l) => !have.some((x) => x.id === l.id))]; }
@@ -112,7 +116,7 @@ export function copyAsset(from: VaultAsset, kind: AssetKind = from.kind, part?: 
   return create('asset', title, copy);
 }
 export const createPalette = (title: string, from?: Palette) =>
-  create('palette', title, from ? { ...from, title, updated: today() } : newPalette(title, today()));
+  create('palette', title, from ? { ...from, title, updated: today(), project: undefined } : newPalette(title, today()));
 
 async function save(type: VaultType, id: string, file: unknown): Promise<SaveResult> {
   const entry = state[type].entries.find((e) => e.id === id);

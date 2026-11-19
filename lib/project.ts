@@ -169,6 +169,7 @@ export interface ProjectMeta {
   globalTags?: string;
   headTitle?: string;       // default <title> suffix for pages without their own
   headDescription?: string; // fallback description for pages without their own
+  archived?: boolean;       // hidden from the project picker (lib/workspace.ts); files kept
 }
 
 // ── Pages — per-project routes ───────────────────────────────────

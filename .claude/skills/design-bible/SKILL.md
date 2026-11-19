@@ -29,13 +29,16 @@ design/<bible>/log.md            session handoffs — newest first
 design/<bible>/.render.json      written by the canvas: { <page>: { fits, overflowPx, overflowing[] } }
 ```
 
-Read `reference/vector.md` before writing a vector page, `reference/blocks.md` before a block page. Templates live in `templates/` (game.md for now).
+Read `reference/vector.md` before writing a vector page, `reference/blocks.md` before a block page. Templates live in `templates/`: game.md, web.md (set `bible.json` `template` to match). An existing codebase goes through the site-survey skill instead.
 Ids are kebab-case slugs. The canvas reloads on every save — the user watches pages fill as you talk.
 
 ## Start of every invocation
 
 1. `ls design/` and read each `bible.json` title.
 2. Ask: **new bible, or continue one?** (list existing ones). If continuing, go to Topic session.
+   A bible with no topics and an empty pitch was made from Alchemy's New project (header picker): start it as a new
+   bible in that folder, keeping its id, title, template and `accent`. A bible with `archived: true` is set aside: list it
+   apart. Vault files you write for a project get `"project": "<bible id>"`.
 
 ## Mode 1 — Genesis (new bible)
 

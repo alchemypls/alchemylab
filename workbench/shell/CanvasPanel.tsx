@@ -5,15 +5,19 @@ import { createPortal } from 'react-dom';
 import { useWorkbenchStore } from '@/lib/store';
 import { SCENE_GRID, SCENES, getSlideDir } from '@/lib/scenes';
 import { VaultButton } from './VaultButton';
+import { ProjectPicker } from './ProjectPicker';
+import { ProjectSettings } from './ProjectSettings';
 
 const SLOT_ID = { panel: 'canvas-panel-slot', below: 'canvas-panel-below' };
 
-// Top-right panel, above every canvas: canvas switcher, the active canvas's own controls, vault.
-// Below it is room for one more box, such as a properties panel, that scrolls if it's tall.
+// Top-right panel, above every canvas: canvas switcher, the project picker (every canvas follows it), the active
+// canvas's own controls, vault. Below it is room for one more box, such as a properties panel, that scrolls if it's
+// tall; project settings take that room while they're open.
 export function CanvasPanel() {
   const activeScene    = useWorkbenchStore((s) => s.activeScene);
   const setActiveScene = useWorkbenchStore((s) => s.setActiveScene);
   const active = SCENES.find((s) => s.id === activeScene);
+  const [settings, setSettings] = useState<'edit' | 'new' | null>(null);
 
   return (
     <div className="absolute top-[15px] right-[15px] bottom-[15px] z-40 w-[294px] flex flex-col gap-2 pointer-events-none">
@@ -35,11 +39,13 @@ export function CanvasPanel() {
           ))}
         </div>
         <div className="min-w-0 text-[10px] tracking-[0.2em] text-neutral-200 uppercase leading-tight" title={active?.description}>{active?.label}</div>
+        <ProjectPicker openSettings={setSettings} />
       </div>
       <div id={SLOT_ID.panel} className="flex flex-col gap-1.5 empty:hidden" />
       <VaultButton />
     </div>
-    <div id={SLOT_ID.below} className="flex-1 min-h-0" />
+    {settings && <ProjectSettings key={settings} mode={settings} close={() => setSettings(null)} />}
+    <div id={SLOT_ID.below} className={`flex-1 min-h-0 ${settings ? 'hidden' : ''}`} />
     </div>
   );
 }

@@ -1,0 +1,2575 @@
+{
+ "title": "Content Blocks",
+ "kicker": "Components",
+ "topic": "content",
+ "updated": "2026-11-19",
+ "background": "#0b0e16",
+ "blocks": [],
+ "elements": [
+  {
+   "id": "kicker",
+   "type": "text",
+   "x": 56,
+   "y": 30,
+   "w": 900,
+   "h": 26,
+   "text": "Components \u00b7 decided",
+   "size": 16,
+   "weight": 700,
+   "font": "sans",
+   "color": "#F88F05",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "title",
+   "type": "text",
+   "x": 56,
+   "y": 58,
+   "w": 1300,
+   "h": 72,
+   "text": "",
+   "size": 52,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "top",
+   "bind": {
+    "topic": "content",
+    "field": "title"
+   }
+  },
+  {
+   "id": "status",
+   "type": "status",
+   "x": 1840,
+   "y": 72,
+   "size": 22,
+   "topic": "content"
+  },
+  {
+   "id": "back",
+   "type": "text",
+   "x": 1440,
+   "y": 40,
+   "w": 380,
+   "h": 30,
+   "text": "\u2190 Overview",
+   "size": 18,
+   "weight": 600,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "right",
+   "valign": "top",
+   "link": "index"
+  },
+  {
+   "id": "was",
+   "type": "text",
+   "x": 1440,
+   "y": 76,
+   "w": 380,
+   "h": 30,
+   "text": "was: 5 inline patterns \u2192 as-is",
+   "size": 16,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "right",
+   "valign": "top",
+   "link": "asis-content"
+  },
+  {
+   "id": "drift",
+   "type": "text",
+   "x": 56,
+   "y": 138,
+   "w": 1808,
+   "h": 60,
+   "text": "One Entry for jobs, projects, contributions and school; five text parts; left-aligned like an instrument readout. Entries carry links out.",
+   "size": 22,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-1",
+   "type": "line",
+   "name": "rule",
+   "from": {
+    "x": 56,
+    "y": 212
+   },
+   "to": {
+    "x": 1864,
+    "y": 212
+   },
+   "stroke": "#262c3b",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-2",
+   "type": "text",
+   "x": 56,
+   "y": 232,
+   "w": 900,
+   "h": 24,
+   "text": "An Entry, in its Detail frame",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "r-3",
+   "type": "rect",
+   "name": "scene",
+   "x": 56,
+   "y": 266,
+   "w": 900,
+   "h": 400,
+   "fill": "#120a1a",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 4
+  },
+  {
+   "id": "r-4",
+   "type": "rect",
+   "name": "detail tint",
+   "x": 86,
+   "y": 296,
+   "w": 440,
+   "h": 340,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-5",
+   "type": "rect",
+   "name": "detail wash",
+   "x": 86,
+   "y": 296,
+   "w": 440,
+   "h": 340,
+   "fill": "#3DBDB4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.06
+  },
+  {
+   "id": "r-6",
+   "type": "rect",
+   "name": "detail line",
+   "x": 86,
+   "y": 296,
+   "w": 440,
+   "h": 340,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.8
+  },
+  {
+   "id": "r-7",
+   "type": "rect",
+   "name": "detail glow",
+   "x": 86,
+   "y": 296,
+   "w": 440,
+   "h": 340,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 5,
+   "opacity": 0.3,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 6
+    }
+   ]
+  },
+  {
+   "id": "l-8",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 98,
+    "y": 296
+   },
+   "to": {
+    "x": 86,
+    "y": 296
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-9",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 86,
+    "y": 296
+   },
+   "to": {
+    "x": 86,
+    "y": 308
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-10",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 514,
+    "y": 296
+   },
+   "to": {
+    "x": 526,
+    "y": 296
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-11",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 526,
+    "y": 296
+   },
+   "to": {
+    "x": 526,
+    "y": 308
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-12",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 98,
+    "y": 636
+   },
+   "to": {
+    "x": 86,
+    "y": 636
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-13",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 86,
+    "y": 636
+   },
+   "to": {
+    "x": 86,
+    "y": 624
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-14",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 514,
+    "y": 636
+   },
+   "to": {
+    "x": 526,
+    "y": 636
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-15",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 526,
+    "y": 636
+   },
+   "to": {
+    "x": 526,
+    "y": 624
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-16",
+   "type": "text",
+   "x": 110,
+   "y": 318,
+   "w": 380,
+   "h": 16,
+   "text": "CIVIFORM \u00b7 OSS",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-17",
+   "type": "text",
+   "x": 110,
+   "y": 338,
+   "w": 390,
+   "h": 34,
+   "text": "Software Engineer",
+   "size": 24,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-18",
+   "type": "text",
+   "x": 110,
+   "y": 372,
+   "w": 390,
+   "h": 16,
+   "text": "JAN 2026 \u2014 PRESENT",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-19",
+   "type": "text",
+   "x": 110,
+   "y": 400,
+   "w": 390,
+   "h": 80,
+   "text": "Contributed to CiviForm, an open-source civic tech platform streamlining government assistance applications. Authored and merged major feature improvements.",
+   "size": 14,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-20",
+   "type": "rect",
+   "name": "chip CI/CD",
+   "x": 110,
+   "y": 502,
+   "w": 51,
+   "h": 22,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 2
+  },
+  {
+   "id": "t-21",
+   "type": "text",
+   "x": 110,
+   "y": 502,
+   "w": 51,
+   "h": 22,
+   "text": "CI/CD",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "r-22",
+   "type": "rect",
+   "name": "chip TYPESCRIPT",
+   "x": 169,
+   "y": 502,
+   "w": 88,
+   "h": 22,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 2
+  },
+  {
+   "id": "t-23",
+   "type": "text",
+   "x": 169,
+   "y": 502,
+   "w": 88,
+   "h": 22,
+   "text": "TYPESCRIPT",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "r-24",
+   "type": "rect",
+   "name": "chip REACT",
+   "x": 265,
+   "y": 502,
+   "w": 51,
+   "h": 22,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 2
+  },
+  {
+   "id": "t-25",
+   "type": "text",
+   "x": 265,
+   "y": 502,
+   "w": 51,
+   "h": 22,
+   "text": "REACT",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "r-26",
+   "type": "rect",
+   "name": "link REPO \u2197",
+   "x": 110,
+   "y": 550,
+   "w": 62.400000000000006,
+   "h": 24,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-27",
+   "type": "text",
+   "x": 110,
+   "y": 550,
+   "w": 62.400000000000006,
+   "h": 24,
+   "text": "REPO \u2197",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "r-28",
+   "type": "rect",
+   "name": "link PR #10769 \u2197",
+   "x": 180.4,
+   "y": 550,
+   "w": 99.4,
+   "h": 24,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-29",
+   "type": "text",
+   "x": 180.4,
+   "y": 550,
+   "w": 99.4,
+   "h": 24,
+   "text": "PR #10769 \u2197",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "r-30",
+   "type": "rect",
+   "name": "link PR #12601 \u2197",
+   "x": 287.8,
+   "y": 550,
+   "w": 99.4,
+   "h": 24,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-31",
+   "type": "text",
+   "x": 287.8,
+   "y": 550,
+   "w": 99.4,
+   "h": 24,
+   "text": "PR #12601 \u2197",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "e-32",
+   "type": "ellipse",
+   "name": "eyebrow dot",
+   "x": 233,
+   "y": 323,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1
+  },
+  {
+   "id": "l-33",
+   "type": "line",
+   "name": "eyebrow leader",
+   "from": {
+    "x": 236,
+    "y": 326
+   },
+   "to": {
+    "x": 574,
+    "y": 326
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "t-34",
+   "type": "text",
+   "x": 586,
+   "y": 316,
+   "w": 300,
+   "h": 20,
+   "text": "eyebrow \u00b7 mono 10 \u00b7 signal \u00b7 spaced",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "e-35",
+   "type": "ellipse",
+   "name": "title dot",
+   "x": 335,
+   "y": 350,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1
+  },
+  {
+   "id": "l-36",
+   "type": "line",
+   "name": "title leader",
+   "from": {
+    "x": 338,
+    "y": 353
+   },
+   "to": {
+    "x": 574,
+    "y": 353
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "t-37",
+   "type": "text",
+   "x": 586,
+   "y": 343,
+   "w": 300,
+   "h": 20,
+   "text": "title \u00b7 Rajdhani 700 20 \u00b7 text",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "e-38",
+   "type": "ellipse",
+   "name": "meta dot",
+   "x": 253,
+   "y": 377,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1
+  },
+  {
+   "id": "l-39",
+   "type": "line",
+   "name": "meta leader",
+   "from": {
+    "x": 256,
+    "y": 380
+   },
+   "to": {
+    "x": 574,
+    "y": 380
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "t-40",
+   "type": "text",
+   "x": 586,
+   "y": 370,
+   "w": 300,
+   "h": 20,
+   "text": "meta \u00b7 mono 10 \u00b7 text-faint",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "e-41",
+   "type": "ellipse",
+   "name": "body dot",
+   "x": 483,
+   "y": 433,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1
+  },
+  {
+   "id": "l-42",
+   "type": "line",
+   "name": "body leader",
+   "from": {
+    "x": 486,
+    "y": 436
+   },
+   "to": {
+    "x": 574,
+    "y": 436
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "t-43",
+   "type": "text",
+   "x": 586,
+   "y": 426,
+   "w": 300,
+   "h": 37,
+   "text": "body \u00b7 Inter 14 \u00b7 text-muted \u00b7 relaxed",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "e-44",
+   "type": "ellipse",
+   "name": "tags dot",
+   "x": 383,
+   "y": 510,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1
+  },
+  {
+   "id": "l-45",
+   "type": "line",
+   "name": "tags leader",
+   "from": {
+    "x": 386,
+    "y": 513
+   },
+   "to": {
+    "x": 574,
+    "y": 513
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "t-46",
+   "type": "text",
+   "x": 586,
+   "y": 503,
+   "w": 300,
+   "h": 20,
+   "text": "tags \u00b7 chips: mono 10 on plum, 2px",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "e-47",
+   "type": "ellipse",
+   "name": "links dot",
+   "x": 455,
+   "y": 559,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1
+  },
+  {
+   "id": "l-48",
+   "type": "line",
+   "name": "links leader",
+   "from": {
+    "x": 458,
+    "y": 562
+   },
+   "to": {
+    "x": 574,
+    "y": 562
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "t-49",
+   "type": "text",
+   "x": 586,
+   "y": 552,
+   "w": 300,
+   "h": 37,
+   "text": "links \u00b7 Button quiet sm, \u2197 opens a tab",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-50",
+   "type": "text",
+   "x": 86,
+   "y": 644,
+   "w": 440,
+   "h": 18,
+   "text": "left edge = the frame's padding line, every part",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-51",
+   "type": "text",
+   "x": 56,
+   "y": 680,
+   "w": 900,
+   "h": 24,
+   "text": "Every section, one shape",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-52",
+   "type": "text",
+   "x": 56,
+   "y": 708,
+   "w": 150,
+   "h": 16,
+   "text": "",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-53",
+   "type": "text",
+   "x": 206,
+   "y": 708,
+   "w": 150,
+   "h": 16,
+   "text": "eyebrow",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-54",
+   "type": "text",
+   "x": 356,
+   "y": 708,
+   "w": 170,
+   "h": 16,
+   "text": "title",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-55",
+   "type": "text",
+   "x": 526,
+   "y": 708,
+   "w": 170,
+   "h": 16,
+   "text": "meta",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-56",
+   "type": "text",
+   "x": 696,
+   "y": 708,
+   "w": 110,
+   "h": 16,
+   "text": "tags",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-57",
+   "type": "text",
+   "x": 806,
+   "y": 708,
+   "w": 150,
+   "h": 16,
+   "text": "links",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-58",
+   "type": "text",
+   "x": 56,
+   "y": 728,
+   "w": 142,
+   "h": 17,
+   "text": "Experience",
+   "size": 12,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-59",
+   "type": "text",
+   "x": 206,
+   "y": 728,
+   "w": 142,
+   "h": 17,
+   "text": "company",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-60",
+   "type": "text",
+   "x": 356,
+   "y": 728,
+   "w": 162,
+   "h": 17,
+   "text": "role",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-61",
+   "type": "text",
+   "x": 526,
+   "y": 728,
+   "w": 162,
+   "h": 17,
+   "text": "period",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-62",
+   "type": "text",
+   "x": 696,
+   "y": 728,
+   "w": 102,
+   "h": 17,
+   "text": "tech",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-63",
+   "type": "text",
+   "x": 806,
+   "y": 728,
+   "w": 142,
+   "h": 17,
+   "text": "\u2014",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-64",
+   "type": "text",
+   "x": 56,
+   "y": 746,
+   "w": 142,
+   "h": 17,
+   "text": "Projects",
+   "size": 12,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-65",
+   "type": "text",
+   "x": 206,
+   "y": 746,
+   "w": 142,
+   "h": 17,
+   "text": "kind \u00b7 year",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-66",
+   "type": "text",
+   "x": 356,
+   "y": 746,
+   "w": 162,
+   "h": 17,
+   "text": "name",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-67",
+   "type": "text",
+   "x": 526,
+   "y": 746,
+   "w": 162,
+   "h": 17,
+   "text": "tags joined",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-68",
+   "type": "text",
+   "x": 696,
+   "y": 746,
+   "w": 102,
+   "h": 17,
+   "text": "tech list",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-69",
+   "type": "text",
+   "x": 806,
+   "y": 746,
+   "w": 142,
+   "h": 17,
+   "text": "repo, live",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-70",
+   "type": "text",
+   "x": 56,
+   "y": 764,
+   "w": 142,
+   "h": 17,
+   "text": "OSC",
+   "size": 12,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-71",
+   "type": "text",
+   "x": 206,
+   "y": 764,
+   "w": 142,
+   "h": 17,
+   "text": "repo",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-72",
+   "type": "text",
+   "x": 356,
+   "y": 764,
+   "w": 162,
+   "h": 17,
+   "text": "project",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-73",
+   "type": "text",
+   "x": 526,
+   "y": 764,
+   "w": 162,
+   "h": 17,
+   "text": "impact",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-74",
+   "type": "text",
+   "x": 696,
+   "y": 764,
+   "w": 102,
+   "h": 17,
+   "text": "\u2014",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-75",
+   "type": "text",
+   "x": 806,
+   "y": 764,
+   "w": 142,
+   "h": 17,
+   "text": "PRs",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-76",
+   "type": "text",
+   "x": 56,
+   "y": 782,
+   "w": 142,
+   "h": 17,
+   "text": "Education",
+   "size": 12,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-77",
+   "type": "text",
+   "x": 206,
+   "y": 782,
+   "w": 142,
+   "h": 17,
+   "text": "EDUCATION",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-78",
+   "type": "text",
+   "x": 356,
+   "y": 782,
+   "w": 162,
+   "h": 17,
+   "text": "school",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-79",
+   "type": "text",
+   "x": 526,
+   "y": 782,
+   "w": 162,
+   "h": 17,
+   "text": "period",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-80",
+   "type": "text",
+   "x": 696,
+   "y": 782,
+   "w": 102,
+   "h": 17,
+   "text": "\u2014",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-81",
+   "type": "text",
+   "x": 806,
+   "y": 782,
+   "w": 142,
+   "h": 17,
+   "text": "\u2014",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-82",
+   "type": "text",
+   "x": 1000,
+   "y": 232,
+   "w": 864,
+   "h": 24,
+   "text": "Menu row \u2014 the same Entry, short",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "r-83",
+   "type": "rect",
+   "name": "row ground",
+   "x": 1000,
+   "y": 266,
+   "w": 420,
+   "h": 140,
+   "fill": "#120a1a",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 4
+  },
+  {
+   "id": "r-84",
+   "type": "rect",
+   "name": "menu tint",
+   "x": 1020,
+   "y": 282,
+   "w": 380,
+   "h": 108,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-85",
+   "type": "rect",
+   "name": "menu wash",
+   "x": 1020,
+   "y": 282,
+   "w": 380,
+   "h": 108,
+   "fill": "#3DBDB4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.06
+  },
+  {
+   "id": "r-86",
+   "type": "rect",
+   "name": "menu line",
+   "x": 1020,
+   "y": 282,
+   "w": 380,
+   "h": 108,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-87",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 1032,
+    "y": 282
+   },
+   "to": {
+    "x": 1020,
+    "y": 282
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-88",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 1020,
+    "y": 282
+   },
+   "to": {
+    "x": 1020,
+    "y": 294
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-89",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 1388,
+    "y": 282
+   },
+   "to": {
+    "x": 1400,
+    "y": 282
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-90",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 1400,
+    "y": 282
+   },
+   "to": {
+    "x": 1400,
+    "y": 294
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-91",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 1032,
+    "y": 390
+   },
+   "to": {
+    "x": 1020,
+    "y": 390
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-92",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 1020,
+    "y": 390
+   },
+   "to": {
+    "x": 1020,
+    "y": 378
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-93",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 1388,
+    "y": 390
+   },
+   "to": {
+    "x": 1400,
+    "y": 390
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-94",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 1400,
+    "y": 390
+   },
+   "to": {
+    "x": 1400,
+    "y": 378
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "r-95",
+   "type": "rect",
+   "name": "row sel",
+   "x": 1021,
+   "y": 290,
+   "w": 378,
+   "h": 42,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.08
+  },
+  {
+   "id": "l-96",
+   "type": "line",
+   "name": "row bar",
+   "from": {
+    "x": 1021,
+    "y": 290
+   },
+   "to": {
+    "x": 1021,
+    "y": 332
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 3,
+   "arrow": "none"
+  },
+  {
+   "id": "t-97",
+   "type": "text",
+   "x": 1036,
+   "y": 296,
+   "w": 28,
+   "h": 16,
+   "text": "01",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-98",
+   "type": "text",
+   "x": 1066,
+   "y": 294,
+   "w": 320,
+   "h": 23,
+   "text": "Software Engineer",
+   "size": 16,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-99",
+   "type": "text",
+   "x": 1066,
+   "y": 314,
+   "w": 320,
+   "h": 14,
+   "text": "JAN 2026 \u2014",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-100",
+   "type": "text",
+   "x": 1036,
+   "y": 342,
+   "w": 28,
+   "h": 16,
+   "text": "02",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-101",
+   "type": "text",
+   "x": 1066,
+   "y": 340,
+   "w": 320,
+   "h": 23,
+   "text": "Teaching Team Assistant",
+   "size": 16,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-102",
+   "type": "text",
+   "x": 1066,
+   "y": 360,
+   "w": 320,
+   "h": 14,
+   "text": "AUG \u2013 DEC 2025",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-103",
+   "type": "text",
+   "x": 1440,
+   "y": 282,
+   "w": 424,
+   "h": 110,
+   "text": "index \u00b7 title \u00b7 meta. Body, tags and links only in the Detail. Up to ~6 rows; more \u2192 the list scrolls inside its Frame.",
+   "size": 14,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-104",
+   "type": "text",
+   "x": 1000,
+   "y": 426,
+   "w": 420,
+   "h": 24,
+   "text": "Readout \u2014 label + chips (Skills)",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "r-105",
+   "type": "rect",
+   "name": "skills ground",
+   "x": 1000,
+   "y": 460,
+   "w": 420,
+   "h": 190,
+   "fill": "#120a1a",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 4
+  },
+  {
+   "id": "r-106",
+   "type": "rect",
+   "name": "skills tint",
+   "x": 1020,
+   "y": 476,
+   "w": 380,
+   "h": 158,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-107",
+   "type": "rect",
+   "name": "skills wash",
+   "x": 1020,
+   "y": 476,
+   "w": 380,
+   "h": 158,
+   "fill": "#3DBDB4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.06
+  },
+  {
+   "id": "r-108",
+   "type": "rect",
+   "name": "skills line",
+   "x": 1020,
+   "y": 476,
+   "w": 380,
+   "h": 158,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-109",
+   "type": "line",
+   "name": "skills tick",
+   "from": {
+    "x": 1032,
+    "y": 476
+   },
+   "to": {
+    "x": 1020,
+    "y": 476
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-110",
+   "type": "line",
+   "name": "skills tick",
+   "from": {
+    "x": 1020,
+    "y": 476
+   },
+   "to": {
+    "x": 1020,
+    "y": 488
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-111",
+   "type": "line",
+   "name": "skills tick",
+   "from": {
+    "x": 1388,
+    "y": 476
+   },
+   "to": {
+    "x": 1400,
+    "y": 476
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-112",
+   "type": "line",
+   "name": "skills tick",
+   "from": {
+    "x": 1400,
+    "y": 476
+   },
+   "to": {
+    "x": 1400,
+    "y": 488
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-113",
+   "type": "line",
+   "name": "skills tick",
+   "from": {
+    "x": 1032,
+    "y": 634
+   },
+   "to": {
+    "x": 1020,
+    "y": 634
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-114",
+   "type": "line",
+   "name": "skills tick",
+   "from": {
+    "x": 1020,
+    "y": 634
+   },
+   "to": {
+    "x": 1020,
+    "y": 622
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-115",
+   "type": "line",
+   "name": "skills tick",
+   "from": {
+    "x": 1388,
+    "y": 634
+   },
+   "to": {
+    "x": 1400,
+    "y": 634
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-116",
+   "type": "line",
+   "name": "skills tick",
+   "from": {
+    "x": 1400,
+    "y": 634
+   },
+   "to": {
+    "x": 1400,
+    "y": 622
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-117",
+   "type": "text",
+   "x": 1040,
+   "y": 490,
+   "w": 300,
+   "h": 14,
+   "text": "LANGUAGES",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-118",
+   "type": "rect",
+   "name": "chip PYTHON",
+   "x": 1040,
+   "y": 506,
+   "w": 58.400000000000006,
+   "h": 22,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 2
+  },
+  {
+   "id": "t-119",
+   "type": "text",
+   "x": 1040,
+   "y": 506,
+   "w": 58.400000000000006,
+   "h": 22,
+   "text": "PYTHON",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "r-120",
+   "type": "rect",
+   "name": "chip JAVASCRIPT",
+   "x": 1104.4,
+   "y": 506,
+   "w": 88,
+   "h": 22,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 2
+  },
+  {
+   "id": "t-121",
+   "type": "text",
+   "x": 1104.4,
+   "y": 506,
+   "w": 88,
+   "h": 22,
+   "text": "JAVASCRIPT",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "r-122",
+   "type": "rect",
+   "name": "chip TYPESCRIPT",
+   "x": 1198.4,
+   "y": 506,
+   "w": 88,
+   "h": 22,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 2
+  },
+  {
+   "id": "t-123",
+   "type": "text",
+   "x": 1198.4,
+   "y": 506,
+   "w": 88,
+   "h": 22,
+   "text": "TYPESCRIPT",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "t-124",
+   "type": "text",
+   "x": 1040,
+   "y": 536,
+   "w": 300,
+   "h": 14,
+   "text": "BACK-END / ML",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-125",
+   "type": "rect",
+   "name": "chip NODE.JS",
+   "x": 1040,
+   "y": 552,
+   "w": 65.80000000000001,
+   "h": 22,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 2
+  },
+  {
+   "id": "t-126",
+   "type": "text",
+   "x": 1040,
+   "y": 552,
+   "w": 65.80000000000001,
+   "h": 22,
+   "text": "NODE.JS",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "r-127",
+   "type": "rect",
+   "name": "chip FLASK",
+   "x": 1111.8,
+   "y": 552,
+   "w": 51,
+   "h": 22,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 2
+  },
+  {
+   "id": "t-128",
+   "type": "text",
+   "x": 1111.8,
+   "y": 552,
+   "w": 51,
+   "h": 22,
+   "text": "FLASK",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "r-129",
+   "type": "rect",
+   "name": "chip PYTORCH",
+   "x": 1168.8,
+   "y": 552,
+   "w": 65.80000000000001,
+   "h": 22,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 2
+  },
+  {
+   "id": "t-130",
+   "type": "text",
+   "x": 1168.8,
+   "y": 552,
+   "w": 65.80000000000001,
+   "h": 22,
+   "text": "PYTORCH",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "t-131",
+   "type": "text",
+   "x": 1040,
+   "y": 582,
+   "w": 300,
+   "h": 14,
+   "text": "TOOLS",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-132",
+   "type": "rect",
+   "name": "chip GIT",
+   "x": 1040,
+   "y": 598,
+   "w": 36.2,
+   "h": 22,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 2
+  },
+  {
+   "id": "t-133",
+   "type": "text",
+   "x": 1040,
+   "y": 598,
+   "w": 36.2,
+   "h": 22,
+   "text": "GIT",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "r-134",
+   "type": "rect",
+   "name": "chip DOCKER",
+   "x": 1082.2,
+   "y": 598,
+   "w": 58.400000000000006,
+   "h": 22,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 2
+  },
+  {
+   "id": "t-135",
+   "type": "text",
+   "x": 1082.2,
+   "y": 598,
+   "w": 58.400000000000006,
+   "h": 22,
+   "text": "DOCKER",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "r-136",
+   "type": "rect",
+   "name": "chip AWS",
+   "x": 1146.6000000000001,
+   "y": 598,
+   "w": 36.2,
+   "h": 22,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 2
+  },
+  {
+   "id": "t-137",
+   "type": "text",
+   "x": 1146.6000000000001,
+   "y": 598,
+   "w": 36.2,
+   "h": 22,
+   "text": "AWS",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "t-138",
+   "type": "text",
+   "x": 1440,
+   "y": 426,
+   "w": 424,
+   "h": 24,
+   "text": "Cori \u2014 a line on a Plate",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "r-139",
+   "type": "rect",
+   "name": "cori ground",
+   "x": 1440,
+   "y": 460,
+   "w": 424,
+   "h": 190,
+   "fill": "#120a1a",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 4
+  },
+  {
+   "id": "r-140",
+   "type": "rect",
+   "name": "cori tint",
+   "x": 1470,
+   "y": 500,
+   "w": 300,
+   "h": 74,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-141",
+   "type": "rect",
+   "name": "cori line",
+   "x": 1470,
+   "y": 500,
+   "w": 300,
+   "h": 74,
+   "fill": "none",
+   "stroke": "#F88F05",
+   "strokeWidth": 1,
+   "opacity": 0.8
+  },
+  {
+   "id": "r-142",
+   "type": "rect",
+   "name": "cori glow",
+   "x": 1470,
+   "y": 500,
+   "w": 300,
+   "h": 74,
+   "fill": "none",
+   "stroke": "#F88F05",
+   "strokeWidth": 5,
+   "opacity": 0.25,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 6
+    }
+   ]
+  },
+  {
+   "id": "l-143",
+   "type": "line",
+   "name": "cori tick",
+   "from": {
+    "x": 1478,
+    "y": 500
+   },
+   "to": {
+    "x": 1470,
+    "y": 500
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-144",
+   "type": "line",
+   "name": "cori tick",
+   "from": {
+    "x": 1470,
+    "y": 500
+   },
+   "to": {
+    "x": 1470,
+    "y": 508
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-145",
+   "type": "line",
+   "name": "cori tick",
+   "from": {
+    "x": 1762,
+    "y": 500
+   },
+   "to": {
+    "x": 1770,
+    "y": 500
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-146",
+   "type": "line",
+   "name": "cori tick",
+   "from": {
+    "x": 1770,
+    "y": 500
+   },
+   "to": {
+    "x": 1770,
+    "y": 508
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-147",
+   "type": "line",
+   "name": "cori tick",
+   "from": {
+    "x": 1478,
+    "y": 574
+   },
+   "to": {
+    "x": 1470,
+    "y": 574
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-148",
+   "type": "line",
+   "name": "cori tick",
+   "from": {
+    "x": 1470,
+    "y": 574
+   },
+   "to": {
+    "x": 1470,
+    "y": 566
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-149",
+   "type": "line",
+   "name": "cori tick",
+   "from": {
+    "x": 1762,
+    "y": 574
+   },
+   "to": {
+    "x": 1770,
+    "y": 574
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-150",
+   "type": "line",
+   "name": "cori tick",
+   "from": {
+    "x": 1770,
+    "y": 574
+   },
+   "to": {
+    "x": 1770,
+    "y": 566
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "e-151",
+   "type": "ellipse",
+   "name": "cori dot",
+   "x": 1482,
+   "y": 513,
+   "w": 6,
+   "h": 6,
+   "fill": "#F88F05",
+   "stroke": "none",
+   "strokeWidth": 1
+  },
+  {
+   "id": "t-152",
+   "type": "text",
+   "x": 1494,
+   "y": 509,
+   "w": 200,
+   "h": 14,
+   "text": "C.O-R.I",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#F88F05",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-153",
+   "type": "text",
+   "x": 1482,
+   "y": 528,
+   "w": 280,
+   "h": 40,
+   "text": "That one's Vega. Tie it to the bright one on your left.",
+   "size": 14,
+   "weight": 400,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-154",
+   "type": "line",
+   "name": "cori leader",
+   "from": {
+    "x": 1770,
+    "y": 560
+   },
+   "to": {
+    "x": 1800,
+    "y": 590
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "l-155",
+   "type": "line",
+   "name": "cori leader",
+   "from": {
+    "x": 1800,
+    "y": 590
+   },
+   "to": {
+    "x": 1830,
+    "y": 590
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "e-156",
+   "type": "ellipse",
+   "name": "butterfly",
+   "x": 1830,
+   "y": 584,
+   "w": 12,
+   "h": 12,
+   "fill": "none",
+   "stroke": "#F88F05",
+   "strokeWidth": 2
+  },
+  {
+   "id": "t-157",
+   "type": "text",
+   "x": 1470,
+   "y": 608,
+   "w": 380,
+   "h": 34,
+   "text": "eyebrow in the mood color \u00b7 body 14 text \u00b7 Plate alive while typing",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-158",
+   "type": "text",
+   "x": 1000,
+   "y": 672,
+   "w": 864,
+   "h": 110,
+   "text": "Section intro (the panel): body 14 text-muted, left-aligned, max ~65ch, one or two paragraphs. Info readout: eyebrow (date), hero title, role subtitle in Rajdhani \u2014 its place stays as the shell decides.",
+   "size": 14,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-159",
+   "type": "line",
+   "name": "rule",
+   "from": {
+    "x": 56,
+    "y": 812
+   },
+   "to": {
+    "x": 1864,
+    "y": 812
+   },
+   "stroke": "#262c3b",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-160",
+   "type": "text",
+   "x": 56,
+   "y": 828,
+   "w": 900,
+   "h": 24,
+   "text": "Links",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-161",
+   "type": "text",
+   "x": 56,
+   "y": 862,
+   "w": 880,
+   "h": 120,
+   "text": "Entries carry 0\u20133 links: quiet sm Buttons at the foot of the Detail, label + \u2197, open in a new tab (rel noopener). The URLs come from the user. Site-wide links (GitHub, r\u00e9sum\u00e9, contact) are a Shell question.",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-162",
+   "type": "text",
+   "x": 980,
+   "y": 828,
+   "w": 884,
+   "h": 24,
+   "text": "Gone",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-163",
+   "type": "text",
+   "x": 980,
+   "y": 862,
+   "w": 884,
+   "h": 120,
+   "text": "text-cyan-300 titles \u00d77 \u00b7 white/30\u201340 meta \u00d77 \u00b7 9\u201310px eyebrows with 4 trackings \u00d711 \u00b7 TechBadge + SkillGroup chips (rounded, white/5) \u00b7 centered text everywhere \u00b7 three copies of the label/detail markup (Experience, Projects, OSC).",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "link": "asis-content"
+  }
+ ],
+ "knowledge": [
+  {
+   "id": "e-patterns",
+   "kind": "evidence",
+   "text": "5 inline patterns, none a component: title \u00d77, meta \u00d77, eyebrow \u00d711, body \u00d75, chip \u00d72 (Experience.tsx:3, Skills.tsx:17); Experience/Projects/OSC.tsx each build the same {label, detail} markup."
+  },
+  {
+   "id": "e-links",
+   "kind": "evidence",
+   "text": "No links out anywhere in src (no <a>, no href): no GitHub, project, PR, r\u00e9sum\u00e9 or contact links. OSC impact \"Merged PRs #10769, #12601\" is plain text."
+  },
+  {
+   "id": "k-entry",
+   "kind": "decision",
+   "text": "One Entry {eyebrow, title, meta, body, tags[], links[]} for jobs, projects, contributions and education: a Menu row shows index/title/meta, the Detail shows all of it."
+  },
+  {
+   "id": "k-parts",
+   "kind": "decision",
+   "text": "Five text parts: eyebrow (mono micro, signal, spaced caps) \u00b7 title (Rajdhani 700, text) \u00b7 meta (mono micro, faint) \u00b7 body (Inter 14, muted, relaxed) \u00b7 chip (mono micro, muted on plum, 2px)."
+  },
+  {
+   "id": "k-left",
+   "kind": "decision",
+   "text": "Content is left-aligned, on the frame's padding line.",
+   "why": "Reads as an instrument readout; lines up with frames and leader lines."
+  },
+  {
+   "id": "k-links",
+   "kind": "decision",
+   "text": "Entries carry 0\u20133 links as quiet sm Buttons with \u2197 at the foot of the Detail.",
+   "why": "A portfolio with no way out to the work; buttons are tappable and match the HUD."
+  },
+  {
+   "id": "k-readout",
+   "kind": "decision",
+   "text": "Skills = Readouts: a signal eyebrow label over a row of chips. Cori = a line on a Plate (eyebrow in mood color, body text), leader to the butterfly."
+  }
+ ],
+ "agent": {
+  "brief": "Content shapes as data + one renderer each: Entry (data) \u2192 MenuRow / EntryDetail, Readout, CoriLine. Text parts come from the Type and Color pages; frames from Containers; links are Controls' quiet sm Button.",
+  "rules": [
+   "home/pages/types.ts: `interface Entry { eyebrow?: string; title: string; meta?: string; body?: string; tags?: string[]; links?: { label: string; href: string }[] }`; SectionConfig.entries?: Entry[] replaces deckTabs (DeckTab {label, detail} JSX deleted).",
+   "Experience JOBS \u2192 Entry {eyebrow: company, title, meta: period, body: description, tags: tech}. Projects \u2192 {eyebrow: kind \u00b7 year, title: name, meta: tags joined \" \u00b7 \", body, tags: tech.split(\", \"), links: repo/live}. OSC \u2192 {eyebrow: repo, title: project, meta: impact, body, links: PRs}. Education \u2192 {eyebrow: \"EDUCATION\", title: school, meta: period, body: program + details}. Missing URLs: leave links empty and ask the user; never invent one.",
+   "Parts (shared/ui/content/Text.tsx, replaces unused Text.tsx): Eyebrow `font-mono text-micro uppercase tracking-spaced text-signal` \u00b7 EntryTitle `font-display font-bold text-title text-text` (row: text-lead) \u00b7 Meta `font-mono text-micro uppercase tracking-wide text-text-faint` \u00b7 Body `text-body leading-relaxed text-text-muted max-w-[65ch]` \u00b7 Chip `font-mono text-micro uppercase text-text-muted bg-plum rounded-sm px-2 py-0.5`.",
+   "Merge map: `text-cyan-300 font-display text-sm font-semibold` \u2192 EntryTitle \u00b7 `text-white/30|40 text-xs|[10px] font-mono` \u2192 Meta \u00b7 `text-[9|10px] tracking-[0.25\u20130.4em] uppercase` (text-cyan-400/70 etc.) \u2192 Eyebrow \u00b7 `text-white/60|70 text-sm leading-relaxed` \u2192 Body \u00b7 `text-xs text-white/80 bg-white/5 border border-white/10 rounded px-2 py-0.5` \u2192 Chip.",
+   "Alignment: delete text-center / justify-center / items-center / float-left|right in section content; everything starts at the frame padding. Gaps: eyebrow\u2192title 4, title\u2192meta 4, meta\u2192body 12, body\u2192tags 16, tags\u2192links 16.",
+   "EntryDetail links: a row of Button variant=quiet size=sm as <a target=\"_blank\" rel=\"noopener noreferrer\"> with a trailing \u2197 (aria-label \"<label> (opens in a new tab)\").",
+   "Skills: SkillGroup \u2192 Readout {label, items} = Eyebrow + flex-wrap gap-1.5 of Chips; EducationItem \u2192 EntryDetail without tags. The 3/4-width divider \u2192 a 1px line/100 rule.",
+   "CoriBubble: on a Plate (Containers) with --glow-color = the mood accent; header Eyebrow \"C.O-R.I\" in the accent with a 6px dot (pulse stops in calm); line text-body text-text; rounded-lg / bg-black/65 / backdrop-blur-sm deleted.",
+   "Panel intros (panelContent): Body, left-aligned, \u2264 2 paragraphs."
+  ],
+  "open": [
+   "URLs for every entry link (user)",
+   "Site-wide links: GitHub, r\u00e9sum\u00e9, contact (\u2192 Shell)"
+  ]
+ }
+}

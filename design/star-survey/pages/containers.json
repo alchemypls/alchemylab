@@ -1,0 +1,1833 @@
+{
+ "title": "Containers",
+ "kicker": "Components",
+ "topic": "containers",
+ "updated": "2026-11-19",
+ "background": "#0b0e16",
+ "blocks": [],
+ "elements": [
+  {
+   "id": "kicker",
+   "type": "text",
+   "x": 56,
+   "y": 30,
+   "w": 900,
+   "h": 26,
+   "text": "Components \u00b7 decided",
+   "size": 16,
+   "weight": 700,
+   "font": "sans",
+   "color": "#F88F05",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "title",
+   "type": "text",
+   "x": 56,
+   "y": 58,
+   "w": 1300,
+   "h": 72,
+   "text": "",
+   "size": 52,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "top",
+   "bind": {
+    "topic": "containers",
+    "field": "title"
+   }
+  },
+  {
+   "id": "status",
+   "type": "status",
+   "x": 1840,
+   "y": 72,
+   "size": 22,
+   "topic": "containers"
+  },
+  {
+   "id": "back",
+   "type": "text",
+   "x": 1440,
+   "y": 40,
+   "w": 380,
+   "h": 30,
+   "text": "\u2190 Overview",
+   "size": 18,
+   "weight": 600,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "right",
+   "valign": "top",
+   "link": "index"
+  },
+  {
+   "id": "was",
+   "type": "text",
+   "x": 1440,
+   "y": 76,
+   "w": 380,
+   "h": 30,
+   "text": "was: 1 Card, 7 layers \u2192 as-is",
+   "size": 16,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "right",
+   "valign": "top",
+   "link": "asis-containers"
+  },
+  {
+   "id": "drift",
+   "type": "text",
+   "x": 56,
+   "y": 138,
+   "w": 1808,
+   "h": 60,
+   "text": "An AR overlay on the game: see-through frames, corner ticks, thin leader lines from the thing to its menu. Less is more; the sky is the scene.",
+   "size": 22,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-1",
+   "type": "line",
+   "name": "rule",
+   "from": {
+    "x": 56,
+    "y": 212
+   },
+   "to": {
+    "x": 1864,
+    "y": 212
+   },
+   "stroke": "#262c3b",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "r-2",
+   "type": "rect",
+   "name": "scene sky",
+   "x": 56,
+   "y": 232,
+   "w": 1180,
+   "h": 560,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 6
+  },
+  {
+   "id": "e-3",
+   "type": "ellipse",
+   "name": "scene nebula",
+   "x": 476,
+   "y": 292,
+   "w": 620,
+   "h": 420,
+   "fill": "#7a4a32",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.45,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 40
+    }
+   ]
+  },
+  {
+   "id": "e-4",
+   "type": "ellipse",
+   "name": "scene nebula 2",
+   "x": 136,
+   "y": 532,
+   "w": 380,
+   "h": 240,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.7,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 40
+    }
+   ]
+  },
+  {
+   "id": "l-5",
+   "type": "line",
+   "name": "rail",
+   "from": {
+    "x": 456,
+    "y": 266
+   },
+   "to": {
+    "x": 836,
+    "y": 266
+   },
+   "stroke": "#FFF4E3",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "e-6",
+   "type": "ellipse",
+   "name": "rail dot ABOUT",
+   "x": 463,
+   "y": 263,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "t-7",
+   "type": "text",
+   "x": 426,
+   "y": 244,
+   "w": 80,
+   "h": 14,
+   "text": "ABOUT",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "e-8",
+   "type": "ellipse",
+   "name": "rail dot WORK",
+   "x": 535,
+   "y": 263,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 1
+  },
+  {
+   "id": "t-9",
+   "type": "text",
+   "x": 498,
+   "y": 244,
+   "w": 80,
+   "h": 14,
+   "text": "WORK",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "e-10",
+   "type": "ellipse",
+   "name": "rail dot SKILLS",
+   "x": 607,
+   "y": 263,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "t-11",
+   "type": "text",
+   "x": 570,
+   "y": 244,
+   "w": 80,
+   "h": 14,
+   "text": "SKILLS",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "e-12",
+   "type": "ellipse",
+   "name": "rail dot PROJECTS",
+   "x": 679,
+   "y": 263,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "t-13",
+   "type": "text",
+   "x": 642,
+   "y": 244,
+   "w": 80,
+   "h": 14,
+   "text": "PROJECTS",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "e-14",
+   "type": "ellipse",
+   "name": "rail dot OSC",
+   "x": 751,
+   "y": 263,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "t-15",
+   "type": "text",
+   "x": 714,
+   "y": 244,
+   "w": 80,
+   "h": 14,
+   "text": "OSC",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "e-16",
+   "type": "ellipse",
+   "name": "rail dot PLAY",
+   "x": 823,
+   "y": 263,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "t-17",
+   "type": "text",
+   "x": 786,
+   "y": 244,
+   "w": 80,
+   "h": 14,
+   "text": "PLAY",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "l-18",
+   "type": "line",
+   "name": "leader rail \u2192 panel",
+   "from": {
+    "x": 538,
+    "y": 272
+   },
+   "to": {
+    "x": 538,
+    "y": 302
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "l-19",
+   "type": "line",
+   "name": "leader rail \u2192 panel",
+   "from": {
+    "x": 538,
+    "y": 302
+   },
+   "to": {
+    "x": 526,
+    "y": 314
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "r-20",
+   "type": "rect",
+   "name": "panel tint",
+   "x": 386,
+   "y": 314,
+   "w": 520,
+   "h": 120,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "r-21",
+   "type": "rect",
+   "name": "panel wash",
+   "x": 386,
+   "y": 314,
+   "w": 520,
+   "h": 120,
+   "fill": "#3DBDB4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.06
+  },
+  {
+   "id": "r-22",
+   "type": "rect",
+   "name": "panel line",
+   "x": 386,
+   "y": 314,
+   "w": 520,
+   "h": 120,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-23",
+   "type": "line",
+   "name": "panel tick",
+   "from": {
+    "x": 398,
+    "y": 314
+   },
+   "to": {
+    "x": 386,
+    "y": 314
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-24",
+   "type": "line",
+   "name": "panel tick",
+   "from": {
+    "x": 386,
+    "y": 314
+   },
+   "to": {
+    "x": 386,
+    "y": 326
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-25",
+   "type": "line",
+   "name": "panel tick",
+   "from": {
+    "x": 894,
+    "y": 314
+   },
+   "to": {
+    "x": 906,
+    "y": 314
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-26",
+   "type": "line",
+   "name": "panel tick",
+   "from": {
+    "x": 906,
+    "y": 314
+   },
+   "to": {
+    "x": 906,
+    "y": 326
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-27",
+   "type": "line",
+   "name": "panel tick",
+   "from": {
+    "x": 398,
+    "y": 434
+   },
+   "to": {
+    "x": 386,
+    "y": 434
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-28",
+   "type": "line",
+   "name": "panel tick",
+   "from": {
+    "x": 386,
+    "y": 434
+   },
+   "to": {
+    "x": 386,
+    "y": 422
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-29",
+   "type": "line",
+   "name": "panel tick",
+   "from": {
+    "x": 894,
+    "y": 434
+   },
+   "to": {
+    "x": 906,
+    "y": 434
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-30",
+   "type": "line",
+   "name": "panel tick",
+   "from": {
+    "x": 906,
+    "y": 434
+   },
+   "to": {
+    "x": 906,
+    "y": 422
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-31",
+   "type": "text",
+   "x": 410,
+   "y": 330,
+   "w": 300,
+   "h": 16,
+   "text": "CAREER // 02",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-32",
+   "type": "text",
+   "x": 410,
+   "y": 348,
+   "w": 460,
+   "h": 34,
+   "text": "EXPERIENCE",
+   "size": 28,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-33",
+   "type": "text",
+   "x": 410,
+   "y": 386,
+   "w": 470,
+   "h": 40,
+   "text": "Teaching AI, open-source civic tech, and running a 200-order kitchen line.",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-34",
+   "type": "rect",
+   "name": "menu tint",
+   "x": 386,
+   "y": 454,
+   "w": 250,
+   "h": 150,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "r-35",
+   "type": "rect",
+   "name": "menu wash",
+   "x": 386,
+   "y": 454,
+   "w": 250,
+   "h": 150,
+   "fill": "#3DBDB4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.06
+  },
+  {
+   "id": "r-36",
+   "type": "rect",
+   "name": "menu line",
+   "x": 386,
+   "y": 454,
+   "w": 250,
+   "h": 150,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-37",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 398,
+    "y": 454
+   },
+   "to": {
+    "x": 386,
+    "y": 454
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-38",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 386,
+    "y": 454
+   },
+   "to": {
+    "x": 386,
+    "y": 466
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-39",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 624,
+    "y": 454
+   },
+   "to": {
+    "x": 636,
+    "y": 454
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-40",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 636,
+    "y": 454
+   },
+   "to": {
+    "x": 636,
+    "y": 466
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-41",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 398,
+    "y": 604
+   },
+   "to": {
+    "x": 386,
+    "y": 604
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-42",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 386,
+    "y": 604
+   },
+   "to": {
+    "x": 386,
+    "y": 592
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-43",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 624,
+    "y": 604
+   },
+   "to": {
+    "x": 636,
+    "y": 604
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-44",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 636,
+    "y": 604
+   },
+   "to": {
+    "x": 636,
+    "y": 592
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "r-45",
+   "type": "rect",
+   "name": "menu selected",
+   "x": 387,
+   "y": 464,
+   "w": 248,
+   "h": 40,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.08
+  },
+  {
+   "id": "l-46",
+   "type": "line",
+   "name": "menu marker",
+   "from": {
+    "x": 387,
+    "y": 464
+   },
+   "to": {
+    "x": 387,
+    "y": 504
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 3,
+   "arrow": "none"
+  },
+  {
+   "id": "t-47",
+   "type": "text",
+   "x": 402,
+   "y": 468,
+   "w": 28,
+   "h": 18,
+   "text": "01",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-48",
+   "type": "text",
+   "x": 432,
+   "y": 466,
+   "w": 190,
+   "h": 22,
+   "text": "Software Engineer",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFD03B",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-49",
+   "type": "text",
+   "x": 432,
+   "y": 486,
+   "w": 190,
+   "h": 16,
+   "text": "JAN 2026 \u2014",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-50",
+   "type": "text",
+   "x": 402,
+   "y": 512,
+   "w": 28,
+   "h": 18,
+   "text": "02",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-51",
+   "type": "text",
+   "x": 432,
+   "y": 510,
+   "w": 190,
+   "h": 22,
+   "text": "Teaching Assistant",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-52",
+   "type": "text",
+   "x": 432,
+   "y": 530,
+   "w": 190,
+   "h": 16,
+   "text": "AUG\u2013DEC 2025",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-53",
+   "type": "text",
+   "x": 402,
+   "y": 556,
+   "w": 28,
+   "h": 18,
+   "text": "03",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-54",
+   "type": "text",
+   "x": 432,
+   "y": 554,
+   "w": 190,
+   "h": 22,
+   "text": "Lead Expediter",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-55",
+   "type": "text",
+   "x": 432,
+   "y": 574,
+   "w": 190,
+   "h": 16,
+   "text": "JUN 2021 \u2014",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-56",
+   "type": "line",
+   "name": "leader menu \u2192 detail",
+   "from": {
+    "x": 636,
+    "y": 484
+   },
+   "to": {
+    "x": 658,
+    "y": 484
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "l-57",
+   "type": "line",
+   "name": "leader menu \u2192 detail",
+   "from": {
+    "x": 658,
+    "y": 484
+   },
+   "to": {
+    "x": 672,
+    "y": 470
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "l-58",
+   "type": "line",
+   "name": "leader menu \u2192 detail",
+   "from": {
+    "x": 672,
+    "y": 470
+   },
+   "to": {
+    "x": 676,
+    "y": 470
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "r-59",
+   "type": "rect",
+   "name": "detail tint",
+   "x": 676,
+   "y": 454,
+   "w": 230,
+   "h": 150,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "r-60",
+   "type": "rect",
+   "name": "detail wash",
+   "x": 676,
+   "y": 454,
+   "w": 230,
+   "h": 150,
+   "fill": "#3DBDB4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.06
+  },
+  {
+   "id": "r-61",
+   "type": "rect",
+   "name": "detail line",
+   "x": 676,
+   "y": 454,
+   "w": 230,
+   "h": 150,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.8
+  },
+  {
+   "id": "r-62",
+   "type": "rect",
+   "name": "detail glow",
+   "x": 676,
+   "y": 454,
+   "w": 230,
+   "h": 150,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 5,
+   "opacity": 0.3,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 6
+    }
+   ]
+  },
+  {
+   "id": "l-63",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 688,
+    "y": 454
+   },
+   "to": {
+    "x": 676,
+    "y": 454
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-64",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 676,
+    "y": 454
+   },
+   "to": {
+    "x": 676,
+    "y": 466
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-65",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 894,
+    "y": 454
+   },
+   "to": {
+    "x": 906,
+    "y": 454
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-66",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 906,
+    "y": 454
+   },
+   "to": {
+    "x": 906,
+    "y": 466
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-67",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 688,
+    "y": 604
+   },
+   "to": {
+    "x": 676,
+    "y": 604
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-68",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 676,
+    "y": 604
+   },
+   "to": {
+    "x": 676,
+    "y": 592
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-69",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 894,
+    "y": 604
+   },
+   "to": {
+    "x": 906,
+    "y": 604
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-70",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 906,
+    "y": 604
+   },
+   "to": {
+    "x": 906,
+    "y": 592
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-71",
+   "type": "text",
+   "x": 692,
+   "y": 468,
+   "w": 200,
+   "h": 16,
+   "text": "CIVIFORM \u00b7 OSS",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-72",
+   "type": "text",
+   "x": 692,
+   "y": 486,
+   "w": 200,
+   "h": 60,
+   "text": "Authored and merged major features in an open-source civic platform.",
+   "size": 12,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-73",
+   "type": "rect",
+   "name": "chip TS",
+   "x": 692,
+   "y": 562,
+   "w": 56,
+   "h": 22,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 2
+  },
+  {
+   "id": "t-74",
+   "type": "text",
+   "x": 692,
+   "y": 562,
+   "w": 56,
+   "h": 22,
+   "text": "TS",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#e8eaf0",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "r-75",
+   "type": "rect",
+   "name": "chip REACT",
+   "x": 754,
+   "y": 562,
+   "w": 56,
+   "h": 22,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 2
+  },
+  {
+   "id": "t-76",
+   "type": "text",
+   "x": 754,
+   "y": 562,
+   "w": 56,
+   "h": 22,
+   "text": "REACT",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#e8eaf0",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "r-77",
+   "type": "rect",
+   "name": "chip CI/CD",
+   "x": 816,
+   "y": 562,
+   "w": 56,
+   "h": 22,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 2
+  },
+  {
+   "id": "t-78",
+   "type": "text",
+   "x": 816,
+   "y": 562,
+   "w": 56,
+   "h": 22,
+   "text": "CI/CD",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#e8eaf0",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "t-79",
+   "type": "text",
+   "x": 86,
+   "y": 672,
+   "w": 300,
+   "h": 16,
+   "text": "SIMULATION // READY",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-80",
+   "type": "text",
+   "x": 86,
+   "y": 692,
+   "w": 360,
+   "h": 50,
+   "text": "WORK EXP",
+   "size": 40,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-81",
+   "type": "rect",
+   "name": "launch",
+   "x": 86,
+   "y": 744,
+   "w": 170,
+   "h": 34,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.1
+  },
+  {
+   "id": "r-82",
+   "type": "rect",
+   "name": "launch line",
+   "x": 86,
+   "y": 744,
+   "w": 170,
+   "h": 34,
+   "fill": "none",
+   "stroke": "#FFD03B",
+   "strokeWidth": 1
+  },
+  {
+   "id": "l-83",
+   "type": "line",
+   "name": "launch tick",
+   "from": {
+    "x": 94,
+    "y": 744
+   },
+   "to": {
+    "x": 86,
+    "y": 744
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-84",
+   "type": "line",
+   "name": "launch tick",
+   "from": {
+    "x": 86,
+    "y": 744
+   },
+   "to": {
+    "x": 86,
+    "y": 752
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-85",
+   "type": "line",
+   "name": "launch tick",
+   "from": {
+    "x": 248,
+    "y": 744
+   },
+   "to": {
+    "x": 256,
+    "y": 744
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-86",
+   "type": "line",
+   "name": "launch tick",
+   "from": {
+    "x": 256,
+    "y": 744
+   },
+   "to": {
+    "x": 256,
+    "y": 752
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-87",
+   "type": "line",
+   "name": "launch tick",
+   "from": {
+    "x": 94,
+    "y": 778
+   },
+   "to": {
+    "x": 86,
+    "y": 778
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-88",
+   "type": "line",
+   "name": "launch tick",
+   "from": {
+    "x": 86,
+    "y": 778
+   },
+   "to": {
+    "x": 86,
+    "y": 770
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-89",
+   "type": "line",
+   "name": "launch tick",
+   "from": {
+    "x": 248,
+    "y": 778
+   },
+   "to": {
+    "x": 256,
+    "y": 778
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-90",
+   "type": "line",
+   "name": "launch tick",
+   "from": {
+    "x": 256,
+    "y": 778
+   },
+   "to": {
+    "x": 256,
+    "y": 770
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-91",
+   "type": "text",
+   "x": 86,
+   "y": 744,
+   "w": 170,
+   "h": 34,
+   "text": "LAUNCH SHIP",
+   "size": 14,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFD03B",
+   "align": "center",
+   "valign": "middle",
+   "link": "controls"
+  },
+  {
+   "id": "e-92",
+   "type": "ellipse",
+   "name": "orb ring",
+   "x": 996,
+   "y": 562,
+   "w": 220,
+   "h": 220,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4,
+   "dash": true
+  },
+  {
+   "id": "e-93",
+   "type": "ellipse",
+   "name": "diamond anchor",
+   "x": 990,
+   "y": 666,
+   "w": 12,
+   "h": 12,
+   "fill": "none",
+   "stroke": "#FFD03B",
+   "strokeWidth": 2
+  },
+  {
+   "id": "l-94",
+   "type": "line",
+   "name": "leader orb \u2192 info",
+   "from": {
+    "x": 990,
+    "y": 672
+   },
+   "to": {
+    "x": 636,
+    "y": 672
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "arrow": "none",
+   "dash": true
+  },
+  {
+   "id": "l-95",
+   "type": "line",
+   "name": "leader orb \u2192 info",
+   "from": {
+    "x": 636,
+    "y": 672
+   },
+   "to": {
+    "x": 590,
+    "y": 718
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "arrow": "none",
+   "dash": true
+  },
+  {
+   "id": "l-96",
+   "type": "line",
+   "name": "leader orb \u2192 info",
+   "from": {
+    "x": 590,
+    "y": 718
+   },
+   "to": {
+    "x": 456,
+    "y": 718
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "arrow": "none",
+   "dash": true
+  },
+  {
+   "id": "t-97",
+   "type": "text",
+   "x": 656,
+   "y": 648,
+   "w": 280,
+   "h": 16,
+   "text": "drag the node to change section",
+   "size": 10,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-98",
+   "type": "text",
+   "x": 1270,
+   "y": 232,
+   "w": 594,
+   "h": 24,
+   "text": "Four parts",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-99",
+   "type": "text",
+   "x": 1270,
+   "y": 268,
+   "w": 594,
+   "h": 28,
+   "text": "Frame",
+   "size": 20,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-100",
+   "type": "text",
+   "x": 1270,
+   "y": 298,
+   "w": 594,
+   "h": 90,
+   "text": "menus and panels \u00b7 void/35 + signal/6 tint, 4px frost, 1px signal/35 line, 12px corner ticks, square \u00b7 padding p-4 \u2192 p-6",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-101",
+   "type": "text",
+   "x": 1270,
+   "y": 396,
+   "w": 594,
+   "h": 28,
+   "text": "Menu list",
+   "size": 20,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-102",
+   "type": "text",
+   "x": 1270,
+   "y": 426,
+   "w": 594,
+   "h": 90,
+   "text": "replaces the flip cards \u00b7 rows: mono index, Rajdhani title, mono meta \u00b7 selected = gold title, gold marker on the left edge, gold/8 wash",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-103",
+   "type": "text",
+   "x": 1270,
+   "y": 524,
+   "w": 594,
+   "h": 28,
+   "text": "Leader line",
+   "size": 20,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-104",
+   "type": "text",
+   "x": 1270,
+   "y": 554,
+   "w": 594,
+   "h": 90,
+   "text": "1px, from the thing to its menu: rail dot \u2192 panel, selected row \u2192 detail, orb node \u2192 info bar, Cori \u2192 butterfly, scanner \u2192 target \u00b7 elbows at 45\u00b0 \u00b7 signal; gold when it leads from a selection",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-105",
+   "type": "text",
+   "x": 1270,
+   "y": 652,
+   "w": 594,
+   "h": 28,
+   "text": "Plate",
+   "size": 20,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-106",
+   "type": "text",
+   "x": 1270,
+   "y": 682,
+   "w": 594,
+   "h": 90,
+   "text": "HUD readouts and Cori \u00b7 a small Frame: 8px ticks, px-3 py-2 \u00b7 alive \u2192 line brightens + glow",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-107",
+   "type": "line",
+   "name": "rule",
+   "from": {
+    "x": 56,
+    "y": 812
+   },
+   "to": {
+    "x": 1864,
+    "y": 812
+   },
+   "stroke": "#262c3b",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-108",
+   "type": "text",
+   "x": 56,
+   "y": 828,
+   "w": 900,
+   "h": 24,
+   "text": "On press \u2014 a firework preview, contained",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-109",
+   "type": "text",
+   "x": 56,
+   "y": 862,
+   "w": 880,
+   "h": 120,
+   "text": "Pressing a button, a menu row or a node sets off a small, muted burst inside that object only: a few palette sparks, clipped to its frame, gone in ~500ms. A preview of the fireworks the game pays out. Calm mode: a single rim flash. Details in Effects.",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-110",
+   "type": "text",
+   "x": 980,
+   "y": 828,
+   "w": 884,
+   "h": 24,
+   "text": "Gone",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-111",
+   "type": "text",
+   "x": 980,
+   "y": 862,
+   "w": 884,
+   "h": 120,
+   "text": "Tarot flip cards and the sun motif \u00b7 gold filigree corners \u00b7 Crystal glass and nebula fill inside cards \u00b7 the 7-layer Card \u00b7 rounded panels \u00b7 Cori's one-off bubble. The Crystal effect itself is decided in Effects.",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "link": "asis-containers"
+  }
+ ],
+ "knowledge": [
+  {
+   "id": "k-direction",
+   "kind": "decision",
+   "text": "UI direction: a scientific AR overlay \u2014 minimal, thin lines, corner ticks, leader lines from things to their menus; the game is the scene.",
+   "why": "Replaces the tarot / crystal-card idea (2026-11-19): the fireworks, moth and butterfly each have their own style already; the UI should step back."
+  },
+  {
+   "id": "k-frame",
+   "kind": "decision",
+   "text": "Menus and panels are faint see-through frames: void/35 + signal/6 tint, 4px frost, 1px signal/35 line, square, 12px corner ticks. Bright action items and buttons stand out on them. Reading frames (Readout, Menu list, Detail, Cori's Plate) use void/60 so body and meta text stay \u2265 4.5:1 over the bright nebula (Accessibility); HUD Plates and short readouts stay void/35."
+  },
+  {
+   "id": "k-no-echo",
+   "kind": "decision",
+   "text": "No mirrored / echo text anywhere; frames and lines carry the AR look."
+  },
+  {
+   "id": "h-menu",
+   "kind": "decision",
+   "text": "A menu list (index, title, meta; selected = gold) replaces the flip cards, with a leader line from the selected row to its detail frame."
+  },
+  {
+   "id": "h-leaders",
+   "kind": "decision",
+   "text": "Leader lines: rail dot \u2192 panel, selected row \u2192 detail, orb node \u2192 info bar, Cori \u2192 butterfly, scanner \u2192 target. 1px, 45\u00b0 elbows, signal (gold from a selection)."
+  },
+  {
+   "id": "h-plate",
+   "kind": "decision",
+   "text": "Plate = a small Frame (8px ticks, px-3 py-2) for HUD readouts and Cori; alive brightens the line and glows."
+  },
+  {
+   "id": "h-press",
+   "kind": "hypothesis",
+   "text": "On press, a muted firework burst contained in the pressed object (clipped, a few palette sparks, ~500ms); calm mode: a rim flash. \u2192 Effects."
+  }
+ ],
+ "agent": {
+  "brief": "Four parts, shared by site and game: Frame, Menu list, Leader line, Plate. Colors, type, spacing, ticks, glow and motion come from the Foundation pages. Card.tsx (7 layers, crystal fill, tarot flip) is replaced, not restyled.",
+  "rules": [
+   "Frame (shared/ui/containers/Frame.tsx): `relative isolate bg-void/35 (reading frames \u2014 Readout, Menu list, Detail, Cori: bg-void/60) backdrop-blur-xs border border-signal/35 p-4 tablet:p-6` + a wash layer bg-signal/6 + <Ticks size=12 (8 below tablet)>. Optional header: eyebrow (mono micro, signal, tracking-spaced) + title (font-display, text color). Clickable \u2192 hover/focus glow-hover; `alive` \u2192 border-signal/80 + glow-active.",
+   "Menu list (replaces flippable Card + deckTabs): role=tablist in a Frame; each row role=tab: mono index (01\u2026), title (font-display bold), meta (mono micro, text-faint). Selected (aria-selected): title gold, 3px gold bar on the left edge, bg-gold/8. Arrow keys move the selection.",
+   "Detail: a Frame next to (tablet+) or under (mobile) the menu, `alive` while shown; a gold leader line runs from the selected row to it.",
+   "Leader line (shared/ui/Leader.tsx): an SVG path between two anchors measured with getBoundingClientRect (a ResizeObserver keeps it right), 1px, one 45\u00b0 elbow, signal; gold when it starts at a selection; dashed for a drag affordance (orb node \u2192 info bar). Draws in with stroke-dashoffset over DUR.enter; reduced motion: drawn whole. Uses: rail dot \u2192 panel, selected row \u2192 detail, orb node \u2192 info bar, Cori \u2192 butterfly (canvas coords from coriAnchor), scanner \u2192 target star.",
+   "Plate: a Frame at small size: 8px ticks, px-3 py-2, no header. GameHUD groups and CoriBubble sit on Plates; Cori's Plate is alive in its mood color while typing.",
+   "Delete: gem/Card.tsx flippable mode, the tarot SVG, CrystalChrome, ResponsiveSparkles in cards, Crystal.Corner usage in cards, CornerSpacers (no ornaments to wrap around now).",
+   "Press: every Frame row, button and node fires the contained firework preview (Effects decides the look); until Effects is decided, no press effect."
+  ],
+  "open": [
+   "The press burst itself (Effects)"
+  ]
+ }
+}

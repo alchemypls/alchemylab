@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useWorkbenchStore } from '@/lib/store';
+import { NoWebProject } from '@/workbench/ui/web/NoWebProject';
 import { useCurrentProject } from '@/workbench/hooks/useCurrentProject';
 import { useSheetView } from '@/workbench/hooks/useSheetView';
 import { PANEL_SELECT as SELECT, MAP_RAIL, PanelToggle, SheetPanel } from '@/workbench/ui/SheetPanel';
@@ -37,12 +38,17 @@ function readTier(): Tier {
 }
 const remember = (key: string, v: unknown) => { try { localStorage.setItem(key, typeof v === 'string' ? v : JSON.stringify(v)); } catch { /* per-browser convenience */ } };
 
+// The open workspace project's web project running; without one, a note that offers to make it
 export function LiveCanvas() {
+  const has = useWorkbenchStore((s) => !!s.projects[s.lastProjectId]);
+  return has ? <LiveProjectCanvas /> : <NoWebProject canvas="Live" />;
+}
+
+function LiveProjectCanvas() {
   const active        = useWorkbenchStore((s) => s.activeScene === 'rnd');
-  const projects      = useWorkbenchStore((s) => s.projects);
-  const touchProject  = useWorkbenchStore((s) => s.touchProject);
   const setActivePage = useWorkbenchStore((s) => s.setActivePage);
-  const { pid, project } = useCurrentProject();
+  const { pid, project: maybe } = useCurrentProject();
+  const project = maybe!;   // LiveCanvas checked
   const page = project.pages.find((p) => p.path === project.activePath) ?? project.pages[0];
   const path = page?.path ?? '/';
 
@@ -125,9 +131,6 @@ export function LiveCanvas() {
           sv={sv} page={null}
           pickers={
             <>
-              <select value={pid} className={SELECT} title="Project" onChange={(e) => { touchProject(e.target.value); e.target.blur(); }}>
-                {Object.values(projects).map((p) => <option key={p.meta.id} value={p.meta.id} className="bg-neutral-900">{p.meta.name}</option>)}
-              </select>
               <select value={path} className={SELECT} title="Page" onChange={(e) => { setActivePage(pid, e.target.value); e.target.blur(); }}>
                 {!page && <option value="/">—</option>}
                 {project.pages.map((p) => <option key={p.path} value={p.path} className="bg-neutral-900">{p.name} · {p.path}</option>)}

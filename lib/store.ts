@@ -18,7 +18,7 @@ const defaultProjectMeta: ProjectMeta = {
 };
 
 
-const emptyProject = (meta: ProjectMeta): ProjectData => ({
+export const emptyProject = (meta: ProjectMeta): ProjectData => ({
   meta, pages: [], layouts: {}, wireframes: {},
   theme: copyTheme(GLOBAL_THEME, `theme-${meta.id}`, `${meta.name} theme`), components: {},
 });
@@ -93,9 +93,10 @@ function debouncedLocalStorage<S>(delayMs = 400): PersistStorage<S> {
 interface WorkbenchState {
   // Projects — one per website. Library (prime) is shared; pages/layouts/wireframes are per-project.
   projects: Record<string, ProjectData>;
-  lastProjectId: string;                     // most recently used — new bound widgets default to it
-  touchProject: (pid: string) => void;
-  createProject: (name?: string) => string;  // returns new id
+  lastProjectId: string;                     // the workspace project open now (lib/workspace.ts): its bible on Ideation, its
+                                             // web project on Web/Live/Fab, its vault items. May have no web project
+  touchProject: (pid: string) => void;       // switches every canvas to that project (Ideation back to its index page)
+  createProject: (name?: string, id?: string) => string;  // a web project; `id` = the workspace project's. Returns the id
   deleteProject: (pid: string) => void;      // refuses to delete the last project
   updateProjectMeta: (pid: string, updates: Partial<ProjectMeta>) => void;
 
@@ -129,7 +130,7 @@ interface WorkbenchState {
   activeScene: SceneId;
   slideDir: Dir | null;
   setActiveScene: (id: SceneId, dir?: Dir | null) => void;
-  designView: { bible?: string; page: string };   // the design page open on the Ideation canvas
+  designView: { bible?: string; page: string };   // the design page open on the Ideation canvas (its bible = lastProjectId; `bible` is unused, kept for old saves)
   setDesignView: (update: { bible?: string; page?: string }) => void;
   fabEditor: FabEditor;   // the editor open on the Fab canvas
   setFabEditor: (editor: FabEditor) => void;
@@ -155,10 +156,12 @@ export const useWorkbenchStore = create<WorkbenchState>()(
       projects:      { [defaultProjectMeta.id]: emptyProject(defaultProjectMeta) },
       lastProjectId: defaultProjectMeta.id,
 
-      touchProject: (pid) => set({ lastProjectId: pid }),
+      touchProject: (pid) => set((s) => (s.lastProjectId === pid ? {} : {   // color pickers fall back to the project's palette
+        lastProjectId: pid, designView: { page: 'index' }, swatchPalette: undefined, vaultArmed: null,
+      })),
 
-      createProject: (name) => {
-        const id = `project-${Date.now()}`;
+      createProject: (name, given) => {
+        const id = given ?? `project-${Date.now()}`;
         set((state) => {
           const n = Object.keys(state.projects).length;
           const meta: ProjectMeta = {

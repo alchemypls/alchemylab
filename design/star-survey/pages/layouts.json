@@ -1,0 +1,4001 @@
+{
+ "title": "Layouts",
+ "kicker": "Structure",
+ "topic": "layouts",
+ "updated": "2026-11-19",
+ "background": "#0b0e16",
+ "blocks": [],
+ "elements": [
+  {
+   "id": "kicker",
+   "type": "text",
+   "x": 56,
+   "y": 30,
+   "w": 900,
+   "h": 26,
+   "text": "Structure \u00b7 decided",
+   "size": 16,
+   "weight": 700,
+   "font": "sans",
+   "color": "#F88F05",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "title",
+   "type": "text",
+   "x": 56,
+   "y": 58,
+   "w": 1300,
+   "h": 72,
+   "text": "",
+   "size": 52,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "top",
+   "bind": {
+    "topic": "layouts",
+    "field": "title"
+   }
+  },
+  {
+   "id": "status",
+   "type": "status",
+   "x": 1840,
+   "y": 72,
+   "size": 22,
+   "topic": "layouts"
+  },
+  {
+   "id": "back",
+   "type": "text",
+   "x": 1440,
+   "y": 40,
+   "w": 380,
+   "h": 30,
+   "text": "\u2190 Overview",
+   "size": 18,
+   "weight": 600,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "right",
+   "valign": "top",
+   "link": "index"
+  },
+  {
+   "id": "was",
+   "type": "text",
+   "x": 1440,
+   "y": 76,
+   "w": 380,
+   "h": 30,
+   "text": "was: 3 modes, one 540 column \u2192 as-is",
+   "size": 16,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "right",
+   "valign": "top",
+   "link": "asis-layouts"
+  },
+  {
+   "id": "drift",
+   "type": "text",
+   "x": 56,
+   "y": 138,
+   "w": 1808,
+   "h": 60,
+   "text": "Three layouts: Readout, Menu + Detail, Launch. Content sits between the rail and the bottom corners and scrolls inside its frame, never the page.",
+   "size": 22,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-1",
+   "type": "line",
+   "name": "rule",
+   "from": {
+    "x": 56,
+    "y": 212
+   },
+   "to": {
+    "x": 1864,
+    "y": 212
+   },
+   "stroke": "#262c3b",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-2",
+   "type": "text",
+   "x": 56,
+   "y": 232,
+   "w": 580,
+   "h": 24,
+   "text": "Readout \u2014 About, Skills",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "r-3",
+   "type": "rect",
+   "name": "d0 sky",
+   "x": 56,
+   "y": 266,
+   "w": 580,
+   "h": 326,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 4
+  },
+  {
+   "id": "e-4",
+   "type": "ellipse",
+   "name": "d0 nebula",
+   "x": 230,
+   "y": 298.6,
+   "w": 319,
+   "h": 228.2,
+   "fill": "#7a4a32",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "e-5",
+   "type": "ellipse",
+   "name": "d0 nebula 2",
+   "x": 85,
+   "y": 429,
+   "w": 203,
+   "h": 146.70000000000002,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.7,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "l-6",
+   "type": "line",
+   "name": "rail",
+   "from": {
+    "x": 230,
+    "y": 286
+   },
+   "to": {
+    "x": 462,
+    "y": 286
+   },
+   "stroke": "#FFF4E3",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "e-7",
+   "type": "ellipse",
+   "name": "rail dot ABOUT",
+   "x": 235,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 1
+  },
+  {
+   "id": "t-8",
+   "type": "text",
+   "x": 198,
+   "y": 268,
+   "w": 80,
+   "h": 12,
+   "text": "ABOUT",
+   "size": 8,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "e-9",
+   "type": "ellipse",
+   "name": "rail dot WORK",
+   "x": 278.2,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-10",
+   "type": "ellipse",
+   "name": "rail dot SKILLS",
+   "x": 321.4,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-11",
+   "type": "ellipse",
+   "name": "rail dot PROJECTS",
+   "x": 364.6,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-12",
+   "type": "ellipse",
+   "name": "rail dot OPEN SOURCE",
+   "x": 407.8,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-13",
+   "type": "ellipse",
+   "name": "rail dot PLAY",
+   "x": 451,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "r-14",
+   "type": "rect",
+   "name": "comms tint",
+   "x": 540,
+   "y": 276,
+   "w": 84,
+   "h": 18,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.5
+  },
+  {
+   "id": "r-15",
+   "type": "rect",
+   "name": "comms line",
+   "x": 540,
+   "y": 276,
+   "w": 84,
+   "h": 18,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-16",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 545,
+    "y": 276
+   },
+   "to": {
+    "x": 540,
+    "y": 276
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-17",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 540,
+    "y": 276
+   },
+   "to": {
+    "x": 540,
+    "y": 281
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-18",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 619,
+    "y": 276
+   },
+   "to": {
+    "x": 624,
+    "y": 276
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-19",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 624,
+    "y": 276
+   },
+   "to": {
+    "x": 624,
+    "y": 281
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-20",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 545,
+    "y": 294
+   },
+   "to": {
+    "x": 540,
+    "y": 294
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-21",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 540,
+    "y": 294
+   },
+   "to": {
+    "x": 540,
+    "y": 289
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-22",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 619,
+    "y": 294
+   },
+   "to": {
+    "x": 624,
+    "y": 294
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-23",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 624,
+    "y": 294
+   },
+   "to": {
+    "x": 624,
+    "y": 289
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-24",
+   "type": "text",
+   "x": 70,
+   "y": 546,
+   "w": 160,
+   "h": 21,
+   "text": "ABOUT",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "e-25",
+   "type": "ellipse",
+   "name": "orb",
+   "x": 564,
+   "y": 520,
+   "w": 60,
+   "h": 60,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "r-26",
+   "type": "rect",
+   "name": "readout tint",
+   "x": 231.8125,
+   "y": 312,
+   "w": 228.37499999999997,
+   "h": 170,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.5
+  },
+  {
+   "id": "r-27",
+   "type": "rect",
+   "name": "readout line",
+   "x": 231.8125,
+   "y": 312,
+   "w": 228.37499999999997,
+   "h": 170,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-28",
+   "type": "line",
+   "name": "readout tick",
+   "from": {
+    "x": 236.8125,
+    "y": 312
+   },
+   "to": {
+    "x": 231.8125,
+    "y": 312
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-29",
+   "type": "line",
+   "name": "readout tick",
+   "from": {
+    "x": 231.8125,
+    "y": 312
+   },
+   "to": {
+    "x": 231.8125,
+    "y": 317
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-30",
+   "type": "line",
+   "name": "readout tick",
+   "from": {
+    "x": 455.1875,
+    "y": 312
+   },
+   "to": {
+    "x": 460.1875,
+    "y": 312
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-31",
+   "type": "line",
+   "name": "readout tick",
+   "from": {
+    "x": 460.1875,
+    "y": 312
+   },
+   "to": {
+    "x": 460.1875,
+    "y": 317
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-32",
+   "type": "line",
+   "name": "readout tick",
+   "from": {
+    "x": 236.8125,
+    "y": 482
+   },
+   "to": {
+    "x": 231.8125,
+    "y": 482
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-33",
+   "type": "line",
+   "name": "readout tick",
+   "from": {
+    "x": 231.8125,
+    "y": 482
+   },
+   "to": {
+    "x": 231.8125,
+    "y": 477
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-34",
+   "type": "line",
+   "name": "readout tick",
+   "from": {
+    "x": 455.1875,
+    "y": 482
+   },
+   "to": {
+    "x": 460.1875,
+    "y": 482
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-35",
+   "type": "line",
+   "name": "readout tick",
+   "from": {
+    "x": 460.1875,
+    "y": 482
+   },
+   "to": {
+    "x": 460.1875,
+    "y": 477
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-36",
+   "type": "text",
+   "x": 241.8125,
+   "y": 320,
+   "w": 200,
+   "h": 16,
+   "text": "About Me",
+   "size": 11,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-37",
+   "type": "rect",
+   "name": "readout text 0",
+   "x": 241.8125,
+   "y": 342,
+   "w": 208.37499999999997,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-38",
+   "type": "rect",
+   "name": "readout text 1",
+   "x": 241.8125,
+   "y": 349,
+   "w": 208.37499999999997,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-39",
+   "type": "rect",
+   "name": "readout text 2",
+   "x": 241.8125,
+   "y": 356,
+   "w": 208.37499999999997,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-40",
+   "type": "rect",
+   "name": "readout text 3",
+   "x": 241.8125,
+   "y": 363,
+   "w": 208.37499999999997,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-41",
+   "type": "rect",
+   "name": "readout text 4",
+   "x": 241.8125,
+   "y": 370,
+   "w": 208.37499999999997,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-42",
+   "type": "rect",
+   "name": "readout text 5",
+   "x": 241.8125,
+   "y": 377,
+   "w": 208.37499999999997,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-43",
+   "type": "rect",
+   "name": "readout text 6",
+   "x": 241.8125,
+   "y": 384,
+   "w": 208.37499999999997,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-44",
+   "type": "rect",
+   "name": "readout text 7",
+   "x": 241.8125,
+   "y": 391,
+   "w": 208.37499999999997,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-45",
+   "type": "rect",
+   "name": "readout text 8",
+   "x": 241.8125,
+   "y": 398,
+   "w": 125.02499999999998,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "t-46",
+   "type": "text",
+   "x": 231.8125,
+   "y": 488,
+   "w": 260,
+   "h": 14,
+   "text": "540 \u00b7 top 14vh \u00b7 scrolls inside",
+   "size": 9,
+   "weight": 400,
+   "font": "mono",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-47",
+   "type": "text",
+   "x": 670,
+   "y": 232,
+   "w": 580,
+   "h": 24,
+   "text": "Menu + Detail \u2014 Work, Projects, Open Source",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "r-48",
+   "type": "rect",
+   "name": "d1 sky",
+   "x": 670,
+   "y": 266,
+   "w": 580,
+   "h": 326,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 4
+  },
+  {
+   "id": "e-49",
+   "type": "ellipse",
+   "name": "d1 nebula",
+   "x": 844,
+   "y": 298.6,
+   "w": 319,
+   "h": 228.2,
+   "fill": "#7a4a32",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "e-50",
+   "type": "ellipse",
+   "name": "d1 nebula 2",
+   "x": 699,
+   "y": 429,
+   "w": 203,
+   "h": 146.70000000000002,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.7,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "l-51",
+   "type": "line",
+   "name": "rail",
+   "from": {
+    "x": 844,
+    "y": 286
+   },
+   "to": {
+    "x": 1076,
+    "y": 286
+   },
+   "stroke": "#FFF4E3",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "e-52",
+   "type": "ellipse",
+   "name": "rail dot ABOUT",
+   "x": 849,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-53",
+   "type": "ellipse",
+   "name": "rail dot WORK",
+   "x": 892.2,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 1
+  },
+  {
+   "id": "t-54",
+   "type": "text",
+   "x": 855.2,
+   "y": 268,
+   "w": 80,
+   "h": 12,
+   "text": "WORK",
+   "size": 8,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "e-55",
+   "type": "ellipse",
+   "name": "rail dot SKILLS",
+   "x": 935.4,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-56",
+   "type": "ellipse",
+   "name": "rail dot PROJECTS",
+   "x": 978.6,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-57",
+   "type": "ellipse",
+   "name": "rail dot OPEN SOURCE",
+   "x": 1021.8,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-58",
+   "type": "ellipse",
+   "name": "rail dot PLAY",
+   "x": 1065,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "r-59",
+   "type": "rect",
+   "name": "comms tint",
+   "x": 1154,
+   "y": 276,
+   "w": 84,
+   "h": 18,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.5
+  },
+  {
+   "id": "r-60",
+   "type": "rect",
+   "name": "comms line",
+   "x": 1154,
+   "y": 276,
+   "w": 84,
+   "h": 18,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-61",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 1159,
+    "y": 276
+   },
+   "to": {
+    "x": 1154,
+    "y": 276
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-62",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 1154,
+    "y": 276
+   },
+   "to": {
+    "x": 1154,
+    "y": 281
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-63",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 1233,
+    "y": 276
+   },
+   "to": {
+    "x": 1238,
+    "y": 276
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-64",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 1238,
+    "y": 276
+   },
+   "to": {
+    "x": 1238,
+    "y": 281
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-65",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 1159,
+    "y": 294
+   },
+   "to": {
+    "x": 1154,
+    "y": 294
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-66",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 1154,
+    "y": 294
+   },
+   "to": {
+    "x": 1154,
+    "y": 289
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-67",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 1233,
+    "y": 294
+   },
+   "to": {
+    "x": 1238,
+    "y": 294
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-68",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 1238,
+    "y": 294
+   },
+   "to": {
+    "x": 1238,
+    "y": 289
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-69",
+   "type": "text",
+   "x": 684,
+   "y": 546,
+   "w": 160,
+   "h": 21,
+   "text": "WORK",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "e-70",
+   "type": "ellipse",
+   "name": "orb",
+   "x": 1178,
+   "y": 520,
+   "w": 60,
+   "h": 60,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "r-71",
+   "type": "rect",
+   "name": "intro tint",
+   "x": 845.8125,
+   "y": 312,
+   "w": 228.37499999999997,
+   "h": 40,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.5
+  },
+  {
+   "id": "r-72",
+   "type": "rect",
+   "name": "intro line",
+   "x": 845.8125,
+   "y": 312,
+   "w": 228.37499999999997,
+   "h": 40,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-73",
+   "type": "line",
+   "name": "intro tick",
+   "from": {
+    "x": 850.8125,
+    "y": 312
+   },
+   "to": {
+    "x": 845.8125,
+    "y": 312
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-74",
+   "type": "line",
+   "name": "intro tick",
+   "from": {
+    "x": 845.8125,
+    "y": 312
+   },
+   "to": {
+    "x": 845.8125,
+    "y": 317
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-75",
+   "type": "line",
+   "name": "intro tick",
+   "from": {
+    "x": 1069.1875,
+    "y": 312
+   },
+   "to": {
+    "x": 1074.1875,
+    "y": 312
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-76",
+   "type": "line",
+   "name": "intro tick",
+   "from": {
+    "x": 1074.1875,
+    "y": 312
+   },
+   "to": {
+    "x": 1074.1875,
+    "y": 317
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-77",
+   "type": "line",
+   "name": "intro tick",
+   "from": {
+    "x": 850.8125,
+    "y": 352
+   },
+   "to": {
+    "x": 845.8125,
+    "y": 352
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-78",
+   "type": "line",
+   "name": "intro tick",
+   "from": {
+    "x": 845.8125,
+    "y": 352
+   },
+   "to": {
+    "x": 845.8125,
+    "y": 347
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-79",
+   "type": "line",
+   "name": "intro tick",
+   "from": {
+    "x": 1069.1875,
+    "y": 352
+   },
+   "to": {
+    "x": 1074.1875,
+    "y": 352
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-80",
+   "type": "line",
+   "name": "intro tick",
+   "from": {
+    "x": 1074.1875,
+    "y": 352
+   },
+   "to": {
+    "x": 1074.1875,
+    "y": 347
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "r-81",
+   "type": "rect",
+   "name": "intro text 0",
+   "x": 855.8125,
+   "y": 324,
+   "w": 208.37499999999997,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-82",
+   "type": "rect",
+   "name": "intro text 1",
+   "x": 855.8125,
+   "y": 331,
+   "w": 208.37499999999997,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-83",
+   "type": "rect",
+   "name": "intro text 2",
+   "x": 855.8125,
+   "y": 338,
+   "w": 125.02499999999998,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-84",
+   "type": "rect",
+   "name": "menu tint",
+   "x": 799.2916666666667,
+   "y": 366,
+   "w": 118.41666666666666,
+   "h": 96,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.5
+  },
+  {
+   "id": "r-85",
+   "type": "rect",
+   "name": "menu line",
+   "x": 799.2916666666667,
+   "y": 366,
+   "w": 118.41666666666666,
+   "h": 96,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-86",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 804.2916666666667,
+    "y": 366
+   },
+   "to": {
+    "x": 799.2916666666667,
+    "y": 366
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-87",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 799.2916666666667,
+    "y": 366
+   },
+   "to": {
+    "x": 799.2916666666667,
+    "y": 371
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-88",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 912.7083333333334,
+    "y": 366
+   },
+   "to": {
+    "x": 917.7083333333334,
+    "y": 366
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-89",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 917.7083333333334,
+    "y": 366
+   },
+   "to": {
+    "x": 917.7083333333334,
+    "y": 371
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-90",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 804.2916666666667,
+    "y": 462
+   },
+   "to": {
+    "x": 799.2916666666667,
+    "y": 462
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-91",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 799.2916666666667,
+    "y": 462
+   },
+   "to": {
+    "x": 799.2916666666667,
+    "y": 457
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-92",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 912.7083333333334,
+    "y": 462
+   },
+   "to": {
+    "x": 917.7083333333334,
+    "y": 462
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-93",
+   "type": "line",
+   "name": "menu tick",
+   "from": {
+    "x": 917.7083333333334,
+    "y": 462
+   },
+   "to": {
+    "x": 917.7083333333334,
+    "y": 457
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "r-94",
+   "type": "rect",
+   "name": "sel",
+   "x": 800.2916666666667,
+   "y": 371,
+   "w": 116.41666666666666,
+   "h": 24,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.1
+  },
+  {
+   "id": "l-95",
+   "type": "line",
+   "name": "bar",
+   "from": {
+    "x": 800.2916666666667,
+    "y": 371
+   },
+   "to": {
+    "x": 800.2916666666667,
+    "y": 395
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "r-96",
+   "type": "rect",
+   "name": "row 0",
+   "x": 809.2916666666667,
+   "y": 376,
+   "w": 71.05,
+   "h": 3,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.9
+  },
+  {
+   "id": "r-97",
+   "type": "rect",
+   "name": "meta 0",
+   "x": 809.2916666666667,
+   "y": 385,
+   "w": 41.445833333333326,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-98",
+   "type": "rect",
+   "name": "row 1",
+   "x": 809.2916666666667,
+   "y": 404,
+   "w": 71.05,
+   "h": 3,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.5
+  },
+  {
+   "id": "r-99",
+   "type": "rect",
+   "name": "meta 1",
+   "x": 809.2916666666667,
+   "y": 413,
+   "w": 41.445833333333326,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-100",
+   "type": "rect",
+   "name": "row 2",
+   "x": 809.2916666666667,
+   "y": 432,
+   "w": 71.05,
+   "h": 3,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.5
+  },
+  {
+   "id": "r-101",
+   "type": "rect",
+   "name": "meta 2",
+   "x": 809.2916666666667,
+   "y": 441,
+   "w": 41.445833333333326,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "l-102",
+   "type": "line",
+   "name": "leader",
+   "from": {
+    "x": 917.7083333333334,
+    "y": 384
+   },
+   "to": {
+    "x": 924.1666666666667,
+    "y": 384
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "r-103",
+   "type": "rect",
+   "name": "detail tint",
+   "x": 926.1666666666667,
+   "y": 366,
+   "w": 194.54166666666663,
+   "h": 150,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.5
+  },
+  {
+   "id": "r-104",
+   "type": "rect",
+   "name": "detail line",
+   "x": 926.1666666666667,
+   "y": 366,
+   "w": 194.54166666666663,
+   "h": 150,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.8
+  },
+  {
+   "id": "l-105",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 931.1666666666667,
+    "y": 366
+   },
+   "to": {
+    "x": 926.1666666666667,
+    "y": 366
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-106",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 926.1666666666667,
+    "y": 366
+   },
+   "to": {
+    "x": 926.1666666666667,
+    "y": 371
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-107",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 1115.7083333333335,
+    "y": 366
+   },
+   "to": {
+    "x": 1120.7083333333335,
+    "y": 366
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-108",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 1120.7083333333335,
+    "y": 366
+   },
+   "to": {
+    "x": 1120.7083333333335,
+    "y": 371
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-109",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 931.1666666666667,
+    "y": 516
+   },
+   "to": {
+    "x": 926.1666666666667,
+    "y": 516
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-110",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 926.1666666666667,
+    "y": 516
+   },
+   "to": {
+    "x": 926.1666666666667,
+    "y": 511
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-111",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 1115.7083333333335,
+    "y": 516
+   },
+   "to": {
+    "x": 1120.7083333333335,
+    "y": 516
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-112",
+   "type": "line",
+   "name": "detail tick",
+   "from": {
+    "x": 1120.7083333333335,
+    "y": 516
+   },
+   "to": {
+    "x": 1120.7083333333335,
+    "y": 511
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "r-113",
+   "type": "rect",
+   "name": "detail text 0",
+   "x": 936.1666666666667,
+   "y": 378,
+   "w": 174.54166666666663,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-114",
+   "type": "rect",
+   "name": "detail text 1",
+   "x": 936.1666666666667,
+   "y": 385,
+   "w": 174.54166666666663,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-115",
+   "type": "rect",
+   "name": "detail text 2",
+   "x": 936.1666666666667,
+   "y": 392,
+   "w": 174.54166666666663,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-116",
+   "type": "rect",
+   "name": "detail text 3",
+   "x": 936.1666666666667,
+   "y": 399,
+   "w": 174.54166666666663,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-117",
+   "type": "rect",
+   "name": "detail text 4",
+   "x": 936.1666666666667,
+   "y": 406,
+   "w": 174.54166666666663,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-118",
+   "type": "rect",
+   "name": "detail text 5",
+   "x": 936.1666666666667,
+   "y": 413,
+   "w": 174.54166666666663,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-119",
+   "type": "rect",
+   "name": "detail text 6",
+   "x": 936.1666666666667,
+   "y": 420,
+   "w": 174.54166666666663,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-120",
+   "type": "rect",
+   "name": "detail text 7",
+   "x": 936.1666666666667,
+   "y": 427,
+   "w": 104.72499999999998,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "t-121",
+   "type": "text",
+   "x": 799.2916666666667,
+   "y": 522,
+   "w": 300,
+   "h": 14,
+   "text": "intro 540 \u00b7 menu 280 + 20 + detail 460 = 760",
+   "size": 9,
+   "weight": 400,
+   "font": "mono",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-122",
+   "type": "text",
+   "x": 1284,
+   "y": 232,
+   "w": 580,
+   "h": 24,
+   "text": "Launch \u2014 Play",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "r-123",
+   "type": "rect",
+   "name": "d2 sky",
+   "x": 1284,
+   "y": 266,
+   "w": 580,
+   "h": 326,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 4
+  },
+  {
+   "id": "e-124",
+   "type": "ellipse",
+   "name": "d2 nebula",
+   "x": 1458,
+   "y": 298.6,
+   "w": 319,
+   "h": 228.2,
+   "fill": "#7a4a32",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "e-125",
+   "type": "ellipse",
+   "name": "d2 nebula 2",
+   "x": 1313,
+   "y": 429,
+   "w": 203,
+   "h": 146.70000000000002,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.7,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "l-126",
+   "type": "line",
+   "name": "rail",
+   "from": {
+    "x": 1458,
+    "y": 286
+   },
+   "to": {
+    "x": 1690,
+    "y": 286
+   },
+   "stroke": "#FFF4E3",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "e-127",
+   "type": "ellipse",
+   "name": "rail dot ABOUT",
+   "x": 1463,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-128",
+   "type": "ellipse",
+   "name": "rail dot WORK",
+   "x": 1506.2,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-129",
+   "type": "ellipse",
+   "name": "rail dot SKILLS",
+   "x": 1549.4,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-130",
+   "type": "ellipse",
+   "name": "rail dot PROJECTS",
+   "x": 1592.6,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-131",
+   "type": "ellipse",
+   "name": "rail dot OPEN SOURCE",
+   "x": 1635.8,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-132",
+   "type": "ellipse",
+   "name": "rail dot PLAY",
+   "x": 1679,
+   "y": 283,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 1
+  },
+  {
+   "id": "t-133",
+   "type": "text",
+   "x": 1642,
+   "y": 268,
+   "w": 80,
+   "h": 12,
+   "text": "PLAY",
+   "size": 8,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "r-134",
+   "type": "rect",
+   "name": "comms tint",
+   "x": 1768,
+   "y": 276,
+   "w": 84,
+   "h": 18,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.5
+  },
+  {
+   "id": "r-135",
+   "type": "rect",
+   "name": "comms line",
+   "x": 1768,
+   "y": 276,
+   "w": 84,
+   "h": 18,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-136",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 1773,
+    "y": 276
+   },
+   "to": {
+    "x": 1768,
+    "y": 276
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-137",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 1768,
+    "y": 276
+   },
+   "to": {
+    "x": 1768,
+    "y": 281
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-138",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 1847,
+    "y": 276
+   },
+   "to": {
+    "x": 1852,
+    "y": 276
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-139",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 1852,
+    "y": 276
+   },
+   "to": {
+    "x": 1852,
+    "y": 281
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-140",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 1773,
+    "y": 294
+   },
+   "to": {
+    "x": 1768,
+    "y": 294
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-141",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 1768,
+    "y": 294
+   },
+   "to": {
+    "x": 1768,
+    "y": 289
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-142",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 1847,
+    "y": 294
+   },
+   "to": {
+    "x": 1852,
+    "y": 294
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-143",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 1852,
+    "y": 294
+   },
+   "to": {
+    "x": 1852,
+    "y": 289
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-144",
+   "type": "text",
+   "x": 1298,
+   "y": 546,
+   "w": 160,
+   "h": 21,
+   "text": "INITIATE",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-145",
+   "type": "rect",
+   "name": "launch",
+   "x": 1298,
+   "y": 568,
+   "w": 90,
+   "h": 18,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.1
+  },
+  {
+   "id": "r-146",
+   "type": "rect",
+   "name": "launch line",
+   "x": 1298,
+   "y": 568,
+   "w": 90,
+   "h": 18,
+   "fill": "none",
+   "stroke": "#FFD03B",
+   "strokeWidth": 1
+  },
+  {
+   "id": "l-147",
+   "type": "line",
+   "name": "launch tick",
+   "from": {
+    "x": 1302,
+    "y": 568
+   },
+   "to": {
+    "x": 1298,
+    "y": 568
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-148",
+   "type": "line",
+   "name": "launch tick",
+   "from": {
+    "x": 1298,
+    "y": 568
+   },
+   "to": {
+    "x": 1298,
+    "y": 572
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-149",
+   "type": "line",
+   "name": "launch tick",
+   "from": {
+    "x": 1384,
+    "y": 568
+   },
+   "to": {
+    "x": 1388,
+    "y": 568
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-150",
+   "type": "line",
+   "name": "launch tick",
+   "from": {
+    "x": 1388,
+    "y": 568
+   },
+   "to": {
+    "x": 1388,
+    "y": 572
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-151",
+   "type": "line",
+   "name": "launch tick",
+   "from": {
+    "x": 1302,
+    "y": 586
+   },
+   "to": {
+    "x": 1298,
+    "y": 586
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-152",
+   "type": "line",
+   "name": "launch tick",
+   "from": {
+    "x": 1298,
+    "y": 586
+   },
+   "to": {
+    "x": 1298,
+    "y": 582
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-153",
+   "type": "line",
+   "name": "launch tick",
+   "from": {
+    "x": 1384,
+    "y": 586
+   },
+   "to": {
+    "x": 1388,
+    "y": 586
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-154",
+   "type": "line",
+   "name": "launch tick",
+   "from": {
+    "x": 1388,
+    "y": 586
+   },
+   "to": {
+    "x": 1388,
+    "y": 582
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-155",
+   "type": "text",
+   "x": 1298,
+   "y": 568,
+   "w": 90,
+   "h": 18,
+   "text": "LAUNCH SHIP",
+   "size": 8,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFD03B",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "e-156",
+   "type": "ellipse",
+   "name": "orb",
+   "x": 1792,
+   "y": 520,
+   "w": 60,
+   "h": 60,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "t-157",
+   "type": "text",
+   "x": 1298,
+   "y": 528,
+   "w": 300,
+   "h": 14,
+   "text": "no content frames \u2014 the sky, the ship, one button",
+   "size": 9,
+   "weight": 400,
+   "font": "mono",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-158",
+   "type": "text",
+   "x": 56,
+   "y": 616,
+   "w": 900,
+   "h": 24,
+   "text": "Phone (and tablet below 1024)",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "r-159",
+   "type": "rect",
+   "name": "p0 sky",
+   "x": 56,
+   "y": 650,
+   "w": 150,
+   "h": 280,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 4
+  },
+  {
+   "id": "e-160",
+   "type": "ellipse",
+   "name": "p0 nebula",
+   "x": 101,
+   "y": 678,
+   "w": 82.5,
+   "h": 196,
+   "fill": "#7a4a32",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "e-161",
+   "type": "ellipse",
+   "name": "p0 nebula 2",
+   "x": 63.5,
+   "y": 790,
+   "w": 52.5,
+   "h": 126,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.7,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "l-162",
+   "type": "line",
+   "name": "rail",
+   "from": {
+    "x": 70,
+    "y": 668
+   },
+   "to": {
+    "x": 192,
+    "y": 668
+   },
+   "stroke": "#FFF4E3",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "e-163",
+   "type": "ellipse",
+   "name": "rail dot ABOUT",
+   "x": 75,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 1
+  },
+  {
+   "id": "t-164",
+   "type": "text",
+   "x": 38,
+   "y": 650,
+   "w": 80,
+   "h": 12,
+   "text": "ABOUT",
+   "size": 8,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "e-165",
+   "type": "ellipse",
+   "name": "rail dot WORK",
+   "x": 96.2,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-166",
+   "type": "ellipse",
+   "name": "rail dot SKILLS",
+   "x": 117.4,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-167",
+   "type": "ellipse",
+   "name": "rail dot PROJECTS",
+   "x": 138.6,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-168",
+   "type": "ellipse",
+   "name": "rail dot OPEN SOURCE",
+   "x": 159.8,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-169",
+   "type": "ellipse",
+   "name": "rail dot PLAY",
+   "x": 181,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "r-170",
+   "type": "rect",
+   "name": "p readout tint",
+   "x": 66,
+   "y": 694,
+   "w": 130,
+   "h": 160,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.5
+  },
+  {
+   "id": "r-171",
+   "type": "rect",
+   "name": "p readout line",
+   "x": 66,
+   "y": 694,
+   "w": 130,
+   "h": 160,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-172",
+   "type": "line",
+   "name": "p readout tick",
+   "from": {
+    "x": 71,
+    "y": 694
+   },
+   "to": {
+    "x": 66,
+    "y": 694
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-173",
+   "type": "line",
+   "name": "p readout tick",
+   "from": {
+    "x": 66,
+    "y": 694
+   },
+   "to": {
+    "x": 66,
+    "y": 699
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-174",
+   "type": "line",
+   "name": "p readout tick",
+   "from": {
+    "x": 191,
+    "y": 694
+   },
+   "to": {
+    "x": 196,
+    "y": 694
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-175",
+   "type": "line",
+   "name": "p readout tick",
+   "from": {
+    "x": 196,
+    "y": 694
+   },
+   "to": {
+    "x": 196,
+    "y": 699
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-176",
+   "type": "line",
+   "name": "p readout tick",
+   "from": {
+    "x": 71,
+    "y": 854
+   },
+   "to": {
+    "x": 66,
+    "y": 854
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-177",
+   "type": "line",
+   "name": "p readout tick",
+   "from": {
+    "x": 66,
+    "y": 854
+   },
+   "to": {
+    "x": 66,
+    "y": 849
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-178",
+   "type": "line",
+   "name": "p readout tick",
+   "from": {
+    "x": 191,
+    "y": 854
+   },
+   "to": {
+    "x": 196,
+    "y": 854
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-179",
+   "type": "line",
+   "name": "p readout tick",
+   "from": {
+    "x": 196,
+    "y": 854
+   },
+   "to": {
+    "x": 196,
+    "y": 849
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "r-180",
+   "type": "rect",
+   "name": "p readout text 0",
+   "x": 74,
+   "y": 706,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-181",
+   "type": "rect",
+   "name": "p readout text 1",
+   "x": 74,
+   "y": 713,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-182",
+   "type": "rect",
+   "name": "p readout text 2",
+   "x": 74,
+   "y": 720,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-183",
+   "type": "rect",
+   "name": "p readout text 3",
+   "x": 74,
+   "y": 727,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-184",
+   "type": "rect",
+   "name": "p readout text 4",
+   "x": 74,
+   "y": 734,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-185",
+   "type": "rect",
+   "name": "p readout text 5",
+   "x": 74,
+   "y": 741,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-186",
+   "type": "rect",
+   "name": "p readout text 6",
+   "x": 74,
+   "y": 748,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-187",
+   "type": "rect",
+   "name": "p readout text 7",
+   "x": 74,
+   "y": 755,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-188",
+   "type": "rect",
+   "name": "p readout text 8",
+   "x": 74,
+   "y": 762,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-189",
+   "type": "rect",
+   "name": "p readout text 9",
+   "x": 74,
+   "y": 769,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-190",
+   "type": "rect",
+   "name": "p readout text 10",
+   "x": 74,
+   "y": 776,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-191",
+   "type": "rect",
+   "name": "p readout text 11",
+   "x": 74,
+   "y": 783,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-192",
+   "type": "rect",
+   "name": "p readout text 12",
+   "x": 74,
+   "y": 790,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-193",
+   "type": "rect",
+   "name": "p readout text 13",
+   "x": 74,
+   "y": 797,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-194",
+   "type": "rect",
+   "name": "p readout text 14",
+   "x": 74,
+   "y": 804,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-195",
+   "type": "rect",
+   "name": "p readout text 15",
+   "x": 74,
+   "y": 811,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-196",
+   "type": "rect",
+   "name": "p readout text 16",
+   "x": 74,
+   "y": 818,
+   "w": 114,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-197",
+   "type": "rect",
+   "name": "p readout text 17",
+   "x": 74,
+   "y": 825,
+   "w": 68.39999999999999,
+   "h": 2,
+   "fill": "#9783A0",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "t-198",
+   "type": "text",
+   "x": 66,
+   "y": 896,
+   "w": 100,
+   "h": 19,
+   "text": "ABOUT",
+   "size": 13,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-199",
+   "type": "text",
+   "x": 56,
+   "y": 936,
+   "w": 150,
+   "h": 14,
+   "text": "readout",
+   "size": 9,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-200",
+   "type": "rect",
+   "name": "p1 sky",
+   "x": 236,
+   "y": 650,
+   "w": 150,
+   "h": 280,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 4
+  },
+  {
+   "id": "e-201",
+   "type": "ellipse",
+   "name": "p1 nebula",
+   "x": 281,
+   "y": 678,
+   "w": 82.5,
+   "h": 196,
+   "fill": "#7a4a32",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "e-202",
+   "type": "ellipse",
+   "name": "p1 nebula 2",
+   "x": 243.5,
+   "y": 790,
+   "w": 52.5,
+   "h": 126,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.7,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "l-203",
+   "type": "line",
+   "name": "rail",
+   "from": {
+    "x": 250,
+    "y": 668
+   },
+   "to": {
+    "x": 372,
+    "y": 668
+   },
+   "stroke": "#FFF4E3",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "e-204",
+   "type": "ellipse",
+   "name": "rail dot ABOUT",
+   "x": 255,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-205",
+   "type": "ellipse",
+   "name": "rail dot WORK",
+   "x": 276.2,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 1
+  },
+  {
+   "id": "t-206",
+   "type": "text",
+   "x": 239.2,
+   "y": 650,
+   "w": 80,
+   "h": 12,
+   "text": "WORK",
+   "size": 8,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "e-207",
+   "type": "ellipse",
+   "name": "rail dot SKILLS",
+   "x": 297.4,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-208",
+   "type": "ellipse",
+   "name": "rail dot PROJECTS",
+   "x": 318.6,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-209",
+   "type": "ellipse",
+   "name": "rail dot OPEN SOURCE",
+   "x": 339.8,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-210",
+   "type": "ellipse",
+   "name": "rail dot PLAY",
+   "x": 361,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "r-211",
+   "type": "rect",
+   "name": "p menu tint",
+   "x": 246,
+   "y": 694,
+   "w": 130,
+   "h": 176,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.5
+  },
+  {
+   "id": "r-212",
+   "type": "rect",
+   "name": "p menu line",
+   "x": 246,
+   "y": 694,
+   "w": 130,
+   "h": 176,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-213",
+   "type": "line",
+   "name": "p menu tick",
+   "from": {
+    "x": 251,
+    "y": 694
+   },
+   "to": {
+    "x": 246,
+    "y": 694
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-214",
+   "type": "line",
+   "name": "p menu tick",
+   "from": {
+    "x": 246,
+    "y": 694
+   },
+   "to": {
+    "x": 246,
+    "y": 699
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-215",
+   "type": "line",
+   "name": "p menu tick",
+   "from": {
+    "x": 371,
+    "y": 694
+   },
+   "to": {
+    "x": 376,
+    "y": 694
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-216",
+   "type": "line",
+   "name": "p menu tick",
+   "from": {
+    "x": 376,
+    "y": 694
+   },
+   "to": {
+    "x": 376,
+    "y": 699
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-217",
+   "type": "line",
+   "name": "p menu tick",
+   "from": {
+    "x": 251,
+    "y": 870
+   },
+   "to": {
+    "x": 246,
+    "y": 870
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-218",
+   "type": "line",
+   "name": "p menu tick",
+   "from": {
+    "x": 246,
+    "y": 870
+   },
+   "to": {
+    "x": 246,
+    "y": 865
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-219",
+   "type": "line",
+   "name": "p menu tick",
+   "from": {
+    "x": 371,
+    "y": 870
+   },
+   "to": {
+    "x": 376,
+    "y": 870
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-220",
+   "type": "line",
+   "name": "p menu tick",
+   "from": {
+    "x": 376,
+    "y": 870
+   },
+   "to": {
+    "x": 376,
+    "y": 865
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "r-221",
+   "type": "rect",
+   "name": "p sel",
+   "x": 247,
+   "y": 700,
+   "w": 128,
+   "h": 104,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.07
+  },
+  {
+   "id": "l-222",
+   "type": "line",
+   "name": "p bar",
+   "from": {
+    "x": 247,
+    "y": 700
+   },
+   "to": {
+    "x": 247,
+    "y": 804
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "r-223",
+   "type": "rect",
+   "name": "p row0",
+   "x": 254,
+   "y": 706,
+   "w": 78,
+   "h": 3,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1
+  },
+  {
+   "id": "r-224",
+   "type": "rect",
+   "name": "p detail text 0",
+   "x": 254,
+   "y": 720,
+   "w": 104,
+   "h": 2,
+   "fill": "#C9B8C4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-225",
+   "type": "rect",
+   "name": "p detail text 1",
+   "x": 254,
+   "y": 728,
+   "w": 104,
+   "h": 2,
+   "fill": "#C9B8C4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-226",
+   "type": "rect",
+   "name": "p detail text 2",
+   "x": 254,
+   "y": 736,
+   "w": 104,
+   "h": 2,
+   "fill": "#C9B8C4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-227",
+   "type": "rect",
+   "name": "p detail text 3",
+   "x": 254,
+   "y": 744,
+   "w": 104,
+   "h": 2,
+   "fill": "#C9B8C4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-228",
+   "type": "rect",
+   "name": "p detail text 4",
+   "x": 254,
+   "y": 752,
+   "w": 104,
+   "h": 2,
+   "fill": "#C9B8C4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-229",
+   "type": "rect",
+   "name": "p detail text 5",
+   "x": 254,
+   "y": 760,
+   "w": 104,
+   "h": 2,
+   "fill": "#C9B8C4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-230",
+   "type": "rect",
+   "name": "p detail text 6",
+   "x": 254,
+   "y": 768,
+   "w": 104,
+   "h": 2,
+   "fill": "#C9B8C4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-231",
+   "type": "rect",
+   "name": "p detail text 7",
+   "x": 254,
+   "y": 776,
+   "w": 62.4,
+   "h": 2,
+   "fill": "#C9B8C4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.6
+  },
+  {
+   "id": "r-232",
+   "type": "rect",
+   "name": "p chips",
+   "x": 254,
+   "y": 786,
+   "w": 50,
+   "h": 8,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1
+  },
+  {
+   "id": "r-233",
+   "type": "rect",
+   "name": "p link",
+   "x": 308,
+   "y": 784,
+   "w": 34,
+   "h": 12,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.5
+  },
+  {
+   "id": "r-234",
+   "type": "rect",
+   "name": "p row 1",
+   "x": 254,
+   "y": 816,
+   "w": 78,
+   "h": 3,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.5
+  },
+  {
+   "id": "r-235",
+   "type": "rect",
+   "name": "p row 2",
+   "x": 254,
+   "y": 838,
+   "w": 78,
+   "h": 3,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.5
+  },
+  {
+   "id": "t-236",
+   "type": "text",
+   "x": 246,
+   "y": 896,
+   "w": 100,
+   "h": 19,
+   "text": "WORK",
+   "size": 13,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-237",
+   "type": "text",
+   "x": 236,
+   "y": 936,
+   "w": 150,
+   "h": 14,
+   "text": "opens under its row",
+   "size": 9,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-238",
+   "type": "rect",
+   "name": "p2 sky",
+   "x": 416,
+   "y": 650,
+   "w": 150,
+   "h": 280,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 4
+  },
+  {
+   "id": "e-239",
+   "type": "ellipse",
+   "name": "p2 nebula",
+   "x": 461,
+   "y": 678,
+   "w": 82.5,
+   "h": 196,
+   "fill": "#7a4a32",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "e-240",
+   "type": "ellipse",
+   "name": "p2 nebula 2",
+   "x": 423.5,
+   "y": 790,
+   "w": 52.5,
+   "h": 126,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.7,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "l-241",
+   "type": "line",
+   "name": "rail",
+   "from": {
+    "x": 430,
+    "y": 668
+   },
+   "to": {
+    "x": 552,
+    "y": 668
+   },
+   "stroke": "#FFF4E3",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "e-242",
+   "type": "ellipse",
+   "name": "rail dot ABOUT",
+   "x": 435,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-243",
+   "type": "ellipse",
+   "name": "rail dot WORK",
+   "x": 456.2,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-244",
+   "type": "ellipse",
+   "name": "rail dot SKILLS",
+   "x": 477.4,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-245",
+   "type": "ellipse",
+   "name": "rail dot PROJECTS",
+   "x": 498.6,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-246",
+   "type": "ellipse",
+   "name": "rail dot OPEN SOURCE",
+   "x": 519.8,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-247",
+   "type": "ellipse",
+   "name": "rail dot PLAY",
+   "x": 541,
+   "y": 665,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 1
+  },
+  {
+   "id": "t-248",
+   "type": "text",
+   "x": 504,
+   "y": 650,
+   "w": 80,
+   "h": 12,
+   "text": "PLAY",
+   "size": 8,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "r-249",
+   "type": "rect",
+   "name": "p launch",
+   "x": 426,
+   "y": 896,
+   "w": 90,
+   "h": 20,
+   "fill": "none",
+   "stroke": "#FFD03B",
+   "strokeWidth": 1
+  },
+  {
+   "id": "l-250",
+   "type": "line",
+   "name": "p launch tick",
+   "from": {
+    "x": 430,
+    "y": 896
+   },
+   "to": {
+    "x": 426,
+    "y": 896
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-251",
+   "type": "line",
+   "name": "p launch tick",
+   "from": {
+    "x": 426,
+    "y": 896
+   },
+   "to": {
+    "x": 426,
+    "y": 900
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-252",
+   "type": "line",
+   "name": "p launch tick",
+   "from": {
+    "x": 512,
+    "y": 896
+   },
+   "to": {
+    "x": 516,
+    "y": 896
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-253",
+   "type": "line",
+   "name": "p launch tick",
+   "from": {
+    "x": 516,
+    "y": 896
+   },
+   "to": {
+    "x": 516,
+    "y": 900
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-254",
+   "type": "line",
+   "name": "p launch tick",
+   "from": {
+    "x": 430,
+    "y": 916
+   },
+   "to": {
+    "x": 426,
+    "y": 916
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-255",
+   "type": "line",
+   "name": "p launch tick",
+   "from": {
+    "x": 426,
+    "y": 916
+   },
+   "to": {
+    "x": 426,
+    "y": 912
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-256",
+   "type": "line",
+   "name": "p launch tick",
+   "from": {
+    "x": 512,
+    "y": 916
+   },
+   "to": {
+    "x": 516,
+    "y": 916
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-257",
+   "type": "line",
+   "name": "p launch tick",
+   "from": {
+    "x": 516,
+    "y": 916
+   },
+   "to": {
+    "x": 516,
+    "y": 912
+   },
+   "stroke": "#FFD03B",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-258",
+   "type": "text",
+   "x": 426,
+   "y": 896,
+   "w": 90,
+   "h": 20,
+   "text": "LAUNCH SHIP",
+   "size": 8,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFD03B",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "t-259",
+   "type": "text",
+   "x": 426,
+   "y": 872,
+   "w": 100,
+   "h": 19,
+   "text": "INITIATE",
+   "size": 13,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-260",
+   "type": "text",
+   "x": 416,
+   "y": 936,
+   "w": 150,
+   "h": 14,
+   "text": "launch",
+   "size": 9,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-261",
+   "type": "text",
+   "x": 616,
+   "y": 650,
+   "w": 1248,
+   "h": 290,
+   "text": "Width: frames are min(100% \u2212 2 \u00d7 edge, 540); the 760 pair only from desktop (\u2265 1024).\n\nMenu + Detail below 1024: one Frame, the selected row opens in place (body, chips, links); one open at a time, the rest stay listed. The leader line isn't drawn \u2014 the open row is the link.\n\nTop: below the rail, max(8vh, 72px) for Menu + Detail, max(14vh, 72px) for Readout. Bottom: content stops above the info readout and orb (max-height calc(100dvh \u2212 top \u2212 180px); phone \u2212 140px) and scrolls inside its Frame.\n\nSkills (Readout): the education Entry, a 1px rule, then the four skill Readouts in 2 columns (1 below 600).\n\nLaunch: nothing in the middle; the info readout and LAUNCH SHIP are the content.",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-262",
+   "type": "line",
+   "name": "rule",
+   "from": {
+    "x": 56,
+    "y": 960
+   },
+   "to": {
+    "x": 1864,
+    "y": 960
+   },
+   "stroke": "#262c3b",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-263",
+   "type": "text",
+   "x": 56,
+   "y": 976,
+   "w": 300,
+   "h": 24,
+   "text": "Gone",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-264",
+   "type": "text",
+   "x": 356,
+   "y": 976,
+   "w": 1564,
+   "h": 60,
+   "text": "flip-card deck row (h-32 md:h-40) \u00b7 the unused md:grid-cols-3 deck grid \u00b7 max-h-[50vh] deck scroll on phones \u00b7 the page-level text-center headings in cyan \u00b7 layout modes \"large-panel / small-panel-with-deck / no-panel\" \u2192 readout / menu-detail / launch.",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "link": "asis-layouts"
+  }
+ ],
+ "knowledge": [
+  {
+   "id": "e-modes",
+   "kind": "evidence",
+   "text": "Layout.tsx: modes large-panel (paddingTop 14vh), small-panel-with-deck (8vh + flip deck row h-32 md:h-40 + detail), no-panel; every frame w-[min(92vw,540px)]; deck grid md:grid-cols-3 unused (every deck is tabs or one card); phone deck max-h-[50vh] scroll."
+  },
+  {
+   "id": "k-three",
+   "kind": "decision",
+   "text": "Three layouts: Readout (About, Skills), Menu + Detail (Work, Projects, Open Source), Launch (Play)."
+  },
+  {
+   "id": "k-desktop",
+   "kind": "decision",
+   "text": "Menu + Detail on desktop: intro 540 on top, then menu 280 + 20 + detail 460 = 760 side by side with the gold leader.",
+   "why": "Room for body, chips and links in the detail; the leader reads left to right."
+  },
+  {
+   "id": "k-phone",
+   "kind": "decision",
+   "text": "Below 1024 the selected row opens in place under itself (accordion, one open), the others stay listed; no leader line.",
+   "why": "Nothing jumps away on a small screen; one scroll inside the Frame."
+  },
+  {
+   "id": "k-bounds",
+   "kind": "decision",
+   "text": "Content lives between the rail and the bottom corners and scrolls inside its Frame, never the page."
+  }
+ ],
+ "agent": {
+  "brief": "Layout.tsx picks one of three layouts per section from SECTIONS (add a `layout` field). Frames, Menu list, Leader from Containers; Entry renderers from Content.",
+  "rules": [
+   "SECTIONS gets layout: about readout \u00b7 work menu-detail \u00b7 skills readout \u00b7 projects menu-detail \u00b7 osc menu-detail \u00b7 play launch. getLayoutMode \u2192 this field; \"large-panel\" \u2192 readout, \"small-panel-with-deck\" \u2192 menu-detail, \"no-panel\" \u2192 launch.",
+   "Container: `fixed inset-0 z-20 pointer-events-none grid justify-items-center content-start px-4 tablet:px-6` with paddingTop `max(14vh,72px)` (readout) or `max(8vh,72px)` (menu-detail); children pointer-events-auto.",
+   "Readout: one Frame `w-full max-w-panel` (540) with `max-h-[calc(100dvh-var(--top)-140px)] desktop:max-h-[calc(100dvh-var(--top)-180px)] overflow-y-auto overscroll-contain`. Skills: Education Entry, a 1px border-line rule, then `grid grid-cols-1 tablet:grid-cols-2 gap-4` of Readouts.",
+   "Menu + Detail, desktop (\u22651024): intro Frame max-w-panel; then `grid grid-cols-[280px_460px] gap-5` (760) \u2014 Menu list Frame left, Detail Frame (alive) right; a gold Leader from the selected row to the Detail. Both frames share the max-height rule and scroll inside.",
+   "Menu + Detail, below desktop: intro Frame, then ONE Frame (max-w-panel) holding the Menu list; the selected row renders its EntryDetail (body, chips, links) under itself, animated height over DUR.enter (calm: instant); one open at a time; no Leader. Tapping the open row keeps it open (it's a tab, aria-selected).",
+   "Launch: no content frames; the info readout shows title + Button action lg LAUNCH SHIP (InfoBar).",
+   "Delete: the flip deck row (Layout.tsx:141-160), the md:grid-cols-3 deck grid (:169), max-h-[50vh] deck scroll, the centered cyan h2 heading (:125; the title now comes from the Frame header)."
+  ],
+  "open": []
+ }
+}

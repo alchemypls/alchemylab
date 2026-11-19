@@ -1,0 +1,1229 @@
+{
+ "title": "Shape & Depth",
+ "kicker": "Foundations",
+ "topic": "shape",
+ "updated": "2026-11-19",
+ "background": "#0b0e16",
+ "blocks": [],
+ "elements": [
+  {
+   "id": "kicker",
+   "type": "text",
+   "x": 56,
+   "y": 30,
+   "w": 900,
+   "h": 26,
+   "text": "Foundations · decided",
+   "size": 16,
+   "weight": 700,
+   "font": "sans",
+   "color": "#F88F05",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "title",
+   "type": "text",
+   "x": 56,
+   "y": 58,
+   "w": 1300,
+   "h": 72,
+   "text": "",
+   "size": 52,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "top",
+   "bind": {
+    "topic": "shape",
+    "field": "title"
+   }
+  },
+  {
+   "id": "status",
+   "type": "status",
+   "x": 1840,
+   "y": 72,
+   "size": 22,
+   "topic": "shape"
+  },
+  {
+   "id": "back",
+   "type": "text",
+   "x": 1440,
+   "y": 40,
+   "w": 380,
+   "h": 30,
+   "text": "← Overview",
+   "size": 18,
+   "weight": 600,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "right",
+   "valign": "top",
+   "link": "index"
+  },
+  {
+   "id": "was",
+   "type": "text",
+   "x": 1440,
+   "y": 76,
+   "w": 380,
+   "h": 30,
+   "text": "was: 10 radii, 20 glows → as-is",
+   "size": 16,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "right",
+   "valign": "top",
+   "link": "asis-shape"
+  },
+  {
+   "id": "drift",
+   "type": "text",
+   "x": 56,
+   "y": 138,
+   "w": 1808,
+   "h": 60,
+   "text": "Sharp frames with corner ticks, thin lines, see-through. At rest a frame is a 1px line; a glow appears only when something is alive.",
+   "size": 22,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-1",
+   "type": "line",
+   "name": "rule",
+   "from": {
+    "x": 56,
+    "y": 212
+   },
+   "to": {
+    "x": 1864,
+    "y": 212
+   },
+   "stroke": "#262c3b",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-2",
+   "type": "text",
+   "x": 56,
+   "y": 228,
+   "w": 900,
+   "h": 24,
+   "text": "Corners — sharp, with ticks",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "r-3",
+   "type": "rect",
+   "name": "corner frame",
+   "x": 56,
+   "y": 266,
+   "w": 240,
+   "h": 110,
+   "fill": "#3DBDB4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.06
+  },
+  {
+   "id": "r-4",
+   "type": "rect",
+   "name": "corner frame line",
+   "x": 56,
+   "y": 266,
+   "w": 240,
+   "h": 110,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-5",
+   "type": "line",
+   "name": "corner frame tick",
+   "from": {
+    "x": 56,
+    "y": 266
+   },
+   "to": {
+    "x": 68,
+    "y": 266
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-6",
+   "type": "line",
+   "name": "corner frame tick",
+   "from": {
+    "x": 56,
+    "y": 266
+   },
+   "to": {
+    "x": 56,
+    "y": 278
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-7",
+   "type": "line",
+   "name": "corner frame tick",
+   "from": {
+    "x": 296,
+    "y": 266
+   },
+   "to": {
+    "x": 284,
+    "y": 266
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-8",
+   "type": "line",
+   "name": "corner frame tick",
+   "from": {
+    "x": 296,
+    "y": 266
+   },
+   "to": {
+    "x": 296,
+    "y": 278
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-9",
+   "type": "line",
+   "name": "corner frame tick",
+   "from": {
+    "x": 56,
+    "y": 376
+   },
+   "to": {
+    "x": 68,
+    "y": 376
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-10",
+   "type": "line",
+   "name": "corner frame tick",
+   "from": {
+    "x": 56,
+    "y": 376
+   },
+   "to": {
+    "x": 56,
+    "y": 364
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-11",
+   "type": "line",
+   "name": "corner frame tick",
+   "from": {
+    "x": 296,
+    "y": 376
+   },
+   "to": {
+    "x": 284,
+    "y": 376
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-12",
+   "type": "line",
+   "name": "corner frame tick",
+   "from": {
+    "x": 296,
+    "y": 376
+   },
+   "to": {
+    "x": 296,
+    "y": 364
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-13",
+   "type": "text",
+   "x": 56,
+   "y": 384,
+   "w": 250,
+   "h": 24,
+   "text": "frame · 0 + ticks",
+   "size": 16,
+   "weight": 700,
+   "font": "mono",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-14",
+   "type": "text",
+   "x": 56,
+   "y": 410,
+   "w": 250,
+   "h": 44,
+   "text": "menus, panels, plates, buttons",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-15",
+   "type": "rect",
+   "name": "corner chip",
+   "x": 346,
+   "y": 300,
+   "w": 130,
+   "h": 40,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 2
+  },
+  {
+   "id": "t-16",
+   "type": "text",
+   "x": 346,
+   "y": 384,
+   "w": 160,
+   "h": 24,
+   "text": "sm · 2px",
+   "size": 16,
+   "weight": 700,
+   "font": "mono",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-17",
+   "type": "text",
+   "x": 346,
+   "y": 410,
+   "w": 160,
+   "h": 44,
+   "text": "chips, inputs, tags",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-18",
+   "type": "rect",
+   "name": "corner dot",
+   "x": 556,
+   "y": 290,
+   "w": 60,
+   "h": 60,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "radius": 30
+  },
+  {
+   "id": "t-19",
+   "type": "text",
+   "x": 526,
+   "y": 384,
+   "w": 200,
+   "h": 24,
+   "text": "full",
+   "size": 16,
+   "weight": 700,
+   "font": "mono",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-20",
+   "type": "text",
+   "x": 526,
+   "y": 410,
+   "w": 200,
+   "h": 44,
+   "text": "dots, rings, the orb",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-21",
+   "type": "text",
+   "x": 736,
+   "y": 300,
+   "w": 220,
+   "h": 120,
+   "text": "ticks: 12px (8 on phones), 2px, signal; the frame line is signal/35",
+   "size": 13,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-22",
+   "type": "text",
+   "x": 980,
+   "y": 228,
+   "w": 884,
+   "h": 24,
+   "text": "Glow — only when alive (signal shown; any role color)",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "r-23",
+   "type": "rect",
+   "name": "glow rest",
+   "x": 980,
+   "y": 266,
+   "w": 270,
+   "h": 110,
+   "fill": "#1A0D24",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1
+  },
+  {
+   "id": "t-24",
+   "type": "text",
+   "x": 980,
+   "y": 266,
+   "w": 270,
+   "h": 110,
+   "text": "rest",
+   "size": 17,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "t-25",
+   "type": "text",
+   "x": 980,
+   "y": 384,
+   "w": 280,
+   "h": 40,
+   "text": "none · 1px line",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-26",
+   "type": "rect",
+   "name": "glow hover / focus halo",
+   "x": 1276,
+   "y": 266,
+   "w": 270,
+   "h": 110,
+   "fill": "#3DBDB4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.3,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 14
+    }
+   ]
+  },
+  {
+   "id": "r-27",
+   "type": "rect",
+   "name": "glow hover / focus",
+   "x": 1276,
+   "y": 266,
+   "w": 270,
+   "h": 110,
+   "fill": "#1A0D24",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1
+  },
+  {
+   "id": "t-28",
+   "type": "text",
+   "x": 1276,
+   "y": 266,
+   "w": 270,
+   "h": 110,
+   "text": "hover / focus",
+   "size": 17,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "t-29",
+   "type": "text",
+   "x": 1276,
+   "y": 384,
+   "w": 280,
+   "h": 40,
+   "text": "0 0 24px α.2 + inset α.08",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-30",
+   "type": "rect",
+   "name": "glow active halo",
+   "x": 1572,
+   "y": 266,
+   "w": 270,
+   "h": 110,
+   "fill": "#3DBDB4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.45,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 18
+    }
+   ]
+  },
+  {
+   "id": "r-31",
+   "type": "rect",
+   "name": "glow active",
+   "x": 1572,
+   "y": 266,
+   "w": 270,
+   "h": 110,
+   "fill": "#1A0D24",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2
+  },
+  {
+   "id": "t-32",
+   "type": "text",
+   "x": 1572,
+   "y": 266,
+   "w": 270,
+   "h": 110,
+   "text": "active",
+   "size": 17,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "t-33",
+   "type": "text",
+   "x": 1572,
+   "y": 384,
+   "w": 280,
+   "h": 40,
+   "text": "0 0 32px α.28 + inset α.12",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-34",
+   "type": "text",
+   "x": 56,
+   "y": 480,
+   "w": 900,
+   "h": 24,
+   "text": "Alive — these glow without a hover",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "r-35",
+   "type": "rect",
+   "name": "alive LAUNCH SHIP halo",
+   "x": 56,
+   "y": 522,
+   "w": 26,
+   "h": 26,
+   "fill": "#F88F05",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 13,
+   "opacity": 0.5,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 5
+    }
+   ]
+  },
+  {
+   "id": "r-36",
+   "type": "rect",
+   "name": "alive LAUNCH SHIP",
+   "x": 61,
+   "y": 527,
+   "w": 16,
+   "h": 16,
+   "fill": "#F88F05",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 8
+  },
+  {
+   "id": "t-37",
+   "type": "text",
+   "x": 96,
+   "y": 516,
+   "w": 300,
+   "h": 38,
+   "text": "LAUNCH SHIP",
+   "size": 17,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "t-38",
+   "type": "text",
+   "x": 396,
+   "y": 516,
+   "w": 560,
+   "h": 38,
+   "text": "primary button, flame glow",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "r-39",
+   "type": "rect",
+   "name": "alive active rail dot halo",
+   "x": 56,
+   "y": 566,
+   "w": 26,
+   "h": 26,
+   "fill": "#3DBDB4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 13,
+   "opacity": 0.5,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 5
+    }
+   ]
+  },
+  {
+   "id": "r-40",
+   "type": "rect",
+   "name": "alive active rail dot",
+   "x": 61,
+   "y": 571,
+   "w": 16,
+   "h": 16,
+   "fill": "#3DBDB4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 8
+  },
+  {
+   "id": "t-41",
+   "type": "text",
+   "x": 96,
+   "y": 560,
+   "w": 300,
+   "h": 38,
+   "text": "active rail dot",
+   "size": 17,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "t-42",
+   "type": "text",
+   "x": 396,
+   "y": 560,
+   "w": 560,
+   "h": 38,
+   "text": "0 0 8px signal",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "r-43",
+   "type": "rect",
+   "name": "alive selected menu row halo",
+   "x": 56,
+   "y": 610,
+   "w": 26,
+   "h": 26,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 13,
+   "opacity": 0.5,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 5
+    }
+   ]
+  },
+  {
+   "id": "r-44",
+   "type": "rect",
+   "name": "alive selected menu row",
+   "x": 61,
+   "y": 615,
+   "w": 16,
+   "h": 16,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 8
+  },
+  {
+   "id": "t-45",
+   "type": "text",
+   "x": 96,
+   "y": 604,
+   "w": 300,
+   "h": 38,
+   "text": "selected menu row",
+   "size": 17,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "t-46",
+   "type": "text",
+   "x": 396,
+   "y": 604,
+   "w": 560,
+   "h": 38,
+   "text": "gold marker + its detail frame glows",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "r-47",
+   "type": "rect",
+   "name": "alive TARGET IN RANGE halo",
+   "x": 56,
+   "y": 654,
+   "w": 26,
+   "h": 26,
+   "fill": "#3DBDB4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 13,
+   "opacity": 0.5,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 5
+    }
+   ]
+  },
+  {
+   "id": "r-48",
+   "type": "rect",
+   "name": "alive TARGET IN RANGE",
+   "x": 61,
+   "y": 659,
+   "w": 16,
+   "h": 16,
+   "fill": "#3DBDB4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 8
+  },
+  {
+   "id": "t-49",
+   "type": "text",
+   "x": 96,
+   "y": 648,
+   "w": 300,
+   "h": 38,
+   "text": "TARGET IN RANGE",
+   "size": 17,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "t-50",
+   "type": "text",
+   "x": 396,
+   "y": 648,
+   "w": 560,
+   "h": 38,
+   "text": "scanner lock",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "r-51",
+   "type": "rect",
+   "name": "alive Cori speaking halo",
+   "x": 56,
+   "y": 698,
+   "w": 26,
+   "h": 26,
+   "fill": "#3DBDB4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 13,
+   "opacity": 0.5,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 5
+    }
+   ]
+  },
+  {
+   "id": "r-52",
+   "type": "rect",
+   "name": "alive Cori speaking",
+   "x": 61,
+   "y": 703,
+   "w": 16,
+   "h": 16,
+   "fill": "#3DBDB4",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 8
+  },
+  {
+   "id": "t-53",
+   "type": "text",
+   "x": 96,
+   "y": 692,
+   "w": 300,
+   "h": 38,
+   "text": "Cori speaking",
+   "size": 17,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "t-54",
+   "type": "text",
+   "x": 396,
+   "y": 692,
+   "w": 560,
+   "h": 38,
+   "text": "mood color, while typing",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "r-55",
+   "type": "rect",
+   "name": "alive scan complete halo",
+   "x": 56,
+   "y": 742,
+   "w": 26,
+   "h": 26,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 13,
+   "opacity": 0.5,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 5
+    }
+   ]
+  },
+  {
+   "id": "r-56",
+   "type": "rect",
+   "name": "alive scan complete",
+   "x": 61,
+   "y": 747,
+   "w": 16,
+   "h": 16,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 8
+  },
+  {
+   "id": "t-57",
+   "type": "text",
+   "x": 96,
+   "y": 736,
+   "w": 300,
+   "h": 38,
+   "text": "scan complete",
+   "size": 17,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "t-58",
+   "type": "text",
+   "x": 396,
+   "y": 736,
+   "w": 560,
+   "h": 38,
+   "text": "gold, once",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "t-59",
+   "type": "text",
+   "x": 980,
+   "y": 480,
+   "w": 884,
+   "h": 24,
+   "text": "Lines, focus, blur, depth",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-60",
+   "type": "text",
+   "x": 980,
+   "y": 516,
+   "w": 160,
+   "h": 44,
+   "text": "border",
+   "size": 17,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "t-61",
+   "type": "text",
+   "x": 1150,
+   "y": 516,
+   "w": 714,
+   "h": 44,
+   "text": "1px everywhere · 2px for active and the focus ring only",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "t-62",
+   "type": "text",
+   "x": 980,
+   "y": 568,
+   "w": 160,
+   "h": 44,
+   "text": "focus",
+   "size": 17,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "t-63",
+   "type": "text",
+   "x": 1150,
+   "y": 568,
+   "w": 714,
+   "h": 44,
+   "text": "focus-visible: 2px signal ring, 2px offset — every control",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "t-64",
+   "type": "text",
+   "x": 980,
+   "y": 620,
+   "w": 160,
+   "h": 44,
+   "text": "frost",
+   "size": 17,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "t-65",
+   "type": "text",
+   "x": 1150,
+   "y": 620,
+   "w": 714,
+   "h": 44,
+   "text": "one light backdrop blur: 4px (backdrop-blur-xs) — the game stays visible through every frame",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "t-66",
+   "type": "text",
+   "x": 980,
+   "y": 672,
+   "w": 160,
+   "h": 44,
+   "text": "text on sky",
+   "size": 17,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "t-67",
+   "type": "text",
+   "x": 1150,
+   "y": 672,
+   "w": 714,
+   "h": 44,
+   "text": "drop-shadow 0 2px 8px void/90 where text sits on the sky",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "t-68",
+   "type": "text",
+   "x": 980,
+   "y": 724,
+   "w": 160,
+   "h": 44,
+   "text": "z ladder",
+   "size": 17,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "t-69",
+   "type": "text",
+   "x": 1150,
+   "y": 724,
+   "w": 714,
+   "h": 44,
+   "text": "sky 0 · content 20 · orb 30 · shell 40 · overlay 50 · frames isolate their own layers",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "l-70",
+   "type": "line",
+   "name": "rule",
+   "from": {
+    "x": 56,
+    "y": 830
+   },
+   "to": {
+    "x": 1864,
+    "y": 830
+   },
+   "stroke": "#262c3b",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-71",
+   "type": "text",
+   "x": 56,
+   "y": 848,
+   "w": 1808,
+   "h": 160,
+   "text": "Was → now: 10 radii → square + ticks, 2px chips, full dots · 20 shadows → 3 glow steps in role colors (cyan → signal, tarot purple → wine, filigree drop → gold/40) · rest glow on every Card removed · 3 blurs → one 4px frost · 12 z-values → 5 layers + isolate · Button's undefined --glow-* get real values.",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "link": "asis-shape"
+  }
+ ],
+ "knowledge": [
+  {
+   "id": "k-corners",
+   "kind": "decision",
+   "text": "Sharp corners: frames, panels, plates and buttons are square with 12px corner ticks (8 on phones); chips and inputs 2px; dots and rings full.",
+   "why": "Changed 2026-11-19 from rounded 4/8/16 when the UI direction became a scientific AR overlay (thin lines, ticks, leader lines)."
+  },
+  {
+   "id": "k-glow",
+   "kind": "decision",
+   "text": "Glow means alive: no glow at rest (a 1px line); hover/focus and active glow in the element's role color; live things glow without a hover (launch button, active rail dot, selected card, scanner lock, Cori speaking, scan complete).",
+   "why": "A calmer screen, and a glow always says something."
+  },
+  {
+   "id": "k-lines",
+   "kind": "decision",
+   "text": "1px borders; 2px only for active and the focus ring. focus-visible: 2px signal ring with 2px offset on every control."
+  },
+  {
+   "id": "k-depth",
+   "kind": "decision",
+   "text": "One light backdrop blur (4px) so the game shows through. Z ladder: sky 0, content 20, orb 30, shell 40, overlay 50; frames isolate their internal layers."
+  }
+ ],
+ "agent": {
+  "brief": "Shapes and depth come from these tokens only: square frames with corner ticks, --radius-sm 2px, rounded-full, --shadow-glow-hover / --shadow-glow-active / --shadow-glow-dot colored by --glow-color (defaults to signal), one backdrop blur, five z layers.",
+  "rules": [
+   "@theme: --radius-sm 2px; frames use no radius. --shadow-glow-hover: 0 0 24px color-mix(in oklab, var(--glow-color) 20%, transparent), inset 0 0 24px color-mix(in oklab, var(--glow-color) 8%, transparent) · --shadow-glow-active: 32px at 28% / inset 12% · --shadow-glow-dot: 0 0 8px var(--glow-color). :root { --glow-color: var(--color-signal) }.",
+   "Radii: rounded-2xl (Card), rounded-lg (Cori), rounded, rounded-md on buttons and panels → none · chips and inputs → rounded-sm (2px) · rounded-full stays. Corner ticks: a shared <Ticks/> (4 L-shapes, 12px / 8px on phones, 2px, signal), absolutely placed on the frame.",
+   "Card glow border: rest shadow-[0_0_20px…] → none (keep the 1px border, color line or signal/30) · hover shadow-[0_0_30px…] → shadow-glow-hover · active shadow-[0_0_35px…] → shadow-glow-active. (The tarot back is gone — see Containers.)",
+   "Button: --glow-primary → shadow-glow-active with --glow-color flame (the launch button is alive: it glows at rest) · --glow-primary-lg → glow-active + 1.02 scale already there · --glow-secondary* / --glow-white-sm → shadow-glow-hover (glow color of the variant) · --glow-danger → glow-hover in ember.",
+   "NavBar active dot and stem: boxShadow \"0 0 6/8px #00ffff\" → shadow-glow-dot. Diamond star: 0 0 20px white, 0 0 40px cyan → 0 0 20px text, 0 0 40px signal.",
+   "Alive without hover: launch button, active rail dot, the detail frame of the selected menu row (active), scanner \"TARGET IN RANGE\" (text-shadow glow-dot), Cori bubble while typing (its mood color), scan complete (gold, one pulse). Nothing else glows at rest.",
+   "Focus: every button, tab and link gets focus-visible:outline-2 outline-offset-2 outline-signal.",
+   "Drop shadows: drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] → drop-shadow-[0_2px_8px] in void/90 · filigree drop-shadow rgba(201,168,76,.4) → gold/40.",
+   "Blur: every backdrop-blur → backdrop-blur-xs (4px).",
+   "Z: z-0 sky, z-20 content column, z-30 orb, z-40 rail / info bar / game sky, z-50 nav root, HUD, Cori. Frame roots get `isolate`."
+  ],
+  "open": []
+ }
+}

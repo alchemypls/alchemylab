@@ -7,7 +7,7 @@ import type { DesignPage } from './types';
 import type { VElement } from './vector';
 
 export interface PaletteColor { name: string; value: string }
-export interface Palette { title: string; updated?: string; colors: PaletteColor[] }
+export interface Palette { title: string; updated?: string; colors: PaletteColor[]; project?: string /* workspace project; unset = shared */ }
 
 // What the pickers showed before there were palettes. Also the fallback while the vault has none.
 export const BASE_PALETTE: Palette = {

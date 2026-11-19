@@ -1,0 +1,2564 @@
+{
+ "title": "Shell & Navigation",
+ "kicker": "Structure",
+ "topic": "shell",
+ "updated": "2026-11-19",
+ "background": "#0b0e16",
+ "blocks": [],
+ "elements": [
+  {
+   "id": "kicker",
+   "type": "text",
+   "x": 56,
+   "y": 30,
+   "w": 900,
+   "h": 26,
+   "text": "Structure \u00b7 decided",
+   "size": 16,
+   "weight": 700,
+   "font": "sans",
+   "color": "#F88F05",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "title",
+   "type": "text",
+   "x": 56,
+   "y": 58,
+   "w": 1300,
+   "h": 72,
+   "text": "",
+   "size": 52,
+   "weight": 700,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "left",
+   "valign": "top",
+   "bind": {
+    "topic": "shell",
+    "field": "title"
+   }
+  },
+  {
+   "id": "status",
+   "type": "status",
+   "x": 1840,
+   "y": 72,
+   "size": 22,
+   "topic": "shell"
+  },
+  {
+   "id": "back",
+   "type": "text",
+   "x": 1440,
+   "y": 40,
+   "w": 380,
+   "h": 30,
+   "text": "\u2190 Overview",
+   "size": 18,
+   "weight": 600,
+   "font": "sans",
+   "color": "#e8eaf0",
+   "align": "right",
+   "valign": "top",
+   "link": "index"
+  },
+  {
+   "id": "was",
+   "type": "text",
+   "x": 1440,
+   "y": 76,
+   "w": 380,
+   "h": 30,
+   "text": "was: no URLs, 3 names per section \u2192 as-is",
+   "size": 16,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "right",
+   "valign": "top",
+   "link": "asis-shell"
+  },
+  {
+   "id": "drift",
+   "type": "text",
+   "x": 56,
+   "y": 138,
+   "w": 1808,
+   "h": 60,
+   "text": "Four corners and a rail, on the sky. Every section has an address. The home shell hands off to the game HUD in the same corners.",
+   "size": 22,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-1",
+   "type": "line",
+   "name": "rule",
+   "from": {
+    "x": 56,
+    "y": 212
+   },
+   "to": {
+    "x": 1864,
+    "y": 212
+   },
+   "stroke": "#262c3b",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-2",
+   "type": "text",
+   "x": 56,
+   "y": 232,
+   "w": 600,
+   "h": 24,
+   "text": "Home \u00b7 desktop",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "r-3",
+   "type": "rect",
+   "name": "home sky",
+   "x": 56,
+   "y": 266,
+   "w": 600,
+   "h": 338,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 4
+  },
+  {
+   "id": "e-4",
+   "type": "ellipse",
+   "name": "home nebula",
+   "x": 236,
+   "y": 299.8,
+   "w": 330,
+   "h": 236.6,
+   "fill": "#7a4a32",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "e-5",
+   "type": "ellipse",
+   "name": "home nebula 2",
+   "x": 86,
+   "y": 435,
+   "w": 210,
+   "h": 152.1,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.7,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "l-6",
+   "type": "line",
+   "name": "rail",
+   "from": {
+    "x": 176,
+    "y": 300
+   },
+   "to": {
+    "x": 426,
+    "y": 300
+   },
+   "stroke": "#FFF4E3",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "e-7",
+   "type": "ellipse",
+   "name": "rail dot ABOUT",
+   "x": 181,
+   "y": 297,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "t-8",
+   "type": "text",
+   "x": 144,
+   "y": 282,
+   "w": 80,
+   "h": 12,
+   "text": "ABOUT",
+   "size": 8,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "e-9",
+   "type": "ellipse",
+   "name": "rail dot WORK",
+   "x": 227.8,
+   "y": 297,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 1
+  },
+  {
+   "id": "t-10",
+   "type": "text",
+   "x": 190.8,
+   "y": 306,
+   "w": 80,
+   "h": 12,
+   "text": "WORK",
+   "size": 8,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "e-11",
+   "type": "ellipse",
+   "name": "rail dot SKILLS",
+   "x": 274.6,
+   "y": 297,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "t-12",
+   "type": "text",
+   "x": 237.60000000000002,
+   "y": 282,
+   "w": 80,
+   "h": 12,
+   "text": "SKILLS",
+   "size": 8,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "e-13",
+   "type": "ellipse",
+   "name": "rail dot PROJECTS",
+   "x": 321.4,
+   "y": 297,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "t-14",
+   "type": "text",
+   "x": 284.4,
+   "y": 306,
+   "w": 80,
+   "h": 12,
+   "text": "PROJECTS",
+   "size": 8,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "e-15",
+   "type": "ellipse",
+   "name": "rail dot OPEN SOURCE",
+   "x": 368.2,
+   "y": 297,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "t-16",
+   "type": "text",
+   "x": 331.2,
+   "y": 282,
+   "w": 80,
+   "h": 12,
+   "text": "OPEN SOURCE",
+   "size": 8,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "e-17",
+   "type": "ellipse",
+   "name": "rail dot PLAY",
+   "x": 415,
+   "y": 297,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "t-18",
+   "type": "text",
+   "x": 378,
+   "y": 306,
+   "w": 80,
+   "h": 12,
+   "text": "PLAY",
+   "size": 8,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "r-19",
+   "type": "rect",
+   "name": "comms tint",
+   "x": 468,
+   "y": 280,
+   "w": 174,
+   "h": 30,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-20",
+   "type": "rect",
+   "name": "comms line",
+   "x": 468,
+   "y": 280,
+   "w": 174,
+   "h": 30,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-21",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 474,
+    "y": 280
+   },
+   "to": {
+    "x": 468,
+    "y": 280
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-22",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 468,
+    "y": 280
+   },
+   "to": {
+    "x": 468,
+    "y": 286
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-23",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 636,
+    "y": 280
+   },
+   "to": {
+    "x": 642,
+    "y": 280
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-24",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 642,
+    "y": 280
+   },
+   "to": {
+    "x": 642,
+    "y": 286
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-25",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 474,
+    "y": 310
+   },
+   "to": {
+    "x": 468,
+    "y": 310
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-26",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 468,
+    "y": 310
+   },
+   "to": {
+    "x": 468,
+    "y": 304
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-27",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 636,
+    "y": 310
+   },
+   "to": {
+    "x": 642,
+    "y": 310
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-28",
+   "type": "line",
+   "name": "comms tick",
+   "from": {
+    "x": 642,
+    "y": 310
+   },
+   "to": {
+    "x": 642,
+    "y": 304
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-29",
+   "type": "text",
+   "x": 478,
+   "y": 280,
+   "w": 140,
+   "h": 30,
+   "text": "GITHUB\u2197 R\u00c9SUM\u00c9\u2197 CONTACT",
+   "size": 8,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "r-30",
+   "type": "rect",
+   "name": "panel tint",
+   "x": 226,
+   "y": 336,
+   "w": 260,
+   "h": 150,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-31",
+   "type": "rect",
+   "name": "panel line",
+   "x": 226,
+   "y": 336,
+   "w": 260,
+   "h": 150,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-32",
+   "type": "line",
+   "name": "panel tick",
+   "from": {
+    "x": 232,
+    "y": 336
+   },
+   "to": {
+    "x": 226,
+    "y": 336
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-33",
+   "type": "line",
+   "name": "panel tick",
+   "from": {
+    "x": 226,
+    "y": 336
+   },
+   "to": {
+    "x": 226,
+    "y": 342
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-34",
+   "type": "line",
+   "name": "panel tick",
+   "from": {
+    "x": 480,
+    "y": 336
+   },
+   "to": {
+    "x": 486,
+    "y": 336
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-35",
+   "type": "line",
+   "name": "panel tick",
+   "from": {
+    "x": 486,
+    "y": 336
+   },
+   "to": {
+    "x": 486,
+    "y": 342
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-36",
+   "type": "line",
+   "name": "panel tick",
+   "from": {
+    "x": 232,
+    "y": 486
+   },
+   "to": {
+    "x": 226,
+    "y": 486
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-37",
+   "type": "line",
+   "name": "panel tick",
+   "from": {
+    "x": 226,
+    "y": 486
+   },
+   "to": {
+    "x": 226,
+    "y": 480
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-38",
+   "type": "line",
+   "name": "panel tick",
+   "from": {
+    "x": 480,
+    "y": 486
+   },
+   "to": {
+    "x": 486,
+    "y": 486
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-39",
+   "type": "line",
+   "name": "panel tick",
+   "from": {
+    "x": 486,
+    "y": 486
+   },
+   "to": {
+    "x": 486,
+    "y": 480
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-40",
+   "type": "text",
+   "x": 238,
+   "y": 346,
+   "w": 200,
+   "h": 14,
+   "text": "content column \u00b7 540 max \u00b7 centered",
+   "size": 9,
+   "weight": 400,
+   "font": "mono",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-41",
+   "type": "text",
+   "x": 238,
+   "y": 362,
+   "w": 230,
+   "h": 21,
+   "text": "Experience",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-42",
+   "type": "text",
+   "x": 80,
+   "y": 526,
+   "w": 200,
+   "h": 14,
+   "text": "SIMULATION // READY",
+   "size": 9,
+   "weight": 400,
+   "font": "mono",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-43",
+   "type": "text",
+   "x": 80,
+   "y": 540,
+   "w": 200,
+   "h": 34,
+   "text": "WORK",
+   "size": 24,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-44",
+   "type": "text",
+   "x": 80,
+   "y": 572,
+   "w": 200,
+   "h": 14,
+   "text": "info readout \u00b7 bottom-left",
+   "size": 9,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "e-45",
+   "type": "ellipse",
+   "name": "orb",
+   "x": 522,
+   "y": 480,
+   "w": 116,
+   "h": 116,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "e-46",
+   "type": "ellipse",
+   "name": "node",
+   "x": 530,
+   "y": 528,
+   "w": 10,
+   "h": 10,
+   "fill": "none",
+   "stroke": "#FFD03B",
+   "strokeWidth": 2
+  },
+  {
+   "id": "t-47",
+   "type": "text",
+   "x": 496,
+   "y": 462,
+   "w": 120,
+   "h": 14,
+   "text": "orb \u00b7 bottom-right",
+   "size": 9,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-48",
+   "type": "text",
+   "x": 56,
+   "y": 610,
+   "w": 600,
+   "h": 16,
+   "text": "top: rail (center) + comms (right) \u00b7 middle: content \u00b7 bottom: readout (left) + orb (right)",
+   "size": 11,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-49",
+   "type": "text",
+   "x": 696,
+   "y": 232,
+   "w": 600,
+   "h": 24,
+   "text": "Game \u00b7 desktop \u2014 same corners",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "r-50",
+   "type": "rect",
+   "name": "game sky",
+   "x": 696,
+   "y": 266,
+   "w": 600,
+   "h": 338,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 4
+  },
+  {
+   "id": "e-51",
+   "type": "ellipse",
+   "name": "game nebula",
+   "x": 876,
+   "y": 299.8,
+   "w": 330,
+   "h": 236.6,
+   "fill": "#7a4a32",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "e-52",
+   "type": "ellipse",
+   "name": "game nebula 2",
+   "x": 726,
+   "y": 435,
+   "w": 210,
+   "h": 152.1,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.7,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "r-53",
+   "type": "rect",
+   "name": "scanner tint",
+   "x": 710,
+   "y": 280,
+   "w": 150,
+   "h": 44,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-54",
+   "type": "rect",
+   "name": "scanner line",
+   "x": 710,
+   "y": 280,
+   "w": 150,
+   "h": 44,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-55",
+   "type": "line",
+   "name": "scanner tick",
+   "from": {
+    "x": 716,
+    "y": 280
+   },
+   "to": {
+    "x": 710,
+    "y": 280
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-56",
+   "type": "line",
+   "name": "scanner tick",
+   "from": {
+    "x": 710,
+    "y": 280
+   },
+   "to": {
+    "x": 710,
+    "y": 286
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-57",
+   "type": "line",
+   "name": "scanner tick",
+   "from": {
+    "x": 854,
+    "y": 280
+   },
+   "to": {
+    "x": 860,
+    "y": 280
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-58",
+   "type": "line",
+   "name": "scanner tick",
+   "from": {
+    "x": 860,
+    "y": 280
+   },
+   "to": {
+    "x": 860,
+    "y": 286
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-59",
+   "type": "line",
+   "name": "scanner tick",
+   "from": {
+    "x": 716,
+    "y": 324
+   },
+   "to": {
+    "x": 710,
+    "y": 324
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-60",
+   "type": "line",
+   "name": "scanner tick",
+   "from": {
+    "x": 710,
+    "y": 324
+   },
+   "to": {
+    "x": 710,
+    "y": 318
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-61",
+   "type": "line",
+   "name": "scanner tick",
+   "from": {
+    "x": 854,
+    "y": 324
+   },
+   "to": {
+    "x": 860,
+    "y": 324
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-62",
+   "type": "line",
+   "name": "scanner tick",
+   "from": {
+    "x": 860,
+    "y": 324
+   },
+   "to": {
+    "x": 860,
+    "y": 318
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-63",
+   "type": "text",
+   "x": 720,
+   "y": 286,
+   "w": 120,
+   "h": 14,
+   "text": "SCANNER",
+   "size": 9,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-64",
+   "type": "text",
+   "x": 720,
+   "y": 300,
+   "w": 140,
+   "h": 16,
+   "text": "LOCKED \u00b7 VEGA",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#3DBDB4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "r-65",
+   "type": "rect",
+   "name": "disengage",
+   "x": 1166,
+   "y": 280,
+   "w": 116,
+   "h": 26,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-66",
+   "type": "text",
+   "x": 1166,
+   "y": 280,
+   "w": 116,
+   "h": 26,
+   "text": "\u2190 DISENGAGE",
+   "size": 9,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "r-67",
+   "type": "rect",
+   "name": "progress tint",
+   "x": 846,
+   "y": 560,
+   "w": 300,
+   "h": 30,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-68",
+   "type": "rect",
+   "name": "progress line",
+   "x": 846,
+   "y": 560,
+   "w": 300,
+   "h": 30,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-69",
+   "type": "line",
+   "name": "progress tick",
+   "from": {
+    "x": 852,
+    "y": 560
+   },
+   "to": {
+    "x": 846,
+    "y": 560
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-70",
+   "type": "line",
+   "name": "progress tick",
+   "from": {
+    "x": 846,
+    "y": 560
+   },
+   "to": {
+    "x": 846,
+    "y": 566
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-71",
+   "type": "line",
+   "name": "progress tick",
+   "from": {
+    "x": 1140,
+    "y": 560
+   },
+   "to": {
+    "x": 1146,
+    "y": 560
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-72",
+   "type": "line",
+   "name": "progress tick",
+   "from": {
+    "x": 1146,
+    "y": 560
+   },
+   "to": {
+    "x": 1146,
+    "y": 566
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-73",
+   "type": "line",
+   "name": "progress tick",
+   "from": {
+    "x": 852,
+    "y": 590
+   },
+   "to": {
+    "x": 846,
+    "y": 590
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-74",
+   "type": "line",
+   "name": "progress tick",
+   "from": {
+    "x": 846,
+    "y": 590
+   },
+   "to": {
+    "x": 846,
+    "y": 584
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-75",
+   "type": "line",
+   "name": "progress tick",
+   "from": {
+    "x": 1140,
+    "y": 590
+   },
+   "to": {
+    "x": 1146,
+    "y": 590
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-76",
+   "type": "line",
+   "name": "progress tick",
+   "from": {
+    "x": 1146,
+    "y": 590
+   },
+   "to": {
+    "x": 1146,
+    "y": 584
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-77",
+   "type": "text",
+   "x": 846,
+   "y": 560,
+   "w": 300,
+   "h": 30,
+   "text": "LYRA 3/5 \u00b7 WASD fly \u00b7 SPACE tie",
+   "size": 9,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "e-78",
+   "type": "ellipse",
+   "name": "moth",
+   "x": 976,
+   "y": 436,
+   "w": 14,
+   "h": 10,
+   "fill": "#B0D660",
+   "stroke": "none",
+   "strokeWidth": 1
+  },
+  {
+   "id": "e-79",
+   "type": "ellipse",
+   "name": "bfly",
+   "x": 1056,
+   "y": 396,
+   "w": 12,
+   "h": 10,
+   "fill": "#F88F05",
+   "stroke": "none",
+   "strokeWidth": 1
+  },
+  {
+   "id": "r-80",
+   "type": "rect",
+   "name": "cori tint",
+   "x": 1076,
+   "y": 342,
+   "w": 160,
+   "h": 36,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-81",
+   "type": "rect",
+   "name": "cori line",
+   "x": 1076,
+   "y": 342,
+   "w": 160,
+   "h": 36,
+   "fill": "none",
+   "stroke": "#F88F05",
+   "strokeWidth": 1,
+   "opacity": 0.8
+  },
+  {
+   "id": "l-82",
+   "type": "line",
+   "name": "cori tick",
+   "from": {
+    "x": 1082,
+    "y": 342
+   },
+   "to": {
+    "x": 1076,
+    "y": 342
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-83",
+   "type": "line",
+   "name": "cori tick",
+   "from": {
+    "x": 1076,
+    "y": 342
+   },
+   "to": {
+    "x": 1076,
+    "y": 348
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-84",
+   "type": "line",
+   "name": "cori tick",
+   "from": {
+    "x": 1230,
+    "y": 342
+   },
+   "to": {
+    "x": 1236,
+    "y": 342
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-85",
+   "type": "line",
+   "name": "cori tick",
+   "from": {
+    "x": 1236,
+    "y": 342
+   },
+   "to": {
+    "x": 1236,
+    "y": 348
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-86",
+   "type": "line",
+   "name": "cori tick",
+   "from": {
+    "x": 1082,
+    "y": 378
+   },
+   "to": {
+    "x": 1076,
+    "y": 378
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-87",
+   "type": "line",
+   "name": "cori tick",
+   "from": {
+    "x": 1076,
+    "y": 378
+   },
+   "to": {
+    "x": 1076,
+    "y": 372
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-88",
+   "type": "line",
+   "name": "cori tick",
+   "from": {
+    "x": 1230,
+    "y": 378
+   },
+   "to": {
+    "x": 1236,
+    "y": 378
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-89",
+   "type": "line",
+   "name": "cori tick",
+   "from": {
+    "x": 1236,
+    "y": 378
+   },
+   "to": {
+    "x": 1236,
+    "y": 372
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-90",
+   "type": "text",
+   "x": 1086,
+   "y": 342,
+   "w": 150,
+   "h": 36,
+   "text": "Tie the bright one.",
+   "size": 10,
+   "weight": 400,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "middle"
+  },
+  {
+   "id": "l-91",
+   "type": "line",
+   "name": "cori leader",
+   "from": {
+    "x": 1096,
+    "y": 378
+   },
+   "to": {
+    "x": 1068,
+    "y": 398
+   },
+   "stroke": "#F88F05",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "r-92",
+   "type": "rect",
+   "name": "dev tint",
+   "x": 710,
+   "y": 466,
+   "w": 120,
+   "h": 76,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-93",
+   "type": "rect",
+   "name": "dev line",
+   "x": 710,
+   "y": 466,
+   "w": 120,
+   "h": 76,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-94",
+   "type": "line",
+   "name": "dev tick",
+   "from": {
+    "x": 716,
+    "y": 466
+   },
+   "to": {
+    "x": 710,
+    "y": 466
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-95",
+   "type": "line",
+   "name": "dev tick",
+   "from": {
+    "x": 710,
+    "y": 466
+   },
+   "to": {
+    "x": 710,
+    "y": 472
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-96",
+   "type": "line",
+   "name": "dev tick",
+   "from": {
+    "x": 824,
+    "y": 466
+   },
+   "to": {
+    "x": 830,
+    "y": 466
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-97",
+   "type": "line",
+   "name": "dev tick",
+   "from": {
+    "x": 830,
+    "y": 466
+   },
+   "to": {
+    "x": 830,
+    "y": 472
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-98",
+   "type": "line",
+   "name": "dev tick",
+   "from": {
+    "x": 716,
+    "y": 542
+   },
+   "to": {
+    "x": 710,
+    "y": 542
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-99",
+   "type": "line",
+   "name": "dev tick",
+   "from": {
+    "x": 710,
+    "y": 542
+   },
+   "to": {
+    "x": 710,
+    "y": 536
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-100",
+   "type": "line",
+   "name": "dev tick",
+   "from": {
+    "x": 824,
+    "y": 542
+   },
+   "to": {
+    "x": 830,
+    "y": 542
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-101",
+   "type": "line",
+   "name": "dev tick",
+   "from": {
+    "x": 830,
+    "y": 542
+   },
+   "to": {
+    "x": 830,
+    "y": 536
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-102",
+   "type": "text",
+   "x": 720,
+   "y": 474,
+   "w": 100,
+   "h": 14,
+   "text": "DEV ONLY",
+   "size": 9,
+   "weight": 400,
+   "font": "mono",
+   "color": "#E54F29",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-103",
+   "type": "text",
+   "x": 696,
+   "y": 610,
+   "w": 600,
+   "h": 31,
+   "text": "scanner top-left \u00b7 Disengage top-right \u00b7 progress + hint bottom \u00b7 Cori follows the butterfly \u00b7 dev plate in dev builds only",
+   "size": 11,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-104",
+   "type": "text",
+   "x": 1336,
+   "y": 232,
+   "w": 300,
+   "h": 24,
+   "text": "Home \u00b7 phone",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "r-105",
+   "type": "rect",
+   "name": "phone sky",
+   "x": 1336,
+   "y": 266,
+   "w": 190,
+   "h": 338,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "radius": 4
+  },
+  {
+   "id": "e-106",
+   "type": "ellipse",
+   "name": "phone nebula",
+   "x": 1393,
+   "y": 299.8,
+   "w": 104.50000000000001,
+   "h": 236.6,
+   "fill": "#7a4a32",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "e-107",
+   "type": "ellipse",
+   "name": "phone nebula 2",
+   "x": 1345.5,
+   "y": 435,
+   "w": 66.5,
+   "h": 152.1,
+   "fill": "#38194C",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.7,
+   "fx": [
+    {
+     "kind": "blur",
+     "radius": 30
+    }
+   ]
+  },
+  {
+   "id": "l-108",
+   "type": "line",
+   "name": "rail",
+   "from": {
+    "x": 1354,
+    "y": 296
+   },
+   "to": {
+    "x": 1508,
+    "y": 296
+   },
+   "stroke": "#FFF4E3",
+   "strokeWidth": 1,
+   "arrow": "none"
+  },
+  {
+   "id": "e-109",
+   "type": "ellipse",
+   "name": "rail dot ABOUT",
+   "x": 1359,
+   "y": 293,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-110",
+   "type": "ellipse",
+   "name": "rail dot WORK",
+   "x": 1386.6,
+   "y": 293,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFD03B",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 1
+  },
+  {
+   "id": "t-111",
+   "type": "text",
+   "x": 1349.6,
+   "y": 278,
+   "w": 80,
+   "h": 12,
+   "text": "WORK",
+   "size": 8,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFD03B",
+   "align": "center",
+   "valign": "top"
+  },
+  {
+   "id": "e-112",
+   "type": "ellipse",
+   "name": "rail dot SKILLS",
+   "x": 1414.2,
+   "y": 293,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-113",
+   "type": "ellipse",
+   "name": "rail dot PROJECTS",
+   "x": 1441.8,
+   "y": 293,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-114",
+   "type": "ellipse",
+   "name": "rail dot OPEN SOURCE",
+   "x": 1469.4,
+   "y": 293,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "e-115",
+   "type": "ellipse",
+   "name": "rail dot PLAY",
+   "x": 1497,
+   "y": 293,
+   "w": 6,
+   "h": 6,
+   "fill": "#FFF4E3",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "r-116",
+   "type": "rect",
+   "name": "phone comms",
+   "x": 1470,
+   "y": 314,
+   "w": 44,
+   "h": 20,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-117",
+   "type": "text",
+   "x": 1470,
+   "y": 314,
+   "w": 44,
+   "h": 20,
+   "text": "LINKS",
+   "size": 8,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "center",
+   "valign": "middle"
+  },
+  {
+   "id": "r-118",
+   "type": "rect",
+   "name": "phone panel tint",
+   "x": 1348,
+   "y": 346,
+   "w": 166,
+   "h": 150,
+   "fill": "#0D0612",
+   "stroke": "none",
+   "strokeWidth": 1,
+   "opacity": 0.55
+  },
+  {
+   "id": "r-119",
+   "type": "rect",
+   "name": "phone panel line",
+   "x": 1348,
+   "y": 346,
+   "w": 166,
+   "h": 150,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.35
+  },
+  {
+   "id": "l-120",
+   "type": "line",
+   "name": "phone panel tick",
+   "from": {
+    "x": 1354,
+    "y": 346
+   },
+   "to": {
+    "x": 1348,
+    "y": 346
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-121",
+   "type": "line",
+   "name": "phone panel tick",
+   "from": {
+    "x": 1348,
+    "y": 346
+   },
+   "to": {
+    "x": 1348,
+    "y": 352
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-122",
+   "type": "line",
+   "name": "phone panel tick",
+   "from": {
+    "x": 1508,
+    "y": 346
+   },
+   "to": {
+    "x": 1514,
+    "y": 346
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-123",
+   "type": "line",
+   "name": "phone panel tick",
+   "from": {
+    "x": 1514,
+    "y": 346
+   },
+   "to": {
+    "x": 1514,
+    "y": 352
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-124",
+   "type": "line",
+   "name": "phone panel tick",
+   "from": {
+    "x": 1354,
+    "y": 496
+   },
+   "to": {
+    "x": 1348,
+    "y": 496
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-125",
+   "type": "line",
+   "name": "phone panel tick",
+   "from": {
+    "x": 1348,
+    "y": 496
+   },
+   "to": {
+    "x": 1348,
+    "y": 490
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-126",
+   "type": "line",
+   "name": "phone panel tick",
+   "from": {
+    "x": 1508,
+    "y": 496
+   },
+   "to": {
+    "x": 1514,
+    "y": 496
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "l-127",
+   "type": "line",
+   "name": "phone panel tick",
+   "from": {
+    "x": 1514,
+    "y": 496
+   },
+   "to": {
+    "x": 1514,
+    "y": 490
+   },
+   "stroke": "#3DBDB4",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-128",
+   "type": "text",
+   "x": 1358,
+   "y": 356,
+   "w": 150,
+   "h": 19,
+   "text": "Experience",
+   "size": 13,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-129",
+   "type": "text",
+   "x": 1350,
+   "y": 516,
+   "w": 120,
+   "h": 26,
+   "text": "WORK",
+   "size": 18,
+   "weight": 700,
+   "font": "sans",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "e-130",
+   "type": "ellipse",
+   "name": "phone orb",
+   "x": 1446,
+   "y": 518,
+   "w": 72,
+   "h": 72,
+   "fill": "none",
+   "stroke": "#3DBDB4",
+   "strokeWidth": 1,
+   "opacity": 0.4
+  },
+  {
+   "id": "t-131",
+   "type": "text",
+   "x": 1336,
+   "y": 610,
+   "w": 260,
+   "h": 31,
+   "text": "rail: dots + current label \u00b7 comms \u2192 one LINKS button (hypothesis, \u2192 Responsive)",
+   "size": 11,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-132",
+   "type": "line",
+   "name": "rule",
+   "from": {
+    "x": 56,
+    "y": 640
+   },
+   "to": {
+    "x": 1864,
+    "y": 640
+   },
+   "stroke": "#262c3b",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-133",
+   "type": "text",
+   "x": 56,
+   "y": 652,
+   "w": 900,
+   "h": 24,
+   "text": "Sections \u2014 one table, one name each",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-134",
+   "type": "text",
+   "x": 56,
+   "y": 684,
+   "w": 190,
+   "h": 16,
+   "text": "id \u00b7 #hash",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-135",
+   "type": "text",
+   "x": 256,
+   "y": 684,
+   "w": 190,
+   "h": 16,
+   "text": "rail",
+   "size": 11,
+   "weight": 400,
+   "font": "mono",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-136",
+   "type": "text",
+   "x": 476,
+   "y": 684,
+   "w": 190,
+   "h": 16,
+   "text": "title",
+   "size": 11,
+   "weight": 400,
+   "font": "sans",
+   "color": "#9783A0",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-137",
+   "type": "text",
+   "x": 56,
+   "y": 702,
+   "w": 190,
+   "h": 19,
+   "text": "about",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-138",
+   "type": "text",
+   "x": 256,
+   "y": 702,
+   "w": 190,
+   "h": 19,
+   "text": "ABOUT",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-139",
+   "type": "text",
+   "x": 476,
+   "y": 702,
+   "w": 190,
+   "h": 19,
+   "text": "About Me",
+   "size": 13,
+   "weight": 700,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-140",
+   "type": "text",
+   "x": 56,
+   "y": 720,
+   "w": 190,
+   "h": 19,
+   "text": "work",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-141",
+   "type": "text",
+   "x": 256,
+   "y": 720,
+   "w": 190,
+   "h": 19,
+   "text": "WORK",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-142",
+   "type": "text",
+   "x": 476,
+   "y": 720,
+   "w": 190,
+   "h": 19,
+   "text": "Experience",
+   "size": 13,
+   "weight": 700,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-143",
+   "type": "text",
+   "x": 56,
+   "y": 738,
+   "w": 190,
+   "h": 19,
+   "text": "skills",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-144",
+   "type": "text",
+   "x": 256,
+   "y": 738,
+   "w": 190,
+   "h": 19,
+   "text": "SKILLS",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-145",
+   "type": "text",
+   "x": 476,
+   "y": 738,
+   "w": 190,
+   "h": 19,
+   "text": "Education & Skills",
+   "size": 13,
+   "weight": 700,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-146",
+   "type": "text",
+   "x": 56,
+   "y": 756,
+   "w": 190,
+   "h": 19,
+   "text": "projects",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-147",
+   "type": "text",
+   "x": 256,
+   "y": 756,
+   "w": 190,
+   "h": 19,
+   "text": "PROJECTS",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-148",
+   "type": "text",
+   "x": 476,
+   "y": 756,
+   "w": 190,
+   "h": 19,
+   "text": "Selected Works",
+   "size": 13,
+   "weight": 700,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-149",
+   "type": "text",
+   "x": 56,
+   "y": 774,
+   "w": 190,
+   "h": 19,
+   "text": "osc",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-150",
+   "type": "text",
+   "x": 256,
+   "y": 774,
+   "w": 190,
+   "h": 19,
+   "text": "OPEN SOURCE",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-151",
+   "type": "text",
+   "x": 476,
+   "y": 774,
+   "w": 190,
+   "h": 19,
+   "text": "Open Source",
+   "size": 13,
+   "weight": 700,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-152",
+   "type": "text",
+   "x": 56,
+   "y": 792,
+   "w": 190,
+   "h": 19,
+   "text": "play",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#FFF4E3",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-153",
+   "type": "text",
+   "x": 256,
+   "y": 792,
+   "w": 190,
+   "h": 19,
+   "text": "PLAY",
+   "size": 13,
+   "weight": 400,
+   "font": "mono",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-154",
+   "type": "text",
+   "x": 476,
+   "y": 792,
+   "w": 190,
+   "h": 19,
+   "text": "Initiate Simulation",
+   "size": 13,
+   "weight": 700,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "t-155",
+   "type": "text",
+   "x": 980,
+   "y": 652,
+   "w": 884,
+   "h": 24,
+   "text": "Getting anywhere in two moves",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-156",
+   "type": "text",
+   "x": 980,
+   "y": 684,
+   "w": 884,
+   "h": 120,
+   "text": "Rail click \u00b7 arrow keys \u00b7 wheel / swipe steps one section \u00b7 drag the orb node \u00b7 a link to /#projects \u00b7 back/forward. Every one sets the hash; the hash sets the section. The invisible 350vh scroller is gone. Comms (GitHub, r\u00e9sum\u00e9, contact) is one move from anywhere on home.",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#C9B8C4",
+   "align": "left",
+   "valign": "top"
+  },
+  {
+   "id": "l-157",
+   "type": "line",
+   "name": "rule",
+   "from": {
+    "x": 56,
+    "y": 830
+   },
+   "to": {
+    "x": 1864,
+    "y": 830
+   },
+   "stroke": "#262c3b",
+   "strokeWidth": 2,
+   "arrow": "none"
+  },
+  {
+   "id": "t-158",
+   "type": "text",
+   "x": 56,
+   "y": 846,
+   "w": 1808,
+   "h": 24,
+   "text": "Gone",
+   "size": 15,
+   "weight": 700,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "caps": true
+  },
+  {
+   "id": "t-159",
+   "type": "text",
+   "x": 56,
+   "y": 878,
+   "w": 1808,
+   "h": 60,
+   "text": "Navigation.tsx's 350vh invisible scroller and document.querySelector(\".overflow-y-auto\") scrolling \u00b7 LABELS / orbContent.title / heading as three spellings \u00b7 dev controls in production \u00b7 the client-only layout with no <title> (metadata \u2192 Pages).",
+   "size": 15,
+   "weight": 400,
+   "font": "sans",
+   "color": "#8b93a7",
+   "align": "left",
+   "valign": "top",
+   "link": "asis-shell"
+  }
+ ],
+ "knowledge": [
+  {
+   "id": "e-shell",
+   "kind": "evidence",
+   "text": "Home: StarRail top-center (NavBar.tsx), content column (Layout.tsx), InfoBar bottom-left, Orb bottom-right. Game: scanner top-left, Disengage top-right, dev controls bottom-left (GameHUD.tsx:75), hint + progress bottom, Cori follows the butterfly."
+  },
+  {
+   "id": "e-nav",
+   "kind": "evidence",
+   "text": "Navigation through an invisible 350vh scroller (Navigation.tsx:98), arrow keys, rail clicks, orb drag; no URLs. Names written 3 ways: NavBar LABELS (\"WORK EXP\"), orbContent.title, heading."
+  },
+  {
+   "id": "k-hash",
+   "kind": "decision",
+   "text": "Each section has a hash address (/#work): back/forward step sections, links work. Wheel/swipe steps one section; the 350vh scroller goes.",
+   "why": "Lets a section be linked (a recruiter to Projects) and keeps the static export."
+  },
+  {
+   "id": "k-comms",
+   "kind": "decision",
+   "text": "A comms Plate top-right on home: GITHUB \u2197 \u00b7 R\u00c9SUM\u00c9 \u2197 \u00b7 CONTACT as quiet sm Buttons.",
+   "why": "Site-wide links one move away; the site had none."
+  },
+  {
+   "id": "k-handoff",
+   "kind": "decision",
+   "text": "Launching the game hands off: the home shell fades out over DUR.scene and the HUD Plates fade into the same corners (scanner top-left, Disengage top-right where comms was, progress bottom). Disengage reverses it."
+  },
+  {
+   "id": "k-table",
+   "kind": "decision",
+   "text": "One SECTIONS table {id, rail, title}; rail names one word where possible (ABOUT, WORK, SKILLS, PROJECTS, OPEN SOURCE, PLAY)."
+  },
+  {
+   "id": "k-dev",
+   "kind": "decision",
+   "text": "Dev controls (zoom, lines, unlock, reset) render only in dev builds."
+  },
+  {
+   "id": "h-phone",
+   "kind": "hypothesis",
+   "text": "Phone: the rail shows dots + the current label only; comms collapses to one LINKS button opening a small Frame. \u2192 Responsive."
+  }
+ ],
+ "agent": {
+  "brief": "The always-on layer: rail + comms on top, content column, info readout bottom-left, orb bottom-right; in play the HUD Plates take the same corners. Sections are hash states.",
+  "rules": [
+   "home/sections.ts: `export const SECTIONS = [{id:\"about\", rail:\"ABOUT\", title:\"About Me\"}, {id:\"work\", rail:\"WORK\", title:\"Experience\"}, {id:\"skills\", rail:\"SKILLS\", title:\"Education & Skills\"}, {id:\"projects\", rail:\"PROJECTS\", title:\"Selected Works\"}, {id:\"osc\", rail:\"OPEN SOURCE\", title:\"Open Source\"}, {id:\"play\", rail:\"PLAY\", title:\"Initiate Simulation\"}]`. NavBar LABELS, orbContent.title and SectionConfig.heading read from it (orbContent keeps date/role).",
+   "Navigation: the active section = location.hash (default about). Rail click, arrow keys, orb drag and a wheel/swipe step (one section per gesture, ignore further input for DUR.scene) all `history.pushState(null, \"\", \"#\" + id)` and set the store; a hashchange/popstate listener sets the store from the hash. Delete the 350vh scroller (Navigation.tsx:98) and every querySelector(\".overflow-y-auto\").scrollTo. Calm: same, no scene easing.",
+   "Comms Plate (home/base/Comms.tsx): fixed top-4 right-4 tablet:top-6 tablet:right-6 z-40; three Button quiet sm as <a target=_blank rel=\"noopener noreferrer\">: GITHUB \u2197, R\u00c9SUM\u00c9 \u2197, CONTACT (mailto). URLs and the address come from the user; never invent them.",
+   "Handoff: gameActive \u2192 rail, comms, panel, info readout and orb animate opacity 0 + pointer-events none over DUR.scene (calm: DUR.base fade); GameHUD Plates fade in after. Disengage (top-right, where comms sits) reverses it and restores the hash.",
+   "GameHUD dev plate: render only when process.env.NODE_ENV === \"development\".",
+   "Z ladder (Shape): sky 0 \u00b7 content 20 \u00b7 shell (rail, comms, readout, orb) 30 \u00b7 HUD 40 \u00b7 Cori 50.",
+   "Orb: becomes OrbStick (Responsive) \u2014 fully on screen bottom-right, the stick dials sections, ring buttons step entries; replaces the diamond drag."
+  ],
+  "open": [
+   "Comms URLs + contact address (user)",
+   "Phone rail + comms (Responsive)",
+   "<title>/metadata per section (Pages)"
+  ]
+ }
+}

@@ -2,12 +2,14 @@
 
 import { useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Copy, CopyPlus, Crosshair, Palette as PaletteIcon, PenLine, Trash2 } from 'lucide-react';
+import { Copy, CopyPlus, Crosshair, FolderInput, Globe, Palette as PaletteIcon, PenLine, Trash2 } from 'lucide-react';
 import { useWorkbenchStore } from '@/lib/store';
 import { getSlideDir } from '@/lib/scenes';
 import { dimsText, fabEditorFor, isStructure, type AssetKind, type VaultAsset } from '@/lib/design/vault';
 import type { Palette } from '@/lib/design/palette';
-import { assetUses, copyAsset, createPalette, deleteAsset, deletePalette, usePalettes, useVault, type VaultFile } from '@/workbench/hooks/useVault';
+import { assetUses, copyAsset, createPalette, deleteAsset, deletePalette, saveAsset, savePalette, usePalettes, useVault, type VaultFile } from '@/workbench/hooks/useVault';
+import { useWorkspace } from '@/workbench/hooks/useWorkspace';
+import { inProject } from '@/lib/workspace';
 import { MENU_ROW as ROW, MenuRule, PopMenu } from '@/workbench/ui/PopMenu';
 import { AssetThumb } from '@/workbench/ui/AssetPicker';
 import { FlyoutChoice, GhostSlot, VaultEmpty, VaultSearch, VaultTabs, VaultWindow, gridStyle, packSlots, useSlotGrid } from '@/workbench/ui/vault/VaultParts';
@@ -17,14 +19,16 @@ import { askConfirm, tell } from '@/workbench/ui/Ask';
 // packed into slots (a long block takes two). On Ideation a pick arms placing: each click on the page puts one down
 // (a palette becomes the one every color picker shows). On Fab a pick opens the file in its editor. Hover for details;
 // drag to reorder (kept per browser), or out onto an Ideation page to place it there. Right-click: place or open, edit
-// in Fab, duplicate, copy as another kind (a new file: the original and its placements stay), delete.
+// in Fab, duplicate, copy as another kind (a new file: the original and its placements stay), move to this project or
+// make shared, delete. It shows the open project's items and shared ones (lib/workspace.ts); a search also finds other
+// projects' items, listed after, with their project's name on them.
 
 type Tab = 'all' | AssetKind | 'palette';
 type Sort = 'custom' | 'name' | 'newest' | 'kind';
 // An asset dragged out of the vault carries its id under this type; a sheet that takes it places the asset where it lands
 export const VAULT_DRAG = 'application/x-alchemy-vault-asset';
 
-type Item = { key: string; title: string; mtime: string | null } & ({ type: 'asset'; file: VaultFile<VaultAsset> } | { type: 'palette'; file: VaultFile<Palette> });
+type Item = { key: string; title: string; mtime: string | null; project?: string } & ({ type: 'asset'; file: VaultFile<VaultAsset> } | { type: 'palette'; file: VaultFile<Palette> });
 
 const TABS: { key: Tab; glyph: string; label: string }[] = [
   { key: 'all',     glyph: '◈', label: 'All' },
@@ -63,6 +67,8 @@ export function FileVault() {
   const setScene    = useWorkbenchStore((s) => s.setActiveScene);
   const assets = useVault(), palettes = usePalettes();
   const fab = scene === 'fab';
+  const { pid, projects } = useWorkspace();
+  const nameOf = (id: string) => projects.find((p) => p.id === id)?.name ?? id;
 
   const [tab, setTab] = useState<Tab>('all');
   const [search, setSearch] = useState('');
@@ -78,13 +84,14 @@ export function FileVault() {
   const { cols, rowsFit, areaRef } = useSlotGrid();
 
   const all: Item[] = useMemo(() => [
-    ...assets.entries.map((f): Item => ({ key: f.id, title: f.asset.title || f.id, mtime: f.mtime, type: 'asset', file: f })),
-    ...palettes.entries.map((f): Item => ({ key: `palette:${f.id}`, title: f.asset.title || f.id, mtime: f.mtime, type: 'palette', file: f })),
+    ...assets.entries.map((f): Item => ({ key: f.id, title: f.asset.title || f.id, mtime: f.mtime, project: f.asset.project, type: 'asset', file: f })),
+    ...palettes.entries.map((f): Item => ({ key: `palette:${f.id}`, title: f.asset.title || f.id, mtime: f.mtime, project: f.asset.project, type: 'palette', file: f })),
   ], [assets.entries, palettes.entries]);
 
   const shown = useMemo(() => {
     const q = search.trim().toLowerCase();
-    let out = all.filter((i) => (tab === 'all' || kindOf(i) === tab) && (!q || i.title.toLowerCase().includes(q) || i.key.toLowerCase().includes(q)));
+    // This project's and shared items; a search reaches every project's
+    let out = all.filter((i) => (tab === 'all' || kindOf(i) === tab) && (q ? i.title.toLowerCase().includes(q) || i.key.toLowerCase().includes(q) : inProject(i, pid)));
     const byName = (a: Item, b: Item) => a.title.localeCompare(b.title);
     if (sort === 'name') out = [...out].sort(byName);
     else if (sort === 'newest') out = [...out].sort((a, b) => (Date.parse(b.mtime ?? '') || 0) - (Date.parse(a.mtime ?? '') || 0));
@@ -93,8 +100,8 @@ export function FileVault() {
       const at = (i: Item) => { const n = order.indexOf(i.key); return n < 0 ? Infinity : n; };
       out = [...out].sort((a, b) => at(a) - at(b) || KIND_ORDER.indexOf(kindOf(a)) - KIND_ORDER.indexOf(kindOf(b)) || byName(a, b));
     }
-    return out;
-  }, [all, tab, search, sort, order]);
+    return [...out.filter((i) => inProject(i, pid)), ...out.filter((i) => !inProject(i, pid))];   // other projects' after
+  }, [all, tab, search, sort, order, pid]);
 
   const packed = useMemo(() => packSlots(shown, cols, slotsOf), [shown, cols]);
   const rows = Math.max(packed.reduce((m, p) => Math.max(m, p.row + p.h - 1), 0) + 2, rowsFit);
@@ -134,6 +141,11 @@ export function FileVault() {
     while (palettes.entries.some((p) => p.asset.title === `${root} ${n}`)) n++;
     const r = await createPalette(`${root} ${n}`, i.file.asset);
     if ('error' in r) void tell(`Couldn't copy it: ${r.error}`); else toFab(`palette:${r.id}`, 'palette');
+  };
+  // Which project an item belongs to: this one, or none (shared). Its placements on pages don't change
+  const moveProject = async (i: Item, project: string | undefined) => {
+    const r = i.type === 'asset' ? await saveAsset(i.file.id, { ...i.file.asset, project }) : await savePalette(i.file.id, { ...i.file.asset, project });
+    if (!r.ok) void tell(`Couldn't move it: ${r.error}`);
   };
   const remove = async (i: Item) => {
     setCard(null);
@@ -182,7 +194,7 @@ export function FileVault() {
                       onMouseEnter={(e) => { if (dragging || menu) return; if (hide.current) clearTimeout(hide.current); setCard({ item: i, at: anchorBy(e.currentTarget.getBoundingClientRect()) }); }}
                       onMouseLeave={() => { hide.current = setTimeout(() => setCard(null), 180); }}
                     >
-                      <Cell item={i} lit={lit(i)} dim={dragging === i.key} target={over === i.key && dragging !== i.key} />
+                      <Cell item={i} lit={lit(i)} dim={dragging === i.key} target={over === i.key && dragging !== i.key} from={inProject(i, pid) ? undefined : nameOf(i.project!)} />
                     </div>
                   ))}
                 </div>
@@ -197,6 +209,8 @@ export function FileVault() {
           item={menu.item} x={menu.x} y={menu.y} fab={fab} lit={lit(menu.item)} close={() => setMenu(null)}
           onPick={() => pick(menu.item)} onFab={() => toFab(menu.item.key, kindOf(menu.item), menu.item.type === 'asset' ? menu.item.file.asset.part : undefined)}
           onDuplicate={(kind) => duplicate(menu.item, kind)} onDelete={() => remove(menu.item)}
+          here={nameOf(pid)} onMove={menu.item.project === pid ? undefined : () => moveProject(menu.item, pid)}
+          onShare={menu.item.project ? () => moveProject(menu.item, undefined) : undefined}
         />
       )}
 
@@ -216,7 +230,7 @@ export function FileVault() {
 }
 
 // One item in its slot: the drawing on paper (or a palette's colors), its name along the bottom
-function Cell({ item, lit, dim, target }: { item: Item; lit: boolean; dim: boolean; target: boolean }) {
+function Cell({ item, lit, dim, target, from }: { item: Item; lit: boolean; dim: boolean; target: boolean; from?: string }) {
   const ring = lit ? 'ring-2 ring-amber-500' : target ? 'ring-2 ring-indigo-400/60' : 'ring-1 ring-neutral-800 hover:ring-neutral-500';
   return (
     <div className={`relative w-full h-full rounded-lg overflow-hidden transition-all duration-100 ${ring} ${dim ? 'opacity-40' : ''}`}>
@@ -227,6 +241,7 @@ function Cell({ item, lit, dim, target }: { item: Item; lit: boolean; dim: boole
       ) : (
         <div className="w-full h-full bg-[#f4efe6] p-1 pb-3"><AssetThumb id={item.file.id} /></div>
       )}
+      {from && <span className="absolute left-0.5 top-0.5 max-w-[90%] px-1 rounded text-[7px] font-mono truncate text-neutral-200 bg-neutral-800/90 leading-tight" title={`From ${from}`}>{from}</span>}
       <span className="absolute left-0 right-0 bottom-0 px-1 py-px text-[8px] font-mono truncate text-neutral-300 bg-neutral-950/75 leading-tight">{item.title}</span>
     </div>
   );
@@ -268,9 +283,10 @@ function FileCard({ item, at, fab, lit, onEnter, onLeave, onPick, onDelete }: {
 
 // The right-click menu on a vault item. Every copy is a new file, opened on Fab; the original is left as it was.
 const KINDS: AssetKind[] = ['shape', 'icon', 'block'];
-function VaultMenu({ item, x, y, fab, lit, close, onPick, onFab, onDuplicate, onDelete }: {
+function VaultMenu({ item, x, y, fab, lit, close, onPick, onFab, onDuplicate, onDelete, here, onMove, onShare }: {
   item: Item; x: number; y: number; fab: boolean; lit: boolean; close: () => void;
   onPick: () => void; onFab: () => void; onDuplicate: (kind?: AssetKind) => void; onDelete: () => void;
+  here: string; onMove?: () => void; onShare?: () => void;
 }) {
   const run = (f: () => void) => () => { close(); f(); };
   const kind = kindOf(item);
@@ -292,6 +308,9 @@ function VaultMenu({ item, x, y, fab, lit, close, onPick, onFab, onDuplicate, on
           <CopyPlus size={14} />Copy as {k}
         </button>
       ))}
+      <MenuRule />
+      {onMove && <button className={ROW} title="It belongs to the open project; other projects find it by searching" onClick={run(onMove)}><FolderInput size={14} />Move to {here}</button>}
+      {onShare && <button className={ROW} title="Every project shows it" onClick={run(onShare)}><Globe size={14} />Make shared</button>}
       <MenuRule />
       <button className={`${ROW} text-red-300`} onClick={run(onDelete)}><Trash2 size={14} />Delete…</button>
     </PopMenu>

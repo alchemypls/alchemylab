@@ -49,5 +49,6 @@
     ],
     "estimated": true,
     "note": "Face about 7/8\" wide, 1\" above the playfield when up."
-  }
+  },
+  "project": "pinball-crawl"
 }

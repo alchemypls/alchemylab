@@ -1,0 +1,197 @@
+{
+  "title": "Star-Survey Portfolio",
+  "template": "web",
+  "source": "/home/alchemypls/Desktop/code/website/alchemypls.github.io",
+  "pitch": "An interactive, gamified developer portfolio: fly a moth through the real autumn night sky; the r\u00e9sum\u00e9 lives in crystal panels over it.",
+  "created": "2026-11-18",
+  "topics": [
+    {
+      "id": "pitch",
+      "group": "Identity",
+      "title": "Pitch",
+      "status": "decided",
+      "summary": "A software engineer's portfolio you can fly: steer a luna moth under the real night sky, tie its stars with silk for fireworks, and read the work in quiet AR readouts over it.",
+      "page": "identity"
+    },
+    {
+      "id": "audience",
+      "group": "Identity",
+      "title": "Audience",
+      "status": "decided",
+      "summary": "Recruiters and hiring managers first (from a r\u00e9sum\u00e9/LinkedIn link, 1\u20132 min, desktop or phone); engineers and players second.",
+      "page": "identity"
+    },
+    {
+      "id": "pillars",
+      "group": "Identity",
+      "title": "Pillars",
+      "status": "decided",
+      "summary": "1 The sky is the scene \u00b7 2 Work in two moves \u00b7 3 Fireworks are the one motif. Never gate the r\u00e9sum\u00e9 behind play.",
+      "page": "identity"
+    },
+    {
+      "id": "voice",
+      "group": "Identity",
+      "title": "Voice",
+      "status": "decided",
+      "summary": "Calm, precise, warm: instrument readouts with a friendly guide. Never \"Unleash your potential in an epic cosmic journey!\"",
+      "page": "identity"
+    },
+    {
+      "id": "references",
+      "group": "Identity",
+      "title": "References",
+      "status": "hypothesis",
+      "summary": "Proposed: sci-fi AR HUD (user image), Bruno Simon's portfolio, Outer Wilds, Sky: Children of the Light.",
+      "page": "identity"
+    },
+    {
+      "id": "color",
+      "group": "Foundations",
+      "title": "Color",
+      "status": "decided",
+      "summary": "One palette for site and game: Cosmic Carnival + plum neutrals + signal teal for information. Gold and flame only for actions, selection and wins; headings are text. Stars and sky shaders exempt.",
+      "page": "color"
+    },
+    {
+      "id": "type",
+      "group": "Foundations",
+      "title": "Type",
+      "status": "decided",
+      "summary": "Rajdhani for titles and buttons (instrument labels), Inter for reading, JetBrains Mono for data, HUD and game canvas text. Seven sizes (10\u201348px, none below 10), three letter-spacings.",
+      "page": "type"
+    },
+    {
+      "id": "spacing",
+      "group": "Foundations",
+      "title": "Spacing & Grid",
+      "status": "decided",
+      "summary": "Reset removed so padding works. 8 steps on a 4px grid (2\u201348px). Breakpoints = Alchemy tiers: tablet 600, desktop 1024. Page edge 16/24/48; panel column 540px.",
+      "page": "spacing"
+    },
+    {
+      "id": "shape",
+      "group": "Foundations",
+      "title": "Shape & Depth",
+      "status": "decided",
+      "summary": "Sharp frames with 12px corner ticks; 2px chips; full dots. Glow means alive: none at rest, hover/active glow in the role color. 1px lines, 2px focus ring, one 4px frost, 5 z layers.",
+      "page": "shape"
+    },
+    {
+      "id": "motion",
+      "group": "Foundations",
+      "title": "Motion",
+      "status": "decided",
+      "summary": "Crisp UI, slow sky: fast 150 / base 200 / enter 300 / slow 500 / scene 1000ms; standard, enter, exit easings. Reduced motion = calm: loops stop, moves fade, game play untouched.",
+      "page": "motion"
+    },
+    {
+      "id": "iconography",
+      "group": "Foundations",
+      "title": "Icons & Imagery",
+      "status": "blank",
+      "summary": ""
+    },
+    {
+      "id": "containers",
+      "group": "Components",
+      "title": "Containers",
+      "status": "decided",
+      "summary": "AR overlay: Frame (see-through, 1px signal line, corner ticks), Menu list (replaces flip cards; selected = gold), Leader lines from things to their menus, Plate for HUD and Cori.",
+      "page": "containers"
+    },
+    {
+      "id": "controls",
+      "group": "Components",
+      "title": "Controls",
+      "status": "decided",
+      "summary": "One Button: action (outlined gold + ticks) / quiet (signal line) / danger (ember); sm 24 \u00b7 md 32 \u00b7 lg 40; no rest glow, focus ring signal, press = glow + contained firework. Rail labels mono 10, current gold.",
+      "page": "controls"
+    },
+    {
+      "id": "effects",
+      "group": "Components",
+      "title": "Effects",
+      "status": "decided",
+      "summary": "Fireworks are the motif: 5 palette sets + 2 rare cool (teal, violet), ~8 designs, 4 patterns. Every press = a mini 8-petal paper ring, contained. Calm: fireworks appear open, warp off, glitter/embers \u00bc. Characters keep their colors; Crystal + sparkles gone.",
+      "page": "effects"
+    },
+    {
+      "id": "content",
+      "group": "Components",
+      "title": "Content Blocks",
+      "status": "decided",
+      "summary": "One Entry {eyebrow, title, meta, body, tags, links} for jobs, projects, OSC, school: Menu row short, Detail full. Five text parts (eyebrow, title, meta, body, chip), left-aligned; 0\u20133 links as quiet sm buttons \u2197. Skills = Readouts; Cori = a line on a Plate.",
+      "page": "content"
+    },
+    {
+      "id": "shell",
+      "group": "Structure",
+      "title": "Shell & Navigation",
+      "status": "decided",
+      "summary": "Rail + comms plate (GitHub, r\u00e9sum\u00e9, contact) on top, content column, info readout bottom-left, orb bottom-right. Sections are hash addresses (/#work); wheel/swipe steps one. Game hands off: HUD Plates take the same corners. One SECTIONS table; dev controls dev-only.",
+      "page": "shell"
+    },
+    {
+      "id": "pages",
+      "group": "Structure",
+      "title": "Pages & Sections",
+      "status": "hypothesis",
+      "summary": "as-is: one route (/) with six sections switched in place by scroll: about, work, skills, projects, osc, play. /sandbox is dev-only."
+    },
+    {
+      "id": "layouts",
+      "group": "Structure",
+      "title": "Layouts",
+      "status": "decided",
+      "summary": "Readout (About, Skills: one 540 Frame), Menu + Detail (Work, Projects, Open Source: intro 540, then menu 280 + detail 460 = 760 on desktop; below 1024 the row opens in place), Launch (Play: shell only). Content stays between rail and bottom corners and scrolls inside its Frame.",
+      "page": "layouts"
+    },
+    {
+      "id": "states",
+      "group": "Structure",
+      "title": "States",
+      "status": "blank",
+      "summary": ""
+    },
+    {
+      "id": "responsive",
+      "group": "Quality",
+      "title": "Responsive",
+      "status": "decided",
+      "summary": "The orb is the controller everywhere: stick (steer / dial sections), button 1 at the ring bottom (silk / next, LAUNCH), button 2 at the top (recall / previous), side ? = Cori. 136/168/200px, fully on screen. Phone: rail dots + current label, LINKS button, rows open in place.",
+      "page": "responsive"
+    },
+    {
+      "id": "accessibility",
+      "group": "Quality",
+      "title": "Accessibility",
+      "status": "decided",
+      "summary": "WCAG AA floor. Reading frames void/60, text-faint lifted to #9783A0 (\u22654.85 everywhere text sits). Full keyboard, landmarks + tablists, one live region, 44px touch, calm motion, document.title per section.",
+      "page": "accessibility"
+    },
+    {
+      "id": "performance",
+      "group": "Quality",
+      "title": "Performance",
+      "status": "blank",
+      "summary": ""
+    },
+    {
+      "id": "stack",
+      "group": "Production",
+      "title": "Stack & Constraints",
+      "status": "hypothesis",
+      "summary": "as-is: Next.js 16 static export on GitHub Pages, Tailwind v4 (CSS-first), framer-motion, React Three Fiber sky. The WebGL sky is the backdrop, not page UI."
+    },
+    {
+      "id": "scope",
+      "group": "Production",
+      "title": "Scope",
+      "status": "decided",
+      "summary": "Everything decided ships, site and game, in 8 Apply steps: foundations \u2192 components \u2192 layouts + shell \u2192 accessibility \u2192 orb stick \u2192 fireworks + calm \u2192 content \u2192 docs. Waits: mirror, icons, states, performance.",
+      "page": "scope"
+    }
+  ],
+  "accent": "#FFD03B"
+}

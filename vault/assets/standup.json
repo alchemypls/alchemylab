@@ -50,5 +50,6 @@
     ],
     "estimated": true,
     "note": "Rectangular face about 3/4\" wide; switch and bracket behind it."
-  }
+  },
+  "project": "pinball-crawl"
 }

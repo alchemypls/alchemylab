@@ -21,13 +21,15 @@ const parts: Part[] = readdirSync(DIR)
 const unknown = want.filter((id) => !parts.some((p) => p.id === id));
 if (unknown.length) { console.error(`no part file for: ${unknown.join(', ')}`); process.exit(1); }
 
-const same = (a: unknown, b: unknown) => JSON.stringify({ ...(a as object), updated: 0 }) === JSON.stringify({ ...(b as object), updated: 0 });
+// `project` (which workspace project the file belongs to, lib/workspace.ts) is the vault's, not the drawing's: ignored here, kept on a rebuild
+const same = (a: unknown, b: unknown) => key(a) === key(b);
 let failed = false;
 for (const p of parts.filter((x) => !want.length || want.includes(x.id))) {
-  const asset = p.make(), file = path.join(VAULT, `${p.id}.json`);
+  const file = path.join(VAULT, `${p.id}.json`);
+  const prev = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : null;
+  const asset = { ...p.make(), ...(prev?.project && { project: prev.project }) };
   const { errors, warnings } = validateAsset(asset);
   if (errors.length) { failed = true; console.log(`✗ ${p.id}: ${errors.join('; ')}`); continue; }
-  const prev = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : null;
   if (prev && same(prev, asset)) { if (!check) remember(p.id, prev); console.log(`= ${p.id}`); continue; }
   if (check) { failed = true; console.log(`✗ ${p.id}: ${prev ? 'vault file differs from its part (edited on Fab? update the part, or build with --force)' : 'no vault file yet (npm run parts:build)'}`); continue; }
   if (prev && !force && !builtBefore(p.id, prev)) { console.log(`! ${p.id}: changed on disk since it was built (edited on Fab?). --force to overwrite`); continue; }
@@ -40,7 +42,7 @@ process.exit(failed ? 1 : 0);
 // What each part last wrote, so a hand edit on Fab is noticed instead of overwritten (.render/, not committed)
 function stampFile() { return path.join(process.cwd(), '.render', 'parts.json'); }
 function stamps(): Record<string, string> { try { return JSON.parse(readFileSync(stampFile(), 'utf8')); } catch { return {}; } }
-function key(a: unknown) { return JSON.stringify({ ...(a as object), updated: 0 }); }
+function key(a: unknown) { return JSON.stringify({ ...(a as object), updated: 0, project: undefined }); }
 function builtBefore(id: string, prev: unknown) { const s = stamps()[id]; return s === undefined ? false : s === key(prev); }
 function remember(id: string, a: unknown) {
   const all = stamps(); all[id] = key(a);

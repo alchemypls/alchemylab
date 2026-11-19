@@ -22,8 +22,12 @@ export function Field({ label, children }: { label: string; children: React.Reac
 export function usePaletteInUse(): { id?: string; palette: Palette; all: { id: string; asset: Palette }[] } {
   const { entries } = usePalettes();
   const picked = useWorkbenchStore((s) => s.swatchPalette);
-  const e = entries.find((x) => x.id === picked) ?? entries[0];
-  return { id: e?.id, palette: e?.asset ?? BASE_PALETTE, all: entries };
+  const projectId = useWorkbenchStore((s) => s.lastProjectId);
+  // The open project's palettes first, then shared ones; another project's only while it's the one picked
+  const mine = entries.filter((x) => x.asset.project === projectId), shared = entries.filter((x) => !x.asset.project);
+  const all = [...mine, ...shared, ...entries.filter((x) => x.id === picked && x.asset.project && x.asset.project !== projectId)];
+  const e = all.find((x) => x.id === picked) ?? all[0];
+  return { id: e?.id, palette: e?.asset ?? BASE_PALETTE, all };
 }
 
 export function Swatches({ value, onChange, noNone }: { value?: string; onChange: (v: string | undefined) => void; noNone?: boolean }) {

@@ -80,5 +80,6 @@
   },
   "grid": {
     "cell": 64
-  }
+  },
+  "project": "pinball-crawl"
 }

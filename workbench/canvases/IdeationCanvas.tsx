@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useWorkspace } from '@/workbench/hooks/useWorkspace';
 import { useWorkbenchStore } from '@/lib/store';
 import { useDesignEditor } from '@/workbench/hooks/useDesignEditor';
 import { useSheetView } from '@/workbench/hooks/useSheetView';
@@ -35,12 +36,15 @@ const BLOCK_TOOLS = toolsFor(['read', 'select']);
 
 export function IdeationCanvas() {
   const active        = useWorkbenchStore((s) => s.activeScene === 'ideation');
-  const { bible: bibleId, page: pageId } = useWorkbenchStore((s) => s.designView);
+  const pageId = useWorkbenchStore((s) => s.designView.page);
   const setDesignView = useWorkbenchStore((s) => s.setDesignView);
+  const { current: project, loaded: listed } = useWorkspace();   // the bible is the workspace project's (header picker)
+  const bibleId = project?.bible ? project.id : undefined;
   const doc = useDesignEditor(bibleId, pageId);
   const { list, bible, shown, apply, current, setSave } = doc;
 
   const [nav,      setNav]      = useState<string[]>([]);
+  useEffect(() => setNav([]), [bibleId]);   // back history is per project
   const [selected, setSelected] = useState<string | null>(null);   // block page
   const [pageProps, setPageProps] = useState(false);
   const [layersOpen, setLayersOpen] = useState(false);
@@ -75,11 +79,6 @@ export function IdeationCanvas() {
   };
   const sv = useSheetView({ sheet, active, panOnDrag: tool === 'read', onKey, onCtrlWheel: isVector ? vt.stepLayer : undefined });   // Ctrl + wheel walks the layer pips
   const { view, fit } = sv;
-
-  // Bind to the first bible on disk if none is chosen yet
-  useEffect(() => {
-    if (!bibleId && list[0]) setDesignView({ bible: list[0].id, page: 'index' });
-  }, [bibleId, list, setDesignView]);
 
   // Each page opens fitted, with the Read tool unless it was just created.
   useEffect(() => {
@@ -184,8 +183,8 @@ export function IdeationCanvas() {
           </Sheet>
         ) : (
           <EmptyNote>
-            {!list.length
-              ? <span>No design bible yet.<br /><span className="font-mono text-sm">Run /design-bible in Claude Code to start one.</span></span>
+            {!listed ? 'Loading…' : !bibleId
+              ? <span>{project ? `“${project.name}” has no design bible yet.` : 'No project open.'}<br /><span className="font-mono text-sm">Run /design-bible in Claude Code to start one.</span></span>
               : `Page “${pageId}” isn’t built yet.`}
           </EmptyNote>
         )}
@@ -205,13 +204,6 @@ export function IdeationCanvas() {
           pickers={
             <>
               <button onClick={back} disabled={!nav.length} className={TBTN} title="Back" aria-label="Back">←</button>
-              <select
-                value={bibleId ?? ''} className={SELECT} title="Bible"
-                onChange={(e) => { setNav([]); setDesignView({ bible: e.target.value, page: 'index' }); e.target.blur(); }}
-              >
-                {!bibleId && <option value="">—</option>}
-                {list.map((b) => <option key={b.id} value={b.id} className="bg-neutral-900">{b.title}</option>)}
-              </select>
               <select
                 value={pageId} className={SELECT} title="Page"
                 onChange={(e) => { const v = e.target.value; e.target.blur(); if (v === NEW_PAGE) createPage(); else open(v); }}

@@ -12,6 +12,7 @@
     "asset:render": "node scripts/run.cjs scripts/asset-render.tsx",
     "asset:info": "node scripts/run.cjs scripts/asset-info.ts",
     "page:render": "node scripts/run.cjs scripts/page-render.tsx",
+    "bible:export": "node scripts/run.cjs scripts/bible-export.tsx",
     "test": "vitest run",
     "test:watch": "vitest"
   },

@@ -3,13 +3,15 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useWorkbenchStore } from '@/lib/store';
 import { useVault } from '@/workbench/hooks/useVault';
+import { inProject } from '@/lib/workspace';
 
 // Opens the file vault (vault/ on disk). Only Ideation and Fab use it.
 export function VaultButton() {
   const files       = useWorkbenchStore((s) => s.activeScene === 'ideation' || s.activeScene === 'fab');
   const vaultOpen   = useWorkbenchStore((s) => s.fileVaultOpen);
   const toggleVault = useWorkbenchStore((s) => s.toggleFileVault);
-  const count       = useVault().entries.length;
+  const projectId   = useWorkbenchStore((s) => s.lastProjectId);
+  const count       = useVault().entries.filter((e) => inProject(e.asset, projectId)).length;   // what the vault shows here
   if (!files) return null;
 
   return (

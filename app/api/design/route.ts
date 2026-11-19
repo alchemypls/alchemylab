@@ -8,6 +8,9 @@
 //       Validated (422 + issues on errors). Send x-base-mtime = the x-mtime you edited from:
 //       if the file changed since (the agent wrote it), 409 — reload instead of clobbering.
 //   PUT /api/design?bible=x&asset=file.png → store the raw body in assets/ (image types only)
+//   PUT /api/design?bible=x&new=1          → a new bible: 409 if design/x/ already has one
+//   DELETE /api/design?bible=x             → moves design/x/ to design/.trash/x-<time>/ (a project deleted from the
+//       picker); nothing is erased, the folder can be moved back by hand
 //
 // Fit reports go to /api/design/fit. Local dev tool only: reads and writes the repo's design/ folder.
 
@@ -61,7 +64,7 @@ async function list(): Promise<BibleSummary[]> {
       return { id, title: page?.title ?? id };
     }));
     pages.sort((a, b) => (a.id === 'index' ? -1 : b.id === 'index' ? 1 : a.title.localeCompare(b.title)));
-    out.push({ id: d.name, title: bible.title ?? d.name, pages });
+    out.push({ id: d.name, title: bible.title ?? d.name, pages, template: bible.template, accent: bible.accent, archived: bible.archived || undefined, source: bible.source });
   }
   return out;
 }
@@ -123,6 +126,7 @@ export async function PUT(req: Request) {
 
   const base = req.headers.get('x-base-mtime');
   const current = await mtime(t.file);
+  if (q.get('new') && current !== null) return fail(409, `"${q.get('bible')}" already exists`);
   if (base !== null && current !== null && base !== current) { log.stale(t.file, base, current); return fail(409, 'Changed on disk since you loaded it'); }
   const before = current === null ? undefined : await readJson(t.file).catch(() => null);
 
@@ -132,4 +136,17 @@ export async function PUT(req: Request) {
   await fs.rename(tmp, t.file);
   log.saved(t.file, before, body, issues.warnings);
   return Response.json({ warnings: issues.warnings }, { headers: { 'x-mtime': (await mtime(t.file)) ?? '' } });
+}
+
+export async function DELETE(req: Request) {
+  const q = new URL(req.url).searchParams;
+  if (q.get('page') || q.get('asset')) return fail(400, 'Only a whole bible can be deleted here');
+  const t = target(q);
+  if (t instanceof Response) return t;
+  if (!(await mtime(t.file))) return fail(404, `No bible "${q.get('bible')}"`);
+  const to = path.join(ROOT, '.trash', `${q.get('bible')}-${Date.now()}`);
+  await fs.mkdir(path.dirname(to), { recursive: true });
+  await fs.rename(t.dir, to);
+  log.deleted(t.dir, `(moved to ${path.relative(ROOT, to)})`);
+  return Response.json({ movedTo: path.relative(process.cwd(), to) });
 }

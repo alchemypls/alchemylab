@@ -1,0 +1,3020 @@
+{
+ "source": "/home/alchemypls/Desktop/code/website/alchemypls.github.io",
+ "commit": "96102a3 (+ uncommitted changes)",
+ "date": "2026-11-18",
+ "scope": {
+  "ui": [
+   "src/app/globals.css",
+   "src/app/layout.tsx",
+   "src/app/page.tsx",
+   "src/app/sandbox/nebula/page.tsx",
+   "src/app/sandbox/page.tsx",
+   "src/components/home/base/InfoBar.tsx",
+   "src/components/home/base/Layout.tsx",
+   "src/components/home/base/Navigation.tsx",
+   "src/components/home/base/Orb.tsx",
+   "src/components/home/pages/About.tsx",
+   "src/components/home/pages/Experience.tsx",
+   "src/components/home/pages/Game.tsx",
+   "src/components/home/pages/OSC.tsx",
+   "src/components/home/pages/Projects.tsx",
+   "src/components/home/pages/Skills.tsx",
+   "src/components/home/pages/index.ts",
+   "src/components/home/pages/types.ts",
+   "src/components/shared/lib/utils.ts",
+   "src/components/shared/ui/Text.tsx",
+   "src/components/shared/ui/animations/HoverSparkles.tsx",
+   "src/components/shared/ui/animations/index.ts",
+   "src/components/shared/ui/containers/clear/NavBar.tsx",
+   "src/components/shared/ui/containers/clear/index.ts",
+   "src/components/shared/ui/containers/gem/Button.tsx",
+   "src/components/shared/ui/containers/gem/Card.tsx",
+   "src/components/shared/ui/containers/gem/Diamond.tsx",
+   "src/components/shared/ui/containers/gem/index.ts",
+   "src/components/shared/ui/effects/crystal/Aura.tsx",
+   "src/components/shared/ui/effects/crystal/Corner.tsx",
+   "src/components/shared/ui/effects/crystal/CornerSpacers.tsx",
+   "src/components/shared/ui/effects/crystal/Filigree.tsx",
+   "src/components/shared/ui/effects/crystal/Glass.tsx",
+   "src/components/shared/ui/effects/crystal/Nebula.tsx",
+   "src/components/shared/ui/effects/crystal/Pulse.tsx",
+   "src/components/shared/ui/effects/crystal/Sparkles.tsx",
+   "src/components/shared/ui/effects/crystal/Wireframe.tsx",
+   "src/components/shared/ui/effects/crystal/context.tsx",
+   "src/components/shared/ui/effects/crystal/index.tsx",
+   "src/components/game/ui/GameHUD.tsx",
+   "src/components/game/cori/CoriBubble.tsx"
+  ],
+  "backdrop": "Changed 2026-11-18 (topic: color): the game is in scope — one UI and palette for site and game. Exempt: star temperature colors (SkyStars, starFlame) and sky shaders (NebulaField, Cirrus, MilkyWay). Game colors not re-inventoried here; the Color page's agent brief maps them.",
+  "dead": [
+   "src/app/globals.css:35-404 (legacy classes, 0 uses)",
+   "src/components/shared/ui/Text.tsx (Heading/Label/Paragraph/Code/DataValue, 0 imports)"
+  ]
+ },
+ "headline": {
+  "colorValues": 119,
+  "colorValuesLive": 92,
+  "tokensDefined": 2,
+  "tokenNamesUndefined": 45,
+  "paddingMarginClassesOverridden": 62,
+  "textSizes": 14,
+  "trackingSteps": 8,
+  "whiteTextAlphas": 10,
+  "radii": 10,
+  "shadows": 20,
+  "durations": 28
+ },
+ "topics": {
+  "color": {
+   "hex": {
+    "#00ffff": {
+     "n": 8,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:48",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:56",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:57",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:71",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:72",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:91",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:92",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:107"
+     ]
+    },
+    "#C9A84C": {
+     "n": 7,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:110",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:33",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:56",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:58",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:59",
+      "src/components/shared/ui/effects/crystal/Filigree.tsx:139",
+      "src/components/shared/ui/effects/crystal/context.tsx:247"
+     ]
+    },
+    "#ffd700": {
+     "n": 5,
+     "at": [
+      "src/app/globals.css:70",
+      "src/app/globals.css:71",
+      "src/app/globals.css:291",
+      "src/app/globals.css:301",
+      "src/app/globals.css:314"
+     ]
+    },
+    "#00ff88": {
+     "n": 5,
+     "at": [
+      "src/app/globals.css:217",
+      "src/app/globals.css:231",
+      "src/app/globals.css:252",
+      "src/app/globals.css:264",
+      "src/app/globals.css:287"
+     ]
+    },
+    "#080c18": {
+     "n": 4,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:98",
+      "src/components/shared/ui/containers/gem/Card.tsx:98",
+      "src/components/shared/ui/containers/gem/Card.tsx:98",
+      "src/components/shared/ui/containers/gem/Card.tsx:309"
+     ]
+    },
+    "#22d3ee": {
+     "n": 4,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Nebula.tsx:48",
+      "src/components/shared/ui/effects/crystal/Nebula.tsx:63",
+      "src/components/shared/ui/effects/crystal/Pulse.tsx:26",
+      "src/components/shared/ui/effects/crystal/context.tsx:109"
+     ]
+    },
+    "#ffffff": {
+     "n": 3,
+     "at": [
+      "src/app/globals.css:5",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:48",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:107"
+     ]
+    },
+    "#fff": {
+     "n": 3,
+     "at": [
+      "src/app/globals.css:25",
+      "src/app/globals.css:60",
+      "src/app/globals.css:149"
+     ]
+    },
+    "#F0D890": {
+     "n": 3,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Corner.tsx:32",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:57",
+      "src/components/shared/ui/effects/crystal/context.tsx:246"
+     ]
+    },
+    "#c4b5fd": {
+     "n": 3,
+     "at": [
+      "src/components/shared/ui/effects/crystal/context.tsx:107",
+      "src/components/shared/ui/effects/crystal/context.tsx:108",
+      "src/components/game/cori/CoriBubble.tsx:21"
+     ]
+    },
+    "#000": {
+     "n": 2,
+     "at": [
+      "src/app/globals.css:24",
+      "src/app/globals.css:43"
+     ]
+    },
+    "#87ceeb": {
+     "n": 2,
+     "at": [
+      "src/app/globals.css:76",
+      "src/app/globals.css:77"
+     ]
+    },
+    "#8b4513": {
+     "n": 2,
+     "at": [
+      "src/app/globals.css:182",
+      "src/app/globals.css:200"
+     ]
+    },
+    "#f4e4bc": {
+     "n": 2,
+     "at": [
+      "src/app/globals.css:196",
+      "src/app/globals.css:205"
+     ]
+    },
+    "#ccc": {
+     "n": 2,
+     "at": [
+      "src/app/globals.css:237",
+      "src/app/globals.css:320"
+     ]
+    },
+    "#ffa500": {
+     "n": 2,
+     "at": [
+      "src/app/globals.css:330",
+      "src/app/globals.css:331"
+     ]
+    },
+    "#1e1b4b": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:57",
+      "src/components/shared/ui/containers/gem/Card.tsx:58"
+     ]
+    },
+    "#04010a": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:63",
+      "src/components/shared/ui/containers/gem/Card.tsx:132"
+     ]
+    },
+    "#8B7530": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Corner.tsx:34",
+      "src/components/shared/ui/effects/crystal/context.tsx:248"
+     ]
+    },
+    "#67e8f9": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/effects/crystal/context.tsx:107",
+      "src/components/game/cori/CoriBubble.tsx:19"
+     ]
+    },
+    "#6ee7b7": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/effects/crystal/context.tsx:107",
+      "src/components/game/cori/CoriBubble.tsx:20"
+     ]
+    },
+    "#000000": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:4"
+     ]
+    },
+    "#0a0a0a": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:17"
+     ]
+    },
+    "#ededed": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:18"
+     ]
+    },
+    "#1a1a2e": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:43"
+     ]
+    },
+    "#d4af37": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:101"
+     ]
+    },
+    "#00ff00": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:118"
+     ]
+    },
+    "#444": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:148"
+     ]
+    },
+    "#666": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:161"
+     ]
+    },
+    "#333": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:276"
+     ]
+    },
+    "#aaa": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:283"
+     ]
+    },
+    "#3b0764": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:57"
+     ]
+    },
+    "#312e81": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:57"
+     ]
+    },
+    "#4c1d95": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:57"
+     ]
+    },
+    "#2e1065": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:58"
+     ]
+    },
+    "#172554": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:58"
+     ]
+    },
+    "#0f172a": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:58"
+     ]
+    },
+    "#6d28d9": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:59"
+     ]
+    },
+    "#4338ca": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:59"
+     ]
+    },
+    "#5b21b6": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:59"
+     ]
+    },
+    "#3730a3": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:59"
+     ]
+    },
+    "#0a0520": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:221"
+     ]
+    },
+    "#0a0e1a": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Glass.tsx:13"
+     ]
+    },
+    "#f9a8d4": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/effects/crystal/context.tsx:107"
+     ]
+    },
+    "#f0abfc": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/effects/crystal/context.tsx:108"
+     ]
+    },
+    "#a5f3fc": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/effects/crystal/context.tsx:108"
+     ]
+    },
+    "#fde68a": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/effects/crystal/context.tsx:108"
+     ]
+    },
+    "#e879f9": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/effects/crystal/context.tsx:109"
+     ]
+    },
+    "#34d399": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/effects/crystal/context.tsx:109"
+     ]
+    },
+    "#a78bfa": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/effects/crystal/context.tsx:109"
+     ]
+    },
+    "#fcd34d": {
+     "n": 1,
+     "at": [
+      "src/components/game/cori/CoriBubble.tsx:22"
+     ]
+    }
+   },
+   "rgba": {
+    "rgba(255,255,255,0.3)": {
+     "n": 2,
+     "at": [
+      "src/app/globals.css:170",
+      "src/app/globals.css:365"
+     ]
+    },
+    "rgba(255,255,255,0.8)": {
+     "n": 2,
+     "at": [
+      "src/app/globals.css:171",
+      "src/components/shared/ui/animations/HoverSparkles.tsx:51"
+     ]
+    },
+    "rgba(0,0,0,0.9)": {
+     "n": 2,
+     "at": [
+      "src/app/globals.css:299",
+      "src/components/shared/ui/containers/gem/Card.tsx:221"
+     ]
+    },
+    "rgba(255,255,255,0.12)": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:56",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:91"
+     ]
+    },
+    "rgba(34,211,238,0.2)": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:76",
+      "src/components/shared/ui/containers/gem/Card.tsx:283"
+     ]
+    },
+    "rgba(34,211,238,0.1)": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:76",
+      "src/components/shared/ui/containers/gem/Card.tsx:283"
+     ]
+    },
+    "rgba(34,211,238,0.12)": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:77",
+      "src/components/shared/ui/containers/gem/Card.tsx:284"
+     ]
+    },
+    "rgba(34,211,238,0.06)": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:77",
+      "src/components/shared/ui/containers/gem/Card.tsx:284"
+     ]
+    },
+    "rgba(255,255,255,0.1)": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:147"
+     ]
+    },
+    "rgba(255,255,255,0.2)": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:160"
+     ]
+    },
+    "rgba(255,255,255,0.5)": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:172"
+     ]
+    },
+    "rgba(139,69,19,0.9)": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:181"
+     ]
+    },
+    "rgba(0,20,40,0.95)": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:216"
+     ]
+    },
+    "rgba(0,255,136,0.2)": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:251"
+     ]
+    },
+    "rgba(0,0,0,0.7)": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:273"
+     ]
+    },
+    "rgba(255,255,255,0.15)": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:355"
+     ]
+    },
+    "rgba(0,255,136,0.15)": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:369"
+     ]
+    },
+    "rgba(0,255,136,0.5)": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:370"
+     ]
+    },
+    "rgba(135,206,235,0.15)": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:374"
+     ]
+    },
+    "rgba(135,206,235,0.5)": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:375"
+     ]
+    },
+    "rgba(255,255,255,0.25)": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:71"
+     ]
+    },
+    "rgba(168,85,247,0.2)": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:71"
+     ]
+    },
+    "rgba(168,85,247,0.1)": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:71"
+     ]
+    },
+    "rgba(168,85,247,0.12)": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:72"
+     ]
+    },
+    "rgba(168,85,247,0.06)": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:72"
+     ]
+    },
+    "rgba(34,211,238,0.25)": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:74"
+     ]
+    },
+    "rgba(34,211,238,0.15)": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:74"
+     ]
+    },
+    "rgba(201,168,76,0.4)": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:110"
+     ]
+    }
+   },
+   "tailwind": {
+    "text-white/30": {
+     "n": 10,
+     "at": [
+      "src/components/home/pages/OSC.tsx:34",
+      "src/components/home/pages/OSC.tsx:43",
+      "src/components/home/pages/Projects.tsx:34",
+      "src/components/home/pages/Projects.tsx:43",
+      "src/components/game/ui/GameHUD.tsx:16",
+      "src/components/game/ui/GameHUD.tsx:50",
+      "src/components/game/ui/GameHUD.tsx:78",
+      "src/components/game/ui/GameHUD.tsx:92",
+      "src/components/game/ui/GameHUD.tsx:107",
+      "src/components/game/ui/GameHUD.tsx:117"
+     ]
+    },
+    "text-cyan-300": {
+     "n": 8,
+     "at": [
+      "src/components/home/base/Layout.tsx:125",
+      "src/components/home/pages/Experience.tsx:45",
+      "src/components/home/pages/Experience.tsx:52",
+      "src/components/home/pages/OSC.tsx:33",
+      "src/components/home/pages/OSC.tsx:39",
+      "src/components/home/pages/Projects.tsx:33",
+      "src/components/home/pages/Projects.tsx:39",
+      "src/components/home/pages/Skills.tsx:30"
+     ]
+    },
+    "text-white": {
+     "n": 6,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:30",
+      "src/components/shared/ui/containers/gem/Button.tsx:40",
+      "src/components/shared/ui/containers/gem/Card.tsx:244",
+      "src/components/game/ui/GameHUD.tsx:80",
+      "src/components/game/ui/GameHUD.tsx:85",
+      "src/components/game/ui/GameHUD.tsx:96"
+     ]
+    },
+    "border-white/10": {
+     "n": 5,
+     "at": [
+      "src/components/home/pages/Experience.tsx:5",
+      "src/components/home/pages/Skills.tsx:17",
+      "src/components/shared/ui/containers/gem/Button.tsx:40",
+      "src/components/game/ui/GameHUD.tsx:97",
+      "src/components/game/ui/GameHUD.tsx:117"
+     ]
+    },
+    "text-white/40": {
+     "n": 5,
+     "at": [
+      "src/components/home/pages/Experience.tsx:46",
+      "src/components/home/pages/Experience.tsx:53",
+      "src/components/home/pages/Skills.tsx:32",
+      "src/components/game/ui/GameHUD.tsx:83",
+      "src/components/game/ui/GameHUD.tsx:97"
+     ]
+    },
+    "text-white/80": {
+     "n": 4,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:49",
+      "src/components/home/pages/Experience.tsx:5",
+      "src/components/home/pages/Skills.tsx:17",
+      "src/components/home/pages/Skills.tsx:31"
+     ]
+    },
+    "text-white/60": {
+     "n": 4,
+     "at": [
+      "src/components/home/pages/Experience.tsx:55",
+      "src/components/home/pages/OSC.tsx:42",
+      "src/components/home/pages/Projects.tsx:42",
+      "src/components/home/pages/Skills.tsx:33"
+     ]
+    },
+    "text-white/50": {
+     "n": 4,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:80",
+      "src/components/game/ui/GameHUD.tsx:85",
+      "src/components/game/ui/GameHUD.tsx:96",
+      "src/components/game/ui/GameHUD.tsx:109"
+     ]
+    },
+    "border-white/20": {
+     "n": 4,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:80",
+      "src/components/game/ui/GameHUD.tsx:85",
+      "src/components/game/ui/GameHUD.tsx:96",
+      "src/components/game/ui/GameHUD.tsx:109"
+     ]
+    },
+    "text-cyan-400": {
+     "n": 3,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:27",
+      "src/components/game/ui/GameHUD.tsx:18",
+      "src/components/game/ui/GameHUD.tsx:109"
+     ]
+    },
+    "border-cyan-400/50": {
+     "n": 3,
+     "at": [
+      "src/components/home/base/Orb.tsx:64",
+      "src/components/shared/ui/containers/gem/Card.tsx:76",
+      "src/components/shared/ui/containers/gem/Card.tsx:283"
+     ]
+    },
+    "border-white/40": {
+     "n": 3,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:80",
+      "src/components/game/ui/GameHUD.tsx:85",
+      "src/components/game/ui/GameHUD.tsx:96"
+     ]
+    },
+    "text-white/20": {
+     "n": 3,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:97",
+      "src/components/game/ui/GameHUD.tsx:115",
+      "src/components/game/ui/GameHUD.tsx:132"
+     ]
+    },
+    "text-white/70": {
+     "n": 2,
+     "at": [
+      "src/components/home/base/Layout.tsx:129",
+      "src/components/home/base/Layout.tsx:189"
+     ]
+    },
+    "bg-white/5": {
+     "n": 2,
+     "at": [
+      "src/components/home/pages/Experience.tsx:5",
+      "src/components/home/pages/Skills.tsx:17"
+     ]
+    },
+    "text-cyan-400/70": {
+     "n": 2,
+     "at": [
+      "src/components/home/pages/Skills.tsx:12",
+      "src/components/home/pages/Skills.tsx:59"
+     ]
+    },
+    "bg-white/10": {
+     "n": 2,
+     "at": [
+      "src/components/home/pages/Skills.tsx:67",
+      "src/components/shared/ui/containers/gem/Button.tsx:41"
+     ]
+    },
+    "bg-white": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/animations/HoverSparkles.tsx:45",
+      "src/components/shared/ui/containers/gem/Diamond.tsx:61"
+     ]
+    },
+    "text-cyan-200": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:50",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:109"
+     ]
+    },
+    "border-cyan-400/30": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:77",
+      "src/components/shared/ui/containers/gem/Card.tsx:284"
+     ]
+    },
+    "bg-black": {
+     "n": 1,
+     "at": [
+      "src/app/page.tsx:14"
+     ]
+    },
+    "bg-cyan-500/50": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:48"
+     ]
+    },
+    "border-cyan-500/40": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Orb.tsx:61"
+     ]
+    },
+    "bg-cyan-400": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:80"
+     ]
+    },
+    "bg-white/15": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:124"
+     ]
+    },
+    "border-white/30": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:41"
+     ]
+    },
+    "bg-white/20": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:42"
+     ]
+    },
+    "border-purple-400/50": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:71"
+     ]
+    },
+    "border-purple-400/30": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:72"
+     ]
+    },
+    "border-cyan-400/60": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:74"
+     ]
+    },
+    "text-purple-100": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:221"
+     ]
+    },
+    "border-purple-500/30": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:221"
+     ]
+    },
+    "text-yellow-400/80": {
+     "n": 1,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:17"
+     ]
+    },
+    "text-emerald-400": {
+     "n": 1,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:19"
+     ]
+    },
+    "border-cyan-400/40": {
+     "n": 1,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:109"
+     ]
+    },
+    "text-red-400": {
+     "n": 1,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:117"
+     ]
+    },
+    "border-red-400/40": {
+     "n": 1,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:117"
+     ]
+    },
+    "text-white/25": {
+     "n": 1,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:138"
+     ]
+    },
+    "bg-black/65": {
+     "n": 1,
+     "at": [
+      "src/components/game/cori/CoriBubble.tsx:115"
+     ]
+    },
+    "text-white/90": {
+     "n": 1,
+     "at": [
+      "src/components/game/cori/CoriBubble.tsx:123"
+     ]
+    }
+   },
+   "clusters": {
+    "cyan": [
+     "#00ffff",
+     "#22d3ee",
+     "#67e8f9",
+     "#a5f3fc",
+     "cyan (named)",
+     "cyan-200/300/400/500 + 8 alpha steps",
+     "rgba(34,211,238,.06/.1/.12/.15/.2/.25)"
+    ],
+    "white text": [
+     "white",
+     "white/90",
+     "/80",
+     "/70",
+     "/60",
+     "/50",
+     "/40",
+     "/30",
+     "/25",
+     "/20"
+    ],
+    "gold": [
+     "#C9A84C",
+     "#F0D890",
+     "#8B7530",
+     "#d4af37 (dead)",
+     "#ffd700 (dead)"
+    ],
+    "tarot purple": [
+     "#3b0764",
+     "#1e1b4b",
+     "#312e81",
+     "#4c1d95",
+     "#2e1065",
+     "#172554",
+     "#0f172a",
+     "#6d28d9",
+     "#4338ca",
+     "#5b21b6",
+     "#3730a3",
+     "#0a0520",
+     "#04010a",
+     "purple-100/400/500",
+     "rgba(168,85,247,…)"
+    ],
+    "panel darks": [
+     "#080c18 /30 /40 /60",
+     "#0a0e1a",
+     "#04010a",
+     "#0a0520",
+     "black/65"
+    ],
+    "crystal nebula": [
+     "#67e8f9",
+     "#c4b5fd",
+     "#f9a8d4",
+     "#6ee7b7",
+     "#f0abfc",
+     "#a5f3fc",
+     "#fde68a",
+     "#22d3ee",
+     "#e879f9",
+     "#34d399",
+     "#a78bfa"
+    ],
+    "status / mood": [
+     "yellow-400/80",
+     "emerald-400",
+     "red-400",
+     "#6ee7b7",
+     "#c4b5fd",
+     "#fcd34d"
+    ]
+   },
+   "drift": "92 live color values, no color tokens: cyan alone is written 4 hex ways + 4 Tailwind shades + 8 alphas; white text has 10 opacity steps"
+  },
+  "type": {
+   "sizes": {
+    "text-sm": {
+     "n": 22,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:49",
+      "src/components/home/base/Layout.tsx:129",
+      "src/components/home/base/Layout.tsx:189",
+      "src/components/home/pages/Experience.tsx:45",
+      "src/components/home/pages/Experience.tsx:52",
+      "src/components/home/pages/Experience.tsx:55",
+      "src/components/home/pages/OSC.tsx:33",
+      "src/components/home/pages/OSC.tsx:39",
+      "src/components/home/pages/OSC.tsx:42",
+      "src/components/home/pages/Projects.tsx:33",
+      "src/components/home/pages/Projects.tsx:39",
+      "src/components/home/pages/Projects.tsx:42",
+      "src/components/home/pages/Skills.tsx:30",
+      "src/components/shared/ui/Text.tsx:61",
+      "src/components/shared/ui/Text.tsx:94",
+      "src/components/shared/ui/Text.tsx:95",
+      "src/components/shared/ui/Text.tsx:129",
+      "src/components/shared/ui/Text.tsx:144",
+      "src/components/shared/ui/Text.tsx:179",
+      "src/components/shared/ui/containers/gem/Button.tsx:48",
+      "src/components/game/ui/GameHUD.tsx:80",
+      "src/components/game/ui/GameHUD.tsx:85"
+     ]
+    },
+    "text-xs": {
+     "n": 14,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:27",
+      "src/components/home/pages/Experience.tsx:5",
+      "src/components/home/pages/Experience.tsx:46",
+      "src/components/home/pages/Experience.tsx:53",
+      "src/components/home/pages/OSC.tsx:34",
+      "src/components/home/pages/OSC.tsx:43",
+      "src/components/home/pages/Projects.tsx:34",
+      "src/components/home/pages/Projects.tsx:43",
+      "src/components/home/pages/Skills.tsx:17",
+      "src/components/home/pages/Skills.tsx:31",
+      "src/components/shared/ui/Text.tsx:60",
+      "src/components/shared/ui/Text.tsx:96",
+      "src/components/shared/ui/Text.tsx:176",
+      "src/components/shared/ui/containers/gem/Button.tsx:47"
+     ]
+    },
+    "text-[9px]": {
+     "n": 11,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:50",
+      "src/components/game/ui/GameHUD.tsx:78",
+      "src/components/game/ui/GameHUD.tsx:92",
+      "src/components/game/ui/GameHUD.tsx:94",
+      "src/components/game/ui/GameHUD.tsx:107",
+      "src/components/game/ui/GameHUD.tsx:109",
+      "src/components/game/ui/GameHUD.tsx:115",
+      "src/components/game/ui/GameHUD.tsx:117",
+      "src/components/game/ui/GameHUD.tsx:132",
+      "src/components/game/ui/GameHUD.tsx:138",
+      "src/components/game/cori/CoriBubble.tsx:121"
+     ]
+    },
+    "text-[10px]": {
+     "n": 7,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:27",
+      "src/components/home/pages/Skills.tsx:12",
+      "src/components/home/pages/Skills.tsx:32",
+      "src/components/home/pages/Skills.tsx:33",
+      "src/components/home/pages/Skills.tsx:59",
+      "src/components/game/ui/GameHUD.tsx:58",
+      "src/components/game/ui/GameHUD.tsx:83"
+     ]
+    },
+    "text-2xl": {
+     "n": 3,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:30",
+      "src/components/shared/ui/Text.tsx:17",
+      "src/components/shared/ui/Text.tsx:18"
+     ]
+    },
+    "text-lg": {
+     "n": 3,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:49",
+      "src/components/home/base/Layout.tsx:125",
+      "src/components/shared/ui/Text.tsx:19"
+     ]
+    },
+    "text-xl": {
+     "n": 3,
+     "at": [
+      "src/components/home/base/Layout.tsx:125",
+      "src/components/shared/ui/Text.tsx:18",
+      "src/components/shared/ui/Text.tsx:19"
+     ]
+    },
+    "text-3xl": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/Text.tsx:16",
+      "src/components/shared/ui/Text.tsx:17"
+     ]
+    },
+    "text-base": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/Text.tsx:62",
+      "src/components/shared/ui/containers/gem/Button.tsx:49"
+     ]
+    },
+    "text-[6px]": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:50",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:109"
+     ]
+    },
+    "text-[8px]": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:50",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:109"
+     ]
+    },
+    "text-5xl": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:30"
+     ]
+    },
+    "text-4xl": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/Text.tsx:16"
+     ]
+    },
+    "text-[13px]": {
+     "n": 1,
+     "at": [
+      "src/components/game/cori/CoriBubble.tsx:123"
+     ]
+    }
+   },
+   "weights": {
+    "font-semibold": {
+     "n": 7,
+     "at": [
+      "src/components/home/pages/Experience.tsx:45",
+      "src/components/home/pages/Experience.tsx:52",
+      "src/components/home/pages/OSC.tsx:33",
+      "src/components/home/pages/OSC.tsx:39",
+      "src/components/home/pages/Projects.tsx:33",
+      "src/components/home/pages/Projects.tsx:39",
+      "src/components/home/pages/Skills.tsx:30"
+     ]
+    },
+    "font-bold": {
+     "n": 4,
+     "at": [
+      "src/components/home/base/Layout.tsx:125",
+      "src/components/shared/ui/Text.tsx:30",
+      "src/components/shared/ui/containers/gem/Card.tsx:221",
+      "src/components/shared/ui/containers/gem/Card.tsx:244"
+     ]
+    },
+    "font-medium": {
+     "n": 3,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:50",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:109",
+      "src/components/shared/ui/containers/gem/Button.tsx:80"
+     ]
+    },
+    "font-black": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:30"
+     ]
+    }
+   },
+   "families": {
+    "font-display": {
+     "n": 15,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:49",
+      "src/components/home/base/Layout.tsx:125",
+      "src/components/home/pages/Experience.tsx:45",
+      "src/components/home/pages/Experience.tsx:52",
+      "src/components/home/pages/OSC.tsx:33",
+      "src/components/home/pages/OSC.tsx:39",
+      "src/components/home/pages/Projects.tsx:33",
+      "src/components/home/pages/Projects.tsx:39",
+      "src/components/home/pages/Skills.tsx:30",
+      "src/components/shared/ui/Text.tsx:30",
+      "src/components/shared/ui/Text.tsx:71",
+      "src/components/shared/ui/Text.tsx:176",
+      "src/components/shared/ui/containers/gem/Button.tsx:80",
+      "src/components/game/ui/GameHUD.tsx:58",
+      "src/components/game/cori/CoriBubble.tsx:121"
+     ]
+    },
+    "font-mono": {
+     "n": 10,
+     "at": [
+      "src/components/home/pages/Experience.tsx:46",
+      "src/components/home/pages/Experience.tsx:53",
+      "src/components/home/pages/OSC.tsx:34",
+      "src/components/home/pages/OSC.tsx:43",
+      "src/components/home/pages/Projects.tsx:34",
+      "src/components/home/pages/Projects.tsx:43",
+      "src/components/home/pages/Skills.tsx:32",
+      "src/components/shared/ui/Text.tsx:74",
+      "src/components/shared/ui/Text.tsx:129",
+      "src/components/shared/ui/Text.tsx:144"
+     ]
+    },
+    "font-family:'CourierNew',monospace": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:23"
+     ]
+    }
+   },
+   "tracking": {
+    "tracking-wider": {
+     "n": 8,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:30",
+      "src/components/home/base/Layout.tsx:125",
+      "src/components/shared/ui/Text.tsx:30",
+      "src/components/shared/ui/Text.tsx:71",
+      "src/components/shared/ui/Text.tsx:176",
+      "src/components/shared/ui/containers/gem/Button.tsx:81",
+      "src/components/shared/ui/containers/gem/Card.tsx:221",
+      "src/components/shared/ui/containers/gem/Card.tsx:244"
+     ]
+    },
+    "tracking-[0.25em]": {
+     "n": 5,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:58",
+      "src/components/game/ui/GameHUD.tsx:78",
+      "src/components/game/ui/GameHUD.tsx:92",
+      "src/components/game/ui/GameHUD.tsx:107",
+      "src/components/game/ui/GameHUD.tsx:138"
+     ]
+    },
+    "tracking-[0.3em]": {
+     "n": 3,
+     "at": [
+      "src/components/home/pages/Skills.tsx:12",
+      "src/components/home/pages/Skills.tsx:59",
+      "src/components/game/cori/CoriBubble.tsx:121"
+     ]
+    },
+    "tracking-widest": {
+     "n": 3,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:94",
+      "src/components/game/ui/GameHUD.tsx:109",
+      "src/components/game/ui/GameHUD.tsx:117"
+     ]
+    },
+    "tracking-[0.15em]": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:50",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:109"
+     ]
+    },
+    "tracking-[0.4em]": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:27"
+     ]
+    },
+    "tracking-[0.35em]": {
+     "n": 1,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:50"
+     ]
+    },
+    "tracking-[0.2em]": {
+     "n": 1,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:132"
+     ]
+    }
+   },
+   "leading": {
+    "leading-relaxed": {
+     "n": 10,
+     "at": [
+      "src/components/home/base/Layout.tsx:129",
+      "src/components/home/base/Layout.tsx:189",
+      "src/components/home/pages/Experience.tsx:55",
+      "src/components/home/pages/OSC.tsx:42",
+      "src/components/home/pages/Projects.tsx:42",
+      "src/components/home/pages/Skills.tsx:33",
+      "src/components/shared/ui/Text.tsx:94",
+      "src/components/shared/ui/Text.tsx:95",
+      "src/components/shared/ui/Text.tsx:96",
+      "src/components/game/ui/GameHUD.tsx:132"
+     ]
+    },
+    "leading-none": {
+     "n": 5,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:80",
+      "src/components/game/ui/GameHUD.tsx:85",
+      "src/components/game/ui/GameHUD.tsx:94",
+      "src/components/game/ui/GameHUD.tsx:109",
+      "src/components/game/ui/GameHUD.tsx:117"
+     ]
+    },
+    "leading-snug": {
+     "n": 1,
+     "at": [
+      "src/components/game/cori/CoriBubble.tsx:123"
+     ]
+    }
+   },
+   "facts": [
+    "body: Inter via next/font class (src/app/layout.tsx:6) beats globals.css body font-family Courier New (globals.css:24)",
+    "--font-sans and --font-mono are both Courier New (globals.css:11-12): font-mono = Courier",
+    "font-display ×15 has no @theme value: Tailwind v4 emits no class, it renders Inter",
+    "Orbitron (named in CLAUDE.md) is never loaded"
+   ],
+   "drift": "14 sizes (5 arbitrary px: 6, 8, 9, 10, 13), 8 tracking steps, 3 families of which one (display) doesn’t exist"
+  },
+  "spacing": {
+   "classes": {
+    "p-4": {
+     "n": 6,
+     "at": [
+      "src/components/shared/ui/Text.tsx:143",
+      "src/components/shared/ui/containers/gem/Card.tsx:34",
+      "src/components/shared/ui/containers/gem/Card.tsx:213",
+      "src/components/shared/ui/containers/gem/Card.tsx:238",
+      "src/components/game/ui/GameHUD.tsx:45",
+      "src/components/game/ui/GameHUD.tsx:130"
+     ]
+    },
+    "gap-2": {
+     "n": 6,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:48",
+      "src/components/game/ui/GameHUD.tsx:48",
+      "src/components/game/ui/GameHUD.tsx:75",
+      "src/components/game/ui/GameHUD.tsx:77",
+      "src/components/game/ui/GameHUD.tsx:91",
+      "src/components/game/ui/GameHUD.tsx:106"
+     ]
+    },
+    "gap-1.5": {
+     "n": 5,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:25",
+      "src/components/home/pages/Experience.tsx:56",
+      "src/components/home/pages/Skills.tsx:13",
+      "src/components/shared/ui/containers/gem/Button.tsx:47",
+      "src/components/game/cori/CoriBubble.tsx:119"
+     ]
+    },
+    "px-2": {
+     "n": 5,
+     "at": [
+      "src/components/home/pages/Experience.tsx:5",
+      "src/components/home/pages/Skills.tsx:17",
+      "src/components/game/ui/GameHUD.tsx:94",
+      "src/components/game/ui/GameHUD.tsx:109",
+      "src/components/game/ui/GameHUD.tsx:117"
+     ]
+    },
+    "mb-3": {
+     "n": 5,
+     "at": [
+      "src/components/home/pages/Experience.tsx:51",
+      "src/components/home/pages/OSC.tsx:39",
+      "src/components/home/pages/Projects.tsx:39",
+      "src/components/home/pages/Skills.tsx:29",
+      "src/components/home/pages/Skills.tsx:59"
+     ]
+    },
+    "mt-0.5": {
+     "n": 5,
+     "at": [
+      "src/components/home/pages/Experience.tsx:53",
+      "src/components/home/pages/Skills.tsx:31",
+      "src/components/home/pages/Skills.tsx:32",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:109",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:115"
+     ]
+    },
+    "mt-3": {
+     "n": 4,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:35",
+      "src/components/home/pages/About.tsx:11",
+      "src/components/home/pages/OSC.tsx:43",
+      "src/components/home/pages/Projects.tsx:43"
+     ]
+    },
+    "mt-1": {
+     "n": 4,
+     "at": [
+      "src/components/home/pages/Experience.tsx:46",
+      "src/components/home/pages/OSC.tsx:34",
+      "src/components/home/pages/Projects.tsx:34",
+      "src/components/home/pages/Skills.tsx:13"
+     ]
+    },
+    "p-5": {
+     "n": 4,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:34",
+      "src/components/shared/ui/containers/gem/Card.tsx:35",
+      "src/components/shared/ui/containers/gem/Card.tsx:213",
+      "src/components/shared/ui/containers/gem/Card.tsx:238"
+     ]
+    },
+    "px-4": {
+     "n": 3,
+     "at": [
+      "src/components/home/base/Layout.tsx:167",
+      "src/components/home/pages/Skills.tsx:33",
+      "src/components/shared/ui/containers/gem/Button.tsx:48"
+     ]
+    },
+    "py-0.5": {
+     "n": 3,
+     "at": [
+      "src/components/home/pages/Experience.tsx:5",
+      "src/components/home/pages/Skills.tsx:17",
+      "src/components/shared/ui/Text.tsx:128"
+     ]
+    },
+    "p-6": {
+     "n": 3,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:35",
+      "src/components/game/ui/GameHUD.tsx:45",
+      "src/components/game/ui/GameHUD.tsx:130"
+     ]
+    },
+    "gap-y": {
+     "n": 2,
+     "at": [
+      "src/components/home/base/Layout.tsx:107",
+      "src/components/home/base/Layout.tsx:107"
+     ]
+    },
+    "gap-3": {
+     "n": 2,
+     "at": [
+      "src/components/home/base/Layout.tsx:141",
+      "src/components/shared/ui/Text.tsx:171"
+     ]
+    },
+    "gap-4": {
+     "n": 2,
+     "at": [
+      "src/components/home/base/Layout.tsx:169",
+      "src/components/home/pages/Skills.tsx:68"
+     ]
+    },
+    "mb-0.5": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:50",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:64"
+     ]
+    },
+    "px-3": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:47",
+      "src/components/shared/ui/containers/gem/Card.tsx:221"
+     ]
+    },
+    "py-1.5": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:47",
+      "src/components/shared/ui/containers/gem/Card.tsx:221"
+     ]
+    },
+    "mb-1": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:48"
+     ]
+    },
+    "mb-4": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Layout.tsx:124"
+     ]
+    },
+    "mx-auto": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Layout.tsx:125"
+     ]
+    },
+    "gap-6": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Layout.tsx:141"
+     ]
+    },
+    "px-0": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Layout.tsx:167"
+     ]
+    },
+    "ml-[3px]": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Orb.tsx:68"
+     ]
+    },
+    "mt-4": {
+     "n": 1,
+     "at": [
+      "src/components/home/pages/Experience.tsx:56"
+     ]
+    },
+    "mt-1.5": {
+     "n": 1,
+     "at": [
+      "src/components/home/pages/Skills.tsx:33"
+     ]
+    },
+    "gap-5": {
+     "n": 1,
+     "at": [
+      "src/components/home/pages/Skills.tsx:57"
+     ]
+    },
+    "px-1.5": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/Text.tsx:128"
+     ]
+    },
+    "gap-1": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/Text.tsx:171"
+     ]
+    },
+    "my-0.5": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:68"
+     ]
+    },
+    "py-2": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:48"
+     ]
+    },
+    "px-6": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:49"
+     ]
+    },
+    "py-3": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:49"
+     ]
+    },
+    "gap-2.5": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:49"
+     ]
+    },
+    "gap-inherit": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:98"
+     ]
+    },
+    "pt-6": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:218"
+     ]
+    },
+    "pt-8": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:218"
+     ]
+    },
+    "gap-0.5": {
+     "n": 1,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:49"
+     ]
+    }
+   },
+   "widths": {
+    "w-full": {
+     "n": 11,
+     "at": [
+      "src/app/page.tsx:14",
+      "src/components/home/base/Navigation.tsx:90",
+      "src/components/home/base/Orb.tsx:57",
+      "src/components/home/pages/Skills.tsx:57",
+      "src/components/shared/ui/containers/gem/Card.tsx:87",
+      "src/components/shared/ui/containers/gem/Card.tsx:111",
+      "src/components/shared/ui/containers/gem/Card.tsx:200",
+      "src/components/shared/ui/containers/gem/Card.tsx:218",
+      "src/components/shared/ui/containers/gem/Card.tsx:296",
+      "src/components/shared/ui/containers/gem/Diamond.tsx:38",
+      "src/components/shared/ui/containers/gem/Diamond.tsx:44"
+     ]
+    },
+    "h-full": {
+     "n": 10,
+     "at": [
+      "src/components/home/base/Orb.tsx:57",
+      "src/components/shared/ui/containers/gem/Card.tsx:63",
+      "src/components/shared/ui/containers/gem/Card.tsx:87",
+      "src/components/shared/ui/containers/gem/Card.tsx:111",
+      "src/components/shared/ui/containers/gem/Card.tsx:200",
+      "src/components/shared/ui/containers/gem/Card.tsx:218",
+      "src/components/shared/ui/containers/gem/Card.tsx:243",
+      "src/components/shared/ui/containers/gem/Card.tsx:296",
+      "src/components/shared/ui/containers/gem/Diamond.tsx:38",
+      "src/components/shared/ui/containers/gem/Diamond.tsx:44"
+     ]
+    },
+    "w-12": {
+     "n": 7,
+     "at": [
+      "src/components/shared/ui/containers/gem/Diamond.tsx:30",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:11",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:12",
+      "src/components/shared/ui/effects/crystal/CornerSpacers.tsx:19",
+      "src/components/game/ui/GameHUD.tsx:78",
+      "src/components/game/ui/GameHUD.tsx:92",
+      "src/components/game/ui/GameHUD.tsx:107"
+     ]
+    },
+    "h-6": {
+     "n": 5,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:80",
+      "src/components/game/ui/GameHUD.tsx:85",
+      "src/components/game/ui/GameHUD.tsx:94",
+      "src/components/game/ui/GameHUD.tsx:109",
+      "src/components/game/ui/GameHUD.tsx:117"
+     ]
+    },
+    "w-[min(92vw,540px)]": {
+     "n": 4,
+     "at": [
+      "src/components/home/base/Layout.tsx:113",
+      "src/components/home/base/Layout.tsx:141",
+      "src/components/home/base/Layout.tsx:167",
+      "src/components/home/base/Layout.tsx:182"
+     ]
+    },
+    "w-10": {
+     "n": 4,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Corner.tsx:11",
+      "src/components/shared/ui/effects/crystal/CornerSpacers.tsx:18",
+      "src/components/shared/ui/effects/crystal/CornerSpacers.tsx:19",
+      "src/components/game/cori/CoriBubble.tsx:135"
+     ]
+    },
+    "h-10": {
+     "n": 4,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Corner.tsx:11",
+      "src/components/shared/ui/effects/crystal/CornerSpacers.tsx:18",
+      "src/components/shared/ui/effects/crystal/CornerSpacers.tsx:19",
+      "src/components/game/cori/CoriBubble.tsx:135"
+     ]
+    },
+    "w-1.5": {
+     "n": 3,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:75",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:80",
+      "src/components/game/cori/CoriBubble.tsx:120"
+     ]
+    },
+    "h-1.5": {
+     "n": 3,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:75",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:80",
+      "src/components/game/cori/CoriBubble.tsx:120"
+     ]
+    },
+    "h-12": {
+     "n": 3,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Corner.tsx:11",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:12",
+      "src/components/shared/ui/effects/crystal/CornerSpacers.tsx:19"
+     ]
+    },
+    "w-6": {
+     "n": 3,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:80",
+      "src/components/game/ui/GameHUD.tsx:83",
+      "src/components/game/ui/GameHUD.tsx:85"
+     ]
+    },
+    "h-px": {
+     "n": 2,
+     "at": [
+      "src/components/home/pages/Skills.tsx:67",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:124"
+     ]
+    },
+    "w-px": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:59",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:94"
+     ]
+    },
+    "h-2": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:59",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:94"
+     ]
+    },
+    "h-[calc(0.5rem+2px)]": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:64",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:115"
+     ]
+    },
+    "w-4": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:95",
+      "src/components/shared/ui/containers/gem/Diamond.tsx:61"
+     ]
+    },
+    "h-4": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:95",
+      "src/components/shared/ui/containers/gem/Diamond.tsx:61"
+     ]
+    },
+    "h-screen": {
+     "n": 1,
+     "at": [
+      "src/app/page.tsx:14"
+     ]
+    },
+    "min-w-[120px]": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:41"
+     ]
+    },
+    "min-w-[200px]": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:41"
+     ]
+    },
+    "w-16": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:48"
+     ]
+    },
+    "w-24": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:48"
+     ]
+    },
+    "h-0.5": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:48"
+     ]
+    },
+    "h-32": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Layout.tsx:149"
+     ]
+    },
+    "h-40": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Layout.tsx:149"
+     ]
+    },
+    "max-h-[50vh]": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Layout.tsx:167"
+     ]
+    },
+    "max-h-none": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Layout.tsx:167"
+     ]
+    },
+    "h-[350vh]": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Navigation.tsx:90"
+     ]
+    },
+    "w-[clamp(300px,45vw,700px)]": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Orb.tsx:55"
+     ]
+    },
+    "w-3/4": {
+     "n": 1,
+     "at": [
+      "src/components/home/pages/Skills.tsx:67"
+     ]
+    },
+    "w-[320px]": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:23"
+     ]
+    },
+    "w-[420px]": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:23"
+     ]
+    },
+    "w-[140px]": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:110"
+     ]
+    },
+    "h-[140px]": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:110"
+     ]
+    },
+    "w-[85%]": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:220"
+     ]
+    },
+    "h-24": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Diamond.tsx:30"
+     ]
+    },
+    "w-14": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Corner.tsx:12"
+     ]
+    },
+    "h-14": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Corner.tsx:12"
+     ]
+    },
+    "w-8": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/effects/crystal/CornerSpacers.tsx:18"
+     ]
+    },
+    "h-8": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/effects/crystal/CornerSpacers.tsx:18"
+     ]
+    },
+    "max-w-[min(300px,70vw)]": {
+     "n": 1,
+     "at": [
+      "src/components/game/cori/CoriBubble.tsx:115"
+     ]
+    }
+   },
+   "positions": {
+    "inset-0": {
+     "n": 20,
+     "at": [
+      "src/app/page.tsx:17",
+      "src/components/home/base/Layout.tsx:107",
+      "src/components/home/base/Navigation.tsx:79",
+      "src/components/home/base/Navigation.tsx:87",
+      "src/components/home/base/Orb.tsx:61",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:80",
+      "src/components/shared/ui/containers/gem/Button.tsx:94",
+      "src/components/shared/ui/containers/gem/Card.tsx:68",
+      "src/components/shared/ui/containers/gem/Card.tsx:87",
+      "src/components/shared/ui/containers/gem/Card.tsx:97",
+      "src/components/shared/ui/containers/gem/Card.tsx:104",
+      "src/components/shared/ui/containers/gem/Card.tsx:207",
+      "src/components/shared/ui/containers/gem/Card.tsx:231",
+      "src/components/shared/ui/containers/gem/Card.tsx:281",
+      "src/components/shared/ui/containers/gem/Card.tsx:296",
+      "src/components/shared/ui/containers/gem/Card.tsx:305",
+      "src/components/shared/ui/containers/gem/Card.tsx:309",
+      "src/components/shared/ui/containers/gem/Diamond.tsx:44",
+      "src/components/game/ui/GameHUD.tsx:39",
+      "src/components/game/cori/CoriBubble.tsx:104"
+     ]
+    },
+    "left-0": {
+     "n": 9,
+     "at": [
+      "src/components/home/base/Orb.tsx:68",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:124",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:17",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:19",
+      "src/components/game/ui/GameHUD.tsx:45",
+      "src/components/game/ui/GameHUD.tsx:130",
+      "src/components/game/cori/CoriBubble.tsx:106",
+      "src/components/game/cori/CoriBubble.tsx:134",
+      "src/components/game/cori/CoriBubble.tsx:140"
+     ]
+    },
+    "top-0": {
+     "n": 6,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Corner.tsx:17",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:18",
+      "src/components/game/ui/GameHUD.tsx:45",
+      "src/components/game/cori/CoriBubble.tsx:106",
+      "src/components/game/cori/CoriBubble.tsx:134",
+      "src/components/game/cori/CoriBubble.tsx:140"
+     ]
+    },
+    "right-0": {
+     "n": 5,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:124",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:18",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:20",
+      "src/components/game/ui/GameHUD.tsx:45",
+      "src/components/game/ui/GameHUD.tsx:130"
+     ]
+    },
+    "top-left": {
+     "n": 4,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:149",
+      "src/components/shared/ui/containers/gem/Card.tsx:312",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:3",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:17"
+     ]
+    },
+    "top-right": {
+     "n": 4,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:150",
+      "src/components/shared/ui/containers/gem/Card.tsx:313",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:3",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:18"
+     ]
+    },
+    "bottom-left": {
+     "n": 4,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:151",
+      "src/components/shared/ui/containers/gem/Card.tsx:314",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:3",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:19"
+     ]
+    },
+    "bottom-right": {
+     "n": 4,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:152",
+      "src/components/shared/ui/containers/gem/Card.tsx:315",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:3",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:20"
+     ]
+    },
+    "bottom-0": {
+     "n": 3,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Corner.tsx:19",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:20",
+      "src/components/game/ui/GameHUD.tsx:130"
+     ]
+    },
+    "top-1/2": {
+     "n": 2,
+     "at": [
+      "src/components/home/base/Orb.tsx:68",
+      "src/components/shared/ui/containers/gem/Card.tsx:110"
+     ]
+    },
+    "left-1/2": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:22",
+      "src/components/shared/ui/containers/gem/Card.tsx:110"
+     ]
+    },
+    "left-6": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:17"
+     ]
+    },
+    "bottom-8": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:17"
+     ]
+    },
+    "left-12": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:17"
+     ]
+    },
+    "bottom-12": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:17"
+     ]
+    },
+    "bottom-right,": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Orb.tsx:54"
+     ]
+    },
+    "-right-[clamp(6rem,22vw,14rem)]": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Orb.tsx:55"
+     ]
+    },
+    "-bottom-[clamp(6rem,22vw,14rem)]": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Orb.tsx:55"
+     ]
+    },
+    "inset-12": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Orb.tsx:64"
+     ]
+    },
+    "inset-24": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Orb.tsx:64"
+     ]
+    },
+    "top-4": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:22"
+     ]
+    },
+    "bottom-16": {
+     "n": 1,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:75"
+     ]
+    },
+    "left-4": {
+     "n": 1,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:75"
+     ]
+    }
+   },
+   "breakpoints": {
+    "md:": {
+     "n": 43,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:17",
+      "src/components/home/base/InfoBar.tsx:17",
+      "src/components/home/base/InfoBar.tsx:27",
+      "src/components/home/base/InfoBar.tsx:30",
+      "src/components/home/base/InfoBar.tsx:41",
+      "src/components/home/base/InfoBar.tsx:48",
+      "src/components/home/base/InfoBar.tsx:49",
+      "src/components/home/base/Layout.tsx:107",
+      "src/components/home/base/Layout.tsx:125",
+      "src/components/home/base/Layout.tsx:141",
+      "src/components/home/base/Layout.tsx:149",
+      "src/components/home/base/Layout.tsx:167",
+      "src/components/home/base/Layout.tsx:167",
+      "src/components/home/base/Layout.tsx:167",
+      "src/components/home/base/Layout.tsx:169",
+      "src/components/home/base/Orb.tsx:64",
+      "src/components/shared/ui/Text.tsx:16",
+      "src/components/shared/ui/Text.tsx:17",
+      "src/components/shared/ui/Text.tsx:18",
+      "src/components/shared/ui/Text.tsx:19",
+      "src/components/shared/ui/Text.tsx:61",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:23",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:50",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:109",
+      "src/components/shared/ui/containers/gem/Button.tsx:48",
+      "src/components/shared/ui/containers/gem/Card.tsx:34",
+      "src/components/shared/ui/containers/gem/Card.tsx:35",
+      "src/components/shared/ui/containers/gem/Card.tsx:35",
+      "src/components/shared/ui/containers/gem/Card.tsx:213",
+      "src/components/shared/ui/containers/gem/Card.tsx:218",
+      "src/components/shared/ui/containers/gem/Card.tsx:238",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:11",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:11",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:12",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:12",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:12",
+      "src/components/shared/ui/effects/crystal/CornerSpacers.tsx:18",
+      "src/components/shared/ui/effects/crystal/CornerSpacers.tsx:18",
+      "src/components/shared/ui/effects/crystal/CornerSpacers.tsx:19",
+      "src/components/shared/ui/effects/crystal/CornerSpacers.tsx:19",
+      "src/components/shared/ui/effects/crystal/CornerSpacers.tsx:19",
+      "src/components/game/ui/GameHUD.tsx:45",
+      "src/components/game/ui/GameHUD.tsx:130"
+     ]
+    },
+    "sm:": {
+     "n": 5,
+     "at": [
+      "src/components/shared/ui/Text.tsx:60",
+      "src/components/shared/ui/containers/gem/Button.tsx:47",
+      "src/components/shared/ui/containers/gem/Card.tsx:34",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:11",
+      "src/components/shared/ui/effects/crystal/CornerSpacers.tsx:18"
+     ]
+    },
+    "lg:": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/Text.tsx:62",
+      "src/components/shared/ui/containers/gem/Button.tsx:49"
+     ]
+    }
+   },
+   "facts": [
+    "globals.css:36-40 `* { margin:0; padding:0 }` is unlayered; Tailwind v4 utilities live in @layer utilities, so every p-*/m-* class loses (CoriBubble.tsx:136 works around it with inline padding)",
+    "62 padding/margin class uses do nothing; 23 gap-* uses work",
+    "panel column width w-[min(92vw,540px)] ×4 (Layout.tsx)",
+    "only md: is used as a breakpoint (43), sm: 5, lg: 2"
+   ],
+   "drift": "38 spacing values, and the 62 padding/margin ones are overridden by a reset, so cards have no padding"
+  },
+  "shape": {
+   "radius": {
+    "rounded-full": {
+     "n": 9,
+     "at": [
+      "src/components/home/base/Orb.tsx:61",
+      "src/components/home/base/Orb.tsx:64",
+      "src/components/shared/ui/animations/HoverSparkles.tsx:45",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:75",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:80",
+      "src/components/shared/ui/containers/gem/Button.tsx:95",
+      "src/components/shared/ui/containers/gem/Diamond.tsx:61",
+      "src/components/game/cori/CoriBubble.tsx:120",
+      "src/components/game/cori/CoriBubble.tsx:135"
+     ]
+    },
+    "rounded": {
+     "n": 4,
+     "at": [
+      "src/components/home/pages/Experience.tsx:5",
+      "src/components/home/pages/Skills.tsx:17",
+      "src/components/shared/ui/Text.tsx:128",
+      "src/components/shared/ui/containers/gem/Button.tsx:81"
+     ]
+    },
+    "rounded-2xl": {
+     "n": 4,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:63",
+      "src/components/shared/ui/containers/gem/Card.tsx:68",
+      "src/components/shared/ui/containers/gem/Card.tsx:269",
+      "src/components/shared/ui/containers/gem/Card.tsx:281"
+     ]
+    },
+    "border-radius:50%": {
+     "n": 3,
+     "at": [
+      "src/app/globals.css:61",
+      "src/app/globals.css:119",
+      "src/app/globals.css:359"
+     ]
+    },
+    "border-radius:10px": {
+     "n": 2,
+     "at": [
+      "src/app/globals.css:183",
+      "src/app/globals.css:302"
+     ]
+    },
+    "rounded-lg": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/Text.tsx:143",
+      "src/components/game/cori/CoriBubble.tsx:115"
+     ]
+    },
+    "border-radius:8px": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:218"
+     ]
+    },
+    "border-radius:12px": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:254"
+     ]
+    },
+    "border-radius:5px": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:275"
+     ]
+    },
+    "rounded-md": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:221"
+     ]
+    }
+   },
+   "borders": {
+    "border": {
+     "n": 29,
+     "at": [
+      "src/app/globals.css:118",
+      "src/app/globals.css:148",
+      "src/app/globals.css:182",
+      "src/app/globals.css:217",
+      "src/app/globals.css:263",
+      "src/app/globals.css:276",
+      "src/app/globals.css:301",
+      "src/app/globals.css:365",
+      "src/app/globals.css:370",
+      "src/app/globals.css:375",
+      "src/components/home/base/Orb.tsx:61",
+      "src/components/home/base/Orb.tsx:64",
+      "src/components/home/pages/Experience.tsx:5",
+      "src/components/home/pages/Skills.tsx:17",
+      "src/components/shared/ui/Text.tsx:128",
+      "src/components/shared/ui/Text.tsx:143",
+      "src/components/shared/ui/containers/gem/Button.tsx:40",
+      "src/components/shared/ui/containers/gem/Button.tsx:81",
+      "src/components/shared/ui/containers/gem/Card.tsx:68",
+      "src/components/shared/ui/containers/gem/Card.tsx:221",
+      "src/components/shared/ui/containers/gem/Card.tsx:278",
+      "src/components/shared/ui/containers/gem/Card.tsx:281",
+      "src/components/game/ui/GameHUD.tsx:80",
+      "src/components/game/ui/GameHUD.tsx:85",
+      "src/components/game/ui/GameHUD.tsx:94",
+      "src/components/game/ui/GameHUD.tsx:109",
+      "src/components/game/ui/GameHUD.tsx:117",
+      "src/components/game/cori/CoriBubble.tsx:115",
+      "src/components/game/cori/CoriBubble.tsx:135"
+     ]
+    },
+    "strokeWidth=\"0.5\"": {
+     "n": 7,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:114",
+      "src/components/shared/ui/containers/gem/Card.tsx:133",
+      "src/components/shared/ui/containers/gem/Card.tsx:143",
+      "src/components/shared/ui/containers/gem/Card.tsx:144",
+      "src/components/shared/ui/effects/crystal/Filigree.tsx:96",
+      "src/components/shared/ui/effects/crystal/Filigree.tsx:100",
+      "src/components/shared/ui/effects/crystal/Filigree.tsx:101"
+     ]
+    },
+    "strokeWidth=\"1\"": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:113",
+      "src/components/shared/ui/containers/gem/Card.tsx:132"
+     ]
+    },
+    "strokeWidth=\"0.8\"": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Corner.tsx:55",
+      "src/components/shared/ui/effects/crystal/Nebula.tsx:64"
+     ]
+    },
+    "border-2": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:95"
+     ]
+    },
+    "strokeWidth=\"0.75\"": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:125"
+     ]
+    },
+    "strokeWidth=\"1.2\"": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Corner.tsx:46"
+     ]
+    },
+    "strokeWidth=\"0.7\"": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Corner.tsx:56"
+     ]
+    },
+    "strokeWidth=\"0.3\"": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Filigree.tsx:110"
+     ]
+    }
+   },
+   "shadows": {
+    "boxShadow:isActive?\"006px#00ffff\":\"none\"": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:57",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:92"
+     ]
+    },
+    "box-shadow:var(--glow-white-sm)]',": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:55",
+      "src/components/shared/ui/containers/gem/Button.tsx:57"
+     ]
+    },
+    "shadow-[0_0_30px_rgba(34,211,238,0.2),inset_0_0_30px_rgba(34,211,238,0.1)]": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:76",
+      "src/components/shared/ui/containers/gem/Card.tsx:283"
+     ]
+    },
+    "shadow-[0_0_20px_rgba(34,211,238,0.12),inset_0_0_20px_rgba(34,211,238,0.06)]": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:77",
+      "src/components/shared/ui/containers/gem/Card.tsx:284"
+     ]
+    },
+    "box-shadow:0010px#ffd700": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:71"
+     ]
+    },
+    "box-shadow:0015px#87ceeb": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:77"
+     ]
+    },
+    "box-shadow:0010pxrgba(255,255,255,0.5)": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:172"
+     ]
+    },
+    "box-shadow:0020px#ffa500!important": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:331"
+     ]
+    },
+    "boxShadow:`00${s.size*2": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/animations/HoverSparkles.tsx:51"
+     ]
+    },
+    "boxShadow:isActive?\"008px#00ffff\":\"none\"": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:72"
+     ]
+    },
+    "box-shadow:var(--glow-primary)]hover:[box-shadow:var(--glow-primary-lg)]',": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:53"
+     ]
+    },
+    "box-shadow:var(--glow-secondary)]hover:[box-shadow:var(--glow-secondary-lg)]',": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:54"
+     ]
+    },
+    "box-shadow:var(--glow-danger)]hover:[box-shadow:var(--glow-danger)]',": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:56"
+     ]
+    },
+    "shadow-[0_0_30px_rgba(168,85,247,0.2),inset_0_0_30px_rgba(168,85,247,0.1)]": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:71"
+     ]
+    },
+    "shadow-[0_0_20px_rgba(168,85,247,0.12),inset_0_0_20px_rgba(168,85,247,0.06)]": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:72"
+     ]
+    },
+    "shadow-[0_0_35px_rgba(34,211,238,0.25),inset_0_0_35px_rgba(34,211,238,0.15)]": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:74"
+     ]
+    },
+    "drop-shadow-[0_0_12px_rgba(201,168,76,0.4)]": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:110"
+     ]
+    },
+    "drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:221"
+     ]
+    },
+    "shadow-[0_0_20px_white,0_0_40px_cyan]": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Diamond.tsx:61"
+     ]
+    },
+    "boxShadow:`0018px${accent": {
+     "n": 1,
+     "at": [
+      "src/components/game/cori/CoriBubble.tsx:117"
+     ]
+    }
+   },
+   "blur": {
+    "blur": {
+     "n": 12,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Corner.tsx:37",
+      "src/components/shared/ui/effects/crystal/Corner.tsx:39",
+      "src/components/shared/ui/effects/crystal/context.tsx:252",
+      "src/components/shared/ui/effects/crystal/context.tsx:254",
+      "src/components/shared/ui/effects/crystal/context.tsx:255",
+      "src/components/shared/ui/effects/crystal/context.tsx:261",
+      "src/components/shared/ui/effects/crystal/context.tsx:263",
+      "src/components/shared/ui/effects/crystal/context.tsx:264",
+      "src/components/shared/ui/effects/crystal/context.tsx:269",
+      "src/components/shared/ui/effects/crystal/context.tsx:271",
+      "src/components/shared/ui/effects/crystal/context.tsx:277",
+      "src/components/shared/ui/effects/crystal/context.tsx:279"
+     ]
+    },
+    "backdrop-blur-md": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:40",
+      "src/components/shared/ui/containers/gem/Card.tsx:221"
+     ]
+    },
+    "backdrop-filter:blur(5px)": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:188"
+     ]
+    },
+    "backdrop-filter:blur(10px)": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:223"
+     ]
+    },
+    "backdrop-blur-sm": {
+     "n": 1,
+     "at": [
+      "src/components/game/cori/CoriBubble.tsx:115"
+     ]
+    }
+   },
+   "zIndex": {
+    "z-index": {
+     "n": 7,
+     "at": [
+      "src/app/globals.css:143",
+      "src/app/globals.css:187",
+      "src/app/globals.css:222",
+      "src/app/globals.css:277",
+      "src/app/globals.css:306",
+      "src/app/globals.css:332",
+      "src/app/globals.css:348"
+     ]
+    },
+    "z-20": {
+     "n": 4,
+     "at": [
+      "src/components/home/base/Layout.tsx:107",
+      "src/components/home/base/Layout.tsx:124",
+      "src/components/shared/ui/containers/gem/Card.tsx:218",
+      "src/components/shared/ui/containers/gem/Card.tsx:243"
+     ]
+    },
+    "z-50": {
+     "n": 4,
+     "at": [
+      "src/components/home/base/Navigation.tsx:79",
+      "src/components/home/base/Orb.tsx:68",
+      "src/components/game/ui/GameHUD.tsx:39",
+      "src/components/game/cori/CoriBubble.tsx:104"
+     ]
+    },
+    "z-[2]": {
+     "n": 4,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:97",
+      "src/components/shared/ui/containers/gem/Card.tsx:104",
+      "src/components/shared/ui/containers/gem/Card.tsx:305",
+      "src/components/shared/ui/containers/gem/Card.tsx:309"
+     ]
+    },
+    "z-40": {
+     "n": 3,
+     "at": [
+      "src/app/page.tsx:17",
+      "src/components/home/base/InfoBar.tsx:17",
+      "src/components/shared/ui/containers/clear/NavBar.tsx:22"
+     ]
+    },
+    "z-0": {
+     "n": 2,
+     "at": [
+      "src/app/page.tsx:17",
+      "src/components/home/base/Navigation.tsx:87"
+     ]
+    },
+    "z-[6]": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:68",
+      "src/components/shared/ui/containers/gem/Card.tsx:281"
+     ]
+    },
+    "z-[1]": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:87",
+      "src/components/shared/ui/containers/gem/Card.tsx:296"
+     ]
+    },
+    "z-10": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:153",
+      "src/components/shared/ui/containers/gem/Card.tsx:318"
+     ]
+    },
+    "z-30": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Orb.tsx:55"
+     ]
+    },
+    "z-[4]": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:110"
+     ]
+    },
+    "z-[5]": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/effects/crystal/Corner.tsx:25"
+     ]
+    }
+   },
+   "drift": "10 radii, 20 shadows (cyan glows at 3 strengths, purple glows at 2, gold drop-shadow), 12 z-index values incl. z-[1..6] inside Card"
+  },
+  "motion": {
+   "durations": {
+    "duration-300": {
+     "n": 6,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:68",
+      "src/components/shared/ui/containers/gem/Card.tsx:104",
+      "src/components/shared/ui/containers/gem/Card.tsx:281",
+      "src/components/shared/ui/containers/gem/Card.tsx:305",
+      "src/components/game/cori/CoriBubble.tsx:134",
+      "src/components/game/cori/CoriBubble.tsx:140"
+     ]
+    },
+    "duration:0.2": {
+     "n": 4,
+     "at": [
+      "src/components/home/base/Layout.tsx:66",
+      "src/components/home/base/Layout.tsx:122",
+      "src/components/shared/ui/containers/gem/Card.tsx:275",
+      "src/components/game/ui/GameHUD.tsx:57"
+     ]
+    },
+    "transition:all0.3sease": {
+     "n": 2,
+     "at": [
+      "src/app/globals.css:64",
+      "src/app/globals.css:362"
+     ]
+    },
+    "transition:transform0.5sease": {
+     "n": 2,
+     "at": [
+      "src/app/globals.css:186",
+      "src/app/globals.css:221"
+     ]
+    },
+    "duration:0.3": {
+     "n": 2,
+     "at": [
+      "src/components/home/base/InfoBar.tsx:24",
+      "src/components/home/base/Layout.tsx:186"
+     ]
+    },
+    "transition:{": {
+     "n": 2,
+     "at": [
+      "src/components/home/base/Layout.tsx:58",
+      "src/components/home/base/Layout.tsx:64"
+     ]
+    },
+    "animate-twinkle": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/animations/HoverSparkles.tsx:36",
+      "src/components/shared/ui/animations/HoverSparkles.tsx:45"
+     ]
+    },
+    "duration:0.5": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:203",
+      "src/components/shared/ui/containers/gem/Diamond.tsx:60"
+     ]
+    },
+    "transition:transform0.3sease": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:53"
+     ]
+    },
+    "transition:all0.2s": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:152"
+     ]
+    },
+    "transition:opacity0.5sease": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:305"
+     ]
+    },
+    "staggerChildren:0.1": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Layout.tsx:59"
+     ]
+    },
+    "delayChildren:0.15": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Layout.tsx:60"
+     ]
+    },
+    "staggerChildren:0": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Layout.tsx:65"
+     ]
+    },
+    "transition:{duration:0.3,ease:[0.4,0,0.2,1]},": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Layout.tsx:76"
+     ]
+    },
+    "transition:{duration:0.2},": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Layout.tsx:80"
+     ]
+    },
+    "transition:{duration:1}}}": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Navigation.tsx:82"
+     ]
+    },
+    "animate-[spin_60s_linear_infinite]": {
+     "n": 1,
+     "at": [
+      "src/components/home/base/Orb.tsx:61"
+     ]
+    },
+    "duration:3": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/animations/HoverSparkles.tsx:24"
+     ]
+    },
+    "duration:0.15": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:76"
+     ]
+    },
+    "duration-[var(--duration-default)]": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:82"
+     ]
+    },
+    "animate-spin": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:95"
+     ]
+    },
+    "transition:{duration:0.5}}}": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Diamond.tsx:37"
+     ]
+    },
+    "delay:0.2": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Diamond.tsx:60"
+     ]
+    },
+    "duration:0.6": {
+     "n": 1,
+     "at": [
+      "src/components/game/ui/GameHUD.tsx:42"
+     ]
+    },
+    "duration:0.22": {
+     "n": 1,
+     "at": [
+      "src/components/game/cori/CoriBubble.tsx:114"
+     ]
+    },
+    "animate-pulse": {
+     "n": 1,
+     "at": [
+      "src/components/game/cori/CoriBubble.tsx:120"
+     ]
+    },
+    "animate-ping": {
+     "n": 1,
+     "at": [
+      "src/components/game/cori/CoriBubble.tsx:135"
+     ]
+    }
+   },
+   "easings": {
+    "[0.4,0,0.2,1]": {
+     "n": 3,
+     "at": [
+      "src/components/home/base/Layout.tsx:76",
+      "src/components/home/base/Layout.tsx:186",
+      "src/components/shared/ui/containers/gem/Card.tsx:203"
+     ]
+    },
+    "\"easeOut\"": {
+     "n": 2,
+     "at": [
+      "src/components/shared/ui/containers/gem/Card.tsx:275",
+      "src/components/game/cori/CoriBubble.tsx:114"
+     ]
+    },
+    "ease-out": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:126"
+     ]
+    },
+    "ease-in-out": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/animations/HoverSparkles.tsx:37"
+     ]
+    },
+    "type:\"spring\",stiffness:300,damping:30": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/clear/NavBar.tsx:81"
+     ]
+    },
+    "ease-[var(--ease-default)]": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/containers/gem/Button.tsx:82"
+     ]
+    }
+   },
+   "keyframes": {
+    "@keyframespulse": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:86"
+     ]
+    },
+    "@keyframesdrawLine": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:109"
+     ]
+    },
+    "@keyframesscanPulse": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:129"
+     ]
+    },
+    "@keyframescurrent-pulse": {
+     "n": 1,
+     "at": [
+      "src/app/globals.css:336"
+     ]
+    },
+    "@keyframestwinkle": {
+     "n": 1,
+     "at": [
+      "src/components/shared/ui/animations/HoverSparkles.tsx:32"
+     ]
+    }
+   },
+   "facts": [
+    "no prefers-reduced-motion handling anywhere",
+    "Button duration/ease read undefined --duration-default / --ease-default"
+   ],
+   "drift": "23 live durations/transitions (0.15 to 60s), 6 easings; 4 of 5 @keyframes are dead"
+  },
+  "containers": {
+   "components": {
+    "gem/Card": {
+     "file": "src/components/shared/ui/containers/gem/Card.tsx",
+     "modes": [
+      "static",
+      "interactive (hover glow + sparkles)",
+      "flippable (tarot back, crystal face)"
+     ],
+     "sizes": [
+      "sm",
+      "md"
+     ],
+     "uses": "Layout.tsx ×3, Skills.tsx ×1"
+    },
+    "Layout panel column": {
+     "file": "src/components/home/base/Layout.tsx",
+     "note": "narrative Card + flip tabs row + detail Card, all w-[min(92vw,540px)]"
+    },
+    "CoriBubble": {
+     "file": "src/components/game/cori/CoriBubble.tsx",
+     "note": "own look: black/65 + mood-colored border, inline styles"
+    },
+    "GameHUD panels": {
+     "note": "no container: bare text on the sky"
+    }
+   },
+   "facts": [
+    "Card stacks 7 layers: glow border, Crystal(Glass+Nebula), sparkles, dark overlay #080c18/40, 4 gold corners, content",
+    "tarot back uses its own 13-color purple set (Card.tsx:58-60)"
+   ],
+   "drift": "one container (Card) in 3 modes with two color worlds (cyan face, purple tarot back); Cori bubble and HUD don’t use it"
+  },
+  "controls": {
+   "components": {
+    "gem/Button": {
+     "file": "src/components/shared/ui/containers/gem/Button.tsx",
+     "variants": [
+      "primary",
+      "secondary",
+      "ghost",
+      "danger",
+      "glass"
+     ],
+     "sizes": [
+      "sm",
+      "md",
+      "lg"
+     ],
+     "uses": "InfoBar.tsx:37 primary lg glow (LAUNCH SHIP), GameHUD.tsx:70 ghost sm (Disengage)",
+     "broken": "every variant color is a var(--btn-*) never defined: 24 names, plus --glow-* ×7; never defined in any commit"
+    },
+    "HUD mini buttons": {
+     "file": "src/components/game/ui/GameHUD.tsx:81-121",
+     "count": 5,
+     "note": "hand-rolled: border white/20, text-[9px], h-6"
+    },
+    "StarRail labels": {
+     "file": "src/components/shared/ui/containers/clear/NavBar.tsx",
+     "note": "motion.button, text-[6px] md:text-[8px], #00ffff active"
+    },
+    "Flip card tabs": {
+     "file": "Layout.tsx:131",
+     "note": "Card flippable as role=tab"
+    },
+    "ReceiverDiamond": {
+     "file": "gem/Diamond.tsx",
+     "note": "click to launch on play, drag to scroll sections"
+    }
+   },
+   "drift": "4 kinds of button, 1 component meant for it (Button) used twice with its colors undefined"
+  },
+  "effects": {
+   "components": [
+    "Crystal (10 sublayers: Aura, Glass, Nebula, Sparkles, Filigree, Wireframe, Pulse, Corner, CornerSpacers, context)",
+    "HoverSparkles/ResponsiveSparkles",
+    "Orb rings (dashed spin 60s)"
+   ],
+   "drift": "crystal colors are their own 3×4 palette sets (context.tsx:83-85), separate from the UI cyan"
+  },
+  "content": {
+   "patterns": {
+    "card title (text-cyan-300 font-display text-sm font-semibold)": 7,
+    "meta line (text-white/30|40 text-xs font-mono)": 7,
+    "eyebrow (text-[9|10px] tracking-[.25-.4em] uppercase)": 11,
+    "body (text-white/60|70 text-sm leading-relaxed)": 5,
+    "chip (bg-white/5 border-white/10 rounded px-2 py-0.5)": 2
+   },
+   "facts": [
+    "Experience/Projects/OSC each rebuild the same label+detail tab markup"
+   ],
+   "drift": "5 inline patterns repeated 2–11×, none a component"
+  },
+  "shell": {
+   "home": [
+    "StarRail top-center (NavBar.tsx)",
+    "content column center (Layout.tsx)",
+    "InfoBar bottom-left (InfoBar.tsx)",
+    "Orb bottom-right, clipped (Orb.tsx) with ReceiverDiamond"
+   ],
+   "game": [
+    "scanner top-left",
+    "Disengage top-right",
+    "dev controls bottom-left",
+    "controls hint + progress bottom bar",
+    "Cori bubble follows the butterfly"
+   ],
+   "nav": [
+    "invisible 350vh scroller (Navigation.tsx:98)",
+    "arrow keys",
+    "rail label click",
+    "diamond drag on the orb"
+   ],
+   "drift": "section labels written 3 ways: LABELS in NavBar, orbContent.title, heading"
+  },
+  "pages": {
+   "routes": [
+    "/",
+    "/sandbox (dev)",
+    "/sandbox/nebula (dev)"
+   ],
+   "sections": {
+    "about": "large-panel",
+    "work": "small-panel-with-deck (flip tabs)",
+    "skills": "small-panel-with-deck (one wide card)",
+    "projects": "small-panel-with-deck (flip tabs)",
+    "osc": "small-panel-with-deck (flip tabs)",
+    "play": "no-panel (launch)"
+   },
+   "facts": [
+    "no <title> or metadata: layout.tsx is a client component"
+   ]
+  },
+  "layouts": {
+   "modes": {
+    "large-panel": "panel at 14vh",
+    "small-panel-with-deck": "panel at 8vh + deck row (tabs or grid) + detail card",
+    "no-panel": "only shell"
+   },
+   "facts": [
+    "deck grid md:grid-cols-3 but every deck has one item or uses tabs"
+   ]
+  },
+  "accessibility": {
+   "facts": [
+    "no prefers-reduced-motion",
+    "nav labels 6px on mobile",
+    "text-white/20–/30 on black (×14) is under 3:1 contrast",
+    "no page title",
+    "aria/role only on flip tabs + Cori live region"
+   ]
+  },
+  "stack": {
+   "facts": [
+    "Next.js 16 static export to out/, GitHub Pages",
+    "Tailwind v4 CSS-first (@theme inline in globals.css)",
+    "framer-motion 12, R3F/three for the sky",
+    "CLAUDE.md describes a token design system (cyan/magenta, Orbitron, src/components/ui/) that isn’t in the code"
+   ]
+  }
+ }
+}

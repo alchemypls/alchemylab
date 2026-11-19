@@ -32,7 +32,10 @@ export interface Topic {
 
 export interface Bible {
   title:    string;
-  template: 'game';
+  template: 'game' | 'web';
+  source?:  string;     // web bibles from site-survey: the surveyed codebase's path
+  accent?:  string;     // the project's color on the header picker (the workspace project: lib/workspace.ts)
+  archived?: boolean;   // hidden from the project picker; files kept
   pitch:    string;
   created:  string;     // ISO date
   topics:   Topic[];
@@ -107,6 +110,10 @@ export interface BibleSummary {
   id:    string;
   title: string;
   pages: { id: string; title: string }[];
+  template?: Bible['template'];
+  accent?:   string;
+  archived?: boolean;
+  source?:   string;
 }
 
 export interface FitReport {

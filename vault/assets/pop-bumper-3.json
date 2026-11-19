@@ -142,5 +142,6 @@
       "id": "layer-1",
       "name": "Layer 1"
     }
-  ]
+  ],
+  "project": "pinball-crawl"
 }

@@ -224,5 +224,6 @@
       "status": "decided",
       "summary": "Physics feel, camera work, content load (9 unique dungeon tables), terraforming breaking tables."
     }
-  ]
+  ],
+  "accent": "#34d399"
 }

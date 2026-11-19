@@ -179,5 +179,6 @@
     ],
     "estimated": true,
     "note": "Sits on the boss cave; the jaw snaps at the ball coming out of the return rail."
-  }
+  },
+  "project": "pinball-crawl"
 }

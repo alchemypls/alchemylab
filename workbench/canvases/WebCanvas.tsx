@@ -16,7 +16,7 @@ import { SelectionBar } from '@/workbench/ui/vector/actions';
 import { Columns, PAPER, ShadesIcon, WebLayerPips, WebMap } from '@/workbench/ui/web/WebChrome';
 import { RouteTree } from '@/workbench/ui/web/RouteTree';
 import { PageFields } from '@/workbench/ui/web/PageFields';
-import { ProjectFields } from '@/workbench/ui/web/ProjectFields';
+import { NoWebProject } from '@/workbench/ui/web/NoWebProject';
 import { BlockInspector } from '@/workbench/ui/web/BlockFields';
 import { ComponentsBox, LayoutEditor, VariantsBox, readingOrder, type Placing } from '@/workbench/ui/web/LayoutEditor';
 import { LayoutLayer, PreviewLayer, WEB_LAYERS, WireframeLayer, pageSketch, sketchHeight, sketchPage, type Placed, type WebLayer } from '@/workbench/ui/web/WebLayers';
@@ -39,7 +39,7 @@ const FADE = 0.35;
 const LAYER_KEY = 'web:layer';
 const WIRE_TOOLS = toolsFor(['select', 'shape', 'text', 'pen', 'erase', 'read']);
 const LAYOUT_TOOLS = toolsFor(['select', 'read']);
-type Box = 'page' | 'routes' | 'project' | 'layers' | 'components' | 'variants' | 'code';
+type Box = 'page' | 'routes' | 'layers' | 'components' | 'variants' | 'code';
 
 const readLayer = (): WebLayer => {
   try { const v = localStorage.getItem(LAYER_KEY); return WEB_LAYERS.some((l) => l.id === v) ? (v as WebLayer) : 'layout'; } catch { return 'layout'; }
@@ -47,20 +47,24 @@ const readLayer = (): WebLayer => {
 // Room kept under a wireframe's lowest shape, so the page grows as you draw down it
 const roomBelow = (els: VElement[], screen: number) => Math.max(0, ...els.map((e) => { const b = visualBounds(e, els); return b.y + b.h; })) + screen / 2;
 
+// The open workspace project's web project; without one, a note that offers to make it
 export function WebCanvas() {
+  const has = useWorkbenchStore((s) => !!s.projects[s.lastProjectId]);
+  return has ? <WebProjectCanvas /> : <NoWebProject canvas="Web" />;
+}
+
+function WebProjectCanvas() {
   const active         = useWorkbenchStore((s) => s.activeScene === 'web');
   const projects       = useWorkbenchStore((s) => s.projects);
   const lastProjectId  = useWorkbenchStore((s) => s.lastProjectId);
-  const touchProject   = useWorkbenchStore((s) => s.touchProject);
-  const createProject  = useWorkbenchStore((s) => s.createProject);
   const setActivePage  = useWorkbenchStore((s) => s.setActivePage);
   const setViewport    = useWorkbenchStore((s) => s.setProjectViewport);
   const updateWireframe = useWorkbenchStore((s) => s.updateWireframe);
   const removePlacement = useWorkbenchStore((s) => s.removePlacement);
   const setInstance     = useWorkbenchStore((s) => s.setPlacementInstance);
 
-  const pid = projects[lastProjectId] ? lastProjectId : Object.keys(projects)[0];
-  const project = projects[pid];
+  const pid = lastProjectId;
+  const project = projects[pid]!;   // WebCanvas checked
   const page = project.pages.find((p) => p.path === project.activePath) ?? project.pages[0];
   const viewport = project.viewport ?? DEFAULT_VIEWPORT, tier = tierOf(viewport.width), cols = TIER_COLUMNS[tier];
   const colWidth = viewport.width / cols;
@@ -178,7 +182,6 @@ export function WebCanvas() {
     if (laying && box === 'variants' && page) return <div className="p-3"><VariantsBox pid={pid} path={page.path} layout={layout} /></div>;
     if (box === 'code' && page) return <CodeBox project={project} page={page} layout={layout} />;
     if (box === 'routes') return <div className="p-3"><RouteTree pid={pid} project={project} /></div>;
-    if (box === 'project') return <div className="p-3"><ProjectFields project={project} /></div>;
     if (box === 'page' && page) return <div className="p-3"><PageFields key={`${pid}:${page.path}`} pid={pid} project={project} page={page} /></div>;
     return undefined;
   })();
@@ -236,13 +239,6 @@ export function WebCanvas() {
           pickers={
             <>
               <select
-                value={pid} className={SELECT} title="Project"
-                onChange={(e) => { const v = e.target.value; e.target.blur(); touchProject(v === NEW ? createProject() : v); if (v === NEW) setBox('project'); }}
-              >
-                {Object.values(projects).map((p) => <option key={p.meta.id} value={p.meta.id} className="bg-neutral-900">{p.meta.name}</option>)}
-                <option value={NEW} className="bg-neutral-900">+ New project</option>
-              </select>
-              <select
                 value={page?.path ?? ''} className={SELECT} title="Page"
                 onChange={(e) => { const v = e.target.value; e.target.blur(); if (v === NEW) setBox('routes'); else setActivePage(pid, v); }}
               >
@@ -268,7 +264,6 @@ export function WebCanvas() {
             <>
               <PanelToggle on={box === 'page'} onClick={toggle('page')} title="This page: name, status, intent, head / SEO, notes">page</PanelToggle>
               <PanelToggle on={box === 'routes'} onClick={toggle('routes')} title="The project's pages as a route tree: open, add, delete">routes</PanelToggle>
-              <PanelToggle on={box === 'project'} onClick={toggle('project')} title="The project: name, intent, tags, default head">project</PanelToggle>
               {page && <PanelToggle on={box === 'code'} onClick={toggle('code')} title="This page's output: plain HTML or a Next.js page. Copy, download, open in a tab">code</PanelToggle>}
               {wiring && <PanelToggle on={box === 'layers'} onClick={toggle('layers')} title="The wireframe's layers: draw on one, hide or lock others">layers</PanelToggle>}
               {laying && <PanelToggle on={box === 'components'} onClick={toggle('components')} title="This project's components: pick one, then click the page to place it">components</PanelToggle>}

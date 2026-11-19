@@ -1,9 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useWorkbenchStore } from '@/lib/store';
+import { emptyProject, useWorkbenchStore } from '@/lib/store';
 import type { FabEditor } from '@/lib/scenes';
 import { useCurrentProject } from '@/workbench/hooks/useCurrentProject';
+import { inProject } from '@/lib/workspace';
 import { useFileDraft } from '@/workbench/hooks/useDesignEditor';
 import { useSheetView } from '@/workbench/hooks/useSheetView';
 import { createAsset, createPalette, saveAsset, savePalette, usePalettes, useVault } from '@/workbench/hooks/useVault';
@@ -62,6 +63,9 @@ function FabDrawCanvas() {
   const fabAsset = paletteId ? undefined : fabFile;
   const { entries, loaded } = useVault();
   const palettes = usePalettes();
+  // The file pickers list the open project's files and shared ones (lib/workspace.ts), and the open file
+  const projectId = useWorkbenchStore((s) => s.lastProjectId);
+  const here = (x: { id: string; asset: { project?: string } }) => inProject(x.asset, projectId) || x.id === fabAsset || `palette:${x.id}` === fabFile;
   const entry = entries.find((e) => e.id === fabAsset);
   const pEntry = palettes.entries.find((e) => e.id === paletteId);
   const paletteOpen = config.id === 'identity' && !!paletteId;
@@ -101,9 +105,10 @@ function FabDrawCanvas() {
   const tr = useTrace(drawing ? `fab:${fabFile ?? ''}` : null, sheet);
   const { fit } = sv;
 
-  // Components still saves into the most recent project, until it can save to the vault
-  const { pid, project } = useCurrentProject();
-  const f = useFabricator(pid, project);
+  // Components saves into the open project's web project; a project without one browses the library only
+  const { pid, project: web } = useCurrentProject();
+  const stub = useMemo(() => emptyProject({ id: pid, name: pid, createdAt: 0, updatedAt: 0 }), [pid]);
+  const f = useFabricator(pid, web ?? stub);
 
   // Each editor opens fitted, with its first tool in hand. Blocks are placed on tiles, so their grid starts on.
   useEffect(() => {
@@ -123,10 +128,10 @@ function FabDrawCanvas() {
     const mine = (id?: string) => !!id && (config.id === 'blocks'
       ? isBlock(entries.find((e) => e.id === id)?.asset)
       : id.startsWith('palette:') ? palettes.entries.some((p) => `palette:${p.id}` === id) : entries.some((e) => e.id === id && e.asset.kind !== 'block'));
-    const remembered = lastFile.current[config.id], firstPalette = palettes.entries[0];
+    const remembered = lastFile.current[config.id], firstPalette = palettes.entries.find(here);
     setFabFile(mine(remembered) ? remembered : config.id === 'blocks'
-      ? entries.find((e) => isBlock(e.asset))?.id
-      : entries.find((e) => e.asset.kind !== 'block')?.id ?? (firstPalette && `palette:${firstPalette.id}`));
+      ? entries.find((e) => isBlock(e.asset) && here(e))?.id
+      : entries.find((e) => e.asset.kind !== 'block' && here(e))?.id ?? (firstPalette && `palette:${firstPalette.id}`));
   }, [bothLoaded, config.id, fileHere, entries, palettes.entries, setFabFile]);
 
   // Each file opens fitted. Icons and blocks are drawn to a grid, so theirs starts on.
@@ -221,6 +226,7 @@ function FabDrawCanvas() {
       )}
 
       {banner && <Banner>{banner}</Banner>}
+      {config.id === 'components' && !web && !banner && <Banner tone="hint">This project has no web project: browse the library here, and make one on Web to keep components.</Banner>}
 
       {active && (
         <SheetPanel
@@ -240,10 +246,10 @@ function FabDrawCanvas() {
                 >
                   {!entry && !pEntry && <option value="">—</option>}
                   {ASSET_KINDS.filter((k) => k !== 'block').map((k) => {
-                    const items = entries.filter((x) => x.asset.kind === k);
+                    const items = entries.filter((x) => x.asset.kind === k && here(x));
                     return items.length ? <optgroup key={k} label={KIND_LABEL[k]}>{items.map((x) => <option key={x.id} value={x.id}>{x.asset.title}</option>)}</optgroup> : null;
                   })}
-                  {palettes.entries.length > 0 && <optgroup label="Palettes">{palettes.entries.map((x) => <option key={x.id} value={`palette:${x.id}`}>{x.asset.title}</option>)}</optgroup>}
+                  {palettes.entries.some(here) && <optgroup label="Palettes">{palettes.entries.filter(here).map((x) => <option key={x.id} value={`palette:${x.id}`}>{x.asset.title}</option>)}</optgroup>}
                   <option value="__new_shape__">+ New shape…</option>
                   <option value="__new_icon__">+ New icon…</option>
                   <option value="__new_palette__">+ New palette…</option>
@@ -255,7 +261,7 @@ function FabDrawCanvas() {
                 >
                   {!fileHere && <option value="">—</option>}
                   {PARTS.map((p) => {
-                    const items = entries.filter((x) => partOf(x.asset) === p);
+                    const items = entries.filter((x) => partOf(x.asset) === p && here(x));
                     return items.length ? <optgroup key={p} label={PART_LABEL[p]}>{items.map((x) => <option key={x.id} value={x.id}>{x.asset.title}</option>)}</optgroup> : null;
                   })}
                   {PARTS.map((p) => <option key={p} value={`__new_${p}__`}>+ New {p}…</option>)}
