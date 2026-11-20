@@ -33,6 +33,7 @@ export type Dir = (typeof DIRS)[number];
 export type Gesture =
   | { kind: 'move'; start: Pt; base: VElement[]; ids: string[]; carried: string[]; key: string; moved?: boolean }
   | { kind: 'resize'; id: string; dir: Dir; box: Box; deg: number; plane?: Mat; lift: number; key: string }
+  | { kind: 'scale'; ids: string[]; base: VElement[]; box: Box; dir: Dir; fixed: Set<string>; key: string }   // a group (several picked) scaled by its box
   | { kind: 'rotate'; id: string; c: Pt; key: string; block?: { from: number; turn: number; quarter: boolean } }
   | { kind: 'pull'; id: string; dir: Dir; base: VZone; key: string }
   | { kind: 'zone'; grid: Lattice; start: GridPt; cur: GridPt }
@@ -49,11 +50,11 @@ export type Gesture =
   | { kind: 'cut'; a: Pt; b: Pt; placed: boolean; off: Pt; from?: Pt };
 
 // What the gestures need from a mouse event or a pen sample
-export type Press = { clientX: number; clientY: number; timeStamp: number; shiftKey?: boolean; pressure?: number };
+export type Press = { clientX: number; clientY: number; timeStamp: number; shiftKey?: boolean; free?: boolean; pressure?: number };   // free: Ctrl / Alt / Cmd held, a point goes exactly where it is
 
 // Browsers report pressure 0.5 for a mouse, so only a real stylus counts as a pressure stroke.
 export const fromPointer = (e: React.PointerEvent): Press => ({
-  clientX: e.clientX, clientY: e.clientY, timeStamp: e.timeStamp, shiftKey: e.shiftKey,
+  clientX: e.clientX, clientY: e.clientY, timeStamp: e.timeStamp, shiftKey: e.shiftKey, free: e.ctrlKey || e.altKey || e.metaKey,
   pressure: e.pointerType === 'pen' ? e.pressure : undefined,
 });
 

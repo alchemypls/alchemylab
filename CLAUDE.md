@@ -107,7 +107,11 @@ lib/
   design/fx/         — effects: an element's `fx` stack (index.ts: FX registry, the drawing pipeline, checkFx). One file per effect (roughen: reshapes the outline; blur: an SVG filter); its params drive the sliders and validation
   design/validate.ts — validatePage/validateBible (API writes + design:check), pageHash; relative imports only
   routes.ts          — a project's pages as a route tree (buildRouteTree), normalizePath, nameFromPath
-  project.ts         — ProjectData/PageDef/PageHead/PagePlacement types, tier cascade (resolvePlacement), wireframes per tier
+  project.ts         — ProjectData/PageDef/PageHead/PagePlacement types, tier cascade (resolvePlacement), wireframes per tier; pinned blocks
+                       (`pin`: fixed to a screen edge/corner on every tier, `at[tier].pin` moves it, `reserve` keeps the edge clear: pageInsets,
+                       pinStyle), `bounded` blocks (scroll inside, screen-high: boundedMax), backdrops (meta/page `backdrop`, safeBackdrop),
+                       in-place sections (page `sections`: other pages' grids as `<section id>` on it, :target-switched, links → #id;
+                       pageSections resolves them, every generator caller passes them)
   projectSync.ts     — keeps store.projects and projects/ on disk in step (load, debounced writes, watch; disk wins a conflict; carries a browser's pre-disk projects over once)
   live.ts            — livePage(): the HTML export + links kept inside /live + live reload + console bridge (posts to the Live canvas)
   liveChecks.ts      — problems across a project's pages, for the Live canvas
@@ -120,12 +124,17 @@ lib/
   sketchErase.ts     — precise (partial) eraser: cuts strokes, converts touched shapes to strokes
   library/           — the component library. Fabricator, the Web canvas and generator/page.ts all use this.
     theme.ts          — Theme = token name → raw CSS value; GLOBAL_THEME; each project owns a COPY (copyTheme)
+    fonts.ts          — a project's web fonts (`meta.fonts`: family + weights, set in Project settings) → one Google Fonts link in both exports and the previews
     recipe.ts         — Recipe format: anatomy (part tree) + props + variant axes + states + named behavior; ProjectComponent (a project's owned copy, with `origin`)
     css.ts            — recipe + theme → native CSS (tokens → CSS vars, variants → [data-*], states → pseudo-classes); optional selector scope
     markup.ts         — recipe + a placement's props/options → native elements (JSX-compatible, or plain HTML with `html`); shared by exported code and RecipeView
     edit.ts           — pure recipe editing: style layers (base / variant option / state), addOption/removeOption
     sets.ts           — library "box sets": Core (Button, Field, Card), Navigation (Nav Bar + Brand, Nav Link), Carousel (Carousel + Hero Slider, Media Card), Content (Tabs + Accordion). LIBRARY = all sets' recipes
     recipes/          — recipe files per set. Format supports: list props + `repeat` parts ({item.*}), part-level `states`,
+                         option states (`variants[].states[option][state]`: action glows gold, danger ember; after the shared states),
+                         `textTransform`, `backdropBlur`, `borderStyle`, corner `ticks`/`tickColor` (a ::before inside the edge);
+                         a `transition` turns calm under prefers-reduced-motion (colors/opacity only); lists inside list items
+                         (PropDef `lists`, `repeat: "item.tags"`); a link to the page it's on gets aria-current="page" (markup `here`),
                          `responsive` deltas (emitted as @container queries — content areas set container-type: inline-size)
                          `when: "item.x"` (per-item conditions); scroll tracks (scroll / snapAlign / basis / aspect / objectFit)
     behaviors/        — runtime catalog (BEHAVIORS): self-contained JS per behavior (carousel incl. autoplay, tabs). Recipes NAME a
@@ -161,7 +170,7 @@ workbench/
     DeviceBar.tsx     — DevTools-style viewport bar: grouped device dropdown/Responsive, W×H inputs, rotate, tier badge
     DesignArtboard.tsx — block DesignPage → fixed artboard: blocks flow into a 12-col grid; measures + reports overflow; edit = select + span grip
     DesignInspector.tsx — block page edit panel: page fields, add block, per-type block fields, knowledge layer, topic status
-    VectorArtboard.tsx — vector page as SVG: render, link navigation, fit report; edit = drawing tools (select/shapes/attached arrows/text/pen/erase). Its parts in vector/:
+    VectorArtboard.tsx — vector page as SVG: render, link navigation, fit report; edit = drawing tools (select/shapes/attached arrows/text/pen/erase; a line end attaches only near a shape's edge or onto a small shape, Ctrl/Alt/Cmd places it free; a moved line moves whole, unsnapped, its attached ends letting go, and a selected line is grabbed anywhere in its box; several picked (a group) get one box whose handles scale them all: scaleElements, corners even, Shift or a side stretches; a drag never selects page text). Its parts in vector/:
     vector/           — gesture.ts (tool + gesture types, geometry helpers), useGestures.ts (the pointer engine), shapes.tsx (how each element draws, PosedAsset), overlays.tsx (selection, handles, footprints, previews), clipboard.ts (Ctrl+C/X/V between any vector sheets, per browser)
     VectorKit.tsx     — the vector tools' UI every vector canvas shares, fed by useVectorTools: VectorRail, VectorToolMenu, VectorBox (layers + properties)
     SheetShell.tsx    — a full-screen canvas's frame: SheetSurface (pan/zoom), Sheet, Banner, EmptyNote, SaveDot
@@ -212,7 +221,7 @@ after 30 minutes). Keep it that way: never bind the app to the network or widen 
 
 **Behaviors — the JSON names, the catalog implements.** Dynamic features never put code in a recipe: `recipe.behaviors` names a runtime from `lib/library/behaviors` with settings, and the runtime is a self-contained function (no imports — its source is copied into exported pages). Progressive enhancement is the rule: the component must work without the script; behavior controls ship `hidden` (`untilReady`). Runtimes use only Baseline-widely-available browser APIs.
 
-**Breakpoints are mobile-first tiers** (`lib/devices.ts`): `mobile` / `tablet` (≥600) / `desktop` (≥1024). Page wireframes are stored per tier (`project.wireframes[path][tier]`, `PageSketch`). Layout placements are mobile-first: base `col/row/span/hidden` = mobile (4 cols); `at.tablet` / `at.desktop` hold only overrides, and `resolvePlacement(p, tier)` cascades upward, scaling inherited geometry to 8 / 12 cols. The device lives on the project (`project.viewport`) for the Web canvas; Live keeps its own per tier. `generator/page.ts` emits the same cascade as mobile-first `@media (min-width)` CSS.
+**Breakpoints are mobile-first tiers** (`lib/devices.ts`): `mobile` / `tablet` (≥600) / `desktop` (≥1024). Page wireframes are stored per tier (`project.wireframes[path][tier]`, `PageSketch`). Layout placements are mobile-first: base `col/row/span/hidden` = mobile (4 cols); `at.tablet` / `at.desktop` hold only overrides, and `resolvePlacement(p, tier)` cascades upward, scaling inherited geometry to 8 / 12 cols. The device lives on the project (`project.viewport`) for the Web canvas; Live keeps its own per tier. `generator/page.ts` emits the same cascade as mobile-first `@media (min-width)` CSS. Pinned blocks render after `<main>` (its `container-type` would otherwise be the containing block of `position: fixed`), each its own inline-size container; the Web canvas draws them over the first screen and the grid inside the kept-clear edges.
 
 
 ---

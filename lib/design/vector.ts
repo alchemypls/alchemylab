@@ -744,15 +744,73 @@ export function removeElements(p: DesignPage, ids: string[]): DesignPage {
 }
 
 // Moves `ids` by (dx, dy), measured from a snapshot so a drag never accumulates rounding
+// A moved line moves whole: an end attached to something that moves too stays attached, one attached to something left
+// behind lets go where it is and travels with the line
 export function translateElements(p: DesignPage, base: VElement[], ids: string[], dx: number, dy: number): DesignPage {
   const on = new Set(ids);
-  const shift = (a: Anchor): Anchor => (isAttached(a) ? a : { x: a.x + dx, y: a.y + dy });
+  const shift = (a: Anchor, at: Pt): Anchor => (isAttached(a) ? (on.has(a.el) ? a : { x: Math.round(at.x + dx), y: Math.round(at.y + dy) }) : { x: a.x + dx, y: a.y + dy });
   return withElements(p, base.map((e) => {
     if (!on.has(e.id)) return e;
     if (e.type === 'stroke') return { ...e, points: e.points.map(([x, y]): [number, number] => [x + dx, y + dy]) };
-    if (e.type === 'line')   return { ...e, from: shift(e.from), to: shift(e.to) };
+    if (e.type === 'line')   { const [a, b] = lineEnds(e, base); return { ...e, from: shift(e.from, a), to: shift(e.to, b) }; }
     return { ...e, x: e.x + dx, y: e.y + dy };
   }));
+}
+
+// The box around several elements as they show on the page (turned, in planes)
+export function selectionBounds(all: VElement[], ids: string[]): Box | undefined {
+  const bs = all.filter((e) => ids.includes(e.id)).map((e) => visualBounds(e, all));
+  if (!bs.length) return undefined;
+  const x = Math.min(...bs.map((b) => b.x)), y = Math.min(...bs.map((b) => b.y));
+  return { x, y, w: Math.max(...bs.map((b) => b.x + b.w)) - x, h: Math.max(...bs.map((b) => b.y + b.h)) - y };
+}
+
+// Scales a selection (a group) from box `from` to box `to`, from `base`: positions map across, sizes, line widths, text,
+// corner radii, floor tiles and eraser marks scale with it. `fixed` ids (blocks: their size follows the vault) only move,
+// by where they stand. Arrow ends attached inside the set stay attached; ends attached outside let go where they land.
+export function scaleElements(p: DesignPage, base: VElement[], ids: string[], from: Box, to: Box, fixed?: Set<string>): DesignPage {
+  const on = new Set(ids), sx = from.w ? to.w / from.w : 1, sy = from.h ? to.h / from.h : 1, s = Math.sqrt(sx * sy);
+  const r1 = (v: number) => Math.round(v * 10) / 10;
+  const at = (q: Pt): Pt => ({ x: r1(to.x + (q.x - from.x) * sx), y: r1(to.y + (q.y - from.y) * sy) });
+  const k = (v: number | undefined, min = 0.5) => (v === undefined ? undefined : Math.max(min, r1(v * s)));
+  const rubs = (e: VElement, fx: number, fy: number) => e.erased?.map((r) => ({ ...r, pts: r.pts.map((v, i) => r1(v * (i % 2 ? fy : fx))), size: r1(r.size * s) }));
+  return withElements(p, base.map((e): VElement => {
+    if (!on.has(e.id)) return e;
+    const out = { ...e } as VElement & Record<string, unknown>;
+    if ('strokeWidth' in e || ['rect', 'ellipse', 'capsule', 'poly', 'line', 'zone'].includes(e.type)) {   // drawn widths: 3 on lines and floors, else 2
+      const sw = (e as { strokeWidth?: number }).strokeWidth ?? (e.type === 'line' || e.type === 'zone' ? 3 : 2);
+      if (s !== 1) out.strokeWidth = k(sw);
+    }
+    switch (e.type) {
+      case 'stroke':
+        return { ...e, points: e.points.map(([x, y]): [number, number] => { const q = at({ x, y }); return [q.x, q.y]; }), width: k(e.width ?? 4) };
+      case 'line': {
+        const [a, b] = lineEnds(e, base);
+        const end = (an: Anchor, q: Pt): Anchor => (isAttached(an) && on.has(an.el) ? an : at(q));
+        return { ...out, from: end(e.from, a), to: end(e.to, b), bend: k(e.bend, -Infinity), erased: rubs(e, sx, sy) } as VLine;
+      }
+      case 'status': { const q = at(e); return { ...e, ...q, size: k(e.size ?? 20, 4) }; }
+      case 'zone': { const q = at(e); return { ...out, ...q, cell: Math.max(4, r1(e.cell * s)) } as VZone; }
+      case 'asset':
+        if (fixed?.has(e.id)) {   // moves by where it stands
+          const st = e.at ?? { x: 0.5, y: 0.5 }, q = at({ x: e.x + e.w * st.x, y: e.y + e.h * st.y });
+          return { ...e, x: r1(q.x - e.w * st.x), y: r1(q.y - e.h * st.y) };
+        }
+    }
+    // A box: turned or in a plane, it keeps its shape and scales evenly about where it sits; otherwise it maps across
+    const bx = e as Box & VElement;
+    const even = !!rotationOf(e) || !!planeOf(e), fx = even ? s : sx, fy = even ? s : sy;
+    const w = Math.max(1, r1(bx.w * fx)), h = Math.max(1, r1(bx.h * fy));
+    const anchor = planeOf(e) ? { x: bx.x, y: bx.y } : { x: bx.x + bx.w / 2, y: bx.y + bx.h / 2 };
+    const q = at(anchor);
+    Object.assign(out, planeOf(e) ? { x: q.x, y: q.y } : { x: r1(q.x - w / 2), y: r1(q.y - h / 2) }, { w, h, erased: rubs(e, fx, fy) });
+    if (e.type === 'rect' && e.radius !== undefined) out.radius = k(e.radius, 0);
+    if (e.type === 'text') out.size = k(e.size ?? 24, 4);
+    if ('height' in e && e.height !== undefined) out.height = k(e.height, 1);
+    if ('lift' in e && e.lift !== undefined) out.lift = k(e.lift, 0);
+    if (!out.erased) delete out.erased;
+    return out;
+  }).map((e) => { if (!on.has(e.id)) return e; const r = e as unknown as Record<string, unknown>; for (const f of ['strokeWidth', 'bend', 'erased']) if (f in r && r[f] === undefined) delete r[f]; return e; }));
 }
 
 export function reorderElements(p: DesignPage, ids: string[], to: 'front' | 'back'): DesignPage {

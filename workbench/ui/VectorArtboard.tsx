@@ -108,7 +108,8 @@ const Artboard = memo(function Artboard({ page, bible, bibleId, onOpen, onFit, e
   return (
     <svg
       ref={svgRef} viewBox={`0 0 ${W} ${H}`} width={W} height={H}
-      style={{ display: 'block', touchAction: edit ? 'none' : undefined, cursor: edit && edit.tool !== 'select' ? 'crosshair' : undefined }}
+      // Editing: a drag moves and draws, never selects the page's text (the text being typed opts back in)
+      style={{ display: 'block', touchAction: edit ? 'none' : undefined, userSelect: edit ? 'none' : undefined, WebkitUserSelect: edit ? 'none' : undefined, cursor: edit && edit.tool !== 'select' ? 'crosshair' : undefined }}
       {...g.handlers}
     >
       <style>{`.vlink{cursor:pointer}.vlink:hover{opacity:.65}`}</style>

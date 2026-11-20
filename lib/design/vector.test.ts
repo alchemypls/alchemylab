@@ -4,7 +4,7 @@ import { linkTarget, type Bible, type DesignPage } from './types';
 import { untouchable } from './layers';
 import { carve } from './carve';
 import {
-  copyElements, duplicateElements, groupElements, lineEnds, pasteElements, removeElements, rubArea, tenants, withGroups,
+  copyElements, duplicateElements, groupElements, lineEnds, pasteElements, removeElements, rubArea, scaleElements, selectionBounds, tenants, translateElements, withGroups,
   type VElement, type VLine, type VRect, type VZone,
 } from './vector';
 
@@ -119,5 +119,29 @@ describe('links', () => {
     expect(linkTarget('index', bible)).toBe('index');
     expect(linkTarget('index', null)).toBe('index');
     expect(linkTarget(undefined, bible)).toBeUndefined();
+  });
+
+  it('moves a line whole: an end attached to something left behind lets go and travels; one attached to a moving piece stays', () => {
+    const a = rect('a', 0, 0), b = rect('b', 200, 0), line: VLine = { id: 'l', type: 'line', from: { el: 'a' }, to: { el: 'b' } };
+    const page = { title: '', updated: '', blocks: [], elements: [a, b, line] } as DesignPage;
+    const [p0, q0] = lineEnds(line, page.elements!);
+    const moved = translateElements(page, page.elements!, ['l'], 10, 30).elements!.find((e) => e.id === 'l') as VLine;
+    expect(moved.from).toEqual({ x: Math.round(p0.x + 10), y: Math.round(p0.y + 30) });
+    expect(moved.to).toEqual({ x: Math.round(q0.x + 10), y: Math.round(q0.y + 30) });
+    const withA = translateElements(page, page.elements!, ['l', 'a'], 10, 30).elements!.find((e) => e.id === 'l') as VLine;
+    expect(withA.from).toEqual({ el: 'a' });
+  });
+
+  it('scales a group from its box: positions, sizes, text and widths follow; an arrow end attached inside stays', () => {
+    const a = rect('a', 0, 0, { strokeWidth: 4 }), b = rect('b', 60, 60), t: VElement = { id: 't', type: 'text', x: 0, y: 100, w: 100, h: 20, text: 'x', size: 20 };
+    const l = arrow('l', { el: 'a' }, { x: 100, y: 100 }), p = page([a, b, t, l]), ids = ['a', 'b', 't', 'l'];
+    const box = selectionBounds(p.elements!, ids)!;
+    expect(box).toEqual({ x: 0, y: 0, w: 100, h: 120 });
+    const out = scaleElements(p, p.elements!, ids, box, { x: 0, y: 0, w: 200, h: 240 });
+    expect(el(out, 'b')).toMatchObject({ x: 120, y: 120, w: 80, h: 80 });
+    expect(el(out, 'a')).toMatchObject({ x: 0, y: 0, w: 80, strokeWidth: 8 });
+    expect(el(out, 't')).toMatchObject({ y: 200, w: 200, size: 40 });
+    expect(el(out, 'l')).toMatchObject({ from: { el: 'a' }, to: { x: 200, y: 200 } });
+    expect(scaleElements(out, out.elements!, ids, { x: 0, y: 0, w: 200, h: 240 }, box).elements).toEqual(p.elements!.map((e) => e.type === 'rect' && !e.strokeWidth ? { ...e, strokeWidth: 2 } : e.type === 'line' ? { ...e, strokeWidth: 3 } : e));
   });
 });

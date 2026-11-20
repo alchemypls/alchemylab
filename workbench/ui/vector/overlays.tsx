@@ -3,7 +3,7 @@
 // What a vector sheet draws over the page while editing: crowded tiles, footprints, the selection and its handles,
 // and the preview of the gesture in progress. None of it is part of the page.
 
-import { boundsOf, capsulePath, crowdedTiles, lineEnds, offPlane, onPlane, planeOf, PLANES, rotateTransform, standing, zoneCorners, zonePoint, type FootingOf, type VElement, type VZone } from '@/lib/design/vector';
+import { boundsOf, capsulePath, crowdedTiles, lineEnds, offPlane, onPlane, planeOf, PLANES, rotateTransform, selectionBounds, standing, zoneCorners, zonePoint, type FootingOf, type VElement, type VZone } from '@/lib/design/vector';
 import { strokeFields, type ToolStyles } from '@/lib/design/toolStyles';
 import { ACCENT, INK, SANS } from '../DesignArtboard';
 import { boxFrom, DIRS, down, toPoints, zoneSpan, type Gesture } from './gesture';
@@ -47,6 +47,21 @@ export function Selection({ els, selected, single, knobOnly, handle, line }: { e
         const b = boundsOf(el, els);
         return <rect key={el.id} x={b.x - 4} y={b.y - 4} width={b.w + 8} height={b.h + 8} transform={rotateTransform(el, els)} fill="none" stroke={ACCENT} strokeWidth={line} strokeDasharray={`${line * 4} ${line * 3}`} />;
       })}
+      {!single && picked.length > 1 && (() => {   // a group or several picked: one box, its handles scale them all
+        const b = selectionBounds(els, selected);
+        if (!b) return null;
+        const pad = handle;
+        return (
+          <g>
+            <rect x={b.x - pad} y={b.y - pad} width={b.w + pad * 2} height={b.h + pad * 2} fill="none" stroke={ACCENT} strokeWidth={line} />
+            {DIRS.map((d) => {
+              const x = d.includes('w') ? b.x - pad : d.includes('e') ? b.x + b.w + pad : b.x + b.w / 2;
+              const y = d.includes('n') ? b.y - pad : d.includes('s') ? b.y + b.h + pad : b.y + b.h / 2;
+              return <rect key={d} data-handle={d} x={x - handle / 2} y={y - handle / 2} width={handle} height={handle} fill="#fff" stroke={ACCENT} strokeWidth={line} pointerEvents="all" style={{ cursor: `${d}-resize` }}><title>{d.length === 2 ? 'Scale all (Shift: stretch freely)' : 'Stretch all'}</title></rect>;
+            })}
+          </g>
+        );
+      })()}
       {single?.type === 'line' && lineEnds(single, els).map((p, i) => (
         <circle key={i} data-handle={i ? 'to' : 'from'} cx={p.x} cy={p.y} r={handle / 1.5} fill="#fff" stroke={ACCENT} strokeWidth={line} pointerEvents="all" style={{ cursor: 'move' }} />
       ))}

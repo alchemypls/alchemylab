@@ -302,7 +302,7 @@ function TextBox({ el, bible, linked, inlineEdit }: { el: VText; bible: Bible | 
       {inlineEdit ? (
         <textarea
           autoFocus value={el.text} placeholder="Type…"
-          style={{ ...type, display: 'block', width: '100%', height: '100%', resize: 'none', overflow: 'hidden', scrollbarWidth: 'none', background: 'rgba(255,255,255,0.7)', border: 'none', outline: `2px solid ${ACCENT}`, padding: 0 }}
+          style={{ ...type, display: 'block', width: '100%', height: '100%', resize: 'none', overflow: 'hidden', scrollbarWidth: 'none', userSelect: 'text', WebkitUserSelect: 'text', background: 'rgba(255,255,255,0.7)', border: 'none', outline: `2px solid ${ACCENT}`, padding: 0 }}
           onChange={(e) => inlineEdit.onChange(e.target.value)} onBlur={inlineEdit.onDone}
           onKeyDown={(e) => { e.stopPropagation(); if (e.key === 'Escape') e.currentTarget.blur(); }}
         />

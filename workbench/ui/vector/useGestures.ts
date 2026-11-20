@@ -10,7 +10,7 @@ import type { DesignPage } from '@/lib/design/types';
 import { footingOf, placeAsset } from '@/lib/design/vault';
 import {
   addElement, boundsOf, cutStrokes, dragDelta, gridOf, invert, ISO_DEG, latticeVertex, mapPt, liftOf, magnet, newId, offPlane, onPlane, planeOf, PLANES, polyFrom,
-  pullBox, pullBoxToLattice, pullZone, removeElements, ROOF_LIFT, rotatePt, rotationOf, rubArea, rubElements, snap, snapAngle, standing, tenants, tidyStroke,
+  pullBox, pullBoxToLattice, pullZone, removeElements, ROOF_LIFT, rotatePt, rotationOf, rubArea, rubElements, scaleElements, selectionBounds, snap, snapAngle, standing, tenants, tidyStroke,
   translateElements, updateElement, visualBounds, withGroups,
   type Anchor, type FootingOf, type Lattice, type Pt, type VElement, type VLine,
 } from '@/lib/design/vector';
@@ -20,7 +20,7 @@ import { carveElements } from '@/lib/design/carve';
 import type { SheetMenuAt } from '../SheetMenu';
 import { ACCENT } from '../DesignArtboard';
 import {
-  angleAt, boxFrom, down, DRAG_START, fromPointer, MIN_SIZE, tileAt, ZONE_TAP, zoneSpan,
+  angleAt, boxFrom, DIRS, down, DRAG_START, fromPointer, MIN_SIZE, tileAt, ZONE_TAP, zoneSpan,
   type Dir, type Gesture, type PagePen, type Press, type VectorEdit, type VTool,
 } from './gesture';
 
@@ -76,9 +76,19 @@ export function useGestures({ svgRef, page, els, W, H, edit, penInput, lookOnly 
     return undefined;
   };
 
-  const anchorAt = (e: Pointer, p: Pt, skip?: string): Anchor => {
-    const el = elementAt(e, true, skip);
-    if (el) return { el: el.id };
+  // Where a line's end goes. It attaches to a shape only near the shape's edge (or anywhere on a small one): inside a
+  // big shape, a panel or a ring, it stays where you put it. Ctrl (or Alt / Cmd): a free point, no attaching, no grid pull.
+  const anchorAt = (e: Pointer & { free?: boolean }, p: Pt, skip?: string): Anchor => {
+    if (e.free) return { x: Math.round(p.x), y: Math.round(p.y) };
+    const k = edit?.scale ?? 1, tol = 14 / k, small = 64 / k, blocked = untouchable(pageRef.current), all = pageRef.current.elements ?? [];
+    for (const node of document.elementsFromPoint(e.clientX, e.clientY)) {
+      const id = node.closest<SVGGElement>('[data-el]')?.dataset.el;
+      const el = id && id !== skip && !blocked.has(id) ? all.find((x) => x.id === id) : undefined;
+      if (!el || el.type === 'line') continue;
+      const b = boundsOf(el, all);
+      const nearEdge = Math.min(p.x - b.x, b.x + b.w - p.x, p.y - b.y, b.y + b.h - p.y) <= tol;
+      if (nearEdge || (b.w <= small && b.h <= small)) return { el: el.id };
+    }
     const v = vertex(p);
     if (v) return v;
     const q = pullPt(p);
@@ -99,6 +109,13 @@ export function useGestures({ svgRef, page, els, W, H, edit, penInput, lookOnly 
   // A press on the selected element's handle resizes it, in any tool that can show handles
   const startHandle = (e: Press, key: string) => {
     const handle = handleAt(e);
+    if (handle && edit && edit.selected.length > 1 && (DIRS as readonly string[]).includes(handle)) {   // several picked: the group's box scales
+      const box = selectionBounds(els, edit.selected);
+      if (!box) return false;
+      const fixed = new Set(els.filter((x) => edit.selected.includes(x.id) && fpOf(x)).map((x) => x.id));
+      begin({ kind: 'scale', ids: edit.selected, base: els, box, dir: handle as Dir, fixed, key });
+      return true;
+    }
     const only = edit?.selected.length === 1 ? els.find((x) => x.id === edit.selected[0]) : undefined;
     if (!handle || !only) return false;
     if (only.type === 'line') begin({ kind: 'endpoint', id: only.id, end: handle as 'from' | 'to', key });
@@ -142,7 +159,13 @@ export function useGestures({ svgRef, page, els, W, H, edit, penInput, lookOnly 
     switch (tool) {
       case 'select': {
         if (startHandle(e, key)) return;
-        const hit = elementAt(e, false, undefined, edit.styles.select.off);
+        let hit = elementAt(e, false, undefined, edit.styles.select.off);
+        // A selected line is thin: a press anywhere in its box (a little padded) grabs it, unless it lands on another selected piece
+        if (!hit || !edit.selected.includes(hit.id)) {
+          const pad = 8 / edit.scale;
+          const line = els.find((x) => x.type === 'line' && edit.selected.includes(x.id) && (() => { const b = boundsOf(x, els); return p.x >= b.x - pad && p.x <= b.x + b.w + pad && p.y >= b.y - pad && p.y <= b.y + b.h + pad; })());
+          if (line) hit = line;
+        }
         if (!hit) {
           if (!e.shiftKey) edit.select([]);
           return begin({ kind: 'marquee', start: p, cur: p });
@@ -231,7 +254,9 @@ export function useGestures({ svgRef, page, els, W, H, edit, penInput, lookOnly 
         if (!g.moved && Math.hypot(p.x - g.start.x, p.y - g.start.y) < DRAG_START) return;
         g.moved = true;
         const dx = p.x - g.start.x, dy = p.y - g.start.y, zoneMoving = g.base.some((x) => x.type === 'zone' && g.ids.includes(x.id));
-        const d = !snapOn && !zoneMoving ? { x: Math.round(dx), y: Math.round(dy) } : dragDelta(pageRef.current, g.base, g.ids, dx, dy, iso ? (b) => pullBoxToLattice(b, lattice, iso.tol) : mag ? (b) => pullBox(b, mag.cell, mag.tol) : undefined, fpOf);
+        // Lines move freely: they snap and attach only by their end dots
+        const linesOnly = g.ids.every((id) => g.base.find((x) => x.id === id)?.type === 'line');
+        const d = (!snapOn || linesOnly) && !zoneMoving ? { x: Math.round(dx), y: Math.round(dy) } : dragDelta(pageRef.current, g.base, g.ids, dx, dy, iso ? (b) => pullBoxToLattice(b, lattice, iso.tol) : mag ? (b) => pullBox(b, mag.cell, mag.tol) : undefined, fpOf);
         edit.apply(translateElements(pageRef.current, g.base, [...g.ids, ...g.carried], d.x, d.y), g.key);
         return;
       }
@@ -267,6 +292,22 @@ export function useGestures({ svgRef, page, els, W, H, edit, penInput, lookOnly 
           l += dx; r += dx; t += dy; btm += dy;
         }
         edit.apply(updateElement(pageRef.current, g.id, { x: Math.round(l), y: Math.round(t), w: Math.round(r - l), h: Math.round(btm - t) }), g.key);
+        return;
+      }
+      case 'scale': {
+        // The side or corner opposite the handle stays put. A corner scales evenly (Shift: freely); a side stretches one way
+        const b = g.box, x = snapOn ? snap(p.x) : Math.round(p.x), y = snapOn ? snap(p.y) : Math.round(p.y);
+        let l = b.x, t = b.y, r = b.x + b.w, btm = b.y + b.h;
+        if (g.dir.includes('w')) l = Math.min(x, r - MIN_SIZE);
+        if (g.dir.includes('e')) r = Math.max(x, l + MIN_SIZE);
+        if (g.dir.includes('n')) t = Math.min(y, btm - MIN_SIZE);
+        if (g.dir.includes('s')) btm = Math.max(y, t + MIN_SIZE);
+        if (g.dir.length === 2 && !e.shiftKey && b.w && b.h) {
+          const k = Math.max((r - l) / b.w, (btm - t) / b.h), w = b.w * k, h = b.h * k;
+          if (g.dir.includes('w')) l = r - w; else r = l + w;
+          if (g.dir.includes('n')) t = btm - h; else btm = t + h;
+        }
+        edit.apply(scaleElements(pageRef.current, g.base, g.ids, b, { x: l, y: t, w: r - l, h: btm - t }, g.fixed), g.key);
         return;
       }
       case 'rotate': {
