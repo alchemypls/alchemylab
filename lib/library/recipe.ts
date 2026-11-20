@@ -31,8 +31,11 @@ export interface Style {
   width?: V | 'fill' | 'hug'; height?: V | 'fill' | 'hug';
   minWidth?: V; minHeight?: V; maxWidth?: V;
   background?: V; color?: V;
-  borderColor?: V; borderWidth?: V; radius?: V; shadow?: V;
+  borderColor?: V; borderWidth?: V; borderStyle?: 'solid' | 'dashed' | 'dotted'; radius?: V; shadow?: V;
+  ticks?: V; tickColor?: V;                                  // corner ticks: an L this long in each corner, 2px, just inside the edge
   font?: V; fontSize?: V; fontWeight?: V; letterSpacing?: V; lineHeight?: V; textAlign?: 'start' | 'center' | 'end';
+  textTransform?: 'uppercase' | 'lowercase' | 'capitalize' | 'none';
+  backdropBlur?: V;                                          // backdrop-filter: blur() — frosted glass over what's behind
   opacity?: number; scale?: number;                          // scale → transform
   outlineColor?: V; outlineWidth?: V; outlineOffset?: V;     // focus rings
   cursor?: 'pointer' | 'text' | 'not-allowed' | 'default';
@@ -60,12 +63,14 @@ export interface Part {
   untilReady?: boolean;              // rendered `hidden` until its behavior's runtime attaches (progressive
                                      // enhancement: without JavaScript these controls simply never show)
   repeat?:   string;                 // name of a 'list' prop — this part renders once per item;
-                                     // inside it (and its children) "{item.field}" binds that item
+                                     // inside it (and its children) "{item.field}" binds that item.
+                                     // "item.tags" repeats over the current item's own list (PropDef.lists); inside, {item.*} is the inner one
   states?:   Partial<Record<StateName, Style>>;  // this part's OWN states (e.g. a link's hover)
   children?: Part[];
 }
 
-export type ListItem = Record<string, string>;
+// One item of a 'list' prop: text fields, and lists of their own (an entry's tags, its links)
+export type ListItem = { [field: string]: string | ListItem[] };
 
 export interface PropDef {
   name:     string;
@@ -73,6 +78,7 @@ export interface PropDef {
   default:  string | boolean | ListItem[];
   options?: string[];                // for 'choice'
   fields?:  string[];                // for 'list' — each item's fields, e.g. ['label', 'href']
+  lists?:   Record<string, string[]>; // for 'list' — an item's own lists and their fields: { tags: ['label'], links: ['label', 'href'] }
 }
 
 // Style deltas keyed by part id
@@ -82,6 +88,9 @@ export interface VariantAxis {
   name:    string;                   // 'variant', 'size'
   default: string;
   options: Record<string, PartStyles>;
+  // States inside one option (variant: action glows gold on hover, danger glows ember): option → state → part deltas.
+  // They come after the recipe's own states, so an option's hover wins over the shared one.
+  states?: Record<string, Partial<Record<StateName, PartStyles>>>;
 }
 
 export type StateName = 'hover' | 'press' | 'focus' | 'disabled' | 'checked' | 'open' | 'invalid' | 'current' | 'selected';
@@ -110,7 +119,8 @@ export interface Recipe {
   anatomy:     Part;                 // root part
   variants:    VariantAxis[];
   states:      Partial<Record<StateName, PartStyles>>;
-  transition?: { duration: V; ease: V };   // applied to state changes
+  transition?: { duration: V; ease: V };   // applied to state changes; under prefers-reduced-motion only colors and
+                                           // opacity fade, nothing moves or scales (css.ts, "calm")
   // Mobile-first style deltas per wider tier (same tiers as layouts: ≥600 / ≥1024)
   responsive?: Partial<Record<'tablet' | 'desktop', PartStyles>>;
   // Runtime behaviors (lib/library/behaviors) — the JSON names a behavior + its settings, never code.

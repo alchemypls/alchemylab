@@ -13,4 +13,5 @@ export * from './css';
 export * from './markup';
 export * from './edit';
 export * from './theme';
+export * from './fonts';
 export { BEHAVIORS, behaviorsUsed, behaviorScript } from './behaviors';

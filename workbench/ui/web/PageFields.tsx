@@ -2,7 +2,7 @@
 
 import { useWorkbenchStore } from '@/lib/store';
 import { Toggle } from '@/workbench/ui/Toggle';
-import { PAGE_STATUSES, derivePageStatus, type PageDef, type PageHead, type PageStatus, type ProjectData } from '@/lib/project';
+import { PAGE_STATUSES, derivePageStatus, safeBackdrop, sectionId, type PageDef, type PageHead, type PageStatus, type ProjectData } from '@/lib/project';
 
 // One page's planning fields (what the Ledger widget held), in the box under the Web canvas's minimap:
 // name, status, intent, head / SEO, notes. Planning fields are never emitted; head goes into the page's metadata.
@@ -60,6 +60,36 @@ export function PageFields({ pid, project, page }: { pid: string; project: Proje
           <Toggle size="sm" on={!!head.noindex} onToggle={() => setHead({ noindex: !head.noindex })} />
         </div>
       </div>
+
+      <label className="flex flex-col gap-1">
+        <span className={LABEL}>Backdrop</span>
+        <input
+          value={page.backdrop ?? ''} onChange={(e) => patch({ backdrop: e.target.value || undefined })}
+          placeholder={meta.backdrop ? `The project's: ${meta.backdrop}` : 'CSS background under the page, e.g. a gradient'}
+          className={`${FIELD} font-mono`} title="Drawn fixed under this page (CSS background). Empty = the project's backdrop (Project settings)"
+        />
+        {page.backdrop && !safeBackdrop(page.backdrop) && <span className="text-[10px] text-rose-400">Not used: no &lt; &gt; {'{ }'} ; ` \ $ in a backdrop</span>}
+      </label>
+
+      {!project.pages.some((p) => p.sections?.includes(page.path)) && (
+        <div className="flex flex-col gap-1" title="Other pages shown on this one, one at a time, picked by #hash (/work becomes #work). Links to them stay on this page. The first one shows when there's no hash, after this page's own blocks if it has any.">
+          <span className={LABEL}>Sections in place</span>
+          {project.pages.filter((p) => p.path !== page.path && !p.sections?.length).map((p) => {
+            const on = page.sections?.includes(p.path) ?? false;
+            return (
+              <label key={p.path} className="flex items-center gap-2 text-[11px] text-neutral-300">
+                <input type="checkbox" checked={on} onChange={() => {
+                  const next = on ? (page.sections ?? []).filter((x) => x !== p.path) : [...(page.sections ?? []), p.path];
+                  patch({ sections: next.length ? next : undefined });
+                }} />
+                <span className="flex-1 truncate">{p.name}</span>
+                <span className="font-mono text-[10px] text-neutral-500">#{sectionId(p.path)}</span>
+              </label>
+            );
+          })}
+          {!!page.sections?.length && <span className="text-[10px] text-neutral-500 leading-snug">Shown in the export and on Live; the preview here shows this page&apos;s own blocks.</span>}
+        </div>
+      )}
 
       <label className="flex flex-col gap-1">
         <span className={LABEL}>Notes</span>

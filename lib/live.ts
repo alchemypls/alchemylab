@@ -6,7 +6,7 @@
 
 import { generatePageHTML } from './generator/page';
 import { normalizePath } from './routes';
-import { projectTheme, type ProjectData } from './project';
+import { pageSections, projectTheme, type ProjectData } from './project';
 
 export const livePath = (pid: string, path: string) => `/live/${encodeURIComponent(pid)}${path === '/' ? '' : path}`;
 
@@ -69,7 +69,7 @@ export function livePage(pid: string, project: ProjectData, rawPath: string): { 
   if (!page) return { status: 404, html: shell('Not found', `<h1>No page at <code>${escText(path)}</code></h1><p>${escText(project.meta.name)} has:</p>${list}`, pid) };
   const layout = project.layouts[path];
   if (!layout) return { status: 200, html: shell(page.name, `<h1>${escText(page.name)}</h1><p>Nothing placed on this page yet. Place components on the Web canvas's layout layer.</p>${list}`, pid) };
-  const html = generatePageHTML(page, layout, project.components ?? {}, projectTheme(project), project.meta)
+  const html = generatePageHTML(page, layout, project.components ?? {}, projectTheme(project), project.meta, pageSections(project, page))
     // Root-relative links to the project's own pages stay inside the live site
     .replace(/(\shref=")(\/(?!\/)[^"]*)"/g, (_m, pre: string, href: string) => `${pre}${livePath(pid, href)}"`);
   return { status: 200, html: html.replace(/<\/body>/i, `  <script>${LIVE_SCRIPT(pid)}</script>\n</body>`) };

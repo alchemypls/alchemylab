@@ -30,7 +30,7 @@ export function bind(r: Recipe, props: PropValues | undefined, text: string | un
   if (!text) return '';
   return text
     .replace(/\{prop\.([a-zA-Z0-9_]+)\}/g, (_, n) => { const v = propValue(r, props, n); return Array.isArray(v) ? '' : String(v); })
-    .replace(/\{item\.([a-zA-Z0-9_]+)\}/g, (_, n) => item?.[n] ?? '');
+    .replace(/\{item\.([a-zA-Z0-9_]+)\}/g, (_, n) => { const v = item?.[n]; return typeof v === 'string' ? v : ''; });
 }
 
 export const pickedOption = (r: Recipe, picks: OptionPicks | undefined, axis: string) => {
@@ -56,11 +56,21 @@ export function rootAttrs(r: Recipe, props?: PropValues, picks?: OptionPicks): R
   return attrs;
 }
 
-export function partAttrs(r: Recipe, p: Part, props?: PropValues, item?: ListItem): Record<string, string | boolean> {
+// Same page? Paths compared without a trailing slash; only plain paths (no #, ?, scheme)
+const samePath = (href: string, here: string) => /^\/[^#?:]*$/.test(href) && href.replace(/\/+$/, '') === here.replace(/\/+$/, '');
+
+// `here`: the page's path. A link to it says so (aria-current="page"), which a `current` state styles.
+// `anchors`: page path → #id, for pages shown in place as sections of this one (links to them stay on the page)
+export function partAttrs(r: Recipe, p: Part, props?: PropValues, item?: ListItem, here?: string, anchors?: Record<string, string>): Record<string, string | boolean> {
   const attrs: Record<string, string | boolean> = {};
   if (p.kind === 'checkbox') attrs.type = 'checkbox';
   if (p.kind === 'radio')    attrs.type = 'radio';
   for (const [k, v] of Object.entries(p.attrs ?? {})) attrs[k === 'inputType' ? 'type' : k] = bind(r, props, v, item);
+  if (p.kind === 'link' && typeof attrs.href === 'string') {
+    const to = anchors?.[attrs.href.replace(/(.)\/+$/, '$1')];
+    if (to) attrs.href = to;
+    else if (here && samePath(attrs.href, here)) attrs['aria-current'] = 'page';
+  }
   if (p.untilReady) attrs.hidden = true;
   if (p.id !== r.anatomy.id) {
     // inner form controls follow the component's disabled prop
@@ -72,14 +82,16 @@ export function partAttrs(r: Recipe, p: Part, props?: PropValues, item?: ListIte
 // `when: "help"` checks a prop; `when: "item.cta"` checks the current repeated item's field
 export const shown = (r: Recipe, p: Part, props?: PropValues, item?: ListItem) => {
   if (!p.when) return true;
-  if (p.when.startsWith('item.')) return Boolean(item?.[p.when.slice(5)]);
+  if (p.when.startsWith('item.')) { const v = item?.[p.when.slice(5)]; return Array.isArray(v) ? v.length > 0 : Boolean(v); }
   const v = propValue(r, props, p.when);
   return Array.isArray(v) ? v.length > 0 : Boolean(v);
 };
 
 // One entry per render of a part: a single undefined item, or one per list item when repeating
 export const renderItems = (r: Recipe, p: Part, props?: PropValues, inherited?: ListItem): (ListItem | undefined)[] =>
-  p.repeat ? listItems(r, props, p.repeat) : [inherited];
+  !p.repeat ? [inherited]
+  : p.repeat.startsWith('item.') ? (() => { const v = inherited?.[p.repeat.slice(5)]; return Array.isArray(v) ? v : []; })()
+  : listItems(r, props, p.repeat);
 
 // ── Exported code ────────────────────────────────────────────────
 // JSX-compatible HTML (className, self-closed void elements), or with `html` plain HTML (class, entities, <!-- -->).
@@ -89,12 +101,12 @@ const escJsx  = (s: string) => s.replace(/[{}<>]/g, (c) => `{'${c}'}`);
 const escHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const attr = (k: string, v: string | boolean) => (v === true ? k : `${k}="${String(v).replace(/&/g, '&amp;').replace(/"/g, '&quot;')}"`);
 
-export function recipeToMarkup(r: Recipe, props?: PropValues, picks?: OptionPicks, indent = '', html = false): string {
+export function recipeToMarkup(r: Recipe, props?: PropValues, picks?: OptionPicks, indent = '', html = false, here?: string, anchors?: Record<string, string>): string {
   const render = (p: Part, pad: string, item?: ListItem): string[] => {
     return renderItems(r, p, props, item).filter((it) => shown(r, p, props, it)).map((it) => {
       const tag    = NATIVE[p.kind];
       const isRoot = p.id === r.anatomy.id;
-      const all    = { [html ? 'class' : 'className']: partClass(r, p.id), ...(isRoot ? rootAttrs(r, props, picks) : {}), ...partAttrs(r, p, props, it) };
+      const all    = { [html ? 'class' : 'className']: partClass(r, p.id), ...(isRoot ? rootAttrs(r, props, picks) : {}), ...partAttrs(r, p, props, it, here, anchors) };
       const open   = `${tag} ${Object.entries(all).map(([k, v]) => attr(k, v)).join(' ')}`;
       if (VOID.has(tag)) return html ? `${pad}<${open}>` : `${pad}<${open} />`;
       if (p.kind === 'slot') return html ? `${pad}<${open}><!-- ${p.slot?.label ?? p.id} --></${tag}>` : `${pad}<${open}>{/* ${p.slot?.label ?? p.id} */}</${tag}>`;

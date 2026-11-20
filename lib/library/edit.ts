@@ -8,6 +8,7 @@ import { Recipe, Part, Style, StateName, walkParts } from './recipe';
 export type Layer =
   | { kind: 'base' }
   | { kind: 'variant'; axis: string; option: string }
+  | { kind: 'variantState'; axis: string; option: string; state: StateName }   // one option in one state
   | { kind: 'state'; state: StateName }                       // whole component in that state
   | { kind: 'partState'; state: StateName }                   // each part's OWN state (part.states)
   | { kind: 'responsive'; tier: 'tablet' | 'desktop' };       // mobile-first delta from that width up
@@ -17,8 +18,8 @@ export const STATE_NAMES: StateName[] = ['hover', 'press', 'focus', 'disabled', 
 export const STYLE_KEYS: (keyof Style)[] = [
   'layout', 'align', 'justify', 'gap', 'padding', 'paddingX', 'paddingY',
   'width', 'height', 'minWidth', 'minHeight', 'maxWidth',
-  'background', 'color', 'borderColor', 'borderWidth', 'radius', 'shadow',
-  'font', 'fontSize', 'fontWeight', 'letterSpacing', 'lineHeight', 'textAlign',
+  'background', 'color', 'borderColor', 'borderWidth', 'borderStyle', 'radius', 'shadow', 'ticks', 'tickColor',
+  'font', 'fontSize', 'fontWeight', 'letterSpacing', 'lineHeight', 'textAlign', 'textTransform', 'backdropBlur',
   'opacity', 'scale', 'outlineColor', 'outlineWidth', 'outlineOffset', 'cursor', 'overflow',
   'hide', 'position', 'top', 'right', 'bottom', 'left', 'zIndex',
   'scroll', 'scrollbar', 'snapAlign', 'basis', 'aspect', 'objectFit',
@@ -27,6 +28,7 @@ export const STYLE_KEYS: (keyof Style)[] = [
 export const layerKey = (l: Layer) =>
   l.kind === 'base' ? 'base'
   : l.kind === 'variant' ? `variant:${l.axis}:${l.option}`
+  : l.kind === 'variantState' ? `vstate:${l.axis}:${l.option}:${l.state}`
   : l.kind === 'state' ? `state:${l.state}`
   : l.kind === 'partState' ? `part:${l.state}`
   : `tier:${l.tier}`;
@@ -46,6 +48,7 @@ function findPart(part: Part, id: string): Part | undefined {
 export function layerStyle(r: Recipe, layer: Layer, partId: string): Style {
   if (layer.kind === 'base')    return findPart(r.anatomy, partId)?.style ?? {};
   if (layer.kind === 'variant') return r.variants.find((a) => a.name === layer.axis)?.options[layer.option]?.[partId] ?? {};
+  if (layer.kind === 'variantState') return r.variants.find((a) => a.name === layer.axis)?.states?.[layer.option]?.[layer.state]?.[partId] ?? {};
   if (layer.kind === 'partState')  return findPart(r.anatomy, partId)?.states?.[layer.state] ?? {};
   if (layer.kind === 'responsive') return r.responsive?.[layer.tier]?.[partId] ?? {};
   return r.states[layer.state]?.[partId] ?? {};
@@ -68,6 +71,17 @@ export function setLayerStyle(r: Recipe, layer: Layer, partId: string, style: St
       ...a, options: { ...a.options, [layer.option]: withPart(a.options[layer.option] ?? {}, partId, style) },
     }) };
   }
+  if (layer.kind === 'variantState') {
+    return { ...r, variants: r.variants.map((a) => {
+      if (a.name !== layer.axis) return a;
+      const opt = { ...a.states?.[layer.option] };
+      const parts = withPart(opt[layer.state] ?? {}, partId, style);
+      if (Object.keys(parts).length) opt[layer.state] = parts; else delete opt[layer.state];
+      const states = { ...a.states };
+      if (Object.keys(opt).length) states[layer.option] = opt; else delete states[layer.option];
+      return { ...a, states: Object.keys(states).length ? states : undefined };
+    }) };
+  }
   if (layer.kind === 'partState') {
     return { ...r, anatomy: mapPart(r.anatomy, partId, (p) => {
       const states = { ...p.states };
@@ -83,8 +97,12 @@ export function setLayerStyle(r: Recipe, layer: Layer, partId: string, style: St
 
 // "Add an option" — e.g. variant: hero, starting as a copy of an existing option
 export function addOption(r: Recipe, axis: string, name: string, basedOn?: string): Recipe {
-  return { ...r, variants: r.variants.map((a) => a.name !== axis || a.options[name] ? a : {
-    ...a, options: { ...a.options, [name]: structuredClone(a.options[basedOn ?? a.default] ?? {}) },
+  return { ...r, variants: r.variants.map((a) => {
+    if (a.name !== axis || a.options[name]) return a;
+    const from = basedOn ?? a.default;
+    const next = { ...a, options: { ...a.options, [name]: structuredClone(a.options[from] ?? {}) } };
+    if (a.states?.[from]) next.states = { ...a.states, [name]: structuredClone(a.states[from]) };
+    return next;
   }) };
 }
 
@@ -93,7 +111,9 @@ export function removeOption(r: Recipe, axis: string, name: string): Recipe {
     if (a.name !== axis || a.default === name || !a.options[name]) return a;
     const options = { ...a.options };
     delete options[name];
-    return { ...a, options };
+    const states = { ...a.states };
+    delete states[name];
+    return { ...a, options, states: Object.keys(states).length ? states : undefined };
   }) };
 }
 
@@ -128,6 +148,8 @@ export const PROPERTY_SPECS: Record<keyof Style, PropertySpec> = {
   minWidth: SIZE, minHeight: SIZE, maxWidth: SIZE,
   background: COLOR, color: COLOR, borderColor: COLOR, outlineColor: COLOR,
   borderWidth: { numeric: true }, outlineWidth: { numeric: true }, outlineOffset: { numeric: true },
+  borderStyle: { choices: ['solid', 'dashed', 'dotted'] },
+  ticks: { tokens: ['space'], numeric: true, free: true }, tickColor: COLOR,
   radius:  { tokens: ['radius'], numeric: true, free: true },
   shadow:  { tokens: ['shadow'], free: true },
   font:    { tokens: ['font'], free: true },
@@ -136,6 +158,8 @@ export const PROPERTY_SPECS: Record<keyof Style, PropertySpec> = {
   letterSpacing: { numeric: true, free: true },
   lineHeight:    { numeric: true },
   textAlign: { choices: ['start', 'center', 'end'] },
+  textTransform: { choices: ['uppercase', 'lowercase', 'capitalize', 'none'] },
+  backdropBlur:  { numeric: true, free: true },
   opacity:   { numeric: true },
   scale:     { numeric: true },
   cursor:    { choices: ['pointer', 'text', 'not-allowed', 'default'] },

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { generatePageHTML, generatePageTSX } from '@/lib/generator/page';
-import { projectTheme, type PageDef, type PageLayout, type ProjectData } from '@/lib/project';
+import { pageSections, projectTheme, type PageDef, type PageLayout, type ProjectData } from '@/lib/project';
 
 // The Web canvas's output, in the box under the minimap: this page as a plain HTML file (opens in any browser as is)
 // or as a Next.js page. Copy it, download it, or open the HTML in a new tab to try it at real sizes.
@@ -15,7 +15,7 @@ const fileSlug = (page: PageDef) => (page.path === '/' ? 'index' : page.path.rep
 
 export function pageOutput(format: Format, project: ProjectData, page: PageDef, layout: PageLayout) {
   const gen = format === 'html' ? generatePageHTML : generatePageTSX;
-  return gen(page, layout, project.components ?? {}, projectTheme(project), project.meta);
+  return gen(page, layout, project.components ?? {}, projectTheme(project), project.meta, pageSections(project, page));
 }
 
 export function CodeBox({ project, page, layout }: { project: ProjectData; page: PageDef; layout: PageLayout | undefined }) {

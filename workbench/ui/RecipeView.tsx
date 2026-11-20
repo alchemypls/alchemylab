@@ -2,7 +2,7 @@
 
 import { createElement, memo, useEffect, useMemo, useRef, ReactNode } from 'react';
 import {
-  Recipe, Part, Theme, ListItem, themeToCss, recipeToCss, partClass,
+  Recipe, Part, Theme, ListItem, FontLoad, themeToCss, recipeToCss, partClass, fontsHref,
   NATIVE, VOID, bind, rootAttrs, partAttrs, shown, renderItems, PropValues, OptionPicks, BEHAVIORS,
 } from '@/lib/library';
 
@@ -19,18 +19,20 @@ const safe = (id: string) => id.replace(/[^a-zA-Z0-9_-]/g, '');
 export const themeScope = (pid: string) => `al-theme-${safe(pid)}`;
 export const libScope   = (pid: string) => `al-lib-${safe(pid)}`;
 
-export const RecipeStyles = memo(function RecipeStyles({ scope, theme, recipes }: {
-  scope: string; theme: Theme; recipes: Recipe[];
+export const RecipeStyles = memo(function RecipeStyles({ scope, theme, recipes, fonts }: {
+  scope: string; theme: Theme; recipes: Recipe[]; fonts?: FontLoad[];   // fonts: the project's web fonts, loaded as the page loads them
 }) {
   const css = useMemo(
     () => [themeToCss(theme, `.${scope}`), ...recipes.map((r) => recipeToCss(r, `.${scope}`))].join('\n\n'),
     [scope, theme, recipes],
   );
-  return <style>{css}</style>;
+  const href = fontsHref(fonts);
+  return <>{href && <link rel="stylesheet" href={href} />}<style>{css}</style></>;
 });
 
-export function RecipeView({ recipe, props, options, slotContent }: {
+export function RecipeView({ recipe, props, options, slotContent, here }: {
   recipe:   Recipe;
+  here?:    string;   // the page's path: links to it are marked current, as in the export
   props?:   PropValues;
   options?: OptionPicks;
   slotContent?: (slotPartId: string) => ReactNode;   // what fills each slot; default = labelled placeholder
@@ -58,7 +60,7 @@ export function RecipeView({ recipe, props, options, slotContent }: {
       key,
       className: partClass(recipe, p.id),
       ...(isRoot ? { ...rootAttrs(recipe, props, options), ref: rootRef } : {}),
-      ...partAttrs(recipe, p, props, item),
+      ...partAttrs(recipe, p, props, item, here),
     };
     // In the workbench a nav link must not navigate the editor away
     if (p.kind === 'link') attrs.onClick = (e: { preventDefault: () => void }) => e.preventDefault();

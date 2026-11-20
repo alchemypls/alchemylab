@@ -7,7 +7,7 @@ import { useWorkbenchStore } from '@/lib/store';
 import { projectTheme, type ProjectData } from '@/lib/project';
 import {
   LIBRARY, SETS, Recipe, RecipeCategory, Style, Theme, PropValues, OptionPicks,
-  Layer, STATE_NAMES, STYLE_KEYS, layerKey, layerStyle, setLayerStyle, partIds,
+  Layer, StateName, STATE_NAMES, STYLE_KEYS, layerKey, layerStyle, setLayerStyle, partIds,
   addOption, removeOption, parseStyleValue, PROPERTY_SPECS, tokensFor, validateStyleValue,
 } from '@/lib/library';
 import { RecipeView, RecipeStyles, themeScope, libScope } from './RecipeView';
@@ -60,7 +60,7 @@ export function FabricatorStyles({ f }: { f: Fabricator }) {
   return (
     <>
       <RecipeStyles scope={libScope(f.pid)} theme={f.theme} recipes={LIBRARY} />
-      <RecipeStyles scope={themeScope(f.pid)} theme={f.theme} recipes={f.recipes} />
+      <RecipeStyles scope={themeScope(f.pid)} theme={f.theme} recipes={f.recipes} fonts={f.project.meta.fonts} />
     </>
   );
 }
@@ -259,8 +259,12 @@ function ComponentEditor({ recipe, originLabel, theme, picks, onChange, onDuplic
       label: `${t} and up`, layer: { kind: 'responsive', tier: t } as Layer, group: 'Responsive',
     })),
   ];
-  const currentKey = layers.some((l) => layerKey(l.layer) === layerKey(layer)) ? layerKey(layer) : 'base';
-  const current    = layers.find((l) => layerKey(l.layer) === currentKey)!.layer;
+  // An option in a state (action: hover) is picked as the option, then the state beside it
+  const optionOf   = (l: Layer): Layer => (l.kind === 'variantState' ? { kind: 'variant', axis: l.axis, option: l.option } : l);
+  const currentKey = layers.some((l) => layerKey(l.layer) === layerKey(optionOf(layer))) ? layerKey(optionOf(layer)) : 'base';
+  const picked     = layers.find((l) => layerKey(l.layer) === currentKey)!.layer;
+  const current: Layer = layer.kind === 'variantState' && currentKey === layerKey(optionOf(layer)) ? layer : picked;
+  const optionStates = picked.kind === 'variant' ? recipe.variants.find((a) => a.name === picked.axis)?.states?.[picked.option] ?? {} : {};
 
   const commitOption = () => {
     if (!newOpt) return;
@@ -294,6 +298,18 @@ function ComponentEditor({ recipe, originLabel, theme, picks, onChange, onDuplic
           options={['Base', 'Options', 'States', 'Part states', 'Responsive'].flatMap((g) => layers.filter((l) => l.group === g).map((l) => ({ value: layerKey(l.layer), label: l.label, group: g })))}
           onPick={(v) => setLayer(layers.find((l) => layerKey(l.layer) === v)!.layer)}
         />
+        {picked.kind === 'variant' && (
+          <div className="flex items-center gap-1.5">
+            <span className="text-[9px] font-mono text-neutral-500 shrink-0">in state</span>
+            <div className="flex-1 min-w-0">
+              <PickList
+                value={current.kind === 'variantState' ? current.state : ''} className={INPUT}
+                options={[{ value: '', label: 'any (the option itself)' }, ...STATE_NAMES.map((s) => ({ value: s, label: optionStates[s] ? `${s} •` : s }))]}
+                onPick={(s) => setLayer(s ? { kind: 'variantState', axis: picked.axis, option: picked.option, state: s as StateName } : picked)}
+              />
+            </div>
+          </div>
+        )}
         <div className="flex items-center gap-2 flex-wrap">
           {recipe.variants.map((a) => (
             <button
@@ -305,9 +321,9 @@ function ComponentEditor({ recipe, originLabel, theme, picks, onChange, onDuplic
               + {a.name} option
             </button>
           ))}
-          {current.kind === 'variant' && recipe.variants.find((a) => a.name === current.axis)?.default !== current.option && (
+          {picked.kind === 'variant' && recipe.variants.find((a) => a.name === picked.axis)?.default !== picked.option && (
             <button
-              onClick={() => { onChange((r) => removeOption(r, current.axis, current.option)); setLayer({ kind: 'base' }); }}
+              onClick={() => { onChange((r) => removeOption(r, picked.axis, picked.option)); setLayer({ kind: 'base' }); }}
               className="text-[9px] text-neutral-500 hover:text-rose-400 font-mono ml-auto"
             >
               remove this option

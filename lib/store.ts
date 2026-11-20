@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, PersistStorage, StorageValue } from 'zustand/middleware';
-import { ProjectMeta, PagePlacement, PageLayer, PageLayout, PageDef, ProjectData, PageSketch, PlacementGeom, SketchElement, PROJECT_ACCENTS, resolvePlacement, sketchToVector } from './project';
+import { ProjectMeta, PagePlacement, PageLayer, PageLayout, PageDef, ProjectData, PageSketch, PlacementGeom, Pin, SketchElement, PROJECT_ACCENTS, resolvePlacement, sketchToVector } from './project';
 import { Tier, ViewportSize } from './devices';
 import { Recipe, recipeByKey, copyTheme, GLOBAL_THEME } from './library';
 import { SceneId, Dir, FabEditor } from './scenes';
@@ -119,7 +119,9 @@ interface WorkbenchState {
   resetProjectTheme: (pid: string) => void;
   // One placement's own option / prop choices
   setPlacementInstance: (pid: string, pagePath: string, placementId: string,
-    patch: { options?: Record<string, string>; props?: PagePlacement['props']; name?: string; color?: string }) => void;
+    patch: { options?: Record<string, string>; props?: PagePlacement['props']; name?: string; color?: string; bounded?: boolean }) => void;
+  // Pins a block to the screen (its base pin, or on a wider tier of a pinned block, that tier's spot); null unpins it everywhere
+  setPlacementPin: (pid: string, pagePath: string, placementId: string, tier: Tier, pin: Pin | null) => void;
   // Writes geometry for one tier: mobile edits the base, tablet/desktop write their override
   setPlacementGeom: (pid: string, pagePath: string, placementId: string, tier: Tier, geom: Partial<PlacementGeom>) => void;
   resetPlacementTier: (pid: string, pagePath: string, placementId: string, tier: Exclude<Tier, 'mobile'>) => void;
@@ -287,7 +289,23 @@ export const useWorkbenchStore = create<WorkbenchState>()(
             // '' clears the label / colour
             name:    patch.name  !== undefined ? (patch.name.trim()  || undefined) : x.name,
             color:   patch.color !== undefined ? (patch.color         || undefined) : x.color,
+            bounded: patch.bounded !== undefined ? (patch.bounded || undefined) : x.bounded,
           } : x)));
+        })),
+
+      setPlacementPin: (pid, pagePath, placementId, tier, pin) =>
+        set((state) => patchProject(state, pid, (p) => {
+          const existing = p.layouts[pagePath];
+          if (!existing) return p;
+          return withLayout(p, pagePath, patchLayout(existing, (ps) => ps.map((x) => {
+            if (x.id !== placementId) return x;
+            if (!pin) {
+              const at = x.at && Object.fromEntries(Object.entries(x.at).map(([t, o]) => { const { pin: _drop, ...rest } = o ?? {}; void _drop; return [t, rest]; }));
+              return { ...x, pin: undefined, at };
+            }
+            if (tier === 'mobile' || !x.pin) return { ...x, pin };
+            return { ...x, at: { ...x.at, [tier]: { ...x.at?.[tier], pin } } };
+          })));
         })),
 
       setPlacementGeom: (pid, pagePath, placementId, tier, geom) =>

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Archive, ArchiveRestore, Trash2, X } from 'lucide-react';
 import { useWorkbenchStore } from '@/lib/store';
 import { PROJECT_ACCENTS } from '@/lib/project';
+import { fontsText, parseFonts } from '@/lib/library/fonts';
 import type { Bible } from '@/lib/design/types';
 import { projectIdFor, type WorkspaceProject } from '@/lib/workspace';
 import { readBible, trashBible, useWorkspace, writeBible } from '@/workbench/hooks/useWorkspace';
@@ -173,6 +174,10 @@ function EditFields({ p, others, close }: { p: WorkspaceProject; others: Workspa
             <span className="text-[10px] text-neutral-500">Default head (pages that leave it blank)</span>
             <Commit value={web.meta.headTitle ?? ''} onCommit={(v) => updateMeta(p.id, { headTitle: v })} placeholder='Site title: pages become "Page — Site title"' />
             <Commit area value={web.meta.headDescription ?? ''} onCommit={(v) => updateMeta(p.id, { headDescription: v })} placeholder="Default description" />
+            <span className="text-[10px] text-neutral-500">Backdrop (CSS background under every page)</span>
+            <Commit value={web.meta.backdrop ?? ''} onCommit={(v) => updateMeta(p.id, { backdrop: v.trim() || undefined })} placeholder="radial-gradient(…), url(…)" />
+            <span className="text-[10px] text-neutral-500">Fonts (Google Fonts, every page loads them)</span>
+            <Commit value={fontsText(web.meta.fonts)} onCommit={(v) => updateMeta(p.id, { fonts: parseFonts(v) })} placeholder="Rajdhani 500 600, Inter 400, JetBrains Mono" />
             <span className="text-[10px] text-neutral-500 font-mono">{web.pages.length} pages · {Object.keys(web.components ?? {}).length} components</span>
           </>
         ) : (

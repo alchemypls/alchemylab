@@ -49,6 +49,7 @@ export function InstanceControls({ recipe, options, props, onOptions, onProps, c
               <ListEditor
                 items={Array.isArray(v) ? v : []}
                 fields={p.fields ?? ['label']}
+                lists={p.lists}
                 onChange={(items) => onProps({ [p.name]: items })}
               />
             ) : p.type === 'boolean' ? (
@@ -72,17 +73,33 @@ export function InstanceControls({ recipe, options, props, onOptions, onProps, c
 }
 
 // Rows of a 'list' prop — e.g. nav links as label + href. Add, edit, remove.
-function ListEditor({ items, fields, onChange }: {
-  items: ListItem[]; fields: string[]; onChange: (items: ListItem[]) => void;
+// An item's own list as one line of text: items split by commas, their fields by " | " (tags: "Python, Flask";
+// links: "GitHub | https://…, Résumé | /cv.pdf")
+const nestedText = (v: string | ListItem[] | undefined, fs: string[]) =>
+  Array.isArray(v) ? v.map((x) => fs.map((f) => (typeof x[f] === 'string' ? x[f] : '')).join(' | ').replace(/( \| )+$/, '')).join(', ') : '';
+const parseNested = (text: string, fs: string[]): ListItem[] =>
+  text.split(',').map((s) => s.trim()).filter(Boolean).map((s) => { const parts = s.split('|').map((x) => x.trim()); return Object.fromEntries(fs.map((f, k) => [f, parts[k] ?? ''])); });
+
+function ListEditor({ items, fields, lists, onChange }: {
+  items: ListItem[]; fields: string[]; lists?: Record<string, string[]>; onChange: (items: ListItem[]) => void;
 }) {
   const field = 'bg-neutral-800 border border-neutral-700 rounded px-1 py-0.5 text-[9px] text-neutral-200 outline-none focus:border-indigo-500/60 w-20';
-  const set = (i: number, f: string, v: string) => onChange(items.map((it, j) => (j === i ? { ...it, [f]: v } : it)));
+  const set = (i: number, f: string, v: string | ListItem[]) => onChange(items.map((it, j) => (j === i ? { ...it, [f]: v } : it)));
   return (
     <div className="flex flex-col gap-0.5">
       {items.map((it, i) => (
-        <div key={i} className="flex items-center gap-1">
+        <div key={i} className="flex items-center gap-1 flex-wrap">
           {fields.map((f) => (
-            <input key={f} value={it[f] ?? ''} placeholder={f} onChange={(e) => set(i, f, e.target.value)} className={field} />
+            <input key={f} value={typeof it[f] === 'string' ? it[f] as string : ''} placeholder={f} onChange={(e) => set(i, f, e.target.value)} className={field} />
+          ))}
+          {Object.entries(lists ?? {}).map(([f, fs]) => (
+            <input
+              key={`${f}:${nestedText(it[f], fs)}`} defaultValue={nestedText(it[f], fs)} placeholder={`${f}: ${fs.join(' | ')}, …`}
+              title={`${f}: separate them with commas${fs.length > 1 ? `, and each one's ${fs.join(' / ')} with |` : ''}`}
+              onBlur={(e) => { const next = parseNested(e.target.value, fs); if (nestedText(next, fs) !== nestedText(it[f], fs)) set(i, f, next); }}
+              onKeyDown={(e) => { if (e.key === 'Enter') e.currentTarget.blur(); }}
+              className={`${field} w-32`}
+            />
           ))}
           <button onClick={() => onChange(items.filter((_, j) => j !== i))} className="text-[9px] text-neutral-600 hover:text-rose-400">✕</button>
         </div>

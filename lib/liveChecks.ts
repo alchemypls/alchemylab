@@ -2,7 +2,7 @@
 // Pure: reads the project and the HTML each page exports.
 
 import { generatePageHTML } from './generator/page';
-import { getActivePlacements, projectTheme, resolvePlacement, type PlacementGeom, type ProjectData } from './project';
+import { getActivePlacements, pageSections, projectTheme, resolvePlacement, type PlacementGeom, type ProjectData } from './project';
 import { TIER_ORDER, type Tier } from './devices';
 
 export type CheckLevel = 'error' | 'warn' | 'info';
@@ -29,7 +29,7 @@ export function liveChecks(project: ProjectData): Check[] {
       if (TIER_ORDER.every((t) => resolvePlacement(p, t).hidden)) add('warn', `“${name(p.id)}” is hidden on every device`);
     }
     for (const tier of TIER_ORDER as Tier[]) {
-      const geo = placed.map((p) => ({ id: p.id, g: resolvePlacement(p, tier) })).filter((x) => !x.g.hidden);
+      const geo = placed.filter((p) => !p.pin).map((p) => ({ id: p.id, g: resolvePlacement(p, tier) })).filter((x) => !x.g.hidden);   // pinned blocks float over the grid
       for (let i = 0; i < geo.length; i++) for (let j = i + 1; j < geo.length; j++)
         if (overlaps(geo[i].g, geo[j].g)) add('warn', `“${name(geo[i].id)}” and “${name(geo[j].id)}” overlap on ${tier}`);
     }
@@ -38,7 +38,7 @@ export function liveChecks(project: ProjectData): Check[] {
     if (!head.title?.trim() && !project.meta.headTitle?.trim()) add('info', 'No title set; the page name is used');
     if (!head.description?.trim() && !project.meta.headDescription?.trim()) add('warn', 'No description (search results and link previews show one)');
 
-    const html = generatePageHTML(page, layout!, project.components ?? {}, projectTheme(project), project.meta);
+    const html = generatePageHTML(page, layout!, project.components ?? {}, projectTheme(project), project.meta, pageSections(project, page));
     const links = new Set(Array.from(html.matchAll(/\shref="(\/(?!\/)[^"#?]*)/g), (m) => m[1].replace(/\/$/, '') || '/'));
     for (const href of Array.from(links)) if (!paths.has(href)) add('error', `Link to ${href} goes nowhere (no such page)`);
     const noAlt = Array.from(html.matchAll(/<img\b[^>]*>/g)).filter((m) => !/\salt="[^"]+"/.test(m[0])).length;

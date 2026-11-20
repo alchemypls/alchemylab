@@ -26,7 +26,7 @@ const KIND_RESETS: Partial<Record<Part['kind'], string[]>> = {
 
 const PART_PSEUDO: Record<StateName, string> = {
   hover: ':hover', press: ':active', focus: ':focus-visible', disabled: ':disabled',
-  checked: ':checked', open: '[open]', invalid: '[aria-invalid="true"]', current: '[aria-current="true"]', selected: '[aria-selected="true"]',
+  checked: ':checked', open: '[open]', invalid: '[aria-invalid="true"]', current: '[aria-current]:not([aria-current="false"])', selected: '[aria-selected="true"]',
 };
 
 export function themeToCss(theme: Theme, selector = ':root'): string {
@@ -55,12 +55,17 @@ function declarations(s: Style): string[] {
   if (s.height !== undefined) d.push(`height: ${SIZE(s.height, 'height')};`);
   put('min-width', 'minWidth'); put('min-height', 'minHeight'); put('max-width', 'maxWidth');
   put('background', 'background'); put('color', 'color');
-  if (s.borderWidth !== undefined) d.push(`border-style: solid;`);
+  if (s.borderWidth !== undefined || s.borderStyle) d.push(`border-style: ${s.borderStyle ?? 'solid'};`);
   put('border-width', 'borderWidth'); put('border-color', 'borderColor');
   put('border-radius', 'radius'); put('box-shadow', 'shadow');
   put('font-family', 'font'); put('font-size', 'fontSize'); put('font-weight', 'fontWeight');
   put('letter-spacing', 'letterSpacing'); put('line-height', 'lineHeight');
   if (s.textAlign) d.push(`text-align: ${s.textAlign};`);
+  if (s.textTransform) d.push(`text-transform: ${s.textTransform};`);
+  if (s.backdropBlur !== undefined) {
+    const f = `blur(${val('backdropBlur', s.backdropBlur)})`;
+    d.push(`-webkit-backdrop-filter: ${f};`, `backdrop-filter: ${f};`);
+  }
   put('opacity', 'opacity');
   if (s.scale !== undefined) d.push(`transform: scale(${s.scale});`);
   if (s.outlineWidth !== undefined || s.outlineColor !== undefined) {
@@ -70,6 +75,7 @@ function declarations(s: Style): string[] {
   if (s.cursor)   d.push(`cursor: ${s.cursor};`);
   if (s.overflow) d.push(`overflow: ${s.overflow};`);
   if (s.position) d.push(`position: ${s.position};`);
+  else if (s.ticks !== undefined) d.push('position: relative;');   // the ticks are placed against it
   put('top', 'top'); put('right', 'right'); put('bottom', 'bottom'); put('left', 'left'); put('z-index', 'zIndex');
   if (s.scroll) {
     d.push('overflow-x: auto;', 'overflow-y: hidden;', 'overscroll-behavior-x: contain;');
@@ -87,13 +93,24 @@ function declarations(s: Style): string[] {
 const rule = (selector: string, decls: string[]) =>
   decls.length ? `${selector} {\n${decls.map((l) => `  ${l}`).join('\n')}\n}` : '';
 
+// Corner ticks: one ::before over the part, an L of two 2px bars in each corner. A pseudo-element, so a variant's
+// `background` can't wipe them; inside the edge, so the part's overflow: hidden can't clip them.
+function ticksRule(selector: string, s: Style): string {
+  if (s.ticks === undefined && s.tickColor === undefined) return '';
+  const L = val('ticks', s.ticks ?? 12), c = val('tickColor', s.tickColor ?? 'currentColor'), bar = `linear-gradient(${c}, ${c})`;
+  const corners = ['top left', 'top right', 'bottom left', 'bottom right'];
+  const layers = corners.flatMap((at) => [`${bar} ${at} / ${L} 2px no-repeat`, `${bar} ${at} / 2px ${L} no-repeat`]);
+  return rule(`${selector}::before`, ['content: "";', 'position: absolute;', 'inset: 0;', 'pointer-events: none;', `background: ${layers.join(', ')};`]);
+}
+// A style's rules under one selector: its declarations, and its ticks
+const styleRules = (selector: string, s: Style) => [rule(selector, declarations(s)), ticksRule(selector, s)];
+
 export const rootClass = (r: Recipe) => `al-${r.key}`;
 export const partClass = (r: Recipe, partId: string) => (partId === r.anatomy.id ? rootClass(r) : `${rootClass(r)}__${partId}`);
 
 // Native pseudo-class on the root for each state. Containers (non-focusable roots) react to
 // their contents: focus-within, or a data-/aria- attribute the markup sets.
-function stateSelector(r: Recipe, state: StateName): string {
-  const root = `.${rootClass(r)}`;
+function stateSelector(r: Recipe, state: StateName, root = `.${rootClass(r)}`): string {
   const focusable = FOCUSABLE.has(r.anatomy.kind);
   switch (state) {
     case 'hover':    return focusable ? `${root}:hover:not(:disabled)`  : `${root}:hover`;
@@ -103,15 +120,15 @@ function stateSelector(r: Recipe, state: StateName): string {
     case 'checked':  return focusable ? `${root}:checked`  : `${root}:has(:checked)`;
     case 'open':     return `${root}[open]`;
     case 'invalid':  return focusable ? `${root}[aria-invalid="true"]` : `${root}[data-invalid]`;
-    case 'current':  return `${root}[aria-current="true"]`;
+    case 'current':  return `${root}[aria-current]:not([aria-current="false"])`;
     case 'selected': return `${root}[aria-selected="true"]`;
   }
 }
 
 // `scope` is a selector that matches the root in some condition; returns rules for each part under it
 function partRules(r: Recipe, scope: string, styles: PartStyles): string[] {
-  return Object.entries(styles).map(([partId, style]) =>
-    rule(partId === r.anatomy.id ? scope : `${scope} .${partClass(r, partId)}`, declarations(style)));
+  return Object.entries(styles).flatMap(([partId, style]) =>
+    styleRules(partId === r.anatomy.id ? scope : `${scope} .${partClass(r, partId)}`, style));
 }
 
 // `scope` prefixes every selector (e.g. ".al-theme-projA") so two projects' copies of the same
@@ -135,7 +152,7 @@ function recipeRules(r: Recipe): string {
     if (r.transition && (p.id === r.anatomy.id || p.states)) {
       base.push(`transition: all ${val('duration', r.transition.duration)} ${val('ease', r.transition.ease)};`);
     }
-    out.push(rule(`.${partClass(r, p.id)}`, base));
+    out.push(rule(`.${partClass(r, p.id)}`, base), ticksRule(`.${partClass(r, p.id)}`, p.style ?? {}));
     if (p.kind === 'summary') out.push(rule(`.${partClass(r, p.id)}::-webkit-details-marker`, ['display: none;']));
   });
 
@@ -165,12 +182,33 @@ function recipeRules(r: Recipe): string {
     out.push(...partRules(r, stateSelector(r, state), styles));
   }
 
+  // An option's own states — after the shared ones, and one attribute more specific, so they win
+  for (const axis of r.variants) {
+    for (const [option, states] of Object.entries(axis.states ?? {})) {
+      for (const [state, styles] of Object.entries(states) as [StateName, PartStyles][]) {
+        out.push(...partRules(r, stateSelector(r, state, `${root}[data-${axis.name}="${option}"]`), styles));
+      }
+    }
+  }
+
   // Part-level states — a part reacting to itself (a nav link's own hover)
   walkParts(r.anatomy, (p: Part) => {
     for (const [state, style] of Object.entries(p.states ?? {}) as [StateName, Style][]) {
-      out.push(rule(`.${partClass(r, p.id)}${PART_PSEUDO[state]}`, declarations(style)));
+      out.push(...styleRules(`.${partClass(r, p.id)}${PART_PSEUDO[state]}`, style));
     }
   });
+
+  // Calm (prefers-reduced-motion): state changes fade colors and opacity only, nothing moves or scales; tracks jump
+  const moving: string[] = [], tracks: string[] = [];
+  walkParts(r.anatomy, (p: Part) => {
+    if (r.transition && (p.id === r.anatomy.id || p.states)) moving.push(`.${partClass(r, p.id)}`);
+    if (p.style?.scroll === 'x-snap') tracks.push(`.${partClass(r, p.id)}`);
+  });
+  const calm = [
+    rule(moving.join(',\n'), ['transition-property: color, background-color, border-color, outline-color, box-shadow, opacity;']),
+    rule(tracks.join(',\n'), ['scroll-behavior: auto;']),
+  ].filter(Boolean);
+  if (calm.length) out.push(`@media (prefers-reduced-motion: reduce) {\n${calm.join('\n').replace(/^/gm, '  ')}\n}`);
 
   return out.filter(Boolean).join('\n\n');
 }
