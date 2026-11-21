@@ -1,3153 +1,2707 @@
 {
- "title": "Responsive",
- "kicker": "Quality",
- "topic": "responsive",
- "updated": "2026-11-19",
- "background": "#0b0e16",
- "blocks": [],
- "elements": [
-  {
-   "id": "kicker",
-   "type": "text",
-   "x": 56,
-   "y": 30,
-   "w": 900,
-   "h": 26,
-   "text": "Quality · decided",
-   "size": 16,
-   "weight": 700,
-   "font": "sans",
-   "color": "#F88F05",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "title",
-   "type": "text",
-   "x": 56,
-   "y": 58,
-   "w": 1300,
-   "h": 72,
-   "text": "",
-   "size": 52,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "top",
-   "bind": {
-    "topic": "responsive",
-    "field": "title"
-   }
-  },
-  {
-   "id": "status",
-   "type": "status",
-   "x": 1840,
-   "y": 72,
-   "size": 22,
-   "topic": "responsive"
-  },
-  {
-   "id": "back",
-   "type": "text",
-   "x": 1440,
-   "y": 40,
-   "w": 380,
-   "h": 30,
-   "text": "← Overview",
-   "size": 18,
-   "weight": 600,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "right",
-   "valign": "top",
-   "link": "index"
-  },
-  {
-   "id": "was",
-   "type": "text",
-   "x": 1440,
-   "y": 76,
-   "w": 380,
-   "h": 30,
-   "text": "was: md: only, no touch play → as-is",
-   "size": 16,
-   "weight": 400,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "right",
-   "valign": "top",
-   "link": "asis-layouts"
-  },
-  {
-   "id": "drift",
-   "type": "text",
-   "x": 56,
-   "y": 138,
-   "w": 1808,
-   "h": 60,
-   "text": "The orb is the controller: a stick with two press zones on its ring and a side button, for the site and the game, on every screen.",
-   "size": 22,
-   "weight": 400,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "l-1",
-   "type": "line",
-   "name": "rule",
-   "from": {
-    "x": 56,
-    "y": 212
-   },
-   "to": {
-    "x": 1864,
-    "y": 212
-   },
-   "stroke": "#262c3b",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "t-2",
-   "type": "text",
-   "x": 56,
-   "y": 232,
-   "w": 820,
-   "h": 24,
-   "text": "Orb stick — your sketch",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "r-3",
-   "type": "rect",
-   "name": "stick ground",
-   "x": 56,
-   "y": 266,
-   "w": 820,
-   "h": 460,
-   "fill": "#120a1a",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 4
-  },
-  {
-   "id": "e-4",
-   "type": "ellipse",
-   "name": "orb tint",
-   "x": 296,
-   "y": 326,
-   "w": 340,
-   "h": 340,
-   "fill": "#0D0612",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.45
-  },
-  {
-   "id": "p-5",
-   "type": "poly",
-   "name": "orb button 2",
-   "x": 335.7724446697738,
-   "y": 326,
-   "w": 260.45511066045253,
-   "h": 93.50827444730186,
-   "pts": [
-    [
-     0,
-     0.6494
-    ],
-    [
-     0.0486,
-     0.5047
-    ],
-    [
-     0.1027,
-     0.3757
-    ],
-    [
-     0.1614,
-     0.2638
-    ],
-    [
-     0.2242,
-     0.1703
-    ],
-    [
-     0.2902,
-     0.0965
-    ],
-    [
-     0.3587,
-     0.0431
-    ],
-    [
-     0.4289,
-     0.0108
-    ],
-    [
-     0.5,
-     0
-    ],
-    [
-     0.5711,
-     0.0108
-    ],
-    [
-     0.6413,
-     0.0431
-    ],
-    [
-     0.7098,
-     0.0965
-    ],
-    [
-     0.7758,
-     0.1703
-    ],
-    [
-     0.8386,
-     0.2638
-    ],
-    [
-     0.8973,
-     0.3757
-    ],
-    [
-     0.9514,
-     0.5047
-    ],
-    [
-     1,
-     0.6494
-    ],
-    [
-     0.85,
-     1
-    ],
-    [
-     0.8159,
-     0.8987
-    ],
-    [
-     0.7781,
-     0.8084
-    ],
-    [
-     0.737,
-     0.73
-    ],
-    [
-     0.6931,
-     0.6646
-    ],
-    [
-     0.6469,
-     0.6129
-    ],
-    [
-     0.5989,
-     0.5756
-    ],
-    [
-     0.5497,
-     0.553
-    ],
-    [
-     0.5,
-     0.5454
-    ],
-    [
-     0.4503,
-     0.553
-    ],
-    [
-     0.4011,
-     0.5756
-    ],
-    [
-     0.3531,
-     0.6129
-    ],
-    [
-     0.3069,
-     0.6646
-    ],
-    [
-     0.263,
-     0.73
-    ],
-    [
-     0.2219,
-     0.8084
-    ],
-    [
-     0.1841,
-     0.8987
-    ],
-    [
-     0.15,
-     1
-    ]
-   ],
-   "fill": "#3DBDB4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.12
-  },
-  {
-   "id": "p-6",
-   "type": "poly",
-   "name": "orb button 1",
-   "x": 335.7724446697738,
-   "y": 572.4917255526982,
-   "w": 260.45511066045253,
-   "h": 93.5082744473018,
-   "pts": [
-    [
-     1,
-     0.3506
-    ],
-    [
-     0.9514,
-     0.4953
-    ],
-    [
-     0.8973,
-     0.6243
-    ],
-    [
-     0.8386,
-     0.7362
-    ],
-    [
-     0.7758,
-     0.8297
-    ],
-    [
-     0.7098,
-     0.9035
-    ],
-    [
-     0.6413,
-     0.9569
-    ],
-    [
-     0.5711,
-     0.9892
-    ],
-    [
-     0.5,
-     1
-    ],
-    [
-     0.4289,
-     0.9892
-    ],
-    [
-     0.3587,
-     0.9569
-    ],
-    [
-     0.2902,
-     0.9035
-    ],
-    [
-     0.2242,
-     0.8297
-    ],
-    [
-     0.1614,
-     0.7362
-    ],
-    [
-     0.1027,
-     0.6243
-    ],
-    [
-     0.0486,
-     0.4953
-    ],
-    [
-     0,
-     0.3506
-    ],
-    [
-     0.15,
-     0
-    ],
-    [
-     0.1841,
-     0.1013
-    ],
-    [
-     0.2219,
-     0.1916
-    ],
-    [
-     0.263,
-     0.27
-    ],
-    [
-     0.3069,
-     0.3354
-    ],
-    [
-     0.3531,
-     0.3871
-    ],
-    [
-     0.4011,
-     0.4244
-    ],
-    [
-     0.4503,
-     0.447
-    ],
-    [
-     0.5,
-     0.4546
-    ],
-    [
-     0.5497,
-     0.447
-    ],
-    [
-     0.5989,
-     0.4244
-    ],
-    [
-     0.6469,
-     0.3871
-    ],
-    [
-     0.6931,
-     0.3354
-    ],
-    [
-     0.737,
-     0.27
-    ],
-    [
-     0.7781,
-     0.1916
-    ],
-    [
-     0.8159,
-     0.1013
-    ],
-    [
-     0.85,
-     0
-    ]
-   ],
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.12
-  },
-  {
-   "id": "e-7",
-   "type": "ellipse",
-   "name": "orb outer",
-   "x": 296,
-   "y": 326,
-   "w": 340,
-   "h": 340,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.6
-  },
-  {
-   "id": "e-8",
-   "type": "ellipse",
-   "name": "orb inner",
-   "x": 347,
-   "y": 377,
-   "w": 237.99999999999997,
-   "h": 237.99999999999997,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.45
-  },
-  {
-   "id": "e-9",
-   "type": "ellipse",
-   "name": "orb thrust rim",
-   "x": 364.85,
-   "y": 394.85,
-   "w": 202.29999999999998,
-   "h": 202.29999999999998,
-   "fill": "none",
-   "stroke": "#F88F05",
-   "strokeWidth": 1,
-   "dash": true,
-   "opacity": 0.6
-  },
-  {
-   "id": "e-10",
-   "type": "ellipse",
-   "name": "orb knob glow",
-   "x": 463,
-   "y": 428.74,
-   "w": 82.16,
-   "h": 82.16,
-   "fill": "#3DBDB4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.2,
-   "fx": [
+  "title": "Responsive",
+  "kicker": "Quality",
+  "topic": "responsive",
+  "updated": "2026-11-19",
+  "background": "#0b0e16",
+  "blocks": [],
+  "elements": [
     {
-     "kind": "blur",
-     "radius": 4
-    }
-   ]
-  },
-  {
-   "id": "e-11",
-   "type": "ellipse",
-   "name": "orb knob",
-   "x": 466,
-   "y": 431.74,
-   "w": 76.16,
-   "h": 76.16,
-   "fill": "#0D0612",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1.5
-  },
-  {
-   "id": "e-12",
-   "type": "ellipse",
-   "name": "orb node",
-   "x": 586.1406708468514,
-   "y": 418.75,
-   "w": 10,
-   "h": 10,
-   "fill": "none",
-   "stroke": "#FFD03B",
-   "strokeWidth": 2
-  },
-  {
-   "id": "e-13",
-   "type": "ellipse",
-   "name": "orb side",
-   "x": 272.7098753666359,
-   "y": 592.4066613254589,
-   "w": 51,
-   "h": 51,
-   "fill": "#0D0612",
-   "stroke": "#F88F05",
-   "strokeWidth": 1,
-   "opacity": 0.9
-  },
-  {
-   "id": "t-14",
-   "type": "text",
-   "x": 272.7098753666359,
-   "y": 592.4066613254589,
-   "w": 51,
-   "h": 51,
-   "text": "?",
-   "size": 26,
-   "weight": 700,
-   "font": "sans",
-   "color": "#F88F05",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "t-15",
-   "type": "text",
-   "x": 426,
-   "y": 343,
-   "w": 80,
-   "h": 16,
-   "text": "2",
-   "size": 13,
-   "weight": 400,
-   "font": "mono",
-   "color": "#3DBDB4",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "t-16",
-   "type": "text",
-   "x": 426,
-   "y": 621.8,
-   "w": 80,
-   "h": 16,
-   "text": "1",
-   "size": 13,
-   "weight": 400,
-   "font": "mono",
-   "color": "#FFD03B",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "e-17",
-   "type": "ellipse",
-   "name": "dot",
-   "x": 463,
-   "y": 338,
-   "w": 6,
-   "h": 6,
-   "fill": "#3DBDB4",
-   "stroke": "none",
-   "strokeWidth": 1
-  },
-  {
-   "id": "l-18",
-   "type": "line",
-   "name": "leader",
-   "from": {
-    "x": 466,
-    "y": 341
-   },
-   "to": {
-    "x": 272,
-    "y": 298
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "arrow": "none"
-  },
-  {
-   "id": "t-19",
-   "type": "text",
-   "x": 76,
-   "y": 290,
-   "w": 196,
-   "h": 70,
-   "text": "BUTTON 2 · thumb tip\ngame: recall\nsite: previous entry",
-   "size": 12,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "e-20",
-   "type": "ellipse",
-   "name": "dot",
-   "x": 463,
-   "y": 648,
-   "w": 6,
-   "h": 6,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1
-  },
-  {
-   "id": "l-21",
-   "type": "line",
-   "name": "leader",
-   "from": {
-    "x": 466,
-    "y": 651
-   },
-   "to": {
-    "x": 272,
-    "y": 648
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 1,
-   "arrow": "none"
-  },
-  {
-   "id": "t-22",
-   "type": "text",
-   "x": 76,
-   "y": 640,
-   "w": 196,
-   "h": 70,
-   "text": "BUTTON 1 · thumb base\ngame: hold silk, let go to slingshot\nsite: next entry · LAUNCH on Play",
-   "size": 12,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "e-23",
-   "type": "ellipse",
-   "name": "dot",
-   "x": 503,
-   "y": 463,
-   "w": 6,
-   "h": 6,
-   "fill": "#3DBDB4",
-   "stroke": "none",
-   "strokeWidth": 1
-  },
-  {
-   "id": "l-24",
-   "type": "line",
-   "name": "leader",
-   "from": {
-    "x": 506,
-    "y": 466
-   },
-   "to": {
-    "x": 652,
-    "y": 308
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "arrow": "none"
-  },
-  {
-   "id": "t-25",
-   "type": "text",
-   "x": 660,
-   "y": 300,
-   "w": 196,
-   "h": 70,
-   "text": "STICK · center disc\ngame: steer; past the dashed rim = thruster\nsite: point at a section, let go to go",
-   "size": 12,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "e-26",
-   "type": "ellipse",
-   "name": "dot",
-   "x": 305.006,
-   "y": 605.366,
-   "w": 6,
-   "h": 6,
-   "fill": "#F88F05",
-   "stroke": "none",
-   "strokeWidth": 1
-  },
-  {
-   "id": "l-27",
-   "type": "line",
-   "name": "leader",
-   "from": {
-    "x": 308.006,
-    "y": 608.366
-   },
-   "to": {
-    "x": 272,
-    "y": 528
-   },
-   "stroke": "#F88F05",
-   "strokeWidth": 1,
-   "arrow": "none"
-  },
-  {
-   "id": "t-28",
-   "type": "text",
-   "x": 76,
-   "y": 520,
-   "w": 196,
-   "h": 70,
-   "text": "SIDE · ?\ngame + site: Cori\n(guide / help)",
-   "size": 12,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "e-29",
-   "type": "ellipse",
-   "name": "dot",
-   "x": 583,
-   "y": 533,
-   "w": 6,
-   "h": 6,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1
-  },
-  {
-   "id": "l-30",
-   "type": "line",
-   "name": "leader",
-   "from": {
-    "x": 586,
-    "y": 536
-   },
-   "to": {
-    "x": 652,
-    "y": 568
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 1,
-   "arrow": "none"
-  },
-  {
-   "id": "t-31",
-   "type": "text",
-   "x": 660,
-   "y": 560,
-   "w": 196,
-   "h": 70,
-   "text": "NODE · gold\nsite: the current section on the dial\n(the old diamond)",
-   "size": 12,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-32",
-   "type": "text",
-   "x": 916,
-   "y": 232,
-   "w": 440,
-   "h": 24,
-   "text": "Phone · site and game",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "r-33",
-   "type": "rect",
-   "name": "ph0 sky",
-   "x": 916,
-   "y": 266,
-   "w": 200,
-   "h": 380,
-   "fill": "#0D0612",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 4
-  },
-  {
-   "id": "e-34",
-   "type": "ellipse",
-   "name": "ph0 nebula",
-   "x": 976,
-   "y": 304,
-   "w": 110.00000000000001,
-   "h": 266,
-   "fill": "#7a4a32",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.35,
-   "fx": [
+      "id": "r-3",
+      "type": "rect",
+      "name": "stick ground",
+      "x": 48,
+      "y": 218,
+      "w": 820,
+      "h": 460,
+      "fill": "#120a1a",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4
+    },
     {
-     "kind": "blur",
-     "radius": 30
-    }
-   ]
-  },
-  {
-   "id": "e-35",
-   "type": "ellipse",
-   "name": "ph0 nebula 2",
-   "x": 926,
-   "y": 456,
-   "w": 70,
-   "h": 171,
-   "fill": "#38194C",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7,
-   "fx": [
+      "id": "e-4",
+      "type": "ellipse",
+      "name": "orb tint",
+      "x": 296,
+      "y": 334,
+      "w": 340,
+      "h": 340,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.45
+    },
     {
-     "kind": "blur",
-     "radius": 30
-    }
-   ]
-  },
-  {
-   "id": "l-36",
-   "type": "line",
-   "name": "rail",
-   "from": {
-    "x": 932,
-    "y": 288
-   },
-   "to": {
-    "x": 1100,
-    "y": 288
-   },
-   "stroke": "#FFF4E3",
-   "strokeWidth": 1,
-   "arrow": "none"
-  },
-  {
-   "id": "e-37",
-   "type": "ellipse",
-   "name": "rail dot ABOUT",
-   "x": 937,
-   "y": 285,
-   "w": 6,
-   "h": 6,
-   "fill": "#FFF4E3",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "e-38",
-   "type": "ellipse",
-   "name": "rail dot WORK",
-   "x": 967.4,
-   "y": 285,
-   "w": 6,
-   "h": 6,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 1
-  },
-  {
-   "id": "t-39",
-   "type": "text",
-   "x": 930.4,
-   "y": 270,
-   "w": 80,
-   "h": 12,
-   "text": "WORK",
-   "size": 8,
-   "weight": 400,
-   "font": "mono",
-   "color": "#FFD03B",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "e-40",
-   "type": "ellipse",
-   "name": "rail dot SKILLS",
-   "x": 997.8,
-   "y": 285,
-   "w": 6,
-   "h": 6,
-   "fill": "#FFF4E3",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "e-41",
-   "type": "ellipse",
-   "name": "rail dot PROJECTS",
-   "x": 1028.2,
-   "y": 285,
-   "w": 6,
-   "h": 6,
-   "fill": "#FFF4E3",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "e-42",
-   "type": "ellipse",
-   "name": "rail dot OPEN SOURCE",
-   "x": 1058.6,
-   "y": 285,
-   "w": 6,
-   "h": 6,
-   "fill": "#FFF4E3",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "e-43",
-   "type": "ellipse",
-   "name": "rail dot PLAY",
-   "x": 1089,
-   "y": 285,
-   "w": 6,
-   "h": 6,
-   "fill": "#FFF4E3",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "r-44",
-   "type": "rect",
-   "name": "links",
-   "x": 1060,
-   "y": 304,
-   "w": 44,
-   "h": 18,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.4
-  },
-  {
-   "id": "t-45",
-   "type": "text",
-   "x": 1060,
-   "y": 304,
-   "w": 44,
-   "h": 18,
-   "text": "LINKS",
-   "size": 8,
-   "weight": 400,
-   "font": "mono",
-   "color": "#C9B8C4",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-46",
-   "type": "rect",
-   "name": "ph menu tint",
-   "x": 928,
-   "y": 332,
-   "w": 176,
-   "h": 150,
-   "fill": "#0D0612",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.55
-  },
-  {
-   "id": "r-47",
-   "type": "rect",
-   "name": "ph menu line",
-   "x": 928,
-   "y": 332,
-   "w": 176,
-   "h": 150,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "l-48",
-   "type": "line",
-   "name": "ph menu tick",
-   "from": {
-    "x": 934,
-    "y": 332
-   },
-   "to": {
-    "x": 928,
-    "y": 332
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-49",
-   "type": "line",
-   "name": "ph menu tick",
-   "from": {
-    "x": 928,
-    "y": 332
-   },
-   "to": {
-    "x": 928,
-    "y": 338
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-50",
-   "type": "line",
-   "name": "ph menu tick",
-   "from": {
-    "x": 1098,
-    "y": 332
-   },
-   "to": {
-    "x": 1104,
-    "y": 332
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-51",
-   "type": "line",
-   "name": "ph menu tick",
-   "from": {
-    "x": 1104,
-    "y": 332
-   },
-   "to": {
-    "x": 1104,
-    "y": 338
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-52",
-   "type": "line",
-   "name": "ph menu tick",
-   "from": {
-    "x": 934,
-    "y": 482
-   },
-   "to": {
-    "x": 928,
-    "y": 482
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-53",
-   "type": "line",
-   "name": "ph menu tick",
-   "from": {
-    "x": 928,
-    "y": 482
-   },
-   "to": {
-    "x": 928,
-    "y": 476
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-54",
-   "type": "line",
-   "name": "ph menu tick",
-   "from": {
-    "x": 1098,
-    "y": 482
-   },
-   "to": {
-    "x": 1104,
-    "y": 482
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-55",
-   "type": "line",
-   "name": "ph menu tick",
-   "from": {
-    "x": 1104,
-    "y": 482
-   },
-   "to": {
-    "x": 1104,
-    "y": 476
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "r-56",
-   "type": "rect",
-   "name": "ph sel",
-   "x": 929,
-   "y": 338,
-   "w": 174,
-   "h": 96,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.07
-  },
-  {
-   "id": "l-57",
-   "type": "line",
-   "name": "ph bar",
-   "from": {
-    "x": 929,
-    "y": 338
-   },
-   "to": {
-    "x": 929,
-    "y": 434
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "r-58",
-   "type": "rect",
-   "name": "ph line 0",
-   "x": 938,
-   "y": 346,
-   "w": 80,
-   "h": 2,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.6
-  },
-  {
-   "id": "r-59",
-   "type": "rect",
-   "name": "ph line 1",
-   "x": 938,
-   "y": 356,
-   "w": 140,
-   "h": 2,
-   "fill": "#C9B8C4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.6
-  },
-  {
-   "id": "r-60",
-   "type": "rect",
-   "name": "ph line 2",
-   "x": 938,
-   "y": 366,
-   "w": 140,
-   "h": 2,
-   "fill": "#C9B8C4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.6
-  },
-  {
-   "id": "r-61",
-   "type": "rect",
-   "name": "ph line 3",
-   "x": 938,
-   "y": 376,
-   "w": 140,
-   "h": 2,
-   "fill": "#C9B8C4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.6
-  },
-  {
-   "id": "r-62",
-   "type": "rect",
-   "name": "ph line 4",
-   "x": 938,
-   "y": 386,
-   "w": 140,
-   "h": 2,
-   "fill": "#C9B8C4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.6
-  },
-  {
-   "id": "r-63",
-   "type": "rect",
-   "name": "ph line 5",
-   "x": 938,
-   "y": 396,
-   "w": 140,
-   "h": 2,
-   "fill": "#C9B8C4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.6
-  },
-  {
-   "id": "r-64",
-   "type": "rect",
-   "name": "ph line 6",
-   "x": 938,
-   "y": 406,
-   "w": 140,
-   "h": 2,
-   "fill": "#C9B8C4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.6
-  },
-  {
-   "id": "r-65",
-   "type": "rect",
-   "name": "ph line 7",
-   "x": 938,
-   "y": 416,
-   "w": 140,
-   "h": 2,
-   "fill": "#C9B8C4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.6
-  },
-  {
-   "id": "t-66",
-   "type": "text",
-   "x": 930,
-   "y": 492,
-   "w": 90,
-   "h": 20,
-   "text": "WORK",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFF4E3",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "e-67",
-   "type": "ellipse",
-   "name": "ph0 orb tint",
-   "x": 980,
-   "y": 510,
-   "w": 112,
-   "h": 112,
-   "fill": "#0D0612",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.45
-  },
-  {
-   "id": "p-68",
-   "type": "poly",
-   "name": "ph0 orb button 2",
-   "x": 993.1015111853372,
-   "y": 510,
-   "w": 85.79697762932562,
-   "h": 30.802725700287624,
-   "pts": [
-    [
-     0,
-     0.6494
-    ],
-    [
-     0.0486,
-     0.5047
-    ],
-    [
-     0.1027,
-     0.3757
-    ],
-    [
-     0.1614,
-     0.2638
-    ],
-    [
-     0.2242,
-     0.1703
-    ],
-    [
-     0.2902,
-     0.0965
-    ],
-    [
-     0.3587,
-     0.0431
-    ],
-    [
-     0.4289,
-     0.0108
-    ],
-    [
-     0.5,
-     0
-    ],
-    [
-     0.5711,
-     0.0108
-    ],
-    [
-     0.6413,
-     0.0431
-    ],
-    [
-     0.7098,
-     0.0965
-    ],
-    [
-     0.7758,
-     0.1703
-    ],
-    [
-     0.8386,
-     0.2638
-    ],
-    [
-     0.8973,
-     0.3757
-    ],
-    [
-     0.9514,
-     0.5047
-    ],
-    [
-     1,
-     0.6494
-    ],
-    [
-     0.85,
-     1
-    ],
-    [
-     0.8159,
-     0.8987
-    ],
-    [
-     0.7781,
-     0.8084
-    ],
-    [
-     0.737,
-     0.73
-    ],
-    [
-     0.6931,
-     0.6646
-    ],
-    [
-     0.6469,
-     0.6129
-    ],
-    [
-     0.5989,
-     0.5756
-    ],
-    [
-     0.5497,
-     0.553
-    ],
-    [
-     0.5,
-     0.5454
-    ],
-    [
-     0.4503,
-     0.553
-    ],
-    [
-     0.4011,
-     0.5756
-    ],
-    [
-     0.3531,
-     0.6129
-    ],
-    [
-     0.3069,
-     0.6646
-    ],
-    [
-     0.263,
-     0.73
-    ],
-    [
-     0.2219,
-     0.8084
-    ],
-    [
-     0.1841,
-     0.8987
-    ],
-    [
-     0.15,
-     1
-    ]
-   ],
-   "fill": "#3DBDB4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.12
-  },
-  {
-   "id": "p-69",
-   "type": "poly",
-   "name": "ph0 orb button 1",
-   "x": 993.1015111853372,
-   "y": 591.1972742997124,
-   "w": 85.79697762932562,
-   "h": 30.802725700287624,
-   "pts": [
-    [
-     1,
-     0.3506
-    ],
-    [
-     0.9514,
-     0.4953
-    ],
-    [
-     0.8973,
-     0.6243
-    ],
-    [
-     0.8386,
-     0.7362
-    ],
-    [
-     0.7758,
-     0.8297
-    ],
-    [
-     0.7098,
-     0.9035
-    ],
-    [
-     0.6413,
-     0.9569
-    ],
-    [
-     0.5711,
-     0.9892
-    ],
-    [
-     0.5,
-     1
-    ],
-    [
-     0.4289,
-     0.9892
-    ],
-    [
-     0.3587,
-     0.9569
-    ],
-    [
-     0.2902,
-     0.9035
-    ],
-    [
-     0.2242,
-     0.8297
-    ],
-    [
-     0.1614,
-     0.7362
-    ],
-    [
-     0.1027,
-     0.6243
-    ],
-    [
-     0.0486,
-     0.4953
-    ],
-    [
-     0,
-     0.3506
-    ],
-    [
-     0.15,
-     0
-    ],
-    [
-     0.1841,
-     0.1013
-    ],
-    [
-     0.2219,
-     0.1916
-    ],
-    [
-     0.263,
-     0.27
-    ],
-    [
-     0.3069,
-     0.3354
-    ],
-    [
-     0.3531,
-     0.3871
-    ],
-    [
-     0.4011,
-     0.4244
-    ],
-    [
-     0.4503,
-     0.447
-    ],
-    [
-     0.5,
-     0.4546
-    ],
-    [
-     0.5497,
-     0.447
-    ],
-    [
-     0.5989,
-     0.4244
-    ],
-    [
-     0.6469,
-     0.3871
-    ],
-    [
-     0.6931,
-     0.3354
-    ],
-    [
-     0.737,
-     0.27
-    ],
-    [
-     0.7781,
-     0.1916
-    ],
-    [
-     0.8159,
-     0.1013
-    ],
-    [
-     0.85,
-     0
-    ]
-   ],
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.12
-  },
-  {
-   "id": "e-70",
-   "type": "ellipse",
-   "name": "ph0 orb outer",
-   "x": 980,
-   "y": 510,
-   "w": 112,
-   "h": 112,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.6
-  },
-  {
-   "id": "e-71",
-   "type": "ellipse",
-   "name": "ph0 orb inner",
-   "x": 996.8,
-   "y": 526.8,
-   "w": 78.39999999999999,
-   "h": 78.39999999999999,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.45
-  },
-  {
-   "id": "e-72",
-   "type": "ellipse",
-   "name": "ph0 orb knob glow",
-   "x": 1020.456,
-   "y": 550.456,
-   "w": 31.087999999999997,
-   "h": 31.087999999999997,
-   "fill": "#3DBDB4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.2,
-   "fx": [
+      "id": "e-7",
+      "type": "ellipse",
+      "name": "orb outer",
+      "x": 296,
+      "y": 326,
+      "w": 340,
+      "h": 340,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "opacity": 0.6
+    },
     {
-     "kind": "blur",
-     "radius": 4
-    }
-   ]
-  },
-  {
-   "id": "e-73",
-   "type": "ellipse",
-   "name": "ph0 orb knob",
-   "x": 1023.456,
-   "y": 553.456,
-   "w": 25.087999999999997,
-   "h": 25.087999999999997,
-   "fill": "#0D0612",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1.5
-  },
-  {
-   "id": "e-74",
-   "type": "ellipse",
-   "name": "ph0 orb node",
-   "x": 1072.2228092201392,
-   "y": 537.2,
-   "w": 10,
-   "h": 10,
-   "fill": "none",
-   "stroke": "#FFD03B",
-   "strokeWidth": 2
-  },
-  {
-   "id": "e-75",
-   "type": "ellipse",
-   "name": "ph0 orb side",
-   "x": 972.3279589443036,
-   "y": 597.7574884366218,
-   "w": 16.8,
-   "h": 16.8,
-   "fill": "#0D0612",
-   "stroke": "#F88F05",
-   "strokeWidth": 1,
-   "opacity": 0.9
-  },
-  {
-   "id": "t-76",
-   "type": "text",
-   "x": 972.3279589443036,
-   "y": 597.7574884366218,
-   "w": 16.8,
-   "h": 16.8,
-   "text": "?",
-   "size": 9,
-   "weight": 700,
-   "font": "sans",
-   "color": "#F88F05",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "t-77",
-   "type": "text",
-   "x": 916,
-   "y": 652,
-   "w": 200,
-   "h": 14,
-   "text": "site: the stick dials sections",
-   "size": 9,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "r-78",
-   "type": "rect",
-   "name": "ph1 sky",
-   "x": 1140,
-   "y": 266,
-   "w": 200,
-   "h": 380,
-   "fill": "#0D0612",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 4
-  },
-  {
-   "id": "e-79",
-   "type": "ellipse",
-   "name": "ph1 nebula",
-   "x": 1200,
-   "y": 304,
-   "w": 110.00000000000001,
-   "h": 266,
-   "fill": "#7a4a32",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.35,
-   "fx": [
+      "id": "kicker",
+      "type": "text",
+      "x": 56,
+      "y": 30,
+      "w": 900,
+      "h": 26,
+      "text": "Quality · decided",
+      "size": 16,
+      "weight": 700,
+      "font": "sans",
+      "color": "#F88F05",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
     {
-     "kind": "blur",
-     "radius": 30
-    }
-   ]
-  },
-  {
-   "id": "e-80",
-   "type": "ellipse",
-   "name": "ph1 nebula 2",
-   "x": 1150,
-   "y": 456,
-   "w": 70,
-   "h": 171,
-   "fill": "#38194C",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7,
-   "fx": [
+      "id": "title",
+      "type": "text",
+      "x": 56,
+      "y": 58,
+      "w": 1300,
+      "h": 72,
+      "text": "",
+      "size": 52,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "top",
+      "bind": {
+        "topic": "responsive",
+        "field": "title"
+      }
+    },
     {
-     "kind": "blur",
-     "radius": 30
-    }
-   ]
-  },
-  {
-   "id": "r-81",
-   "type": "rect",
-   "name": "ph scan tint",
-   "x": 1150,
-   "y": 278,
-   "w": 84,
-   "h": 30,
-   "fill": "#0D0612",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.55
-  },
-  {
-   "id": "r-82",
-   "type": "rect",
-   "name": "ph scan line",
-   "x": 1150,
-   "y": 278,
-   "w": 84,
-   "h": 30,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "l-83",
-   "type": "line",
-   "name": "ph scan tick",
-   "from": {
-    "x": 1156,
-    "y": 278
-   },
-   "to": {
-    "x": 1150,
-    "y": 278
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-84",
-   "type": "line",
-   "name": "ph scan tick",
-   "from": {
-    "x": 1150,
-    "y": 278
-   },
-   "to": {
-    "x": 1150,
-    "y": 284
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-85",
-   "type": "line",
-   "name": "ph scan tick",
-   "from": {
-    "x": 1228,
-    "y": 278
-   },
-   "to": {
-    "x": 1234,
-    "y": 278
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-86",
-   "type": "line",
-   "name": "ph scan tick",
-   "from": {
-    "x": 1234,
-    "y": 278
-   },
-   "to": {
-    "x": 1234,
-    "y": 284
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-87",
-   "type": "line",
-   "name": "ph scan tick",
-   "from": {
-    "x": 1156,
-    "y": 308
-   },
-   "to": {
-    "x": 1150,
-    "y": 308
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-88",
-   "type": "line",
-   "name": "ph scan tick",
-   "from": {
-    "x": 1150,
-    "y": 308
-   },
-   "to": {
-    "x": 1150,
-    "y": 302
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-89",
-   "type": "line",
-   "name": "ph scan tick",
-   "from": {
-    "x": 1228,
-    "y": 308
-   },
-   "to": {
-    "x": 1234,
-    "y": 308
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-90",
-   "type": "line",
-   "name": "ph scan tick",
-   "from": {
-    "x": 1234,
-    "y": 308
-   },
-   "to": {
-    "x": 1234,
-    "y": 302
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "t-91",
-   "type": "text",
-   "x": 1156,
-   "y": 286,
-   "w": 80,
-   "h": 14,
-   "text": "LOCKED · VEGA",
-   "size": 9,
-   "weight": 400,
-   "font": "mono",
-   "color": "#3DBDB4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "r-92",
-   "type": "rect",
-   "name": "ph dis",
-   "x": 1270,
-   "y": 278,
-   "w": 60,
-   "h": 18,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.4
-  },
-  {
-   "id": "t-93",
-   "type": "text",
-   "x": 1270,
-   "y": 278,
-   "w": 60,
-   "h": 18,
-   "text": "← EXIT",
-   "size": 8,
-   "weight": 400,
-   "font": "mono",
-   "color": "#C9B8C4",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-94",
-   "type": "rect",
-   "name": "ph prog tint",
-   "x": 1150,
-   "y": 314,
-   "w": 84,
-   "h": 20,
-   "fill": "#0D0612",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.55
-  },
-  {
-   "id": "r-95",
-   "type": "rect",
-   "name": "ph prog line",
-   "x": 1150,
-   "y": 314,
-   "w": 84,
-   "h": 20,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "l-96",
-   "type": "line",
-   "name": "ph prog tick",
-   "from": {
-    "x": 1156,
-    "y": 314
-   },
-   "to": {
-    "x": 1150,
-    "y": 314
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-97",
-   "type": "line",
-   "name": "ph prog tick",
-   "from": {
-    "x": 1150,
-    "y": 314
-   },
-   "to": {
-    "x": 1150,
-    "y": 320
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-98",
-   "type": "line",
-   "name": "ph prog tick",
-   "from": {
-    "x": 1228,
-    "y": 314
-   },
-   "to": {
-    "x": 1234,
-    "y": 314
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-99",
-   "type": "line",
-   "name": "ph prog tick",
-   "from": {
-    "x": 1234,
-    "y": 314
-   },
-   "to": {
-    "x": 1234,
-    "y": 320
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-100",
-   "type": "line",
-   "name": "ph prog tick",
-   "from": {
-    "x": 1156,
-    "y": 334
-   },
-   "to": {
-    "x": 1150,
-    "y": 334
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-101",
-   "type": "line",
-   "name": "ph prog tick",
-   "from": {
-    "x": 1150,
-    "y": 334
-   },
-   "to": {
-    "x": 1150,
-    "y": 328
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-102",
-   "type": "line",
-   "name": "ph prog tick",
-   "from": {
-    "x": 1228,
-    "y": 334
-   },
-   "to": {
-    "x": 1234,
-    "y": 334
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-103",
-   "type": "line",
-   "name": "ph prog tick",
-   "from": {
-    "x": 1234,
-    "y": 334
-   },
-   "to": {
-    "x": 1234,
-    "y": 328
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "t-104",
-   "type": "text",
-   "x": 1156,
-   "y": 318,
-   "w": 76,
-   "h": 14,
-   "text": "LYRA 3/5",
-   "size": 9,
-   "weight": 400,
-   "font": "mono",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "e-105",
-   "type": "ellipse",
-   "name": "moth",
-   "x": 1230,
-   "y": 436,
-   "w": 12,
-   "h": 8,
-   "fill": "#B0D660",
-   "stroke": "none",
-   "strokeWidth": 1
-  },
-  {
-   "id": "e-106",
-   "type": "ellipse",
-   "name": "ph1 orb tint",
-   "x": 1204,
-   "y": 510,
-   "w": 112,
-   "h": 112,
-   "fill": "#0D0612",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.45
-  },
-  {
-   "id": "p-107",
-   "type": "poly",
-   "name": "ph1 orb button 2",
-   "x": 1217.1015111853371,
-   "y": 510,
-   "w": 85.79697762932574,
-   "h": 30.802725700287624,
-   "pts": [
-    [
-     0,
-     0.6494
-    ],
-    [
-     0.0486,
-     0.5047
-    ],
-    [
-     0.1027,
-     0.3757
-    ],
-    [
-     0.1614,
-     0.2638
-    ],
-    [
-     0.2242,
-     0.1703
-    ],
-    [
-     0.2902,
-     0.0965
-    ],
-    [
-     0.3587,
-     0.0431
-    ],
-    [
-     0.4289,
-     0.0108
-    ],
-    [
-     0.5,
-     0
-    ],
-    [
-     0.5711,
-     0.0108
-    ],
-    [
-     0.6413,
-     0.0431
-    ],
-    [
-     0.7098,
-     0.0965
-    ],
-    [
-     0.7758,
-     0.1703
-    ],
-    [
-     0.8386,
-     0.2638
-    ],
-    [
-     0.8973,
-     0.3757
-    ],
-    [
-     0.9514,
-     0.5047
-    ],
-    [
-     1,
-     0.6494
-    ],
-    [
-     0.85,
-     1
-    ],
-    [
-     0.8159,
-     0.8987
-    ],
-    [
-     0.7781,
-     0.8084
-    ],
-    [
-     0.737,
-     0.73
-    ],
-    [
-     0.6931,
-     0.6646
-    ],
-    [
-     0.6469,
-     0.6129
-    ],
-    [
-     0.5989,
-     0.5756
-    ],
-    [
-     0.5497,
-     0.553
-    ],
-    [
-     0.5,
-     0.5454
-    ],
-    [
-     0.4503,
-     0.553
-    ],
-    [
-     0.4011,
-     0.5756
-    ],
-    [
-     0.3531,
-     0.6129
-    ],
-    [
-     0.3069,
-     0.6646
-    ],
-    [
-     0.263,
-     0.73
-    ],
-    [
-     0.2219,
-     0.8084
-    ],
-    [
-     0.1841,
-     0.8987
-    ],
-    [
-     0.15,
-     1
-    ]
-   ],
-   "fill": "#3DBDB4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.12
-  },
-  {
-   "id": "p-108",
-   "type": "poly",
-   "name": "ph1 orb button 1",
-   "x": 1217.1015111853371,
-   "y": 591.1972742997124,
-   "w": 85.79697762932574,
-   "h": 30.802725700287624,
-   "pts": [
-    [
-     1,
-     0.3506
-    ],
-    [
-     0.9514,
-     0.4953
-    ],
-    [
-     0.8973,
-     0.6243
-    ],
-    [
-     0.8386,
-     0.7362
-    ],
-    [
-     0.7758,
-     0.8297
-    ],
-    [
-     0.7098,
-     0.9035
-    ],
-    [
-     0.6413,
-     0.9569
-    ],
-    [
-     0.5711,
-     0.9892
-    ],
-    [
-     0.5,
-     1
-    ],
-    [
-     0.4289,
-     0.9892
-    ],
-    [
-     0.3587,
-     0.9569
-    ],
-    [
-     0.2902,
-     0.9035
-    ],
-    [
-     0.2242,
-     0.8297
-    ],
-    [
-     0.1614,
-     0.7362
-    ],
-    [
-     0.1027,
-     0.6243
-    ],
-    [
-     0.0486,
-     0.4953
-    ],
-    [
-     0,
-     0.3506
-    ],
-    [
-     0.15,
-     0
-    ],
-    [
-     0.1841,
-     0.1013
-    ],
-    [
-     0.2219,
-     0.1916
-    ],
-    [
-     0.263,
-     0.27
-    ],
-    [
-     0.3069,
-     0.3354
-    ],
-    [
-     0.3531,
-     0.3871
-    ],
-    [
-     0.4011,
-     0.4244
-    ],
-    [
-     0.4503,
-     0.447
-    ],
-    [
-     0.5,
-     0.4546
-    ],
-    [
-     0.5497,
-     0.447
-    ],
-    [
-     0.5989,
-     0.4244
-    ],
-    [
-     0.6469,
-     0.3871
-    ],
-    [
-     0.6931,
-     0.3354
-    ],
-    [
-     0.737,
-     0.27
-    ],
-    [
-     0.7781,
-     0.1916
-    ],
-    [
-     0.8159,
-     0.1013
-    ],
-    [
-     0.85,
-     0
-    ]
-   ],
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.12
-  },
-  {
-   "id": "e-109",
-   "type": "ellipse",
-   "name": "ph1 orb outer",
-   "x": 1204,
-   "y": 510,
-   "w": 112,
-   "h": 112,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.6
-  },
-  {
-   "id": "e-110",
-   "type": "ellipse",
-   "name": "ph1 orb inner",
-   "x": 1220.8,
-   "y": 526.8,
-   "w": 78.39999999999999,
-   "h": 78.39999999999999,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.45
-  },
-  {
-   "id": "e-111",
-   "type": "ellipse",
-   "name": "ph1 orb knob glow",
-   "x": 1260.136,
-   "y": 538.696,
-   "w": 31.087999999999997,
-   "h": 31.087999999999997,
-   "fill": "#3DBDB4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.2,
-   "fx": [
+      "id": "status",
+      "type": "status",
+      "x": 1840,
+      "y": 72,
+      "size": 22,
+      "topic": "responsive"
+    },
     {
-     "kind": "blur",
-     "radius": 4
+      "id": "back",
+      "type": "text",
+      "x": 1440,
+      "y": 40,
+      "w": 380,
+      "h": 30,
+      "text": "← Overview",
+      "size": 18,
+      "weight": 600,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "right",
+      "valign": "top",
+      "link": "index"
+    },
+    {
+      "id": "was",
+      "type": "text",
+      "x": 1440,
+      "y": 76,
+      "w": 380,
+      "h": 30,
+      "text": "was: md: only, no touch play → as-is",
+      "size": 16,
+      "weight": 400,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "right",
+      "valign": "top",
+      "link": "asis-layouts"
+    },
+    {
+      "id": "drift",
+      "type": "text",
+      "x": 56,
+      "y": 138,
+      "w": 1808,
+      "h": 60,
+      "text": "The orb is the controller: a stick you press down, one press zone on its ring and a side button, for the site and the game, on every screen.",
+      "size": 22,
+      "weight": 400,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "l-1",
+      "type": "line",
+      "name": "rule",
+      "from": {
+        "x": 56,
+        "y": 212
+      },
+      "to": {
+        "x": 1864,
+        "y": 212
+      },
+      "stroke": "#262c3b",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "t-2",
+      "type": "text",
+      "x": 56,
+      "y": 232,
+      "w": 820,
+      "h": 24,
+      "text": "Orb stick — your sketch",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
+    {
+      "id": "p-5",
+      "type": "poly",
+      "name": "orb button 2",
+      "x": 335.7724446697738,
+      "y": 326,
+      "w": 260.45511066045253,
+      "h": 93.50827444730186,
+      "pts": [
+        [
+          0,
+          0.6494
+        ],
+        [
+          0.0486,
+          0.5047
+        ],
+        [
+          0.1027,
+          0.3757
+        ],
+        [
+          0.1614,
+          0.2638
+        ],
+        [
+          0.2242,
+          0.1703
+        ],
+        [
+          0.2902,
+          0.0965
+        ],
+        [
+          0.3587,
+          0.0431
+        ],
+        [
+          0.4289,
+          0.0108
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.5711,
+          0.0108
+        ],
+        [
+          0.6413,
+          0.0431
+        ],
+        [
+          0.7098,
+          0.0965
+        ],
+        [
+          0.7758,
+          0.1703
+        ],
+        [
+          0.8386,
+          0.2638
+        ],
+        [
+          0.8973,
+          0.3757
+        ],
+        [
+          0.9514,
+          0.5047
+        ],
+        [
+          1,
+          0.6494
+        ],
+        [
+          0.85,
+          1
+        ],
+        [
+          0.8159,
+          0.8987
+        ],
+        [
+          0.7781,
+          0.8084
+        ],
+        [
+          0.737,
+          0.73
+        ],
+        [
+          0.6931,
+          0.6646
+        ],
+        [
+          0.6469,
+          0.6129
+        ],
+        [
+          0.5989,
+          0.5756
+        ],
+        [
+          0.5497,
+          0.553
+        ],
+        [
+          0.5,
+          0.5454
+        ],
+        [
+          0.4503,
+          0.553
+        ],
+        [
+          0.4011,
+          0.5756
+        ],
+        [
+          0.3531,
+          0.6129
+        ],
+        [
+          0.3069,
+          0.6646
+        ],
+        [
+          0.263,
+          0.73
+        ],
+        [
+          0.2219,
+          0.8084
+        ],
+        [
+          0.1841,
+          0.8987
+        ],
+        [
+          0.15,
+          1
+        ]
+      ],
+      "fill": "#9783A0",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.12
+    },
+    {
+      "id": "e-8",
+      "type": "ellipse",
+      "name": "orb inner",
+      "x": 347,
+      "y": 377,
+      "w": 237.99999999999997,
+      "h": 237.99999999999997,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "opacity": 0.45
+    },
+    {
+      "id": "e-9",
+      "type": "ellipse",
+      "name": "orb thrust rim",
+      "x": 364.85,
+      "y": 394.85,
+      "w": 202.29999999999998,
+      "h": 202.29999999999998,
+      "fill": "none",
+      "stroke": "#F88F05",
+      "strokeWidth": 1,
+      "dash": true,
+      "opacity": 0.6
+    },
+    {
+      "id": "e-10",
+      "type": "ellipse",
+      "name": "orb knob glow",
+      "x": 455,
+      "y": 420.74,
+      "w": 82.16,
+      "h": 82.16,
+      "fill": "#3DBDB4",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.2,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 4
+        }
+      ]
+    },
+    {
+      "id": "e-11",
+      "type": "ellipse",
+      "name": "orb knob",
+      "x": 458,
+      "y": 423.74,
+      "w": 76.16,
+      "h": 76.16,
+      "fill": "#0D0612",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "t-15",
+      "type": "text",
+      "x": 626,
+      "y": 255,
+      "w": 80,
+      "h": 18,
+      "text": "2",
+      "size": 13,
+      "weight": 400,
+      "font": "mono",
+      "color": "#3DBDB4",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "t-16",
+      "type": "text",
+      "x": 130,
+      "y": 581.8,
+      "w": 80,
+      "h": 18,
+      "text": "1",
+      "size": 13,
+      "weight": 400,
+      "font": "mono",
+      "color": "#FFD03B",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "e-17",
+      "type": "ellipse",
+      "name": "dot",
+      "x": 463,
+      "y": 338,
+      "w": 6,
+      "h": 6,
+      "fill": "#9783A0",
+      "stroke": "none",
+      "strokeWidth": 1
+    },
+    {
+      "id": "l-18",
+      "type": "line",
+      "name": "leader",
+      "from": {
+        "x": 465,
+        "y": 341
+      },
+      "to": {
+        "x": 408,
+        "y": 272
+      },
+      "stroke": "#9783A0",
+      "strokeWidth": 1,
+      "arrow": "none"
+    },
+    {
+      "id": "t-19",
+      "type": "text",
+      "x": 396,
+      "y": 218,
+      "w": 196,
+      "h": 70,
+      "text": "BUTTON 2 · thumb tip\ngame: recall\nsite: previous entry",
+      "size": 12,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "l-21",
+      "type": "line",
+      "name": "leader",
+      "from": {
+        "x": 478,
+        "y": 497
+      },
+      "to": {
+        "x": 184,
+        "y": 584
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "arrow": "none"
+    },
+    {
+      "id": "t-22",
+      "type": "text",
+      "x": 28,
+      "y": 600,
+      "w": 196,
+      "h": 86,
+      "text": "BUTTON 1 · press the stick (tap)\ngame: tap = tie silk, tap again = let go (slingshot)\nsite: next entry · LAUNCH on Play",
+      "size": 12,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "e-23",
+      "type": "ellipse",
+      "name": "dot",
+      "x": 503,
+      "y": 463,
+      "w": 6,
+      "h": 6,
+      "fill": "#3DBDB4",
+      "stroke": "none",
+      "strokeWidth": 1
+    },
+    {
+      "id": "l-24",
+      "type": "line",
+      "name": "leader",
+      "from": {
+        "x": 506,
+        "y": 466
+      },
+      "to": {
+        "x": 652,
+        "y": 308
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none"
+    },
+    {
+      "id": "t-25",
+      "type": "text",
+      "x": 660,
+      "y": 300,
+      "w": 196,
+      "h": 86,
+      "text": "STICK · center disc\ngame: steer; past the dashed rim = thruster\nsite: point at a section, let go to go\ntap without moving = BUTTON 1",
+      "size": 12,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "l-27",
+      "type": "line",
+      "name": "leader",
+      "from": {
+        "el": "t-28"
+      },
+      "to": {
+        "x": 192,
+        "y": 496
+      },
+      "stroke": "#1A0D24",
+      "strokeWidth": 1,
+      "arrow": "none"
+    },
+    {
+      "id": "t-28",
+      "type": "text",
+      "x": 52,
+      "y": 496,
+      "w": 196,
+      "h": 70,
+      "text": "SIDE · C · left of the ring\ngame + site: Cori\n(guide / help)",
+      "size": 12,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "e-29",
+      "type": "ellipse",
+      "name": "dot",
+      "x": 583,
+      "y": 533,
+      "w": 6,
+      "h": 6,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1
+    },
+    {
+      "id": "l-30",
+      "type": "line",
+      "name": "leader",
+      "from": {
+        "x": 586,
+        "y": 536
+      },
+      "to": {
+        "x": 652,
+        "y": 568
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "arrow": "none"
+    },
+    {
+      "id": "t-31",
+      "type": "text",
+      "x": 660,
+      "y": 560,
+      "w": 196,
+      "h": 70,
+      "text": "NODE · gold\nsite: the current section on the dial\n(the old diamond)",
+      "size": 12,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-32",
+      "type": "text",
+      "x": 916,
+      "y": 232,
+      "w": 440,
+      "h": 24,
+      "text": "Phone · site and game",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
+    {
+      "id": "r-33",
+      "type": "rect",
+      "name": "ph0 sky",
+      "x": 916,
+      "y": 266,
+      "w": 200,
+      "h": 380,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4
+    },
+    {
+      "id": "e-34",
+      "type": "ellipse",
+      "name": "ph0 nebula",
+      "x": 976,
+      "y": 304,
+      "w": 110.00000000000001,
+      "h": 266,
+      "fill": "#7a4a32",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 30
+        }
+      ]
+    },
+    {
+      "id": "e-35",
+      "type": "ellipse",
+      "name": "ph0 nebula 2",
+      "x": 926,
+      "y": 456,
+      "w": 70,
+      "h": 171,
+      "fill": "#38194C",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.7,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 30
+        }
+      ]
+    },
+    {
+      "id": "l-36",
+      "type": "line",
+      "name": "rail",
+      "from": {
+        "x": 932,
+        "y": 288
+      },
+      "to": {
+        "x": 1100,
+        "y": 288
+      },
+      "stroke": "#FFF4E3",
+      "strokeWidth": 1,
+      "arrow": "none"
+    },
+    {
+      "id": "e-37",
+      "type": "ellipse",
+      "name": "rail dot ABOUT",
+      "x": 937,
+      "y": 285,
+      "w": 6,
+      "h": 6,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35
+    },
+    {
+      "id": "e-38",
+      "type": "ellipse",
+      "name": "rail dot WORK",
+      "x": 967.4,
+      "y": 285,
+      "w": 6,
+      "h": 6,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1
+    },
+    {
+      "id": "t-39",
+      "type": "text",
+      "x": 930.4,
+      "y": 270,
+      "w": 80,
+      "h": 12,
+      "text": "WORK",
+      "size": 8,
+      "weight": 400,
+      "font": "mono",
+      "color": "#FFD03B",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "e-40",
+      "type": "ellipse",
+      "name": "rail dot SKILLS",
+      "x": 997.8,
+      "y": 285,
+      "w": 6,
+      "h": 6,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35
+    },
+    {
+      "id": "e-41",
+      "type": "ellipse",
+      "name": "rail dot PROJECTS",
+      "x": 1028.2,
+      "y": 285,
+      "w": 6,
+      "h": 6,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35
+    },
+    {
+      "id": "e-42",
+      "type": "ellipse",
+      "name": "rail dot OPEN SOURCE",
+      "x": 1058.6,
+      "y": 285,
+      "w": 6,
+      "h": 6,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35
+    },
+    {
+      "id": "e-43",
+      "type": "ellipse",
+      "name": "rail dot PLAY",
+      "x": 1089,
+      "y": 285,
+      "w": 6,
+      "h": 6,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35
+    },
+    {
+      "id": "r-44",
+      "type": "rect",
+      "name": "links",
+      "x": 1060,
+      "y": 304,
+      "w": 44,
+      "h": 18,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "opacity": 0.4
+    },
+    {
+      "id": "t-45",
+      "type": "text",
+      "x": 1060,
+      "y": 304,
+      "w": 44,
+      "h": 18,
+      "text": "LINKS",
+      "size": 8,
+      "weight": 400,
+      "font": "mono",
+      "color": "#C9B8C4",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "r-46",
+      "type": "rect",
+      "name": "ph menu tint",
+      "x": 928,
+      "y": 332,
+      "w": 176,
+      "h": 150,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.55
+    },
+    {
+      "id": "r-47",
+      "type": "rect",
+      "name": "ph menu line",
+      "x": 928,
+      "y": 332,
+      "w": 176,
+      "h": 150,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "opacity": 0.35
+    },
+    {
+      "id": "l-48",
+      "type": "line",
+      "name": "ph menu tick",
+      "from": {
+        "x": 934,
+        "y": 332
+      },
+      "to": {
+        "x": 928,
+        "y": 332
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-49",
+      "type": "line",
+      "name": "ph menu tick",
+      "from": {
+        "x": 928,
+        "y": 332
+      },
+      "to": {
+        "x": 928,
+        "y": 338
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-50",
+      "type": "line",
+      "name": "ph menu tick",
+      "from": {
+        "x": 1098,
+        "y": 332
+      },
+      "to": {
+        "x": 1104,
+        "y": 332
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-51",
+      "type": "line",
+      "name": "ph menu tick",
+      "from": {
+        "x": 1104,
+        "y": 332
+      },
+      "to": {
+        "x": 1104,
+        "y": 338
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-52",
+      "type": "line",
+      "name": "ph menu tick",
+      "from": {
+        "x": 934,
+        "y": 482
+      },
+      "to": {
+        "x": 928,
+        "y": 482
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-53",
+      "type": "line",
+      "name": "ph menu tick",
+      "from": {
+        "x": 928,
+        "y": 482
+      },
+      "to": {
+        "x": 928,
+        "y": 476
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-54",
+      "type": "line",
+      "name": "ph menu tick",
+      "from": {
+        "x": 1098,
+        "y": 482
+      },
+      "to": {
+        "x": 1104,
+        "y": 482
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-55",
+      "type": "line",
+      "name": "ph menu tick",
+      "from": {
+        "x": 1104,
+        "y": 482
+      },
+      "to": {
+        "x": 1104,
+        "y": 476
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "r-56",
+      "type": "rect",
+      "name": "ph sel",
+      "x": 929,
+      "y": 338,
+      "w": 174,
+      "h": 96,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.07
+    },
+    {
+      "id": "l-57",
+      "type": "line",
+      "name": "ph bar",
+      "from": {
+        "x": 929,
+        "y": 338
+      },
+      "to": {
+        "x": 929,
+        "y": 434
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "r-58",
+      "type": "rect",
+      "name": "ph line 0",
+      "x": 938,
+      "y": 346,
+      "w": 80,
+      "h": 2,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.6
+    },
+    {
+      "id": "r-59",
+      "type": "rect",
+      "name": "ph line 1",
+      "x": 938,
+      "y": 356,
+      "w": 140,
+      "h": 2,
+      "fill": "#C9B8C4",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.6
+    },
+    {
+      "id": "r-60",
+      "type": "rect",
+      "name": "ph line 2",
+      "x": 938,
+      "y": 366,
+      "w": 140,
+      "h": 2,
+      "fill": "#C9B8C4",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.6
+    },
+    {
+      "id": "r-61",
+      "type": "rect",
+      "name": "ph line 3",
+      "x": 938,
+      "y": 376,
+      "w": 140,
+      "h": 2,
+      "fill": "#C9B8C4",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.6
+    },
+    {
+      "id": "r-62",
+      "type": "rect",
+      "name": "ph line 4",
+      "x": 938,
+      "y": 386,
+      "w": 140,
+      "h": 2,
+      "fill": "#C9B8C4",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.6
+    },
+    {
+      "id": "r-63",
+      "type": "rect",
+      "name": "ph line 5",
+      "x": 938,
+      "y": 396,
+      "w": 140,
+      "h": 2,
+      "fill": "#C9B8C4",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.6
+    },
+    {
+      "id": "r-64",
+      "type": "rect",
+      "name": "ph line 6",
+      "x": 938,
+      "y": 406,
+      "w": 140,
+      "h": 2,
+      "fill": "#C9B8C4",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.6
+    },
+    {
+      "id": "r-65",
+      "type": "rect",
+      "name": "ph line 7",
+      "x": 938,
+      "y": 416,
+      "w": 140,
+      "h": 2,
+      "fill": "#C9B8C4",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.6
+    },
+    {
+      "id": "t-66",
+      "type": "text",
+      "x": 930,
+      "y": 492,
+      "w": 90,
+      "h": 20,
+      "text": "WORK",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "e-75",
+      "type": "ellipse",
+      "name": "ph0 orb side",
+      "x": 972.3279589443036,
+      "y": 597.7574884366218,
+      "w": 16.8,
+      "h": 16.8,
+      "fill": "#0D0612",
+      "stroke": "#F88F05",
+      "strokeWidth": 1,
+      "opacity": 0.9
+    },
+    {
+      "id": "t-76",
+      "type": "text",
+      "x": 972.3279589443036,
+      "y": 597.7574884366218,
+      "w": 16.8,
+      "h": 16.8,
+      "text": "?",
+      "size": 9,
+      "weight": 700,
+      "font": "sans",
+      "color": "#F88F05",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "t-77",
+      "type": "text",
+      "x": 916,
+      "y": 652,
+      "w": 200,
+      "h": 14,
+      "text": "site: the stick dials sections",
+      "size": 9,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "r-78",
+      "type": "rect",
+      "name": "ph1 sky",
+      "x": 1140,
+      "y": 274,
+      "w": 200,
+      "h": 380,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4
+    },
+    {
+      "id": "e-79",
+      "type": "ellipse",
+      "name": "ph1 nebula",
+      "x": 1200,
+      "y": 304,
+      "w": 110.00000000000001,
+      "h": 266,
+      "fill": "#7a4a32",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 30
+        }
+      ]
+    },
+    {
+      "id": "e-80",
+      "type": "ellipse",
+      "name": "ph1 nebula 2",
+      "x": 1150,
+      "y": 456,
+      "w": 70,
+      "h": 171,
+      "fill": "#38194C",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.7,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 30
+        }
+      ]
+    },
+    {
+      "id": "r-81",
+      "type": "rect",
+      "name": "ph scan tint",
+      "x": 1150,
+      "y": 278,
+      "w": 84,
+      "h": 30,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.55
+    },
+    {
+      "id": "r-82",
+      "type": "rect",
+      "name": "ph scan line",
+      "x": 1150,
+      "y": 278,
+      "w": 84,
+      "h": 30,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "opacity": 0.35
+    },
+    {
+      "id": "l-83",
+      "type": "line",
+      "name": "ph scan tick",
+      "from": {
+        "x": 1156,
+        "y": 278
+      },
+      "to": {
+        "x": 1150,
+        "y": 278
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-84",
+      "type": "line",
+      "name": "ph scan tick",
+      "from": {
+        "x": 1150,
+        "y": 278
+      },
+      "to": {
+        "x": 1150,
+        "y": 284
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-85",
+      "type": "line",
+      "name": "ph scan tick",
+      "from": {
+        "x": 1228,
+        "y": 278
+      },
+      "to": {
+        "x": 1234,
+        "y": 278
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-86",
+      "type": "line",
+      "name": "ph scan tick",
+      "from": {
+        "x": 1234,
+        "y": 278
+      },
+      "to": {
+        "x": 1234,
+        "y": 284
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-87",
+      "type": "line",
+      "name": "ph scan tick",
+      "from": {
+        "x": 1156,
+        "y": 308
+      },
+      "to": {
+        "x": 1150,
+        "y": 308
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-88",
+      "type": "line",
+      "name": "ph scan tick",
+      "from": {
+        "x": 1150,
+        "y": 308
+      },
+      "to": {
+        "x": 1150,
+        "y": 302
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-89",
+      "type": "line",
+      "name": "ph scan tick",
+      "from": {
+        "x": 1228,
+        "y": 308
+      },
+      "to": {
+        "x": 1234,
+        "y": 308
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-90",
+      "type": "line",
+      "name": "ph scan tick",
+      "from": {
+        "x": 1234,
+        "y": 308
+      },
+      "to": {
+        "x": 1234,
+        "y": 302
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "t-91",
+      "type": "text",
+      "x": 1156,
+      "y": 286,
+      "w": 80,
+      "h": 14,
+      "text": "LOCKED · VEGA",
+      "size": 9,
+      "weight": 400,
+      "font": "mono",
+      "color": "#3DBDB4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "r-92",
+      "type": "rect",
+      "name": "ph dis",
+      "x": 1270,
+      "y": 278,
+      "w": 60,
+      "h": 18,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "opacity": 0.4
+    },
+    {
+      "id": "t-93",
+      "type": "text",
+      "x": 1270,
+      "y": 278,
+      "w": 60,
+      "h": 18,
+      "text": "← EXIT",
+      "size": 8,
+      "weight": 400,
+      "font": "mono",
+      "color": "#C9B8C4",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "r-94",
+      "type": "rect",
+      "name": "ph prog tint",
+      "x": 1150,
+      "y": 314,
+      "w": 84,
+      "h": 20,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.55
+    },
+    {
+      "id": "r-95",
+      "type": "rect",
+      "name": "ph prog line",
+      "x": 1150,
+      "y": 314,
+      "w": 84,
+      "h": 20,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "opacity": 0.35
+    },
+    {
+      "id": "l-96",
+      "type": "line",
+      "name": "ph prog tick",
+      "from": {
+        "x": 1156,
+        "y": 314
+      },
+      "to": {
+        "x": 1150,
+        "y": 314
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-97",
+      "type": "line",
+      "name": "ph prog tick",
+      "from": {
+        "x": 1150,
+        "y": 314
+      },
+      "to": {
+        "x": 1150,
+        "y": 320
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-98",
+      "type": "line",
+      "name": "ph prog tick",
+      "from": {
+        "x": 1228,
+        "y": 314
+      },
+      "to": {
+        "x": 1234,
+        "y": 314
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-99",
+      "type": "line",
+      "name": "ph prog tick",
+      "from": {
+        "x": 1234,
+        "y": 314
+      },
+      "to": {
+        "x": 1234,
+        "y": 320
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-100",
+      "type": "line",
+      "name": "ph prog tick",
+      "from": {
+        "x": 1156,
+        "y": 334
+      },
+      "to": {
+        "x": 1150,
+        "y": 334
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-101",
+      "type": "line",
+      "name": "ph prog tick",
+      "from": {
+        "x": 1150,
+        "y": 334
+      },
+      "to": {
+        "x": 1150,
+        "y": 328
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-102",
+      "type": "line",
+      "name": "ph prog tick",
+      "from": {
+        "x": 1228,
+        "y": 334
+      },
+      "to": {
+        "x": 1234,
+        "y": 334
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "l-103",
+      "type": "line",
+      "name": "ph prog tick",
+      "from": {
+        "x": 1234,
+        "y": 334
+      },
+      "to": {
+        "x": 1234,
+        "y": 328
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "t-104",
+      "type": "text",
+      "x": 1156,
+      "y": 318,
+      "w": 76,
+      "h": 14,
+      "text": "LYRA 3/5",
+      "size": 9,
+      "weight": 400,
+      "font": "mono",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "e-105",
+      "type": "ellipse",
+      "name": "moth",
+      "x": 1230,
+      "y": 436,
+      "w": 12,
+      "h": 8,
+      "fill": "#B0D660",
+      "stroke": "none",
+      "strokeWidth": 1
+    },
+    {
+      "id": "e-113",
+      "type": "ellipse",
+      "name": "ph1 orb side",
+      "x": 1196.3279589443034,
+      "y": 597.7574884366218,
+      "w": 16.8,
+      "h": 16.8,
+      "fill": "#0D0612",
+      "stroke": "#F88F05",
+      "strokeWidth": 1,
+      "opacity": 0.9
+    },
+    {
+      "id": "t-114",
+      "type": "text",
+      "x": 1196.3279589443034,
+      "y": 597.7574884366218,
+      "w": 16.8,
+      "h": 16.8,
+      "text": "?",
+      "size": 9,
+      "weight": 700,
+      "font": "sans",
+      "color": "#F88F05",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "t-115",
+      "type": "text",
+      "x": 1140,
+      "y": 652,
+      "w": 200,
+      "h": 14,
+      "text": "game: the same stick steers",
+      "size": 9,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-116",
+      "type": "text",
+      "x": 1374,
+      "y": 232,
+      "w": 490,
+      "h": 24,
+      "text": "Everywhere",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
+    {
+      "id": "t-117",
+      "type": "text",
+      "x": 1382,
+      "y": 274,
+      "w": 490,
+      "h": 190,
+      "text": "The orb sits fully on screen at every size: 136px on phones, 168 tablet, 200 desktop, bottom-right at the page edge (above the safe area).\n\nMouse: drag the disc, click it for button 1, click the ring top for button 2; keys still work (arrows, WASD, Space, R, C).\n\nLeft-handed: a mirror toggle in LINKS puts it bottom-left (per browser).\n\nPress feedback: the zone flashes (glow-active) + the mini paper ring; a 10ms vibration where supported. Calm: the flash only.",
+      "size": 14,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "l-118",
+      "type": "line",
+      "name": "rule",
+      "from": {
+        "x": 56,
+        "y": 746
+      },
+      "to": {
+        "x": 1864,
+        "y": 746
+      },
+      "stroke": "#262c3b",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "t-119",
+      "type": "text",
+      "x": 56,
+      "y": 760,
+      "w": 1808,
+      "h": 24,
+      "text": "Per tier",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
+    {
+      "id": "t-120",
+      "type": "text",
+      "x": 56,
+      "y": 790,
+      "w": 150,
+      "h": 18,
+      "text": "",
+      "size": 11,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-121",
+      "type": "text",
+      "x": 206,
+      "y": 790,
+      "w": 270,
+      "h": 18,
+      "text": "rail",
+      "size": 11,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-122",
+      "type": "text",
+      "x": 476,
+      "y": 790,
+      "w": 230,
+      "h": 18,
+      "text": "links",
+      "size": 11,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-123",
+      "type": "text",
+      "x": 706,
+      "y": 790,
+      "w": 380,
+      "h": 18,
+      "text": "content",
+      "size": 11,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-124",
+      "type": "text",
+      "x": 1086,
+      "y": 790,
+      "w": 220,
+      "h": 18,
+      "text": "orb",
+      "size": 11,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-125",
+      "type": "text",
+      "x": 1306,
+      "y": 790,
+      "w": 190,
+      "h": 18,
+      "text": "hero title",
+      "size": 11,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-126",
+      "type": "text",
+      "x": 1496,
+      "y": 790,
+      "w": 368,
+      "h": 18,
+      "text": "game HUD",
+      "size": 11,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-127",
+      "type": "text",
+      "x": 56,
+      "y": 814,
+      "w": 140,
+      "h": 22,
+      "text": "mobile <600",
+      "size": 13,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-128",
+      "type": "text",
+      "x": 206,
+      "y": 814,
+      "w": 260,
+      "h": 22,
+      "text": "dots + current label",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-129",
+      "type": "text",
+      "x": 476,
+      "y": 814,
+      "w": 220,
+      "h": 22,
+      "text": "LINKS → small Frame",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-130",
+      "type": "text",
+      "x": 706,
+      "y": 814,
+      "w": 370,
+      "h": 22,
+      "text": "edge 16 · rows open in place",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-131",
+      "type": "text",
+      "x": 1086,
+      "y": 814,
+      "w": 210,
+      "h": 22,
+      "text": "136 stick",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-132",
+      "type": "text",
+      "x": 1306,
+      "y": 814,
+      "w": 180,
+      "h": 22,
+      "text": "display 28",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-133",
+      "type": "text",
+      "x": 1496,
+      "y": 814,
+      "w": 358,
+      "h": 22,
+      "text": "scanner + progress top-left, EXIT",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-134",
+      "type": "text",
+      "x": 56,
+      "y": 840,
+      "w": 140,
+      "h": 22,
+      "text": "tablet 600–1023",
+      "size": 13,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-135",
+      "type": "text",
+      "x": 206,
+      "y": 840,
+      "w": 260,
+      "h": 22,
+      "text": "all labels",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-136",
+      "type": "text",
+      "x": 476,
+      "y": 840,
+      "w": 220,
+      "h": 22,
+      "text": "comms Plate",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-137",
+      "type": "text",
+      "x": 706,
+      "y": 840,
+      "w": 370,
+      "h": 22,
+      "text": "edge 24 · rows open in place",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-138",
+      "type": "text",
+      "x": 1086,
+      "y": 840,
+      "w": 210,
+      "h": 22,
+      "text": "168 stick",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-139",
+      "type": "text",
+      "x": 1306,
+      "y": 840,
+      "w": 180,
+      "h": 22,
+      "text": "display 28",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-140",
+      "type": "text",
+      "x": 1496,
+      "y": 840,
+      "w": 358,
+      "h": 22,
+      "text": "full Plates",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-141",
+      "type": "text",
+      "x": 56,
+      "y": 866,
+      "w": 140,
+      "h": 22,
+      "text": "desktop ≥1024",
+      "size": 13,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-142",
+      "type": "text",
+      "x": 206,
+      "y": 866,
+      "w": 260,
+      "h": 22,
+      "text": "all labels",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-143",
+      "type": "text",
+      "x": 476,
+      "y": 866,
+      "w": 220,
+      "h": 22,
+      "text": "comms Plate",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-144",
+      "type": "text",
+      "x": 706,
+      "y": 866,
+      "w": 370,
+      "h": 22,
+      "text": "edge 48 (?) · menu 280 + detail 460",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-145",
+      "type": "text",
+      "x": 1086,
+      "y": 866,
+      "w": 210,
+      "h": 22,
+      "text": "200 stick",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-146",
+      "type": "text",
+      "x": 1306,
+      "y": 866,
+      "w": 180,
+      "h": 22,
+      "text": "hero 48",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-147",
+      "type": "text",
+      "x": 1496,
+      "y": 866,
+      "w": 358,
+      "h": 22,
+      "text": "full Plates",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-148",
+      "type": "text",
+      "x": 56,
+      "y": 902,
+      "w": 1808,
+      "h": 60,
+      "text": "Page edge 16 / 24 / 48 is still the Spacing hypothesis (?) — you wanted to look first. Nothing else is cut on a phone except the dev plate (dev builds only anyway).",
+      "size": 14,
+      "weight": 400,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "link": "spacing"
+    },
+    {
+      "id": "rect-zbij",
+      "type": "rect",
+      "x": 64,
+      "y": 440,
+      "w": 112,
+      "h": 40,
+      "stroke": "#FFD03B",
+      "strokeWidth": 3,
+      "fill": "#F88F05",
+      "opacity": 0.12,
+      "radius": 8
+    },
+    {
+      "id": "rect-lgql",
+      "type": "rect",
+      "x": 928,
+      "y": 544,
+      "w": 56,
+      "h": 24,
+      "stroke": "#FFD03B",
+      "strokeWidth": 3,
+      "fill": "#F88F05",
+      "opacity": 0.12,
+      "radius": 8
+    },
+    {
+      "id": "rect-0tqg",
+      "type": "rect",
+      "x": 1152,
+      "y": 544,
+      "w": 56,
+      "h": 24,
+      "stroke": "#FFD03B",
+      "strokeWidth": 3,
+      "fill": "#F88F05",
+      "opacity": 0.12,
+      "radius": 8
+    },
+    {
+      "id": "ellipse-rrrj",
+      "type": "ellipse",
+      "name": "ph0 orb tint",
+      "x": 1028,
+      "y": 526,
+      "w": 68,
+      "h": 68,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 0.6,
+      "opacity": 0.45,
+      "group": "group-sao2"
+    },
+    {
+      "id": "poly-5zd2",
+      "type": "poly",
+      "name": "ph0 orb button 2",
+      "x": 1036,
+      "y": 526.1,
+      "w": 52.1,
+      "h": 18.7,
+      "pts": [
+        [
+          0,
+          0.6494
+        ],
+        [
+          0.0486,
+          0.5047
+        ],
+        [
+          0.1027,
+          0.3757
+        ],
+        [
+          0.1614,
+          0.2638
+        ],
+        [
+          0.2242,
+          0.1703
+        ],
+        [
+          0.2902,
+          0.0965
+        ],
+        [
+          0.3587,
+          0.0431
+        ],
+        [
+          0.4289,
+          0.0108
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.5711,
+          0.0108
+        ],
+        [
+          0.6413,
+          0.0431
+        ],
+        [
+          0.7098,
+          0.0965
+        ],
+        [
+          0.7758,
+          0.1703
+        ],
+        [
+          0.8386,
+          0.2638
+        ],
+        [
+          0.8973,
+          0.3757
+        ],
+        [
+          0.9514,
+          0.5047
+        ],
+        [
+          1,
+          0.6494
+        ],
+        [
+          0.85,
+          1
+        ],
+        [
+          0.8159,
+          0.8987
+        ],
+        [
+          0.7781,
+          0.8084
+        ],
+        [
+          0.737,
+          0.73
+        ],
+        [
+          0.6931,
+          0.6646
+        ],
+        [
+          0.6469,
+          0.6129
+        ],
+        [
+          0.5989,
+          0.5756
+        ],
+        [
+          0.5497,
+          0.553
+        ],
+        [
+          0.5,
+          0.5454
+        ],
+        [
+          0.4503,
+          0.553
+        ],
+        [
+          0.4011,
+          0.5756
+        ],
+        [
+          0.3531,
+          0.6129
+        ],
+        [
+          0.3069,
+          0.6646
+        ],
+        [
+          0.263,
+          0.73
+        ],
+        [
+          0.2219,
+          0.8084
+        ],
+        [
+          0.1841,
+          0.8987
+        ],
+        [
+          0.15,
+          1
+        ]
+      ],
+      "fill": "#3DBDB4",
+      "stroke": "none",
+      "strokeWidth": 0.6,
+      "opacity": 0.12,
+      "group": "group-sao2"
+    },
+    {
+      "id": "ellipse-yebq",
+      "type": "ellipse",
+      "name": "ph0 orb outer",
+      "x": 1028,
+      "y": 526,
+      "w": 68,
+      "h": 68,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "opacity": 0.6,
+      "group": "group-sao2"
+    },
+    {
+      "id": "ellipse-i66y",
+      "type": "ellipse",
+      "name": "ph0 orb inner",
+      "x": 1038.2,
+      "y": 536.2,
+      "w": 47.6,
+      "h": 47.6,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "opacity": 0.45,
+      "group": "group-sao2"
+    },
+    {
+      "id": "ellipse-u9vz",
+      "type": "ellipse",
+      "name": "ph0 orb knob glow",
+      "x": 1052.6,
+      "y": 550.6,
+      "w": 18.9,
+      "h": 18.9,
+      "fill": "#3DBDB4",
+      "stroke": "none",
+      "strokeWidth": 0.6,
+      "opacity": 0.2,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 4
+        }
+      ],
+      "group": "group-sao2"
+    },
+    {
+      "id": "ellipse-uc1a",
+      "type": "ellipse",
+      "name": "ph0 orb knob",
+      "x": 1054.4,
+      "y": 552.4,
+      "w": 15.2,
+      "h": 15.2,
+      "fill": "#0D0612",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.9,
+      "group": "group-sao2"
+    },
+    {
+      "id": "ellipse-2jke",
+      "type": "ellipse",
+      "name": "ph0 orb node",
+      "x": 1084,
+      "y": 542.6,
+      "w": 6.1,
+      "h": 6.1,
+      "fill": "none",
+      "stroke": "#FFD03B",
+      "strokeWidth": 1.2,
+      "group": "group-sao2"
+    },
+    {
+      "id": "e-67",
+      "type": "ellipse",
+      "name": "ph0 orb tint",
+      "x": 1252,
+      "y": 526,
+      "w": 68,
+      "h": 68,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 0.6,
+      "opacity": 0.45,
+      "group": "group-jhye"
+    },
+    {
+      "id": "p-68",
+      "type": "poly",
+      "name": "ph0 orb button 2",
+      "x": 1260,
+      "y": 526.1,
+      "w": 52.1,
+      "h": 18.7,
+      "pts": [
+        [
+          0,
+          0.6494
+        ],
+        [
+          0.0486,
+          0.5047
+        ],
+        [
+          0.1027,
+          0.3757
+        ],
+        [
+          0.1614,
+          0.2638
+        ],
+        [
+          0.2242,
+          0.1703
+        ],
+        [
+          0.2902,
+          0.0965
+        ],
+        [
+          0.3587,
+          0.0431
+        ],
+        [
+          0.4289,
+          0.0108
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.5711,
+          0.0108
+        ],
+        [
+          0.6413,
+          0.0431
+        ],
+        [
+          0.7098,
+          0.0965
+        ],
+        [
+          0.7758,
+          0.1703
+        ],
+        [
+          0.8386,
+          0.2638
+        ],
+        [
+          0.8973,
+          0.3757
+        ],
+        [
+          0.9514,
+          0.5047
+        ],
+        [
+          1,
+          0.6494
+        ],
+        [
+          0.85,
+          1
+        ],
+        [
+          0.8159,
+          0.8987
+        ],
+        [
+          0.7781,
+          0.8084
+        ],
+        [
+          0.737,
+          0.73
+        ],
+        [
+          0.6931,
+          0.6646
+        ],
+        [
+          0.6469,
+          0.6129
+        ],
+        [
+          0.5989,
+          0.5756
+        ],
+        [
+          0.5497,
+          0.553
+        ],
+        [
+          0.5,
+          0.5454
+        ],
+        [
+          0.4503,
+          0.553
+        ],
+        [
+          0.4011,
+          0.5756
+        ],
+        [
+          0.3531,
+          0.6129
+        ],
+        [
+          0.3069,
+          0.6646
+        ],
+        [
+          0.263,
+          0.73
+        ],
+        [
+          0.2219,
+          0.8084
+        ],
+        [
+          0.1841,
+          0.8987
+        ],
+        [
+          0.15,
+          1
+        ]
+      ],
+      "fill": "#3DBDB4",
+      "stroke": "none",
+      "strokeWidth": 0.6,
+      "opacity": 0.12,
+      "group": "group-jhye"
+    },
+    {
+      "id": "e-70",
+      "type": "ellipse",
+      "name": "ph0 orb outer",
+      "x": 1252,
+      "y": 526,
+      "w": 68,
+      "h": 68,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "opacity": 0.6,
+      "group": "group-jhye"
+    },
+    {
+      "id": "e-71",
+      "type": "ellipse",
+      "name": "ph0 orb inner",
+      "x": 1262.2,
+      "y": 536.2,
+      "w": 47.6,
+      "h": 47.6,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "opacity": 0.45,
+      "group": "group-jhye"
+    },
+    {
+      "id": "e-72",
+      "type": "ellipse",
+      "name": "ph0 orb knob glow",
+      "x": 1276.6,
+      "y": 550.6,
+      "w": 18.9,
+      "h": 18.9,
+      "fill": "#3DBDB4",
+      "stroke": "none",
+      "strokeWidth": 0.6,
+      "opacity": 0.2,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 4
+        }
+      ],
+      "group": "group-jhye"
+    },
+    {
+      "id": "e-73",
+      "type": "ellipse",
+      "name": "ph0 orb knob",
+      "x": 1278.4,
+      "y": 552.4,
+      "w": 15.2,
+      "h": 15.2,
+      "fill": "#0D0612",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.9,
+      "group": "group-jhye"
+    },
+    {
+      "id": "e-74",
+      "type": "ellipse",
+      "name": "ph0 orb node",
+      "x": 1308,
+      "y": 542.6,
+      "w": 6.1,
+      "h": 6.1,
+      "fill": "none",
+      "stroke": "#FFD03B",
+      "strokeWidth": 1.2,
+      "group": "group-jhye"
     }
-   ]
-  },
-  {
-   "id": "e-112",
-   "type": "ellipse",
-   "name": "ph1 orb knob",
-   "x": 1263.136,
-   "y": 541.696,
-   "w": 25.087999999999997,
-   "h": 25.087999999999997,
-   "fill": "#0D0612",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1.5
-  },
-  {
-   "id": "e-113",
-   "type": "ellipse",
-   "name": "ph1 orb side",
-   "x": 1196.3279589443034,
-   "y": 597.7574884366218,
-   "w": 16.8,
-   "h": 16.8,
-   "fill": "#0D0612",
-   "stroke": "#F88F05",
-   "strokeWidth": 1,
-   "opacity": 0.9
-  },
-  {
-   "id": "t-114",
-   "type": "text",
-   "x": 1196.3279589443034,
-   "y": 597.7574884366218,
-   "w": 16.8,
-   "h": 16.8,
-   "text": "?",
-   "size": 9,
-   "weight": 700,
-   "font": "sans",
-   "color": "#F88F05",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "t-115",
-   "type": "text",
-   "x": 1140,
-   "y": 652,
-   "w": 200,
-   "h": 14,
-   "text": "game: the same stick steers",
-   "size": 9,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-116",
-   "type": "text",
-   "x": 1374,
-   "y": 232,
-   "w": 490,
-   "h": 24,
-   "text": "Everywhere",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "t-117",
-   "type": "text",
-   "x": 1374,
-   "y": 266,
-   "w": 490,
-   "h": 380,
-   "text": "The orb sits fully on screen at every size: 136px on phones, 168 tablet, 200 desktop, bottom-right at the page edge (above the safe area).\n\nMouse: drag the disc, click a ring zone; keys still work (arrows, WASD, Space, R, C).\n\nLeft-handed: a mirror toggle in LINKS puts it bottom-left (per browser).\n\nPress feedback: the zone flashes (glow-active) + the mini paper ring; a 10ms vibration where supported. Calm: the flash only.",
-   "size": 14,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "l-118",
-   "type": "line",
-   "name": "rule",
-   "from": {
-    "x": 56,
-    "y": 746
-   },
-   "to": {
-    "x": 1864,
-    "y": 746
-   },
-   "stroke": "#262c3b",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "t-119",
-   "type": "text",
-   "x": 56,
-   "y": 760,
-   "w": 1808,
-   "h": 24,
-   "text": "Per tier",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "t-120",
-   "type": "text",
-   "x": 56,
-   "y": 790,
-   "w": 150,
-   "h": 18,
-   "text": "",
-   "size": 11,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-121",
-   "type": "text",
-   "x": 206,
-   "y": 790,
-   "w": 270,
-   "h": 18,
-   "text": "rail",
-   "size": 11,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-122",
-   "type": "text",
-   "x": 476,
-   "y": 790,
-   "w": 230,
-   "h": 18,
-   "text": "links",
-   "size": 11,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-123",
-   "type": "text",
-   "x": 706,
-   "y": 790,
-   "w": 380,
-   "h": 18,
-   "text": "content",
-   "size": 11,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-124",
-   "type": "text",
-   "x": 1086,
-   "y": 790,
-   "w": 220,
-   "h": 18,
-   "text": "orb",
-   "size": 11,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-125",
-   "type": "text",
-   "x": 1306,
-   "y": 790,
-   "w": 190,
-   "h": 18,
-   "text": "hero title",
-   "size": 11,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-126",
-   "type": "text",
-   "x": 1496,
-   "y": 790,
-   "w": 368,
-   "h": 18,
-   "text": "game HUD",
-   "size": 11,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-127",
-   "type": "text",
-   "x": 56,
-   "y": 814,
-   "w": 140,
-   "h": 22,
-   "text": "mobile <600",
-   "size": 13,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFF4E3",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-128",
-   "type": "text",
-   "x": 206,
-   "y": 814,
-   "w": 260,
-   "h": 22,
-   "text": "dots + current label",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-129",
-   "type": "text",
-   "x": 476,
-   "y": 814,
-   "w": 220,
-   "h": 22,
-   "text": "LINKS → small Frame",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-130",
-   "type": "text",
-   "x": 706,
-   "y": 814,
-   "w": 370,
-   "h": 22,
-   "text": "edge 16 · rows open in place",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-131",
-   "type": "text",
-   "x": 1086,
-   "y": 814,
-   "w": 210,
-   "h": 22,
-   "text": "136 stick",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-132",
-   "type": "text",
-   "x": 1306,
-   "y": 814,
-   "w": 180,
-   "h": 22,
-   "text": "display 28",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-133",
-   "type": "text",
-   "x": 1496,
-   "y": 814,
-   "w": 358,
-   "h": 22,
-   "text": "scanner + progress top-left, EXIT",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-134",
-   "type": "text",
-   "x": 56,
-   "y": 840,
-   "w": 140,
-   "h": 22,
-   "text": "tablet 600–1023",
-   "size": 13,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFF4E3",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-135",
-   "type": "text",
-   "x": 206,
-   "y": 840,
-   "w": 260,
-   "h": 22,
-   "text": "all labels",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-136",
-   "type": "text",
-   "x": 476,
-   "y": 840,
-   "w": 220,
-   "h": 22,
-   "text": "comms Plate",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-137",
-   "type": "text",
-   "x": 706,
-   "y": 840,
-   "w": 370,
-   "h": 22,
-   "text": "edge 24 · rows open in place",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-138",
-   "type": "text",
-   "x": 1086,
-   "y": 840,
-   "w": 210,
-   "h": 22,
-   "text": "168 stick",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-139",
-   "type": "text",
-   "x": 1306,
-   "y": 840,
-   "w": 180,
-   "h": 22,
-   "text": "display 28",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-140",
-   "type": "text",
-   "x": 1496,
-   "y": 840,
-   "w": 358,
-   "h": 22,
-   "text": "full Plates",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-141",
-   "type": "text",
-   "x": 56,
-   "y": 866,
-   "w": 140,
-   "h": 22,
-   "text": "desktop ≥1024",
-   "size": 13,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFF4E3",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-142",
-   "type": "text",
-   "x": 206,
-   "y": 866,
-   "w": 260,
-   "h": 22,
-   "text": "all labels",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-143",
-   "type": "text",
-   "x": 476,
-   "y": 866,
-   "w": 220,
-   "h": 22,
-   "text": "comms Plate",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-144",
-   "type": "text",
-   "x": 706,
-   "y": 866,
-   "w": 370,
-   "h": 22,
-   "text": "edge 48 (?) · menu 280 + detail 460",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-145",
-   "type": "text",
-   "x": 1086,
-   "y": 866,
-   "w": 210,
-   "h": 22,
-   "text": "200 stick",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-146",
-   "type": "text",
-   "x": 1306,
-   "y": 866,
-   "w": 180,
-   "h": 22,
-   "text": "hero 48",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-147",
-   "type": "text",
-   "x": 1496,
-   "y": 866,
-   "w": 358,
-   "h": 22,
-   "text": "full Plates",
-   "size": 13,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-148",
-   "type": "text",
-   "x": 56,
-   "y": 902,
-   "w": 1808,
-   "h": 60,
-   "text": "Page edge 16 / 24 / 48 is still the Spacing hypothesis (?) — you wanted to look first. Nothing else is cut on a phone except the dev plate (dev builds only anyway).",
-   "size": 14,
-   "weight": 400,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "link": "spacing"
-  }
- ],
- "knowledge": [
-  {
-   "id": "e-touch",
-   "kind": "evidence",
-   "text": "The game is keyboard-steered only (SkyPlay.tsx:206 WASD/arrows, Shift, Space, R, C); a tap only holds the silk (:222). The orb is half off-screen (Orb.tsx:55 -right/-bottom clamp). One breakpoint in use: md: ×33."
-  },
-  {
-   "id": "k-orb-stick",
-   "kind": "decision",
-   "text": "The orb is the controller (user sketch, 2026-11-19): the center disc is a stick; the ring has two press zones — button 2 at the top (thumb tip), button 1 at the bottom (thumb base); one side button for Cori (help/guide). Same controller for the site and the game.",
-   "why": "One thumb, one object: the orb was already the site's dial; now it also flies the moth."
-  },
-  {
-   "id": "k-game-map",
-   "kind": "decision",
-   "text": "Game: stick steers (past 85% of the disc = thruster) · button 1 hold = silk, release = slingshot · button 2 = recall · side = Cori."
-  },
-  {
-   "id": "k-site-map",
-   "kind": "decision",
-   "text": "Site: the stick points at a section on the dial, release to go · button 1 = next entry (opens it), LAUNCH on Play · button 2 = previous entry · side = Cori as a site guide."
-  },
-  {
-   "id": "k-everywhere",
-   "kind": "decision",
-   "text": "The orb stick works everywhere (touch and mouse), fully on screen bottom-right: 136 / 168 / 200px per tier; keys keep working."
-  },
-  {
-   "id": "k-phone-shell",
-   "kind": "decision",
-   "text": "Phone: the rail shows dots + the current label; comms collapses to one LINKS button opening a small Frame."
-  },
-  {
-   "id": "h-mirror",
-   "kind": "hypothesis",
-   "text": "A left-handed mirror toggle (in LINKS) moves the orb bottom-left."
-  },
-  {
-   "id": "h-cori-site",
-   "kind": "hypothesis",
-   "text": "Cori on the site needs her own lines per section (new content) → Scope."
-  }
- ],
- "agent": {
-  "brief": "Mobile-first tiers (mobile <600, tablet ≥600, desktop ≥1024). The orb becomes OrbStick: one controller for site and game. Everything else per tier is in the table.",
-  "rules": [
-   "OrbStick (home/base/OrbStick.tsx, replaces Orb.tsx + gem/Diamond.tsx): fixed bottom/right = page edge (+ env(safe-area-inset-*)), z-30; size 136 / tablet 168 / desktop 200. Pointer Events (touch + mouse, touch-action none). Zones by where a pointer goes DOWN: inside 70% radius = stick; ring with angle within ±50° of 12 o'clock = button 2; within ±50° of 6 o'clock = button 1; the ring's sides = nothing. Side button: a separate <button> at ~8 o'clock outside the ring (r 15% of the orb), \"?\".",
-   "Stick output: vector = (pointer − center) / innerRadius, clamped to 1; dead zone 0.12. Game: writes g.stick = {x, y} (SkyPlay reads it like WASD, analog); |v| > 0.85 = thruster (Shift). Site: angle → the nearest of 6 section notches around the ring (the node follows), commit on release (pushState the hash).",
-   "Buttons, game: button 1 down = holdStart, up = launch (same as Space); button 2 = recall (R); side = askCori (C). Site: button 1 = next entry in the Menu list (opens it; Readout: scrolls the Frame down a step); on Play = LAUNCH; button 2 = previous entry (Readout: up); side = Cori guide (needs site lines → Scope).",
-   "Each zone is a real <button> (aria-label \"Silk / next\", \"Recall / previous\", \"Cori, help\") and the stick is role=\"slider\"-free: keyboard users already have arrows/WASD. Pressed zone: glow-active in its role color (button 1 gold, button 2 signal, side flame) + PressBurst; navigator.vibrate?.(10). Calm: no burst.",
-   "Mirror (hypothesis): a \"LEFT-HANDED\" toggle in LINKS sets localStorage orb-hand=left → left instead of right.",
-   "Rail below 600: dots + only the current label (gold); all labels from tablet. Comms below 600: one Button quiet sm \"LINKS\" top-right opening a small Frame (GitHub, résumé, contact, left-handed), Esc / outside tap closes.",
-   "Info readout title: display 28 below desktop, hero 48 from desktop. Replace every md: with tablet: or desktop: per this table (Spacing's md: → tablet: rule still holds; the 760 Menu + Detail and hero 48 are desktop:).",
-   "Game HUD below 600: scanner Plate compact (state only), Disengage label \"← EXIT\", progress Plate under the scanner, top-left (the orb and its side button own the bottom), controls hint hidden (the stick is the hint)."
   ],
-  "open": [
-   "Left-handed mirror (hypothesis)",
-   "Cori site lines (→ Scope)",
-   "Page edge 16/24/48 (Spacing hypothesis)"
-  ]
- }
+  "knowledge": [
+    {
+      "id": "e-touch",
+      "kind": "evidence",
+      "text": "The game is keyboard-steered only (SkyPlay.tsx:206 WASD/arrows, Shift, Space, R, C); a tap only holds the silk (:222). The orb is half off-screen (Orb.tsx:55 -right/-bottom clamp). One breakpoint in use: md: ×33."
+    },
+    {
+      "id": "k-orb-stick",
+      "kind": "decision",
+      "text": "The orb is the controller (user sketch, 2026-11-19; mapping revised the same day): the center disc is a stick, and pressing it is button 1 (a tap: down and up without moving); the ring has one press zone, button 2 at the top (thumb tip); a side button left of the ring for Cori (guide / help). Same controller for the site and the game.",
+      "why": "One thumb, one object: the orb was already the site's dial; now it also flies the moth."
+    },
+    {
+      "id": "k-game-map",
+      "kind": "decision",
+      "text": "Game: stick steers (past 85% of the disc = thruster) · tap the stick (button 1) = tie silk, tap again = let go (slingshot), steering stays free while the silk holds · button 2 = recall · side = Cori."
+    },
+    {
+      "id": "k-site-map",
+      "kind": "decision",
+      "text": "Site: the stick points at a section on the dial, release to go · tap the stick (button 1) = next entry (opens it), LAUNCH on Play · button 2 = previous entry · side = Cori as a site guide."
+    },
+    {
+      "id": "k-everywhere",
+      "kind": "decision",
+      "text": "The orb stick works everywhere (touch and mouse), fully on screen bottom-right: 136 / 168 / 200px per tier; keys keep working."
+    },
+    {
+      "id": "k-phone-shell",
+      "kind": "decision",
+      "text": "Phone: the rail shows dots + the current label; comms collapses to one LINKS button opening a small Frame."
+    },
+    {
+      "id": "h-mirror",
+      "kind": "hypothesis",
+      "text": "A left-handed mirror toggle (in LINKS) moves the orb bottom-left."
+    },
+    {
+      "id": "h-cori-site",
+      "kind": "hypothesis",
+      "text": "Cori on the site needs her own lines per section (new content) → Scope."
+    },
+    {
+      "id": "d-orb-tap",
+      "kind": "decision",
+      "text": "Button 1 = pressing the stick, told apart from steering as a tap: the pointer goes down and up on the disc within 250ms and under 6px of travel. A press that moves is steering; a release after steering is \"go\" on the site.",
+      "why": "On a touch screen a press on the disc also starts steering; a tap keeps both, and tap-to-tie / tap-to-release lets the moth steer while the silk holds.",
+      "date": "2026-11-19"
+    }
+  ],
+  "agent": {
+    "brief": "Mobile-first tiers (mobile <600, tablet ≥600, desktop ≥1024). The orb becomes OrbStick: one controller for site and game. Everything else per tier is in the table.",
+    "rules": [
+      "OrbStick (home/base/OrbStick.tsx, replaces Orb.tsx + gem/Diamond.tsx): fixed bottom/right = page edge (+ env(safe-area-inset-*)), z-30; size 136 / tablet 168 / desktop 200. Pointer Events (touch + mouse, touch-action none). Zones by where a pointer goes DOWN: inside 70% radius = stick (a tap on it = button 1: up within 250ms and under 6px of travel; anything else steers); ring within ±50° of 12 o'clock = button 2; the rest of the ring = nothing. Side button: a separate <button>, an arc segment left of the ring (~9 o'clock, outside it), guide / help.",
+      "Stick output: vector = (pointer − center) / innerRadius, clamped to 1; dead zone 0.12. Game: writes g.stick = {x, y} (SkyPlay reads it like WASD, analog); |v| > 0.85 = thruster (Shift). Site: angle → the nearest of 6 section notches around the ring (the node follows), commit on release (pushState the hash).",
+      "Buttons, game: tap the stick (button 1) = holdStart, tap again = launch (Space still holds/releases as before); button 2 = recall (R); side = askCori (C). Site: button 1 = next entry in the Menu list (opens it; Readout: scrolls the Frame down a step); on Play = LAUNCH; button 2 = previous entry (Readout: up); side = Cori guide (needs site lines → Scope).",
+      "Button 2 and the side are real <button>s (aria-label \"Recall / previous\", \"Cori, help\"); button 1 also gets a real <button> (\"Silk / next\") hidden under the disc for keyboard and screen readers, and the stick is role=\"slider\"-free: keyboard users already have arrows/WASD. Pressed zone: glow-active in its role color (button 1 gold, button 2 signal, side flame) + PressBurst; navigator.vibrate?.(10). Calm: no burst.",
+      "Mirror (hypothesis): a \"LEFT-HANDED\" toggle in LINKS sets localStorage orb-hand=left → left instead of right.",
+      "Rail below 600: dots + only the current label (gold); all labels from tablet. Comms below 600: one Button quiet sm \"LINKS\" top-right opening a small Frame (GitHub, résumé, contact, left-handed), Esc / outside tap closes.",
+      "Info readout title: display 28 below desktop, hero 48 from desktop. Replace every md: with tablet: or desktop: per this table (Spacing's md: → tablet: rule still holds; the 760 Menu + Detail and hero 48 are desktop:).",
+      "Game HUD below 600: scanner Plate compact (state only), Disengage label \"← EXIT\", progress Plate under the scanner, top-left (the orb and its side button own the bottom), controls hint hidden (the stick is the hint)."
+    ],
+    "open": [
+      "Left-handed mirror (hypothesis)",
+      "Cori site lines (→ Scope)",
+      "Page edge 16/24/48 (Spacing hypothesis)"
+    ]
+  }
 }

@@ -2,7 +2,7 @@
   "title": "Star-Survey Portfolio",
   "template": "web",
   "source": "/home/alchemypls/Desktop/code/website/alchemypls.github.io",
-  "pitch": "An interactive, gamified developer portfolio: fly a moth through the real autumn night sky; the r\u00e9sum\u00e9 lives in crystal panels over it.",
+  "pitch": "An interactive, gamified developer portfolio: fly a moth through the real autumn night sky; the résumé lives in crystal panels over it.",
   "created": "2026-11-18",
   "topics": [
     {
@@ -18,7 +18,7 @@
       "group": "Identity",
       "title": "Audience",
       "status": "decided",
-      "summary": "Recruiters and hiring managers first (from a r\u00e9sum\u00e9/LinkedIn link, 1\u20132 min, desktop or phone); engineers and players second.",
+      "summary": "Recruiters and hiring managers first (from a résumé/LinkedIn link, 1–2 min, desktop or phone); engineers and players second.",
       "page": "identity"
     },
     {
@@ -26,7 +26,7 @@
       "group": "Identity",
       "title": "Pillars",
       "status": "decided",
-      "summary": "1 The sky is the scene \u00b7 2 Work in two moves \u00b7 3 Fireworks are the one motif. Never gate the r\u00e9sum\u00e9 behind play.",
+      "summary": "1 The sky is the scene · 2 Work in two moves · 3 Fireworks are the one motif. Never gate the résumé behind play.",
       "page": "identity"
     },
     {
@@ -58,7 +58,7 @@
       "group": "Foundations",
       "title": "Type",
       "status": "decided",
-      "summary": "Rajdhani for titles and buttons (instrument labels), Inter for reading, JetBrains Mono for data, HUD and game canvas text. Seven sizes (10\u201348px, none below 10), three letter-spacings.",
+      "summary": "Rajdhani for titles and buttons (instrument labels), Inter for reading, JetBrains Mono for data, HUD and game canvas text. Seven sizes (10–48px, none below 10), three letter-spacings.",
       "page": "type"
     },
     {
@@ -66,7 +66,7 @@
       "group": "Foundations",
       "title": "Spacing & Grid",
       "status": "decided",
-      "summary": "Reset removed so padding works. 8 steps on a 4px grid (2\u201348px). Breakpoints = Alchemy tiers: tablet 600, desktop 1024. Page edge 16/24/48; panel column 540px.",
+      "summary": "Reset removed so padding works. 8 steps on a 4px grid (2–48px). Breakpoints = Alchemy tiers: tablet 600, desktop 1024. Page edge 16/24/48; panel column 540px.",
       "page": "spacing"
     },
     {
@@ -105,7 +105,7 @@
       "group": "Components",
       "title": "Controls",
       "status": "decided",
-      "summary": "One Button: action (outlined gold + ticks) / quiet (signal line) / danger (ember); sm 24 \u00b7 md 32 \u00b7 lg 40; no rest glow, focus ring signal, press = glow + contained firework. Rail labels mono 10, current gold.",
+      "summary": "One Button: action (outlined gold + ticks) / quiet (signal line) / danger (ember); sm 24 · md 32 · lg 40; no rest glow, focus ring signal, press = glow + contained firework. Rail labels mono 10, current gold.",
       "page": "controls"
     },
     {
@@ -113,7 +113,7 @@
       "group": "Components",
       "title": "Effects",
       "status": "decided",
-      "summary": "Fireworks are the motif: 5 palette sets + 2 rare cool (teal, violet), ~8 designs, 4 patterns. Every press = a mini 8-petal paper ring, contained. Calm: fireworks appear open, warp off, glitter/embers \u00bc. Characters keep their colors; Crystal + sparkles gone.",
+      "summary": "Fireworks are the motif: 5 palette sets + 2 rare cool (teal, violet), ~8 designs, 4 patterns. Every press = a mini 8-petal paper ring, contained. Calm: fireworks appear open, warp off, glitter/embers ¼. Characters keep their colors; Crystal + sparkles gone.",
       "page": "effects"
     },
     {
@@ -121,7 +121,7 @@
       "group": "Components",
       "title": "Content Blocks",
       "status": "decided",
-      "summary": "One Entry {eyebrow, title, meta, body, tags, links} for jobs, projects, OSC, school: Menu row short, Detail full. Five text parts (eyebrow, title, meta, body, chip), left-aligned; 0\u20133 links as quiet sm buttons \u2197. Skills = Readouts; Cori = a line on a Plate.",
+      "summary": "One Entry {eyebrow, title, meta, body, tags, links} for jobs, projects, OSC, school: Menu row short, Detail full. Five text parts (eyebrow, title, meta, body, chip), left-aligned; 0–3 links as quiet sm buttons ↗. Skills = Readouts; Cori = a line on a Plate.",
       "page": "content"
     },
     {
@@ -129,7 +129,7 @@
       "group": "Structure",
       "title": "Shell & Navigation",
       "status": "decided",
-      "summary": "Rail + comms plate (GitHub, r\u00e9sum\u00e9, contact) on top, content column, info readout bottom-left, orb bottom-right. Sections are hash addresses (/#work); wheel/swipe steps one. Game hands off: HUD Plates take the same corners. One SECTIONS table; dev controls dev-only.",
+      "summary": "Rail + comms plate (GitHub, résumé, contact) on top, content column, info readout bottom-left, orb bottom-right. Sections are hash addresses (/#work); wheel/swipe steps one. Game hands off: HUD Plates take the same corners. One SECTIONS table; dev controls dev-only.",
       "page": "shell"
     },
     {
@@ -159,7 +159,7 @@
       "group": "Quality",
       "title": "Responsive",
       "status": "decided",
-      "summary": "The orb is the controller everywhere: stick (steer / dial sections), button 1 at the ring bottom (silk / next, LAUNCH), button 2 at the top (recall / previous), side ? = Cori. 136/168/200px, fully on screen. Phone: rail dots + current label, LINKS button, rows open in place.",
+      "summary": "The orb is the controller everywhere: stick (steer / dial sections); tap the stick = button 1 (silk / next, LAUNCH); button 2 at the ring top (recall / previous); side button left of the ring = Cori (guide / help). 136/168/200px, fully on screen. Phone: rail dots + current label, LINKS button, rows open in place.",
       "page": "responsive"
     },
     {
@@ -167,7 +167,7 @@
       "group": "Quality",
       "title": "Accessibility",
       "status": "decided",
-      "summary": "WCAG AA floor. Reading frames void/60, text-faint lifted to #9783A0 (\u22654.85 everywhere text sits). Full keyboard, landmarks + tablists, one live region, 44px touch, calm motion, document.title per section.",
+      "summary": "WCAG AA floor. Reading frames void/60, text-faint lifted to #9783A0 (≥4.85 everywhere text sits). Full keyboard, landmarks + tablists, one live region, 44px touch, calm motion, document.title per section.",
       "page": "accessibility"
     },
     {
@@ -189,7 +189,7 @@
       "group": "Production",
       "title": "Scope",
       "status": "decided",
-      "summary": "Everything decided ships, site and game, in 8 Apply steps: foundations \u2192 components \u2192 layouts + shell \u2192 accessibility \u2192 orb stick \u2192 fireworks + calm \u2192 content \u2192 docs. Waits: mirror, icons, states, performance.",
+      "summary": "Everything decided ships, site and game, in 8 Apply steps: foundations → components → layouts + shell → accessibility → orb stick → fireworks + calm → content → docs. Waits: mirror, icons, states, performance.",
       "page": "scope"
     }
   ],
