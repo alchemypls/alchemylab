@@ -2,7 +2,7 @@
 
 import { promises as fs } from 'fs';
 import path from 'path';
-import type { ProjectData } from '../project';
+import { upgradeGrid, type ProjectData } from '../project';
 
 export const PROJECTS_DIR = path.join(process.cwd(), 'projects');
 
@@ -10,7 +10,7 @@ export async function readProject(id: string): Promise<{ id: string; mtime: stri
   const file = path.join(PROJECTS_DIR, `${id}.json`);
   try {
     const [text, stat] = await Promise.all([fs.readFile(file, 'utf8'), fs.stat(file)]);
-    return { id, mtime: String(stat.mtimeMs), project: JSON.parse(text) };
+    return { id, mtime: String(stat.mtimeMs), project: upgradeGrid(JSON.parse(text)) };   // an older grid reads as today's
   } catch { return null; }   // missing, or half-written (the watcher brings it back when the write finishes)
 }
 

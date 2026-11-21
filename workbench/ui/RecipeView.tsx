@@ -30,8 +30,9 @@ export const RecipeStyles = memo(function RecipeStyles({ scope, theme, recipes, 
   return <>{href && <link rel="stylesheet" href={href} />}<style>{css}</style></>;
 });
 
-export function RecipeView({ recipe, props, options, slotContent, here }: {
+export function RecipeView({ recipe, props, options, slotContent, here, still }: {
   recipe:   Recipe;
+  still?:   boolean;  // an invisible sizing copy: only behaviors that change its layout run (BehaviorDef.shapes), no looks
   here?:    string;   // the page's path: links to it are marked current, as in the export
   props?:   PropValues;
   options?: OptionPicks;
@@ -43,9 +44,9 @@ export function RecipeView({ recipe, props, options, slotContent, here }: {
   useEffect(() => {
     const el = rootRef.current;
     if (!el || !recipe.behaviors?.length) return;
-    const cleanups = recipe.behaviors.map((b) => BEHAVIORS[b.type]?.attach(el)).filter(Boolean) as (() => void)[];
+    const cleanups = recipe.behaviors.filter((b) => !still || BEHAVIORS[b.type]?.shapes).map((b) => BEHAVIORS[b.type]?.attach(el)).filter(Boolean) as (() => void)[];
     return () => cleanups.forEach((c) => c());
-  }, [recipe, props, options]);
+  }, [recipe, props, options, still]);
 
   const render = (p: Part, item?: ListItem): ReactNode => {
     // A repeating part renders once per list item; its children bind {item.*} to that item

@@ -1,7 +1,7 @@
 "use client";
 
 import { InstanceControls } from '@/workbench/ui/InstanceControls';
-import { PIN_SPOTS, PROJECT_ACCENTS, resolvePlacement, type PagePlacement, type Pin, type PinAt } from '@/lib/project';
+import { PIN_SPOTS, PROJECT_ACCENTS, isGroup, resolvePlacement, type PagePlacement, type Pin, type PinAt } from '@/lib/project';
 import type { Tier } from '@/lib/devices';
 import { Toggle } from '@/workbench/ui/Toggle';
 import type { ProjectComponent } from '@/lib/library';
@@ -22,14 +22,14 @@ export function BlockInspector({ placement, number, component, tier, onPatch, on
   onPin:     (pin: Pin | null) => void;
   onDeselect: () => void;
 }) {
-  const pin = resolvePlacement(placement, tier).pin;
+  const pin = resolvePlacement(placement, tier).pin, group = isGroup(placement);
   return (
     <div className="p-3 flex flex-col gap-3">
       <div className="flex items-center gap-2">
         {number !== undefined && (
           <span className="min-w-[16px] h-4 px-1 rounded-full bg-indigo-500/80 text-white text-[9px] font-mono leading-4 text-center">{number}</span>
         )}
-        <span className="text-[11px] text-neutral-200 truncate flex-1">{placement.name ?? component?.recipe.name ?? 'Missing component'}</span>
+        <span className="text-[11px] text-neutral-200 truncate flex-1">{placement.name ?? (group ? 'Group' : component?.recipe.name) ?? 'Missing component'}</span>
         <button onClick={onDeselect} className="text-[9px] text-neutral-600 hover:text-neutral-300" title="Deselect — show page details">✕</button>
       </div>
 
@@ -38,7 +38,7 @@ export function BlockInspector({ placement, number, component, tier, onPatch, on
         <input
           key={`n-${placement.id}`}
           defaultValue={placement.name ?? ''}
-          placeholder={component?.recipe.name ?? 'Block name'}
+          placeholder={group ? 'Group' : component?.recipe.name ?? 'Block name'}
           onBlur={(e) => onPatch({ name: e.target.value })}
           onKeyDown={(e) => { if (e.key === 'Enter') e.currentTarget.blur(); }}
           className={I_INPUT}
@@ -64,7 +64,7 @@ export function BlockInspector({ placement, number, component, tier, onPatch, on
 
       <div className="flex flex-col gap-1.5">
         <span className={I_LABEL}>On the screen</span>
-        <div className="flex items-center gap-1.5" title="Pinned: fixed to the screen on every device, outside the grid (its spot can differ per device)">
+        {!group && <div className="flex items-center gap-1.5" title="Pinned: fixed to the screen on every device, outside the grid (its spot can differ per device)">
           <span className="text-[11px] text-neutral-400 w-14 shrink-0">Pinned</span>
           <select
             value={pin?.at ?? ''} className={I_INPUT}
@@ -73,7 +73,7 @@ export function BlockInspector({ placement, number, component, tier, onPatch, on
             <option value="">no, in the grid</option>
             {PIN_SPOTS.map((s) => <option key={s} value={s}>{s}{placement.pin && tier !== 'mobile' ? ` (${tier})` : ''}</option>)}
           </select>
-        </div>
+        </div>}
         {pin && (
           <label className="flex items-center gap-1.5" title="Keep this many px of its edge clear: the page's grid starts past it">
             <span className="text-[11px] text-neutral-400 w-14 shrink-0">Keep clear</span>
@@ -107,6 +107,10 @@ export function BlockInspector({ placement, number, component, tier, onPatch, on
             These only change this block. Restyle the component itself in the Fabricator.
           </span>
         </div>
+      ) : group ? (
+        <span className="text-[9px] text-neutral-500 leading-relaxed">
+          A box with its own grid: its columns are the page&apos;s, split as fine as the box is wide, its rows its own. Click inside it to place a component there, drag blocks in, drag them out onto the page. Deleting it deletes what&apos;s in it.
+        </span>
       ) : (
         <span className="text-[9px] text-rose-400/80">This block&apos;s component was deleted from the project.</span>
       )}

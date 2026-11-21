@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, PersistStorage, StorageValue } from 'zustand/middleware';
-import { ProjectMeta, PagePlacement, PageLayer, PageLayout, PageDef, ProjectData, PageSketch, PlacementGeom, Pin, SketchElement, PROJECT_ACCENTS, resolvePlacement, sketchToVector } from './project';
+import { ProjectMeta, PagePlacement, PageLayer, PageLayout, PageDef, ProjectData, PageSketch, PlacementGeom, Pin, SketchElement, PROJECT_ACCENTS, sketchToVector, withTierGeom, GRID_VERSION, descendants } from './project';
 import { Tier, ViewportSize } from './devices';
 import { Recipe, recipeByKey, copyTheme, GLOBAL_THEME } from './library';
 import { SceneId, Dir, FabEditor } from './scenes';
@@ -18,8 +18,16 @@ const defaultProjectMeta: ProjectMeta = {
 };
 
 
+type Pushed = { tier: Tier; edits: { id: string; geom: Partial<PlacementGeom> }[] };
+// Geometry edits applied to a list of placements at a tier (what setPlacementGeoms does, inside another update)
+const push = (ps: PagePlacement[], pushed?: Pushed) => {
+  if (!pushed?.edits.length) return ps;
+  const byId = new Map(pushed.edits.map((e) => [e.id, e.geom]));
+  return ps.map((x) => { const g = byId.get(x.id); return g ? withTierGeom(x, pushed.tier, g) : x; });
+};
+
 export const emptyProject = (meta: ProjectMeta): ProjectData => ({
-  meta, pages: [], layouts: {}, wireframes: {},
+  meta, pages: [], layouts: {}, wireframes: {}, grid: GRID_VERSION,
   theme: copyTheme(GLOBAL_THEME, `theme-${meta.id}`, `${meta.name} theme`), components: {},
 });
 
@@ -108,8 +116,12 @@ interface WorkbenchState {
 
   // Layout canvas — page artboard placements + layers
   setProjectViewport: (pid: string, viewport: ViewportSize) => void;
-  addPlacement: (pid: string, pagePath: string, placement: PagePlacement) => void;
-  removePlacement: (pid: string, pagePath: string, placementId: string) => void;
+  // A block added, or replaced by id (a move into or out of a group), with the blocks it pushes out of the way at `tier`
+  // in the same update (roomFor), so no in-between layout renders or saves
+  addPlacement: (pid: string, pagePath: string, placement: PagePlacement, pushed?: Pushed) => void;
+  removePlacement: (pid: string, pagePath: string, placementId: string) => void;   // a group with what's in it
+  putPlacement: (pid: string, pagePath: string, placement: PagePlacement, pushed?: Pushed) => void;
+  setPlacements: (pid: string, pagePath: string, placements: PagePlacement[]) => void;   // the page's whole new list (a menu edit: duplicate, group, ungroup)
   // Component library — a project owns COPIES of library recipes (copy, don't link)
   addComponentFromRecipe: (pid: string, recipeKey: string) => string | null;   // returns the new component id
   updateComponentRecipe: (pid: string, componentId: string, fn: (r: Recipe) => Recipe) => void;
@@ -124,7 +136,8 @@ interface WorkbenchState {
   setPlacementPin: (pid: string, pagePath: string, placementId: string, tier: Tier, pin: Pin | null) => void;
   // Writes geometry for one tier: mobile edits the base, tablet/desktop write their override
   setPlacementGeom: (pid: string, pagePath: string, placementId: string, tier: Tier, geom: Partial<PlacementGeom>) => void;
-  resetPlacementTier: (pid: string, pagePath: string, placementId: string, tier: Exclude<Tier, 'mobile'>) => void;
+  setPlacementGeoms: (pid: string, pagePath: string, tier: Tier, edits: { id: string; geom: Partial<PlacementGeom> }[]) => void;   // several at once (layoutEdit)
+  resetPlacementTier: (pid: string, pagePath: string, placementId: string | null, tier: Exclude<Tier, 'mobile'>) => void;   // null: every block on the page
   addLayer: (pid: string, pagePath: string, name: string) => void;
   removeLayer: (pid: string, pagePath: string, layerId: string) => void;
   setActiveLayer: (pid: string, pagePath: string, layerId: string) => void;
@@ -217,14 +230,27 @@ export const useWorkbenchStore = create<WorkbenchState>()(
       setProjectViewport: (pid, viewport) =>
         set((state) => patchProject(state, pid, (p) => ({ ...p, viewport }))),
 
-      addPlacement: (pid, pagePath, placement) =>
+      addPlacement: (pid, pagePath, placement, pushed) =>
         set((state) => patchProject(state, pid, (p) => withLayout(p, pagePath,
-          patchLayout(p.layouts[pagePath] ?? { placements: [] }, (ps) => [...ps, placement])))),
+          patchLayout(p.layouts[pagePath] ?? { placements: [] }, (ps) => push([...ps, placement], pushed))))),
 
       removePlacement: (pid, pagePath, placementId) =>
         set((state) => patchProject(state, pid, (p) => {
           const existing = p.layouts[pagePath];
-          return existing ? withLayout(p, pagePath, patchLayout(existing, (ps) => ps.filter((x) => x.id !== placementId))) : p;
+          // a group goes with everything in it
+          return existing ? withLayout(p, pagePath, patchLayout(existing, (ps) => { const gone = descendants(ps, placementId).add(placementId); return ps.filter((x) => !gone.has(x.id)); })) : p;
+        })),
+
+      putPlacement: (pid, pagePath, placement, pushed) =>
+        set((state) => patchProject(state, pid, (p) => {
+          const existing = p.layouts[pagePath];
+          return existing ? withLayout(p, pagePath, patchLayout(existing, (ps) => push(ps.map((x) => (x.id === placement.id ? placement : x)), pushed))) : p;
+        })),
+
+      setPlacements: (pid, pagePath, placements) =>
+        set((state) => patchProject(state, pid, (p) => {
+          const existing = p.layouts[pagePath];
+          return existing ? withLayout(p, pagePath, patchLayout(existing, () => placements)) : p;
         })),
 
       addComponentFromRecipe: (pid, recipeKey) => {
@@ -313,12 +339,15 @@ export const useWorkbenchStore = create<WorkbenchState>()(
           const existing = p.layouts[pagePath];
           if (!existing) return p;
           return withLayout(p, pagePath, patchLayout(existing, (ps) => ps.map((x) => {
-            if (x.id !== placementId) return x;
-            if (tier === 'mobile') return { ...x, ...geom };
-            // Pin the tier's full resolved geometry so later base edits don't rescale it
-            const pinned = { ...resolvePlacement(x, tier), ...x.at?.[tier], ...geom };
-            return { ...x, at: { ...x.at, [tier]: pinned } };
+            return x.id === placementId ? withTierGeom(x, tier, geom) : x;
           })));
+        })),
+
+      setPlacementGeoms: (pid, pagePath, tier, edits) =>
+        set((state) => patchProject(state, pid, (p) => {
+          const existing = p.layouts[pagePath];
+          if (!existing || !edits.length) return p;
+          return withLayout(p, pagePath, patchLayout(existing, (ps) => push(ps, { tier, edits })));
         })),
 
       resetPlacementTier: (pid, pagePath, placementId, tier) =>
@@ -326,7 +355,7 @@ export const useWorkbenchStore = create<WorkbenchState>()(
           const existing = p.layouts[pagePath];
           if (!existing) return p;
           return withLayout(p, pagePath, patchLayout(existing, (ps) => ps.map((x) => {
-            if (x.id !== placementId || !x.at?.[tier]) return x;
+            if ((placementId !== null && x.id !== placementId) || !x.at?.[tier]) return x;
             const at = { ...x.at };
             delete at[tier];
             return { ...x, at: Object.keys(at).length ? at : undefined };

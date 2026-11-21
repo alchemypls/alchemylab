@@ -16,8 +16,8 @@ export const tierOf = (width: number): Tier =>
 
 export const TIER_ORDER: Tier[] = ['mobile', 'tablet', 'desktop'];
 
-// Layout grid columns per tier
-export const TIER_COLUMNS: Record<Tier, number> = { mobile: 4, tablet: 8, desktop: 12 };
+// Layout grid columns per tier: fine enough to place small things, coarse enough to stay aligned (groups split them further)
+export const TIER_COLUMNS: Record<Tier, number> = { mobile: 8, tablet: 12, desktop: 24 };
 
 export type DeviceCategory = 'Phones' | 'Tablets' | 'Laptops' | 'Desktops';
 

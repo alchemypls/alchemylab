@@ -9,6 +9,7 @@ import type { Bible } from '@/lib/design/types';
 import { projectIdFor, type WorkspaceProject } from '@/lib/workspace';
 import { readBible, trashBible, useWorkspace, writeBible } from '@/workbench/hooks/useWorkspace';
 import { savePalette, saveAsset, usePalettes, useVault } from '@/workbench/hooks/useVault';
+import { LiveFields } from '@/workbench/ui/web/LiveFields';
 import { askConfirm, tell } from '@/workbench/ui/Ask';
 
 // The workspace project's settings (header picker → Project settings…), or a new project. A project's fields live in
@@ -176,6 +177,8 @@ function EditFields({ p, others, close }: { p: WorkspaceProject; others: Workspa
             <Commit area value={web.meta.headDescription ?? ''} onCommit={(v) => updateMeta(p.id, { headDescription: v })} placeholder="Default description" />
             <span className="text-[10px] text-neutral-500">Backdrop (CSS background under every page)</span>
             <Commit value={web.meta.backdrop ?? ''} onCommit={(v) => updateMeta(p.id, { backdrop: v.trim() || undefined })} placeholder="radial-gradient(…), url(…)" />
+            <span className="text-[10px] text-neutral-500">Live backdrop (over it, under every page)</span>
+            <LiveFields value={web.meta.live} onChange={(v) => updateMeta(p.id, { live: v })} />
             <span className="text-[10px] text-neutral-500">Fonts (Google Fonts, every page loads them)</span>
             <Commit value={fontsText(web.meta.fonts)} onCommit={(v) => updateMeta(p.id, { fonts: parseFonts(v) })} placeholder="Rajdhani 500 600, Inter 400, JetBrains Mono" />
             <span className="text-[10px] text-neutral-500 font-mono">{web.pages.length} pages · {Object.keys(web.components ?? {}).length} components</span>

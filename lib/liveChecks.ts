@@ -2,7 +2,7 @@
 // Pure: reads the project and the HTML each page exports.
 
 import { generatePageHTML } from './generator/page';
-import { getActivePlacements, pageSections, projectTheme, resolvePlacement, type PlacementGeom, type ProjectData } from './project';
+import { childrenOf, getActivePlacements, isGroup, pageSections, projectTheme, resolvePlacement, type PlacementGeom, type ProjectData } from './project';
 import { TIER_ORDER, type Tier } from './devices';
 
 export type CheckLevel = 'error' | 'warn' | 'info';
@@ -23,13 +23,13 @@ export function liveChecks(project: ProjectData): Check[] {
     const placed = layout ? getActivePlacements(layout) : [];
     if (!placed.length) { add('warn', 'Nothing placed on this page'); continue; }
 
-    const name = (id: string) => placed.find((p) => p.id === id)?.name ?? project.components?.[placed.find((p) => p.id === id)!.componentId]?.recipe.name ?? id;
+    const name = (id: string) => { const p = placed.find((x) => x.id === id)!; return p.name ?? (isGroup(p) ? 'Group' : project.components?.[p.componentId]?.recipe.name) ?? id; };
     for (const p of placed) {
-      if (!project.components?.[p.componentId]) add('error', `“${p.name ?? p.id}” uses a component that's gone (${p.componentId})`);
+      if (!isGroup(p) && !project.components?.[p.componentId]) add('error', `“${p.name ?? p.id}” uses a component that's gone (${p.componentId})`);
       if (TIER_ORDER.every((t) => resolvePlacement(p, t).hidden)) add('warn', `“${name(p.id)}” is hidden on every device`);
     }
-    for (const tier of TIER_ORDER as Tier[]) {
-      const geo = placed.filter((p) => !p.pin).map((p) => ({ id: p.id, g: resolvePlacement(p, tier) })).filter((x) => !x.g.hidden);   // pinned blocks float over the grid
+    for (const tier of TIER_ORDER as Tier[]) for (const parent of [null, ...placed.filter(isGroup).map((p) => p.id)]) {   // blocks sharing a grid (pinned ones float over it)
+      const geo = childrenOf(placed, parent).map((p) => ({ id: p.id, g: resolvePlacement(p, tier) })).filter((x) => !x.g.hidden);
       for (let i = 0; i < geo.length; i++) for (let j = i + 1; j < geo.length; j++)
         if (overlaps(geo[i].g, geo[j].g)) add('warn', `“${name(geo[i].id)}” and “${name(geo[j].id)}” overlap on ${tier}`);
     }

@@ -1,4 +1,4 @@
-import { Tier, TIER_COLUMNS, TIER_ORDER, ViewportSize, tierOf } from './devices';
+import { Tier, TIER_COLUMNS, TIER_ORDER, ViewportSize } from './devices';
 import { GLOBAL_THEME, Theme } from './library/theme';
 import type { ProjectComponent, ListItem } from './library/recipe';
 import type { FontLoad } from './library/fonts';
@@ -71,21 +71,69 @@ export const VIEWPORT_DIM: Record<ArtboardViewportWidth, { width: number; height
   1440: { width: 1440, height: 900  },
 };
 
-// Page-pixel units per grid row, and the column count for a given breakpoint.
-export const ROW_HEIGHT = 80;
-
-// Grid columns at a viewport width — follows the breakpoint tiers (4 / 8 / 12)
-export function numColumns(width: number): number {
-  return TIER_COLUMNS[tierOf(width)];
-}
+// A grid row's least height (rows grow to their content: grid-auto-rows: minmax(32px, auto)) and the gutter. Two rows
+// and their gutter are one 80px row of the old grid, two columns and theirs one old column (upgradeGrid).
+export const ROW_HEIGHT = 32;
+export const GRID_GAP = 16;     // the gutter between columns and rows, and the page's side margin
 
 // ── Placements — mobile-first, per-tier overrides ────────────────
-// Base geometry (col/row/span, hidden) is the MOBILE layout on a 4-col grid. Tablet and desktop
+// Base geometry (col/row/span, hidden) is the MOBILE layout on its grid (TIER_COLUMNS). Tablet and desktop
 // inherit it cascading upward like mobile-first CSS; an unset tier inherits the tier below,
 // scaled to its column count (full width stays full width). `at[tier]` stores only what that
 // tier changes. Raw grid numbers + a semantic tier key → any generator can emit it.
 
 export interface PlacementGeom { col: number; row: number; colSpan: number; rowSpan: number; hidden?: boolean; pin?: Pin }
+
+// ── Editing a layout: blocks make room instead of overlapping ─────
+
+type Cell = { id: string; col: number; row: number; colSpan: number; rowSpan: number };
+const overlaps = (a: Cell, b: Cell) =>
+  a.col < b.col + b.colSpan && b.col < a.col + a.colSpan && a.row < b.row + b.rowSpan && b.row < a.row + a.rowSpan;
+
+// The blocks pushed down out of the way of `moved` (as it lands), each only as far as it must, top to bottom, so a
+// pushed block pushes the ones under it in turn. Nothing moves up.
+export function makeRoom(cells: Cell[], moved: Cell): { id: string; row: number }[] {
+  const settled: Cell[] = [moved], out: { id: string; row: number }[] = [];
+  for (const c of cells.filter((x) => x.id !== moved.id).sort((a, b) => a.row - b.row || a.col - b.col)) {
+    const at = { ...c };
+    for (let hit = settled.find((s) => overlaps(s, at)); hit; hit = settled.find((s) => overlaps(s, at))) at.row = hit.row + hit.rowSpan;
+    settled.push(at);
+    if (at.row !== c.row) out.push({ id: c.id, row: at.row });
+  }
+  return out;
+}
+
+// The visible blocks sharing a container with `p` (the page, or a group), as cells
+function siblingCells(placements: PagePlacement[], tier: Tier, p: PagePlacement): Cell[] {
+  return childrenOf(placements, parentOf(placements, p)).map((x) => ({ x, g: placedAt(placements, x, tier) })).filter(({ g }) => !g.hidden)
+    .map(({ x, g }): Cell => ({ id: x.id, col: g.col, row: g.row, colSpan: g.colSpan, rowSpan: g.rowSpan }));
+}
+
+// One block's new geometry at a tier (kept inside its container's columns), and the blocks beside it that it pushes
+// down: every grid edit as the list of geometry patches to apply together. Pinned and hidden blocks stay put.
+export function layoutEdit(placements: PagePlacement[], tier: Tier, id: string, patch: Partial<Cell>): { id: string; geom: Partial<PlacementGeom> }[] {
+  const p = placements.find((x) => x.id === id);
+  if (!p || p.pin) return [];
+  const cols = containerCols(placements, parentOf(placements, p), tier), cells = siblingCells(placements, tier, p);
+  const was = cells.find((c) => c.id === id);
+  if (!was) return [];
+  const colSpan = Math.max(1, Math.min(cols, patch.colSpan ?? was.colSpan));
+  const next: Cell = {
+    id, colSpan, rowSpan: Math.max(1, patch.rowSpan ?? was.rowSpan),
+    col: Math.max(0, Math.min(cols - colSpan, patch.col ?? was.col)), row: Math.max(0, patch.row ?? was.row),
+  };
+  const geom: Partial<PlacementGeom> = {};
+  for (const k of ['col', 'row', 'colSpan', 'rowSpan'] as const) if (next[k] !== was[k]) geom[k] = next[k];
+  if (!Object.keys(geom).length) return [];
+  return [{ id, geom }, ...makeRoom(cells, next).map((m) => ({ id: m.id, geom: { row: m.row } }))];
+}
+
+// A new block's landing: the blocks it lands on move down
+export function roomFor(placements: PagePlacement[], tier: Tier, added: PagePlacement): { id: string; geom: Partial<PlacementGeom> }[] {
+  const all = placements.some((x) => x.id === added.id) ? placements : [...placements, added], g = placedAt(all, added, tier);
+  const cells = siblingCells(all, tier, added);
+  return makeRoom(cells, { id: added.id, col: g.col, row: g.row, colSpan: g.colSpan, rowSpan: g.rowSpan }).map((m) => ({ id: m.id, geom: { row: m.row } }));
+}
 
 // ── Pinned blocks — fixed to the viewport, outside the grid ──────
 // A block with a base `pin` is pinned on every tier (a rail, a corner plate, a joystick); `at[tier].pin` moves it to
@@ -114,17 +162,19 @@ export function pageInsets(ps: PagePlacement[], tier: Tier): Insets {
 
 // Where a pinned block sits, as CSS properties (camelCase; the export turns them to kebab-case). Percentages are of
 // the viewport (fixed) or of a viewport-sized box (the Workbench preview), so one answer serves both.
+// A corner keeps clear of a phone's notch and home bar too (env(safe-area-inset-*), 0 elsewhere); bars sit flush.
 export function pinStyle(pin: Pin, colSpan: number, cols: number): Record<string, string> {
-  const m = `${PIN_MARGIN}px`, w = `calc(${(100 * Math.min(colSpan, cols)) / cols}% - ${2 * PIN_MARGIN}px)`;
+  const m = (side: 'top' | 'right' | 'bottom' | 'left') => `calc(${PIN_MARGIN}px + env(safe-area-inset-${side}, 0px))`;
+  const w = `calc(${(100 * Math.min(colSpan, cols)) / cols}% - ${2 * PIN_MARGIN}px)`;
   switch (pin.at) {
     case 'top':          return { top: '0', left: '0', right: '0' };
     case 'bottom':       return { bottom: '0', left: '0', right: '0' };
     case 'left':         return { top: '0', bottom: '0', left: '0', width: w };
     case 'right':        return { top: '0', bottom: '0', right: '0', width: w };
-    case 'top-left':     return { top: m, left: m, width: w };
-    case 'top-right':    return { top: m, right: m, width: w };
-    case 'bottom-left':  return { bottom: m, left: m, width: w };
-    case 'bottom-right': return { bottom: m, right: m, width: w };
+    case 'top-left':     return { top: m('top'), left: m('left'), width: w };
+    case 'top-right':    return { top: m('top'), right: m('right'), width: w };
+    case 'bottom-left':  return { bottom: m('bottom'), left: m('left'), width: w };
+    case 'bottom-right': return { bottom: m('bottom'), right: m('right'), width: w };
   }
 }
 
@@ -132,9 +182,8 @@ export function pinStyle(pin: Pin, colSpan: number, cols: number): Record<string
 // (counted at their 80px minimum, plus the gap) and a gap below
 export const boundedMax = (row: number, ins: Insets, gap = 16) => `calc(100dvh - ${ins.top + ins.bottom + row * (ROW_HEIGHT + gap) + gap}px)`;
 
-export interface PagePlacement extends PlacementGeom {
+interface PlacementBase extends PlacementGeom {
   id: string;
-  componentId: string;   // a ProjectComponent id in the same project
   // This placement's own choices — what makes one Button "Buy now / danger / large" without
   // touching the shared component. Unset = the recipe's defaults.
   name?:    string;   // workbench label for this block ("Hero CTA") — also the comment in generated code
@@ -142,8 +191,15 @@ export interface PagePlacement extends PlacementGeom {
   options?: Record<string, string>;            // variant axis → option
   props?:   Record<string, string | boolean | ListItem[]>;  // prop name → value (lists: nav links…)
   bounded?: boolean;   // scrolls inside itself, never taller than the screen between the kept-clear edges
+  parent?:  string;    // the group it sits in (its col/row count inside the group); unset = the page
   at?: Partial<Record<Exclude<Tier, 'mobile'>, Partial<PlacementGeom>>>;
 }
+// A block is a component's use, or a group (a box with its own grid, no component). The two are told apart by `kind`,
+// so code reaching for a component id has to say what a group does there (TypeScript won't index with one that may
+// be missing).
+export type ComponentPlacement = PlacementBase & { kind?: undefined; componentId: string };   // a ProjectComponent id in the same project
+export type GroupPlacement = PlacementBase & { kind: 'group'; componentId?: undefined };
+export type PagePlacement = ComponentPlacement | GroupPlacement;
 
 // Geometry of a placement at a tier, on that tier's column grid
 export function resolvePlacement(p: PagePlacement, tier: Tier): PlacementGeom {
@@ -154,26 +210,225 @@ export function resolvePlacement(p: PagePlacement, tier: Tier): PlacementGeom {
     const colSpan = Math.max(1, Math.min(n, Math.round(g.colSpan * k)));
     g = { ...g, col: Math.min(n - colSpan, Math.round(g.col * k)), colSpan };
     const o = p.at?.[t];
-    if (o) g = { ...g, ...o };
+    if (o) { g = { ...g, ...o }; g.colSpan = Math.max(1, Math.min(n, g.colSpan)); g.col = Math.max(0, Math.min(n - g.colSpan, g.col)); }
     cols = n;
   }
   return g;
 }
 
+// What a tier would show without its own override (the tiers below, scaled)
+const inheritedAt = (p: PagePlacement, tier: Exclude<Tier, 'mobile'>): PlacementGeom => resolvePlacement({ ...p, at: { ...p.at, [tier]: undefined } }, tier);
+
+// A placement after a geometry edit at a tier. On a wider tier the override keeps only what differs from what that
+// tier inherits, so the rest still follows edits below (move it down on Desktop and its columns still track Mobile);
+// an edit back to the inherited value drops that field, and an override left empty goes away.
+export function withTierGeom(p: PagePlacement, tier: Tier, geom: Partial<PlacementGeom>): PagePlacement {
+  if (tier === 'mobile') return { ...p, ...geom };
+  const base = inheritedAt(p, tier), o: Partial<PlacementGeom> = { ...p.at?.[tier], ...geom };
+  for (const k of ['col', 'row', 'colSpan', 'rowSpan', 'hidden'] as const) if (k in o && (o[k] ?? false) === (base[k] ?? false)) delete o[k];
+  const at = { ...p.at };
+  if (Object.keys(o).length) at[tier] = o; else delete at[tier];
+  return { ...p, at: Object.keys(at).length ? at : undefined };
+}
+
 // True when `tier` has its own override (vs. inheriting)
 export const isOverridden = (p: PagePlacement, tier: Tier) => tier !== 'mobile' && !!p.at?.[tier];
 
-// Stack a wide arrangement into a single mobile column, in reading order (row, then col).
-// Used to derive a mobile base from layouts designed at desktop/tablet width.
-export function stackForMobile(ps: PagePlacement[]): Map<string, PlacementGeom> {
-  const out = new Map<string, PlacementGeom>();
-  let y = 0;
-  for (const p of [...ps].sort((a, b) => a.row - b.row || a.col - b.col)) {
-    if (p.id === 'slot-bg') { out.set(p.id, { col: 0, row: 0, colSpan: TIER_COLUMNS.mobile, rowSpan: p.rowSpan }); continue; }
-    out.set(p.id, { col: 0, row: y, colSpan: TIER_COLUMNS.mobile, rowSpan: p.rowSpan });
-    y += p.rowSpan;
+// ── Groups — boxes within boxes ──────────────────────────────────
+// A group is a placement with no component: a box on its container's grid whose own grid splits that box further. Its
+// columns are its container's (CSS subgrid, so everything inside still lines up with the page), its rows its own. A
+// placement inside one names it as `parent`, and its col/row count from the group's first column and row. Groups nest.
+// Pinned blocks float over the screen whatever their parent.
+export const GROUP = '@group';   // what the editor places or drags in when it's a group (not stored: groups are `kind: 'group'`)
+export const isGroup = (p: PagePlacement): p is GroupPlacement => p.kind === 'group';
+// The component a block uses (none for a group, or one that's gone)
+export const componentOf = (components: Record<string, ProjectComponent> | undefined, p: PagePlacement) => (isGroup(p) ? undefined : components?.[p.componentId]);
+// The group a placement sits in, or null for the page (a parent that's gone or isn't a group: the page)
+export const parentOf = (ps: PagePlacement[], p: PagePlacement): string | null =>
+  p.parent && !p.pin && ps.some((x) => x.id === p.parent && isGroup(x)) ? p.parent : null;
+export const childrenOf = (ps: PagePlacement[], parent: string | null) => ps.filter((p) => !p.pin && parentOf(ps, p) === parent);
+// The ids inside a group, all the way down
+export function descendants(ps: PagePlacement[], id: string): Set<string> {
+  const out = new Set<string>();
+  for (let more = [id]; more.length;) more = ps.filter((p) => p.parent && more.includes(p.parent) && !out.has(p.id)).map((p) => (out.add(p.id), p.id));
+  return out;
+}
+// How many columns a container has at a tier (the page's, or the group's span, kept inside its own container)
+export function containerCols(ps: PagePlacement[], parent: string | null, tier: Tier, depth = 0): number {
+  const g = parent && depth < 16 && ps.find((p) => p.id === parent);   // depth: a hand-edited loop of parents ends
+  if (!g) return TIER_COLUMNS[tier];
+  return Math.min(resolvePlacement(g, tier).colSpan, containerCols(ps, parentOf(ps, g), tier, depth + 1));
+}
+// A placement's first column on the page's grid at a tier
+export function pageCol(ps: PagePlacement[], id: string, tier: Tier, depth = 0): number {
+  const p = depth < 16 && ps.find((x) => x.id === id);
+  if (!p) return 0;
+  const up = parentOf(ps, p);
+  return (up ? pageCol(ps, up, tier, depth + 1) : 0) + Math.min(resolvePlacement(p, tier).col, containerCols(ps, up, tier) - 1);
+}
+// A block's geometry at a tier, kept inside its container's columns: a group's insides scale up the tiers like the page
+// does, and rounding can carry one a column past the group's own width
+export function placedAt(ps: PagePlacement[], p: PagePlacement, tier: Tier): PlacementGeom {
+  const g = resolvePlacement(p, tier), up = parentOf(ps, p);
+  if (!up) return g;
+  const n = containerCols(ps, up, tier), colSpan = Math.min(g.colSpan, n);
+  return { ...g, colSpan, col: Math.max(0, Math.min(g.col, n - colSpan)) };
+}
+// About where a block's row sits on the page's grid (a group's rows are its own; counted here as page rows, which is
+// what the height cap of a block that scrolls inside wants: boundedMax)
+export function pageRow(ps: PagePlacement[], p: PagePlacement, tier: Tier, depth = 0): number {
+  const up = depth < 16 ? parentOf(ps, p) : null, g = up ? ps.find((x) => x.id === up) : undefined;
+  return resolvePlacement(p, tier).row + (g ? pageRow(ps, g, tier, depth + 1) : 0);
+}
+// A placement moved into another container (null = the page), landing at `geom` on this tier: its mobile base is the
+// same spot scaled to the container's mobile columns, and a wider tier keeps the exact spot as its own (withTierGeom).
+// Its old overrides counted from the old container, so they go.
+export function reparented(ps: PagePlacement[], p: PagePlacement, parent: string | null, tier: Tier, geom: Omit<PlacementGeom, 'hidden' | 'pin'>): PagePlacement {
+  const moved: PagePlacement = { ...p, parent: parent ?? undefined, at: undefined };
+  if (tier === 'mobile') return { ...moved, ...geom };
+  const n = containerCols(ps, parent, 'mobile'), k = n / containerCols(ps, parent, tier);
+  const colSpan = Math.max(1, Math.min(n, Math.round(geom.colSpan * k)));
+  const base = { ...moved, col: Math.min(n - colSpan, Math.round(geom.col * k)), colSpan, row: geom.row, rowSpan: geom.rowSpan };
+  return withTierGeom(base, tier, geom);
+}
+
+// Reading order at a tier: top to bottom, then left to right, a group's insides right after it; then the pinned
+// blocks. Hidden ones (and what's in a hidden group) aren't numbered.
+export function readingOrder(ps: PagePlacement[], tier: Tier): Map<string, number> {
+  const out = new Map<string, number>(), byPos = (a: { g: PlacementGeom }, b: { g: PlacementGeom }) => a.g.row - b.g.row || a.g.col - b.g.col, kids = byParent(ps);
+  const walk = (parent: string | null) => (kids.get(parent) ?? []).map((p) => ({ p, g: resolvePlacement(p, tier) })).filter(({ g }) => !g.hidden).sort(byPos)
+    .forEach(({ p }) => { out.set(p.id, out.size + 1); if (isGroup(p)) walk(p.id); });
+  walk(null);
+  ps.filter((p) => p.pin).map((p) => ({ p, g: resolvePlacement(p, tier) })).filter(({ g }) => !g.hidden).sort(byPos).forEach(({ p }) => out.set(p.id, out.size + 1));
+  return out;
+}
+// The page's blocks as they nest, in source order (the mobile layout's reading order: row, then column), each visited
+// with what its group holds (visited first): the export, the layout editor and the Layout and Preview layers all walk
+// this one way. `show` leaves a block (and what's in it) out.
+export function nest<T>(ps: PagePlacement[], visit: (p: PagePlacement, inner: T[]) => T, show: (p: PagePlacement) => boolean = () => true): T[] {
+  const kids = byParent(ps);
+  const walk = (parent: string | null, depth: number): T[] => (kids.get(parent) ?? []).filter(show).sort((a, b) => a.row - b.row || a.col - b.col)
+    .map((p) => visit(p, isGroup(p) && depth < 16 ? walk(p.id, depth + 1) : []));
+  return walk(null, 0);
+}
+// Each container's blocks (null: the page's), in one pass: what childrenOf answers for one container, for all of them
+function byParent(ps: PagePlacement[]): Map<string | null, PagePlacement[]> {
+  const groups = new Set(ps.filter(isGroup).map((p) => p.id)), out = new Map<string | null, PagePlacement[]>();
+  for (const p of ps) {
+    if (p.pin) continue;
+    const up = p.parent && groups.has(p.parent) ? p.parent : null;
+    out.set(up, [...(out.get(up) ?? []), p]);
   }
   return out;
+}
+// Every block's geometry at a tier (placedAt) and its row on the page (pageRow), worked out once: views that draw
+// every block on every frame of a drag read this instead of walking the parents per block
+export function geometryAt(ps: PagePlacement[], tier: Tier): Map<string, { g: PlacementGeom; top: number }> {
+  return new Map(ps.map((p) => [p.id, { g: placedAt(ps, p, tier), top: pageRow(ps, p, tier) }]));
+}
+// What a tier doesn't show: hidden blocks and everything inside a hidden group
+export function hiddenAt(ps: PagePlacement[], tier: Tier): Set<string> {
+  const out = new Set<string>();
+  for (const p of ps) if (resolvePlacement(p, tier).hidden) { out.add(p.id); descendants(ps, p.id).forEach((id) => out.add(id)); }
+  return out;
+}
+
+// ── Block edits from the menu — each the page's whole new list, applied in one update ─────
+
+const WIDER: Exclude<Tier, 'mobile'>[] = ['tablet', 'desktop'];
+const freshId = (n: number) => `pl-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}${n ? `-${n}` : ''}`;
+// A block's geometry with its rows pushed: the others moved out of its way at `tier` (roomFor), applied
+function landed(ps: PagePlacement[], tier: Tier, p: PagePlacement): PagePlacement[] {
+  const edits = new Map(roomFor(ps, tier, p).map((e) => [e.id, e.geom]));
+  return ps.map((x) => (edits.has(x.id) ? withTierGeom(x, tier, edits.get(x.id)!) : x));
+}
+
+// A copy of a block (a group with everything in it, fresh ids, parents kept among the copies), just under it at `tier`
+export function duplicateBlock(ps: PagePlacement[], id: string, tier: Tier): { placements: PagePlacement[]; id: string } {
+  const src = ps.find((p) => p.id === id);
+  if (!src) return { placements: ps, id };
+  const inside = descendants(ps, id), ids = new Map([id, ...Array.from(inside)].map((x, i) => [x, freshId(i)]));
+  const copies = ps.filter((p) => ids.has(p.id)).map((p) => ({ ...p, id: ids.get(p.id)!, ...(p.parent && ids.has(p.parent) && { parent: ids.get(p.parent) }) }));
+  const top = copies.find((c) => c.id === ids.get(id))!, g = placedAt(ps, src, tier);
+  const moved = src.pin ? top : withTierGeom(top, tier, { row: g.row + g.rowSpan });
+  const all = [...ps, ...copies.map((c) => (c.id === moved.id ? moved : c))];
+  return { placements: src.pin ? all : landed(all, tier, moved), id: moved.id };
+}
+
+// A block put in a new group that takes its place on every tier (its spot, its overrides, hidden-ness); the block fills
+// the group's first row
+export function wrapInGroup(ps: PagePlacement[], id: string): { placements: PagePlacement[]; id: string } {
+  const p = ps.find((x) => x.id === id);
+  if (!p || p.pin) return { placements: ps, id };
+  const geomOnly = (o: Partial<PlacementGeom>) => Object.fromEntries(Object.entries(o).filter(([k]) => k !== 'pin')) as Partial<PlacementGeom>;
+  const at = p.at && Object.fromEntries(Object.entries(p.at).map(([t, o]) => [t, geomOnly(o ?? {})]).filter(([, o]) => Object.keys(o as object).length));
+  const group: GroupPlacement = {
+    id: freshId(0), kind: 'group', col: p.col, row: p.row, colSpan: p.colSpan, rowSpan: p.rowSpan, hidden: p.hidden,
+    ...(p.parent && { parent: p.parent }), ...(at && Object.keys(at).length && { at }),
+  };
+  // inside: from the group's corner, as wide as it on every tier its own width was set
+  const inAt = p.at && Object.fromEntries(WIDER.flatMap((t) => {
+    const o = p.at?.[t]; if (!o) return [];
+    const w = { ...(o.colSpan !== undefined && { colSpan: o.colSpan }), ...(o.rowSpan !== undefined && { rowSpan: o.rowSpan }), ...(o.pin && { pin: o.pin }) };
+    return Object.keys(w).length ? [[t, w]] : [];
+  }));
+  const child: PagePlacement = { ...p, parent: group.id, col: 0, row: 0, hidden: undefined, at: inAt && Object.keys(inAt).length ? inAt : undefined };
+  return { placements: ps.flatMap((x) => (x.id === id ? [group, child] : [x])), id: group.id };
+}
+
+// A block taken out of its group to the group's container, where it showed on every tier (its spot in the group, moved
+// by the group's); what it lands on at `tier` moves down. Rows count as the container's: a group's own rows may be
+// sized differently, so that part is close, not exact.
+function lifted(ps: PagePlacement[], p: PagePlacement, up: string): PagePlacement {
+  const grp = ps.find((x) => x.id === up)!, outer = parentOf(ps, grp);
+  const abs = (t: Tier) => { const g = placedAt(ps, grp, t), c = placedAt(ps, p, t); return { col: g.col + c.col, row: g.row + c.row, colSpan: c.colSpan, rowSpan: c.rowSpan }; };
+  const m = abs('mobile');
+  let out: PagePlacement = { ...p, parent: outer ?? undefined, at: undefined, ...m, hidden: p.hidden || grp.hidden || undefined };   // a hidden group's blocks stay hidden
+  for (const t of WIDER) {
+    const own = p.at?.[t], a = abs(t);
+    out = withTierGeom(out, t, { ...a, hidden: resolvePlacement(p, t).hidden || resolvePlacement(grp, t).hidden || undefined });
+    if (own?.pin) out = { ...out, at: { ...out.at, [t]: { ...out.at?.[t], pin: own.pin } } };
+  }
+  return out;
+}
+export function moveOutOfGroup(ps: PagePlacement[], id: string, tier: Tier): PagePlacement[] {
+  const p = ps.find((x) => x.id === id), up = p && parentOf(ps, p);
+  if (!p || !up) return ps;
+  const out = lifted(ps, p, up);
+  return landed(ps.map((x) => (x.id === id ? out : x)), tier, out);
+}
+// A group's blocks taken out to its container (each where it showed), and the group gone
+export function ungroupBlock(ps: PagePlacement[], id: string, tier: Tier): PagePlacement[] {
+  const grp = ps.find((x) => x.id === id);
+  if (!grp || !isGroup(grp)) return ps;
+  const kids = childrenOf(ps, id), out = new Map(kids.map((k) => [k.id, lifted(ps, k, id)]));
+  let next = ps.filter((x) => x.id !== id).map((x) => out.get(x.id) ?? x);
+  for (const k of kids) next = landed(next, tier, next.find((x) => x.id === k.id)!);
+  return next;
+}
+
+// ── The grid's version ───────────────────────────────────────────
+// 1: 4 / 8 / 12 columns, 80px rows. 2: 8 / 12 / 24 columns, 32px rows (finer, more spots). A project from before is
+// carried over once, wherever it's read or written (lib/server/projects.ts): mobile and desktop columns double
+// exactly, tablet's go from 8 to 12; rows double (two 32px rows and their gutter are one 80px row).
+export const GRID_VERSION = 2;
+export function upgradeGrid(p: ProjectData): ProjectData {
+  if ((p.grid ?? 1) >= GRID_VERSION || !p.layouts) return { ...p, grid: GRID_VERSION };
+  const cols = (g: Partial<PlacementGeom>, k: number): Partial<PlacementGeom> => ({
+    ...g,
+    ...(g.col !== undefined && { col: Math.round(g.col * k) }),
+    ...(g.colSpan !== undefined && { colSpan: Math.max(1, Math.round(g.colSpan * k)) }),
+    ...(g.row !== undefined && { row: g.row * 2 }),
+    ...(g.rowSpan !== undefined && { rowSpan: g.rowSpan * 2 }),
+  });
+  const one = (x: PagePlacement): PagePlacement => ({
+    ...x, ...(cols(x, 2) as PlacementGeom),
+    ...(x.at && { at: { ...(x.at.tablet && { tablet: cols(x.at.tablet, 1.5) }), ...(x.at.desktop && { desktop: cols(x.at.desktop, 2) }) } }),
+  });
+  const layouts = Object.fromEntries(Object.entries(p.layouts).map(([path, l]) => [path, {
+    ...l, placements: (l.placements ?? []).map(one), ...(l.layers && { layers: l.layers.map((y) => ({ ...y, placements: y.placements.map(one) })) }),
+  }]));
+  return { ...p, layouts, grid: GRID_VERSION };
 }
 
 export interface PageLayer {
@@ -219,6 +474,33 @@ export interface ProjectMeta {
   archived?: boolean;       // hidden from the project picker (lib/workspace.ts); files kept
   fonts?: FontLoad[];       // web fonts every page loads in its head (lib/library/fonts.ts)
   backdrop?: string;        // a CSS background drawn fixed under every page (a gradient, url(…) cover); pages may override
+  live?: LiveBackdrop;      // a live layer over the backdrop, under every page (the sky, a video); pages may override
+}
+
+// A live backdrop: drawn fixed under the page, over the CSS backdrop (which stays as the fallback: no script, no
+// WebGL, calm). sky = a WebGL nebula and stars (lib/library/behaviors/backdrop.ts); video = a muted loop.
+export interface LiveBackdrop {
+  kind:    'sky' | 'video' | 'none';   // none: a page turns the project's off
+  colors?: string;   // sky: CSS colors, comma-separated — night, nebula, its glow, stars (var(--color-…) works)
+  stars?:  number;   // sky: how many stars, 0–1 (default 0.5)
+  speed?:  number;   // sky: drift, 0–1 (default 0.5)
+  src?:    string;   // video: a path on the site (/sky.mp4) or an https URL
+  poster?: string;   // video: the still shown before it plays, and in calm mode
+}
+const SAFE_URL = /^(\/(?!\/)|\.\/|https:\/\/)[^\s"'<>`\\{}$]*$/;
+const num01 = (v: unknown) => (typeof v === 'number' && Number.isFinite(v) ? Math.max(0, Math.min(1, v)) : undefined);
+
+// The live backdrop a page ships, made safe to write into markup: the page's own (kind none: no live layer), else
+// the project's. Colors follow the backdrop's rule; addresses must be a site path or https.
+export function liveBackdrop(page: { live?: LiveBackdrop } | undefined, meta: { live?: LiveBackdrop } | undefined): LiveBackdrop | undefined {
+  const l = page?.live ?? meta?.live;
+  if (!l || l.kind === 'none') return undefined;
+  if (l.kind === 'sky') {
+    const colors = safeBackdrop(l.colors);
+    return { kind: 'sky', ...(colors && { colors }), ...(num01(l.stars) !== undefined && { stars: num01(l.stars) }), ...(num01(l.speed) !== undefined && { speed: num01(l.speed) }) };
+  }
+  if (l.kind === 'video' && l.src && SAFE_URL.test(l.src)) return { kind: 'video', src: l.src, ...(l.poster && SAFE_URL.test(l.poster) && { poster: l.poster }) };
+  return undefined;
 }
 
 // A backdrop as it may be written into a page's CSS: one declaration's value, nothing that could end it or the
@@ -252,6 +534,7 @@ export interface PageDef {
   name:    string;
   head?:   PageHead;
   backdrop?: string;     // this page's own backdrop (CSS background), over the project's
+  live?: LiveBackdrop;   // this page's own live backdrop (kind none: off here), over the project's
   sections?: string[];   // other pages shown in place on this one, switched by #hash (pageSections)
   intent?: string;       // planning only — never emitted
   status?: PageStatus;   // unset = derived (see derivePageStatus)
@@ -268,6 +551,7 @@ export interface ProjectData {
   viewport?:   ViewportSize;                // selected device — Hub/Artboard/Preview all view at this size
   theme?:      Theme;                       // this project's own copy of the global theme (unset = global)
   components?: Record<string, ProjectComponent>; // this project's owned copies of library recipes
+  grid?:       number;                       // the grid's version (GRID_VERSION); unset = 1, upgraded on read
 }
 
 export const PROJECT_ACCENTS = ['#818cf8', '#f472b6', '#34d399', '#fbbf24', '#60a5fa', '#f87171', '#a78bfa', '#2dd4bf'];

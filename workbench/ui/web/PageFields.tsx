@@ -2,6 +2,7 @@
 
 import { useWorkbenchStore } from '@/lib/store';
 import { Toggle } from '@/workbench/ui/Toggle';
+import { LiveFields } from './LiveFields';
 import { PAGE_STATUSES, derivePageStatus, safeBackdrop, sectionId, type PageDef, type PageHead, type PageStatus, type ProjectData } from '@/lib/project';
 
 // One page's planning fields (what the Ledger widget held), in the box under the Web canvas's minimap:
@@ -70,6 +71,11 @@ export function PageFields({ pid, project, page }: { pid: string; project: Proje
         />
         {page.backdrop && !safeBackdrop(page.backdrop) && <span className="text-[10px] text-rose-400">Not used: no &lt; &gt; {'{ }'} ; ` \ $ in a backdrop</span>}
       </label>
+
+      <div className="flex flex-col gap-1">
+        <span className={LABEL}>Live backdrop</span>
+        <LiveFields page value={page.live} inherited={meta.live} onChange={(v) => patch({ live: v })} />
+      </div>
 
       {!project.pages.some((p) => p.sections?.includes(page.path)) && (
         <div className="flex flex-col gap-1" title="Other pages shown on this one, one at a time, picked by #hash (/work becomes #work). Links to them stay on this page. The first one shows when there's no hash, after this page's own blocks if it has any.">

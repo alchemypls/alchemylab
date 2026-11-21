@@ -4,7 +4,7 @@
 
 import type { useSheetView } from '@/workbench/hooks/useSheetView';
 import { MAP_RAIL } from '@/workbench/ui/SheetPanel';
-import { ROW_HEIGHT } from '@/lib/project';
+import { GRID_GAP, ROW_HEIGHT } from '@/lib/project';
 import type { VElement } from '@/lib/design/vector';
 import { WEB_LAYERS, type Placed, type WebLayer } from './WebLayers';
 
@@ -27,15 +27,6 @@ export function ShadesIcon() {
     <svg viewBox="0 0 24 5" width={30} height={7} shapeRendering="crispEdges" className="block my-0.5" aria-hidden>
       {SHADES.map(([x, y]) => <rect key={`${x},${y}`} x={x} y={y} width={1} height={1} fill="currentColor" />)}
     </svg>
-  );
-}
-
-// The tier's column grid under the layout, as faint bands
-export function Columns({ cols, width }: { cols: number; width: number }) {
-  return (
-    <div className="absolute inset-0 pointer-events-none flex">
-      {Array.from({ length: cols }, (_, i) => <div key={i} style={{ width }} className={i % 2 ? '' : 'bg-indigo-500/[0.06]'} />)}
-    </div>
   );
 }
 
@@ -66,8 +57,8 @@ export function WebMap({ width: W, height: H, wire, k, placed, colWidth, sv, lay
                 : null)}
             </g>
           )}
-          {layer !== 'wireframe' && placed.map(({ p, g }) => (
-            <rect key={p.id} x={g.col * colWidth + 4} y={g.row * ROW_HEIGHT + 4} width={g.colSpan * colWidth - 8} height={g.rowSpan * ROW_HEIGHT - 8} rx={6} fill={p.color ?? '#818cf8'} fillOpacity={0.45} />
+          {layer !== 'wireframe' && placed.filter(({ p }) => !p.parent).map(({ p, g }) => (   // the page's own blocks (a group stands for what's in it)
+            <rect key={p.id} x={g.col * colWidth + 4} y={g.row * (ROW_HEIGHT + GRID_GAP) + 4} width={g.colSpan * colWidth - 8} height={g.rowSpan * (ROW_HEIGHT + GRID_GAP) - GRID_GAP - 8} rx={6} fill={p.color ?? '#818cf8'} fillOpacity={0.45} />
           ))}
           {!showsAll && <rect x={v.x} y={v.y} width={v.w} height={v.h} fill="#6366f1" fillOpacity={0.12} stroke="#6366f1" vectorEffect="non-scaling-stroke" strokeWidth={1.5} />}
         </svg>

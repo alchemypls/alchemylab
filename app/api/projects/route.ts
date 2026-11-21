@@ -10,6 +10,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { SLUG } from '@/lib/design/types';
 import { PROJECTS_DIR, readProject, validateProject } from '@/lib/server/projects';
+import { upgradeGrid } from '@/lib/project';
 import { log } from '@/lib/server/log';
 
 export const runtime = 'nodejs';
@@ -36,9 +37,10 @@ export async function GET(req: Request) {
 export async function PUT(req: Request) {
   const id = idOf(new URL(req.url).searchParams);
   if (!id) return fail(400, 'Bad project id');
-  const body = await req.json().catch(() => undefined);
-  const error = validateProject(body), file = fileOf(id);
+  const raw = await req.json().catch(() => undefined);
+  const error = validateProject(raw), file = fileOf(id);
   if (error) { log.refused(file, 422, error); return fail(422, error); }
+  const body = upgradeGrid(raw);   // a tab still holding a project on the older grid writes it on today's
   const current = await mtime(file), base = req.headers.get('x-base-mtime');
   if (base && current !== null && base !== current) { log.stale(file, base, current); return fail(409, 'Changed on disk since you loaded it'); }
   const before = current === null ? undefined : (await readProject(id))?.project ?? null;

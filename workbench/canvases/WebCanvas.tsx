@@ -13,15 +13,16 @@ import { ToolRail, toolsFor } from '@/workbench/ui/ToolRail';
 import { VectorArtboard } from '@/workbench/ui/VectorArtboard';
 import { VectorBox, VectorRail, VectorToolMenu } from '@/workbench/ui/VectorKit';
 import { SelectionBar } from '@/workbench/ui/vector/actions';
-import { Columns, PAPER, ShadesIcon, WebLayerPips, WebMap } from '@/workbench/ui/web/WebChrome';
+import { PAPER, ShadesIcon, WebLayerPips, WebMap } from '@/workbench/ui/web/WebChrome';
 import { RouteTree } from '@/workbench/ui/web/RouteTree';
 import { PageFields } from '@/workbench/ui/web/PageFields';
 import { NoWebProject } from '@/workbench/ui/web/NoWebProject';
 import { BlockInspector } from '@/workbench/ui/web/BlockFields';
-import { ComponentsBox, LayoutEditor, VariantsBox, readingOrder, type Placing } from '@/workbench/ui/web/LayoutEditor';
-import { GridArea, LayoutLayer, PinnedLayer, PreviewLayer, WEB_LAYERS, WireframeLayer, pageSketch, sketchHeight, sketchPage, type Placed, type WebLayer } from '@/workbench/ui/web/WebLayers';
+import { ComponentsBox, LayoutEditor, VariantsBox, type Placing } from '@/workbench/ui/web/LayoutEditor';
+import { useBlockActions } from '@/workbench/ui/web/LayoutMenu';
+import { LayoutLayer, PinnedLayer, PreviewLayer, WEB_LAYERS, WireframeLayer, pageSketch, sketchHeight, sketchPage, type Placed, type WebLayer } from '@/workbench/ui/web/WebLayers';
 import { CodeBox } from '@/workbench/ui/web/CodeBox';
-import { ROW_HEIGHT, getActivePlacements, pageInsets, projectTheme, resolvePlacement, safeBackdrop, sketchForWidth, type PageSketch } from '@/lib/project';
+import { GROUP, ROW_HEIGHT, componentOf, placedAt, readingOrder, GRID_GAP, getActivePlacements, hiddenAt, layoutEdit, liveBackdrop, pageInsets, projectTheme, resolvePlacement, safeBackdrop, sketchForWidth, type PageSketch } from '@/lib/project';
 import { DEFAULT_VIEWPORT, TIERS, TIER_COLUMNS, tierOf } from '@/lib/devices';
 import { addElement, newId, visualBounds, type VElement } from '@/lib/design/vector';
 import { pageSize, type DesignPage } from '@/lib/design/types';
@@ -61,8 +62,10 @@ function WebProjectCanvas() {
   const setViewport    = useWorkbenchStore((s) => s.setProjectViewport);
   const updateWireframe = useWorkbenchStore((s) => s.updateWireframe);
   const removePlacement = useWorkbenchStore((s) => s.removePlacement);
+  const setGeoms = useWorkbenchStore((s) => s.setPlacementGeoms);
   const setInstance     = useWorkbenchStore((s) => s.setPlacementInstance);
   const setPin          = useWorkbenchStore((s) => s.setPlacementPin);
+  const resetTier       = useWorkbenchStore((s) => s.resetPlacementTier);
 
   const pid = lastProjectId;
   const project = projects[pid]!;   // WebCanvas checked
@@ -111,10 +114,10 @@ function WebProjectCanvas() {
   // ── Layout and preview: the placements resolved for this tier ──
   const layout = page ? project.layouts[page.path] : undefined;
   const placements = useMemo(() => (layout ? getActivePlacements(layout) : []), [layout]);
-  const resolved: Placed[] = useMemo(
-    () => placements.map((p) => ({ p, g: resolvePlacement(p, tier) })).filter(({ g }) => !g.hidden),
-    [placements, tier],
-  );
+  const resolved: Placed[] = useMemo(() => {   // what shows at this tier: not hidden, not inside a hidden group
+    const hidden = hiddenAt(placements, tier);
+    return placements.filter((p) => !hidden.has(p.id)).map((p) => ({ p, g: resolvePlacement(p, tier) }));
+  }, [placements, tier]);
   // Pinned blocks sit over the screen; the grid sits inside the edges they keep clear
   const placed = useMemo(() => resolved.filter(({ p }) => !p.pin), [resolved]);
   const pinned = useMemo(() => resolved.filter(({ p }) => p.pin), [resolved]);
@@ -122,13 +125,17 @@ function WebProjectCanvas() {
   const ins = useMemo(() => pageInsets(placements, tier), [placements, tier]);
   const colWidth = (viewport.width - ins.left - ins.right) / cols;
   const backdrop = (page && safeBackdrop(page.backdrop)) ?? safeBackdrop(project.meta.backdrop);
+  const live = liveBackdrop(page, project.meta);
   const picked = placements.find((p) => p.id === block);
+  const numbers = useMemo(() => readingOrder(placements, tier), [placements, tier]);
+  const blockActions = useBlockActions({ pid, path: page?.path ?? '', placements, tier, select: setBlock });
   const recipes = useMemo(() => Object.values(project.components ?? {}).map((c) => c.recipe), [project.components]);
 
   // The page is as tall as the device's screen, or longer when its layout or wireframe runs past the fold
-  const rows = Math.max(0, ...placed.map(({ g }) => g.row + g.rowSpan));
+  const rows = Math.max(0, ...placed.filter(({ p }) => !p.parent).map(({ g }) => g.row + g.rowSpan));
+  const [gridH, setGridH] = useState(0);   // the grid's real height (rows grow with their content), from the layer drawing it
   const wireH = wiring && draft.shown ? pageSize(draft.shown).height * k : shownSketch ? (sketchHeight(shownSketch) * viewport.width) / shownSketch.width : 0;
-  const sheet = { width: viewport.width, height: Math.ceil(Math.max(viewport.height, ins.top + ins.bottom + (rows + (laying ? 4 : 1)) * ROW_HEIGHT, wireH)) };   // room to place below on the layout
+  const sheet = { width: viewport.width, height: Math.ceil(Math.max(viewport.height, ins.top + ins.bottom + (rows + (laying ? 8 : 2)) * (ROW_HEIGHT + GRID_GAP), gridH + (laying ? 8 * (ROW_HEIGHT + GRID_GAP) : 0), wireH)) };   // room to place below on the layout
   const { width: W, height: H } = sheet;
 
   const sv = useSheetView({
@@ -137,9 +144,23 @@ function WebProjectCanvas() {
       const i = ['1', '2', '3'].indexOf(e.key);
       if (i >= 0 && !e.ctrlKey && !e.metaKey && !e.altKey) { e.preventDefault(); setLayer(WEB_LAYERS[i].id); return; }
       if (wiring) return vt.onKey(e);
+      if (laying && block && page && (e.ctrlKey || e.metaKey) && !e.altKey) {   // the menu's keys: duplicate, group, ungroup
+        const k = e.key.toLowerCase();
+        if (k === 'd') { e.preventDefault(); blockActions.duplicate(block); return; }
+        if (k === 'g') { e.preventDefault(); if (e.shiftKey) blockActions.ungroup(block); else blockActions.wrap(block); return; }
+      }
       if (!laying || e.ctrlKey || e.metaKey || e.altKey) return;
       if (e.key === 'Escape') { setPlacing(null); setBlock(null); }
       else if ((e.key === 'Delete' || e.key === 'Backspace') && block && page) { e.preventDefault(); removePlacement(pid, page.path, block); setBlock(null); }
+      else if (e.key.startsWith('Arrow') && block && page) {   // nudge the block a column / row; Shift: resize it
+        const p = gridPlacements.find((x) => x.id === block);
+        if (!p) return;
+        e.preventDefault();
+        const g = placedAt(gridPlacements, p, tier), d = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] }[e.key] ?? [0, 0];
+        const patch = e.shiftKey ? { colSpan: g.colSpan + d[0], rowSpan: g.rowSpan + d[1] } : { col: g.col + d[0], row: g.row + d[1] };
+        const edits = layoutEdit(gridPlacements, tier, p.id, patch);
+        if (edits.length) setGeoms(pid, page.path, tier, edits);
+      }
       else if (e.key.toLowerCase() === 'v') setLayoutTool('select');
       else if (e.key.toLowerCase() === 'h') setLayoutTool('read');
     },
@@ -170,11 +191,11 @@ function WebProjectCanvas() {
     if (l === 'wireframe') return shownSketch ? <div key={l} className="absolute inset-0 pointer-events-none" style={style}><WireframeLayer sketch={shownSketch} width={W} /></div> : null;
     if (l === 'layout') return (
       <div key={l} className="absolute inset-0 pointer-events-none" style={style}>
-        <GridArea ins={ins} width={W} height={H}><LayoutLayer placed={placed} colWidth={colWidth} components={project.components} /></GridArea>
+        <LayoutLayer pid={pid} placements={gridPlacements} tier={tier} ins={ins} width={W} components={project.components} />
         <PinnedLayer pinned={pinned} cols={cols} width={W} screenH={viewport.height} components={project.components} />
       </div>
     );
-    return <PreviewLayer key={l} pid={pid} placed={placed} pinned={pinned} ins={ins} cols={cols} colWidth={colWidth} width={W} height={H} screenH={viewport.height} backdrop={backdrop} components={project.components} here={page?.path} />;
+    return <PreviewLayer key={l} pid={pid} placements={gridPlacements} tier={tier} pinned={pinned} ins={ins} width={W} height={H} screenH={viewport.height} backdrop={backdrop} live={live} components={project.components} here={page?.path} onHeight={faded ? undefined : setGridH} />;
   };
   const borrowed = wiring && !own && shownSketch;   // no sketch for this tier yet: the nearest tier's shows faded to draw over
   const editing = (wiring && tool !== 'read') || (laying && layoutTool === 'select');
@@ -186,7 +207,7 @@ function WebProjectCanvas() {
     if (wiring && draft.shown && (box === 'layers' || vsel.length > 0)) return <VectorBox vt={vt} page={draft.shown} layersOpen={box === 'layers'} apply={wdoc.apply} />;
     if (laying && picked && page) return (
       <BlockInspector
-        key={picked.id} placement={picked} number={readingOrder(placements, tier).get(picked.id)} component={project.components?.[picked.componentId]}
+        key={picked.id} placement={picked} number={numbers.get(picked.id)} component={componentOf(project.components, picked)}
         tier={tier} onPatch={(patch) => setInstance(pid, page.path, picked.id, patch)} onPin={(pin) => setPin(pid, page.path, picked.id, tier, pin)} onDeselect={() => setBlock(null)}
       />
     );
@@ -205,7 +226,6 @@ function WebProjectCanvas() {
       <SheetSurface sv={sv} grab={!editing} onBackground={() => { if (editing) { setVsel([]); setBlock(null); } }}>
         {page && (
           <Sheet sv={sv} size={sheet} style={{ background: PAPER }}>
-            {layer === 'layout' && <GridArea ins={ins} width={W} height={H}><Columns cols={cols} width={colWidth} /></GridArea>}
             {wiring && draft.shown ? (
               <>
                 {borrowed && <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.25 }}><WireframeLayer sketch={shownSketch} width={W} /></div>}
@@ -220,12 +240,11 @@ function WebProjectCanvas() {
               </>
             ) : laying ? (
               <>
-                <GridArea ins={ins} width={W} height={H}>
-                  <LayoutEditor
-                    pid={pid} path={page.path} placements={gridPlacements} tier={tier} colWidth={colWidth} width={W - ins.left - ins.right} components={project.components}
-                    selected={block} select={setBlock} placing={placing} donePlacing={() => setPlacing(null)} scale={view.scale} editing={layoutTool === 'select'}
-                  />
-                </GridArea>
+                <LayoutEditor
+                  pid={pid} path={page.path} placements={gridPlacements} tier={tier} ins={ins} width={W} components={project.components}
+                  selected={block} select={setBlock} placing={placing} donePlacing={() => setPlacing(null)} scale={view.scale} editing={layoutTool === 'select'}
+                  onHeight={setGridH}
+                />
                 <PinnedLayer pinned={pinned} cols={cols} width={W} screenH={viewport.height} components={project.components} selected={block} select={layoutTool === 'select' ? setBlock : undefined} />
               </>
             ) : draw(layer, false)}
@@ -245,7 +264,15 @@ function WebProjectCanvas() {
       {laying && (
         <ToolRail tools={LAYOUT_TOOLS} tool={layoutTool} pick={(t) => { if (t === 'select' || t === 'read') setLayoutTool(t); }} />
       )}
-      {laying && placing && <Banner tone="hint">Placing “{project.components?.[placing]?.recipe.name}”: click the page. Esc stops.</Banner>}
+      {laying && !placing && tier !== 'mobile' && (() => {   // which size the edits land on, and a way back to inheriting
+        const own = placements.filter((p) => p.at?.[tier]).length, label = TIERS.find((t) => t.id === tier)!.label;
+        return (
+          <Banner tone="hint">
+            Editing {label}: changes apply from {label} up; the rest follows the smaller sizes.{own > 0 && <> {own} block{own > 1 ? 's' : ''} placed for {label} · <button className="underline hover:text-amber-100" onClick={() => resetTier(pid, page!.path, null, tier)}>inherit them again</button></>}
+          </Banner>
+        );
+      })()}
+      {laying && placing && <Banner tone="hint">Placing “{placing === GROUP ? "Group" : project.components?.[placing]?.recipe.name}”: click the page (or inside a group). Esc stops.</Banner>}
       {wiring && <VectorToolMenu vt={vt} tools={WIRE_TOOLS} page={draft.shown} />}
       {wiring && vt.blocked(true) && <Banner>{vt.blocked(true)}</Banner>}
 
