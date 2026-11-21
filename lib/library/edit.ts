@@ -13,7 +13,7 @@ export type Layer =
   | { kind: 'partState'; state: StateName }                   // each part's OWN state (part.states)
   | { kind: 'responsive'; tier: 'tablet' | 'desktop' };       // mobile-first delta from that width up
 
-export const STATE_NAMES: StateName[] = ['hover', 'press', 'focus', 'disabled', 'checked', 'open', 'invalid', 'current', 'selected'];
+export const STATE_NAMES: StateName[] = ['hover', 'press', 'focus', 'disabled', 'checked', 'open', 'invalid', 'current', 'selected', 'alive'];
 
 export const STYLE_KEYS: (keyof Style)[] = [
   'layout', 'align', 'justify', 'gap', 'padding', 'paddingX', 'paddingY',

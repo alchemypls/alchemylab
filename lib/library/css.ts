@@ -26,7 +26,7 @@ const KIND_RESETS: Partial<Record<Part['kind'], string[]>> = {
 
 const PART_PSEUDO: Record<StateName, string> = {
   hover: ':hover', press: ':active', focus: ':focus-visible', disabled: ':disabled',
-  checked: ':checked', open: '[open]', invalid: '[aria-invalid="true"]', current: '[aria-current]:not([aria-current="false"])', selected: '[aria-selected="true"]',
+  checked: ':checked', open: '[open]', invalid: '[aria-invalid="true"]', current: '[aria-current]:not([aria-current="false"])', selected: '[aria-selected="true"]', alive: '[data-alive]',
 };
 
 export function themeToCss(theme: Theme, selector = ':root'): string {
@@ -122,6 +122,7 @@ function stateSelector(r: Recipe, state: StateName, root = `.${rootClass(r)}`): 
     case 'invalid':  return focusable ? `${root}[aria-invalid="true"]` : `${root}[data-invalid]`;
     case 'current':  return `${root}[aria-current]:not([aria-current="false"])`;
     case 'selected': return `${root}[aria-selected="true"]`;
+    case 'alive':    return `${root}[data-alive]`;
   }
 }
 

@@ -93,7 +93,8 @@ export interface VariantAxis {
   states?: Record<string, Partial<Record<StateName, PartStyles>>>;
 }
 
-export type StateName = 'hover' | 'press' | 'focus' | 'disabled' | 'checked' | 'open' | 'invalid' | 'current' | 'selected';
+export type StateName = 'hover' | 'press' | 'focus' | 'disabled' | 'checked' | 'open' | 'invalid' | 'current' | 'selected'
+                      | 'alive';   // lit by a behavior (data-alive): the launch button, the section's rail dot, Cori speaking
 
 // Named interaction types. 'none' = static. Native-first: each maps to a built-in element
 // (toggle → checkbox, disclosure → <details>, dialog → <dialog>, popover → popover attribute).

@@ -1,5 +1,10 @@
 import { alchemyCarousel } from './carousel';
 import { alchemyTabs } from './tabs';
+import { alchemyBurst } from './burst';
+import { alchemyAlive } from './alive';
+import { alchemyLeader } from './leader';
+import { alchemyOrb } from './orb';
+import { alchemyBackdrop } from './backdrop';
 import type { Recipe } from '../recipe';
 
 // ── Behavior catalog ──────────────────────────────────────────────
@@ -13,18 +18,45 @@ export interface BehaviorDef {
   name:    string;
   attach:  (root: HTMLElement) => () => void;
   support: string;          // browser-support note (for the future Assay checks)
+  shapes?: true;            // changes the part's layout (reveals controls, hides panels): the workbench's invisible
+                            // sizing copies run it so heights match Live; the rest only change looks and stay off there
 }
 
 export const BEHAVIORS: Record<string, BehaviorDef> = {
   carousel: {
     key: 'carousel', name: 'Carousel controls',
-    attach: alchemyCarousel,
+    attach: alchemyCarousel, shapes: true,
     support: 'Baseline widely available — querySelector, addEventListener, requestAnimationFrame, Element.scrollTo, matchMedia',
   },
   tabs: {
     key: 'tabs', name: 'Tabs',
-    attach: alchemyTabs,
+    attach: alchemyTabs, shapes: true,
     support: 'Baseline widely available — querySelector, addEventListener, focus(), ARIA roles',
+  },
+  burst: {
+    key: 'burst', name: 'Press burst',
+    attach: alchemyBurst,
+    support: 'Baseline widely available — Element.animate, getBoundingClientRect, matchMedia',
+  },
+  alive: {
+    key: 'alive', name: 'Alive (glow without a hover)',
+    attach: alchemyAlive,
+    support: 'Baseline widely available — closest, :scope, hashchange, focusin/focusout',
+  },
+  leader: {
+    key: 'leader', name: 'Leader line',
+    attach: alchemyLeader,
+    support: 'Baseline widely available — ResizeObserver, MutationObserver, SVGPathElement.getTotalLength, Element.animate',
+  },
+  orb: {
+    key: 'orb', name: 'Orb stick',
+    attach: alchemyOrb,
+    support: 'Baseline widely available — Pointer Events + pointer capture, CustomEvent, Element.scrollBy; navigator.vibrate where supported',
+  },
+  backdrop: {
+    key: 'backdrop', name: 'Live backdrop (sky, video)',
+    attach: alchemyBackdrop,
+    support: 'Baseline widely available — WebGL 1, requestAnimationFrame, matchMedia, visibilitychange, HTMLMediaElement.play',
   },
 };
 

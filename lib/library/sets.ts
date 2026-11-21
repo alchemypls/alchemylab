@@ -5,6 +5,7 @@ import { card }   from './recipes/card';
 import { brand, navLink, navBar } from './recipes/navigation';
 import { carousel, heroSlider, mediaCard } from './recipes/carousel';
 import { tabs, accordion } from './recipes/content';
+import { orbStick } from './recipes/controls';
 
 // ── Library sets ("box sets") ────────────────────────────────────
 // The library ships as sets: a themed bundle whose main piece (the box art) is built alongside
@@ -42,5 +43,10 @@ export const SETS: LibrarySet[] = [
     key: 'content', name: 'Content', version: 1,
     description: 'Split content into sections: tabs (script-enhanced) and a native accordion.',
     recipes: tag('content', [tabs, accordion]),
+  },
+  {
+    key: 'controls', name: 'Controls', version: 1,
+    description: 'Game-style controls for a page: the orb stick (steer, tap, a ring button and a side button).',
+    recipes: tag('controls', [orbStick]),
   },
 ];
