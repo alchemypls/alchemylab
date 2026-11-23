@@ -8,7 +8,7 @@ import { projectTheme, type ProjectData } from '@/lib/project';
 import {
   LIBRARY, SETS, Recipe, RecipeCategory, Style, Theme, PropValues, OptionPicks,
   Layer, StateName, STATE_NAMES, STYLE_KEYS, layerKey, layerStyle, setLayerStyle, partIds,
-  addOption, removeOption, parseStyleValue, PROPERTY_SPECS, tokensFor, validateStyleValue,
+  addOption, removeOption, parseStyleValue, PROPERTY_SPECS, tokensFor, validateStyleValue, widthKeys,
 } from '@/lib/library';
 import { RecipeView, RecipeStyles, themeScope, libScope } from './RecipeView';
 import { InstanceControls } from './InstanceControls';
@@ -258,6 +258,7 @@ function ComponentEditor({ recipe, originLabel, theme, picks, onChange, onDuplic
     ...(['tablet', 'desktop'] as const).map((t) => ({
       label: `${t} and up`, layer: { kind: 'responsive', tier: t } as Layer, group: 'Responsive',
     })),
+    ...widthKeys(recipe).map((k) => ({ label: `${k}px wide and up`, layer: { kind: 'responsive', tier: k } as Layer, group: 'Responsive' })),
   ];
   // An option in a state (action: hover) is picked as the option, then the state beside it
   const optionOf   = (l: Layer): Layer => (l.kind === 'variantState' ? { kind: 'variant', axis: l.axis, option: l.option } : l);

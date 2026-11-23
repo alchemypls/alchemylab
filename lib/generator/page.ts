@@ -80,9 +80,60 @@ function alchemySections(ids: string[]) {
       if (to === on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
   };
+  // Going to a section rewrites the page in place where the browser can (View Transitions): the blocks of the section
+  // showing and the one coming are paired by kind and order (the 1st Frame becomes the 1st Frame), each pair keeps its
+  // place and turns into the new one when the pulse from the orb reaches it (1.4px a ms, nearest first); unpaired
+  // ones fade out / flicker in at their turn. Elsewhere, and when calm, the hash just changes.
+  const blocksOf = (id: string): HTMLElement[] => {
+    const sec = document.getElementById(id);
+    if (!sec) return [];
+    const out = Array.prototype.slice.call(sec.children) as HTMLElement[];
+    document.querySelectorAll('[data-sec="' + id + '"]').forEach((el) => out.push(el as HTMLElement));
+    return out;
+  };
+  const kindOf = (el: HTMLElement) => ((el.firstElementChild && el.firstElementChild.className) || 'x').split(' ')[0].replace(/[^a-zA-Z0-9-]/g, '');
+  const nameAll = (els: HTMLElement[]) => {
+    const n: Record<string, number> = {};
+    return els.map((el) => { const k = kindOf(el), i = n[k] || 0; n[k] = i + 1; el.style.setProperty('view-transition-name', 'al-sec-' + k + '-' + i); return el; });
+  };
+  let delays: HTMLStyleElement | null = null;
+  const go = (id: string) => {
+    if (id === current()) return;
+    const vt = (document as unknown as { startViewTransition?: (f: () => void) => { finished: Promise<void> } }).startViewTransition;
+    if (!vt || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { location.hash = id; return; }
+    if (!delays) { delays = document.createElement('style'); document.head.appendChild(delays); }
+    const style = delays;
+    let named = nameAll(blocksOf(current()));
+    const t = vt.call(document, () => {
+      named.forEach((el) => el.style.removeProperty('view-transition-name'));
+      document.documentElement.setAttribute('data-al-rewrite', '');
+      location.hash = id;
+      named = nameAll(blocksOf(id));
+      const orb = document.querySelector('[data-role="orb"]'), o = orb ? orb.getBoundingClientRect() : null;
+      const sx = o && o.width ? o.left + o.width / 2 : window.innerWidth - 80, sy = o && o.width ? o.top + o.height / 2 : window.innerHeight - 80;
+      style.textContent = named.map((el) => {
+        const r = el.getBoundingClientRect(), d = Math.hypot(sx - Math.min(Math.max(sx, r.left), r.right), sy - Math.min(Math.max(sy, r.top), r.bottom));
+        const n = el.style.getPropertyValue('view-transition-name');
+        return '::view-transition-group(' + n + '), ::view-transition-old(' + n + '), ::view-transition-new(' + n + ') { animation-delay: ' + Math.round(d / 1.4) + 'ms; }';
+      }).join('\n');
+      document.dispatchEvent(new CustomEvent('al-projection-pulse'));
+    });
+    t.finished.finally(() => {
+      named.forEach((el) => el.style.removeProperty('view-transition-name'));
+      document.documentElement.removeAttribute('data-al-rewrite');
+      style.textContent = '';
+    });
+  };
+  const onClick = (e: MouseEvent) => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = e.target instanceof Element ? e.target.closest('a[href^="#"]') : null, to = a ? (a.getAttribute('href') || '').slice(1) : '';
+    if (ids.indexOf(to) < 0) return;
+    e.preventDefault();
+    go(to);
+  };
   const step = (d: number) => {
     const j = ids.indexOf(current()) + d;
-    if (j >= 0 && j < ids.length) location.hash = ids[j];
+    if (j >= 0 && j < ids.length) go(ids[j]);
   };
   // Whether something from `el` up (the page last) still has room to scroll toward d (+1 down / -1 up)
   const canScroll = (el: Element | null, d: number): boolean => {
@@ -133,6 +184,7 @@ function alchemySections(ids: string[]) {
     step(d);
   };
   window.addEventListener('hashchange', mark);
+  document.addEventListener('click', onClick);
   document.addEventListener('keydown', onKey);
   window.addEventListener('wheel', onWheel, { passive: true });
   document.addEventListener('touchstart', onTouchStart, { passive: true });
@@ -141,6 +193,49 @@ function alchemySections(ids: string[]) {
 }
 
 // What both outputs share: the components used, the CSS (theme, backdrop, components, the grids and pins per tier),
+// Pages that rewrite in place instead of starting over (View Transitions, where the browser has them): going to another
+// page of the site, a block the two pages share keeps its place and turns into the new one, a block of the same kind
+// the n-th time on each (the 1st Frame becomes the 1st Frame), its pinned blocks stay; the page's own root isn't
+// captured, so nothing fades the whole screen. A page with sections names only its own pins here: a section switch
+// names its blocks as it goes (alchemySections), each rewritten as the projection's pulse reaches it.
+const CARRY_LOOK = [
+  `::view-transition-group(*) { animation-duration: 420ms; animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }`,
+  `::view-transition-old(*) { animation: al-carry-out 180ms ease-out both; }`,
+  `::view-transition-new(*) { animation: al-carry-in 320ms linear both; }`,
+  `@keyframes al-carry-out { to { opacity: 0; } }`,
+  `@keyframes al-carry-in { 0% { opacity: 0; } 30% { opacity: 0.75; } 45% { opacity: 0.4; } 100% { opacity: 1; } }`,
+];
+function carryCss(all: PagePlacement[], cells: PagePlacement[], hasSections: boolean, cls: (p: PagePlacement) => string): string[] {
+  const tag = (s: string) => s.replace(/[^a-zA-Z0-9-]/g, '-').toLowerCase();
+  const n = new Map<string, number>(), name = (pre: string, p: PagePlacement) => { const k = pre + tag(p.componentId ?? 'group'); const i = n.get(k) ?? 0; n.set(k, i + 1); return `al-${k}-${i}`; };
+  const pins = all.filter((p) => p.pin && !isGroup(p));
+  const blocks = hasSections ? [] : cells.filter((p) => !isGroup(p)).sort((a, b) => a.row - b.row || a.col - b.col);
+  return [
+    `@view-transition { navigation: auto; }`,
+    `@media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }`,
+    `:root { view-transition-name: none; }`,
+    ...CARRY_LOOK,
+    ...pins.map((p) => `.${cls(p)} { view-transition-name: ${name('pin-', p)}; }`),
+    ...blocks.map((p) => `.${cls(p)} { view-transition-name: ${name('', p)}; }`),
+  ];
+}
+
+// Is a theme color dark? Hex, rgb() and oklch() (others: not known, so no)
+export function darkColor(v: string | undefined): boolean {
+  if (!v) return false;
+  const lum = (r: number, g: number, b: number) => (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+  const hex = v.trim().match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+  if (hex) {
+    const h = hex[1].length === 3 ? hex[1].split('').map((c) => c + c).join('') : hex[1];
+    return lum(parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)) < 0.35;
+  }
+  const rgb = v.match(/^rgba?\(\s*([\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)/i);
+  if (rgb) return lum(+rgb[1], +rgb[2], +rgb[3]) < 0.35;
+  const ok = v.match(/^oklch\(\s*([\d.]+)(%?)/i);
+  if (ok) return (ok[2] ? +ok[1] / 100 : +ok[1]) < 0.5;
+  return false;
+}
+
 // the grids and the pinned blocks, the links that stay on the page, the script (behaviors, sections)
 function pageParts(page: PageDef, layout: PageLayout, components: Record<string, ProjectComponent>, theme: Theme, meta?: ProjectMeta, sections: PageSection[] = []) {
   const all      = getActivePlacements(layout);
@@ -167,6 +262,10 @@ function pageParts(page: PageDef, layout: PageLayout, components: Record<string,
   const css: string[] = [
     themeToCss(theme),
     `body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-sans); }`,
+    // a dark page says so: the browser's own canvas (before anything paints, between pages, in a frame) is dark too, not
+    // white. Only the scheme: a background on the root would stop the body's reaching the canvas, and the body would
+    // paint its own over the fixed backdrop layers (the sky), as tall as the content
+    ...(darkColor(theme.tokens['color.bg']) ? [`:root { color-scheme: dark; }`] : []),
     ...(backdrop ? [`body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: ${backdrop}; background-size: cover; background-position: center; }`] : []),
     ...(live ? [`.page-live { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden;${live.kind === 'video' ? ' width: 100%; height: 100%; object-fit: cover;' : ''} }`] : []),
     ...used.map((c) => recipeToCss(c.recipe)),
@@ -179,6 +278,7 @@ function pageParts(page: PageDef, layout: PageLayout, components: Record<string,
       ? `.page-main:has(> .page-sec:target:not(#${id})) ~ .${cls(p)} { display: none !important; }`
       : `.page-main:not(:has(> #${id}:target)) ~ .${cls(p)} { display: none !important; }`),
     `:root { --tier: 0; }`,   // 0 phone, 1 tablet, 2 desktop: a value can step per tier, calc(136px + 32px * var(--tier, 0))
+    ...carryCss(all, cells, sections.length > 0, cls),
   ];
   // A block at a tier inside its grid (kept within a group's columns), and its row on the page for a scroll cap
   const listOf = new Map(grids.flatMap((g) => g.all.map((p) => [p, g.all] as const)));

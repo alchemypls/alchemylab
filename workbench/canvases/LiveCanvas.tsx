@@ -10,6 +10,8 @@ import { DeviceBar } from '@/workbench/ui/DeviceBar';
 import { Sheet, SheetSurface } from '@/workbench/ui/SheetShell';
 import { DEVICES, TIER_DEFAULT_DEVICE, TIER_ORDER, TIERS, tierOf, type Tier, type ViewportSize } from '@/lib/devices';
 import { livePath } from '@/lib/live';
+import { projectTheme } from '@/lib/project';
+import { darkColor } from '@/lib/generator/page';
 import { liveChecks, type CheckLevel } from '@/lib/liveChecks';
 
 // Live: the Web canvas's project running for real. The page is the HTML export served at /live/<project>/<route>,
@@ -49,6 +51,9 @@ function LiveProjectCanvas() {
   const setActivePage = useWorkbenchStore((s) => s.setActivePage);
   const { pid, project: maybe } = useCurrentProject();
   const project = maybe!;   // LiveCanvas checked
+  // Under the frame, the page's own background: while the frame swaps pages it's empty for a moment, and white there
+  // flashes on a dark site (the export's color.bg, resolved; white when it's a reference we can't read)
+  const bg = projectTheme(project).tokens['color.bg'], pageBg = bg && !bg.includes('var(') ? bg : '#fff';
   const page = project.pages.find((p) => p.path === project.activePath) ?? project.pages[0];
   const path = page?.path ?? '/';
 
@@ -112,9 +117,9 @@ function LiveProjectCanvas() {
   return (
     <div className="absolute inset-0 bg-[#141312]">
       <SheetSurface sv={sv} grab={false}>
-        <Sheet sv={sv} size={device} className="rounded-[6px] overflow-hidden" style={{ boxShadow: '0 0 0 1px #3f3f46, 0 10px 40px rgba(0,0,0,0.6)', background: '#fff' }}>
+        <Sheet sv={sv} size={device} className="rounded-[6px] overflow-hidden" style={{ boxShadow: '0 0 0 1px #3f3f46, 0 10px 40px rgba(0,0,0,0.6)', background: pageBg }}>
           {project.pages.length ? (
-            <iframe ref={frame} key={pid} src={src} title="Live page" className="block border-0" style={{ width: device.width, height: device.height }} />
+            <iframe ref={frame} key={pid} src={src} title="Live page" className="block border-0" style={{ width: device.width, height: device.height, background: pageBg, colorScheme: darkColor(bg) ? 'dark' : 'light' }} />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-neutral-900 text-neutral-500 text-sm p-8 text-center">This project has no pages yet. Add one on the Web canvas.</div>
           )}

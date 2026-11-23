@@ -1,8 +1,8 @@
 // The export: what people type can't become code, both formats ship the same thing, and layouts cascade mobile-first.
 import { describe, expect, it } from 'vitest';
-import { generatePageHTML, generatePageTSX } from './page';
+import { darkColor, generatePageHTML, generatePageTSX } from './page';
 import { BEHAVIORS, GLOBAL_THEME, recipeByKey, recipeToCss, recipeToMarkup, type ProjectComponent, type PropValues } from '../library';
-import { containerCols, duplicateBlock, placedAt, ungroupBlock, wrapInGroup, layoutEdit, pageSections, reparented, resolvePlacement, upgradeGrid, withTierGeom, type PageDef, type PagePlacement, type ProjectData, type ProjectMeta } from '../project';
+import { containerCols, duplicateBlock, placedAt, roomFor, ungroupBlock, wrapInGroup, layoutEdit, pageSections, reparented, resolvePlacement, upgradeGrid, withTierGeom, type PageDef, type PagePlacement, type ProjectData, type ProjectMeta } from '../project';
 
 const button = recipeByKey('button')!;
 const components: Record<string, ProjectComponent> = { btn: { id: 'btn', projectId: 'p', origin: { recipe: 'button', version: button.version }, recipe: button, tags: [] } };
@@ -63,6 +63,12 @@ describe('page export', () => {
       expect(out).toContain('.page-main { padding: 64px 16px 0px 16px; }');          // desktop: the top is kept clear instead
       expect(out).toContain('max-height: calc(100dvh - 120px)');                      // mobile: 56 reserved + row 1 (32 + 16) + 16
     }
+  });
+
+  it("tells the browser a dark page is dark, so its own canvas is never white between pages", () => {
+    expect(darkColor('#0D0612')).toBe(true); expect(darkColor('oklch(0.13 0.01 260)')).toBe(true);
+    expect(darkColor('#ffffff')).toBe(false); expect(darkColor('rgb(250 250 245)')).toBe(false); expect(darkColor('var(--x)')).toBe(false);
+    expect(generatePageHTML(home, { placements: [cta] }, components, { ...GLOBAL_THEME, tokens: { ...GLOBAL_THEME.tokens, 'color.bg': '#0D0612' } })).toContain(':root { color-scheme: dark; }');   // the scheme only: a root background would cover the backdrop
   });
 
   it("draws the backdrop under the page, and drops one that could break out of the CSS", () => {
@@ -130,7 +136,16 @@ describe('page export', () => {
     expect(out).toMatch(/\.al-button\[data-alive\] \{\n {2}box-shadow: 0 0 8px gold;/);
     expect(out).toContain('[data-behavior~="burst"]');
     expect(out).toContain('[data-behavior~="alive"]');
-    for (const k of ['burst', 'alive', 'leader', 'orb', 'backdrop', 'carousel', 'tabs']) expect(() => new Function(`return ${BEHAVIORS[k].attach.toString()}`)).not.toThrow();   // copied as text: must stand alone
+    for (const k of ['burst', 'alive', 'leader', 'orb', 'backdrop', 'carousel', 'tabs', 'projection', 'cori']) expect(() => new Function(`return ${BEHAVIORS[k].attach.toString()}`)).not.toThrow();   // copied as text: must stand alone
+  });
+
+  it("orders a component's own widths among the tiers: tablet, desktop, then 1248, each a container query", () => {
+    const r = structuredClone(button);
+    r.responsive = { '1248': { root: { gap: 2 } }, tablet: { root: { gap: 1 } }, desktop: { root: { gap: 3 } } };
+    const css = recipeToCss(r), at = (w: number) => css.indexOf(`@container (min-width: ${w}px)`);
+    expect(at(600)).toBeGreaterThan(-1);
+    expect(at(600)).toBeLessThan(at(1024));
+    expect(at(1024)).toBeLessThan(at(1248));
   });
 
   it('steps between sections by keys, wheel and swipe, through the hash', () => {
@@ -141,7 +156,18 @@ describe('page export', () => {
     } as unknown as ProjectData;
     const out = generatePageHTML(project.pages[0], project.layouts['/'], components, GLOBAL_THEME, undefined, pageSections(project, project.pages[0]));
     for (const ev of ['keydown', 'wheel', 'touchend']) expect(out).toMatch(new RegExp(`addEventListener\\(["']${ev}["']`));
-    expect(out).toContain('location.hash = ids[j]');
+    expect(out).toContain('go(ids[j])');
+    expect(out).toContain('startViewTransition');   // a switch rewrites in place where the browser can, else it's the hash
+    expect(out).toContain('location.hash = id;');
+  });
+
+  it('carries blocks from page to page: shared pins and, on a page without sections, its blocks by kind and order', () => {
+    const work = generatePageHTML(home, { placements: [cta, { ...cta, id: 'cta2', row: 2 }, { ...cta, id: 'bar', pin: { at: 'top' } }] }, components, GLOBAL_THEME);
+    expect(work).toContain('@view-transition { navigation: auto; }');
+    expect(work).toMatch(/\.p-cta \{ view-transition-name: al-btn-0; \}/);
+    expect(work).toMatch(/\.p-cta2 \{ view-transition-name: al-btn-1; \}/);
+    expect(work).toMatch(/\.p-bar \{ view-transition-name: al-pin-btn-0; \}/);
+    expect(work).toContain(':root { view-transition-name: none; }');   // never the whole screen
   });
 
   it('ships the orb stick with every zone a real, labelled button, and its runtime', () => {
@@ -192,6 +218,20 @@ describe('layout editing', () => {
     expect(layoutEdit(ps, 'mobile', 'a', { rowSpan: 2 })).toEqual([{ id: 'a', geom: { rowSpan: 2 } }, { id: 'b', geom: { row: 2 } }, { id: 'c', geom: { row: 3 } }]);
     expect(layoutEdit(ps, 'mobile', 'd', { col: 9 })).toEqual([]);   // already at the right edge: kept inside the columns
     expect(layoutEdit(ps, 'tablet', 'a', { col: 8 })).toEqual([{ id: 'a', geom: { col: 8 } }, { id: 'd', geom: { row: 1 } }]);   // tablet: d is cols 9–11
+  });
+
+  it('keeps a block that scrolls inside to one row on every tier, so its area is what it shows', () => {
+    const frame: PagePlacement = { ...at('frame', 0, 2, 8, 12), bounded: true, at: { desktop: { col: 6, colSpan: 12, rowSpan: 9 } } };
+    for (const t of ['mobile', 'tablet', 'desktop'] as const) expect(resolvePlacement(frame, t).rowSpan).toBe(1);
+    expect(layoutEdit([frame], 'mobile', 'frame', { rowSpan: 5 })).toEqual([]);   // a resize can't give it rows it won't fill
+    expect(generatePageHTML(home, { placements: [frame] }, components, GLOBAL_THEME)).toContain('grid-row: 3 / span 1;');
+  });
+
+  it("lands under a block when dropped on its lower half, instead of pushing that block below it", () => {
+    const intro = at('intro', 0, 0, 8, 4), list = at('list', 0, 6, 8, 2);
+    expect(roomFor([intro, list], 'mobile', at('new', 0, 3, 4, 2))).toEqual([{ id: 'new', geom: { row: 4 } }]);
+    expect(layoutEdit([intro, list], 'mobile', 'list', { row: 2 })).toEqual([{ id: 'list', geom: { row: 4 } }]);   // moved onto its lower half
+    expect(layoutEdit([intro, list], 'mobile', 'list', { row: 1 })).toEqual([{ id: 'list', geom: { row: 1 } }, { id: 'intro', geom: { row: 3 } }]);   // upper half: it pushes
   });
 
   it('carries a project on the old grid (4 / 8 / 12, 80px rows) over once: columns and rows double, tablet goes 8 → 12', () => {

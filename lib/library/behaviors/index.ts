@@ -5,6 +5,8 @@ import { alchemyAlive } from './alive';
 import { alchemyLeader } from './leader';
 import { alchemyOrb } from './orb';
 import { alchemyBackdrop } from './backdrop';
+import { alchemyProjection } from './projection';
+import { alchemyCori } from './cori';
 import type { Recipe } from '../recipe';
 
 // ── Behavior catalog ──────────────────────────────────────────────
@@ -52,6 +54,16 @@ export const BEHAVIORS: Record<string, BehaviorDef> = {
     key: 'orb', name: 'Orb stick',
     attach: alchemyOrb,
     support: 'Baseline widely available — Pointer Events + pointer capture, CustomEvent, Element.scrollBy; navigator.vibrate where supported',
+  },
+  projection: {
+    key: 'projection', name: 'Projection (rings from the orb, shimmer, pulse)',
+    attach: alchemyProjection,
+    support: 'Baseline widely available — SVG feTurbulence/feDisplacementMap, CSS filter url(), radial gradients, ResizeObserver, CustomEvent',
+  },
+  cori: {
+    key: 'cori', name: 'Cori (the guide, flying and landing)',
+    attach: alchemyCori,
+    support: 'Baseline widely available — SVG (clipPath, radialGradient spreadMethod), requestAnimationFrame, Element.animate, CustomEvent',
   },
   backdrop: {
     key: 'backdrop', name: 'Live backdrop (sky, video)',

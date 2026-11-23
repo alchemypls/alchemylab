@@ -18,6 +18,9 @@ const defaultProjectMeta: ProjectMeta = {
 };
 
 
+// A tier override without its rows (a block that scrolls inside is one row on every tier)
+const withoutRows = <T extends { rowSpan?: number }>(o: T | undefined): T | undefined => { if (!o) return o; const c = { ...o }; delete c.rowSpan; return c; };
+
 type Pushed = { tier: Tier; edits: { id: string; geom: Partial<PlacementGeom> }[] };
 // Geometry edits applied to a list of placements at a tier (what setPlacementGeoms does, inside another update)
 const push = (ps: PagePlacement[], pushed?: Pushed) => {
@@ -46,8 +49,26 @@ function patchProject(state: { projects: Record<string, ProjectData> }, pid: str
   return p ? { projects: { ...state.projects, [pid]: fn(p) } } : {};
 }
 
-const withLayout = (p: ProjectData, path: string, layout: PageLayout): ProjectData =>
-  ({ ...p, layouts: { ...p.layouts, [path]: layout } });
+const withLayout = (p: ProjectData, path: string, layout: PageLayout): ProjectData => {
+  recordLayout(p.meta.id, path, p.layouts[path], layout);
+  return { ...p, layouts: { ...p.layouts, [path]: layout } };
+};
+
+// ── Layout undo (Web canvas): every layout edit, as the page's layout before and after. Kept here, not persisted or
+// saved. Edits on one page within 400ms are one step (typing a prop). An undo applies only while the page is still what
+// that step left: a change from disk or another tab in between makes the history stale, and it's dropped.
+type LayoutStep = { path: string; before: PageLayout | undefined; after: PageLayout; at: number };
+const layoutHistory = new Map<string, { past: LayoutStep[]; future: LayoutStep[] }>();
+let replaying = false;
+function recordLayout(pid: string, path: string, before: PageLayout | undefined, after: PageLayout) {
+  if (replaying || before === after) return;
+  const h = layoutHistory.get(pid) ?? { past: [], future: [] }, top = h.past[h.past.length - 1], now = Date.now();
+  if (top && top.path === path && top.after === before && now - top.at < 400) { top.after = after; top.at = now; }
+  else h.past.push({ path, before, after, at: now });
+  if (h.past.length > 100) h.past.shift();
+  h.future = [];
+  layoutHistory.set(pid, h);
+}
 
 // Applies a placement array transformer to the active layer (or legacy flat list).
 function patchLayout(
@@ -139,6 +160,10 @@ interface WorkbenchState {
   setPlacementGeoms: (pid: string, pagePath: string, tier: Tier, edits: { id: string; geom: Partial<PlacementGeom> }[]) => void;   // several at once (layoutEdit)
   resetPlacementTier: (pid: string, pagePath: string, placementId: string | null, tier: Exclude<Tier, 'mobile'>) => void;   // null: every block on the page
   addLayer: (pid: string, pagePath: string, name: string) => void;
+  // Undo / redo the last layout edit (any page of the project): the page it changed, or null when there's none (or the
+  // history went stale)
+  undoLayout: (pid: string) => string | null;
+  redoLayout: (pid: string) => string | null;
   removeLayer: (pid: string, pagePath: string, layerId: string) => void;
   setActiveLayer: (pid: string, pagePath: string, layerId: string) => void;
 
@@ -163,6 +188,21 @@ interface WorkbenchState {
   vaultSize:     { width: number; height: number };
   setVaultPosition: (position: { x: number; y: number }) => void;
   setVaultSize:     (size: { width: number; height: number }) => void;
+}
+
+// One step back or forward through a project's layout history, applied straight to the store (see recordLayout)
+function stepLayout(pid: string, dir: 'undo' | 'redo'): string | null {
+  const h = layoutHistory.get(pid), p = useWorkbenchStore.getState().projects[pid];
+  const step = dir === 'undo' ? h?.past[h.past.length - 1] : h?.future[h.future.length - 1];
+  if (!h || !p || !step) return null;
+  if (p.layouts[step.path] !== (dir === 'undo' ? step.after : step.before)) { layoutHistory.delete(pid); return null; }   // changed elsewhere since
+  (dir === 'undo' ? h.past : h.future).pop();
+  (dir === 'undo' ? h.future : h.past).push(step);
+  const layouts = { ...p.layouts }, to = dir === 'undo' ? step.before : step.after;
+  if (to) layouts[step.path] = to; else delete layouts[step.path];
+  replaying = true;
+  try { useWorkbenchStore.setState((s) => ({ projects: { ...s.projects, [pid]: { ...p, layouts } } })); } finally { replaying = false; }
+  return step.path;
 }
 
 export const useWorkbenchStore = create<WorkbenchState>()(
@@ -229,6 +269,9 @@ export const useWorkbenchStore = create<WorkbenchState>()(
 
       setProjectViewport: (pid, viewport) =>
         set((state) => patchProject(state, pid, (p) => ({ ...p, viewport }))),
+
+      undoLayout: (pid) => stepLayout(pid, 'undo'),
+      redoLayout: (pid) => stepLayout(pid, 'redo'),
 
       addPlacement: (pid, pagePath, placement, pushed) =>
         set((state) => patchProject(state, pid, (p) => withLayout(p, pagePath,
@@ -316,6 +359,7 @@ export const useWorkbenchStore = create<WorkbenchState>()(
             name:    patch.name  !== undefined ? (patch.name.trim()  || undefined) : x.name,
             color:   patch.color !== undefined ? (patch.color         || undefined) : x.color,
             bounded: patch.bounded !== undefined ? (patch.bounded || undefined) : x.bounded,
+            ...(patch.bounded && { rowSpan: 1, at: x.at && Object.fromEntries(Object.entries(x.at).map(([t, o]) => [t, withoutRows(o)])) }),   // one row: it grows to what it shows
           } : x)));
         })),
 

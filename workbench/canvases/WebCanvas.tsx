@@ -63,6 +63,7 @@ function WebProjectCanvas() {
   const updateWireframe = useWorkbenchStore((s) => s.updateWireframe);
   const removePlacement = useWorkbenchStore((s) => s.removePlacement);
   const setGeoms = useWorkbenchStore((s) => s.setPlacementGeoms);
+  const undoLayout = useWorkbenchStore((s) => s.undoLayout), redoLayout = useWorkbenchStore((s) => s.redoLayout);
   const setInstance     = useWorkbenchStore((s) => s.setPlacementInstance);
   const setPin          = useWorkbenchStore((s) => s.setPlacementPin);
   const resetTier       = useWorkbenchStore((s) => s.resetPlacementTier);
@@ -144,6 +145,12 @@ function WebProjectCanvas() {
       const i = ['1', '2', '3'].indexOf(e.key);
       if (i >= 0 && !e.ctrlKey && !e.metaKey && !e.altKey) { e.preventDefault(); setLayer(WEB_LAYERS[i].id); return; }
       if (wiring) return vt.onKey(e);
+      if (laying && (e.ctrlKey || e.metaKey) && !e.altKey && (e.key.toLowerCase() === 'z' || e.key.toLowerCase() === 'y')) {   // undo / redo a layout edit
+        e.preventDefault();
+        const back = e.key.toLowerCase() === 'z' && !e.shiftKey, path = back ? undoLayout(pid) : redoLayout(pid);
+        if (path && page && path !== page.path) setActivePage(pid, path);   // the step was on another page: show it
+        return;
+      }
       if (laying && block && page && (e.ctrlKey || e.metaKey) && !e.altKey) {   // the menu's keys: duplicate, group, ungroup
         const k = e.key.toLowerCase();
         if (k === 'd') { e.preventDefault(); blockActions.duplicate(block); return; }
@@ -158,7 +165,7 @@ function WebProjectCanvas() {
         e.preventDefault();
         const g = placedAt(gridPlacements, p, tier), d = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] }[e.key] ?? [0, 0];
         const patch = e.shiftKey ? { colSpan: g.colSpan + d[0], rowSpan: g.rowSpan + d[1] } : { col: g.col + d[0], row: g.row + d[1] };
-        const edits = layoutEdit(gridPlacements, tier, p.id, patch);
+        const edits = layoutEdit(gridPlacements, tier, p.id, patch, false);
         if (edits.length) setGeoms(pid, page.path, tier, edits);
       }
       else if (e.key.toLowerCase() === 'v') setLayoutTool('select');

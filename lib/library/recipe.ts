@@ -93,6 +93,11 @@ export interface VariantAxis {
   states?: Record<string, Partial<Record<StateName, PartStyles>>>;
 }
 
+// A responsive delta's key: a tier, or a container width in px ("1248")
+export type ResponsiveKey = 'tablet' | 'desktop' | `${number}`;
+export const widthKeys = (r: Recipe): `${number}`[] =>
+  (Object.keys(r.responsive ?? {}).filter((k) => /^\d+$/.test(k)) as `${number}`[]).sort((a, b) => Number(a) - Number(b));
+
 export type StateName = 'hover' | 'press' | 'focus' | 'disabled' | 'checked' | 'open' | 'invalid' | 'current' | 'selected'
                       | 'alive';   // lit by a behavior (data-alive): the launch button, the section's rail dot, Cori speaking
 
@@ -122,8 +127,9 @@ export interface Recipe {
   states:      Partial<Record<StateName, PartStyles>>;
   transition?: { duration: V; ease: V };   // applied to state changes; under prefers-reduced-motion only colors and
                                            // opacity fade, nothing moves or scales (css.ts, "calm")
-  // Mobile-first style deltas per wider tier (same tiers as layouts: ≥600 / ≥1024)
-  responsive?: Partial<Record<'tablet' | 'desktop', PartStyles>>;
+  // Mobile-first style deltas per wider tier (same tiers as layouts: ≥600 / ≥1024), or from a width of the component's
+  // own ("1248": its content area at least 1248px wide), for a layout that needs more room than a tier gives
+  responsive?: Partial<Record<ResponsiveKey, PartStyles>>;
   // Runtime behaviors (lib/library/behaviors) — the JSON names a behavior + its settings, never code.
   // Settings may bind props ("{prop.loop}"); parts the runtime needs carry a `data-role` attr.
   behaviors?:  BehaviorUse[];

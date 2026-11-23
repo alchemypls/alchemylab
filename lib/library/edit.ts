@@ -1,4 +1,4 @@
-import { Recipe, Part, Style, StateName, walkParts } from './recipe';
+import { Recipe, Part, Style, StateName, walkParts, type ResponsiveKey } from './recipe';
 
 // ── Recipe editing — pure, immutable helpers ─────────────────────
 // A recipe's styling lives in three kinds of layer: the base (each part's own style), a variant
@@ -11,7 +11,7 @@ export type Layer =
   | { kind: 'variantState'; axis: string; option: string; state: StateName }   // one option in one state
   | { kind: 'state'; state: StateName }                       // whole component in that state
   | { kind: 'partState'; state: StateName }                   // each part's OWN state (part.states)
-  | { kind: 'responsive'; tier: 'tablet' | 'desktop' };       // mobile-first delta from that width up
+  | { kind: 'responsive'; tier: ResponsiveKey };              // mobile-first delta from that tier or width up
 
 export const STATE_NAMES: StateName[] = ['hover', 'press', 'focus', 'disabled', 'checked', 'open', 'invalid', 'current', 'selected', 'alive'];
 

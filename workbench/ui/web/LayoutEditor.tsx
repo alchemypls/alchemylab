@@ -79,6 +79,10 @@ export function LayoutEditor({ pid, path, placements, tier, ins, width, componen
             <span className={`text-[12px] font-sans truncate ${comp ? 'text-neutral-800' : 'text-rose-700'}`}>{name}</span>
             <span className="ml-auto text-[10px] font-mono text-neutral-500 shrink-0">{g.hidden ? `hidden on ${tierLabel}` : `${g.col + 1}–${g.col + g.colSpan}`}</span>
             {custom && <span className="absolute bottom-1 left-2 text-[9px] font-mono uppercase tracking-widest text-indigo-600" title={`Placed its own way on ${tierLabel}`}>● {tierLabel}</span>}
+            {p.bounded && !g.hidden && (
+              // it stops at the screen's height in Live and scrolls inside: its bottom edge is that cap when the content is longer
+              <span className="absolute bottom-1 right-2 text-[9px] font-mono uppercase tracking-widest text-indigo-600" title="Scrolls inside: never taller than the screen, as tall as its content below that">scrolls inside ↓</span>
+            )}
           </div>
         )}
         {!g.hidden && inner}

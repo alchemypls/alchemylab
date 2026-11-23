@@ -90,6 +90,15 @@ type Cell = { id: string; col: number; row: number; colSpan: number; rowSpan: nu
 const overlaps = (a: Cell, b: Cell) =>
   a.col < b.col + b.colSpan && b.col < a.col + a.colSpan && a.row < b.row + b.rowSpan && b.row < a.row + a.rowSpan;
 
+// Where a dropped block lands: on the lower half of a block it goes under that block instead of pushing it down,
+// again and again (dropped just under a block's middle, it means "after this one")
+export function landing(cells: Cell[], moved: Cell): Cell {
+  const at = { ...moved };
+  for (let hit = cells.find((c) => c.id !== at.id && overlaps(c, at) && at.row >= c.row + c.rowSpan / 2); hit;
+    hit = cells.find((c) => c.id !== at.id && overlaps(c, at) && at.row >= c.row + c.rowSpan / 2)) at.row = hit.row + hit.rowSpan;
+  return at;
+}
+
 // The blocks pushed down out of the way of `moved` (as it lands), each only as far as it must, top to bottom, so a
 // pushed block pushes the ones under it in turn. Nothing moves up.
 export function makeRoom(cells: Cell[], moved: Cell): { id: string; row: number }[] {
@@ -111,28 +120,28 @@ function siblingCells(placements: PagePlacement[], tier: Tier, p: PagePlacement)
 
 // One block's new geometry at a tier (kept inside its container's columns), and the blocks beside it that it pushes
 // down: every grid edit as the list of geometry patches to apply together. Pinned and hidden blocks stay put.
-export function layoutEdit(placements: PagePlacement[], tier: Tier, id: string, patch: Partial<Cell>): { id: string; geom: Partial<PlacementGeom> }[] {
+export function layoutEdit(placements: PagePlacement[], tier: Tier, id: string, patch: Partial<Cell>, land = true): { id: string; geom: Partial<PlacementGeom> }[] {
   const p = placements.find((x) => x.id === id);
   if (!p || p.pin) return [];
   const cols = containerCols(placements, parentOf(placements, p), tier), cells = siblingCells(placements, tier, p);
   const was = cells.find((c) => c.id === id);
   if (!was) return [];
   const colSpan = Math.max(1, Math.min(cols, patch.colSpan ?? was.colSpan));
-  const next: Cell = {
-    id, colSpan, rowSpan: Math.max(1, patch.rowSpan ?? was.rowSpan),
-    col: Math.max(0, Math.min(cols - colSpan, patch.col ?? was.col)), row: Math.max(0, patch.row ?? was.row),
-  };
+  const rowSpan = p.bounded ? 1 : Math.max(1, patch.rowSpan ?? was.rowSpan);   // a block that scrolls inside is as tall as it shows
+  const asked: Cell = { id, colSpan, rowSpan, col: Math.max(0, Math.min(cols - colSpan, patch.col ?? was.col)), row: Math.max(0, patch.row ?? was.row) };
+  const next = land && rowSpan === was.rowSpan ? landing(cells, asked) : asked;   // a drop lands; a resize or a key nudge (one row at a time) takes what it's given
   const geom: Partial<PlacementGeom> = {};
   for (const k of ['col', 'row', 'colSpan', 'rowSpan'] as const) if (next[k] !== was[k]) geom[k] = next[k];
   if (!Object.keys(geom).length) return [];
   return [{ id, geom }, ...makeRoom(cells, next).map((m) => ({ id: m.id, geom: { row: m.row } }))];
 }
 
-// A new block's landing: the blocks it lands on move down
+// A new block's landing: under a block whose lower half it's dropped on, and the blocks it then lands on move down
 export function roomFor(placements: PagePlacement[], tier: Tier, added: PagePlacement): { id: string; geom: Partial<PlacementGeom> }[] {
   const all = placements.some((x) => x.id === added.id) ? placements : [...placements, added], g = placedAt(all, added, tier);
   const cells = siblingCells(all, tier, added);
-  return makeRoom(cells, { id: added.id, col: g.col, row: g.row, colSpan: g.colSpan, rowSpan: g.rowSpan }).map((m) => ({ id: m.id, geom: { row: m.row } }));
+  const lands = landing(cells, { id: added.id, col: g.col, row: g.row, colSpan: g.colSpan, rowSpan: g.rowSpan });
+  return [...(lands.row !== g.row ? [{ id: added.id, geom: { row: lands.row } }] : []), ...makeRoom(cells, lands).map((m) => ({ id: m.id, geom: { row: m.row } }))];
 }
 
 // ── Pinned blocks — fixed to the viewport, outside the grid ──────
@@ -190,7 +199,8 @@ interface PlacementBase extends PlacementGeom {
   color?:   string;   // workbench-only block colour on the Artboard (planning aid, never emitted)
   options?: Record<string, string>;            // variant axis → option
   props?:   Record<string, string | boolean | ListItem[]>;  // prop name → value (lists: nav links…)
-  bounded?: boolean;   // scrolls inside itself, never taller than the screen between the kept-clear edges
+  bounded?: boolean;   // scrolls inside itself, never taller than the screen between the kept-clear edges; always one row
+                       // (resolvePlacement), which grows to what it shows, so its area is exactly what's drawn
   parent?:  string;    // the group it sits in (its col/row count inside the group); unset = the page
   at?: Partial<Record<Exclude<Tier, 'mobile'>, Partial<PlacementGeom>>>;
 }
@@ -213,7 +223,7 @@ export function resolvePlacement(p: PagePlacement, tier: Tier): PlacementGeom {
     if (o) { g = { ...g, ...o }; g.colSpan = Math.max(1, Math.min(n, g.colSpan)); g.col = Math.max(0, Math.min(n - g.colSpan, g.col)); }
     cols = n;
   }
-  return g;
+  return p.bounded ? { ...g, rowSpan: 1 } : g;   // one row that grows to what it shows (content, capped by the screen): no rows it never fills
 }
 
 // What a tier would show without its own override (the tiers below, scaled)

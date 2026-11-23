@@ -1,4 +1,4 @@
-import { Recipe, Part, Style, StateName, PartStyles, walkParts } from './recipe';
+import { Recipe, Part, Style, StateName, PartStyles, walkParts, widthKeys } from './recipe';
 import { Theme, isTokenRef, tokenName } from './theme';
 import { TIERS } from '../devices';
 
@@ -171,7 +171,9 @@ function recipeRules(r: Recipe): string {
   // CONTAINER queries, not media queries: a component responds to the width it's given, so an
   // iPhone-sized preview inside a wide editor window still shows the phone layout. Pages (and
   // the workbench previews) mark their content area `container-type: inline-size`.
-  for (const t of TIERS.slice(1) as { id: 'tablet' | 'desktop'; minWidth: number }[]) {
+  const steps = [...(TIERS.slice(1) as { id: 'tablet' | 'desktop'; minWidth: number }[]),
+    ...widthKeys(r).map((k) => ({ id: k, minWidth: Number(k) }))].sort((a, b) => a.minWidth - b.minWidth);
+  for (const t of steps) {
     const styles = r.responsive?.[t.id];
     if (!styles || !Object.keys(styles).length) continue;
     const inner = partRules(r, root, styles).filter(Boolean).map((x) => x.replace(/^/gm, '  '));
