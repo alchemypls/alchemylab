@@ -1,0 +1,182 @@
+{
+  "kind": "shape",
+  "title": "Screen: site, docked (Star-Survey)",
+  "updated": "2026-11-22",
+  "project": "star-survey",
+  "blocks": [],
+  "size": {
+    "width": 960,
+    "height": 540
+  },
+  "elements": [
+    {
+      "id": "site-bounds",
+      "type": "rect",
+      "name": "bounds",
+      "x": 0,
+      "y": 0,
+      "w": 960,
+      "h": 540,
+      "fill": "none",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "layer": "sky"
+    },
+    {
+      "type": "asset",
+      "name": "sky",
+      "asset": "ss-sky",
+      "x": 0,
+      "y": 0,
+      "w": 960,
+      "h": 540,
+      "layer": "sky",
+      "id": "site-1"
+    },
+    {
+      "type": "asset",
+      "name": "rail",
+      "asset": "ss-rail",
+      "x": 330.0,
+      "y": 14,
+      "w": 300,
+      "h": 42,
+      "layers": [
+        "base",
+        "cur-0",
+        "projection"
+      ],
+      "layer": "shell",
+      "id": "site-2"
+    },
+    {
+      "type": "asset",
+      "name": "comms",
+      "asset": "ss-comms",
+      "x": 714,
+      "y": 12,
+      "w": 230,
+      "h": 24,
+      "layer": "shell",
+      "id": "site-3"
+    },
+    {
+      "type": "asset",
+      "name": "readout",
+      "asset": "ss-readout",
+      "x": 24,
+      "y": 478,
+      "w": 150,
+      "h": 44,
+      "texts": {
+        "title": "ABOUT"
+      },
+      "layer": "shell",
+      "id": "site-4"
+    },
+    {
+      "type": "asset",
+      "name": "about frame",
+      "asset": "ss-frame-reading",
+      "x": 345.0,
+      "y": 110,
+      "w": 270,
+      "h": 280,
+      "layer": "about",
+      "id": "site-5"
+    },
+    {
+      "type": "asset",
+      "name": "mission frame",
+      "asset": "ss-frame-reading",
+      "x": 345.0,
+      "y": 110,
+      "w": 270,
+      "h": 280,
+      "texts": {
+        "eyebrow": "MISSION 01",
+        "title": "Resurvey the sector",
+        "meta": "PLAY"
+      },
+      "layer": "mission",
+      "id": "site-6"
+    },
+    {
+      "type": "asset",
+      "name": "launch",
+      "asset": "ss-button-action",
+      "x": 361.0,
+      "y": 344,
+      "w": 120,
+      "h": 30,
+      "texts": {
+        "label": "LAUNCH"
+      },
+      "layer": "mission",
+      "id": "site-7"
+    },
+    {
+      "type": "asset",
+      "name": "orb",
+      "asset": "ss-orb",
+      "x": 833.0,
+      "y": 427.5,
+      "w": 126.0,
+      "h": 105.0,
+      "layers": [
+        "glow",
+        "rings",
+        "gear",
+        "field",
+        "button-2",
+        "node",
+        "side"
+      ],
+      "layer": "orb",
+      "id": "site-8"
+    },
+    {
+      "type": "asset",
+      "name": "moth",
+      "asset": "ss-moth",
+      "x": 876.8,
+      "y": 465.2,
+      "w": 38.4,
+      "h": 36.0,
+      "layers": [
+        "art",
+        "projection",
+        "rim"
+      ],
+      "layer": "moth",
+      "id": "site-9"
+    }
+  ],
+  "layers": [
+    {
+      "id": "sky",
+      "name": "Sky (real)"
+    },
+    {
+      "id": "shell",
+      "name": "Shell"
+    },
+    {
+      "id": "about",
+      "name": "Section: About"
+    },
+    {
+      "id": "mission",
+      "name": "Section: Play (mission)",
+      "hidden": true
+    },
+    {
+      "id": "orb",
+      "name": "Orb, docked"
+    },
+    {
+      "id": "moth",
+      "name": "Moth in his tank (the knob)"
+    }
+  ]
+}

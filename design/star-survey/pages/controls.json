@@ -1,3483 +1,935 @@
 {
- "title": "Controls",
- "kicker": "Components",
- "topic": "controls",
- "updated": "2026-11-19",
- "background": "#0b0e16",
- "blocks": [],
- "elements": [
-  {
-   "id": "kicker",
-   "type": "text",
-   "x": 56,
-   "y": 30,
-   "w": 900,
-   "h": 26,
-   "text": "Components \u00b7 decided",
-   "size": 16,
-   "weight": 700,
-   "font": "sans",
-   "color": "#F88F05",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "title",
-   "type": "text",
-   "x": 56,
-   "y": 58,
-   "w": 1300,
-   "h": 72,
-   "text": "",
-   "size": 52,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "top",
-   "bind": {
-    "topic": "controls",
-    "field": "title"
-   }
-  },
-  {
-   "id": "status",
-   "type": "status",
-   "x": 1840,
-   "y": 72,
-   "size": 22,
-   "topic": "controls"
-  },
-  {
-   "id": "back",
-   "type": "text",
-   "x": 1440,
-   "y": 40,
-   "w": 380,
-   "h": 30,
-   "text": "\u2190 Overview",
-   "size": 18,
-   "weight": 600,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "right",
-   "valign": "top",
-   "link": "index"
-  },
-  {
-   "id": "was",
-   "type": "text",
-   "x": 1440,
-   "y": 76,
-   "w": 380,
-   "h": 30,
-   "text": "was: 4 kinds of button \u2192 as-is",
-   "size": 16,
-   "weight": 400,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "right",
-   "valign": "top",
-   "link": "asis-controls"
-  },
-  {
-   "id": "drift",
-   "type": "text",
-   "x": 56,
-   "y": 138,
-   "w": 1808,
-   "h": 60,
-   "text": "One Button, three variants. Square, 1px line, no glow at rest; corner ticks mean \"this is the action\". Bright on the faint frames.",
-   "size": 22,
-   "weight": 400,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "l-1",
-   "type": "line",
-   "name": "rule",
-   "from": {
-    "x": 56,
-    "y": 212
-   },
-   "to": {
-    "x": 1864,
-    "y": 212
-   },
-   "stroke": "#262c3b",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "t-2",
-   "type": "text",
-   "x": 56,
-   "y": 232,
-   "w": 1150,
-   "h": 24,
-   "text": "Three variants \u00d7 five states",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "r-3",
-   "type": "rect",
-   "name": "matrix ground",
-   "x": 56,
-   "y": 266,
-   "w": 1180,
-   "h": 300,
-   "fill": "#0D0612",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 4
-  },
-  {
-   "id": "r-4",
-   "type": "rect",
-   "name": "matrix wash",
-   "x": 56,
-   "y": 266,
-   "w": 1180,
-   "h": 300,
-   "fill": "#3DBDB4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 4,
-   "opacity": 0.04
-  },
-  {
-   "id": "t-5",
-   "type": "text",
-   "x": 246,
-   "y": 278,
-   "w": 176,
-   "h": 18,
-   "text": "REST",
-   "size": 11,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "t-6",
-   "type": "text",
-   "x": 442,
-   "y": 278,
-   "w": 176,
-   "h": 18,
-   "text": "HOVER",
-   "size": 11,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "t-7",
-   "type": "text",
-   "x": 638,
-   "y": 278,
-   "w": 176,
-   "h": 18,
-   "text": "FOCUS",
-   "size": 11,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "t-8",
-   "type": "text",
-   "x": 834,
-   "y": 278,
-   "w": 176,
-   "h": 18,
-   "text": "PRESS",
-   "size": 11,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "t-9",
-   "type": "text",
-   "x": 1030,
-   "y": 278,
-   "w": 176,
-   "h": 18,
-   "text": "DISABLED",
-   "size": 11,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "t-10",
-   "type": "text",
-   "x": 76,
-   "y": 312,
-   "w": 160,
-   "h": 26,
-   "text": "action",
-   "size": 18,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFD03B",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-11",
-   "type": "text",
-   "x": 76,
-   "y": 336,
-   "w": 160,
-   "h": 36,
-   "text": "gold \u00b7 ticks \u00b7 the one thing to do here",
-   "size": 11,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "r-12",
-   "type": "rect",
-   "name": "action rest fill",
-   "x": 254,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.1
-  },
-  {
-   "id": "r-13",
-   "type": "rect",
-   "name": "action rest line",
-   "x": 254,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#FFD03B",
-   "strokeWidth": 1,
-   "opacity": 1
-  },
-  {
-   "id": "l-14",
-   "type": "line",
-   "name": "action rest tick",
-   "from": {
-    "x": 262,
-    "y": 314
-   },
-   "to": {
-    "x": 254,
-    "y": 314
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-15",
-   "type": "line",
-   "name": "action rest tick",
-   "from": {
-    "x": 254,
-    "y": 314
-   },
-   "to": {
-    "x": 254,
-    "y": 322
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-16",
-   "type": "line",
-   "name": "action rest tick",
-   "from": {
-    "x": 406,
-    "y": 314
-   },
-   "to": {
-    "x": 414,
-    "y": 314
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-17",
-   "type": "line",
-   "name": "action rest tick",
-   "from": {
-    "x": 414,
-    "y": 314
-   },
-   "to": {
-    "x": 414,
-    "y": 322
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-18",
-   "type": "line",
-   "name": "action rest tick",
-   "from": {
-    "x": 262,
-    "y": 354
-   },
-   "to": {
-    "x": 254,
-    "y": 354
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-19",
-   "type": "line",
-   "name": "action rest tick",
-   "from": {
-    "x": 254,
-    "y": 354
-   },
-   "to": {
-    "x": 254,
-    "y": 346
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-20",
-   "type": "line",
-   "name": "action rest tick",
-   "from": {
-    "x": 406,
-    "y": 354
-   },
-   "to": {
-    "x": 414,
-    "y": 354
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-21",
-   "type": "line",
-   "name": "action rest tick",
-   "from": {
-    "x": 414,
-    "y": 354
-   },
-   "to": {
-    "x": 414,
-    "y": 346
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "t-22",
-   "type": "text",
-   "x": 254,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "text": "LAUNCH SHIP",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFD03B",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-23",
-   "type": "rect",
-   "name": "action hover glow",
-   "x": 450,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#FFD03B",
-   "strokeWidth": 5,
-   "opacity": 0.28,
-   "fx": [
+  "title": "Controls",
+  "kicker": "Components",
+  "topic": "controls",
+  "updated": "2026-11-22",
+  "background": "#0b0e16",
+  "blocks": [],
+  "elements": [
     {
-     "kind": "blur",
-     "radius": 6
-    }
-   ]
-  },
-  {
-   "id": "r-24",
-   "type": "rect",
-   "name": "action hover fill",
-   "x": 450,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.16
-  },
-  {
-   "id": "r-25",
-   "type": "rect",
-   "name": "action hover line",
-   "x": 450,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#FFD03B",
-   "strokeWidth": 1,
-   "opacity": 1
-  },
-  {
-   "id": "l-26",
-   "type": "line",
-   "name": "action hover tick",
-   "from": {
-    "x": 458,
-    "y": 314
-   },
-   "to": {
-    "x": 450,
-    "y": 314
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-27",
-   "type": "line",
-   "name": "action hover tick",
-   "from": {
-    "x": 450,
-    "y": 314
-   },
-   "to": {
-    "x": 450,
-    "y": 322
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-28",
-   "type": "line",
-   "name": "action hover tick",
-   "from": {
-    "x": 602,
-    "y": 314
-   },
-   "to": {
-    "x": 610,
-    "y": 314
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-29",
-   "type": "line",
-   "name": "action hover tick",
-   "from": {
-    "x": 610,
-    "y": 314
-   },
-   "to": {
-    "x": 610,
-    "y": 322
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-30",
-   "type": "line",
-   "name": "action hover tick",
-   "from": {
-    "x": 458,
-    "y": 354
-   },
-   "to": {
-    "x": 450,
-    "y": 354
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-31",
-   "type": "line",
-   "name": "action hover tick",
-   "from": {
-    "x": 450,
-    "y": 354
-   },
-   "to": {
-    "x": 450,
-    "y": 346
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-32",
-   "type": "line",
-   "name": "action hover tick",
-   "from": {
-    "x": 602,
-    "y": 354
-   },
-   "to": {
-    "x": 610,
-    "y": 354
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-33",
-   "type": "line",
-   "name": "action hover tick",
-   "from": {
-    "x": 610,
-    "y": 354
-   },
-   "to": {
-    "x": 610,
-    "y": 346
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "t-34",
-   "type": "text",
-   "x": 450,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "text": "LAUNCH SHIP",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFD03B",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-35",
-   "type": "rect",
-   "name": "action focus glow",
-   "x": 646,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#FFD03B",
-   "strokeWidth": 5,
-   "opacity": 0.28,
-   "fx": [
+      "id": "kicker",
+      "type": "text",
+      "x": 56,
+      "y": 30,
+      "w": 900,
+      "h": 26,
+      "text": "Components · decided",
+      "size": 16,
+      "weight": 700,
+      "font": "sans",
+      "color": "#F88F05",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
     {
-     "kind": "blur",
-     "radius": 6
-    }
-   ]
-  },
-  {
-   "id": "r-36",
-   "type": "rect",
-   "name": "action focus fill",
-   "x": 646,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.16
-  },
-  {
-   "id": "r-37",
-   "type": "rect",
-   "name": "action focus line",
-   "x": 646,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#FFD03B",
-   "strokeWidth": 1,
-   "opacity": 1
-  },
-  {
-   "id": "l-38",
-   "type": "line",
-   "name": "action focus tick",
-   "from": {
-    "x": 654,
-    "y": 314
-   },
-   "to": {
-    "x": 646,
-    "y": 314
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-39",
-   "type": "line",
-   "name": "action focus tick",
-   "from": {
-    "x": 646,
-    "y": 314
-   },
-   "to": {
-    "x": 646,
-    "y": 322
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-40",
-   "type": "line",
-   "name": "action focus tick",
-   "from": {
-    "x": 798,
-    "y": 314
-   },
-   "to": {
-    "x": 806,
-    "y": 314
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-41",
-   "type": "line",
-   "name": "action focus tick",
-   "from": {
-    "x": 806,
-    "y": 314
-   },
-   "to": {
-    "x": 806,
-    "y": 322
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-42",
-   "type": "line",
-   "name": "action focus tick",
-   "from": {
-    "x": 654,
-    "y": 354
-   },
-   "to": {
-    "x": 646,
-    "y": 354
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-43",
-   "type": "line",
-   "name": "action focus tick",
-   "from": {
-    "x": 646,
-    "y": 354
-   },
-   "to": {
-    "x": 646,
-    "y": 346
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-44",
-   "type": "line",
-   "name": "action focus tick",
-   "from": {
-    "x": 798,
-    "y": 354
-   },
-   "to": {
-    "x": 806,
-    "y": 354
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-45",
-   "type": "line",
-   "name": "action focus tick",
-   "from": {
-    "x": 806,
-    "y": 354
-   },
-   "to": {
-    "x": 806,
-    "y": 346
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "r-46",
-   "type": "rect",
-   "name": "action focus focus ring",
-   "x": 642,
-   "y": 310,
-   "w": 168,
-   "h": 48,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2
-  },
-  {
-   "id": "t-47",
-   "type": "text",
-   "x": 646,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "text": "LAUNCH SHIP",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFD03B",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-48",
-   "type": "rect",
-   "name": "action press glow",
-   "x": 842,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#FFD03B",
-   "strokeWidth": 8,
-   "opacity": 0.45,
-   "fx": [
+      "id": "title",
+      "type": "text",
+      "x": 56,
+      "y": 58,
+      "w": 1300,
+      "h": 72,
+      "text": "",
+      "size": 52,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "top",
+      "bind": {
+        "topic": "controls",
+        "field": "title"
+      }
+    },
     {
-     "kind": "blur",
-     "radius": 9
-    }
-   ]
-  },
-  {
-   "id": "r-49",
-   "type": "rect",
-   "name": "action press fill",
-   "x": 842,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.22
-  },
-  {
-   "id": "r-50",
-   "type": "rect",
-   "name": "action press line",
-   "x": 842,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#FFD03B",
-   "strokeWidth": 1,
-   "opacity": 1
-  },
-  {
-   "id": "l-51",
-   "type": "line",
-   "name": "action press tick",
-   "from": {
-    "x": 850,
-    "y": 314
-   },
-   "to": {
-    "x": 842,
-    "y": 314
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-52",
-   "type": "line",
-   "name": "action press tick",
-   "from": {
-    "x": 842,
-    "y": 314
-   },
-   "to": {
-    "x": 842,
-    "y": 322
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-53",
-   "type": "line",
-   "name": "action press tick",
-   "from": {
-    "x": 994,
-    "y": 314
-   },
-   "to": {
-    "x": 1002,
-    "y": 314
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-54",
-   "type": "line",
-   "name": "action press tick",
-   "from": {
-    "x": 1002,
-    "y": 314
-   },
-   "to": {
-    "x": 1002,
-    "y": 322
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-55",
-   "type": "line",
-   "name": "action press tick",
-   "from": {
-    "x": 850,
-    "y": 354
-   },
-   "to": {
-    "x": 842,
-    "y": 354
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-56",
-   "type": "line",
-   "name": "action press tick",
-   "from": {
-    "x": 842,
-    "y": 354
-   },
-   "to": {
-    "x": 842,
-    "y": 346
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-57",
-   "type": "line",
-   "name": "action press tick",
-   "from": {
-    "x": 994,
-    "y": 354
-   },
-   "to": {
-    "x": 1002,
-    "y": 354
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-58",
-   "type": "line",
-   "name": "action press tick",
-   "from": {
-    "x": 1002,
-    "y": 354
-   },
-   "to": {
-    "x": 1002,
-    "y": 346
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "e-59",
-   "type": "ellipse",
-   "name": "action press spark 0",
-   "x": 868.8,
-   "y": 324,
-   "w": 4,
-   "h": 4,
-   "fill": "#F88F05",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "e-60",
-   "type": "ellipse",
-   "name": "action press spark 1",
-   "x": 888,
-   "y": 336.8,
-   "w": 4,
-   "h": 4,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "e-61",
-   "type": "ellipse",
-   "name": "action press spark 2",
-   "x": 955.2,
-   "y": 323.2,
-   "w": 4,
-   "h": 4,
-   "fill": "#E54F29",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "e-62",
-   "type": "ellipse",
-   "name": "action press spark 3",
-   "x": 974.4,
-   "y": 338.4,
-   "w": 4,
-   "h": 4,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "e-63",
-   "type": "ellipse",
-   "name": "action press spark 4",
-   "x": 928,
-   "y": 320,
-   "w": 4,
-   "h": 4,
-   "fill": "#F88F05",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "e-64",
-   "type": "ellipse",
-   "name": "action press spark 5",
-   "x": 912,
-   "y": 342,
-   "w": 4,
-   "h": 4,
-   "fill": "#E54F29",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "t-65",
-   "type": "text",
-   "x": 842,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "text": "LAUNCH SHIP",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFD03B",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-66",
-   "type": "rect",
-   "name": "action disabled fill",
-   "x": 1038,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "fill": "#9783A0",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.06
-  },
-  {
-   "id": "r-67",
-   "type": "rect",
-   "name": "action disabled line",
-   "x": 1038,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#9783A0",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "t-68",
-   "type": "text",
-   "x": 1038,
-   "y": 314,
-   "w": 160,
-   "h": 40,
-   "text": "LAUNCH SHIP",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#9783A0",
-   "align": "center",
-   "valign": "middle",
-   "opacity": 0.7
-  },
-  {
-   "id": "t-69",
-   "type": "text",
-   "x": 76,
-   "y": 396,
-   "w": 160,
-   "h": 26,
-   "text": "quiet",
-   "size": 18,
-   "weight": 700,
-   "font": "sans",
-   "color": "#3DBDB4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-70",
-   "type": "text",
-   "x": 76,
-   "y": 420,
-   "w": 160,
-   "h": 36,
-   "text": "signal line \u00b7 HUD, close, secondary",
-   "size": 11,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "r-71",
-   "type": "rect",
-   "name": "quiet rest line",
-   "x": 254,
-   "y": 398,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.4
-  },
-  {
-   "id": "t-72",
-   "type": "text",
-   "x": 254,
-   "y": 398,
-   "w": 160,
-   "h": 40,
-   "text": "DISENGAGE",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-73",
-   "type": "rect",
-   "name": "quiet hover glow",
-   "x": 450,
-   "y": 398,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 5,
-   "opacity": 0.28,
-   "fx": [
+      "id": "status",
+      "type": "status",
+      "x": 1840,
+      "y": 72,
+      "size": 22,
+      "topic": "controls"
+    },
     {
-     "kind": "blur",
-     "radius": 6
-    }
-   ]
-  },
-  {
-   "id": "r-74",
-   "type": "rect",
-   "name": "quiet hover fill",
-   "x": 450,
-   "y": 398,
-   "w": 160,
-   "h": 40,
-   "fill": "#3DBDB4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.08
-  },
-  {
-   "id": "r-75",
-   "type": "rect",
-   "name": "quiet hover line",
-   "x": 450,
-   "y": 398,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.8
-  },
-  {
-   "id": "t-76",
-   "type": "text",
-   "x": 450,
-   "y": 398,
-   "w": 160,
-   "h": 40,
-   "text": "DISENGAGE",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFF4E3",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-77",
-   "type": "rect",
-   "name": "quiet focus glow",
-   "x": 646,
-   "y": 398,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 5,
-   "opacity": 0.28,
-   "fx": [
+      "id": "back",
+      "type": "text",
+      "x": 1440,
+      "y": 40,
+      "w": 380,
+      "h": 30,
+      "text": "← Overview",
+      "size": 18,
+      "weight": 600,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "right",
+      "valign": "top",
+      "link": "index"
+    },
     {
-     "kind": "blur",
-     "radius": 6
-    }
-   ]
-  },
-  {
-   "id": "r-78",
-   "type": "rect",
-   "name": "quiet focus fill",
-   "x": 646,
-   "y": 398,
-   "w": 160,
-   "h": 40,
-   "fill": "#3DBDB4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.08
-  },
-  {
-   "id": "r-79",
-   "type": "rect",
-   "name": "quiet focus line",
-   "x": 646,
-   "y": 398,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.8
-  },
-  {
-   "id": "r-80",
-   "type": "rect",
-   "name": "quiet focus focus ring",
-   "x": 642,
-   "y": 394,
-   "w": 168,
-   "h": 48,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2
-  },
-  {
-   "id": "t-81",
-   "type": "text",
-   "x": 646,
-   "y": 398,
-   "w": 160,
-   "h": 40,
-   "text": "DISENGAGE",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFF4E3",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-82",
-   "type": "rect",
-   "name": "quiet press glow",
-   "x": 842,
-   "y": 398,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 8,
-   "opacity": 0.45,
-   "fx": [
+      "id": "was",
+      "type": "text",
+      "x": 1440,
+      "y": 76,
+      "w": 380,
+      "h": 30,
+      "text": "was: 4 kinds of button → as-is",
+      "size": 16,
+      "weight": 400,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "right",
+      "valign": "top",
+      "link": "asis-controls"
+    },
     {
-     "kind": "blur",
-     "radius": 9
-    }
-   ]
-  },
-  {
-   "id": "r-83",
-   "type": "rect",
-   "name": "quiet press fill",
-   "x": 842,
-   "y": 398,
-   "w": 160,
-   "h": 40,
-   "fill": "#3DBDB4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.14
-  },
-  {
-   "id": "r-84",
-   "type": "rect",
-   "name": "quiet press line",
-   "x": 842,
-   "y": 398,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.8
-  },
-  {
-   "id": "e-85",
-   "type": "ellipse",
-   "name": "quiet press spark 0",
-   "x": 868.8,
-   "y": 408,
-   "w": 4,
-   "h": 4,
-   "fill": "#F88F05",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "e-86",
-   "type": "ellipse",
-   "name": "quiet press spark 1",
-   "x": 888,
-   "y": 420.8,
-   "w": 4,
-   "h": 4,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "e-87",
-   "type": "ellipse",
-   "name": "quiet press spark 2",
-   "x": 955.2,
-   "y": 407.2,
-   "w": 4,
-   "h": 4,
-   "fill": "#E54F29",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "e-88",
-   "type": "ellipse",
-   "name": "quiet press spark 3",
-   "x": 974.4,
-   "y": 422.4,
-   "w": 4,
-   "h": 4,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "e-89",
-   "type": "ellipse",
-   "name": "quiet press spark 4",
-   "x": 928,
-   "y": 404,
-   "w": 4,
-   "h": 4,
-   "fill": "#F88F05",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "e-90",
-   "type": "ellipse",
-   "name": "quiet press spark 5",
-   "x": 912,
-   "y": 426,
-   "w": 4,
-   "h": 4,
-   "fill": "#E54F29",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "t-91",
-   "type": "text",
-   "x": 842,
-   "y": 398,
-   "w": 160,
-   "h": 40,
-   "text": "DISENGAGE",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFF4E3",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-92",
-   "type": "rect",
-   "name": "quiet disabled line",
-   "x": 1038,
-   "y": 398,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#9783A0",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "t-93",
-   "type": "text",
-   "x": 1038,
-   "y": 398,
-   "w": 160,
-   "h": 40,
-   "text": "DISENGAGE",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#9783A0",
-   "align": "center",
-   "valign": "middle",
-   "opacity": 0.7
-  },
-  {
-   "id": "t-94",
-   "type": "text",
-   "x": 76,
-   "y": 480,
-   "w": 160,
-   "h": 26,
-   "text": "danger",
-   "size": 18,
-   "weight": 700,
-   "font": "sans",
-   "color": "#E54F29",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-95",
-   "type": "text",
-   "x": 76,
-   "y": 504,
-   "w": 160,
-   "h": 36,
-   "text": "ember \u00b7 can't be undone",
-   "size": 11,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "r-96",
-   "type": "rect",
-   "name": "danger rest line",
-   "x": 254,
-   "y": 482,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#E54F29",
-   "strokeWidth": 1,
-   "opacity": 0.4
-  },
-  {
-   "id": "t-97",
-   "type": "text",
-   "x": 254,
-   "y": 482,
-   "w": 160,
-   "h": 40,
-   "text": "RESET",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-98",
-   "type": "rect",
-   "name": "danger hover glow",
-   "x": 450,
-   "y": 482,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#E54F29",
-   "strokeWidth": 5,
-   "opacity": 0.28,
-   "fx": [
+      "id": "drift",
+      "type": "text",
+      "x": 56,
+      "y": 138,
+      "w": 1808,
+      "h": 60,
+      "text": "One Button, two variants. Square, 1px line, no glow at rest; corner ticks mean \"this is the action\". Bright on the faint frames.",
+      "size": 22,
+      "weight": 400,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top"
+    },
     {
-     "kind": "blur",
-     "radius": 6
-    }
-   ]
-  },
-  {
-   "id": "r-99",
-   "type": "rect",
-   "name": "danger hover fill",
-   "x": 450,
-   "y": 482,
-   "w": 160,
-   "h": 40,
-   "fill": "#E54F29",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.08
-  },
-  {
-   "id": "r-100",
-   "type": "rect",
-   "name": "danger hover line",
-   "x": 450,
-   "y": 482,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#E54F29",
-   "strokeWidth": 1,
-   "opacity": 0.8
-  },
-  {
-   "id": "t-101",
-   "type": "text",
-   "x": 450,
-   "y": 482,
-   "w": 160,
-   "h": 40,
-   "text": "RESET",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#E54F29",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-102",
-   "type": "rect",
-   "name": "danger focus glow",
-   "x": 646,
-   "y": 482,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#E54F29",
-   "strokeWidth": 5,
-   "opacity": 0.28,
-   "fx": [
+      "id": "l-1",
+      "type": "line",
+      "name": "rule",
+      "from": {
+        "x": 56,
+        "y": 212
+      },
+      "to": {
+        "x": 1864,
+        "y": 212
+      },
+      "stroke": "#262c3b",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
     {
-     "kind": "blur",
-     "radius": 6
-    }
-   ]
-  },
-  {
-   "id": "r-103",
-   "type": "rect",
-   "name": "danger focus fill",
-   "x": 646,
-   "y": 482,
-   "w": 160,
-   "h": 40,
-   "fill": "#E54F29",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.08
-  },
-  {
-   "id": "r-104",
-   "type": "rect",
-   "name": "danger focus line",
-   "x": 646,
-   "y": 482,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#E54F29",
-   "strokeWidth": 1,
-   "opacity": 0.8
-  },
-  {
-   "id": "r-105",
-   "type": "rect",
-   "name": "danger focus focus ring",
-   "x": 642,
-   "y": 478,
-   "w": 168,
-   "h": 48,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2
-  },
-  {
-   "id": "t-106",
-   "type": "text",
-   "x": 646,
-   "y": 482,
-   "w": 160,
-   "h": 40,
-   "text": "RESET",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#E54F29",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-107",
-   "type": "rect",
-   "name": "danger press glow",
-   "x": 842,
-   "y": 482,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#E54F29",
-   "strokeWidth": 8,
-   "opacity": 0.45,
-   "fx": [
+      "id": "t-2",
+      "type": "text",
+      "x": 56,
+      "y": 232,
+      "w": 1150,
+      "h": 24,
+      "text": "Two variants × five states",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
     {
-     "kind": "blur",
-     "radius": 9
-    }
-   ]
-  },
-  {
-   "id": "r-108",
-   "type": "rect",
-   "name": "danger press fill",
-   "x": 842,
-   "y": 482,
-   "w": 160,
-   "h": 40,
-   "fill": "#E54F29",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.14
-  },
-  {
-   "id": "r-109",
-   "type": "rect",
-   "name": "danger press line",
-   "x": 842,
-   "y": 482,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#E54F29",
-   "strokeWidth": 1,
-   "opacity": 0.8
-  },
-  {
-   "id": "e-110",
-   "type": "ellipse",
-   "name": "danger press spark 0",
-   "x": 868.8,
-   "y": 492,
-   "w": 4,
-   "h": 4,
-   "fill": "#F88F05",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "e-111",
-   "type": "ellipse",
-   "name": "danger press spark 1",
-   "x": 888,
-   "y": 504.8,
-   "w": 4,
-   "h": 4,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "e-112",
-   "type": "ellipse",
-   "name": "danger press spark 2",
-   "x": 955.2,
-   "y": 491.2,
-   "w": 4,
-   "h": 4,
-   "fill": "#E54F29",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "e-113",
-   "type": "ellipse",
-   "name": "danger press spark 3",
-   "x": 974.4,
-   "y": 506.4,
-   "w": 4,
-   "h": 4,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "e-114",
-   "type": "ellipse",
-   "name": "danger press spark 4",
-   "x": 928,
-   "y": 488,
-   "w": 4,
-   "h": 4,
-   "fill": "#F88F05",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "e-115",
-   "type": "ellipse",
-   "name": "danger press spark 5",
-   "x": 912,
-   "y": 510,
-   "w": 4,
-   "h": 4,
-   "fill": "#E54F29",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.7
-  },
-  {
-   "id": "t-116",
-   "type": "text",
-   "x": 842,
-   "y": 482,
-   "w": 160,
-   "h": 40,
-   "text": "RESET",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#E54F29",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-117",
-   "type": "rect",
-   "name": "danger disabled line",
-   "x": 1038,
-   "y": 482,
-   "w": 160,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#9783A0",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "t-118",
-   "type": "text",
-   "x": 1038,
-   "y": 482,
-   "w": 160,
-   "h": 40,
-   "text": "RESET",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#9783A0",
-   "align": "center",
-   "valign": "middle",
-   "opacity": 0.7
-  },
-  {
-   "id": "t-119",
-   "type": "text",
-   "x": 56,
-   "y": 588,
-   "w": 1150,
-   "h": 24,
-   "text": "Three sizes",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "r-120",
-   "type": "rect",
-   "name": "size sm ground",
-   "x": 56,
-   "y": 618,
-   "w": 375,
-   "h": 120,
-   "fill": "#0D0612",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 4
-  },
-  {
-   "id": "r-121",
-   "type": "rect",
-   "name": "size sm fill",
-   "x": 76,
-   "y": 642,
-   "w": 96,
-   "h": 24,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.1
-  },
-  {
-   "id": "r-122",
-   "type": "rect",
-   "name": "size sm line",
-   "x": 76,
-   "y": 642,
-   "w": 96,
-   "h": 24,
-   "fill": "none",
-   "stroke": "#FFD03B",
-   "strokeWidth": 1,
-   "opacity": 1
-  },
-  {
-   "id": "l-123",
-   "type": "line",
-   "name": "size sm tick",
-   "from": {
-    "x": 82,
-    "y": 642
-   },
-   "to": {
-    "x": 76,
-    "y": 642
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-124",
-   "type": "line",
-   "name": "size sm tick",
-   "from": {
-    "x": 76,
-    "y": 642
-   },
-   "to": {
-    "x": 76,
-    "y": 648
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-125",
-   "type": "line",
-   "name": "size sm tick",
-   "from": {
-    "x": 166,
-    "y": 642
-   },
-   "to": {
-    "x": 172,
-    "y": 642
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-126",
-   "type": "line",
-   "name": "size sm tick",
-   "from": {
-    "x": 172,
-    "y": 642
-   },
-   "to": {
-    "x": 172,
-    "y": 648
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-127",
-   "type": "line",
-   "name": "size sm tick",
-   "from": {
-    "x": 82,
-    "y": 666
-   },
-   "to": {
-    "x": 76,
-    "y": 666
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-128",
-   "type": "line",
-   "name": "size sm tick",
-   "from": {
-    "x": 76,
-    "y": 666
-   },
-   "to": {
-    "x": 76,
-    "y": 660
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-129",
-   "type": "line",
-   "name": "size sm tick",
-   "from": {
-    "x": 166,
-    "y": 666
-   },
-   "to": {
-    "x": 172,
-    "y": 666
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-130",
-   "type": "line",
-   "name": "size sm tick",
-   "from": {
-    "x": 172,
-    "y": 666
-   },
-   "to": {
-    "x": 172,
-    "y": 660
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "t-131",
-   "type": "text",
-   "x": 76,
-   "y": 642,
-   "w": 96,
-   "h": 24,
-   "text": "NEXT",
-   "size": 10,
-   "weight": 400,
-   "font": "mono",
-   "color": "#FFD03B",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "t-132",
-   "type": "text",
-   "x": 188,
-   "y": 640,
-   "w": 120,
-   "h": 28,
-   "text": "sm",
-   "size": 20,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFD03B",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-133",
-   "type": "text",
-   "x": 76,
-   "y": 686,
-   "w": 340,
-   "h": 44,
-   "text": "h 24 \u00b7 px-2 \u00b7 mono 10 caps, wide \u00b7 HUD, dev controls",
-   "size": 12,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "r-134",
-   "type": "rect",
-   "name": "size md ground",
-   "x": 451,
-   "y": 618,
-   "w": 375,
-   "h": 120,
-   "fill": "#0D0612",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 4
-  },
-  {
-   "id": "r-135",
-   "type": "rect",
-   "name": "size md fill",
-   "x": 471,
-   "y": 638,
-   "w": 132,
-   "h": 32,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.1
-  },
-  {
-   "id": "r-136",
-   "type": "rect",
-   "name": "size md line",
-   "x": 471,
-   "y": 638,
-   "w": 132,
-   "h": 32,
-   "fill": "none",
-   "stroke": "#FFD03B",
-   "strokeWidth": 1,
-   "opacity": 1
-  },
-  {
-   "id": "l-137",
-   "type": "line",
-   "name": "size md tick",
-   "from": {
-    "x": 479,
-    "y": 638
-   },
-   "to": {
-    "x": 471,
-    "y": 638
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-138",
-   "type": "line",
-   "name": "size md tick",
-   "from": {
-    "x": 471,
-    "y": 638
-   },
-   "to": {
-    "x": 471,
-    "y": 646
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-139",
-   "type": "line",
-   "name": "size md tick",
-   "from": {
-    "x": 595,
-    "y": 638
-   },
-   "to": {
-    "x": 603,
-    "y": 638
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-140",
-   "type": "line",
-   "name": "size md tick",
-   "from": {
-    "x": 603,
-    "y": 638
-   },
-   "to": {
-    "x": 603,
-    "y": 646
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-141",
-   "type": "line",
-   "name": "size md tick",
-   "from": {
-    "x": 479,
-    "y": 670
-   },
-   "to": {
-    "x": 471,
-    "y": 670
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-142",
-   "type": "line",
-   "name": "size md tick",
-   "from": {
-    "x": 471,
-    "y": 670
-   },
-   "to": {
-    "x": 471,
-    "y": 662
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-143",
-   "type": "line",
-   "name": "size md tick",
-   "from": {
-    "x": 595,
-    "y": 670
-   },
-   "to": {
-    "x": 603,
-    "y": 670
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-144",
-   "type": "line",
-   "name": "size md tick",
-   "from": {
-    "x": 603,
-    "y": 670
-   },
-   "to": {
-    "x": 603,
-    "y": 662
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "t-145",
-   "type": "text",
-   "x": 471,
-   "y": 638,
-   "w": 132,
-   "h": 32,
-   "text": "OPEN",
-   "size": 12,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFD03B",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "t-146",
-   "type": "text",
-   "x": 619,
-   "y": 640,
-   "w": 120,
-   "h": 28,
-   "text": "md",
-   "size": 20,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFD03B",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-147",
-   "type": "text",
-   "x": 471,
-   "y": 686,
-   "w": 340,
-   "h": 44,
-   "text": "h 32 \u00b7 px-4 \u00b7 Rajdhani 600 12 caps, spaced \u00b7 menus, close",
-   "size": 12,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "r-148",
-   "type": "rect",
-   "name": "size lg ground",
-   "x": 846,
-   "y": 618,
-   "w": 375,
-   "h": 120,
-   "fill": "#0D0612",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 4
-  },
-  {
-   "id": "r-149",
-   "type": "rect",
-   "name": "size lg fill",
-   "x": 866,
-   "y": 634,
-   "w": 188,
-   "h": 40,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.1
-  },
-  {
-   "id": "r-150",
-   "type": "rect",
-   "name": "size lg line",
-   "x": 866,
-   "y": 634,
-   "w": 188,
-   "h": 40,
-   "fill": "none",
-   "stroke": "#FFD03B",
-   "strokeWidth": 1,
-   "opacity": 1
-  },
-  {
-   "id": "l-151",
-   "type": "line",
-   "name": "size lg tick",
-   "from": {
-    "x": 874,
-    "y": 634
-   },
-   "to": {
-    "x": 866,
-    "y": 634
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-152",
-   "type": "line",
-   "name": "size lg tick",
-   "from": {
-    "x": 866,
-    "y": 634
-   },
-   "to": {
-    "x": 866,
-    "y": 642
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-153",
-   "type": "line",
-   "name": "size lg tick",
-   "from": {
-    "x": 1046,
-    "y": 634
-   },
-   "to": {
-    "x": 1054,
-    "y": 634
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-154",
-   "type": "line",
-   "name": "size lg tick",
-   "from": {
-    "x": 1054,
-    "y": 634
-   },
-   "to": {
-    "x": 1054,
-    "y": 642
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-155",
-   "type": "line",
-   "name": "size lg tick",
-   "from": {
-    "x": 874,
-    "y": 674
-   },
-   "to": {
-    "x": 866,
-    "y": 674
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-156",
-   "type": "line",
-   "name": "size lg tick",
-   "from": {
-    "x": 866,
-    "y": 674
-   },
-   "to": {
-    "x": 866,
-    "y": 666
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-157",
-   "type": "line",
-   "name": "size lg tick",
-   "from": {
-    "x": 1046,
-    "y": 674
-   },
-   "to": {
-    "x": 1054,
-    "y": 674
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-158",
-   "type": "line",
-   "name": "size lg tick",
-   "from": {
-    "x": 1054,
-    "y": 674
-   },
-   "to": {
-    "x": 1054,
-    "y": 666
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "t-159",
-   "type": "text",
-   "x": 866,
-   "y": 634,
-   "w": 188,
-   "h": 40,
-   "text": "LAUNCH SHIP",
-   "size": 16,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFD03B",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "t-160",
-   "type": "text",
-   "x": 1070,
-   "y": 640,
-   "w": 120,
-   "h": 28,
-   "text": "lg",
-   "size": 20,
-   "weight": 700,
-   "font": "sans",
-   "color": "#FFD03B",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-161",
-   "type": "text",
-   "x": 866,
-   "y": 686,
-   "w": 340,
-   "h": 44,
-   "text": "h 40 \u00b7 px-6 \u00b7 Rajdhani 700 16 caps, spaced \u00b7 the main call to action",
-   "size": 12,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-162",
-   "type": "text",
-   "x": 1290,
-   "y": 232,
-   "w": 574,
-   "h": 24,
-   "text": "Rail \u2014 section nav",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "r-163",
-   "type": "rect",
-   "name": "rail ground",
-   "x": 1290,
-   "y": 266,
-   "w": 574,
-   "h": 150,
-   "fill": "#0D0612",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 4
-  },
-  {
-   "id": "l-164",
-   "type": "line",
-   "name": "rail line",
-   "from": {
-    "x": 1330,
-    "y": 340
-   },
-   "to": {
-    "x": 1824,
-    "y": 340
-   },
-   "stroke": "#FFF4E3",
-   "strokeWidth": 1,
-   "arrow": "none",
-   "opacity": 0.25
-  },
-  {
-   "id": "e-165",
-   "type": "ellipse",
-   "name": "rail dot ABOUT",
-   "x": 1356,
-   "y": 336,
-   "w": 8,
-   "h": 8,
-   "fill": "#FFF4E3",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "l-166",
-   "type": "line",
-   "name": "rail stem ABOUT",
-   "from": {
-    "x": 1360,
-    "y": 322
-   },
-   "to": {
-    "x": 1360,
-    "y": 332
-   },
-   "stroke": "#9783A0",
-   "strokeWidth": 1,
-   "arrow": "none"
-  },
-  {
-   "id": "t-167",
-   "type": "text",
-   "x": 1316,
-   "y": 300,
-   "w": 88,
-   "h": 16,
-   "text": "ABOUT",
-   "size": 10,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "e-168",
-   "type": "ellipse",
-   "name": "rail WORK glow",
-   "x": 1438,
-   "y": 331,
-   "w": 18,
-   "h": 18,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.35,
-   "fx": [
+      "id": "r-3",
+      "type": "rect",
+      "name": "matrix ground",
+      "x": 56,
+      "y": 266,
+      "w": 1180,
+      "h": 300,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4
+    },
     {
-     "kind": "blur",
-     "radius": 4
-    }
-   ]
-  },
-  {
-   "id": "e-169",
-   "type": "ellipse",
-   "name": "rail dot WORK",
-   "x": 1443,
-   "y": 336,
-   "w": 8,
-   "h": 8,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 1
-  },
-  {
-   "id": "l-170",
-   "type": "line",
-   "name": "rail stem WORK",
-   "from": {
-    "x": 1447,
-    "y": 348
-   },
-   "to": {
-    "x": 1447,
-    "y": 358
-   },
-   "stroke": "#FFD03B",
-   "strokeWidth": 1,
-   "arrow": "none"
-  },
-  {
-   "id": "t-171",
-   "type": "text",
-   "x": 1403,
-   "y": 362,
-   "w": 88,
-   "h": 16,
-   "text": "WORK",
-   "size": 10,
-   "weight": 400,
-   "font": "mono",
-   "color": "#FFD03B",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "e-172",
-   "type": "ellipse",
-   "name": "rail dot SKILLS",
-   "x": 1530,
-   "y": 336,
-   "w": 8,
-   "h": 8,
-   "fill": "#FFF4E3",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "l-173",
-   "type": "line",
-   "name": "rail stem SKILLS",
-   "from": {
-    "x": 1534,
-    "y": 322
-   },
-   "to": {
-    "x": 1534,
-    "y": 332
-   },
-   "stroke": "#9783A0",
-   "strokeWidth": 1,
-   "arrow": "none"
-  },
-  {
-   "id": "t-174",
-   "type": "text",
-   "x": 1490,
-   "y": 300,
-   "w": 88,
-   "h": 16,
-   "text": "SKILLS",
-   "size": 10,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "e-175",
-   "type": "ellipse",
-   "name": "rail dot PROJECTS",
-   "x": 1617,
-   "y": 336,
-   "w": 8,
-   "h": 8,
-   "fill": "#FFF4E3",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "l-176",
-   "type": "line",
-   "name": "rail stem PROJECTS",
-   "from": {
-    "x": 1621,
-    "y": 348
-   },
-   "to": {
-    "x": 1621,
-    "y": 358
-   },
-   "stroke": "#9783A0",
-   "strokeWidth": 1,
-   "arrow": "none"
-  },
-  {
-   "id": "t-177",
-   "type": "text",
-   "x": 1577,
-   "y": 362,
-   "w": 88,
-   "h": 16,
-   "text": "PROJECTS",
-   "size": 10,
-   "weight": 400,
-   "font": "mono",
-   "color": "#C9B8C4",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "e-178",
-   "type": "ellipse",
-   "name": "rail dot OSC",
-   "x": 1704,
-   "y": 336,
-   "w": 8,
-   "h": 8,
-   "fill": "#FFF4E3",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "l-179",
-   "type": "line",
-   "name": "rail stem OSC",
-   "from": {
-    "x": 1708,
-    "y": 322
-   },
-   "to": {
-    "x": 1708,
-    "y": 332
-   },
-   "stroke": "#9783A0",
-   "strokeWidth": 1,
-   "arrow": "none"
-  },
-  {
-   "id": "t-180",
-   "type": "text",
-   "x": 1664,
-   "y": 300,
-   "w": 88,
-   "h": 16,
-   "text": "OSC",
-   "size": 10,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "e-181",
-   "type": "ellipse",
-   "name": "rail dot PLAY",
-   "x": 1791,
-   "y": 336,
-   "w": 8,
-   "h": 8,
-   "fill": "#FFF4E3",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "l-182",
-   "type": "line",
-   "name": "rail stem PLAY",
-   "from": {
-    "x": 1795,
-    "y": 348
-   },
-   "to": {
-    "x": 1795,
-    "y": 358
-   },
-   "stroke": "#9783A0",
-   "strokeWidth": 1,
-   "arrow": "none"
-  },
-  {
-   "id": "t-183",
-   "type": "text",
-   "x": 1751,
-   "y": 362,
-   "w": 88,
-   "h": 16,
-   "text": "PLAY",
-   "size": 10,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "t-184",
-   "type": "text",
-   "x": 1306,
-   "y": 390,
-   "w": 542,
-   "h": 18,
-   "text": "rest faint \u00b7 hover muted \u00b7 current gold + glow (alive) \u00b7 10px, never smaller",
-   "size": 11,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-185",
-   "type": "text",
-   "x": 1290,
-   "y": 436,
-   "w": 574,
-   "h": 24,
-   "text": "HUD controls \u2014 on a Plate",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "r-186",
-   "type": "rect",
-   "name": "hud sky",
-   "x": 1290,
-   "y": 470,
-   "w": 574,
-   "h": 176,
-   "fill": "#0D0612",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 4
-  },
-  {
-   "id": "r-187",
-   "type": "rect",
-   "name": "hud plate tint",
-   "x": 1310,
-   "y": 488,
-   "w": 330,
-   "h": 140,
-   "fill": "#3DBDB4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.06
-  },
-  {
-   "id": "r-188",
-   "type": "rect",
-   "name": "hud plate line",
-   "x": 1310,
-   "y": 488,
-   "w": 330,
-   "h": 140,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.35
-  },
-  {
-   "id": "l-189",
-   "type": "line",
-   "name": "hud plate tick",
-   "from": {
-    "x": 1318,
-    "y": 488
-   },
-   "to": {
-    "x": 1310,
-    "y": 488
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-190",
-   "type": "line",
-   "name": "hud plate tick",
-   "from": {
-    "x": 1310,
-    "y": 488
-   },
-   "to": {
-    "x": 1310,
-    "y": 496
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-191",
-   "type": "line",
-   "name": "hud plate tick",
-   "from": {
-    "x": 1632,
-    "y": 488
-   },
-   "to": {
-    "x": 1640,
-    "y": 488
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-192",
-   "type": "line",
-   "name": "hud plate tick",
-   "from": {
-    "x": 1640,
-    "y": 488
-   },
-   "to": {
-    "x": 1640,
-    "y": 496
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-193",
-   "type": "line",
-   "name": "hud plate tick",
-   "from": {
-    "x": 1318,
-    "y": 628
-   },
-   "to": {
-    "x": 1310,
-    "y": 628
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-194",
-   "type": "line",
-   "name": "hud plate tick",
-   "from": {
-    "x": 1310,
-    "y": 628
-   },
-   "to": {
-    "x": 1310,
-    "y": 620
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-195",
-   "type": "line",
-   "name": "hud plate tick",
-   "from": {
-    "x": 1632,
-    "y": 628
-   },
-   "to": {
-    "x": 1640,
-    "y": 628
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "l-196",
-   "type": "line",
-   "name": "hud plate tick",
-   "from": {
-    "x": 1640,
-    "y": 628
-   },
-   "to": {
-    "x": 1640,
-    "y": 620
-   },
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "t-197",
-   "type": "text",
-   "x": 1326,
-   "y": 512,
-   "w": 60,
-   "h": 14,
-   "text": "ZOOM",
-   "size": 9,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "r-198",
-   "type": "rect",
-   "name": "hud ZOOM \u2212 line",
-   "x": 1394,
-   "y": 506,
-   "w": 24,
-   "h": 24,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.4
-  },
-  {
-   "id": "t-199",
-   "type": "text",
-   "x": 1394,
-   "y": 506,
-   "w": 24,
-   "h": 24,
-   "text": "\u2212",
-   "size": 10,
-   "weight": 400,
-   "font": "mono",
-   "color": "#C9B8C4",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "t-200",
-   "type": "text",
-   "x": 1426,
-   "y": 506,
-   "w": 34,
-   "h": 24,
-   "text": "15",
-   "size": 10,
-   "weight": 400,
-   "font": "mono",
-   "color": "#C9B8C4",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-201",
-   "type": "rect",
-   "name": "hud ZOOM + line",
-   "x": 1466,
-   "y": 506,
-   "w": 24,
-   "h": 24,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.4
-  },
-  {
-   "id": "t-202",
-   "type": "text",
-   "x": 1466,
-   "y": 506,
-   "w": 24,
-   "h": 24,
-   "text": "+",
-   "size": 10,
-   "weight": 400,
-   "font": "mono",
-   "color": "#C9B8C4",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "t-203",
-   "type": "text",
-   "x": 1326,
-   "y": 550,
-   "w": 60,
-   "h": 14,
-   "text": "LINES",
-   "size": 9,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "r-204",
-   "type": "rect",
-   "name": "hud LINES ON glow",
-   "x": 1394,
-   "y": 544,
-   "w": 40,
-   "h": 24,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 5,
-   "opacity": 0.28,
-   "fx": [
+      "id": "r-4",
+      "type": "rect",
+      "name": "matrix wash",
+      "x": 56,
+      "y": 266,
+      "w": 1180,
+      "h": 300,
+      "fill": "#3DBDB4",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4,
+      "opacity": 0.04
+    },
     {
-     "kind": "blur",
-     "radius": 6
+      "id": "t-5",
+      "type": "text",
+      "x": 246,
+      "y": 278,
+      "w": 176,
+      "h": 18,
+      "text": "REST",
+      "size": 11,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "t-6",
+      "type": "text",
+      "x": 442,
+      "y": 278,
+      "w": 176,
+      "h": 18,
+      "text": "HOVER",
+      "size": 11,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "t-7",
+      "type": "text",
+      "x": 638,
+      "y": 278,
+      "w": 176,
+      "h": 18,
+      "text": "FOCUS",
+      "size": 11,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "t-8",
+      "type": "text",
+      "x": 834,
+      "y": 278,
+      "w": 176,
+      "h": 18,
+      "text": "PRESS",
+      "size": 11,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "t-9",
+      "type": "text",
+      "x": 1030,
+      "y": 278,
+      "w": 176,
+      "h": 18,
+      "text": "DISABLED",
+      "size": 11,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "t-10",
+      "type": "text",
+      "x": 76,
+      "y": 312,
+      "w": 160,
+      "h": 26,
+      "text": "action",
+      "size": 18,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFD03B",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-11",
+      "type": "text",
+      "x": 76,
+      "y": 336,
+      "w": 160,
+      "h": 36,
+      "text": "gold · ticks · the one thing to do here",
+      "size": 11,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "kit-1",
+      "type": "asset",
+      "name": "action rest",
+      "asset": "ss-button-action",
+      "x": 254,
+      "y": 314,
+      "w": 160,
+      "h": 40,
+      "layers": [
+        "rest",
+        "projection"
+      ],
+      "texts": {
+        "label": "LAUNCH SHIP"
+      }
+    },
+    {
+      "id": "kit-2",
+      "type": "asset",
+      "name": "action hover",
+      "asset": "ss-button-action",
+      "x": 450,
+      "y": 314,
+      "w": 160,
+      "h": 40,
+      "layers": [
+        "hover",
+        "projection"
+      ],
+      "texts": {
+        "label-hover": "LAUNCH SHIP"
+      }
+    },
+    {
+      "id": "kit-3",
+      "type": "asset",
+      "name": "action focus",
+      "asset": "ss-button-action",
+      "x": 646,
+      "y": 314,
+      "w": 160,
+      "h": 40,
+      "layers": [
+        "focus",
+        "projection"
+      ],
+      "texts": {
+        "label-focus": "LAUNCH SHIP"
+      }
+    },
+    {
+      "id": "kit-4",
+      "type": "asset",
+      "name": "action press",
+      "asset": "ss-button-action",
+      "x": 842,
+      "y": 314,
+      "w": 160,
+      "h": 40,
+      "layers": [
+        "press",
+        "projection"
+      ],
+      "texts": {
+        "label-press": "LAUNCH SHIP"
+      }
+    },
+    {
+      "id": "kit-5",
+      "type": "asset",
+      "name": "action disabled",
+      "asset": "ss-button-action",
+      "x": 1038,
+      "y": 314,
+      "w": 160,
+      "h": 40,
+      "layers": [
+        "disabled",
+        "projection"
+      ],
+      "texts": {
+        "label-disabled": "LAUNCH SHIP"
+      }
+    },
+    {
+      "id": "t-69",
+      "type": "text",
+      "x": 76,
+      "y": 396,
+      "w": 160,
+      "h": 26,
+      "text": "quiet",
+      "size": 18,
+      "weight": 700,
+      "font": "sans",
+      "color": "#3DBDB4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-70",
+      "type": "text",
+      "x": 76,
+      "y": 420,
+      "w": 160,
+      "h": 36,
+      "text": "signal line · HUD, close, secondary",
+      "size": 11,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "kit-6",
+      "type": "asset",
+      "name": "quiet rest",
+      "asset": "ss-button-quiet",
+      "x": 254,
+      "y": 398,
+      "w": 160,
+      "h": 40,
+      "layers": [
+        "rest",
+        "projection"
+      ],
+      "texts": {
+        "label": "DISENGAGE"
+      }
+    },
+    {
+      "id": "kit-7",
+      "type": "asset",
+      "name": "quiet hover",
+      "asset": "ss-button-quiet",
+      "x": 450,
+      "y": 398,
+      "w": 160,
+      "h": 40,
+      "layers": [
+        "hover",
+        "projection"
+      ],
+      "texts": {
+        "label-hover": "DISENGAGE"
+      }
+    },
+    {
+      "id": "kit-8",
+      "type": "asset",
+      "name": "quiet focus",
+      "asset": "ss-button-quiet",
+      "x": 646,
+      "y": 398,
+      "w": 160,
+      "h": 40,
+      "layers": [
+        "focus",
+        "projection"
+      ],
+      "texts": {
+        "label-focus": "DISENGAGE"
+      }
+    },
+    {
+      "id": "kit-9",
+      "type": "asset",
+      "name": "quiet press",
+      "asset": "ss-button-quiet",
+      "x": 842,
+      "y": 398,
+      "w": 160,
+      "h": 40,
+      "layers": [
+        "press",
+        "projection"
+      ],
+      "texts": {
+        "label-press": "DISENGAGE"
+      }
+    },
+    {
+      "id": "kit-10",
+      "type": "asset",
+      "name": "quiet disabled",
+      "asset": "ss-button-quiet",
+      "x": 1038,
+      "y": 398,
+      "w": 160,
+      "h": 40,
+      "layers": [
+        "disabled",
+        "projection"
+      ],
+      "texts": {
+        "label-disabled": "DISENGAGE"
+      }
+    },
+    {
+      "id": "t-119",
+      "type": "text",
+      "x": 56,
+      "y": 588,
+      "w": 1150,
+      "h": 24,
+      "text": "Three sizes",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
+    {
+      "id": "r-120",
+      "type": "rect",
+      "name": "size sm ground",
+      "x": 56,
+      "y": 618,
+      "w": 375,
+      "h": 120,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4
+    },
+    {
+      "id": "kit-16",
+      "type": "asset",
+      "name": "action sm",
+      "asset": "ss-button-action",
+      "x": 76.0,
+      "y": 642.0,
+      "w": 96.0,
+      "h": 24.0,
+      "texts": {
+        "label": "NEXT"
+      }
+    },
+    {
+      "id": "t-132",
+      "type": "text",
+      "x": 188,
+      "y": 640,
+      "w": 120,
+      "h": 28,
+      "text": "sm",
+      "size": 20,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFD03B",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-133",
+      "type": "text",
+      "x": 76,
+      "y": 686,
+      "w": 340,
+      "h": 44,
+      "text": "h 24 · px-2 · mono 10 caps, wide · HUD, links",
+      "size": 12,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "r-134",
+      "type": "rect",
+      "name": "size md ground",
+      "x": 451,
+      "y": 618,
+      "w": 375,
+      "h": 120,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4
+    },
+    {
+      "id": "kit-17",
+      "type": "asset",
+      "name": "action md",
+      "asset": "ss-button-action",
+      "x": 473.0,
+      "y": 638.0,
+      "w": 128.0,
+      "h": 32.0,
+      "texts": {
+        "label": "OPEN"
+      }
+    },
+    {
+      "id": "t-146",
+      "type": "text",
+      "x": 619,
+      "y": 640,
+      "w": 120,
+      "h": 28,
+      "text": "md",
+      "size": 20,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFD03B",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-147",
+      "type": "text",
+      "x": 471,
+      "y": 686,
+      "w": 340,
+      "h": 44,
+      "text": "h 32 · px-4 · Rajdhani 600 12 caps, spaced · menus, close",
+      "size": 12,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "r-148",
+      "type": "rect",
+      "name": "size lg ground",
+      "x": 846,
+      "y": 618,
+      "w": 375,
+      "h": 120,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4
+    },
+    {
+      "id": "kit-18",
+      "type": "asset",
+      "name": "action lg",
+      "asset": "ss-button-action",
+      "x": 880.0,
+      "y": 634.0,
+      "w": 160.0,
+      "h": 40.0,
+      "texts": {
+        "label": "LAUNCH SHIP"
+      }
+    },
+    {
+      "id": "t-160",
+      "type": "text",
+      "x": 1070,
+      "y": 640,
+      "w": 120,
+      "h": 28,
+      "text": "lg",
+      "size": 20,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFD03B",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-161",
+      "type": "text",
+      "x": 866,
+      "y": 686,
+      "w": 340,
+      "h": 44,
+      "text": "h 40 · px-6 · Rajdhani 700 16 caps, spaced · the main call to action",
+      "size": 12,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-162",
+      "type": "text",
+      "x": 1290,
+      "y": 232,
+      "w": 574,
+      "h": 24,
+      "text": "Rail — section nav",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
+    {
+      "id": "r-163",
+      "type": "rect",
+      "name": "rail ground",
+      "x": 1290,
+      "y": 266,
+      "w": 574,
+      "h": 150,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4
+    },
+    {
+      "id": "kit-19",
+      "type": "asset",
+      "name": "rail",
+      "asset": "ss-rail",
+      "x": 1305.6,
+      "y": 301.9,
+      "w": 543.8,
+      "h": 76.1,
+      "layers": [
+        "base",
+        "cur-1",
+        "projection"
+      ]
+    },
+    {
+      "id": "t-184",
+      "type": "text",
+      "x": 1306,
+      "y": 390,
+      "w": 542,
+      "h": 18,
+      "text": "rest faint · hover muted · current gold + glow (alive) · 10px, never smaller",
+      "size": 11,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-185",
+      "type": "text",
+      "x": 1290,
+      "y": 436,
+      "w": 574,
+      "h": 24,
+      "text": "HUD — Disengage",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
+    {
+      "id": "kit-20",
+      "type": "text",
+      "x": 1310,
+      "y": 500,
+      "w": 330,
+      "h": 120,
+      "text": "Scanner, progress, hint, zoom, lines, unlock, reset: dev builds only, not designed.\nNo boost bar: the moth's trail shows boost.",
+      "size": 14,
+      "weight": 400,
+      "font": "sans",
+      "color": "#9783A0",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "kit-21",
+      "type": "asset",
+      "name": "disengage",
+      "asset": "ss-button-quiet",
+      "x": 1678.0,
+      "y": 484.0,
+      "w": 160.0,
+      "h": 40.0,
+      "texts": {
+        "label": "← DISENGAGE"
+      }
+    },
+    {
+      "id": "t-216",
+      "type": "text",
+      "x": 1674,
+      "y": 532,
+      "w": 172,
+      "h": 96,
+      "text": "Disengage = quiet md; ← EXIT on phones (Responsive).",
+      "size": 11,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-217",
+      "type": "text",
+      "x": 1290,
+      "y": 664,
+      "w": 574,
+      "h": 24,
+      "text": "Every button",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
+    {
+      "id": "t-218",
+      "type": "text",
+      "x": 1290,
+      "y": 696,
+      "w": 574,
+      "h": 110,
+      "text": "Touch: sm and md grow their hit area to 44px on coarse pointers (an invisible pad), not their box. Keyboard: Enter/Space, the focus ring always shows on :focus-visible. Loading: the label stays, a 1px signal line runs along the bottom edge.",
+      "size": 14,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "l-219",
+      "type": "line",
+      "name": "rule",
+      "from": {
+        "x": 56,
+        "y": 812
+      },
+      "to": {
+        "x": 1864,
+        "y": 812
+      },
+      "stroke": "#262c3b",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "t-220",
+      "type": "text",
+      "x": 56,
+      "y": 828,
+      "w": 900,
+      "h": 24,
+      "text": "Press",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
+    {
+      "id": "t-221",
+      "type": "text",
+      "x": 56,
+      "y": 862,
+      "w": 880,
+      "h": 120,
+      "text": "No scale bounce (was 1.02 hover / 0.98 tap). Press = the active glow + a few palette sparks inside the button, clipped to it, ~500ms: the contained firework preview. Calm mode: a single rim flash. The burst itself is decided in Effects.",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-222",
+      "type": "text",
+      "x": 980,
+      "y": 828,
+      "w": 884,
+      "h": 24,
+      "text": "Gone",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
+    {
+      "id": "t-223",
+      "type": "text",
+      "x": 980,
+      "y": 862,
+      "w": 884,
+      "h": 120,
+      "text": "primary · secondary · ghost · glass variants and their 24 undefined --btn-* vars and 7 --glow-* vars · white/20 hand-rolled HUD buttons · 6–8px rail labels · #00ffff · sandbox raw bg-white/10 buttons (→ quiet sm).",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "link": "asis-controls"
     }
-   ]
-  },
-  {
-   "id": "r-205",
-   "type": "rect",
-   "name": "hud LINES ON fill",
-   "x": 1394,
-   "y": 544,
-   "w": 40,
-   "h": 24,
-   "fill": "#3DBDB4",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "opacity": 0.08
-  },
-  {
-   "id": "r-206",
-   "type": "rect",
-   "name": "hud LINES ON line",
-   "x": 1394,
-   "y": 544,
-   "w": 40,
-   "h": 24,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.8
-  },
-  {
-   "id": "t-207",
-   "type": "text",
-   "x": 1394,
-   "y": 544,
-   "w": 40,
-   "h": 24,
-   "text": "ON",
-   "size": 10,
-   "weight": 400,
-   "font": "mono",
-   "color": "#FFF4E3",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "t-208",
-   "type": "text",
-   "x": 1326,
-   "y": 588,
-   "w": 60,
-   "h": 14,
-   "text": "UNLOCK",
-   "size": 9,
-   "weight": 400,
-   "font": "mono",
-   "color": "#9783A0",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "r-209",
-   "type": "rect",
-   "name": "hud UNLOCK ORION line",
-   "x": 1394,
-   "y": 582,
-   "w": 64,
-   "h": 24,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.4
-  },
-  {
-   "id": "t-210",
-   "type": "text",
-   "x": 1394,
-   "y": 582,
-   "w": 64,
-   "h": 24,
-   "text": "ORION",
-   "size": 10,
-   "weight": 400,
-   "font": "mono",
-   "color": "#C9B8C4",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "t-211",
-   "type": "text",
-   "x": 1466,
-   "y": 582,
-   "w": 34,
-   "h": 24,
-   "text": "3/12",
-   "size": 10,
-   "weight": 400,
-   "font": "mono",
-   "color": "#C9B8C4",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-212",
-   "type": "rect",
-   "name": "hud UNLOCK RESET line",
-   "x": 1506,
-   "y": 582,
-   "w": 52,
-   "h": 24,
-   "fill": "none",
-   "stroke": "#E54F29",
-   "strokeWidth": 1,
-   "opacity": 0.4
-  },
-  {
-   "id": "t-213",
-   "type": "text",
-   "x": 1506,
-   "y": 582,
-   "w": 52,
-   "h": 24,
-   "text": "RESET",
-   "size": 10,
-   "weight": 400,
-   "font": "mono",
-   "color": "#C9B8C4",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "r-214",
-   "type": "rect",
-   "name": "hud disengage line",
-   "x": 1674,
-   "y": 488,
-   "w": 168,
-   "h": 32,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 1,
-   "opacity": 0.4
-  },
-  {
-   "id": "t-215",
-   "type": "text",
-   "x": 1674,
-   "y": 488,
-   "w": 168,
-   "h": 32,
-   "text": "\u2190 DISENGAGE",
-   "size": 12,
-   "weight": 700,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "center",
-   "valign": "middle"
-  },
-  {
-   "id": "t-216",
-   "type": "text",
-   "x": 1674,
-   "y": 532,
-   "w": 172,
-   "h": 96,
-   "text": "5 hand-rolled buttons \u2192 Button quiet sm. Reset is danger. Labels mono 10, faint.",
-   "size": 11,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-217",
-   "type": "text",
-   "x": 1290,
-   "y": 664,
-   "w": 574,
-   "h": 24,
-   "text": "Every button",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "t-218",
-   "type": "text",
-   "x": 1290,
-   "y": 696,
-   "w": 574,
-   "h": 110,
-   "text": "Touch: sm and md grow their hit area to 44px on coarse pointers (an invisible pad), not their box. Keyboard: Enter/Space, the focus ring always shows on :focus-visible. Loading: the label stays, a 1px signal line runs along the bottom edge.",
-   "size": 14,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "l-219",
-   "type": "line",
-   "name": "rule",
-   "from": {
-    "x": 56,
-    "y": 812
-   },
-   "to": {
-    "x": 1864,
-    "y": 812
-   },
-   "stroke": "#262c3b",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "t-220",
-   "type": "text",
-   "x": 56,
-   "y": 828,
-   "w": 900,
-   "h": 24,
-   "text": "Press",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "t-221",
-   "type": "text",
-   "x": 56,
-   "y": 862,
-   "w": 880,
-   "h": 120,
-   "text": "No scale bounce (was 1.02 hover / 0.98 tap). Press = the active glow + a few palette sparks inside the button, clipped to it, ~500ms: the contained firework preview. Calm mode: a single rim flash. The burst itself is decided in Effects.",
-   "size": 15,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-222",
-   "type": "text",
-   "x": 980,
-   "y": 828,
-   "w": 884,
-   "h": 24,
-   "text": "Gone",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "t-223",
-   "type": "text",
-   "x": 980,
-   "y": 862,
-   "w": 884,
-   "h": 120,
-   "text": "primary \u00b7 secondary \u00b7 ghost \u00b7 glass variants and their 24 undefined --btn-* vars and 7 --glow-* vars \u00b7 white/20 hand-rolled HUD buttons \u00b7 6\u20138px rail labels \u00b7 #00ffff \u00b7 sandbox raw bg-white/10 buttons (\u2192 quiet sm).",
-   "size": 15,
-   "weight": 400,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "link": "asis-controls"
-  }
- ],
- "knowledge": [
-  {
-   "id": "e-drift",
-   "kind": "evidence",
-   "text": "4 kinds of button: gem/Button (5 variants, colors all undefined var(--btn-*)) used at InfoBar.tsx:37 and GameHUD.tsx:68 (+9 in SilkSandbox); 5 hand-rolled HUD buttons GameHUD.tsx:79-121; rail labels NavBar.tsx:37,96 at text-[6px] md:text-[8px] in #00ffff; raw buttons in NebulaSandbox.tsx:67-80."
-  },
-  {
-   "id": "k-variants",
-   "kind": "decision",
-   "text": "One Button, three variants: action (gold), quiet (signal line, muted text), danger (ember).",
-   "why": "Covers every real use: the one call to action, the many secondary/HUD buttons, and Reset progress."
-  },
-  {
-   "id": "k-action",
-   "kind": "decision",
-   "text": "Action is outlined gold: gold/10 tint, 1px gold line, gold text, 8px corner ticks (6 at sm). Ticks on a button mean \"the action\"; quiet and danger have none.",
-   "why": "Matches the AR frames; bright without a block of color."
-  },
-  {
-   "id": "k-states",
-   "kind": "decision",
-   "text": "States: rest no glow \u00b7 hover glow-hover, brighter text/line \u00b7 focus 2px signal ring (focus-visible) \u00b7 press glow-active + contained firework \u00b7 disabled faint line and text, no ticks, no glow. No scale bounce."
-  },
-  {
-   "id": "k-sizes",
-   "kind": "decision",
-   "text": "Sizes sm 24 (mono 10) / md 32 (Rajdhani 600 12) / lg 40 (Rajdhani 700 16); 44px hit area on coarse pointers."
-  },
-  {
-   "id": "k-rail",
-   "kind": "decision",
-   "text": "Rail labels are real buttons, mono 10 caps: rest faint, hover muted, current gold with a glowing gold dot.",
-   "why": "Gold = selected (Color); 6\u20138px was below the 10px floor (Type)."
-  },
-  {
-   "id": "h-danger-confirm",
-   "kind": "hypothesis",
-   "text": "Danger asks twice: the first press arms it (\"RESET?\" for 3s), the second does it."
-  }
- ],
- "agent": {
-  "brief": "One Button (shared/ui/Button.tsx, replaces gem/Button.tsx): variants action / quiet / danger, sizes sm / md / lg. Colors, type, glow, motion from the Foundation pages; --glow-color is the variant color.",
-  "rules": [
-   "Base: `relative inline-flex items-center justify-center gap-2 uppercase border transition-[color,background-color,border-color,box-shadow] duration-fast ease-standard focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal disabled:cursor-not-allowed` + `[--glow-color:var(--color-<variant>)] hover:shadow-glow-hover active:shadow-glow-active` (not when disabled). No whileHover/whileTap scale.",
-   "action: `bg-gold/10 border-gold text-gold hover:bg-gold/16 active:bg-gold/22` + <Ticks size=8 (6 at sm) color=gold>. Used by: InfoBar LAUNCH SHIP (lg), SilkSandbox Close.",
-   "quiet: `border-signal/40 text-text-muted hover:border-signal/80 hover:text-text active:bg-signal/14`. Used by: GameHUD Disengage (md), GameHUD zoom \u2212/+, Lines on/off, Unlock (sm), every SilkSandbox / NebulaSandbox button (sm).",
-   "danger: `border-ember/40 text-text-muted hover:border-ember hover:text-ember active:bg-ember/14` \u2014 glow ember. Used by: GameHUD Reset (sm).",
-   "disabled (all): `border-text-faint/35 text-text-faint bg-transparent shadow-none`, ticks hidden. Replaces disabled:opacity-20.",
-   "Sizes: sm `h-6 px-2 font-mono text-micro tracking-wide`; md `h-8 px-4 font-display font-semibold text-small tracking-spaced`; lg `h-10 px-6 font-display font-bold text-lead tracking-spaced`. On `(pointer: coarse)` sm/md get a `before:absolute before:-inset-y-[10px] before:-inset-x-1` hit pad (44px).",
-   "Old variant map: primary \u2192 action; secondary, ghost, glass \u2192 quiet; danger \u2192 danger. Old size map: sm \u2192 sm, md \u2192 md, lg \u2192 lg. glow prop deleted (glow is the state, not an option).",
-   "loading: label kept, aria-busy, a 1px signal line scans along the bottom edge (DUR.slow loop; reduced motion: static line).",
-   "Rail (NavBar.tsx): labels \u2192 <button> `font-mono text-micro uppercase tracking-wide`: rest text-faint, hover text-muted, current (aria-current=\"true\") text-gold; the current dot bg-gold + shadow-glow-active with --glow-color gold; other dots bg-text/35; stems current gold else text-faint. #00ffff, rgba(255,255,255,0.12), text-[6px]/[8px] deleted.",
-   "HUD row labels (Zoom, Lines, Unlock): `font-mono text-micro uppercase tracking-spaced text-text-faint`; counters (15, 3/12) text-muted. The dev group sits on a Plate.",
-   "Press: the contained firework (Effects); until Effects is decided, press = active glow only.",
-   "Sandbox inputs (checkbox, range) are dev-only: out of scope."
   ],
-  "open": [
-   "Danger confirm (press twice) \u2014 hypothesis",
-   "The press burst itself (Effects)"
-  ]
- }
+  "knowledge": [
+    {
+      "id": "e-drift",
+      "kind": "evidence",
+      "text": "4 kinds of button: gem/Button (5 variants, colors all undefined var(--btn-*)) used at InfoBar.tsx:37 and GameHUD.tsx:68 (+9 in SilkSandbox); 5 hand-rolled HUD buttons GameHUD.tsx:79-121; rail labels NavBar.tsx:37,96 at text-[6px] md:text-[8px] in #00ffff; raw buttons in NebulaSandbox.tsx:67-80."
+    },
+    {
+      "id": "k-variants",
+      "kind": "decision",
+      "text": "One Button, two variants: action (gold), quiet (signal line, muted text). Danger was dropped with Reset (dev only).",
+      "why": "Covers every real use: the one call to action, the many secondary/HUD buttons, and Reset progress."
+    },
+    {
+      "id": "k-action",
+      "kind": "decision",
+      "text": "Action is outlined gold: gold/10 tint, 1px gold line, gold text, 8px corner ticks (6 at sm). Ticks on a button mean \"the action\"; quiet has none.",
+      "why": "Matches the AR frames; bright without a block of color."
+    },
+    {
+      "id": "k-states",
+      "kind": "decision",
+      "text": "States: rest no glow · hover glow-hover, brighter text/line · focus 2px signal ring (focus-visible) · press glow-active + contained firework · disabled faint line and text, no ticks, no glow. No scale bounce."
+    },
+    {
+      "id": "k-sizes",
+      "kind": "decision",
+      "text": "Sizes sm 24 (mono 10) / md 32 (Rajdhani 600 12) / lg 40 (Rajdhani 700 16); 44px hit area on coarse pointers."
+    },
+    {
+      "id": "k-rail",
+      "kind": "decision",
+      "text": "Rail labels are real buttons, mono 10 caps: rest faint, hover muted, current gold with a glowing gold dot.",
+      "why": "Gold = selected (Color); 6–8px was below the 10px floor (Type)."
+    },
+    {
+      "id": "k-dev-hud",
+      "kind": "decision",
+      "text": "The game HUD is the orb and Disengage (back to port). Scanner, progress, the controls hint and the dev controls (zoom, lines, unlock, reset) are dev builds only, not part of the design. The boost bar goes too: the moth's trail is the boost indicator."
+    }
+  ],
+  "agent": {
+    "brief": "One Button (shared/ui/Button.tsx, replaces gem/Button.tsx): variants action / quiet, sizes sm / md / lg. Colors, type, glow, motion from the Foundation pages; --glow-color is the variant color.",
+    "rules": [
+      "Base: `relative inline-flex items-center justify-center gap-2 uppercase border transition-[color,background-color,border-color,box-shadow] duration-fast ease-standard focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal disabled:cursor-not-allowed` + `[--glow-color:var(--color-<variant>)] hover:shadow-glow-hover active:shadow-glow-active` (not when disabled). No whileHover/whileTap scale.",
+      "action: `bg-gold/10 border-gold text-gold hover:bg-gold/16 active:bg-gold/22` + <Ticks size=8 (6 at sm) color=gold>. Used by: InfoBar LAUNCH SHIP (lg), SilkSandbox Close.",
+      "quiet: `border-signal/40 text-text-muted hover:border-signal/80 hover:text-text active:bg-signal/14`. Used by: GameHUD Disengage (md), comms links (sm), entry links (sm); in dev builds only: zoom −/+, Lines, Unlock, the sandbox buttons.",
+      "disabled (all): `border-text-faint/35 text-text-faint bg-transparent shadow-none`, ticks hidden. Replaces disabled:opacity-20.",
+      "Sizes: sm `h-6 px-2 font-mono text-micro tracking-wide`; md `h-8 px-4 font-display font-semibold text-small tracking-spaced`; lg `h-10 px-6 font-display font-bold text-lead tracking-spaced`. On `(pointer: coarse)` sm/md get a `before:absolute before:-inset-y-[10px] before:-inset-x-1` hit pad (44px).",
+      "Old variant map: primary → action; secondary, ghost, glass → quiet; danger → quiet (dev builds only). Old size map: sm → sm, md → md, lg → lg. glow prop deleted (glow is the state, not an option).",
+      "loading: label kept, aria-busy, a 1px signal line scans along the bottom edge (DUR.slow loop; reduced motion: static line).",
+      "Rail (NavBar.tsx): labels → <button> `font-mono text-micro uppercase tracking-wide`: rest text-faint, hover text-muted, current (aria-current=\"true\") text-gold; the current dot bg-gold + shadow-glow-active with --glow-color gold; other dots bg-text/35; stems current gold else text-faint. #00ffff, rgba(255,255,255,0.12), text-[6px]/[8px] deleted.",
+      "HUD row labels (Zoom, Lines, Unlock): `font-mono text-micro uppercase tracking-spaced text-text-faint`; counters (15, 3/12) text-muted. Dev builds only; not designed (Shell).",
+      "Press: the contained firework (Effects); until Effects is decided, press = active glow only.",
+      "Sandbox inputs (checkbox, range) are dev-only: out of scope."
+    ],
+    "open": [
+      "The press burst itself (Effects)"
+    ]
+  }
 }

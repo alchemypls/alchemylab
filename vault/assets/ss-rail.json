@@ -1,0 +1,868 @@
+{
+  "kind": "shape",
+  "title": "Rail (Star-Survey)",
+  "updated": "2026-11-22",
+  "project": "star-survey",
+  "blocks": [],
+  "size": {
+    "width": 300,
+    "height": 42
+  },
+  "elements": [
+    {
+      "id": "rail-bounds",
+      "type": "rect",
+      "name": "bounds",
+      "x": 0,
+      "y": 0,
+      "w": 300,
+      "h": 42,
+      "fill": "none",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "layer": "base"
+    },
+    {
+      "type": "line",
+      "name": "rail line",
+      "from": {
+        "x": 8,
+        "y": 21
+      },
+      "to": {
+        "x": 292,
+        "y": 21
+      },
+      "stroke": "#FFF4E3",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.25,
+      "layer": "base",
+      "id": "rail-1"
+    },
+    {
+      "type": "ellipse",
+      "name": "dot ABOUT",
+      "x": 27.5,
+      "y": 18.5,
+      "w": 5,
+      "h": 5,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "layer": "base",
+      "id": "rail-2"
+    },
+    {
+      "type": "line",
+      "name": "stem ABOUT",
+      "from": {
+        "x": 30,
+        "y": 12
+      },
+      "to": {
+        "x": 30,
+        "y": 18
+      },
+      "stroke": "#9783A0",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "base",
+      "id": "rail-3"
+    },
+    {
+      "type": "text",
+      "x": 4,
+      "y": 0,
+      "w": 52,
+      "h": 10,
+      "text": "ABOUT",
+      "size": 6,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "center",
+      "valign": "top",
+      "layer": "base",
+      "id": "rail-4"
+    },
+    {
+      "type": "ellipse",
+      "name": "dot WORK",
+      "x": 75.5,
+      "y": 18.5,
+      "w": 5,
+      "h": 5,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "layer": "base",
+      "id": "rail-5"
+    },
+    {
+      "type": "line",
+      "name": "stem WORK",
+      "from": {
+        "x": 78,
+        "y": 24
+      },
+      "to": {
+        "x": 78,
+        "y": 30
+      },
+      "stroke": "#9783A0",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "base",
+      "id": "rail-6"
+    },
+    {
+      "type": "text",
+      "x": 52,
+      "y": 32,
+      "w": 52,
+      "h": 10,
+      "text": "WORK",
+      "size": 6,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "center",
+      "valign": "top",
+      "layer": "base",
+      "id": "rail-7"
+    },
+    {
+      "type": "ellipse",
+      "name": "dot SKILLS",
+      "x": 123.5,
+      "y": 18.5,
+      "w": 5,
+      "h": 5,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "layer": "base",
+      "id": "rail-8"
+    },
+    {
+      "type": "line",
+      "name": "stem SKILLS",
+      "from": {
+        "x": 126,
+        "y": 12
+      },
+      "to": {
+        "x": 126,
+        "y": 18
+      },
+      "stroke": "#9783A0",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "base",
+      "id": "rail-9"
+    },
+    {
+      "type": "text",
+      "x": 100,
+      "y": 0,
+      "w": 52,
+      "h": 10,
+      "text": "SKILLS",
+      "size": 6,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "center",
+      "valign": "top",
+      "layer": "base",
+      "id": "rail-10"
+    },
+    {
+      "type": "ellipse",
+      "name": "dot PROJECTS",
+      "x": 171.5,
+      "y": 18.5,
+      "w": 5,
+      "h": 5,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "layer": "base",
+      "id": "rail-11"
+    },
+    {
+      "type": "line",
+      "name": "stem PROJECTS",
+      "from": {
+        "x": 174,
+        "y": 24
+      },
+      "to": {
+        "x": 174,
+        "y": 30
+      },
+      "stroke": "#9783A0",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "base",
+      "id": "rail-12"
+    },
+    {
+      "type": "text",
+      "x": 148,
+      "y": 32,
+      "w": 52,
+      "h": 10,
+      "text": "PROJECTS",
+      "size": 6,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "center",
+      "valign": "top",
+      "layer": "base",
+      "id": "rail-13"
+    },
+    {
+      "type": "ellipse",
+      "name": "dot OPEN SOURCE",
+      "x": 219.5,
+      "y": 18.5,
+      "w": 5,
+      "h": 5,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "layer": "base",
+      "id": "rail-14"
+    },
+    {
+      "type": "line",
+      "name": "stem OPEN SOURCE",
+      "from": {
+        "x": 222,
+        "y": 12
+      },
+      "to": {
+        "x": 222,
+        "y": 18
+      },
+      "stroke": "#9783A0",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "base",
+      "id": "rail-15"
+    },
+    {
+      "type": "text",
+      "x": 196,
+      "y": 0,
+      "w": 52,
+      "h": 10,
+      "text": "OPEN SOURCE",
+      "size": 6,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "center",
+      "valign": "top",
+      "layer": "base",
+      "id": "rail-16"
+    },
+    {
+      "type": "ellipse",
+      "name": "dot PLAY",
+      "x": 267.5,
+      "y": 18.5,
+      "w": 5,
+      "h": 5,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "layer": "base",
+      "id": "rail-17"
+    },
+    {
+      "type": "line",
+      "name": "stem PLAY",
+      "from": {
+        "x": 270,
+        "y": 24
+      },
+      "to": {
+        "x": 270,
+        "y": 30
+      },
+      "stroke": "#9783A0",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "base",
+      "id": "rail-18"
+    },
+    {
+      "type": "text",
+      "x": 244,
+      "y": 32,
+      "w": 52,
+      "h": 10,
+      "text": "PLAY",
+      "size": 6,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "center",
+      "valign": "top",
+      "layer": "base",
+      "id": "rail-19"
+    },
+    {
+      "type": "ellipse",
+      "name": "current glow ABOUT",
+      "x": 24,
+      "y": 15,
+      "w": 12,
+      "h": 12,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 2
+        }
+      ],
+      "layer": "cur-0",
+      "id": "rail-20"
+    },
+    {
+      "type": "ellipse",
+      "name": "current dot ABOUT",
+      "x": 27,
+      "y": 18,
+      "w": 6,
+      "h": 6,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "layer": "cur-0",
+      "id": "rail-21"
+    },
+    {
+      "type": "line",
+      "name": "current stem ABOUT",
+      "from": {
+        "x": 30,
+        "y": 12
+      },
+      "to": {
+        "x": 30,
+        "y": 18
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "cur-0",
+      "id": "rail-22"
+    },
+    {
+      "type": "rect",
+      "name": "label cover ABOUT",
+      "x": 4,
+      "y": 0,
+      "w": 52,
+      "h": 10,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.9,
+      "layer": "cur-0",
+      "id": "rail-23"
+    },
+    {
+      "type": "text",
+      "x": 4,
+      "y": 0,
+      "w": 52,
+      "h": 10,
+      "text": "ABOUT",
+      "size": 6,
+      "weight": 400,
+      "font": "mono",
+      "color": "#FFD03B",
+      "align": "center",
+      "valign": "top",
+      "layer": "cur-0",
+      "id": "rail-24"
+    },
+    {
+      "type": "ellipse",
+      "name": "current glow WORK",
+      "x": 72,
+      "y": 15,
+      "w": 12,
+      "h": 12,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 2
+        }
+      ],
+      "layer": "cur-1",
+      "id": "rail-25"
+    },
+    {
+      "type": "ellipse",
+      "name": "current dot WORK",
+      "x": 75,
+      "y": 18,
+      "w": 6,
+      "h": 6,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "layer": "cur-1",
+      "id": "rail-26"
+    },
+    {
+      "type": "line",
+      "name": "current stem WORK",
+      "from": {
+        "x": 78,
+        "y": 24
+      },
+      "to": {
+        "x": 78,
+        "y": 30
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "cur-1",
+      "id": "rail-27"
+    },
+    {
+      "type": "rect",
+      "name": "label cover WORK",
+      "x": 52,
+      "y": 32,
+      "w": 52,
+      "h": 10,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.9,
+      "layer": "cur-1",
+      "id": "rail-28"
+    },
+    {
+      "type": "text",
+      "x": 52,
+      "y": 32,
+      "w": 52,
+      "h": 10,
+      "text": "WORK",
+      "size": 6,
+      "weight": 400,
+      "font": "mono",
+      "color": "#FFD03B",
+      "align": "center",
+      "valign": "top",
+      "layer": "cur-1",
+      "id": "rail-29"
+    },
+    {
+      "type": "ellipse",
+      "name": "current glow SKILLS",
+      "x": 120,
+      "y": 15,
+      "w": 12,
+      "h": 12,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 2
+        }
+      ],
+      "layer": "cur-2",
+      "id": "rail-30"
+    },
+    {
+      "type": "ellipse",
+      "name": "current dot SKILLS",
+      "x": 123,
+      "y": 18,
+      "w": 6,
+      "h": 6,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "layer": "cur-2",
+      "id": "rail-31"
+    },
+    {
+      "type": "line",
+      "name": "current stem SKILLS",
+      "from": {
+        "x": 126,
+        "y": 12
+      },
+      "to": {
+        "x": 126,
+        "y": 18
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "cur-2",
+      "id": "rail-32"
+    },
+    {
+      "type": "rect",
+      "name": "label cover SKILLS",
+      "x": 100,
+      "y": 0,
+      "w": 52,
+      "h": 10,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.9,
+      "layer": "cur-2",
+      "id": "rail-33"
+    },
+    {
+      "type": "text",
+      "x": 100,
+      "y": 0,
+      "w": 52,
+      "h": 10,
+      "text": "SKILLS",
+      "size": 6,
+      "weight": 400,
+      "font": "mono",
+      "color": "#FFD03B",
+      "align": "center",
+      "valign": "top",
+      "layer": "cur-2",
+      "id": "rail-34"
+    },
+    {
+      "type": "ellipse",
+      "name": "current glow PROJECTS",
+      "x": 168,
+      "y": 15,
+      "w": 12,
+      "h": 12,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 2
+        }
+      ],
+      "layer": "cur-3",
+      "id": "rail-35"
+    },
+    {
+      "type": "ellipse",
+      "name": "current dot PROJECTS",
+      "x": 171,
+      "y": 18,
+      "w": 6,
+      "h": 6,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "layer": "cur-3",
+      "id": "rail-36"
+    },
+    {
+      "type": "line",
+      "name": "current stem PROJECTS",
+      "from": {
+        "x": 174,
+        "y": 24
+      },
+      "to": {
+        "x": 174,
+        "y": 30
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "cur-3",
+      "id": "rail-37"
+    },
+    {
+      "type": "rect",
+      "name": "label cover PROJECTS",
+      "x": 148,
+      "y": 32,
+      "w": 52,
+      "h": 10,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.9,
+      "layer": "cur-3",
+      "id": "rail-38"
+    },
+    {
+      "type": "text",
+      "x": 148,
+      "y": 32,
+      "w": 52,
+      "h": 10,
+      "text": "PROJECTS",
+      "size": 6,
+      "weight": 400,
+      "font": "mono",
+      "color": "#FFD03B",
+      "align": "center",
+      "valign": "top",
+      "layer": "cur-3",
+      "id": "rail-39"
+    },
+    {
+      "type": "ellipse",
+      "name": "current glow OPEN SOURCE",
+      "x": 216,
+      "y": 15,
+      "w": 12,
+      "h": 12,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 2
+        }
+      ],
+      "layer": "cur-4",
+      "id": "rail-40"
+    },
+    {
+      "type": "ellipse",
+      "name": "current dot OPEN SOURCE",
+      "x": 219,
+      "y": 18,
+      "w": 6,
+      "h": 6,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "layer": "cur-4",
+      "id": "rail-41"
+    },
+    {
+      "type": "line",
+      "name": "current stem OPEN SOURCE",
+      "from": {
+        "x": 222,
+        "y": 12
+      },
+      "to": {
+        "x": 222,
+        "y": 18
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "cur-4",
+      "id": "rail-42"
+    },
+    {
+      "type": "rect",
+      "name": "label cover OPEN SOURCE",
+      "x": 196,
+      "y": 0,
+      "w": 52,
+      "h": 10,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.9,
+      "layer": "cur-4",
+      "id": "rail-43"
+    },
+    {
+      "type": "text",
+      "x": 196,
+      "y": 0,
+      "w": 52,
+      "h": 10,
+      "text": "OPEN SOURCE",
+      "size": 6,
+      "weight": 400,
+      "font": "mono",
+      "color": "#FFD03B",
+      "align": "center",
+      "valign": "top",
+      "layer": "cur-4",
+      "id": "rail-44"
+    },
+    {
+      "type": "ellipse",
+      "name": "current glow PLAY",
+      "x": 264,
+      "y": 15,
+      "w": 12,
+      "h": 12,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 2
+        }
+      ],
+      "layer": "cur-5",
+      "id": "rail-45"
+    },
+    {
+      "type": "ellipse",
+      "name": "current dot PLAY",
+      "x": 267,
+      "y": 18,
+      "w": 6,
+      "h": 6,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "layer": "cur-5",
+      "id": "rail-46"
+    },
+    {
+      "type": "line",
+      "name": "current stem PLAY",
+      "from": {
+        "x": 270,
+        "y": 24
+      },
+      "to": {
+        "x": 270,
+        "y": 30
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "layer": "cur-5",
+      "id": "rail-47"
+    },
+    {
+      "type": "rect",
+      "name": "label cover PLAY",
+      "x": 244,
+      "y": 32,
+      "w": 52,
+      "h": 10,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.9,
+      "layer": "cur-5",
+      "id": "rail-48"
+    },
+    {
+      "type": "text",
+      "x": 244,
+      "y": 32,
+      "w": 52,
+      "h": 10,
+      "text": "PLAY",
+      "size": 6,
+      "weight": 400,
+      "font": "mono",
+      "color": "#FFD03B",
+      "align": "center",
+      "valign": "top",
+      "layer": "cur-5",
+      "id": "rail-49"
+    },
+    {
+      "type": "rect",
+      "name": "shimmer",
+      "x": 8,
+      "y": 20.5,
+      "w": 284,
+      "h": 1,
+      "fill": "none",
+      "stroke": "#FFF4E3",
+      "strokeWidth": 0.6,
+      "opacity": 0.2,
+      "fx": [
+        {
+          "kind": "roughen",
+          "amount": 0.8,
+          "size": 30,
+          "seed": 2
+        }
+      ],
+      "layer": "projection",
+      "id": "rail-50"
+    }
+  ],
+  "layers": [
+    {
+      "id": "base",
+      "name": "Rail"
+    },
+    {
+      "id": "cur-0",
+      "name": "Current: ABOUT",
+      "hidden": true
+    },
+    {
+      "id": "cur-1",
+      "name": "Current: WORK",
+      "hidden": true
+    },
+    {
+      "id": "cur-2",
+      "name": "Current: SKILLS",
+      "hidden": true
+    },
+    {
+      "id": "cur-3",
+      "name": "Current: PROJECTS",
+      "hidden": true
+    },
+    {
+      "id": "cur-4",
+      "name": "Current: OPEN SOURCE",
+      "hidden": true
+    },
+    {
+      "id": "cur-5",
+      "name": "Current: PLAY",
+      "hidden": true
+    },
+    {
+      "id": "projection",
+      "name": "Projection (shimmer)"
+    }
+  ]
+}

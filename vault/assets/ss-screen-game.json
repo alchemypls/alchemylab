@@ -1,0 +1,106 @@
+{
+  "kind": "shape",
+  "title": "Screen: the game (Star-Survey)",
+  "updated": "2026-11-22",
+  "project": "star-survey",
+  "blocks": [],
+  "size": {
+    "width": 960,
+    "height": 540
+  },
+  "elements": [
+    {
+      "id": "game-bounds",
+      "type": "rect",
+      "name": "bounds",
+      "x": 0,
+      "y": 0,
+      "w": 960,
+      "h": 540,
+      "fill": "none",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "layer": "sky"
+    },
+    {
+      "type": "asset",
+      "name": "sky",
+      "asset": "ss-sky",
+      "x": 0,
+      "y": 0,
+      "w": 960,
+      "h": 540,
+      "layer": "sky",
+      "id": "game-1"
+    },
+    {
+      "type": "asset",
+      "name": "disengage",
+      "asset": "ss-button-quiet",
+      "x": 824,
+      "y": 14,
+      "w": 120,
+      "h": 30,
+      "texts": {
+        "label": "← DISENGAGE"
+      },
+      "layer": "hud",
+      "id": "game-64"
+    },
+    {
+      "type": "asset",
+      "name": "orb",
+      "asset": "ss-orb",
+      "x": 833.0,
+      "y": 427.5,
+      "w": 126.0,
+      "h": 105.0,
+      "layers": [
+        "glow",
+        "rings",
+        "gear",
+        "field-open",
+        "stick",
+        "button-2",
+        "side"
+      ],
+      "layer": "orb",
+      "id": "game-66"
+    },
+    {
+      "type": "asset",
+      "name": "moth",
+      "asset": "ss-moth",
+      "x": 432.0,
+      "y": 228.0,
+      "w": 96.0,
+      "h": 90.0,
+      "layers": [
+        "art",
+        "projection",
+        "rim",
+        "ring"
+      ],
+      "layer": "moth",
+      "id": "game-67"
+    }
+  ],
+  "layers": [
+    {
+      "id": "sky",
+      "name": "Sky (real)"
+    },
+    {
+      "id": "hud",
+      "name": "HUD"
+    },
+    {
+      "id": "orb",
+      "name": "Orb, field down"
+    },
+    {
+      "id": "moth",
+      "name": "Moth, flying"
+    }
+  ]
+}

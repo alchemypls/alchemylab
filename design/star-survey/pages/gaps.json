@@ -1,7 +1,7 @@
 {
   "title": "Gaps",
   "kicker": "Bridge",
-  "updated": "2026-11-19",
+  "updated": "2026-11-22",
   "background": "#0b0e16",
   "blocks": [],
   "elements": [
@@ -226,7 +226,7 @@
       "y": 344,
       "w": 564,
       "h": 22,
-      "text": "built: Home shows the six pages in place (#about … #play, :target, rise-in)",
+      "text": "built: Home shows the six pages in place (#hash, :target, rise-in)",
       "size": 13,
       "weight": 400,
       "font": "mono",
@@ -618,7 +618,7 @@
       "y": 732,
       "w": 564,
       "h": 22,
-      "text": "built: leader behavior (45\u00b0 elbow, draws in; Menu + Detail \u22651024)",
+      "text": "built: leader behavior (45° elbow, draws in; Menu + Detail ≥1024)",
       "size": 13,
       "weight": 400,
       "font": "mono",
@@ -812,6 +812,31 @@
       "id": "e-batch7",
       "kind": "evidence",
       "text": "Built 2026-11-19 (batch 7): live backdrops — a project's or page's `live` (sky, video, or off on a page), drawn fixed under the page over the CSS backdrop, which stays as the fallback (no script, no WebGL, before the first frame). The sky is a WebGL nebula and twinkling stars in four colors (night, nebula, glow, stars; var(--color-…) works), with star density and drift; ≤ 30 fps at ¾ resolution, stopped in a hidden tab, one still frame when calm, aria-hidden. A video ships muted and looping without autoplay (its poster holds without script and when calm). Addresses must be a site path or https. Set in Project settings or a page's fields; the Web preview runs the same runtime. star-survey: the sky in void / plum / wine / cream (the nebula stays at or under ≈#3a2440, where Accessibility measured the frames). Not the game's sky: fireworks, characters and the real star map stay in the game."
+    },
+    {
+      "id": "e-batch8",
+      "kind": "evidence",
+      "text": "Built 2026-11-22 (batch 8, components pass): a `projection` behavior (scanline rings + a pulse from [data-role=\"orb\"] behind a part's contents, its edge shimmering through shared SVG noise filters near / mid / far, pulses every 12 s, on hashchange, on appear and on `al-projection-pulse`; still when calm) and component widths in recipes (`responsive[\"1248\"]`: a container query beside the tiers; Fabricator edits an existing one). star-survey: Button (action / quiet; danger gone) and Frame (new tone plate) projected; Menu + Detail side by side from a 1248 content area (= a 1280 screen) with its leader from 1280; the orb's side button is ?; a new Cori's plate (mood dot + C.O-R.I eyebrow in neutral signal / happy gold / curious flame / alert ember, a polite live region, alive, projected) pinned right on Home."
+    },
+    {
+      "id": "g-tier-swap",
+      "kind": "hypothesis",
+      "text": "Gap: placements switch only at the three tiers (600 / 1024). The site wants Menu + Detail from 1280 and the Entry list (rows open in place) below; today 1024–1280 shows the pair stacked, menu over detail. Needs a per-project layout width or a placement shown from a width."
+    },
+    {
+      "id": "g-part-behavior",
+      "kind": "hypothesis",
+      "text": "Gap: behaviors attach to a component's root. The rail's projection belongs on its line, not the whole header strip, so the rail isn't projected yet. Needs a behavior on a part (a data-role target)."
+    },
+    {
+      "id": "g-width-add",
+      "kind": "hypothesis",
+      "text": "Gap: Fabricator lists a component's width breakpoints once they exist but can't add one (written in the file for now)."
+    },
+    {
+      "id": "g-orb-cori",
+      "kind": "hypothesis",
+      "text": "Not in Alchemy's reach yet: the orb's states (transmitter load, docked with the moth in his tank, field down, recall), the cocoon and space-on load, Cori flying, landing, touring and typing, and her leader to the butterfly. The site's own code builds those; Cori's plate is the static piece, and her landings can fire `al-projection-pulse`."
     }
   ],
   "agent": {

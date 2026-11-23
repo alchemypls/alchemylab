@@ -1,0 +1,55 @@
+{
+  "kind": "shape",
+  "title": "Info readout (Star-Survey)",
+  "updated": "2026-11-22",
+  "project": "star-survey",
+  "blocks": [],
+  "size": {
+    "width": 150,
+    "height": 44
+  },
+  "elements": [
+    {
+      "id": "readout-bounds",
+      "type": "rect",
+      "name": "bounds",
+      "x": 0,
+      "y": 0,
+      "w": 150,
+      "h": 44,
+      "fill": "none",
+      "stroke": "none",
+      "strokeWidth": 1
+    },
+    {
+      "type": "text",
+      "x": 0,
+      "y": 2,
+      "w": 150,
+      "h": 12,
+      "text": "SIMULATION // READY",
+      "size": 7,
+      "weight": 400,
+      "font": "mono",
+      "color": "#3DBDB4",
+      "align": "left",
+      "valign": "top",
+      "id": "eyebrow"
+    },
+    {
+      "type": "text",
+      "x": 0,
+      "y": 14,
+      "w": 150,
+      "h": 26,
+      "text": "WORK",
+      "size": 18,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "title"
+    }
+  ]
+}

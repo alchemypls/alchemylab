@@ -1,0 +1,3142 @@
+{
+  "title": "Opening",
+  "kicker": "Structure",
+  "topic": "opening",
+  "updated": "2026-11-22",
+  "background": "#0b0e16",
+  "blocks": [],
+  "elements": [
+    {
+      "type": "text",
+      "x": 56,
+      "y": 30,
+      "w": 900,
+      "h": 26,
+      "text": "Structure · decided",
+      "size": 16,
+      "weight": 700,
+      "font": "sans",
+      "color": "#F88F05",
+      "align": "left",
+      "valign": "top",
+      "caps": true,
+      "id": "kicker"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 58,
+      "w": 1300,
+      "h": 72,
+      "text": "",
+      "size": 52,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "top",
+      "bind": {
+        "topic": "opening",
+        "field": "title"
+      },
+      "id": "title"
+    },
+    {
+      "type": "status",
+      "x": 1840,
+      "y": 72,
+      "size": 22,
+      "topic": "opening",
+      "id": "status"
+    },
+    {
+      "type": "text",
+      "x": 1440,
+      "y": 40,
+      "w": 380,
+      "h": 30,
+      "text": "← Overview",
+      "size": 18,
+      "weight": 600,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "right",
+      "valign": "top",
+      "link": "index",
+      "id": "back"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 138,
+      "w": 1808,
+      "h": 60,
+      "text": "The orb loads the moth and docks. Cori welcomes you, tours the site, and ends the tour on the mission. PLAY sends the moth out; pause brings him back to his tank.",
+      "size": 22,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "drift"
+    },
+    {
+      "type": "line",
+      "name": "rule",
+      "from": {
+        "x": 56,
+        "y": 212
+      },
+      "to": {
+        "x": 1864,
+        "y": 212
+      },
+      "stroke": "#262c3b",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "op-6"
+    },
+    {
+      "type": "rect",
+      "name": "s1 blackout",
+      "x": 56.0,
+      "y": 232,
+      "w": 342.4,
+      "h": 192.6,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4,
+      "id": "op-7"
+    },
+    {
+      "type": "line",
+      "name": "s1 static",
+      "from": {
+        "x": 253.1,
+        "y": 370.2
+      },
+      "to": {
+        "x": 271.4,
+        "y": 370.2
+      },
+      "stroke": "#C9B8C4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "op-8"
+    },
+    {
+      "type": "line",
+      "name": "s1 static",
+      "from": {
+        "x": 317.1,
+        "y": 376.1
+      },
+      "to": {
+        "x": 325.6,
+        "y": 376.1
+      },
+      "stroke": "#C9B8C4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "op-9"
+    },
+    {
+      "type": "line",
+      "name": "s1 static",
+      "from": {
+        "x": 335.0,
+        "y": 261.3
+      },
+      "to": {
+        "x": 347.4,
+        "y": 261.3
+      },
+      "stroke": "#C9B8C4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "op-10"
+    },
+    {
+      "type": "line",
+      "name": "s1 static",
+      "from": {
+        "x": 181.8,
+        "y": 259.3
+      },
+      "to": {
+        "x": 190.3,
+        "y": 259.3
+      },
+      "stroke": "#C9B8C4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "op-11"
+    },
+    {
+      "type": "line",
+      "name": "s1 static",
+      "from": {
+        "x": 189.9,
+        "y": 273.2
+      },
+      "to": {
+        "x": 209.5,
+        "y": 273.2
+      },
+      "stroke": "#C9B8C4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.2,
+      "id": "op-12"
+    },
+    {
+      "type": "line",
+      "name": "s1 static",
+      "from": {
+        "x": 116.7,
+        "y": 379.8
+      },
+      "to": {
+        "x": 123.2,
+        "y": 379.8
+      },
+      "stroke": "#C9B8C4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.2,
+      "id": "op-13"
+    },
+    {
+      "type": "line",
+      "name": "s1 static",
+      "from": {
+        "x": 107.0,
+        "y": 241.9
+      },
+      "to": {
+        "x": 126.7,
+        "y": 241.9
+      },
+      "stroke": "#C9B8C4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "op-14"
+    },
+    {
+      "type": "line",
+      "name": "s1 static",
+      "from": {
+        "x": 297.5,
+        "y": 408.1
+      },
+      "to": {
+        "x": 304.5,
+        "y": 408.1
+      },
+      "stroke": "#C9B8C4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "op-15"
+    },
+    {
+      "type": "line",
+      "name": "s1 static",
+      "from": {
+        "x": 154.9,
+        "y": 408.3
+      },
+      "to": {
+        "x": 168.6,
+        "y": 408.3
+      },
+      "stroke": "#C9B8C4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "op-16"
+    },
+    {
+      "type": "line",
+      "name": "s1 static",
+      "from": {
+        "x": 123.2,
+        "y": 409.5
+      },
+      "to": {
+        "x": 130.7,
+        "y": 409.5
+      },
+      "stroke": "#C9B8C4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.2,
+      "id": "op-17"
+    },
+    {
+      "type": "line",
+      "name": "s1 static",
+      "from": {
+        "x": 157.7,
+        "y": 304.2
+      },
+      "to": {
+        "x": 164.7,
+        "y": 304.2
+      },
+      "stroke": "#C9B8C4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "op-18"
+    },
+    {
+      "type": "line",
+      "name": "s1 static",
+      "from": {
+        "x": 147.4,
+        "y": 299.2
+      },
+      "to": {
+        "x": 166.1,
+        "y": 299.2
+      },
+      "stroke": "#C9B8C4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "op-19"
+    },
+    {
+      "type": "asset",
+      "name": "orb",
+      "asset": "ss-orb",
+      "x": 146.9,
+      "y": 257.9,
+      "w": 160.5,
+      "h": 133.8,
+      "layers": [
+        "glow",
+        "rings",
+        "gear",
+        "parts",
+        "link"
+      ],
+      "id": "op-20"
+    },
+    {
+      "type": "text",
+      "x": 138.0,
+      "y": 388.9,
+      "w": 178.3,
+      "h": 10.7,
+      "text": "ESTABLISHING LINK…",
+      "size": 5,
+      "weight": 400,
+      "font": "mono",
+      "color": "#3DBDB4",
+      "align": "center",
+      "valign": "top",
+      "id": "op-21"
+    },
+    {
+      "type": "text",
+      "x": 334.2,
+      "y": 251.6,
+      "w": 53.5,
+      "h": 8.9,
+      "text": "SKIP ›",
+      "size": 5,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "right",
+      "valign": "top",
+      "id": "op-22"
+    },
+    {
+      "type": "text",
+      "x": 56.0,
+      "y": 432.6,
+      "w": 342.4,
+      "h": 22,
+      "text": "1 · Establishing link",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "op-23"
+    },
+    {
+      "type": "text",
+      "x": 56.0,
+      "y": 456.6,
+      "w": 342.4,
+      "h": 54,
+      "text": "The orb in the middle, parts turning; the link fills its ring.",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "op-24"
+    },
+    {
+      "type": "rect",
+      "name": "s2 blackout",
+      "x": 422.4,
+      "y": 232,
+      "w": 342.4,
+      "h": 192.6,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4,
+      "id": "op-25"
+    },
+    {
+      "type": "asset",
+      "name": "orb",
+      "asset": "ss-orb",
+      "x": 513.3,
+      "y": 257.9,
+      "w": 160.5,
+      "h": 133.8,
+      "layers": [
+        "glow",
+        "rings",
+        "gear",
+        "parts",
+        "link",
+        "field"
+      ],
+      "id": "op-26"
+    },
+    {
+      "type": "asset",
+      "name": "moth",
+      "asset": "ss-moth",
+      "x": 565.7,
+      "y": 303.3,
+      "w": 55.8,
+      "h": 52.3,
+      "layers": [
+        "folded",
+        "projection",
+        "rim",
+        "ring"
+      ],
+      "id": "op-27"
+    },
+    {
+      "type": "text",
+      "x": 504.4,
+      "y": 388.9,
+      "w": 178.3,
+      "h": 10.7,
+      "text": "LINK OK · SURVEYOR LOADING",
+      "size": 5,
+      "weight": 400,
+      "font": "mono",
+      "color": "#3DBDB4",
+      "align": "center",
+      "valign": "top",
+      "id": "op-28"
+    },
+    {
+      "type": "text",
+      "x": 700.6,
+      "y": 251.6,
+      "w": 53.5,
+      "h": 8.9,
+      "text": "SKIP ›",
+      "size": 5,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "right",
+      "valign": "top",
+      "id": "op-29"
+    },
+    {
+      "type": "text",
+      "x": 422.4,
+      "y": 432.6,
+      "w": 342.4,
+      "h": 22,
+      "text": "2 · Cocoon",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "op-30"
+    },
+    {
+      "type": "text",
+      "x": 422.4,
+      "y": 456.6,
+      "w": 342.4,
+      "h": 54,
+      "text": "In the field, a cocoon splits; the moth unfolds, held there.",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "op-31"
+    },
+    {
+      "type": "asset",
+      "name": "s3 sky",
+      "asset": "ss-sky",
+      "x": 788.8,
+      "y": 232,
+      "w": 342.4,
+      "h": 192.6,
+      "id": "op-32"
+    },
+    {
+      "type": "rect",
+      "name": "s3 not yet on",
+      "x": 788.8,
+      "y": 332.2,
+      "w": 342.4,
+      "h": 23.1,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.85,
+      "id": "op-33"
+    },
+    {
+      "type": "rect",
+      "name": "s3 not yet on",
+      "x": 788.8,
+      "y": 355.3,
+      "w": 342.4,
+      "h": 38.5,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "op-34"
+    },
+    {
+      "type": "rect",
+      "name": "s3 not yet on",
+      "x": 788.8,
+      "y": 393.8,
+      "w": 342.4,
+      "h": 30.8,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.7,
+      "id": "op-35"
+    },
+    {
+      "type": "line",
+      "name": "s3 scan line",
+      "from": {
+        "x": 788.8,
+        "y": 332.2
+      },
+      "to": {
+        "x": 1131.2,
+        "y": 332.2
+      },
+      "stroke": "#FFF4E3",
+      "strokeWidth": 1.5,
+      "arrow": "none",
+      "opacity": 0.7,
+      "id": "op-36"
+    },
+    {
+      "type": "line",
+      "name": "s3 flicker",
+      "from": {
+        "x": 788.8,
+        "y": 289.8
+      },
+      "to": {
+        "x": 1131.2,
+        "y": 289.8
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.3,
+      "id": "op-37"
+    },
+    {
+      "type": "asset",
+      "name": "orb",
+      "asset": "ss-orb",
+      "x": 895.8,
+      "y": 271.2,
+      "w": 128.4,
+      "h": 107.0,
+      "layers": [
+        "glow",
+        "rings",
+        "gear",
+        "parts",
+        "field"
+      ],
+      "id": "op-38"
+    },
+    {
+      "type": "asset",
+      "name": "moth",
+      "asset": "ss-moth",
+      "x": 939.7,
+      "y": 309.0,
+      "w": 40.6,
+      "h": 38.0,
+      "layers": [
+        "art",
+        "projection",
+        "rim",
+        "ring"
+      ],
+      "id": "op-39"
+    },
+    {
+      "type": "line",
+      "name": "s3 bracket",
+      "from": {
+        "x": 805.2,
+        "y": 237.7
+      },
+      "to": {
+        "x": 794.5,
+        "y": 237.7
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.4,
+      "id": "op-40"
+    },
+    {
+      "type": "line",
+      "name": "s3 bracket",
+      "from": {
+        "x": 794.5,
+        "y": 237.7
+      },
+      "to": {
+        "x": 794.5,
+        "y": 248.4
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.4,
+      "id": "op-41"
+    },
+    {
+      "type": "line",
+      "name": "s3 bracket",
+      "from": {
+        "x": 1114.8,
+        "y": 237.7
+      },
+      "to": {
+        "x": 1125.5,
+        "y": 237.7
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.4,
+      "id": "op-42"
+    },
+    {
+      "type": "line",
+      "name": "s3 bracket",
+      "from": {
+        "x": 1125.5,
+        "y": 237.7
+      },
+      "to": {
+        "x": 1125.5,
+        "y": 248.4
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.4,
+      "id": "op-43"
+    },
+    {
+      "type": "line",
+      "name": "s3 bracket",
+      "from": {
+        "x": 805.2,
+        "y": 418.9
+      },
+      "to": {
+        "x": 794.5,
+        "y": 418.9
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.4,
+      "id": "op-44"
+    },
+    {
+      "type": "line",
+      "name": "s3 bracket",
+      "from": {
+        "x": 794.5,
+        "y": 418.9
+      },
+      "to": {
+        "x": 794.5,
+        "y": 408.2
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.4,
+      "id": "op-45"
+    },
+    {
+      "type": "line",
+      "name": "s3 bracket",
+      "from": {
+        "x": 1114.8,
+        "y": 418.9
+      },
+      "to": {
+        "x": 1125.5,
+        "y": 418.9
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.4,
+      "id": "op-46"
+    },
+    {
+      "type": "line",
+      "name": "s3 bracket",
+      "from": {
+        "x": 1125.5,
+        "y": 418.9
+      },
+      "to": {
+        "x": 1125.5,
+        "y": 408.2
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.4,
+      "id": "op-47"
+    },
+    {
+      "type": "text",
+      "x": 1067.0,
+      "y": 251.6,
+      "w": 53.5,
+      "h": 8.9,
+      "text": "SKIP ›",
+      "size": 5,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "right",
+      "valign": "top",
+      "id": "op-48"
+    },
+    {
+      "type": "text",
+      "x": 788.8,
+      "y": 432.6,
+      "w": 342.4,
+      "h": 22,
+      "text": "3 · Space turns on",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "op-49"
+    },
+    {
+      "type": "text",
+      "x": 788.8,
+      "y": 456.6,
+      "w": 342.4,
+      "h": 54,
+      "text": "The sky comes on in bands, flickering like a screen warming up.",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "op-50"
+    },
+    {
+      "type": "asset",
+      "name": "s4 sky",
+      "asset": "ss-sky",
+      "x": 1155.2,
+      "y": 232,
+      "w": 342.4,
+      "h": 192.6,
+      "id": "op-51"
+    },
+    {
+      "type": "line",
+      "name": "s4 bracket",
+      "from": {
+        "x": 1171.6,
+        "y": 237.7
+      },
+      "to": {
+        "x": 1160.9,
+        "y": 237.7
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-52"
+    },
+    {
+      "type": "line",
+      "name": "s4 bracket",
+      "from": {
+        "x": 1160.9,
+        "y": 237.7
+      },
+      "to": {
+        "x": 1160.9,
+        "y": 248.4
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-53"
+    },
+    {
+      "type": "line",
+      "name": "s4 bracket",
+      "from": {
+        "x": 1481.2,
+        "y": 237.7
+      },
+      "to": {
+        "x": 1491.9,
+        "y": 237.7
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-54"
+    },
+    {
+      "type": "line",
+      "name": "s4 bracket",
+      "from": {
+        "x": 1491.9,
+        "y": 237.7
+      },
+      "to": {
+        "x": 1491.9,
+        "y": 248.4
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-55"
+    },
+    {
+      "type": "line",
+      "name": "s4 bracket",
+      "from": {
+        "x": 1171.6,
+        "y": 418.9
+      },
+      "to": {
+        "x": 1160.9,
+        "y": 418.9
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-56"
+    },
+    {
+      "type": "line",
+      "name": "s4 bracket",
+      "from": {
+        "x": 1160.9,
+        "y": 418.9
+      },
+      "to": {
+        "x": 1160.9,
+        "y": 408.2
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-57"
+    },
+    {
+      "type": "line",
+      "name": "s4 bracket",
+      "from": {
+        "x": 1481.2,
+        "y": 418.9
+      },
+      "to": {
+        "x": 1491.9,
+        "y": 418.9
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-58"
+    },
+    {
+      "type": "line",
+      "name": "s4 bracket",
+      "from": {
+        "x": 1491.9,
+        "y": 418.9
+      },
+      "to": {
+        "x": 1491.9,
+        "y": 408.2
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-59"
+    },
+    {
+      "type": "asset",
+      "name": "s4 rail",
+      "asset": "ss-rail",
+      "x": 1272.9,
+      "y": 235.6,
+      "w": 107.0,
+      "h": 15.0,
+      "layers": [
+        "base",
+        "cur-0",
+        "projection"
+      ],
+      "opacity": 0.8,
+      "id": "op-60"
+    },
+    {
+      "type": "asset",
+      "name": "s4 comms",
+      "asset": "ss-comms",
+      "x": 1409.9,
+      "y": 236.3,
+      "w": 82.0,
+      "h": 8.6,
+      "opacity": 1,
+      "id": "op-61"
+    },
+    {
+      "type": "asset",
+      "name": "s4 frame-reading",
+      "asset": "ss-frame-reading",
+      "x": 1278.2,
+      "y": 271.2,
+      "w": 96.3,
+      "h": 99.9,
+      "texts": {
+        "eyebrow": "ABOUT",
+        "title": "Software engineer",
+        "meta": "2024 — NOW"
+      },
+      "opacity": 1,
+      "id": "op-62"
+    },
+    {
+      "type": "line",
+      "name": "s4 orb path",
+      "from": {
+        "x": 1326.4,
+        "y": 324.7
+      },
+      "to": {
+        "x": 1461.9,
+        "y": 387.1
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "end",
+      "dash": "dot",
+      "bend": -30,
+      "opacity": 0.6,
+      "id": "op-63"
+    },
+    {
+      "type": "asset",
+      "name": "s4 orb",
+      "asset": "ss-orb",
+      "x": 1452.3,
+      "y": 384.5,
+      "w": 44.9,
+      "h": 37.4,
+      "layers": [
+        "glow",
+        "rings",
+        "gear",
+        "button-2",
+        "side",
+        "field",
+        "node"
+      ],
+      "id": "op-64"
+    },
+    {
+      "type": "asset",
+      "name": "s4 moth",
+      "asset": "ss-moth",
+      "x": 1467.9,
+      "y": 397.9,
+      "w": 13.7,
+      "h": 12.8,
+      "layers": [
+        "art",
+        "projection",
+        "rim"
+      ],
+      "id": "op-65"
+    },
+    {
+      "type": "text",
+      "x": 1155.2,
+      "y": 432.6,
+      "w": 342.4,
+      "h": 22,
+      "text": "4 · Dock",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "op-66"
+    },
+    {
+      "type": "text",
+      "x": 1155.2,
+      "y": 456.6,
+      "w": 342.4,
+      "h": 54,
+      "text": "The orb glides bottom-right, moth in its field. The site opens.",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "op-67"
+    },
+    {
+      "type": "asset",
+      "name": "s5 sky",
+      "asset": "ss-sky",
+      "x": 1521.6,
+      "y": 232,
+      "w": 342.4,
+      "h": 192.6,
+      "id": "op-68"
+    },
+    {
+      "type": "line",
+      "name": "s5 bracket",
+      "from": {
+        "x": 1538.0,
+        "y": 237.7
+      },
+      "to": {
+        "x": 1527.3,
+        "y": 237.7
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-69"
+    },
+    {
+      "type": "line",
+      "name": "s5 bracket",
+      "from": {
+        "x": 1527.3,
+        "y": 237.7
+      },
+      "to": {
+        "x": 1527.3,
+        "y": 248.4
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-70"
+    },
+    {
+      "type": "line",
+      "name": "s5 bracket",
+      "from": {
+        "x": 1847.6,
+        "y": 237.7
+      },
+      "to": {
+        "x": 1858.3,
+        "y": 237.7
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-71"
+    },
+    {
+      "type": "line",
+      "name": "s5 bracket",
+      "from": {
+        "x": 1858.3,
+        "y": 237.7
+      },
+      "to": {
+        "x": 1858.3,
+        "y": 248.4
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-72"
+    },
+    {
+      "type": "line",
+      "name": "s5 bracket",
+      "from": {
+        "x": 1538.0,
+        "y": 418.9
+      },
+      "to": {
+        "x": 1527.3,
+        "y": 418.9
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-73"
+    },
+    {
+      "type": "line",
+      "name": "s5 bracket",
+      "from": {
+        "x": 1527.3,
+        "y": 418.9
+      },
+      "to": {
+        "x": 1527.3,
+        "y": 408.2
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-74"
+    },
+    {
+      "type": "line",
+      "name": "s5 bracket",
+      "from": {
+        "x": 1847.6,
+        "y": 418.9
+      },
+      "to": {
+        "x": 1858.3,
+        "y": 418.9
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-75"
+    },
+    {
+      "type": "line",
+      "name": "s5 bracket",
+      "from": {
+        "x": 1858.3,
+        "y": 418.9
+      },
+      "to": {
+        "x": 1858.3,
+        "y": 408.2
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-76"
+    },
+    {
+      "type": "asset",
+      "name": "s5 rail",
+      "asset": "ss-rail",
+      "x": 1639.3,
+      "y": 235.6,
+      "w": 107.0,
+      "h": 15.0,
+      "layers": [
+        "base",
+        "cur-0",
+        "projection"
+      ],
+      "opacity": 0.8,
+      "id": "op-77"
+    },
+    {
+      "type": "asset",
+      "name": "s5 comms",
+      "asset": "ss-comms",
+      "x": 1776.3,
+      "y": 236.3,
+      "w": 82.0,
+      "h": 8.6,
+      "opacity": 1,
+      "id": "op-78"
+    },
+    {
+      "type": "asset",
+      "name": "s5 frame-reading",
+      "asset": "ss-frame-reading",
+      "x": 1644.6,
+      "y": 271.2,
+      "w": 96.3,
+      "h": 99.9,
+      "texts": {
+        "eyebrow": "ABOUT",
+        "title": "Software engineer",
+        "meta": "2024 — NOW"
+      },
+      "opacity": 0.35,
+      "id": "op-79"
+    },
+    {
+      "type": "asset",
+      "name": "s5 orb",
+      "asset": "ss-orb",
+      "x": 1818.7,
+      "y": 384.5,
+      "w": 44.9,
+      "h": 37.4,
+      "layers": [
+        "glow",
+        "rings",
+        "gear",
+        "button-2",
+        "side",
+        "field",
+        "node"
+      ],
+      "id": "op-80"
+    },
+    {
+      "type": "asset",
+      "name": "s5 moth",
+      "asset": "ss-moth",
+      "x": 1834.3,
+      "y": 397.9,
+      "w": 13.7,
+      "h": 12.8,
+      "layers": [
+        "art",
+        "projection",
+        "rim"
+      ],
+      "id": "op-81"
+    },
+    {
+      "type": "line",
+      "name": "s5 cori flight",
+      "from": {
+        "x": 1833.2,
+        "y": 391.2
+      },
+      "to": {
+        "x": 1757.0,
+        "y": 331.9
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "dash": "dot",
+      "bend": 40,
+      "opacity": 0.7,
+      "id": "op-82"
+    },
+    {
+      "type": "asset",
+      "name": "butterfly",
+      "asset": "ss-cori",
+      "x": 1747.0,
+      "y": 316.4,
+      "w": 20.0,
+      "h": 18.4,
+      "layers": [
+        "art",
+        "projection",
+        "rim",
+        "ring",
+        "glow"
+      ],
+      "id": "op-83"
+    },
+    {
+      "type": "asset",
+      "name": "s5 cori",
+      "asset": "ss-plate",
+      "x": 1767.7,
+      "y": 274.8,
+      "w": 89.2,
+      "h": 24.0,
+      "texts": {
+        "line": "Welcome. I'm C.O-R.I, Cosmic Operations – Research and Information, steward of this sector. Let me show you the lay of the stars."
+      },
+      "id": "op-84"
+    },
+    {
+      "type": "text",
+      "x": 1799.8,
+      "y": 251.6,
+      "w": 53.5,
+      "h": 8.9,
+      "text": "SKIP TOUR ›",
+      "size": 5,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "right",
+      "valign": "top",
+      "id": "op-85"
+    },
+    {
+      "type": "text",
+      "x": 1521.6,
+      "y": 432.6,
+      "w": 342.4,
+      "h": 22,
+      "text": "5 · Welcome",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "op-86"
+    },
+    {
+      "type": "text",
+      "x": 1521.6,
+      "y": 456.6,
+      "w": 342.4,
+      "h": 54,
+      "text": "Cori sparks out of the orb: who she is, then the tour.",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "op-87"
+    },
+    {
+      "type": "asset",
+      "name": "s6 sky",
+      "asset": "ss-sky",
+      "x": 56.0,
+      "y": 528,
+      "w": 342.4,
+      "h": 192.6,
+      "id": "op-88"
+    },
+    {
+      "type": "line",
+      "name": "s6 bracket",
+      "from": {
+        "x": 72.4,
+        "y": 533.7
+      },
+      "to": {
+        "x": 61.7,
+        "y": 533.7
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-89"
+    },
+    {
+      "type": "line",
+      "name": "s6 bracket",
+      "from": {
+        "x": 61.7,
+        "y": 533.7
+      },
+      "to": {
+        "x": 61.7,
+        "y": 544.4
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-90"
+    },
+    {
+      "type": "line",
+      "name": "s6 bracket",
+      "from": {
+        "x": 382.0,
+        "y": 533.7
+      },
+      "to": {
+        "x": 392.7,
+        "y": 533.7
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-91"
+    },
+    {
+      "type": "line",
+      "name": "s6 bracket",
+      "from": {
+        "x": 392.7,
+        "y": 533.7
+      },
+      "to": {
+        "x": 392.7,
+        "y": 544.4
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-92"
+    },
+    {
+      "type": "line",
+      "name": "s6 bracket",
+      "from": {
+        "x": 72.4,
+        "y": 714.9
+      },
+      "to": {
+        "x": 61.7,
+        "y": 714.9
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-93"
+    },
+    {
+      "type": "line",
+      "name": "s6 bracket",
+      "from": {
+        "x": 61.7,
+        "y": 714.9
+      },
+      "to": {
+        "x": 61.7,
+        "y": 704.2
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-94"
+    },
+    {
+      "type": "line",
+      "name": "s6 bracket",
+      "from": {
+        "x": 382.0,
+        "y": 714.9
+      },
+      "to": {
+        "x": 392.7,
+        "y": 714.9
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-95"
+    },
+    {
+      "type": "line",
+      "name": "s6 bracket",
+      "from": {
+        "x": 392.7,
+        "y": 714.9
+      },
+      "to": {
+        "x": 392.7,
+        "y": 704.2
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-96"
+    },
+    {
+      "type": "asset",
+      "name": "s6 rail",
+      "asset": "ss-rail",
+      "x": 173.7,
+      "y": 531.6,
+      "w": 107.0,
+      "h": 15.0,
+      "layers": [
+        "base",
+        "cur-0",
+        "projection"
+      ],
+      "opacity": 0.8,
+      "id": "op-97"
+    },
+    {
+      "type": "asset",
+      "name": "s6 comms",
+      "asset": "ss-comms",
+      "x": 310.7,
+      "y": 532.3,
+      "w": 82.0,
+      "h": 8.6,
+      "opacity": 1,
+      "id": "op-98"
+    },
+    {
+      "type": "asset",
+      "name": "s6 frame-reading",
+      "asset": "ss-frame-reading",
+      "x": 179.0,
+      "y": 567.2,
+      "w": 96.3,
+      "h": 99.9,
+      "texts": {
+        "eyebrow": "ABOUT",
+        "title": "Software engineer",
+        "meta": "2024 — NOW"
+      },
+      "opacity": 1,
+      "id": "op-99"
+    },
+    {
+      "type": "asset",
+      "name": "s6 orb",
+      "asset": "ss-orb",
+      "x": 353.1,
+      "y": 680.5,
+      "w": 44.9,
+      "h": 37.4,
+      "layers": [
+        "glow",
+        "rings",
+        "gear",
+        "button-2",
+        "side",
+        "field",
+        "node"
+      ],
+      "id": "op-100"
+    },
+    {
+      "type": "asset",
+      "name": "s6 moth",
+      "asset": "ss-moth",
+      "x": 368.7,
+      "y": 693.9,
+      "w": 13.7,
+      "h": 12.8,
+      "layers": [
+        "art",
+        "projection",
+        "rim"
+      ],
+      "id": "op-101"
+    },
+    {
+      "type": "asset",
+      "name": "butterfly",
+      "asset": "ss-cori",
+      "x": 327.9,
+      "y": 647.6,
+      "w": 12.5,
+      "h": 11.5,
+      "layers": [
+        "art",
+        "projection",
+        "rim",
+        "ring",
+        "glow"
+      ],
+      "id": "op-102"
+    },
+    {
+      "type": "ellipse",
+      "name": "s6 poi mark",
+      "x": 359.7,
+      "y": 683.3,
+      "w": 31.7,
+      "h": 31.7,
+      "fill": "none",
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "dash": true,
+      "id": "op-103"
+    },
+    {
+      "type": "asset",
+      "name": "s6 cori",
+      "asset": "ss-plate",
+      "x": 280.7,
+      "y": 586.9,
+      "w": 107.0,
+      "h": 28.8,
+      "texts": {
+        "line": "This orb steers the feed. Turn the stick to move between sections."
+      },
+      "id": "op-104"
+    },
+    {
+      "type": "text",
+      "x": 334.2,
+      "y": 547.6,
+      "w": 53.5,
+      "h": 8.9,
+      "text": "SKIP TOUR ›",
+      "size": 5,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "right",
+      "valign": "top",
+      "id": "op-105"
+    },
+    {
+      "type": "text",
+      "x": 56.0,
+      "y": 728.6,
+      "w": 342.4,
+      "h": 22,
+      "text": "6 · Tour: the orb",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "op-106"
+    },
+    {
+      "type": "text",
+      "x": 56.0,
+      "y": 752.6,
+      "w": 342.4,
+      "h": 54,
+      "text": "She lands by the orb: how the stick and buttons work. The route between stops varies.",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "op-107"
+    },
+    {
+      "type": "asset",
+      "name": "s7 sky",
+      "asset": "ss-sky",
+      "x": 422.4,
+      "y": 528,
+      "w": 342.4,
+      "h": 192.6,
+      "id": "op-108"
+    },
+    {
+      "type": "line",
+      "name": "s7 bracket",
+      "from": {
+        "x": 438.8,
+        "y": 533.7
+      },
+      "to": {
+        "x": 428.1,
+        "y": 533.7
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-109"
+    },
+    {
+      "type": "line",
+      "name": "s7 bracket",
+      "from": {
+        "x": 428.1,
+        "y": 533.7
+      },
+      "to": {
+        "x": 428.1,
+        "y": 544.4
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-110"
+    },
+    {
+      "type": "line",
+      "name": "s7 bracket",
+      "from": {
+        "x": 748.4,
+        "y": 533.7
+      },
+      "to": {
+        "x": 759.1,
+        "y": 533.7
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-111"
+    },
+    {
+      "type": "line",
+      "name": "s7 bracket",
+      "from": {
+        "x": 759.1,
+        "y": 533.7
+      },
+      "to": {
+        "x": 759.1,
+        "y": 544.4
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-112"
+    },
+    {
+      "type": "line",
+      "name": "s7 bracket",
+      "from": {
+        "x": 438.8,
+        "y": 714.9
+      },
+      "to": {
+        "x": 428.1,
+        "y": 714.9
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-113"
+    },
+    {
+      "type": "line",
+      "name": "s7 bracket",
+      "from": {
+        "x": 428.1,
+        "y": 714.9
+      },
+      "to": {
+        "x": 428.1,
+        "y": 704.2
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-114"
+    },
+    {
+      "type": "line",
+      "name": "s7 bracket",
+      "from": {
+        "x": 748.4,
+        "y": 714.9
+      },
+      "to": {
+        "x": 759.1,
+        "y": 714.9
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-115"
+    },
+    {
+      "type": "line",
+      "name": "s7 bracket",
+      "from": {
+        "x": 759.1,
+        "y": 714.9
+      },
+      "to": {
+        "x": 759.1,
+        "y": 704.2
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-116"
+    },
+    {
+      "type": "asset",
+      "name": "s7 rail",
+      "asset": "ss-rail",
+      "x": 540.1,
+      "y": 531.6,
+      "w": 107.0,
+      "h": 15.0,
+      "layers": [
+        "base",
+        "cur-0",
+        "projection"
+      ],
+      "opacity": 0.8,
+      "id": "op-117"
+    },
+    {
+      "type": "asset",
+      "name": "s7 comms",
+      "asset": "ss-comms",
+      "x": 677.1,
+      "y": 532.3,
+      "w": 82.0,
+      "h": 8.6,
+      "opacity": 1,
+      "id": "op-118"
+    },
+    {
+      "type": "asset",
+      "name": "s7 frame-reading",
+      "asset": "ss-frame-reading",
+      "x": 545.4,
+      "y": 567.2,
+      "w": 96.3,
+      "h": 99.9,
+      "texts": {
+        "eyebrow": "ABOUT",
+        "title": "Software engineer",
+        "meta": "2024 — NOW"
+      },
+      "opacity": 1,
+      "id": "op-119"
+    },
+    {
+      "type": "asset",
+      "name": "s7 orb",
+      "asset": "ss-orb",
+      "x": 719.5,
+      "y": 680.5,
+      "w": 44.9,
+      "h": 37.4,
+      "layers": [
+        "glow",
+        "rings",
+        "gear",
+        "button-2",
+        "side",
+        "field",
+        "node"
+      ],
+      "id": "op-120"
+    },
+    {
+      "type": "asset",
+      "name": "s7 moth",
+      "asset": "ss-moth",
+      "x": 735.1,
+      "y": 693.9,
+      "w": 13.7,
+      "h": 12.8,
+      "layers": [
+        "art",
+        "projection",
+        "rim"
+      ],
+      "id": "op-121"
+    },
+    {
+      "type": "asset",
+      "name": "butterfly",
+      "asset": "ss-cori",
+      "x": 683.6,
+      "y": 547.8,
+      "w": 12.5,
+      "h": 11.5,
+      "layers": [
+        "art",
+        "projection",
+        "rim",
+        "ring",
+        "glow"
+      ],
+      "id": "op-122"
+    },
+    {
+      "type": "ellipse",
+      "name": "s7 poi mark",
+      "x": 668.1,
+      "y": 531.8,
+      "w": 90.0,
+      "h": 18.0,
+      "fill": "none",
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "dash": true,
+      "id": "op-123"
+    },
+    {
+      "type": "asset",
+      "name": "s7 cori",
+      "asset": "ss-plate",
+      "x": 647.1,
+      "y": 586.9,
+      "w": 107.0,
+      "h": 28.8,
+      "texts": {
+        "line": "Résumé, GitHub and contact stay up here, wherever you are."
+      },
+      "id": "op-124"
+    },
+    {
+      "type": "text",
+      "x": 700.6,
+      "y": 547.6,
+      "w": 53.5,
+      "h": 8.9,
+      "text": "SKIP TOUR ›",
+      "size": 5,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "right",
+      "valign": "top",
+      "id": "op-125"
+    },
+    {
+      "type": "text",
+      "x": 422.4,
+      "y": 728.6,
+      "w": 342.4,
+      "h": 22,
+      "text": "7 · Tour: where to click",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "op-126"
+    },
+    {
+      "type": "text",
+      "x": 422.4,
+      "y": 752.6,
+      "w": 342.4,
+      "h": 54,
+      "text": "She lands on comms, the rail, an entry: what's always there.",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "op-127"
+    },
+    {
+      "type": "asset",
+      "name": "s8 sky",
+      "asset": "ss-sky",
+      "x": 788.8,
+      "y": 528,
+      "w": 342.4,
+      "h": 192.6,
+      "id": "op-128"
+    },
+    {
+      "type": "line",
+      "name": "s8 bracket",
+      "from": {
+        "x": 805.2,
+        "y": 533.7
+      },
+      "to": {
+        "x": 794.5,
+        "y": 533.7
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-129"
+    },
+    {
+      "type": "line",
+      "name": "s8 bracket",
+      "from": {
+        "x": 794.5,
+        "y": 533.7
+      },
+      "to": {
+        "x": 794.5,
+        "y": 544.4
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-130"
+    },
+    {
+      "type": "line",
+      "name": "s8 bracket",
+      "from": {
+        "x": 1114.8,
+        "y": 533.7
+      },
+      "to": {
+        "x": 1125.5,
+        "y": 533.7
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-131"
+    },
+    {
+      "type": "line",
+      "name": "s8 bracket",
+      "from": {
+        "x": 1125.5,
+        "y": 533.7
+      },
+      "to": {
+        "x": 1125.5,
+        "y": 544.4
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-132"
+    },
+    {
+      "type": "line",
+      "name": "s8 bracket",
+      "from": {
+        "x": 805.2,
+        "y": 714.9
+      },
+      "to": {
+        "x": 794.5,
+        "y": 714.9
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-133"
+    },
+    {
+      "type": "line",
+      "name": "s8 bracket",
+      "from": {
+        "x": 794.5,
+        "y": 714.9
+      },
+      "to": {
+        "x": 794.5,
+        "y": 704.2
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-134"
+    },
+    {
+      "type": "line",
+      "name": "s8 bracket",
+      "from": {
+        "x": 1114.8,
+        "y": 714.9
+      },
+      "to": {
+        "x": 1125.5,
+        "y": 714.9
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-135"
+    },
+    {
+      "type": "line",
+      "name": "s8 bracket",
+      "from": {
+        "x": 1125.5,
+        "y": 714.9
+      },
+      "to": {
+        "x": 1125.5,
+        "y": 704.2
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-136"
+    },
+    {
+      "type": "asset",
+      "name": "s8 rail",
+      "asset": "ss-rail",
+      "x": 906.5,
+      "y": 531.6,
+      "w": 107.0,
+      "h": 15.0,
+      "layers": [
+        "base",
+        "cur-5",
+        "projection"
+      ],
+      "opacity": 0.8,
+      "id": "op-137"
+    },
+    {
+      "type": "asset",
+      "name": "s8 comms",
+      "asset": "ss-comms",
+      "x": 1043.5,
+      "y": 532.3,
+      "w": 82.0,
+      "h": 8.6,
+      "opacity": 1,
+      "id": "op-138"
+    },
+    {
+      "type": "asset",
+      "name": "s8 frame-reading",
+      "asset": "ss-frame-reading",
+      "x": 911.8,
+      "y": 567.2,
+      "w": 96.3,
+      "h": 99.9,
+      "texts": {
+        "eyebrow": "MISSION 01",
+        "title": "Resurvey the sector",
+        "meta": "PLAY"
+      },
+      "opacity": 1,
+      "id": "op-139"
+    },
+    {
+      "type": "asset",
+      "name": "s8 launch",
+      "asset": "ss-button-action",
+      "x": 917.6,
+      "y": 650.7,
+      "w": 42.8,
+      "h": 10.7,
+      "texts": {
+        "label": "LAUNCH"
+      },
+      "opacity": 1,
+      "id": "op-140"
+    },
+    {
+      "type": "asset",
+      "name": "s8 orb",
+      "asset": "ss-orb",
+      "x": 1085.9,
+      "y": 680.5,
+      "w": 44.9,
+      "h": 37.4,
+      "layers": [
+        "glow",
+        "rings",
+        "gear",
+        "button-2",
+        "side",
+        "field",
+        "node"
+      ],
+      "id": "op-141"
+    },
+    {
+      "type": "asset",
+      "name": "s8 moth",
+      "asset": "ss-moth",
+      "x": 1101.5,
+      "y": 693.9,
+      "w": 13.7,
+      "h": 12.8,
+      "layers": [
+        "art",
+        "projection",
+        "rim"
+      ],
+      "id": "op-142"
+    },
+    {
+      "type": "asset",
+      "name": "butterfly",
+      "asset": "ss-cori",
+      "x": 980.5,
+      "y": 645.8,
+      "w": 12.5,
+      "h": 11.5,
+      "layers": [
+        "art",
+        "projection",
+        "rim",
+        "ring",
+        "glow"
+      ],
+      "id": "op-143"
+    },
+    {
+      "type": "asset",
+      "name": "s8 cori",
+      "asset": "ss-plate",
+      "x": 1017.1,
+      "y": 586.9,
+      "w": 103.4,
+      "h": 27.8,
+      "texts": {
+        "line": "Last stop. These trails are out of date. You remap them; I'll make it fun."
+      },
+      "id": "op-144"
+    },
+    {
+      "type": "text",
+      "x": 788.8,
+      "y": 728.6,
+      "w": 342.4,
+      "h": 22,
+      "text": "8 · Mission",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFD03B",
+      "align": "left",
+      "valign": "top",
+      "id": "op-145"
+    },
+    {
+      "type": "text",
+      "x": 788.8,
+      "y": 752.6,
+      "w": 342.4,
+      "h": 54,
+      "text": "Play: resurvey the sector. You remap; Cori makes it fun. LAUNCH.",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "op-146"
+    },
+    {
+      "type": "asset",
+      "name": "s9 sky",
+      "asset": "ss-sky",
+      "x": 1155.2,
+      "y": 528,
+      "w": 342.4,
+      "h": 192.6,
+      "id": "op-147"
+    },
+    {
+      "type": "line",
+      "name": "s9 bracket",
+      "from": {
+        "x": 1171.6,
+        "y": 533.7
+      },
+      "to": {
+        "x": 1160.9,
+        "y": 533.7
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.6,
+      "id": "op-148"
+    },
+    {
+      "type": "line",
+      "name": "s9 bracket",
+      "from": {
+        "x": 1160.9,
+        "y": 533.7
+      },
+      "to": {
+        "x": 1160.9,
+        "y": 544.4
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.6,
+      "id": "op-149"
+    },
+    {
+      "type": "line",
+      "name": "s9 bracket",
+      "from": {
+        "x": 1481.2,
+        "y": 533.7
+      },
+      "to": {
+        "x": 1491.9,
+        "y": 533.7
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.6,
+      "id": "op-150"
+    },
+    {
+      "type": "line",
+      "name": "s9 bracket",
+      "from": {
+        "x": 1491.9,
+        "y": 533.7
+      },
+      "to": {
+        "x": 1491.9,
+        "y": 544.4
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.6,
+      "id": "op-151"
+    },
+    {
+      "type": "line",
+      "name": "s9 bracket",
+      "from": {
+        "x": 1171.6,
+        "y": 714.9
+      },
+      "to": {
+        "x": 1160.9,
+        "y": 714.9
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.6,
+      "id": "op-152"
+    },
+    {
+      "type": "line",
+      "name": "s9 bracket",
+      "from": {
+        "x": 1160.9,
+        "y": 714.9
+      },
+      "to": {
+        "x": 1160.9,
+        "y": 704.2
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.6,
+      "id": "op-153"
+    },
+    {
+      "type": "line",
+      "name": "s9 bracket",
+      "from": {
+        "x": 1481.2,
+        "y": 714.9
+      },
+      "to": {
+        "x": 1491.9,
+        "y": 714.9
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.6,
+      "id": "op-154"
+    },
+    {
+      "type": "line",
+      "name": "s9 bracket",
+      "from": {
+        "x": 1491.9,
+        "y": 714.9
+      },
+      "to": {
+        "x": 1491.9,
+        "y": 704.2
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.6,
+      "id": "op-155"
+    },
+    {
+      "type": "asset",
+      "name": "s9 rail",
+      "asset": "ss-rail",
+      "x": 1272.9,
+      "y": 531.6,
+      "w": 107.0,
+      "h": 15.0,
+      "layers": [
+        "base",
+        "cur-5",
+        "projection"
+      ],
+      "opacity": 0.5,
+      "id": "op-156"
+    },
+    {
+      "type": "asset",
+      "name": "s9 comms",
+      "asset": "ss-comms",
+      "x": 1409.9,
+      "y": 532.3,
+      "w": 82.0,
+      "h": 8.6,
+      "opacity": 0.3,
+      "id": "op-157"
+    },
+    {
+      "type": "asset",
+      "name": "s9 frame-reading",
+      "asset": "ss-frame-reading",
+      "x": 1278.2,
+      "y": 567.2,
+      "w": 96.3,
+      "h": 99.9,
+      "texts": {
+        "eyebrow": "MISSION 01",
+        "title": "Resurvey the sector",
+        "meta": "2024 — NOW"
+      },
+      "opacity": 0.12,
+      "id": "op-158"
+    },
+    {
+      "type": "asset",
+      "name": "s9 orb",
+      "asset": "ss-orb",
+      "x": 1452.3,
+      "y": 680.5,
+      "w": 44.9,
+      "h": 37.4,
+      "layers": [
+        "glow",
+        "rings",
+        "gear",
+        "button-2",
+        "side",
+        "field-open",
+        "stick"
+      ],
+      "id": "op-159"
+    },
+    {
+      "type": "asset",
+      "name": "moth",
+      "asset": "ss-moth",
+      "x": 1293.4,
+      "y": 591.9,
+      "w": 65.9,
+      "h": 61.8,
+      "layers": [
+        "art",
+        "projection",
+        "rim",
+        "ring",
+        "ghost"
+      ],
+      "id": "op-160"
+    },
+    {
+      "type": "line",
+      "name": "s9 moth flight",
+      "from": {
+        "x": 1460.8,
+        "y": 685.2
+      },
+      "to": {
+        "x": 1350.2,
+        "y": 639.8
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "end",
+      "dash": "dot",
+      "bend": 40,
+      "opacity": 0.6,
+      "id": "op-161"
+    },
+    {
+      "type": "asset",
+      "name": "butterfly",
+      "asset": "ss-cori",
+      "x": 1372.0,
+      "y": 583.3,
+      "w": 30.0,
+      "h": 27.5,
+      "layers": [
+        "art",
+        "projection",
+        "rim",
+        "ring",
+        "glow"
+      ],
+      "id": "op-162"
+    },
+    {
+      "type": "text",
+      "x": 1166.6,
+      "y": 549.4,
+      "w": 160.5,
+      "h": 8.9,
+      "text": "FIELD DOWN · SIMULATION LIVE",
+      "size": 5,
+      "weight": 400,
+      "font": "mono",
+      "color": "#FFD03B",
+      "align": "left",
+      "valign": "top",
+      "id": "op-163"
+    },
+    {
+      "type": "text",
+      "x": 1155.2,
+      "y": 728.6,
+      "w": 342.4,
+      "h": 22,
+      "text": "9 · Go",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "op-164"
+    },
+    {
+      "type": "text",
+      "x": 1155.2,
+      "y": 752.6,
+      "w": 342.4,
+      "h": 54,
+      "text": "The field drops, the moth flies to center; the game's overlay takes the corners.",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "op-165"
+    },
+    {
+      "type": "asset",
+      "name": "s10 sky",
+      "asset": "ss-sky",
+      "x": 1521.6,
+      "y": 528,
+      "w": 342.4,
+      "h": 192.6,
+      "id": "op-166"
+    },
+    {
+      "type": "line",
+      "name": "s10 bracket",
+      "from": {
+        "x": 1538.0,
+        "y": 533.7
+      },
+      "to": {
+        "x": 1527.3,
+        "y": 533.7
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-167"
+    },
+    {
+      "type": "line",
+      "name": "s10 bracket",
+      "from": {
+        "x": 1527.3,
+        "y": 533.7
+      },
+      "to": {
+        "x": 1527.3,
+        "y": 544.4
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-168"
+    },
+    {
+      "type": "line",
+      "name": "s10 bracket",
+      "from": {
+        "x": 1847.6,
+        "y": 533.7
+      },
+      "to": {
+        "x": 1858.3,
+        "y": 533.7
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-169"
+    },
+    {
+      "type": "line",
+      "name": "s10 bracket",
+      "from": {
+        "x": 1858.3,
+        "y": 533.7
+      },
+      "to": {
+        "x": 1858.3,
+        "y": 544.4
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-170"
+    },
+    {
+      "type": "line",
+      "name": "s10 bracket",
+      "from": {
+        "x": 1538.0,
+        "y": 714.9
+      },
+      "to": {
+        "x": 1527.3,
+        "y": 714.9
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-171"
+    },
+    {
+      "type": "line",
+      "name": "s10 bracket",
+      "from": {
+        "x": 1527.3,
+        "y": 714.9
+      },
+      "to": {
+        "x": 1527.3,
+        "y": 704.2
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-172"
+    },
+    {
+      "type": "line",
+      "name": "s10 bracket",
+      "from": {
+        "x": 1847.6,
+        "y": 714.9
+      },
+      "to": {
+        "x": 1858.3,
+        "y": 714.9
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-173"
+    },
+    {
+      "type": "line",
+      "name": "s10 bracket",
+      "from": {
+        "x": 1858.3,
+        "y": 714.9
+      },
+      "to": {
+        "x": 1858.3,
+        "y": 704.2
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.5,
+      "id": "op-174"
+    },
+    {
+      "type": "asset",
+      "name": "s10 rail",
+      "asset": "ss-rail",
+      "x": 1639.3,
+      "y": 531.6,
+      "w": 107.0,
+      "h": 15.0,
+      "layers": [
+        "base",
+        "cur-1",
+        "projection"
+      ],
+      "opacity": 0.8,
+      "id": "op-175"
+    },
+    {
+      "type": "asset",
+      "name": "s10 comms",
+      "asset": "ss-comms",
+      "x": 1776.3,
+      "y": 532.3,
+      "w": 82.0,
+      "h": 8.6,
+      "opacity": 1,
+      "id": "op-176"
+    },
+    {
+      "type": "asset",
+      "name": "s10 frame-reading",
+      "asset": "ss-frame-reading",
+      "x": 1644.6,
+      "y": 567.2,
+      "w": 96.3,
+      "h": 99.9,
+      "texts": {
+        "eyebrow": "WORK",
+        "title": "Experience",
+        "meta": "2024 — NOW"
+      },
+      "opacity": 1,
+      "id": "op-177"
+    },
+    {
+      "type": "asset",
+      "name": "s10 orb",
+      "asset": "ss-orb",
+      "x": 1818.7,
+      "y": 680.5,
+      "w": 44.9,
+      "h": 37.4,
+      "layers": [
+        "glow",
+        "rings",
+        "gear",
+        "button-2",
+        "side",
+        "field",
+        "node"
+      ],
+      "id": "op-178"
+    },
+    {
+      "type": "asset",
+      "name": "s10 moth",
+      "asset": "ss-moth",
+      "x": 1835.8,
+      "y": 693.9,
+      "w": 13.7,
+      "h": 12.8,
+      "layers": [
+        "art",
+        "projection",
+        "rim"
+      ],
+      "id": "op-179"
+    },
+    {
+      "type": "poly",
+      "name": "s10 swim path",
+      "x": 1837.0,
+      "y": 694.7,
+      "w": 8.1,
+      "h": 3.0,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.032,
+          0.8029
+        ],
+        [
+          0.0738,
+          0.6203
+        ],
+        [
+          0.1246,
+          0.4557
+        ],
+        [
+          0.1833,
+          0.3125
+        ],
+        [
+          0.2487,
+          0.1936
+        ],
+        [
+          0.3197,
+          0.1013
+        ],
+        [
+          0.3946,
+          0.0375
+        ],
+        [
+          0.4721,
+          0.0035
+        ],
+        [
+          0.5506,
+          0.0
+        ],
+        [
+          0.6284,
+          0.027
+        ],
+        [
+          0.7041,
+          0.084
+        ],
+        [
+          0.7761,
+          0.1698
+        ],
+        [
+          0.843,
+          0.2828
+        ],
+        [
+          0.9034,
+          0.4206
+        ],
+        [
+          0.9561,
+          0.5806
+        ],
+        [
+          1.0,
+          0.7594
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "open": true,
+      "dash": "dot",
+      "id": "op-180"
+    },
+    {
+      "type": "asset",
+      "name": "butterfly",
+      "asset": "ss-cori",
+      "x": 1801.9,
+      "y": 659.4,
+      "w": 10.0,
+      "h": 9.2,
+      "layers": [
+        "art",
+        "projection",
+        "rim",
+        "ring",
+        "glow"
+      ],
+      "id": "op-181"
+    },
+    {
+      "type": "line",
+      "name": "s10 cori visit",
+      "from": {
+        "x": 1767.7,
+        "y": 602.9
+      },
+      "to": {
+        "x": 1803.4,
+        "y": 660.0
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "dash": "dot",
+      "bend": -30,
+      "opacity": 0.6,
+      "id": "op-182"
+    },
+    {
+      "type": "asset",
+      "name": "s10 cori",
+      "asset": "ss-plate",
+      "x": 1746.3,
+      "y": 586.9,
+      "w": 107.0,
+      "h": 28.8,
+      "texts": {
+        "line": "Paused. I'll keep him company."
+      },
+      "id": "op-183"
+    },
+    {
+      "type": "text",
+      "x": 1533.0,
+      "y": 549.4,
+      "w": 160.5,
+      "h": 8.9,
+      "text": "PAUSED · FIELD UP",
+      "size": 5,
+      "weight": 400,
+      "font": "mono",
+      "color": "#3DBDB4",
+      "align": "left",
+      "valign": "top",
+      "id": "op-184"
+    },
+    {
+      "type": "text",
+      "x": 1521.6,
+      "y": 728.6,
+      "w": 342.4,
+      "h": 22,
+      "text": "10 · Pause",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "op-185"
+    },
+    {
+      "type": "text",
+      "x": 1521.6,
+      "y": 752.6,
+      "w": 342.4,
+      "h": 54,
+      "text": "Back on the site, Cori idles: flies about, rests on a corner, visits the moth in his tank.",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "op-186"
+    },
+    {
+      "type": "line",
+      "name": "rule",
+      "from": {
+        "x": 56,
+        "y": 836
+      },
+      "to": {
+        "x": 1864,
+        "y": 836
+      },
+      "stroke": "#262c3b",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "op-187"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 854,
+      "w": 600,
+      "h": 18,
+      "text": "ALWAYS",
+      "size": 10,
+      "weight": 400,
+      "font": "mono",
+      "color": "#3DBDB4",
+      "align": "left",
+      "valign": "top",
+      "id": "op-188"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 880,
+      "w": 880,
+      "h": 130,
+      "text": "· the work is on the site, never behind the game: the game is dessert\n· site and game: two places, one overlay, one orb, one Cori\n· load (1–4) about 6 s; SKIP › and Esc jump to 4",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "op-189"
+    },
+    {
+      "type": "text",
+      "x": 984,
+      "y": 880,
+      "w": 880,
+      "h": 130,
+      "text": "· the tour never blocks: the site works under it; SKIP TOUR on every stop; NEXT = button 1\n· a returning visitor starts docked, no tour; Cori's side button replays it\n· calm: no flicker or spin, screens cross-fade, Cori's lines appear whole",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "op-190"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "k-orb",
+      "kind": "decision",
+      "text": "The orb is the transmitter: the source of the projection and the controller of both the site and the game. Splash = the orb in the middle establishing the link, many moving parts (rings, a gear, geometric shapes turning at their own speeds)."
+    },
+    {
+      "id": "k-load",
+      "kind": "decision",
+      "text": "Load: the moth comes out of a cocoon in the field at the orb's center; space turns on piece by piece like a screen flickering on; the orb docks bottom-right."
+    },
+    {
+      "id": "k-welcome",
+      "kind": "decision",
+      "text": "Cori welcomes with a few words of lore: \"Welcome. I'm C.O-R.I, Cosmic Operations – Research and Information, steward of this sector. Let me show you the lay of the stars.\""
+    },
+    {
+      "id": "k-idle",
+      "kind": "decision",
+      "text": "Cori is a little random, as in the game: between tour stops and after the tour she picks an idle: fly around, rest on a corner, come talk to the moth in his tank."
+    },
+    {
+      "id": "k-mission",
+      "kind": "decision",
+      "text": "The mission (Play tab): resurvey the stars and constellations of this sector. The moth remaps the trails; Cori helps, gathers new and updated info, and makes it fun."
+    },
+    {
+      "id": "k-tour",
+      "kind": "decision",
+      "text": "Then a tour of the site first: how the orb works, where you can click (comms, rail, entries). The tour ends on the last tab, Play: the mission, with a touch of lore, then LAUNCH."
+    },
+    {
+      "id": "k-field",
+      "kind": "decision",
+      "text": "On the site the moth swims in the orb's field (a tank) swimming about at random; the tank is where your thumb presses to move. LAUNCH drops the field and he flies to the center. Pause / back: Cori returns to being the site guide, the moth returns to his tank, field up."
+    },
+    {
+      "id": "k-split",
+      "kind": "decision",
+      "text": "Site and game stay separate places, themed and flowing the same: one overlay, the orb controls both, Cori guides in both."
+    },
+    {
+      "id": "k-dessert",
+      "kind": "decision",
+      "text": "No work info behind the game. The site carries all of it; the game is dessert.",
+      "why": "Recruiters will never get there."
+    },
+    {
+      "id": "k-tour-stops",
+      "kind": "decision",
+      "text": "Tour stops: orb → comms (résumé, GitHub, contact) → rail → one entry → Play. One Cori line each, NEXT with button 1 or a click; the flight between stops varies."
+    }
+  ],
+  "agent": {
+    "brief": "First load, Cori's welcome + site tour, the mission on Play, and the site ↔ game handoff, all through the orb.",
+    "rules": [
+      "Work content lives on the site only; nothing about the work is unlocked by play.",
+      "The tour never blocks the page: everything stays clickable; SKIP TOUR on every stop; it runs once (localStorage, try/catch), the side button replays it.",
+      "Reduced motion: no flicker, no spinning parts, the orb fades to its corner, Cori's lines appear whole.",
+      "On the site the moth swims about the tank at random; the tank is the stick disc, where the thumb presses.",
+      "LAUNCH: field drops → moth flies to center → site shell fades, HUD fades into the same corners. Pause / Disengage reverses it."
+    ],
+    "open": [
+      "Load length.",
+      "Cori's lines per stop (drafts on the screens).",
+      "Idle weights and timing."
+    ]
+  }
+}

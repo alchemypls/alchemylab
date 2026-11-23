@@ -1,0 +1,5120 @@
+{
+  "kind": "shape",
+  "title": "Button, action (Star-Survey)",
+  "updated": "2026-11-22",
+  "project": "star-survey",
+  "blocks": [],
+  "size": {
+    "width": 160,
+    "height": 40
+  },
+  "elements": [
+    {
+      "id": "button-action-bounds",
+      "type": "rect",
+      "name": "bounds",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "fill": "none",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "layer": "rest"
+    },
+    {
+      "type": "rect",
+      "name": "rest fill",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.1,
+      "layer": "rest",
+      "id": "button-action-1"
+    },
+    {
+      "type": "rect",
+      "name": "rest line",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "fill": "none",
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "layer": "rest",
+      "id": "button-action-2"
+    },
+    {
+      "type": "line",
+      "name": "rest tick",
+      "from": {
+        "x": 8,
+        "y": 0
+      },
+      "to": {
+        "x": 0,
+        "y": 0
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "rest",
+      "id": "button-action-3"
+    },
+    {
+      "type": "line",
+      "name": "rest tick",
+      "from": {
+        "x": 0,
+        "y": 0
+      },
+      "to": {
+        "x": 0,
+        "y": 8
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "rest",
+      "id": "button-action-4"
+    },
+    {
+      "type": "line",
+      "name": "rest tick",
+      "from": {
+        "x": 152,
+        "y": 0
+      },
+      "to": {
+        "x": 160,
+        "y": 0
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "rest",
+      "id": "button-action-5"
+    },
+    {
+      "type": "line",
+      "name": "rest tick",
+      "from": {
+        "x": 160,
+        "y": 0
+      },
+      "to": {
+        "x": 160,
+        "y": 8
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "rest",
+      "id": "button-action-6"
+    },
+    {
+      "type": "line",
+      "name": "rest tick",
+      "from": {
+        "x": 8,
+        "y": 40
+      },
+      "to": {
+        "x": 0,
+        "y": 40
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "rest",
+      "id": "button-action-7"
+    },
+    {
+      "type": "line",
+      "name": "rest tick",
+      "from": {
+        "x": 0,
+        "y": 40
+      },
+      "to": {
+        "x": 0,
+        "y": 32
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "rest",
+      "id": "button-action-8"
+    },
+    {
+      "type": "line",
+      "name": "rest tick",
+      "from": {
+        "x": 152,
+        "y": 40
+      },
+      "to": {
+        "x": 160,
+        "y": 40
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "rest",
+      "id": "button-action-9"
+    },
+    {
+      "type": "line",
+      "name": "rest tick",
+      "from": {
+        "x": 160,
+        "y": 40
+      },
+      "to": {
+        "x": 160,
+        "y": 32
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "rest",
+      "id": "button-action-10"
+    },
+    {
+      "type": "text",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "text": "LAUNCH SHIP",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFD03B",
+      "align": "center",
+      "valign": "middle",
+      "id": "label",
+      "layer": "rest"
+    },
+    {
+      "type": "rect",
+      "name": "hover glow",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "fill": "none",
+      "stroke": "#FFD03B",
+      "strokeWidth": 5,
+      "opacity": 0.28,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 6
+        }
+      ],
+      "layer": "hover",
+      "id": "button-action-12"
+    },
+    {
+      "type": "rect",
+      "name": "hover fill",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.16,
+      "layer": "hover",
+      "id": "button-action-13"
+    },
+    {
+      "type": "rect",
+      "name": "hover line",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "fill": "none",
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "layer": "hover",
+      "id": "button-action-14"
+    },
+    {
+      "type": "line",
+      "name": "hover tick",
+      "from": {
+        "x": 8,
+        "y": 0
+      },
+      "to": {
+        "x": 0,
+        "y": 0
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "hover",
+      "id": "button-action-15"
+    },
+    {
+      "type": "line",
+      "name": "hover tick",
+      "from": {
+        "x": 0,
+        "y": 0
+      },
+      "to": {
+        "x": 0,
+        "y": 8
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "hover",
+      "id": "button-action-16"
+    },
+    {
+      "type": "line",
+      "name": "hover tick",
+      "from": {
+        "x": 152,
+        "y": 0
+      },
+      "to": {
+        "x": 160,
+        "y": 0
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "hover",
+      "id": "button-action-17"
+    },
+    {
+      "type": "line",
+      "name": "hover tick",
+      "from": {
+        "x": 160,
+        "y": 0
+      },
+      "to": {
+        "x": 160,
+        "y": 8
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "hover",
+      "id": "button-action-18"
+    },
+    {
+      "type": "line",
+      "name": "hover tick",
+      "from": {
+        "x": 8,
+        "y": 40
+      },
+      "to": {
+        "x": 0,
+        "y": 40
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "hover",
+      "id": "button-action-19"
+    },
+    {
+      "type": "line",
+      "name": "hover tick",
+      "from": {
+        "x": 0,
+        "y": 40
+      },
+      "to": {
+        "x": 0,
+        "y": 32
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "hover",
+      "id": "button-action-20"
+    },
+    {
+      "type": "line",
+      "name": "hover tick",
+      "from": {
+        "x": 152,
+        "y": 40
+      },
+      "to": {
+        "x": 160,
+        "y": 40
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "hover",
+      "id": "button-action-21"
+    },
+    {
+      "type": "line",
+      "name": "hover tick",
+      "from": {
+        "x": 160,
+        "y": 40
+      },
+      "to": {
+        "x": 160,
+        "y": 32
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "hover",
+      "id": "button-action-22"
+    },
+    {
+      "type": "text",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "text": "LAUNCH SHIP",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFD03B",
+      "align": "center",
+      "valign": "middle",
+      "id": "label-hover",
+      "layer": "hover"
+    },
+    {
+      "type": "rect",
+      "name": "focus glow",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "fill": "none",
+      "stroke": "#FFD03B",
+      "strokeWidth": 5,
+      "opacity": 0.28,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 6
+        }
+      ],
+      "layer": "focus",
+      "id": "button-action-24"
+    },
+    {
+      "type": "rect",
+      "name": "focus fill",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.16,
+      "layer": "focus",
+      "id": "button-action-25"
+    },
+    {
+      "type": "rect",
+      "name": "focus line",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "fill": "none",
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "layer": "focus",
+      "id": "button-action-26"
+    },
+    {
+      "type": "line",
+      "name": "focus tick",
+      "from": {
+        "x": 8,
+        "y": 0
+      },
+      "to": {
+        "x": 0,
+        "y": 0
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "focus",
+      "id": "button-action-27"
+    },
+    {
+      "type": "line",
+      "name": "focus tick",
+      "from": {
+        "x": 0,
+        "y": 0
+      },
+      "to": {
+        "x": 0,
+        "y": 8
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "focus",
+      "id": "button-action-28"
+    },
+    {
+      "type": "line",
+      "name": "focus tick",
+      "from": {
+        "x": 152,
+        "y": 0
+      },
+      "to": {
+        "x": 160,
+        "y": 0
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "focus",
+      "id": "button-action-29"
+    },
+    {
+      "type": "line",
+      "name": "focus tick",
+      "from": {
+        "x": 160,
+        "y": 0
+      },
+      "to": {
+        "x": 160,
+        "y": 8
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "focus",
+      "id": "button-action-30"
+    },
+    {
+      "type": "line",
+      "name": "focus tick",
+      "from": {
+        "x": 8,
+        "y": 40
+      },
+      "to": {
+        "x": 0,
+        "y": 40
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "focus",
+      "id": "button-action-31"
+    },
+    {
+      "type": "line",
+      "name": "focus tick",
+      "from": {
+        "x": 0,
+        "y": 40
+      },
+      "to": {
+        "x": 0,
+        "y": 32
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "focus",
+      "id": "button-action-32"
+    },
+    {
+      "type": "line",
+      "name": "focus tick",
+      "from": {
+        "x": 152,
+        "y": 40
+      },
+      "to": {
+        "x": 160,
+        "y": 40
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "focus",
+      "id": "button-action-33"
+    },
+    {
+      "type": "line",
+      "name": "focus tick",
+      "from": {
+        "x": 160,
+        "y": 40
+      },
+      "to": {
+        "x": 160,
+        "y": 32
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "focus",
+      "id": "button-action-34"
+    },
+    {
+      "type": "rect",
+      "name": "focus ring",
+      "x": -4,
+      "y": -4,
+      "w": 168,
+      "h": 48,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "layer": "focus",
+      "id": "button-action-35"
+    },
+    {
+      "type": "text",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "text": "LAUNCH SHIP",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFD03B",
+      "align": "center",
+      "valign": "middle",
+      "id": "label-focus",
+      "layer": "focus"
+    },
+    {
+      "type": "rect",
+      "name": "press glow",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "fill": "none",
+      "stroke": "#FFD03B",
+      "strokeWidth": 5,
+      "opacity": 0.45,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 6
+        }
+      ],
+      "layer": "press",
+      "id": "button-action-37"
+    },
+    {
+      "type": "rect",
+      "name": "press fill",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.22,
+      "layer": "press",
+      "id": "button-action-38"
+    },
+    {
+      "type": "rect",
+      "name": "press line",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "fill": "none",
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "layer": "press",
+      "id": "button-action-39"
+    },
+    {
+      "type": "line",
+      "name": "press tick",
+      "from": {
+        "x": 8,
+        "y": 0
+      },
+      "to": {
+        "x": 0,
+        "y": 0
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "press",
+      "id": "button-action-40"
+    },
+    {
+      "type": "line",
+      "name": "press tick",
+      "from": {
+        "x": 0,
+        "y": 0
+      },
+      "to": {
+        "x": 0,
+        "y": 8
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "press",
+      "id": "button-action-41"
+    },
+    {
+      "type": "line",
+      "name": "press tick",
+      "from": {
+        "x": 152,
+        "y": 0
+      },
+      "to": {
+        "x": 160,
+        "y": 0
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "press",
+      "id": "button-action-42"
+    },
+    {
+      "type": "line",
+      "name": "press tick",
+      "from": {
+        "x": 160,
+        "y": 0
+      },
+      "to": {
+        "x": 160,
+        "y": 8
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "press",
+      "id": "button-action-43"
+    },
+    {
+      "type": "line",
+      "name": "press tick",
+      "from": {
+        "x": 8,
+        "y": 40
+      },
+      "to": {
+        "x": 0,
+        "y": 40
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "press",
+      "id": "button-action-44"
+    },
+    {
+      "type": "line",
+      "name": "press tick",
+      "from": {
+        "x": 0,
+        "y": 40
+      },
+      "to": {
+        "x": 0,
+        "y": 32
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "press",
+      "id": "button-action-45"
+    },
+    {
+      "type": "line",
+      "name": "press tick",
+      "from": {
+        "x": 152,
+        "y": 40
+      },
+      "to": {
+        "x": 160,
+        "y": 40
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "press",
+      "id": "button-action-46"
+    },
+    {
+      "type": "line",
+      "name": "press tick",
+      "from": {
+        "x": 160,
+        "y": 40
+      },
+      "to": {
+        "x": 160,
+        "y": 32
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "layer": "press",
+      "id": "button-action-47"
+    },
+    {
+      "type": "ellipse",
+      "name": "press spark 0",
+      "x": 27,
+      "y": 10,
+      "w": 4,
+      "h": 4,
+      "fill": "none",
+      "stroke": "#F88F05",
+      "strokeWidth": 1,
+      "opacity": 0.7,
+      "layer": "press",
+      "id": "button-action-48"
+    },
+    {
+      "type": "ellipse",
+      "name": "press spark 1",
+      "x": 46,
+      "y": 23,
+      "w": 4,
+      "h": 4,
+      "fill": "none",
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "opacity": 0.7,
+      "layer": "press",
+      "id": "button-action-49"
+    },
+    {
+      "type": "ellipse",
+      "name": "press spark 2",
+      "x": 113,
+      "y": 9,
+      "w": 4,
+      "h": 4,
+      "fill": "none",
+      "stroke": "#E54F29",
+      "strokeWidth": 1,
+      "opacity": 0.7,
+      "layer": "press",
+      "id": "button-action-50"
+    },
+    {
+      "type": "ellipse",
+      "name": "press spark 3",
+      "x": 132,
+      "y": 24,
+      "w": 4,
+      "h": 4,
+      "fill": "none",
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "opacity": 0.7,
+      "layer": "press",
+      "id": "button-action-51"
+    },
+    {
+      "type": "ellipse",
+      "name": "press spark 4",
+      "x": 86,
+      "y": 6,
+      "w": 4,
+      "h": 4,
+      "fill": "none",
+      "stroke": "#F88F05",
+      "strokeWidth": 1,
+      "opacity": 0.7,
+      "layer": "press",
+      "id": "button-action-52"
+    },
+    {
+      "type": "ellipse",
+      "name": "press spark 5",
+      "x": 70,
+      "y": 28,
+      "w": 4,
+      "h": 4,
+      "fill": "none",
+      "stroke": "#E54F29",
+      "strokeWidth": 1,
+      "opacity": 0.7,
+      "layer": "press",
+      "id": "button-action-53"
+    },
+    {
+      "type": "text",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "text": "LAUNCH SHIP",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFD03B",
+      "align": "center",
+      "valign": "middle",
+      "id": "label-press",
+      "layer": "press"
+    },
+    {
+      "type": "rect",
+      "name": "disabled fill",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "fill": "#9783A0",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.06,
+      "layer": "disabled",
+      "id": "button-action-55"
+    },
+    {
+      "type": "rect",
+      "name": "disabled line",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "fill": "none",
+      "stroke": "#9783A0",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "layer": "disabled",
+      "id": "button-action-56"
+    },
+    {
+      "type": "text",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "text": "LAUNCH SHIP",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#9783A0",
+      "align": "center",
+      "valign": "middle",
+      "id": "label-disabled",
+      "opacity": 0.7,
+      "layer": "disabled"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 156.7,
+      "y": 35.2,
+      "w": 2.6,
+      "h": 4.5,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.4975,
+          0.4991
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-58"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 153.2,
+      "y": 28.4,
+      "w": 6.6,
+      "h": 11.3,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.196,
+          0.7986
+        ],
+        [
+          0.394,
+          0.5979
+        ],
+        [
+          0.594,
+          0.3979
+        ],
+        [
+          0.796,
+          0.1986
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-59"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 150.2,
+      "y": 23.2,
+      "w": 9.4,
+      "h": 15.8,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.1386,
+          0.8557
+        ],
+        [
+          0.2787,
+          0.7118
+        ],
+        [
+          0.4201,
+          0.5684
+        ],
+        [
+          0.563,
+          0.4256
+        ],
+        [
+          0.7073,
+          0.2832
+        ],
+        [
+          0.8529,
+          0.1414
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-60"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 146.7,
+      "y": 18.7,
+      "w": 12.1,
+      "h": 20.3,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.1068,
+          0.8874
+        ],
+        [
+          0.2146,
+          0.7751
+        ],
+        [
+          0.3236,
+          0.6632
+        ],
+        [
+          0.4336,
+          0.5517
+        ],
+        [
+          0.5447,
+          0.4406
+        ],
+        [
+          0.6569,
+          0.3298
+        ],
+        [
+          0.7702,
+          0.2195
+        ],
+        [
+          0.8846,
+          0.1096
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-61"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 143.3,
+      "y": 12.1,
+      "w": 16.3,
+      "h": 26.9,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0789,
+          0.9151
+        ],
+        [
+          0.1587,
+          0.8305
+        ],
+        [
+          0.2392,
+          0.7461
+        ],
+        [
+          0.3205,
+          0.6621
+        ],
+        [
+          0.4027,
+          0.5783
+        ],
+        [
+          0.4856,
+          0.4948
+        ],
+        [
+          0.5694,
+          0.4116
+        ],
+        [
+          0.6539,
+          0.3287
+        ],
+        [
+          0.7393,
+          0.246
+        ],
+        [
+          0.8254,
+          0.1637
+        ],
+        [
+          0.9123,
+          0.0817
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-62"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 139.9,
+      "y": 7.7,
+      "w": 19.0,
+      "h": 31.4,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.067,
+          0.927
+        ],
+        [
+          0.1347,
+          0.8542
+        ],
+        [
+          0.2031,
+          0.7817
+        ],
+        [
+          0.2721,
+          0.7094
+        ],
+        [
+          0.3419,
+          0.6373
+        ],
+        [
+          0.4123,
+          0.5655
+        ],
+        [
+          0.4834,
+          0.4939
+        ],
+        [
+          0.5552,
+          0.4226
+        ],
+        [
+          0.6277,
+          0.3515
+        ],
+        [
+          0.7008,
+          0.2807
+        ],
+        [
+          0.7746,
+          0.2101
+        ],
+        [
+          0.8491,
+          0.1398
+        ],
+        [
+          0.9242,
+          0.0698
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-63"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 136.4,
+      "y": 1.1,
+      "w": 23.2,
+      "h": 38.0,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0544,
+          0.9396
+        ],
+        [
+          0.1094,
+          0.8793
+        ],
+        [
+          0.1649,
+          0.8193
+        ],
+        [
+          0.221,
+          0.7595
+        ],
+        [
+          0.2776,
+          0.6998
+        ],
+        [
+          0.3348,
+          0.6403
+        ],
+        [
+          0.3926,
+          0.5811
+        ],
+        [
+          0.4509,
+          0.522
+        ],
+        [
+          0.5097,
+          0.4632
+        ],
+        [
+          0.5691,
+          0.4046
+        ],
+        [
+          0.6291,
+          0.3461
+        ],
+        [
+          0.6895,
+          0.2879
+        ],
+        [
+          0.7506,
+          0.2299
+        ],
+        [
+          0.8121,
+          0.1721
+        ],
+        [
+          0.8742,
+          0.1145
+        ],
+        [
+          0.9368,
+          0.0571
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-64"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 133.4,
+      "y": 0.3,
+      "w": 23.2,
+      "h": 38.1,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0544,
+          0.9396
+        ],
+        [
+          0.1094,
+          0.8794
+        ],
+        [
+          0.1649,
+          0.8193
+        ],
+        [
+          0.221,
+          0.7595
+        ],
+        [
+          0.2776,
+          0.6999
+        ],
+        [
+          0.3348,
+          0.6404
+        ],
+        [
+          0.3926,
+          0.5812
+        ],
+        [
+          0.4509,
+          0.5221
+        ],
+        [
+          0.5097,
+          0.4633
+        ],
+        [
+          0.5691,
+          0.4046
+        ],
+        [
+          0.629,
+          0.3462
+        ],
+        [
+          0.6895,
+          0.288
+        ],
+        [
+          0.7505,
+          0.2299
+        ],
+        [
+          0.8121,
+          0.1721
+        ],
+        [
+          0.8742,
+          0.1145
+        ],
+        [
+          0.9368,
+          0.0572
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-65"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 130.0,
+      "y": 0.2,
+      "w": 23.1,
+      "h": 38.2,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0544,
+          0.9396
+        ],
+        [
+          0.1094,
+          0.8794
+        ],
+        [
+          0.1649,
+          0.8194
+        ],
+        [
+          0.221,
+          0.7596
+        ],
+        [
+          0.2776,
+          0.6999
+        ],
+        [
+          0.3348,
+          0.6405
+        ],
+        [
+          0.3925,
+          0.5813
+        ],
+        [
+          0.4508,
+          0.5222
+        ],
+        [
+          0.5097,
+          0.4634
+        ],
+        [
+          0.5691,
+          0.4047
+        ],
+        [
+          0.629,
+          0.3463
+        ],
+        [
+          0.6895,
+          0.2881
+        ],
+        [
+          0.7505,
+          0.23
+        ],
+        [
+          0.8121,
+          0.1722
+        ],
+        [
+          0.8742,
+          0.1146
+        ],
+        [
+          0.9368,
+          0.0572
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-66"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 126.5,
+      "y": 0.2,
+      "w": 22.9,
+      "h": 38.2,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0544,
+          0.9396
+        ],
+        [
+          0.1093,
+          0.8795
+        ],
+        [
+          0.1649,
+          0.8195
+        ],
+        [
+          0.2209,
+          0.7597
+        ],
+        [
+          0.2776,
+          0.7
+        ],
+        [
+          0.3348,
+          0.6406
+        ],
+        [
+          0.3925,
+          0.5814
+        ],
+        [
+          0.4508,
+          0.5223
+        ],
+        [
+          0.5096,
+          0.4635
+        ],
+        [
+          0.569,
+          0.4048
+        ],
+        [
+          0.629,
+          0.3464
+        ],
+        [
+          0.6895,
+          0.2881
+        ],
+        [
+          0.7505,
+          0.2301
+        ],
+        [
+          0.8121,
+          0.1723
+        ],
+        [
+          0.8742,
+          0.1146
+        ],
+        [
+          0.9368,
+          0.0572
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-67"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 123.1,
+      "y": 0.2,
+      "w": 22.7,
+      "h": 38.3,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0544,
+          0.9397
+        ],
+        [
+          0.1093,
+          0.8795
+        ],
+        [
+          0.1648,
+          0.8195
+        ],
+        [
+          0.2209,
+          0.7597
+        ],
+        [
+          0.2775,
+          0.7001
+        ],
+        [
+          0.3347,
+          0.6407
+        ],
+        [
+          0.3925,
+          0.5815
+        ],
+        [
+          0.4508,
+          0.5224
+        ],
+        [
+          0.5096,
+          0.4636
+        ],
+        [
+          0.569,
+          0.4049
+        ],
+        [
+          0.629,
+          0.3465
+        ],
+        [
+          0.6894,
+          0.2882
+        ],
+        [
+          0.7505,
+          0.2302
+        ],
+        [
+          0.812,
+          0.1723
+        ],
+        [
+          0.8742,
+          0.1147
+        ],
+        [
+          0.9368,
+          0.0572
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-68"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 119.7,
+      "y": 0.2,
+      "w": 22.6,
+      "h": 38.4,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0544,
+          0.9397
+        ],
+        [
+          0.1093,
+          0.8795
+        ],
+        [
+          0.1648,
+          0.8196
+        ],
+        [
+          0.2209,
+          0.7598
+        ],
+        [
+          0.2775,
+          0.7002
+        ],
+        [
+          0.3347,
+          0.6408
+        ],
+        [
+          0.3924,
+          0.5816
+        ],
+        [
+          0.4507,
+          0.5226
+        ],
+        [
+          0.5096,
+          0.4637
+        ],
+        [
+          0.569,
+          0.4051
+        ],
+        [
+          0.6289,
+          0.3466
+        ],
+        [
+          0.6894,
+          0.2883
+        ],
+        [
+          0.7504,
+          0.2303
+        ],
+        [
+          0.812,
+          0.1724
+        ],
+        [
+          0.8741,
+          0.1147
+        ],
+        [
+          0.9368,
+          0.0573
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-69"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 116.7,
+      "y": 1.5,
+      "w": 21.1,
+      "h": 36.3,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.058,
+          0.936
+        ],
+        [
+          0.1167,
+          0.8723
+        ],
+        [
+          0.1759,
+          0.8087
+        ],
+        [
+          0.2358,
+          0.7453
+        ],
+        [
+          0.2962,
+          0.6821
+        ],
+        [
+          0.3573,
+          0.619
+        ],
+        [
+          0.4189,
+          0.5562
+        ],
+        [
+          0.4811,
+          0.4936
+        ],
+        [
+          0.5439,
+          0.4312
+        ],
+        [
+          0.6073,
+          0.369
+        ],
+        [
+          0.6713,
+          0.307
+        ],
+        [
+          0.7359,
+          0.2451
+        ],
+        [
+          0.8011,
+          0.1835
+        ],
+        [
+          0.8668,
+          0.1221
+        ],
+        [
+          0.9331,
+          0.061
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-70"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 113.3,
+      "y": 1.5,
+      "w": 21.0,
+      "h": 36.3,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.058,
+          0.9361
+        ],
+        [
+          0.1167,
+          0.8723
+        ],
+        [
+          0.1759,
+          0.8087
+        ],
+        [
+          0.2358,
+          0.7453
+        ],
+        [
+          0.2962,
+          0.6821
+        ],
+        [
+          0.3572,
+          0.6191
+        ],
+        [
+          0.4189,
+          0.5563
+        ],
+        [
+          0.4811,
+          0.4937
+        ],
+        [
+          0.5439,
+          0.4313
+        ],
+        [
+          0.6073,
+          0.3691
+        ],
+        [
+          0.6713,
+          0.307
+        ],
+        [
+          0.7359,
+          0.2452
+        ],
+        [
+          0.801,
+          0.1836
+        ],
+        [
+          0.8668,
+          0.1222
+        ],
+        [
+          0.9331,
+          0.061
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-71"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 109.9,
+      "y": 1.5,
+      "w": 20.8,
+      "h": 36.4,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.058,
+          0.9361
+        ],
+        [
+          0.1167,
+          0.8723
+        ],
+        [
+          0.1759,
+          0.8088
+        ],
+        [
+          0.2357,
+          0.7454
+        ],
+        [
+          0.2962,
+          0.6822
+        ],
+        [
+          0.3572,
+          0.6192
+        ],
+        [
+          0.4189,
+          0.5564
+        ],
+        [
+          0.4811,
+          0.4938
+        ],
+        [
+          0.5439,
+          0.4314
+        ],
+        [
+          0.6073,
+          0.3691
+        ],
+        [
+          0.6713,
+          0.3071
+        ],
+        [
+          0.7359,
+          0.2453
+        ],
+        [
+          0.801,
+          0.1837
+        ],
+        [
+          0.8668,
+          0.1222
+        ],
+        [
+          0.9331,
+          0.061
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-72"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 106.5,
+      "y": 1.5,
+      "w": 20.7,
+      "h": 36.4,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.058,
+          0.9361
+        ],
+        [
+          0.1167,
+          0.8724
+        ],
+        [
+          0.1759,
+          0.8088
+        ],
+        [
+          0.2357,
+          0.7455
+        ],
+        [
+          0.2962,
+          0.6823
+        ],
+        [
+          0.3572,
+          0.6193
+        ],
+        [
+          0.4188,
+          0.5565
+        ],
+        [
+          0.481,
+          0.4939
+        ],
+        [
+          0.5439,
+          0.4315
+        ],
+        [
+          0.6073,
+          0.3692
+        ],
+        [
+          0.6713,
+          0.3072
+        ],
+        [
+          0.7358,
+          0.2454
+        ],
+        [
+          0.801,
+          0.1837
+        ],
+        [
+          0.8668,
+          0.1223
+        ],
+        [
+          0.9331,
+          0.061
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-73"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 103.1,
+      "y": 1.5,
+      "w": 20.6,
+      "h": 36.5,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.058,
+          0.9361
+        ],
+        [
+          0.1166,
+          0.8724
+        ],
+        [
+          0.1759,
+          0.8089
+        ],
+        [
+          0.2357,
+          0.7455
+        ],
+        [
+          0.2961,
+          0.6824
+        ],
+        [
+          0.3572,
+          0.6194
+        ],
+        [
+          0.4188,
+          0.5566
+        ],
+        [
+          0.481,
+          0.494
+        ],
+        [
+          0.5438,
+          0.4316
+        ],
+        [
+          0.6072,
+          0.3693
+        ],
+        [
+          0.6712,
+          0.3073
+        ],
+        [
+          0.7358,
+          0.2454
+        ],
+        [
+          0.801,
+          0.1838
+        ],
+        [
+          0.8667,
+          0.1223
+        ],
+        [
+          0.9331,
+          0.0611
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-74"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 98.9,
+      "y": 0.7,
+      "w": 21.7,
+      "h": 39.0,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0543,
+          0.9398
+        ],
+        [
+          0.1092,
+          0.8798
+        ],
+        [
+          0.1646,
+          0.8199
+        ],
+        [
+          0.2206,
+          0.7602
+        ],
+        [
+          0.2772,
+          0.7007
+        ],
+        [
+          0.3343,
+          0.6413
+        ],
+        [
+          0.3921,
+          0.5822
+        ],
+        [
+          0.4503,
+          0.5231
+        ],
+        [
+          0.5092,
+          0.4643
+        ],
+        [
+          0.5686,
+          0.4056
+        ],
+        [
+          0.6286,
+          0.3471
+        ],
+        [
+          0.6891,
+          0.2888
+        ],
+        [
+          0.7502,
+          0.2307
+        ],
+        [
+          0.8118,
+          0.1727
+        ],
+        [
+          0.874,
+          0.115
+        ],
+        [
+          0.9367,
+          0.0574
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-75"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 95.5,
+      "y": 0.7,
+      "w": 21.6,
+      "h": 39.0,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0543,
+          0.9398
+        ],
+        [
+          0.1092,
+          0.8798
+        ],
+        [
+          0.1646,
+          0.82
+        ],
+        [
+          0.2206,
+          0.7603
+        ],
+        [
+          0.2772,
+          0.7008
+        ],
+        [
+          0.3343,
+          0.6414
+        ],
+        [
+          0.392,
+          0.5822
+        ],
+        [
+          0.4503,
+          0.5232
+        ],
+        [
+          0.5092,
+          0.4644
+        ],
+        [
+          0.5686,
+          0.4057
+        ],
+        [
+          0.6285,
+          0.3472
+        ],
+        [
+          0.6891,
+          0.2889
+        ],
+        [
+          0.7501,
+          0.2308
+        ],
+        [
+          0.8118,
+          0.1728
+        ],
+        [
+          0.874,
+          0.115
+        ],
+        [
+          0.9367,
+          0.0574
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-76"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 92.1,
+      "y": 0.7,
+      "w": 21.4,
+      "h": 39.1,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0543,
+          0.9399
+        ],
+        [
+          0.1091,
+          0.8799
+        ],
+        [
+          0.1646,
+          0.82
+        ],
+        [
+          0.2206,
+          0.7604
+        ],
+        [
+          0.2772,
+          0.7009
+        ],
+        [
+          0.3343,
+          0.6415
+        ],
+        [
+          0.392,
+          0.5823
+        ],
+        [
+          0.4503,
+          0.5233
+        ],
+        [
+          0.5091,
+          0.4645
+        ],
+        [
+          0.5685,
+          0.4058
+        ],
+        [
+          0.6285,
+          0.3473
+        ],
+        [
+          0.689,
+          0.289
+        ],
+        [
+          0.7501,
+          0.2308
+        ],
+        [
+          0.8118,
+          0.1728
+        ],
+        [
+          0.874,
+          0.1151
+        ],
+        [
+          0.9367,
+          0.0574
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-77"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 88.8,
+      "y": 0.7,
+      "w": 21.3,
+      "h": 39.1,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0543,
+          0.9399
+        ],
+        [
+          0.1091,
+          0.8799
+        ],
+        [
+          0.1646,
+          0.8201
+        ],
+        [
+          0.2206,
+          0.7604
+        ],
+        [
+          0.2771,
+          0.7009
+        ],
+        [
+          0.3343,
+          0.6416
+        ],
+        [
+          0.392,
+          0.5824
+        ],
+        [
+          0.4503,
+          0.5234
+        ],
+        [
+          0.5091,
+          0.4646
+        ],
+        [
+          0.5685,
+          0.4059
+        ],
+        [
+          0.6285,
+          0.3474
+        ],
+        [
+          0.689,
+          0.289
+        ],
+        [
+          0.7501,
+          0.2309
+        ],
+        [
+          0.8117,
+          0.1729
+        ],
+        [
+          0.8739,
+          0.1151
+        ],
+        [
+          0.9367,
+          0.0575
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-78"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 85.4,
+      "y": 0.7,
+      "w": 21.1,
+      "h": 39.2,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0543,
+          0.9399
+        ],
+        [
+          0.1091,
+          0.8799
+        ],
+        [
+          0.1645,
+          0.8201
+        ],
+        [
+          0.2205,
+          0.7605
+        ],
+        [
+          0.2771,
+          0.701
+        ],
+        [
+          0.3343,
+          0.6417
+        ],
+        [
+          0.392,
+          0.5825
+        ],
+        [
+          0.4502,
+          0.5235
+        ],
+        [
+          0.5091,
+          0.4647
+        ],
+        [
+          0.5685,
+          0.406
+        ],
+        [
+          0.6285,
+          0.3475
+        ],
+        [
+          0.689,
+          0.2891
+        ],
+        [
+          0.7501,
+          0.231
+        ],
+        [
+          0.8117,
+          0.173
+        ],
+        [
+          0.8739,
+          0.1151
+        ],
+        [
+          0.9367,
+          0.0575
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-79"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 82.4,
+      "y": 2.2,
+      "w": 19.8,
+      "h": 37.0,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9362
+        ],
+        [
+          0.1165,
+          0.8726
+        ],
+        [
+          0.1757,
+          0.8092
+        ],
+        [
+          0.2354,
+          0.7459
+        ],
+        [
+          0.2958,
+          0.6828
+        ],
+        [
+          0.3568,
+          0.6199
+        ],
+        [
+          0.4184,
+          0.5571
+        ],
+        [
+          0.4807,
+          0.4945
+        ],
+        [
+          0.5435,
+          0.432
+        ],
+        [
+          0.6069,
+          0.3698
+        ],
+        [
+          0.6709,
+          0.3077
+        ],
+        [
+          0.7356,
+          0.2458
+        ],
+        [
+          0.8008,
+          0.1841
+        ],
+        [
+          0.8666,
+          0.1225
+        ],
+        [
+          0.933,
+          0.0612
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-80"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 79.0,
+      "y": 2.2,
+      "w": 19.7,
+      "h": 37.1,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9363
+        ],
+        [
+          0.1165,
+          0.8727
+        ],
+        [
+          0.1756,
+          0.8092
+        ],
+        [
+          0.2354,
+          0.746
+        ],
+        [
+          0.2958,
+          0.6829
+        ],
+        [
+          0.3568,
+          0.6199
+        ],
+        [
+          0.4184,
+          0.5572
+        ],
+        [
+          0.4806,
+          0.4946
+        ],
+        [
+          0.5435,
+          0.4321
+        ],
+        [
+          0.6069,
+          0.3699
+        ],
+        [
+          0.6709,
+          0.3078
+        ],
+        [
+          0.7355,
+          0.2459
+        ],
+        [
+          0.8008,
+          0.1841
+        ],
+        [
+          0.8666,
+          0.1226
+        ],
+        [
+          0.933,
+          0.0612
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-81"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 75.7,
+      "y": 2.2,
+      "w": 19.5,
+      "h": 37.1,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9363
+        ],
+        [
+          0.1165,
+          0.8727
+        ],
+        [
+          0.1756,
+          0.8093
+        ],
+        [
+          0.2354,
+          0.746
+        ],
+        [
+          0.2958,
+          0.6829
+        ],
+        [
+          0.3568,
+          0.62
+        ],
+        [
+          0.4184,
+          0.5572
+        ],
+        [
+          0.4806,
+          0.4946
+        ],
+        [
+          0.5434,
+          0.4322
+        ],
+        [
+          0.6069,
+          0.3699
+        ],
+        [
+          0.6709,
+          0.3078
+        ],
+        [
+          0.7355,
+          0.2459
+        ],
+        [
+          0.8007,
+          0.1842
+        ],
+        [
+          0.8666,
+          0.1226
+        ],
+        [
+          0.933,
+          0.0612
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-82"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 72.3,
+      "y": 2.2,
+      "w": 19.4,
+      "h": 37.1,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9363
+        ],
+        [
+          0.1165,
+          0.8727
+        ],
+        [
+          0.1756,
+          0.8093
+        ],
+        [
+          0.2354,
+          0.7461
+        ],
+        [
+          0.2958,
+          0.683
+        ],
+        [
+          0.3568,
+          0.6201
+        ],
+        [
+          0.4184,
+          0.5573
+        ],
+        [
+          0.4806,
+          0.4947
+        ],
+        [
+          0.5434,
+          0.4323
+        ],
+        [
+          0.6068,
+          0.37
+        ],
+        [
+          0.6709,
+          0.3079
+        ],
+        [
+          0.7355,
+          0.246
+        ],
+        [
+          0.8007,
+          0.1842
+        ],
+        [
+          0.8666,
+          0.1226
+        ],
+        [
+          0.933,
+          0.0612
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-83"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 69.0,
+      "y": 2.2,
+      "w": 19.3,
+      "h": 37.2,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9363
+        ],
+        [
+          0.1165,
+          0.8728
+        ],
+        [
+          0.1756,
+          0.8094
+        ],
+        [
+          0.2354,
+          0.7461
+        ],
+        [
+          0.2958,
+          0.6831
+        ],
+        [
+          0.3568,
+          0.6201
+        ],
+        [
+          0.4184,
+          0.5574
+        ],
+        [
+          0.4806,
+          0.4948
+        ],
+        [
+          0.5434,
+          0.4323
+        ],
+        [
+          0.6068,
+          0.3701
+        ],
+        [
+          0.6709,
+          0.308
+        ],
+        [
+          0.7355,
+          0.246
+        ],
+        [
+          0.8007,
+          0.1843
+        ],
+        [
+          0.8665,
+          0.1227
+        ],
+        [
+          0.933,
+          0.0612
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-84"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 66.0,
+      "y": 1.5,
+      "w": 19.3,
+      "h": 37.3,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9363
+        ],
+        [
+          0.1165,
+          0.8728
+        ],
+        [
+          0.1756,
+          0.8094
+        ],
+        [
+          0.2354,
+          0.7462
+        ],
+        [
+          0.2958,
+          0.6831
+        ],
+        [
+          0.3567,
+          0.6202
+        ],
+        [
+          0.4184,
+          0.5574
+        ],
+        [
+          0.4806,
+          0.4948
+        ],
+        [
+          0.5434,
+          0.4324
+        ],
+        [
+          0.6068,
+          0.3701
+        ],
+        [
+          0.6708,
+          0.308
+        ],
+        [
+          0.7355,
+          0.2461
+        ],
+        [
+          0.8007,
+          0.1843
+        ],
+        [
+          0.8665,
+          0.1227
+        ],
+        [
+          0.933,
+          0.0613
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-85"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 62.6,
+      "y": 1.5,
+      "w": 19.1,
+      "h": 37.3,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9363
+        ],
+        [
+          0.1164,
+          0.8728
+        ],
+        [
+          0.1756,
+          0.8094
+        ],
+        [
+          0.2354,
+          0.7462
+        ],
+        [
+          0.2957,
+          0.6831
+        ],
+        [
+          0.3567,
+          0.6202
+        ],
+        [
+          0.4183,
+          0.5575
+        ],
+        [
+          0.4805,
+          0.4949
+        ],
+        [
+          0.5434,
+          0.4324
+        ],
+        [
+          0.6068,
+          0.3702
+        ],
+        [
+          0.6708,
+          0.3081
+        ],
+        [
+          0.7355,
+          0.2461
+        ],
+        [
+          0.8007,
+          0.1843
+        ],
+        [
+          0.8665,
+          0.1227
+        ],
+        [
+          0.933,
+          0.0613
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-86"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 59.3,
+      "y": 1.5,
+      "w": 19.0,
+      "h": 37.4,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9363
+        ],
+        [
+          0.1164,
+          0.8728
+        ],
+        [
+          0.1756,
+          0.8095
+        ],
+        [
+          0.2353,
+          0.7463
+        ],
+        [
+          0.2957,
+          0.6832
+        ],
+        [
+          0.3567,
+          0.6203
+        ],
+        [
+          0.4183,
+          0.5576
+        ],
+        [
+          0.4805,
+          0.495
+        ],
+        [
+          0.5433,
+          0.4325
+        ],
+        [
+          0.6068,
+          0.3702
+        ],
+        [
+          0.6708,
+          0.3081
+        ],
+        [
+          0.7354,
+          0.2462
+        ],
+        [
+          0.8007,
+          0.1844
+        ],
+        [
+          0.8665,
+          0.1228
+        ],
+        [
+          0.933,
+          0.0613
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-87"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 56.0,
+      "y": 1.6,
+      "w": 18.9,
+      "h": 37.4,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9364
+        ],
+        [
+          0.1164,
+          0.8729
+        ],
+        [
+          0.1756,
+          0.8095
+        ],
+        [
+          0.2353,
+          0.7463
+        ],
+        [
+          0.2957,
+          0.6833
+        ],
+        [
+          0.3567,
+          0.6204
+        ],
+        [
+          0.4183,
+          0.5576
+        ],
+        [
+          0.4805,
+          0.495
+        ],
+        [
+          0.5433,
+          0.4326
+        ],
+        [
+          0.6068,
+          0.3703
+        ],
+        [
+          0.6708,
+          0.3082
+        ],
+        [
+          0.7354,
+          0.2462
+        ],
+        [
+          0.8007,
+          0.1844
+        ],
+        [
+          0.8665,
+          0.1228
+        ],
+        [
+          0.933,
+          0.0613
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-88"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 52.7,
+      "y": 1.6,
+      "w": 18.8,
+      "h": 37.4,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9364
+        ],
+        [
+          0.1164,
+          0.8729
+        ],
+        [
+          0.1756,
+          0.8096
+        ],
+        [
+          0.2353,
+          0.7464
+        ],
+        [
+          0.2957,
+          0.6833
+        ],
+        [
+          0.3567,
+          0.6204
+        ],
+        [
+          0.4183,
+          0.5577
+        ],
+        [
+          0.4805,
+          0.4951
+        ],
+        [
+          0.5433,
+          0.4327
+        ],
+        [
+          0.6067,
+          0.3704
+        ],
+        [
+          0.6708,
+          0.3082
+        ],
+        [
+          0.7354,
+          0.2463
+        ],
+        [
+          0.8007,
+          0.1845
+        ],
+        [
+          0.8665,
+          0.1228
+        ],
+        [
+          0.933,
+          0.0613
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-89"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 49.6,
+      "y": 0.9,
+      "w": 18.8,
+      "h": 37.6,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9364
+        ],
+        [
+          0.1164,
+          0.8729
+        ],
+        [
+          0.1756,
+          0.8096
+        ],
+        [
+          0.2353,
+          0.7464
+        ],
+        [
+          0.2957,
+          0.6834
+        ],
+        [
+          0.3567,
+          0.6205
+        ],
+        [
+          0.4183,
+          0.5577
+        ],
+        [
+          0.4805,
+          0.4951
+        ],
+        [
+          0.5433,
+          0.4327
+        ],
+        [
+          0.6067,
+          0.3704
+        ],
+        [
+          0.6708,
+          0.3083
+        ],
+        [
+          0.7354,
+          0.2463
+        ],
+        [
+          0.8007,
+          0.1845
+        ],
+        [
+          0.8665,
+          0.1228
+        ],
+        [
+          0.933,
+          0.0613
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-90"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 46.3,
+      "y": 0.9,
+      "w": 18.7,
+      "h": 37.6,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9364
+        ],
+        [
+          0.1164,
+          0.8729
+        ],
+        [
+          0.1755,
+          0.8096
+        ],
+        [
+          0.2353,
+          0.7464
+        ],
+        [
+          0.2957,
+          0.6834
+        ],
+        [
+          0.3566,
+          0.6205
+        ],
+        [
+          0.4182,
+          0.5578
+        ],
+        [
+          0.4805,
+          0.4952
+        ],
+        [
+          0.5433,
+          0.4327
+        ],
+        [
+          0.6067,
+          0.3705
+        ],
+        [
+          0.6707,
+          0.3083
+        ],
+        [
+          0.7354,
+          0.2463
+        ],
+        [
+          0.8006,
+          0.1845
+        ],
+        [
+          0.8665,
+          0.1229
+        ],
+        [
+          0.9329,
+          0.0613
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-91"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 43.0,
+      "y": 0.9,
+      "w": 18.5,
+      "h": 37.6,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9364
+        ],
+        [
+          0.1164,
+          0.873
+        ],
+        [
+          0.1755,
+          0.8097
+        ],
+        [
+          0.2353,
+          0.7465
+        ],
+        [
+          0.2956,
+          0.6835
+        ],
+        [
+          0.3566,
+          0.6206
+        ],
+        [
+          0.4182,
+          0.5578
+        ],
+        [
+          0.4804,
+          0.4953
+        ],
+        [
+          0.5433,
+          0.4328
+        ],
+        [
+          0.6067,
+          0.3705
+        ],
+        [
+          0.6707,
+          0.3084
+        ],
+        [
+          0.7354,
+          0.2464
+        ],
+        [
+          0.8006,
+          0.1846
+        ],
+        [
+          0.8665,
+          0.1229
+        ],
+        [
+          0.9329,
+          0.0614
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-92"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 39.7,
+      "y": 0.9,
+      "w": 18.4,
+      "h": 37.6,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9364
+        ],
+        [
+          0.1164,
+          0.873
+        ],
+        [
+          0.1755,
+          0.8097
+        ],
+        [
+          0.2353,
+          0.7465
+        ],
+        [
+          0.2956,
+          0.6835
+        ],
+        [
+          0.3566,
+          0.6206
+        ],
+        [
+          0.4182,
+          0.5579
+        ],
+        [
+          0.4804,
+          0.4953
+        ],
+        [
+          0.5432,
+          0.4329
+        ],
+        [
+          0.6067,
+          0.3706
+        ],
+        [
+          0.6707,
+          0.3084
+        ],
+        [
+          0.7354,
+          0.2464
+        ],
+        [
+          0.8006,
+          0.1846
+        ],
+        [
+          0.8665,
+          0.1229
+        ],
+        [
+          0.9329,
+          0.0614
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-93"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 36.4,
+      "y": 1.0,
+      "w": 18.3,
+      "h": 37.7,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9364
+        ],
+        [
+          0.1164,
+          0.873
+        ],
+        [
+          0.1755,
+          0.8097
+        ],
+        [
+          0.2353,
+          0.7466
+        ],
+        [
+          0.2956,
+          0.6836
+        ],
+        [
+          0.3566,
+          0.6207
+        ],
+        [
+          0.4182,
+          0.558
+        ],
+        [
+          0.4804,
+          0.4954
+        ],
+        [
+          0.5432,
+          0.4329
+        ],
+        [
+          0.6067,
+          0.3706
+        ],
+        [
+          0.6707,
+          0.3085
+        ],
+        [
+          0.7353,
+          0.2465
+        ],
+        [
+          0.8006,
+          0.1846
+        ],
+        [
+          0.8665,
+          0.1229
+        ],
+        [
+          0.9329,
+          0.0614
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-94"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 33.4,
+      "y": 0.3,
+      "w": 18.3,
+      "h": 37.8,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9364
+        ],
+        [
+          0.1164,
+          0.873
+        ],
+        [
+          0.1755,
+          0.8097
+        ],
+        [
+          0.2352,
+          0.7466
+        ],
+        [
+          0.2956,
+          0.6836
+        ],
+        [
+          0.3566,
+          0.6207
+        ],
+        [
+          0.4182,
+          0.558
+        ],
+        [
+          0.4804,
+          0.4954
+        ],
+        [
+          0.5432,
+          0.433
+        ],
+        [
+          0.6066,
+          0.3707
+        ],
+        [
+          0.6707,
+          0.3085
+        ],
+        [
+          0.7353,
+          0.2465
+        ],
+        [
+          0.8006,
+          0.1847
+        ],
+        [
+          0.8665,
+          0.123
+        ],
+        [
+          0.9329,
+          0.0614
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-95"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 30.1,
+      "y": 0.3,
+      "w": 18.2,
+      "h": 37.8,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9365
+        ],
+        [
+          0.1164,
+          0.8731
+        ],
+        [
+          0.1755,
+          0.8098
+        ],
+        [
+          0.2352,
+          0.7466
+        ],
+        [
+          0.2956,
+          0.6836
+        ],
+        [
+          0.3566,
+          0.6208
+        ],
+        [
+          0.4182,
+          0.558
+        ],
+        [
+          0.4804,
+          0.4955
+        ],
+        [
+          0.5432,
+          0.433
+        ],
+        [
+          0.6066,
+          0.3707
+        ],
+        [
+          0.6707,
+          0.3086
+        ],
+        [
+          0.7353,
+          0.2466
+        ],
+        [
+          0.8006,
+          0.1847
+        ],
+        [
+          0.8665,
+          0.123
+        ],
+        [
+          0.9329,
+          0.0614
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-96"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 26.8,
+      "y": 0.4,
+      "w": 18.1,
+      "h": 37.8,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9365
+        ],
+        [
+          0.1164,
+          0.8731
+        ],
+        [
+          0.1755,
+          0.8098
+        ],
+        [
+          0.2352,
+          0.7467
+        ],
+        [
+          0.2956,
+          0.6837
+        ],
+        [
+          0.3566,
+          0.6208
+        ],
+        [
+          0.4181,
+          0.5581
+        ],
+        [
+          0.4804,
+          0.4955
+        ],
+        [
+          0.5432,
+          0.4331
+        ],
+        [
+          0.6066,
+          0.3708
+        ],
+        [
+          0.6707,
+          0.3086
+        ],
+        [
+          0.7353,
+          0.2466
+        ],
+        [
+          0.8006,
+          0.1847
+        ],
+        [
+          0.8664,
+          0.123
+        ],
+        [
+          0.9329,
+          0.0614
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-97"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 23.5,
+      "y": 0.4,
+      "w": 18.0,
+      "h": 37.9,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9365
+        ],
+        [
+          0.1164,
+          0.8731
+        ],
+        [
+          0.1755,
+          0.8099
+        ],
+        [
+          0.2352,
+          0.7467
+        ],
+        [
+          0.2956,
+          0.6837
+        ],
+        [
+          0.3565,
+          0.6209
+        ],
+        [
+          0.4181,
+          0.5582
+        ],
+        [
+          0.4803,
+          0.4956
+        ],
+        [
+          0.5432,
+          0.4331
+        ],
+        [
+          0.6066,
+          0.3708
+        ],
+        [
+          0.6706,
+          0.3087
+        ],
+        [
+          0.7353,
+          0.2466
+        ],
+        [
+          0.8006,
+          0.1848
+        ],
+        [
+          0.8664,
+          0.123
+        ],
+        [
+          0.9329,
+          0.0614
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-98"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 20.2,
+      "y": 0.4,
+      "w": 17.8,
+      "h": 37.9,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0579,
+          0.9365
+        ],
+        [
+          0.1164,
+          0.8731
+        ],
+        [
+          0.1755,
+          0.8099
+        ],
+        [
+          0.2352,
+          0.7468
+        ],
+        [
+          0.2956,
+          0.6838
+        ],
+        [
+          0.3565,
+          0.6209
+        ],
+        [
+          0.4181,
+          0.5582
+        ],
+        [
+          0.4803,
+          0.4956
+        ],
+        [
+          0.5431,
+          0.4332
+        ],
+        [
+          0.6066,
+          0.3709
+        ],
+        [
+          0.6706,
+          0.3087
+        ],
+        [
+          0.7353,
+          0.2467
+        ],
+        [
+          0.8006,
+          0.1848
+        ],
+        [
+          0.8664,
+          0.1231
+        ],
+        [
+          0.9329,
+          0.0615
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-99"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 17.2,
+      "y": 2.1,
+      "w": 16.6,
+      "h": 35.7,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.062,
+          0.9323
+        ],
+        [
+          0.1247,
+          0.8648
+        ],
+        [
+          0.1881,
+          0.7975
+        ],
+        [
+          0.2521,
+          0.7302
+        ],
+        [
+          0.3168,
+          0.6631
+        ],
+        [
+          0.3822,
+          0.5961
+        ],
+        [
+          0.4482,
+          0.5293
+        ],
+        [
+          0.5149,
+          0.4626
+        ],
+        [
+          0.5822,
+          0.3961
+        ],
+        [
+          0.6502,
+          0.3297
+        ],
+        [
+          0.7188,
+          0.2635
+        ],
+        [
+          0.7882,
+          0.1974
+        ],
+        [
+          0.8581,
+          0.1314
+        ],
+        [
+          0.9287,
+          0.0656
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-100"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 13.9,
+      "y": 2.1,
+      "w": 16.5,
+      "h": 35.7,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.062,
+          0.9324
+        ],
+        [
+          0.1247,
+          0.8649
+        ],
+        [
+          0.1881,
+          0.7975
+        ],
+        [
+          0.2521,
+          0.7302
+        ],
+        [
+          0.3168,
+          0.6631
+        ],
+        [
+          0.3821,
+          0.5962
+        ],
+        [
+          0.4482,
+          0.5294
+        ],
+        [
+          0.5148,
+          0.4627
+        ],
+        [
+          0.5822,
+          0.3961
+        ],
+        [
+          0.6502,
+          0.3298
+        ],
+        [
+          0.7188,
+          0.2635
+        ],
+        [
+          0.7881,
+          0.1974
+        ],
+        [
+          0.8581,
+          0.1315
+        ],
+        [
+          0.9287,
+          0.0657
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-101"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 10.6,
+      "y": 2.2,
+      "w": 16.4,
+      "h": 35.7,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.062,
+          0.9324
+        ],
+        [
+          0.1247,
+          0.8649
+        ],
+        [
+          0.1881,
+          0.7975
+        ],
+        [
+          0.2521,
+          0.7303
+        ],
+        [
+          0.3168,
+          0.6632
+        ],
+        [
+          0.3821,
+          0.5962
+        ],
+        [
+          0.4481,
+          0.5294
+        ],
+        [
+          0.5148,
+          0.4627
+        ],
+        [
+          0.5822,
+          0.3962
+        ],
+        [
+          0.6502,
+          0.3298
+        ],
+        [
+          0.7188,
+          0.2635
+        ],
+        [
+          0.7881,
+          0.1974
+        ],
+        [
+          0.8581,
+          0.1315
+        ],
+        [
+          0.9287,
+          0.0657
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-102"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 7.3,
+      "y": 2.2,
+      "w": 16.3,
+      "h": 35.7,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.062,
+          0.9324
+        ],
+        [
+          0.1247,
+          0.8649
+        ],
+        [
+          0.1881,
+          0.7975
+        ],
+        [
+          0.2521,
+          0.7303
+        ],
+        [
+          0.3168,
+          0.6632
+        ],
+        [
+          0.3821,
+          0.5963
+        ],
+        [
+          0.4481,
+          0.5295
+        ],
+        [
+          0.5148,
+          0.4628
+        ],
+        [
+          0.5822,
+          0.3962
+        ],
+        [
+          0.6502,
+          0.3298
+        ],
+        [
+          0.7188,
+          0.2636
+        ],
+        [
+          0.7881,
+          0.1975
+        ],
+        [
+          0.8581,
+          0.1315
+        ],
+        [
+          0.9287,
+          0.0657
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-103"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 4.1,
+      "y": 2.3,
+      "w": 16.2,
+      "h": 35.7,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.062,
+          0.9324
+        ],
+        [
+          0.1247,
+          0.8649
+        ],
+        [
+          0.188,
+          0.7976
+        ],
+        [
+          0.2521,
+          0.7304
+        ],
+        [
+          0.3167,
+          0.6633
+        ],
+        [
+          0.3821,
+          0.5963
+        ],
+        [
+          0.4481,
+          0.5295
+        ],
+        [
+          0.5148,
+          0.4628
+        ],
+        [
+          0.5821,
+          0.3963
+        ],
+        [
+          0.6501,
+          0.3299
+        ],
+        [
+          0.7188,
+          0.2636
+        ],
+        [
+          0.7881,
+          0.1975
+        ],
+        [
+          0.8581,
+          0.1315
+        ],
+        [
+          0.9287,
+          0.0657
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-104"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 0.0,
+      "y": 1.6,
+      "w": 17.2,
+      "h": 38.3,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0578,
+          0.9366
+        ],
+        [
+          0.1162,
+          0.8733
+        ],
+        [
+          0.1753,
+          0.8101
+        ],
+        [
+          0.235,
+          0.747
+        ],
+        [
+          0.2953,
+          0.6841
+        ],
+        [
+          0.3562,
+          0.6212
+        ],
+        [
+          0.4178,
+          0.5585
+        ],
+        [
+          0.48,
+          0.4959
+        ],
+        [
+          0.5428,
+          0.4335
+        ],
+        [
+          0.6063,
+          0.3712
+        ],
+        [
+          0.6704,
+          0.309
+        ],
+        [
+          0.735,
+          0.2469
+        ],
+        [
+          0.8004,
+          0.185
+        ],
+        [
+          0.8663,
+          0.1232
+        ],
+        [
+          0.9328,
+          0.0615
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-105"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 0.8,
+      "y": 1.7,
+      "w": 13.1,
+      "h": 28.6,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0788,
+          0.9157
+        ],
+        [
+          0.1585,
+          0.8316
+        ],
+        [
+          0.239,
+          0.7477
+        ],
+        [
+          0.3203,
+          0.664
+        ],
+        [
+          0.4024,
+          0.5804
+        ],
+        [
+          0.4853,
+          0.4969
+        ],
+        [
+          0.5691,
+          0.4137
+        ],
+        [
+          0.6537,
+          0.3306
+        ],
+        [
+          0.739,
+          0.2477
+        ],
+        [
+          0.8252,
+          0.1649
+        ],
+        [
+          0.9122,
+          0.0824
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-106"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 0.6,
+      "y": 1.7,
+      "w": 9.9,
+      "h": 21.4,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.1068,
+          0.888
+        ],
+        [
+          0.2147,
+          0.7762
+        ],
+        [
+          0.3237,
+          0.6646
+        ],
+        [
+          0.4338,
+          0.5533
+        ],
+        [
+          0.5449,
+          0.4422
+        ],
+        [
+          0.6571,
+          0.3313
+        ],
+        [
+          0.7703,
+          0.2206
+        ],
+        [
+          0.8846,
+          0.1102
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-107"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 0.5,
+      "y": 1.8,
+      "w": 6.7,
+      "h": 14.2,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.1627,
+          0.8325
+        ],
+        [
+          0.327,
+          0.6653
+        ],
+        [
+          0.4929,
+          0.4984
+        ],
+        [
+          0.6604,
+          0.3319
+        ],
+        [
+          0.8294,
+          0.1658
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-108"
+    },
+    {
+      "type": "poly",
+      "name": "scanline",
+      "x": 0.5,
+      "y": 1.8,
+      "w": 3.4,
+      "h": 7.1,
+      "pts": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.3302,
+          0.666
+        ],
+        [
+          0.6636,
+          0.3326
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 0.6,
+      "open": true,
+      "opacity": 0.07,
+      "layer": "projection",
+      "id": "button-action-109"
+    },
+    {
+      "type": "rect",
+      "name": "shimmer",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 40,
+      "fill": "none",
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "fx": [
+        {
+          "kind": "roughen",
+          "amount": 0.9,
+          "size": 34,
+          "seed": 5
+        }
+      ],
+      "layer": "projection",
+      "id": "button-action-110"
+    }
+  ],
+  "layers": [
+    {
+      "id": "rest",
+      "name": "Rest"
+    },
+    {
+      "id": "hover",
+      "name": "Hover",
+      "hidden": true
+    },
+    {
+      "id": "focus",
+      "name": "Focus",
+      "hidden": true
+    },
+    {
+      "id": "press",
+      "name": "Press",
+      "hidden": true
+    },
+    {
+      "id": "disabled",
+      "name": "Disabled",
+      "hidden": true
+    },
+    {
+      "id": "projection",
+      "name": "Projection (rings from the orb, shimmer)"
+    }
+  ]
+}

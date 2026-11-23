@@ -1,0 +1,3032 @@
+{
+  "title": "Story",
+  "kicker": "Identity",
+  "topic": "story",
+  "updated": "2026-11-22",
+  "background": "#0b0e16",
+  "blocks": [],
+  "elements": [
+    {
+      "type": "text",
+      "x": 56,
+      "y": 30,
+      "w": 900,
+      "h": 26,
+      "text": "Identity · decided",
+      "size": 16,
+      "weight": 700,
+      "font": "sans",
+      "color": "#F88F05",
+      "align": "left",
+      "valign": "top",
+      "caps": true,
+      "id": "kicker"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 58,
+      "w": 1300,
+      "h": 72,
+      "text": "",
+      "size": 52,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "top",
+      "bind": {
+        "topic": "story",
+        "field": "title"
+      },
+      "id": "title"
+    },
+    {
+      "type": "status",
+      "x": 1840,
+      "y": 72,
+      "size": 22,
+      "topic": "story",
+      "id": "status"
+    },
+    {
+      "type": "text",
+      "x": 1440,
+      "y": 40,
+      "w": 380,
+      "h": 30,
+      "text": "← Overview",
+      "size": 18,
+      "weight": 600,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "right",
+      "valign": "top",
+      "link": "index",
+      "id": "back"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 138,
+      "w": 1808,
+      "h": 60,
+      "text": "Two rangers map a new trail from very far away. What you see is their feed: the real sky, and an overlay drawn over it. Visuals tell the story; interactions tell the start.",
+      "size": 22,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "drift"
+    },
+    {
+      "type": "line",
+      "name": "rule",
+      "from": {
+        "x": 56,
+        "y": 212
+      },
+      "to": {
+        "x": 1864,
+        "y": 212
+      },
+      "stroke": "#262c3b",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-6"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 232,
+      "w": 576,
+      "h": 24,
+      "text": "The rule",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true,
+      "id": "st-7"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 264,
+      "w": 576,
+      "h": 64,
+      "text": "If it gives off its own light, it's the sky. Everything else is the overlay.",
+      "size": 22,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "st-8"
+    },
+    {
+      "type": "rect",
+      "name": "rule sky",
+      "x": 56,
+      "y": 344,
+      "w": 270,
+      "h": 250,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4,
+      "id": "st-9"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule nebula",
+      "x": 137.0,
+      "y": 369.0,
+      "w": 148.5,
+      "h": 175.0,
+      "fill": "#7a4a32",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.3,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 13.5
+        }
+      ],
+      "id": "st-10"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule nebula 2",
+      "x": 69.5,
+      "y": 469.0,
+      "w": 94.5,
+      "h": 112.5,
+      "fill": "#38194C",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.7,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 13.5
+        }
+      ],
+      "id": "st-11"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 304.7,
+      "y": 444.8,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-12"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 272.5,
+      "y": 375.6,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-13"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 118.6,
+      "y": 373.8,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "st-14"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 125.2,
+      "y": 480.7,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-15"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 95.5,
+      "y": 405.3,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-16"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 212.7,
+      "y": 365.4,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "st-17"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 205.4,
+      "y": 384.6,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "st-18"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 201.3,
+      "y": 485.3,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "st-19"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 211.7,
+      "y": 501.0,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "st-20"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 203.1,
+      "y": 368.4,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-21"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 116.4,
+      "y": 510.5,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "st-22"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 182.3,
+      "y": 566.4,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "st-23"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 127.2,
+      "y": 395.3,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "st-24"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 209.9,
+      "y": 474.8,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "st-25"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 137.2,
+      "y": 579.4,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-26"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 170.2,
+      "y": 528.1,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "st-27"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 171.1,
+      "y": 575.3,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-28"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 209.5,
+      "y": 555.4,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "st-29"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 240.6,
+      "y": 490.7,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "st-30"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 277.3,
+      "y": 571.3,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "st-31"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 79.5,
+      "y": 515.3,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "st-32"
+    },
+    {
+      "type": "ellipse",
+      "name": "rule star",
+      "x": 246.0,
+      "y": 558.0,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "st-33"
+    },
+    {
+      "type": "text",
+      "x": 70,
+      "y": 356,
+      "w": 240,
+      "h": 16,
+      "text": "SKY · REAL",
+      "size": 10,
+      "weight": 400,
+      "font": "mono",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "st-34"
+    },
+    {
+      "type": "text",
+      "x": 70,
+      "y": 520,
+      "w": 240,
+      "h": 64,
+      "text": "stars · nebulae · galaxies · the backdrop\nreal looking, calm, never cartoon",
+      "size": 11,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-35"
+    },
+    {
+      "type": "rect",
+      "name": "overlay ground",
+      "x": 362,
+      "y": 344,
+      "w": 270,
+      "h": 250,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4,
+      "id": "st-36"
+    },
+    {
+      "type": "rect",
+      "name": "overlay sample tint",
+      "x": 376,
+      "y": 380,
+      "w": 242,
+      "h": 120,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.3,
+      "id": "st-37"
+    },
+    {
+      "type": "rect",
+      "name": "overlay sample line",
+      "x": 376,
+      "y": 380,
+      "w": 242,
+      "h": 120,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-38"
+    },
+    {
+      "type": "line",
+      "name": "overlay sample tick",
+      "from": {
+        "x": 384,
+        "y": 380
+      },
+      "to": {
+        "x": 376,
+        "y": 380
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-39"
+    },
+    {
+      "type": "line",
+      "name": "overlay sample tick",
+      "from": {
+        "x": 376,
+        "y": 380
+      },
+      "to": {
+        "x": 376,
+        "y": 388
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-40"
+    },
+    {
+      "type": "line",
+      "name": "overlay sample tick",
+      "from": {
+        "x": 610,
+        "y": 380
+      },
+      "to": {
+        "x": 618,
+        "y": 380
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-41"
+    },
+    {
+      "type": "line",
+      "name": "overlay sample tick",
+      "from": {
+        "x": 618,
+        "y": 380
+      },
+      "to": {
+        "x": 618,
+        "y": 388
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-42"
+    },
+    {
+      "type": "line",
+      "name": "overlay sample tick",
+      "from": {
+        "x": 384,
+        "y": 500
+      },
+      "to": {
+        "x": 376,
+        "y": 500
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-43"
+    },
+    {
+      "type": "line",
+      "name": "overlay sample tick",
+      "from": {
+        "x": 376,
+        "y": 500
+      },
+      "to": {
+        "x": 376,
+        "y": 492
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-44"
+    },
+    {
+      "type": "line",
+      "name": "overlay sample tick",
+      "from": {
+        "x": 610,
+        "y": 500
+      },
+      "to": {
+        "x": 618,
+        "y": 500
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-45"
+    },
+    {
+      "type": "line",
+      "name": "overlay sample tick",
+      "from": {
+        "x": 618,
+        "y": 500
+      },
+      "to": {
+        "x": 618,
+        "y": 492
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-46"
+    },
+    {
+      "type": "text",
+      "x": 376,
+      "y": 356,
+      "w": 240,
+      "h": 16,
+      "text": "OVERLAY · PROJECTED FROM THE ORB",
+      "size": 10,
+      "weight": 400,
+      "font": "mono",
+      "color": "#3DBDB4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-47"
+    },
+    {
+      "type": "text",
+      "x": 388,
+      "y": 392,
+      "w": 220,
+      "h": 100,
+      "text": "the moth · Cori · silk\nthe HUD, rail, frames, orb\nthe fireworks\n(the orb projects them;\nwhimsy allowed)",
+      "size": 11,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-48"
+    },
+    {
+      "type": "text",
+      "x": 376,
+      "y": 520,
+      "w": 250,
+      "h": 64,
+      "text": "a new thing? ask: would a telescope see it? yes → sky. no → overlay.",
+      "size": 11,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-49"
+    },
+    {
+      "type": "line",
+      "name": "rule split",
+      "from": {
+        "x": 344,
+        "y": 360
+      },
+      "to": {
+        "x": 344,
+        "y": 580
+      },
+      "stroke": "#262c3b",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-50"
+    },
+    {
+      "type": "text",
+      "x": 672,
+      "y": 232,
+      "w": 576,
+      "h": 24,
+      "text": "The cast · both are avatars",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true,
+      "id": "st-51"
+    },
+    {
+      "type": "rect",
+      "name": "cast moth sky",
+      "x": 672,
+      "y": 272,
+      "w": 140,
+      "h": 140,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4,
+      "id": "st-52"
+    },
+    {
+      "type": "ellipse",
+      "name": "cast moth star",
+      "x": 790.1,
+      "y": 388.0,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "st-53"
+    },
+    {
+      "type": "ellipse",
+      "name": "cast moth star",
+      "x": 743.0,
+      "y": 353.3,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "st-54"
+    },
+    {
+      "type": "ellipse",
+      "name": "cast moth star",
+      "x": 738.8,
+      "y": 356.7,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "st-55"
+    },
+    {
+      "type": "ellipse",
+      "name": "cast moth star",
+      "x": 735.0,
+      "y": 295.9,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-56"
+    },
+    {
+      "type": "ellipse",
+      "name": "cast moth star",
+      "x": 805.5,
+      "y": 401.9,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "st-57"
+    },
+    {
+      "type": "ellipse",
+      "name": "cast moth star",
+      "x": 678.2,
+      "y": 345.7,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-58"
+    },
+    {
+      "type": "ellipse",
+      "name": "cast moth star",
+      "x": 701.2,
+      "y": 308.8,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-59"
+    },
+    {
+      "type": "ellipse",
+      "name": "cast moth star",
+      "x": 719.1,
+      "y": 353.7,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "st-60"
+    },
+    {
+      "type": "asset",
+      "name": "moth",
+      "asset": "ss-moth",
+      "x": 662.0,
+      "y": 270.0,
+      "w": 160.0,
+      "h": 150.0,
+      "layers": [
+        "art",
+        "projection",
+        "rim",
+        "ring"
+      ],
+      "id": "st-61"
+    },
+    {
+      "type": "text",
+      "x": 832,
+      "y": 276,
+      "w": 416,
+      "h": 24,
+      "text": "The moth · the engineer",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "st-62"
+    },
+    {
+      "type": "text",
+      "x": 832,
+      "y": 302,
+      "w": 416,
+      "h": 16,
+      "text": "SURVEYOR · callsign",
+      "size": 10,
+      "weight": 400,
+      "font": "mono",
+      "color": "#3DBDB4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-63"
+    },
+    {
+      "type": "text",
+      "x": 832,
+      "y": 324,
+      "w": 416,
+      "h": 84,
+      "text": "Me, just remapping the trails. Swims in the orb's field on the site; flies the survey in the game.",
+      "size": 14,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-64"
+    },
+    {
+      "type": "rect",
+      "name": "cast fly sky",
+      "x": 672,
+      "y": 432,
+      "w": 140,
+      "h": 140,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4,
+      "id": "st-65"
+    },
+    {
+      "type": "ellipse",
+      "name": "cast fly star",
+      "x": 711.6,
+      "y": 505.8,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "st-66"
+    },
+    {
+      "type": "ellipse",
+      "name": "cast fly star",
+      "x": 726.4,
+      "y": 566.0,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "st-67"
+    },
+    {
+      "type": "ellipse",
+      "name": "cast fly star",
+      "x": 760.9,
+      "y": 496.9,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "st-68"
+    },
+    {
+      "type": "ellipse",
+      "name": "cast fly star",
+      "x": 676.4,
+      "y": 518.0,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "st-69"
+    },
+    {
+      "type": "ellipse",
+      "name": "cast fly star",
+      "x": 697.6,
+      "y": 554.3,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-70"
+    },
+    {
+      "type": "ellipse",
+      "name": "cast fly star",
+      "x": 784.0,
+      "y": 447.2,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "st-71"
+    },
+    {
+      "type": "ellipse",
+      "name": "cast fly star",
+      "x": 781.2,
+      "y": 448.9,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-72"
+    },
+    {
+      "type": "ellipse",
+      "name": "cast fly star",
+      "x": 705.6,
+      "y": 565.0,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "st-73"
+    },
+    {
+      "type": "asset",
+      "name": "butterfly",
+      "asset": "ss-cori",
+      "x": 663.1,
+      "y": 434.2,
+      "w": 157.9,
+      "h": 144.7,
+      "layers": [
+        "art",
+        "projection",
+        "rim",
+        "ring",
+        "glow"
+      ],
+      "id": "st-74"
+    },
+    {
+      "type": "text",
+      "x": 832,
+      "y": 436,
+      "w": 416,
+      "h": 24,
+      "text": "The butterfly · Cori, the local guide",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "st-75"
+    },
+    {
+      "type": "text",
+      "x": 832,
+      "y": 462,
+      "w": 416,
+      "h": 16,
+      "text": "C.O-R.I · callsign",
+      "size": 10,
+      "weight": 400,
+      "font": "mono",
+      "color": "#3DBDB4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-76"
+    },
+    {
+      "type": "text",
+      "x": 832,
+      "y": 484,
+      "w": 416,
+      "h": 84,
+      "text": "Cosmic Operations – Research and Information. Gathers updated info and makes it fun: the silk, the red thread, the fireworks are hers.",
+      "size": 14,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-77"
+    },
+    {
+      "type": "text",
+      "x": 672,
+      "y": 596,
+      "w": 576,
+      "h": 40,
+      "text": "The work is plain; Cori is the fun. The moth remaps, the visitor reads a portfolio, and Cori draws the delight over both (Avatars).",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#9783A0",
+      "align": "left",
+      "valign": "top",
+      "link": "avatars",
+      "id": "st-78"
+    },
+    {
+      "type": "text",
+      "x": 1288,
+      "y": 232,
+      "w": 576,
+      "h": 24,
+      "text": "The words",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true,
+      "id": "st-79"
+    },
+    {
+      "type": "text",
+      "x": 1288,
+      "y": 268,
+      "w": 230,
+      "h": 24,
+      "text": "constellation",
+      "size": 16,
+      "weight": 600,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "st-80"
+    },
+    {
+      "type": "line",
+      "name": "words arrow",
+      "from": {
+        "x": 1524,
+        "y": 280
+      },
+      "to": {
+        "x": 1574,
+        "y": 280
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "end",
+      "id": "st-81"
+    },
+    {
+      "type": "text",
+      "x": 1588,
+      "y": 268,
+      "w": 276,
+      "h": 24,
+      "text": "a trail to resurvey",
+      "size": 16,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-82"
+    },
+    {
+      "type": "text",
+      "x": 1288,
+      "y": 308,
+      "w": 230,
+      "h": 24,
+      "text": "silk · red thread",
+      "size": 16,
+      "weight": 600,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "st-83"
+    },
+    {
+      "type": "line",
+      "name": "words arrow",
+      "from": {
+        "x": 1524,
+        "y": 320
+      },
+      "to": {
+        "x": 1574,
+        "y": 320
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "end",
+      "id": "st-84"
+    },
+    {
+      "type": "text",
+      "x": 1588,
+      "y": 308,
+      "w": 276,
+      "h": 24,
+      "text": "Cori's marker on a trail",
+      "size": 16,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-85"
+    },
+    {
+      "type": "text",
+      "x": 1288,
+      "y": 348,
+      "w": 230,
+      "h": 24,
+      "text": "fireworks",
+      "size": 16,
+      "weight": 600,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "st-86"
+    },
+    {
+      "type": "line",
+      "name": "words arrow",
+      "from": {
+        "x": 1524,
+        "y": 360
+      },
+      "to": {
+        "x": 1574,
+        "y": 360
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "end",
+      "id": "st-87"
+    },
+    {
+      "type": "text",
+      "x": 1588,
+      "y": 348,
+      "w": 276,
+      "h": 24,
+      "text": "Cori celebrating a remapped trail",
+      "size": 16,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-88"
+    },
+    {
+      "type": "text",
+      "x": 1288,
+      "y": 388,
+      "w": 230,
+      "h": 24,
+      "text": "the mission",
+      "size": 16,
+      "weight": 600,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "st-89"
+    },
+    {
+      "type": "line",
+      "name": "words arrow",
+      "from": {
+        "x": 1524,
+        "y": 400
+      },
+      "to": {
+        "x": 1574,
+        "y": 400
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "end",
+      "id": "st-90"
+    },
+    {
+      "type": "text",
+      "x": 1588,
+      "y": 388,
+      "w": 276,
+      "h": 24,
+      "text": "resurvey this sector",
+      "size": 16,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-91"
+    },
+    {
+      "type": "text",
+      "x": 1288,
+      "y": 428,
+      "w": 230,
+      "h": 24,
+      "text": "the site",
+      "size": 16,
+      "weight": 600,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "st-92"
+    },
+    {
+      "type": "line",
+      "name": "words arrow",
+      "from": {
+        "x": 1524,
+        "y": 440
+      },
+      "to": {
+        "x": 1574,
+        "y": 440
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "end",
+      "id": "st-93"
+    },
+    {
+      "type": "text",
+      "x": 1588,
+      "y": 428,
+      "w": 276,
+      "h": 24,
+      "text": "the feed's overlay",
+      "size": 16,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-94"
+    },
+    {
+      "type": "rect",
+      "name": "never ground",
+      "x": 1288,
+      "y": 520,
+      "w": 576,
+      "h": 96,
+      "fill": "#1A0D24",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4,
+      "id": "st-95"
+    },
+    {
+      "type": "text",
+      "x": 1304,
+      "y": 530,
+      "w": 544,
+      "h": 18,
+      "text": "NEVER",
+      "size": 10,
+      "weight": 400,
+      "font": "mono",
+      "color": "#E54F29",
+      "align": "left",
+      "valign": "top",
+      "id": "st-96"
+    },
+    {
+      "type": "text",
+      "x": 1304,
+      "y": 550,
+      "w": 544,
+      "h": 60,
+      "text": "A lore paragraph. Lore comes from Cori, a few words at a time: the welcome and the mission.",
+      "size": 14,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-97"
+    },
+    {
+      "type": "line",
+      "name": "rule",
+      "from": {
+        "x": 56,
+        "y": 660
+      },
+      "to": {
+        "x": 1864,
+        "y": 660
+      },
+      "stroke": "#262c3b",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-98"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 680,
+      "w": 1200,
+      "h": 24,
+      "text": "Opening · the orb is the transmitter · load about 6 s, skippable",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true,
+      "id": "st-99"
+    },
+    {
+      "type": "text",
+      "x": 1264,
+      "y": 680,
+      "w": 600,
+      "h": 24,
+      "text": "the screens → Opening",
+      "size": 15,
+      "weight": 600,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "right",
+      "valign": "top",
+      "link": "opening",
+      "id": "st-100"
+    },
+    {
+      "type": "rect",
+      "name": "beat 1 tint",
+      "x": 56.0,
+      "y": 720,
+      "w": 240,
+      "h": 150,
+      "fill": "#1A0D24",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.6,
+      "id": "st-101"
+    },
+    {
+      "type": "rect",
+      "name": "beat 1 line",
+      "x": 56.0,
+      "y": 720,
+      "w": 240,
+      "h": 150,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-102"
+    },
+    {
+      "type": "line",
+      "name": "beat 1 tick",
+      "from": {
+        "x": 64.0,
+        "y": 720
+      },
+      "to": {
+        "x": 56.0,
+        "y": 720
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-103"
+    },
+    {
+      "type": "line",
+      "name": "beat 1 tick",
+      "from": {
+        "x": 56.0,
+        "y": 720
+      },
+      "to": {
+        "x": 56.0,
+        "y": 728
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-104"
+    },
+    {
+      "type": "line",
+      "name": "beat 1 tick",
+      "from": {
+        "x": 288.0,
+        "y": 720
+      },
+      "to": {
+        "x": 296.0,
+        "y": 720
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-105"
+    },
+    {
+      "type": "line",
+      "name": "beat 1 tick",
+      "from": {
+        "x": 296.0,
+        "y": 720
+      },
+      "to": {
+        "x": 296.0,
+        "y": 728
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-106"
+    },
+    {
+      "type": "line",
+      "name": "beat 1 tick",
+      "from": {
+        "x": 64.0,
+        "y": 870
+      },
+      "to": {
+        "x": 56.0,
+        "y": 870
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-107"
+    },
+    {
+      "type": "line",
+      "name": "beat 1 tick",
+      "from": {
+        "x": 56.0,
+        "y": 870
+      },
+      "to": {
+        "x": 56.0,
+        "y": 862
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-108"
+    },
+    {
+      "type": "line",
+      "name": "beat 1 tick",
+      "from": {
+        "x": 288.0,
+        "y": 870
+      },
+      "to": {
+        "x": 296.0,
+        "y": 870
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-109"
+    },
+    {
+      "type": "line",
+      "name": "beat 1 tick",
+      "from": {
+        "x": 296.0,
+        "y": 870
+      },
+      "to": {
+        "x": 296.0,
+        "y": 862
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-110"
+    },
+    {
+      "type": "text",
+      "x": 70.0,
+      "y": 732,
+      "w": 40,
+      "h": 36,
+      "text": "1",
+      "size": 26,
+      "weight": 700,
+      "font": "sans",
+      "color": "#3DBDB4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-111"
+    },
+    {
+      "type": "text",
+      "x": 70.0,
+      "y": 768,
+      "w": 212,
+      "h": 24,
+      "text": "Load",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "st-112"
+    },
+    {
+      "type": "text",
+      "x": 70.0,
+      "y": 796,
+      "w": 212,
+      "h": 66,
+      "text": "the orb establishes the link; a cocoon in its field becomes the moth",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-113"
+    },
+    {
+      "type": "line",
+      "name": "beat arrow",
+      "from": {
+        "x": 299.0,
+        "y": 795
+      },
+      "to": {
+        "x": 314.3,
+        "y": 795
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "end",
+      "id": "st-114"
+    },
+    {
+      "type": "rect",
+      "name": "beat 2 tint",
+      "x": 317.3,
+      "y": 720,
+      "w": 240,
+      "h": 150,
+      "fill": "#1A0D24",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.6,
+      "id": "st-115"
+    },
+    {
+      "type": "rect",
+      "name": "beat 2 line",
+      "x": 317.3,
+      "y": 720,
+      "w": 240,
+      "h": 150,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-116"
+    },
+    {
+      "type": "line",
+      "name": "beat 2 tick",
+      "from": {
+        "x": 325.3,
+        "y": 720
+      },
+      "to": {
+        "x": 317.3,
+        "y": 720
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-117"
+    },
+    {
+      "type": "line",
+      "name": "beat 2 tick",
+      "from": {
+        "x": 317.3,
+        "y": 720
+      },
+      "to": {
+        "x": 317.3,
+        "y": 728
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-118"
+    },
+    {
+      "type": "line",
+      "name": "beat 2 tick",
+      "from": {
+        "x": 549.3,
+        "y": 720
+      },
+      "to": {
+        "x": 557.3,
+        "y": 720
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-119"
+    },
+    {
+      "type": "line",
+      "name": "beat 2 tick",
+      "from": {
+        "x": 557.3,
+        "y": 720
+      },
+      "to": {
+        "x": 557.3,
+        "y": 728
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-120"
+    },
+    {
+      "type": "line",
+      "name": "beat 2 tick",
+      "from": {
+        "x": 325.3,
+        "y": 870
+      },
+      "to": {
+        "x": 317.3,
+        "y": 870
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-121"
+    },
+    {
+      "type": "line",
+      "name": "beat 2 tick",
+      "from": {
+        "x": 317.3,
+        "y": 870
+      },
+      "to": {
+        "x": 317.3,
+        "y": 862
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-122"
+    },
+    {
+      "type": "line",
+      "name": "beat 2 tick",
+      "from": {
+        "x": 549.3,
+        "y": 870
+      },
+      "to": {
+        "x": 557.3,
+        "y": 870
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-123"
+    },
+    {
+      "type": "line",
+      "name": "beat 2 tick",
+      "from": {
+        "x": 557.3,
+        "y": 870
+      },
+      "to": {
+        "x": 557.3,
+        "y": 862
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-124"
+    },
+    {
+      "type": "text",
+      "x": 331.3,
+      "y": 732,
+      "w": 40,
+      "h": 36,
+      "text": "2",
+      "size": 26,
+      "weight": 700,
+      "font": "sans",
+      "color": "#3DBDB4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-125"
+    },
+    {
+      "type": "text",
+      "x": 331.3,
+      "y": 768,
+      "w": 212,
+      "h": 24,
+      "text": "Space on",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "st-126"
+    },
+    {
+      "type": "text",
+      "x": 331.3,
+      "y": 796,
+      "w": 212,
+      "h": 66,
+      "text": "the sky flickers on in bands",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-127"
+    },
+    {
+      "type": "line",
+      "name": "beat arrow",
+      "from": {
+        "x": 560.3,
+        "y": 795
+      },
+      "to": {
+        "x": 575.7,
+        "y": 795
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "end",
+      "id": "st-128"
+    },
+    {
+      "type": "rect",
+      "name": "beat 3 tint",
+      "x": 578.7,
+      "y": 720,
+      "w": 240,
+      "h": 150,
+      "fill": "#1A0D24",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.6,
+      "id": "st-129"
+    },
+    {
+      "type": "rect",
+      "name": "beat 3 line",
+      "x": 578.7,
+      "y": 720,
+      "w": 240,
+      "h": 150,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-130"
+    },
+    {
+      "type": "line",
+      "name": "beat 3 tick",
+      "from": {
+        "x": 586.7,
+        "y": 720
+      },
+      "to": {
+        "x": 578.7,
+        "y": 720
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-131"
+    },
+    {
+      "type": "line",
+      "name": "beat 3 tick",
+      "from": {
+        "x": 578.7,
+        "y": 720
+      },
+      "to": {
+        "x": 578.7,
+        "y": 728
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-132"
+    },
+    {
+      "type": "line",
+      "name": "beat 3 tick",
+      "from": {
+        "x": 810.7,
+        "y": 720
+      },
+      "to": {
+        "x": 818.7,
+        "y": 720
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-133"
+    },
+    {
+      "type": "line",
+      "name": "beat 3 tick",
+      "from": {
+        "x": 818.7,
+        "y": 720
+      },
+      "to": {
+        "x": 818.7,
+        "y": 728
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-134"
+    },
+    {
+      "type": "line",
+      "name": "beat 3 tick",
+      "from": {
+        "x": 586.7,
+        "y": 870
+      },
+      "to": {
+        "x": 578.7,
+        "y": 870
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-135"
+    },
+    {
+      "type": "line",
+      "name": "beat 3 tick",
+      "from": {
+        "x": 578.7,
+        "y": 870
+      },
+      "to": {
+        "x": 578.7,
+        "y": 862
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-136"
+    },
+    {
+      "type": "line",
+      "name": "beat 3 tick",
+      "from": {
+        "x": 810.7,
+        "y": 870
+      },
+      "to": {
+        "x": 818.7,
+        "y": 870
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-137"
+    },
+    {
+      "type": "line",
+      "name": "beat 3 tick",
+      "from": {
+        "x": 818.7,
+        "y": 870
+      },
+      "to": {
+        "x": 818.7,
+        "y": 862
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-138"
+    },
+    {
+      "type": "text",
+      "x": 592.7,
+      "y": 732,
+      "w": 40,
+      "h": 36,
+      "text": "3",
+      "size": 26,
+      "weight": 700,
+      "font": "sans",
+      "color": "#3DBDB4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-139"
+    },
+    {
+      "type": "text",
+      "x": 592.7,
+      "y": 768,
+      "w": 212,
+      "h": 24,
+      "text": "Dock",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "st-140"
+    },
+    {
+      "type": "text",
+      "x": 592.7,
+      "y": 796,
+      "w": 212,
+      "h": 66,
+      "text": "orb to bottom-right, moth in its tank; the site opens",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-141"
+    },
+    {
+      "type": "line",
+      "name": "beat arrow",
+      "from": {
+        "x": 821.7,
+        "y": 795
+      },
+      "to": {
+        "x": 837.0,
+        "y": 795
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "end",
+      "id": "st-142"
+    },
+    {
+      "type": "rect",
+      "name": "beat 4 tint",
+      "x": 840.0,
+      "y": 720,
+      "w": 240,
+      "h": 150,
+      "fill": "#1A0D24",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.6,
+      "id": "st-143"
+    },
+    {
+      "type": "rect",
+      "name": "beat 4 line",
+      "x": 840.0,
+      "y": 720,
+      "w": 240,
+      "h": 150,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-144"
+    },
+    {
+      "type": "line",
+      "name": "beat 4 tick",
+      "from": {
+        "x": 848.0,
+        "y": 720
+      },
+      "to": {
+        "x": 840.0,
+        "y": 720
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-145"
+    },
+    {
+      "type": "line",
+      "name": "beat 4 tick",
+      "from": {
+        "x": 840.0,
+        "y": 720
+      },
+      "to": {
+        "x": 840.0,
+        "y": 728
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-146"
+    },
+    {
+      "type": "line",
+      "name": "beat 4 tick",
+      "from": {
+        "x": 1072.0,
+        "y": 720
+      },
+      "to": {
+        "x": 1080.0,
+        "y": 720
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-147"
+    },
+    {
+      "type": "line",
+      "name": "beat 4 tick",
+      "from": {
+        "x": 1080.0,
+        "y": 720
+      },
+      "to": {
+        "x": 1080.0,
+        "y": 728
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-148"
+    },
+    {
+      "type": "line",
+      "name": "beat 4 tick",
+      "from": {
+        "x": 848.0,
+        "y": 870
+      },
+      "to": {
+        "x": 840.0,
+        "y": 870
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-149"
+    },
+    {
+      "type": "line",
+      "name": "beat 4 tick",
+      "from": {
+        "x": 840.0,
+        "y": 870
+      },
+      "to": {
+        "x": 840.0,
+        "y": 862
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-150"
+    },
+    {
+      "type": "line",
+      "name": "beat 4 tick",
+      "from": {
+        "x": 1072.0,
+        "y": 870
+      },
+      "to": {
+        "x": 1080.0,
+        "y": 870
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-151"
+    },
+    {
+      "type": "line",
+      "name": "beat 4 tick",
+      "from": {
+        "x": 1080.0,
+        "y": 870
+      },
+      "to": {
+        "x": 1080.0,
+        "y": 862
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-152"
+    },
+    {
+      "type": "text",
+      "x": 854.0,
+      "y": 732,
+      "w": 40,
+      "h": 36,
+      "text": "4",
+      "size": 26,
+      "weight": 700,
+      "font": "sans",
+      "color": "#3DBDB4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-153"
+    },
+    {
+      "type": "text",
+      "x": 854.0,
+      "y": 768,
+      "w": 212,
+      "h": 24,
+      "text": "Welcome",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "st-154"
+    },
+    {
+      "type": "text",
+      "x": 854.0,
+      "y": 796,
+      "w": 212,
+      "h": 66,
+      "text": "Cori: a few words of lore",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-155"
+    },
+    {
+      "type": "line",
+      "name": "beat arrow",
+      "from": {
+        "x": 1083.0,
+        "y": 795
+      },
+      "to": {
+        "x": 1098.3,
+        "y": 795
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "end",
+      "id": "st-156"
+    },
+    {
+      "type": "rect",
+      "name": "beat 5 tint",
+      "x": 1101.3,
+      "y": 720,
+      "w": 240,
+      "h": 150,
+      "fill": "#1A0D24",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.6,
+      "id": "st-157"
+    },
+    {
+      "type": "rect",
+      "name": "beat 5 line",
+      "x": 1101.3,
+      "y": 720,
+      "w": 240,
+      "h": 150,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-158"
+    },
+    {
+      "type": "line",
+      "name": "beat 5 tick",
+      "from": {
+        "x": 1109.3,
+        "y": 720
+      },
+      "to": {
+        "x": 1101.3,
+        "y": 720
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-159"
+    },
+    {
+      "type": "line",
+      "name": "beat 5 tick",
+      "from": {
+        "x": 1101.3,
+        "y": 720
+      },
+      "to": {
+        "x": 1101.3,
+        "y": 728
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-160"
+    },
+    {
+      "type": "line",
+      "name": "beat 5 tick",
+      "from": {
+        "x": 1333.3,
+        "y": 720
+      },
+      "to": {
+        "x": 1341.3,
+        "y": 720
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-161"
+    },
+    {
+      "type": "line",
+      "name": "beat 5 tick",
+      "from": {
+        "x": 1341.3,
+        "y": 720
+      },
+      "to": {
+        "x": 1341.3,
+        "y": 728
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-162"
+    },
+    {
+      "type": "line",
+      "name": "beat 5 tick",
+      "from": {
+        "x": 1109.3,
+        "y": 870
+      },
+      "to": {
+        "x": 1101.3,
+        "y": 870
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-163"
+    },
+    {
+      "type": "line",
+      "name": "beat 5 tick",
+      "from": {
+        "x": 1101.3,
+        "y": 870
+      },
+      "to": {
+        "x": 1101.3,
+        "y": 862
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-164"
+    },
+    {
+      "type": "line",
+      "name": "beat 5 tick",
+      "from": {
+        "x": 1333.3,
+        "y": 870
+      },
+      "to": {
+        "x": 1341.3,
+        "y": 870
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-165"
+    },
+    {
+      "type": "line",
+      "name": "beat 5 tick",
+      "from": {
+        "x": 1341.3,
+        "y": 870
+      },
+      "to": {
+        "x": 1341.3,
+        "y": 862
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-166"
+    },
+    {
+      "type": "text",
+      "x": 1115.3,
+      "y": 732,
+      "w": 40,
+      "h": 36,
+      "text": "5",
+      "size": 26,
+      "weight": 700,
+      "font": "sans",
+      "color": "#3DBDB4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-167"
+    },
+    {
+      "type": "text",
+      "x": 1115.3,
+      "y": 768,
+      "w": 212,
+      "h": 24,
+      "text": "Tour",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "st-168"
+    },
+    {
+      "type": "text",
+      "x": 1115.3,
+      "y": 796,
+      "w": 212,
+      "h": 66,
+      "text": "the orb, where to click; she lands on each",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-169"
+    },
+    {
+      "type": "line",
+      "name": "beat arrow",
+      "from": {
+        "x": 1344.3,
+        "y": 795
+      },
+      "to": {
+        "x": 1359.7,
+        "y": 795
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "end",
+      "id": "st-170"
+    },
+    {
+      "type": "rect",
+      "name": "beat 6 tint",
+      "x": 1362.7,
+      "y": 720,
+      "w": 240,
+      "h": 150,
+      "fill": "#1A0D24",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.6,
+      "id": "st-171"
+    },
+    {
+      "type": "rect",
+      "name": "beat 6 line",
+      "x": 1362.7,
+      "y": 720,
+      "w": 240,
+      "h": 150,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-172"
+    },
+    {
+      "type": "line",
+      "name": "beat 6 tick",
+      "from": {
+        "x": 1370.7,
+        "y": 720
+      },
+      "to": {
+        "x": 1362.7,
+        "y": 720
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-173"
+    },
+    {
+      "type": "line",
+      "name": "beat 6 tick",
+      "from": {
+        "x": 1362.7,
+        "y": 720
+      },
+      "to": {
+        "x": 1362.7,
+        "y": 728
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-174"
+    },
+    {
+      "type": "line",
+      "name": "beat 6 tick",
+      "from": {
+        "x": 1594.7,
+        "y": 720
+      },
+      "to": {
+        "x": 1602.7,
+        "y": 720
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-175"
+    },
+    {
+      "type": "line",
+      "name": "beat 6 tick",
+      "from": {
+        "x": 1602.7,
+        "y": 720
+      },
+      "to": {
+        "x": 1602.7,
+        "y": 728
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-176"
+    },
+    {
+      "type": "line",
+      "name": "beat 6 tick",
+      "from": {
+        "x": 1370.7,
+        "y": 870
+      },
+      "to": {
+        "x": 1362.7,
+        "y": 870
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-177"
+    },
+    {
+      "type": "line",
+      "name": "beat 6 tick",
+      "from": {
+        "x": 1362.7,
+        "y": 870
+      },
+      "to": {
+        "x": 1362.7,
+        "y": 862
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-178"
+    },
+    {
+      "type": "line",
+      "name": "beat 6 tick",
+      "from": {
+        "x": 1594.7,
+        "y": 870
+      },
+      "to": {
+        "x": 1602.7,
+        "y": 870
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-179"
+    },
+    {
+      "type": "line",
+      "name": "beat 6 tick",
+      "from": {
+        "x": 1602.7,
+        "y": 870
+      },
+      "to": {
+        "x": 1602.7,
+        "y": 862
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-180"
+    },
+    {
+      "type": "text",
+      "x": 1376.7,
+      "y": 732,
+      "w": 40,
+      "h": 36,
+      "text": "6",
+      "size": 26,
+      "weight": 700,
+      "font": "sans",
+      "color": "#3DBDB4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-181"
+    },
+    {
+      "type": "text",
+      "x": 1376.7,
+      "y": 768,
+      "w": 212,
+      "h": 24,
+      "text": "Mission",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "st-182"
+    },
+    {
+      "type": "text",
+      "x": 1376.7,
+      "y": 796,
+      "w": 212,
+      "h": 66,
+      "text": "Play: resurvey the sector; LAUNCH",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-183"
+    },
+    {
+      "type": "line",
+      "name": "beat arrow",
+      "from": {
+        "x": 1605.7,
+        "y": 795
+      },
+      "to": {
+        "x": 1621.0,
+        "y": 795
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "end",
+      "id": "st-184"
+    },
+    {
+      "type": "rect",
+      "name": "beat 7 tint",
+      "x": 1624.0,
+      "y": 720,
+      "w": 240,
+      "h": 150,
+      "fill": "#1A0D24",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.6,
+      "id": "st-185"
+    },
+    {
+      "type": "rect",
+      "name": "beat 7 line",
+      "x": 1624.0,
+      "y": 720,
+      "w": 240,
+      "h": 150,
+      "fill": "none",
+      "stroke": "#FFD03B",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "st-186"
+    },
+    {
+      "type": "line",
+      "name": "beat 7 tick",
+      "from": {
+        "x": 1632.0,
+        "y": 720
+      },
+      "to": {
+        "x": 1624.0,
+        "y": 720
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-187"
+    },
+    {
+      "type": "line",
+      "name": "beat 7 tick",
+      "from": {
+        "x": 1624.0,
+        "y": 720
+      },
+      "to": {
+        "x": 1624.0,
+        "y": 728
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-188"
+    },
+    {
+      "type": "line",
+      "name": "beat 7 tick",
+      "from": {
+        "x": 1856.0,
+        "y": 720
+      },
+      "to": {
+        "x": 1864.0,
+        "y": 720
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-189"
+    },
+    {
+      "type": "line",
+      "name": "beat 7 tick",
+      "from": {
+        "x": 1864.0,
+        "y": 720
+      },
+      "to": {
+        "x": 1864.0,
+        "y": 728
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-190"
+    },
+    {
+      "type": "line",
+      "name": "beat 7 tick",
+      "from": {
+        "x": 1632.0,
+        "y": 870
+      },
+      "to": {
+        "x": 1624.0,
+        "y": 870
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-191"
+    },
+    {
+      "type": "line",
+      "name": "beat 7 tick",
+      "from": {
+        "x": 1624.0,
+        "y": 870
+      },
+      "to": {
+        "x": 1624.0,
+        "y": 862
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-192"
+    },
+    {
+      "type": "line",
+      "name": "beat 7 tick",
+      "from": {
+        "x": 1856.0,
+        "y": 870
+      },
+      "to": {
+        "x": 1864.0,
+        "y": 870
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-193"
+    },
+    {
+      "type": "line",
+      "name": "beat 7 tick",
+      "from": {
+        "x": 1864.0,
+        "y": 870
+      },
+      "to": {
+        "x": 1864.0,
+        "y": 862
+      },
+      "stroke": "#FFD03B",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "st-194"
+    },
+    {
+      "type": "text",
+      "x": 1638.0,
+      "y": 732,
+      "w": 40,
+      "h": 36,
+      "text": "7",
+      "size": 26,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFD03B",
+      "align": "left",
+      "valign": "top",
+      "id": "st-195"
+    },
+    {
+      "type": "text",
+      "x": 1638.0,
+      "y": 768,
+      "w": 212,
+      "h": 24,
+      "text": "Go · pause",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "st-196"
+    },
+    {
+      "type": "text",
+      "x": 1638.0,
+      "y": 796,
+      "w": 212,
+      "h": 66,
+      "text": "field drops for the game; pause brings him home",
+      "size": 13,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-197"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 900,
+      "w": 1808,
+      "h": 60,
+      "text": "Site and game are two places on one feed: one overlay, the orb controls both, Cori guides in both. All the work is on the site; the game is dessert.",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-198"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 980,
+      "w": 1808,
+      "h": 40,
+      "text": "Cori across the site: flies around like in the game, lands on action items and points of interest, ≤ 2 sentences, speaks on landing or the side button, never over content.",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "st-199"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "k-rule",
+      "kind": "decision",
+      "text": "The rule: if it gives off its own light, it's the real sky (stars, nebulae, galaxies, the backdrop). Everything else is the AR overlay, projected from the orb (rings, shimmer, a pulse: Projection): moth, Cori, silk, HUD, frames, orb, fireworks.",
+      "why": "The whimsical fantasy art and the real star map pulled two ways. The overlay can be whimsical because it's drawn; the sky stays real."
+    },
+    {
+      "id": "k-premise",
+      "kind": "decision",
+      "text": "Premise: two park rangers map a new trail from very far away. The moth and the butterfly are their avatars on the feed."
+    },
+    {
+      "id": "k-cast",
+      "kind": "decision",
+      "text": "Cast: the moth is the engineer (the site owner), callsign SURVEYOR; the butterfly is Cori (C.O-R.I: Cosmic Operations – Research and Information, steward of this sector), the local guide, in the game and across the site. Cori no longer rides beside the butterfly: it is the butterfly."
+    },
+    {
+      "id": "k-words",
+      "kind": "decision",
+      "text": "Words: constellation = a trail to resurvey; silk and the red thread = Cori's markers; fireworks = Cori celebrating a remapped trail; the mission = resurvey this sector."
+    },
+    {
+      "id": "k-fun",
+      "kind": "decision",
+      "text": "The work is plain; Cori is the fun. The moth just remaps trails and the visitor just reads a portfolio; Cori adds the silk, the red thread, the fireworks and the press bursts over both.",
+      "why": "User: \"i'm just remapping the trail, she makes it fun. the user is just reading a port site, cori makes it fun.\""
+    },
+    {
+      "id": "k-tell",
+      "kind": "decision",
+      "text": "Visuals tell the story, interactions tell the start. Lore only from Cori, a few words: the welcome and the mission on Play.",
+      "why": "Recruiters give it 1–2 minutes; a line from a character reads, a paragraph does not."
+    },
+    {
+      "id": "k-cori-site",
+      "kind": "decision",
+      "text": "Cori on the site: spawns after loading, flies around as in the game, lands on action items and points of interest; ≤ 2 sentences, speaks on landing or the side button, never covers content, calm = no flight, the line just appears."
+    },
+    {
+      "id": "k-orb-source",
+      "kind": "decision",
+      "text": "The orb is the transmitter: the source of the overlay and the controller of the site and the game (Opening)."
+    },
+    {
+      "id": "k-dessert",
+      "kind": "decision",
+      "text": "Site and game are separate places, themed and flowing the same. No work info behind the game: the game is dessert."
+    }
+  ],
+  "agent": {
+    "brief": "The story is told by the look, not by text: the real sky vs the drawn overlay, two ranger avatars, a feed. See Opening for the first-run screens and Avatars for the projection look.",
+    "rules": [
+      "Anything that isn't a celestial object renders as overlay: signal lines, see-through, never photographic.",
+      "No lore paragraphs: Cori's welcome and the mission are the lore. The trail words show as labels in the game (TRAIL 001 · COMMITTED).",
+      "Cori lines ≤ 2 sentences, no \"!\", no emoji (Voice)."
+    ],
+    "open": [
+      "Cori's site lines per section (user)."
+    ]
+  }
+}

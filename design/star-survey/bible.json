@@ -2,7 +2,7 @@
   "title": "Star-Survey Portfolio",
   "template": "web",
   "source": "/home/alchemypls/Desktop/code/website/alchemypls.github.io",
-  "pitch": "An interactive, gamified developer portfolio: fly a moth through the real autumn night sky; the résumé lives in crystal panels over it.",
+  "pitch": "A software engineer's portfolio you can fly: steer a luna moth under the real night sky, tie its stars with silk for fireworks, and read the work in quiet AR readouts over it.",
   "created": "2026-11-18",
   "topics": [
     {
@@ -36,6 +36,14 @@
       "status": "decided",
       "summary": "Calm, precise, warm: instrument readouts with a friendly guide. Never \"Unleash your potential in an epic cosmic journey!\"",
       "page": "identity"
+    },
+    {
+      "id": "story",
+      "group": "Identity",
+      "title": "Story",
+      "status": "decided",
+      "page": "story",
+      "summary": "Two rangers resurvey a sector from far away; you see their feed. If it gives off its own light it's the real sky; everything else is AR overlay, projected from the orb (rings, shimmer, a pulse). The moth is the engineer, just remapping trails; Cori (C.O-R.I, Cosmic Operations – Research and Information) is the guide and the fun: silk, red thread, fireworks are hers. The game is dessert."
     },
     {
       "id": "references",
@@ -74,7 +82,7 @@
       "group": "Foundations",
       "title": "Shape & Depth",
       "status": "decided",
-      "summary": "Sharp frames with 12px corner ticks; 2px chips; full dots. Glow means alive: none at rest, hover/active glow in the role color. 1px lines, 2px focus ring, one 4px frost, 5 z layers.",
+      "summary": "Sharp frames with 12px corner ticks; 2px chips; full dots. Glow means alive: none at rest, hover/active glow in the role color. 1px lines, 2px focus ring, one 4px frost, 5 z layers. The UI shows at 90% (text), lines and ticks ≈ 80%.",
       "page": "shape"
     },
     {
@@ -84,6 +92,14 @@
       "status": "decided",
       "summary": "Crisp UI, slow sky: fast 150 / base 200 / enter 300 / slow 500 / scene 1000ms; standard, enter, exit easings. Reduced motion = calm: loops stop, moves fade, game play untouched.",
       "page": "motion"
+    },
+    {
+      "id": "projection",
+      "group": "Foundations",
+      "title": "Projection",
+      "status": "decided",
+      "page": "projection",
+      "summary": "The orb projects the overlay: fine scanline rings spread out from it on surfaces only; edges shimmer with slow procedural noise that grows with distance from it; a pulse from the orb is the update (draws things in, re-seeds the noise) on appear, section change, Cori landing and every ~12 s. Text stays clean; calm holds still."
     },
     {
       "id": "iconography",
@@ -105,7 +121,7 @@
       "group": "Components",
       "title": "Controls",
       "status": "decided",
-      "summary": "One Button: action (outlined gold + ticks) / quiet (signal line) / danger (ember); sm 24 · md 32 · lg 40; no rest glow, focus ring signal, press = glow + contained firework. Rail labels mono 10, current gold.",
+      "summary": "One Button: action (outlined gold + ticks) / quiet (signal line); sm 24 · md 32 · lg 40; no rest glow, focus ring signal, press = glow + contained firework. Rail labels mono 10, current gold.",
       "page": "controls"
     },
     {
@@ -125,12 +141,36 @@
       "page": "content"
     },
     {
+      "id": "avatars",
+      "group": "Components",
+      "title": "Avatars",
+      "status": "hypothesis",
+      "page": "avatars",
+      "summary": "Moth and butterfly keep their art; the feed projects them from the orb like all the overlay: rings across the wings, a rim that shimmers with distance and lights with the pulse, wing edges dropping out now and then; plus tracking ring, ghost when fast, callsign tag."
+    },
+    {
+      "id": "orb",
+      "group": "Components",
+      "title": "Orb & Cori",
+      "status": "hypothesis",
+      "page": "orb",
+      "summary": "Orb: transmitter (load) → docked with the moth in his tank (site) → field down (game) → recall (beam in, pulse). Cori: tours once, lands on what matters (résumé, rail, entry, LAUNCH, the tank), idles at random (loop, rest on a corner, visit the moth), speaks on landing or ?. The rail stays as the plain nav."
+    },
+    {
       "id": "shell",
       "group": "Structure",
       "title": "Shell & Navigation",
       "status": "decided",
       "summary": "Rail + comms plate (GitHub, résumé, contact) on top, content column, info readout bottom-left, orb bottom-right. Sections are hash addresses (/#work); wheel/swipe steps one. Game hands off: HUD Plates take the same corners. One SECTIONS table; dev controls dev-only.",
       "page": "shell"
+    },
+    {
+      "id": "opening",
+      "group": "Structure",
+      "title": "Opening",
+      "status": "decided",
+      "page": "opening",
+      "summary": "The orb loads the moth from a cocoon, space flickers on, it docks bottom-right with the moth in its tank. Cori welcomes, tours the site (a little random, like in the game), ends on the mission at Play: resurvey the sector. LAUNCH drops the field; pause brings him back. Work never behind the game."
     },
     {
       "id": "pages",
@@ -144,7 +184,7 @@
       "group": "Structure",
       "title": "Layouts",
       "status": "decided",
-      "summary": "Readout (About, Skills: one 540 Frame), Menu + Detail (Work, Projects, Open Source: intro 540, then menu 280 + detail 460 = 760 on desktop; below 1024 the row opens in place), Launch (Play: shell only). Content stays between rail and bottom corners and scrolls inside its Frame.",
+      "summary": "Readout (About, Skills: one 540 Frame), Menu + Detail (Work, Projects, Open Source: intro 540, then menu 280 + detail 460 = 760 from 1280 wide; below that the row opens in place), Launch (Play: shell only). Content stays between rail and bottom corners and scrolls inside its Frame.",
       "page": "layouts"
     },
     {
@@ -167,7 +207,7 @@
       "group": "Quality",
       "title": "Accessibility",
       "status": "decided",
-      "summary": "WCAG AA floor. Reading frames void/60, text-faint lifted to #9783A0 (≥4.85 everywhere text sits). Full keyboard, landmarks + tablists, one live region, 44px touch, calm motion, document.title per section.",
+      "summary": "WCAG AA floor. Reading frames void/60, text-faint #A18FAA (≥4.5 at the UI's 90% opacity everywhere text sits). Full keyboard, landmarks + tablists, one live region, 44px touch, calm motion, document.title per section.",
       "page": "accessibility"
     },
     {
@@ -189,7 +229,7 @@
       "group": "Production",
       "title": "Scope",
       "status": "decided",
-      "summary": "Everything decided ships, site and game, in 8 Apply steps: foundations → components → layouts + shell → accessibility → orb stick → fireworks + calm → content → docs. Waits: mirror, icons, states, performance.",
+      "summary": "Everything decided ships, site and game, in 10 Apply steps: foundations → components → layouts + shell → accessibility → orb stick → the overlay (projection, avatars) → Opening + Cori → fireworks + calm → content → docs.",
       "page": "scope"
     }
   ],

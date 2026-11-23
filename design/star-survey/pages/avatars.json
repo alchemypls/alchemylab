@@ -1,0 +1,2785 @@
+{
+  "title": "Avatars",
+  "kicker": "Components",
+  "topic": "avatars",
+  "updated": "2026-11-22",
+  "background": "#0b0e16",
+  "blocks": [],
+  "elements": [
+    {
+      "type": "text",
+      "x": 56,
+      "y": 30,
+      "w": 900,
+      "h": 26,
+      "text": "Components · hypothesis",
+      "size": 16,
+      "weight": 700,
+      "font": "sans",
+      "color": "#F88F05",
+      "align": "left",
+      "valign": "top",
+      "caps": true,
+      "id": "kicker"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 58,
+      "w": 1300,
+      "h": 72,
+      "text": "",
+      "size": 52,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "top",
+      "bind": {
+        "topic": "avatars",
+        "field": "title"
+      },
+      "id": "title"
+    },
+    {
+      "type": "status",
+      "x": 1840,
+      "y": 72,
+      "size": 22,
+      "topic": "avatars",
+      "id": "status"
+    },
+    {
+      "type": "text",
+      "x": 1440,
+      "y": 40,
+      "w": 380,
+      "h": 30,
+      "text": "← Overview",
+      "size": 18,
+      "weight": 600,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "right",
+      "valign": "top",
+      "link": "index",
+      "id": "back"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 138,
+      "w": 1808,
+      "h": 60,
+      "text": "The moth and the butterfly keep their art and colors. The feed adds a look on top so they read as drawn, not as creatures in space.",
+      "size": 22,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "drift"
+    },
+    {
+      "type": "line",
+      "name": "rule",
+      "from": {
+        "x": 56,
+        "y": 212
+      },
+      "to": {
+        "x": 1864,
+        "y": 212
+      },
+      "stroke": "#262c3b",
+      "strokeWidth": 2,
+      "arrow": "none",
+      "id": "av-6"
+    },
+    {
+      "type": "text",
+      "x": 56.0,
+      "y": 232,
+      "w": 432,
+      "h": 24,
+      "text": "Raw · as in the game today",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true,
+      "id": "av-7"
+    },
+    {
+      "type": "rect",
+      "name": "panel 1 sky",
+      "x": 56.0,
+      "y": 268,
+      "w": 432,
+      "h": 430,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4,
+      "id": "av-8"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 nebula",
+      "x": 185.6,
+      "y": 311.0,
+      "w": 237.6,
+      "h": 301.0,
+      "fill": "#7a4a32",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.3,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 21.6
+        }
+      ],
+      "id": "av-9"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 nebula 2",
+      "x": 77.6,
+      "y": 483.0,
+      "w": 151.2,
+      "h": 193.5,
+      "fill": "#38194C",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.7,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 21.6
+        }
+      ],
+      "id": "av-10"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 304.3,
+      "y": 492.5,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "av-11"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 338.8,
+      "y": 537.2,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "av-12"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 378.4,
+      "y": 394.8,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-13"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 283.2,
+      "y": 576.6,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-14"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 320.6,
+      "y": 467.4,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-15"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 390.8,
+      "y": 409.1,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-16"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 127.8,
+      "y": 488.2,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-17"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 425.2,
+      "y": 618.6,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-18"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 161.2,
+      "y": 346.1,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "av-19"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 194.3,
+      "y": 612.1,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-20"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 431.9,
+      "y": 368.5,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-21"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 95.1,
+      "y": 516.1,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-22"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 258.6,
+      "y": 405.2,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "av-23"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 256.3,
+      "y": 324.5,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-24"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 446.5,
+      "y": 398.0,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "av-25"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 457.9,
+      "y": 604.0,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-26"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 392.3,
+      "y": 571.3,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-27"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 1 star",
+      "x": 146.0,
+      "y": 292.8,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-28"
+    },
+    {
+      "type": "asset",
+      "name": "moth",
+      "asset": "ss-moth",
+      "x": 38.8,
+      "y": 389.2,
+      "w": 294.4,
+      "h": 276.0,
+      "layers": [
+        "art"
+      ],
+      "id": "av-29"
+    },
+    {
+      "type": "asset",
+      "name": "butterfly",
+      "asset": "ss-cori",
+      "x": 297.6,
+      "y": 314.3,
+      "w": 176.8,
+      "h": 162.1,
+      "layers": [
+        "art",
+        "glow"
+      ],
+      "id": "av-30"
+    },
+    {
+      "type": "text",
+      "x": 514.7,
+      "y": 232,
+      "w": 432,
+      "h": 24,
+      "text": "Projected · at rest",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true,
+      "id": "av-31"
+    },
+    {
+      "type": "rect",
+      "name": "panel 2 sky",
+      "x": 514.7,
+      "y": 268,
+      "w": 432,
+      "h": 430,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4,
+      "id": "av-32"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 nebula",
+      "x": 644.3,
+      "y": 311.0,
+      "w": 237.6,
+      "h": 301.0,
+      "fill": "#7a4a32",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.3,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 21.6
+        }
+      ],
+      "id": "av-33"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 nebula 2",
+      "x": 536.3,
+      "y": 483.0,
+      "w": 151.2,
+      "h": 193.5,
+      "fill": "#38194C",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.7,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 21.6
+        }
+      ],
+      "id": "av-34"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 662.6,
+      "y": 677.9,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-35"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 891.7,
+      "y": 397.3,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-36"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 873.6,
+      "y": 587.1,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-37"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 796.3,
+      "y": 617.2,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-38"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 928.3,
+      "y": 672.9,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-39"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 632.2,
+      "y": 558.6,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-40"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 846.2,
+      "y": 298.3,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-41"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 557.2,
+      "y": 427.7,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-42"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 753.1,
+      "y": 292.5,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-43"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 807.4,
+      "y": 672.9,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-44"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 656.7,
+      "y": 530.4,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "av-45"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 888.2,
+      "y": 620.1,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-46"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 586.9,
+      "y": 549.3,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-47"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 797.0,
+      "y": 480.3,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-48"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 536.5,
+      "y": 338.6,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-49"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 700.5,
+      "y": 579.7,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-50"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 793.7,
+      "y": 412.5,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "av-51"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 2 star",
+      "x": 818.5,
+      "y": 570.1,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-52"
+    },
+    {
+      "type": "asset",
+      "name": "moth",
+      "asset": "ss-moth",
+      "x": 497.5,
+      "y": 389.2,
+      "w": 294.4,
+      "h": 276.0,
+      "layers": [
+        "art",
+        "projection",
+        "rim",
+        "ring"
+      ],
+      "id": "av-53"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 418.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 418.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-54"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 424.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 424.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-55"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 430.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 430.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-56"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 436.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 436.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-57"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 442.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 442.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-58"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 448.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 448.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-59"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 454.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 454.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-60"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 460.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 460.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-61"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 466.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 466.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-62"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 472.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 472.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-63"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 478.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 478.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-64"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 484.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 484.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-65"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 490.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 490.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-66"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 496.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 496.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-67"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 502.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 502.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-68"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 508.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 508.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-69"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 514.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 514.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-70"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 520.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 520.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-71"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 526.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 526.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-72"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 532.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 532.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-73"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 538.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 538.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-74"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 544.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 544.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-75"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 550.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 550.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-76"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 556.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 556.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-77"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 562.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 562.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-78"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 568.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 568.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-79"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 574.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 574.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-80"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 580.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 580.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-81"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 586.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 586.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-82"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 592.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 592.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-83"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 598.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 598.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-84"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 604.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 604.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-85"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 610.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 610.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-86"
+    },
+    {
+      "type": "line",
+      "name": "moth scanline",
+      "from": {
+        "x": 548.1,
+        "y": 616.6
+      },
+      "to": {
+        "x": 741.3,
+        "y": 616.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-87"
+    },
+    {
+      "type": "line",
+      "name": "moth tag leader",
+      "from": {
+        "x": 699.9,
+        "y": 545.6
+      },
+      "to": {
+        "x": 732.1,
+        "y": 577.8
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "id": "av-88"
+    },
+    {
+      "type": "line",
+      "name": "moth tag leader",
+      "from": {
+        "x": 732.1,
+        "y": 577.8
+      },
+      "to": {
+        "x": 772.1,
+        "y": 577.8
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "id": "av-89"
+    },
+    {
+      "type": "ellipse",
+      "name": "moth tag node",
+      "x": 697.9,
+      "y": 543.6,
+      "w": 4,
+      "h": 4,
+      "fill": "#3DBDB4",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "id": "av-90"
+    },
+    {
+      "type": "text",
+      "x": 776.1,
+      "y": 565.8,
+      "w": 150,
+      "h": 14,
+      "text": "SURVEYOR",
+      "size": 9,
+      "weight": 400,
+      "font": "mono",
+      "color": "#3DBDB4",
+      "align": "left",
+      "valign": "top",
+      "id": "av-91"
+    },
+    {
+      "type": "asset",
+      "name": "butterfly",
+      "asset": "ss-cori",
+      "x": 756.3,
+      "y": 314.3,
+      "w": 176.8,
+      "h": 162.1,
+      "layers": [
+        "art",
+        "projection",
+        "rim",
+        "ring",
+        "glow"
+      ],
+      "id": "av-92"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 327.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 327.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-93"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 333.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 333.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-94"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 339.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 339.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-95"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 345.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 345.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-96"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 351.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 351.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-97"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 357.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 357.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-98"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 363.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 363.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-99"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 369.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 369.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-100"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 375.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 375.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-101"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 381.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 381.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-102"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 387.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 387.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-103"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 393.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 393.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-104"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 399.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 399.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-105"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 405.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 405.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-106"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 411.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 411.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-107"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 417.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 417.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-108"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 423.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 423.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-109"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 429.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 429.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-110"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 435.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 435.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-111"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 441.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 441.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-112"
+    },
+    {
+      "type": "line",
+      "name": "butterfly scanline",
+      "from": {
+        "x": 785.9,
+        "y": 447.5
+      },
+      "to": {
+        "x": 903.5,
+        "y": 447.5
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "opacity": 0.1,
+      "id": "av-113"
+    },
+    {
+      "type": "line",
+      "name": "butterfly tag leader",
+      "from": {
+        "x": 802.7,
+        "y": 357.2
+      },
+      "to": {
+        "x": 783.1,
+        "y": 337.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "id": "av-114"
+    },
+    {
+      "type": "line",
+      "name": "butterfly tag leader",
+      "from": {
+        "x": 783.1,
+        "y": 337.6
+      },
+      "to": {
+        "x": 743.1,
+        "y": 337.6
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "id": "av-115"
+    },
+    {
+      "type": "ellipse",
+      "name": "butterfly tag node",
+      "x": 800.7,
+      "y": 355.2,
+      "w": 4,
+      "h": 4,
+      "fill": "#3DBDB4",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "id": "av-116"
+    },
+    {
+      "type": "text",
+      "x": 589.1,
+      "y": 325.6,
+      "w": 150,
+      "h": 14,
+      "text": "C.O-R.I",
+      "size": 9,
+      "weight": 400,
+      "font": "mono",
+      "color": "#3DBDB4",
+      "align": "right",
+      "valign": "top",
+      "id": "av-117"
+    },
+    {
+      "type": "text",
+      "x": 973.4,
+      "y": 232,
+      "w": 432,
+      "h": 24,
+      "text": "Projected · moving fast",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true,
+      "id": "av-118"
+    },
+    {
+      "type": "rect",
+      "name": "panel 3 sky",
+      "x": 973.4,
+      "y": 268,
+      "w": 432,
+      "h": 430,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4,
+      "id": "av-119"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 nebula",
+      "x": 1103.0,
+      "y": 311.0,
+      "w": 237.6,
+      "h": 301.0,
+      "fill": "#7a4a32",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.3,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 21.6
+        }
+      ],
+      "id": "av-120"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 nebula 2",
+      "x": 995.0,
+      "y": 483.0,
+      "w": 151.2,
+      "h": 193.5,
+      "fill": "#38194C",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.7,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 21.6
+        }
+      ],
+      "id": "av-121"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 996.5,
+      "y": 394.0,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "av-122"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1285.4,
+      "y": 552.9,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-123"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1157.7,
+      "y": 297.0,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "av-124"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1191.6,
+      "y": 295.7,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "av-125"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1156.7,
+      "y": 462.9,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-126"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1294.5,
+      "y": 348.4,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-127"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1099.2,
+      "y": 370.4,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-128"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1024.0,
+      "y": 323.5,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-129"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1093.8,
+      "y": 302.4,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-130"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1037.0,
+      "y": 650.1,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-131"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1105.4,
+      "y": 533.9,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-132"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1064.4,
+      "y": 312.7,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "av-133"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1386.4,
+      "y": 623.6,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-134"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1099.2,
+      "y": 536.7,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-135"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1136.7,
+      "y": 368.1,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-136"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1233.7,
+      "y": 352.9,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "av-137"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1174.1,
+      "y": 392.0,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "av-138"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 3 star",
+      "x": 1328.6,
+      "y": 592.2,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "av-139"
+    },
+    {
+      "type": "asset",
+      "name": "moth",
+      "asset": "ss-moth",
+      "x": 956.2,
+      "y": 389.2,
+      "w": 294.4,
+      "h": 276.0,
+      "layers": [
+        "art",
+        "projection",
+        "rim",
+        "ring",
+        "ghost"
+      ],
+      "id": "av-140"
+    },
+    {
+      "type": "asset",
+      "name": "butterfly",
+      "asset": "ss-cori",
+      "x": 1215.0,
+      "y": 314.3,
+      "w": 176.8,
+      "h": 162.1,
+      "layers": [
+        "art",
+        "projection",
+        "rim",
+        "ring",
+        "glow",
+        "ghost"
+      ],
+      "id": "av-141"
+    },
+    {
+      "type": "text",
+      "x": 1432.1,
+      "y": 232,
+      "w": 432,
+      "h": 24,
+      "text": "Cori speaking",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true,
+      "id": "av-142"
+    },
+    {
+      "type": "rect",
+      "name": "panel 4 sky",
+      "x": 1432.1,
+      "y": 268,
+      "w": 432,
+      "h": 430,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 4,
+      "id": "av-143"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 nebula",
+      "x": 1561.7,
+      "y": 311.0,
+      "w": 237.6,
+      "h": 301.0,
+      "fill": "#7a4a32",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.3,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 21.6
+        }
+      ],
+      "id": "av-144"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 nebula 2",
+      "x": 1453.7,
+      "y": 483.0,
+      "w": 151.2,
+      "h": 193.5,
+      "fill": "#38194C",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.7,
+      "fx": [
+        {
+          "kind": "blur",
+          "radius": 21.6
+        }
+      ],
+      "id": "av-145"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1561.2,
+      "y": 586.9,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-146"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1717.8,
+      "y": 598.9,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-147"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1647.4,
+      "y": 292.8,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-148"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1596.3,
+      "y": 622.4,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-149"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1516.6,
+      "y": 621.8,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-150"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1507.4,
+      "y": 348.7,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 1,
+      "id": "av-151"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1758.7,
+      "y": 521.5,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-152"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1518.9,
+      "y": 310.3,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-153"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1827.5,
+      "y": 617.1,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-154"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1806.0,
+      "y": 491.8,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-155"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1710.6,
+      "y": 542.2,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-156"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1788.1,
+      "y": 466.2,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-157"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1659.8,
+      "y": 562.6,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "av-158"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1789.6,
+      "y": 594.1,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-159"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1553.9,
+      "y": 573.3,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-160"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1714.2,
+      "y": 402.7,
+      "w": 4,
+      "h": 4,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.8,
+      "id": "av-161"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1461.8,
+      "y": 667.6,
+      "w": 3,
+      "h": 3,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.35,
+      "id": "av-162"
+    },
+    {
+      "type": "ellipse",
+      "name": "panel 4 star",
+      "x": 1496.7,
+      "y": 319.3,
+      "w": 2,
+      "h": 2,
+      "fill": "#FFF4E3",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "opacity": 0.5,
+      "id": "av-163"
+    },
+    {
+      "type": "asset",
+      "name": "butterfly",
+      "asset": "ss-cori",
+      "x": 1455.8,
+      "y": 372.7,
+      "w": 252.6,
+      "h": 231.6,
+      "layers": [
+        "art",
+        "projection",
+        "rim",
+        "ring",
+        "glow"
+      ],
+      "id": "av-164"
+    },
+    {
+      "type": "asset",
+      "name": "panel 4 cori",
+      "asset": "ss-plate",
+      "x": 1628.1,
+      "y": 308,
+      "w": 220.0,
+      "h": 59.2,
+      "texts": {
+        "line": "Two of these stars are planets. Can you find the second?"
+      },
+      "id": "av-165"
+    },
+    {
+      "type": "line",
+      "name": "cori leader",
+      "from": {
+        "x": 1628.1,
+        "y": 388
+      },
+      "to": {
+        "x": 1592.1,
+        "y": 424
+      },
+      "stroke": "#3DBDB4",
+      "strokeWidth": 1,
+      "arrow": "none",
+      "id": "av-166"
+    },
+    {
+      "type": "text",
+      "x": 1448.1,
+      "y": 658,
+      "w": 400,
+      "h": 30,
+      "text": "Plate on a 45° leader; the gold dot = speaking",
+      "size": 11,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "left",
+      "valign": "top",
+      "id": "av-167"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 730,
+      "w": 900,
+      "h": 24,
+      "text": "The projection treatment",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true,
+      "id": "av-168"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 768,
+      "w": 200,
+      "h": 24,
+      "text": "Rim",
+      "size": 16,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "av-169"
+    },
+    {
+      "type": "text",
+      "x": 256,
+      "y": 768,
+      "w": 680,
+      "h": 56,
+      "text": "1px signal line on the outline, 90%: it shimmers more the farther from the orb, and the pulse lights it as it passes.",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "av-170"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 834,
+      "w": 200,
+      "h": 24,
+      "text": "See-through",
+      "size": 16,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "av-171"
+    },
+    {
+      "type": "text",
+      "x": 256,
+      "y": 834,
+      "w": 680,
+      "h": 56,
+      "text": "the art at 85%: stars show through the wings.",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "av-172"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 900,
+      "w": 200,
+      "h": 24,
+      "text": "Tracking ring",
+      "size": 16,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "av-173"
+    },
+    {
+      "type": "text",
+      "x": 256,
+      "y": 900,
+      "w": 680,
+      "h": 56,
+      "text": "a flat dashed ellipse under it, signal 50%: where the feed thinks it is.",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "av-174"
+    },
+    {
+      "type": "text",
+      "x": 56,
+      "y": 966,
+      "w": 200,
+      "h": 24,
+      "text": "Rings from the orb",
+      "size": 16,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "av-175"
+    },
+    {
+      "type": "text",
+      "x": 256,
+      "y": 966,
+      "w": 680,
+      "h": 56,
+      "text": "the UI's scanlines: fine rings from the orb across the wings; now and then a wing edge drops out and comes back. Calm: still.",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "av-176"
+    },
+    {
+      "type": "text",
+      "x": 956,
+      "y": 768,
+      "w": 200,
+      "h": 24,
+      "text": "Ghost",
+      "size": 16,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "av-177"
+    },
+    {
+      "type": "text",
+      "x": 1156,
+      "y": 768,
+      "w": 680,
+      "h": 56,
+      "text": "moving fast: a teal outline one frame behind. Calm: off.",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "av-178"
+    },
+    {
+      "type": "text",
+      "x": 956,
+      "y": 834,
+      "w": 200,
+      "h": 24,
+      "text": "Tag",
+      "size": 16,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "av-179"
+    },
+    {
+      "type": "text",
+      "x": 1156,
+      "y": 834,
+      "w": 680,
+      "h": 56,
+      "text": "callsign on a leader (SURVEYOR, C.O-R.I), mono 9: on deploy and on hover, else hidden.",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "av-180"
+    },
+    {
+      "type": "text",
+      "x": 956,
+      "y": 900,
+      "w": 200,
+      "h": 24,
+      "text": "Colors stay",
+      "size": 16,
+      "weight": 700,
+      "font": "sans",
+      "color": "#FFF4E3",
+      "align": "left",
+      "valign": "top",
+      "id": "av-181"
+    },
+    {
+      "type": "text",
+      "x": 1156,
+      "y": 900,
+      "w": 680,
+      "h": 56,
+      "text": "the treatment is added on top, never recolors (Effects: characters keep their colors).",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "id": "av-182"
+    },
+    {
+      "type": "text",
+      "x": 956,
+      "y": 966,
+      "w": 908,
+      "h": 60,
+      "text": "Cori's plate replaces the speech bubble: Plate (surface/60 + blur), C.O-R.I eyebrow, Inter 14, types out; calm = whole line at once.",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top",
+      "link": "containers",
+      "id": "av-183"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "h-treatment",
+      "kind": "hypothesis",
+      "text": "Projection treatment on both avatars: rim (1px signal 90%), art at 85%, dashed tracking ring, still scanlines (10%), teal ghost when fast, callsign tag on deploy/hover. Colors and the fire stay.",
+      "why": "User: \"let's add the projection treatment and see how it looks.\" Judge it on the canvas, then in the game."
+    },
+    {
+      "id": "k-cori-plate",
+      "kind": "decision",
+      "text": "Cori speaks on a Plate tied to the butterfly by a leader line (replaces CoriBubble's rounded black bubble); eyebrow C.O-R.I, live dot gold while speaking."
+    },
+    {
+      "id": "k-avatar-projection",
+      "kind": "decision",
+      "text": "The moth and Cori are projected like all the overlay, from the orb: rings across their wings, a rim that shimmers with distance (the moth in his tank barely; out flying, the most), the pulse lighting the rim as it passes, now and then a wing edge dropping out. Their own extras stay: tracking ring, ghost when fast, callsign tag.",
+      "why": "User, 2026-11-22: everything is emitted from the orb, \"same goes for the moth and Cori... all of it does\"."
+    }
+  ],
+  "agent": {
+    "brief": "Draw the moth and the butterfly as feed avatars: their current canvas art (lunaMoth.ts, butterfly.ts) plus an overlay pass.",
+    "rules": [
+      "Reduced motion: no scanlines, no ghost.",
+      "Cori = the butterfly: CoriBubble anchors to the butterfly and draws as a Plate + leader.",
+      "Treatment is a second pass after the wings draw (canvas): stroke the same outline in signal; clip to the wing path and stroke arcs centred on the orb's screen position (1px every 3px, signal 7–16%), so the rings line up with the UI's; displace the rim by low-frequency noise scaled by distance to the orb; when the pulse radius (shared with the DOM runtime: al-projection-pulse, 1.4px/ms) crosses the avatar, stroke the rim bright; every 5–18 s skip one wing's rim for 0.4–1 s. globalAlpha 0.85 on the art."
+    ],
+    "open": [
+      "Ghost offset: one frame of velocity, or fixed px?"
+    ]
+  }
+}

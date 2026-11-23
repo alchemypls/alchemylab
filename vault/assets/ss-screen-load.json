@@ -1,0 +1,140 @@
+{
+  "kind": "shape",
+  "title": "Screen: the load (Star-Survey)",
+  "updated": "2026-11-22",
+  "project": "star-survey",
+  "blocks": [],
+  "size": {
+    "width": 960,
+    "height": 540
+  },
+  "elements": [
+    {
+      "id": "load-bounds",
+      "type": "rect",
+      "name": "bounds",
+      "x": 0,
+      "y": 0,
+      "w": 960,
+      "h": 540,
+      "fill": "none",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "layer": "dark"
+    },
+    {
+      "type": "rect",
+      "name": "dark",
+      "x": 0,
+      "y": 0,
+      "w": 960,
+      "h": 540,
+      "fill": "#0D0612",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "layer": "dark",
+      "id": "load-1"
+    },
+    {
+      "type": "asset",
+      "name": "sky",
+      "asset": "ss-sky",
+      "x": 0,
+      "y": 0,
+      "w": 960,
+      "h": 540,
+      "layer": "sky",
+      "id": "load-2"
+    },
+    {
+      "type": "asset",
+      "name": "orb",
+      "asset": "ss-orb",
+      "x": 255.0,
+      "y": 72.5,
+      "w": 450.0,
+      "h": 375.0,
+      "layers": [
+        "glow",
+        "rings",
+        "gear",
+        "parts",
+        "link",
+        "field"
+      ],
+      "layer": "orb",
+      "id": "load-3"
+    },
+    {
+      "type": "asset",
+      "name": "moth",
+      "asset": "ss-moth",
+      "x": 432.0,
+      "y": 220.0,
+      "w": 96.0,
+      "h": 90.0,
+      "layers": [
+        "folded",
+        "projection",
+        "rim"
+      ],
+      "layer": "cocoon",
+      "id": "load-4"
+    },
+    {
+      "type": "text",
+      "x": 280.0,
+      "y": 470,
+      "w": 400,
+      "h": 16,
+      "text": "ESTABLISHING LINK…",
+      "size": 9,
+      "weight": 400,
+      "font": "mono",
+      "color": "#3DBDB4",
+      "align": "center",
+      "valign": "top",
+      "id": "status",
+      "layer": "status"
+    },
+    {
+      "type": "text",
+      "x": 280.0,
+      "y": 490,
+      "w": 400,
+      "h": 14,
+      "text": "ALCHEMYPLS · SOFTWARE ENGINEER",
+      "size": 7,
+      "weight": 400,
+      "font": "mono",
+      "color": "#9783A0",
+      "align": "center",
+      "valign": "top",
+      "id": "callsign",
+      "layer": "status"
+    }
+  ],
+  "layers": [
+    {
+      "id": "dark",
+      "name": "Before the sky"
+    },
+    {
+      "id": "sky",
+      "name": "Sky (turned on)",
+      "hidden": true
+    },
+    {
+      "id": "orb",
+      "name": "Orb, transmitting"
+    },
+    {
+      "id": "cocoon",
+      "name": "Moth, folded"
+    },
+    {
+      "id": "status",
+      "name": "Status line"
+    }
+  ]
+}

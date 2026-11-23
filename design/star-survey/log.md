@@ -1,5 +1,127 @@
 # Star-Survey Portfolio — log
 
+## 2026-11-22 — Cori's plate only while she speaks
+Decided (user) + built (cori runtime): the plate and its leader show when she lands somewhere new or on ?, 4–9 s, then fade (Orb & Cori k-plate-speaks). Previews keep it showing.
+
+## 2026-11-22 — Cori's leader routes around the UI
+Alchemy (cori runtime): the plate → Cori leader takes square bends through gaps and margins, the shortest path crossing no block (frames, links, buttons, the orb); re-routed twice a second while she sits. Open: her plate covers content on phones (show it only while she speaks?).
+
+## 2026-11-22 — Cori is a component
+projects/star-survey.json: "Cori's plate" became "Cori" (the butterfly + her plate; settings: mood, line, size sm/md/lg, see-through 85/70/100); every placement repointed. In Fab and the Web preview she perches on her plate; on pages she flies.
+
+## 2026-11-22 — switches rewrite in place
+Decided (user): a page switch updates the existing windows instead of rebuilding them; the pulse rewrites each as it passes (Projection k-draw-in).
+Alchemy: section switches on Home run through View Transitions (blocks paired by kind and order, each rewritten at the pulse's arrival); page-to-page loads carry shared pins and blocks over (@view-transition navigation: auto, names per kind and order); the first-visit draw-in is skipped when a page was carried over; Cori keeps her spot across loads. Firefox and calm: the plain hash change / fade.
+
+## 2026-11-22 — Cori flies
+Alchemy: a `cori` behavior (only on pages, never over the workbench): the projected butterfly flying and landing per Orb & Cori (spots, idles, ?, section changes, landing pulse, leader from her plate; calm = no flight). star-survey's Cori's plate carries it (Orb & Cori e-cori-runtime).
+Next: her tour (stops from Opening) once the lines exist; the rail as a landing spot.
+
+## 2026-11-22 — Cori on every page
+projects/star-survey.json: Cori's plate pinned on every section page (right edge, above the orb), as on Home; Home still shows one (a section's copy of a component Home pins stays behind). Each carries the welcome line until the user writes per-section lines.
+
+## 2026-11-22 — the pulse draws the page; avatars projected
+Decided (user): everything is emitted from the orb, so the pulse draws each new page in (appear, section change: blocks flicker on as the ring reaches them, nearest first; calm = fade) (Projection k-draw-in, Motion), and the moth and Cori get the same projection as the UI (Avatars k-avatar-projection; the flat scanline question is gone).
+Built: the draw-in in Alchemy's projection runtime (replaces the sections' rise-in when it runs); kit ss-moth / ss-cori gain a Projection layer (rings from the orb across the wings), shown wherever their rim is (pages + kit screens).
+Open: fireworks and silk: projected too? (they give off light, but the rule lists them as overlay).
+
+## 2026-11-22 — the orb on every page
+projects/star-survey.json: the orb pinned bottom-right on every section page (as on Home, with its bottom reserve), replacing the two placed in About's and Work's grids. Home shows one: a section's pinned copy of a component Home pins itself stays behind (as the rail does).
+
+## 2026-11-22 — Web canvas: blocks are what they show
+Alchemy: a block that scrolls inside is always one row (resolvePlacement), the row growing to what it shows, so it never holds empty rows (on the canvas and in the export); the area outline is gone; such blocks say "scrolls inside" on the Layout layer. Dropped on a block's lower half, a block lands under it; Ctrl+Z / Ctrl+Shift+Z undo and redo layout edits.
+projects/star-survey.json: its 16 scrolling blocks set to one row (backup in the session scratchpad). Two orbs placed in the grid on About and Work (canvas tests?) left as they are.
+
+## 2026-11-22 — the mockup on the Web canvas
+projects/star-survey.json (backup in the session scratchpad): new Info readout component (eyebrow, title 28 → 48 on desktop, role; alive while its section shows) pinned bottom-left on every section (Play's Frame stand-in replaced); the orb keeps the bottom clear (reserve 160 / 200 / 180), so frames scroll above it; Cori's plate sits above the orb on Home; About's Readout frame back on its layer. Readout eyebrows and the role line are drafts (PROFILE // 01 … SIMULATION // READY; "Richard Nunez · Software engineer"): the user's copy.
+Open: an orb placed in About's grid on the canvas (left as is); wireframes per tier not drawn.
+
+## 2026-11-22 — softer UI
+Decided (user): the UI at 90% (text never lower), lines and ticks ≈ 80% (Shape k-soft). text-faint lifted #9783A0 → #A18FAA to keep 4.5:1 at 90% (Accessibility e-soft); ember fails as small text at 90%, so Cori's alert keeps ember on her dot and glow, her eyebrow cream (Color k-cori-moods). Applied in projects/star-survey.json (every root 0.9, gold-line / signal-tick at 89%, action buttons get their corner ticks).
+
+## 2026-11-22 — projection: pulse lights the edges, dropouts
+Decided (user): the pulse lights everything it passes (line, corner ticks, a glow), not just the surface; small dropouts: a side of a frame's line or a corner tick flickers out and comes back now and then (Projection k-dropout; whole-screen flicker stays dropped). Built in the projection runtime (Alchemy).
+
+## 2026-11-22 — components pass (Alchemy lab)
+Alchemy: new `projection` behavior (rings + pulse from the orb behind a part's contents, shimmering edge, calm = still) and component widths in recipes (responsive["1248"], a container query). Test added; 88 pass, tsc + lint clean.
+projects/star-survey.json (backup in the session scratchpad): Button action / quiet, projected · Frame projected, new plate tone · Menu + Detail side by side from 1280 (content area 1248), leader from 1280 · orb side button ? · new Cori's plate (moods, live region, alive, projected) pinned right on Home. Validates; /live/star-survey/ serves it.
+Gaps found (Gaps page): placements can't switch at 1280 (1024–1280 shows the pair stacked) · behaviors attach to roots only (rail not projected) · Fabricator can't add a width key · orb states, Cori's flight and tour are the site's code.
+Next: look at it on Live (desktop 1440 / 1100, phone), tune ring alpha and pulse, then hand the bible to the site folder.
+
+## 2026-11-22 — fit the viewport, projection on the overview
+Decided (user): the Menu + Detail pair (760) only from 1280 wide, where it clears the orb's corner; below that the one stacked Frame (rows open in place). Nothing shrinks (Layouts k-desktop, k-phone; Responsive per tier).
+Decided (user): projection is part of the rule: everything that isn't sky is overlay, projected from the orb (Story k-rule, overlay column).
+Overview: the rule card shows sky vs overlay (a mini frame with rings, shimmer and a pulse from a small orb); the pillar cards carry rings from the cast orb + shimmer; a pulse crosses the site screen.
+
+## 2026-11-22 — answers: tank, moods, HUD, scope
+Decided (user): the tank is the stick disc, where the thumb presses; the moth swims about at random, he doesn't follow the stick (Orb & Cori h-tank → decision, Opening) · Cori's moods stay, in text-safe palette colors: neutral signal, happy gold, curious flame, alert ember (Color k-cori-moods) · the danger button goes (Reset was dev-only); the production game HUD is the orb + Disengage (back to port): scanner, progress, the controls hint and dev controls are dev builds only (Controls, Shell, Responsive, Shape, Accessibility, Containers, Color, Effects, kit game screen; ss-button-danger deleted) · Scope gains step 6 the overlay (projection, avatars) and 7 Opening + Cori: 10 steps.
+Responsive's diagram now shows the kit's node and its leader points at it.
+Open: the gold node (keep as the dial's pointer or drop) · fitting the viewport at 1024–1260 (the 760 pair vs the orb) · Cori's lines, URLs, 8 designs, page edge.
+
+## 2026-11-22 — continuity pass + the overview
+Overview (pages/index.json) redrawn like Pinball Crawl's: pitch, pillars, the rule, the cast, the site and the game as kit screens with callouts that open their pages, splash → first fireworks, the system at a glance, open points, every topic with its status, the as-is pages and Gaps. Old survey-era index backed up in the session scratchpad.
+Fixed, older pages against the newer decisions: Cori's side button is ? (key C), not C (Responsive) · the stick dials sections, no node drag (Shell, Containers) · phone shell decided on Responsive (Shell) · z ladder = Shape's (Shell) · action glows gold, the current rail dot is gold (Shape, Color sample: LAUNCH outlined gold, no boost bar) · no Cori bubble / tarot back (Color) · dev controls not designed, Disengage is the HUD button (Controls) · Motion's loops: crystal and sparkles out; orb parts, projection drift, pulse, Cori idles in · orb 136 / 168 / 200, not the old clamp (Spacing) · Cori's plate is Inter 14 (Avatars) · phone bottom reserve 160 / tablet 200 so content clears the orb (Layouts; phone orbs drawn at the true 136) · the tour starts at the tank, as Opening decided (Orb & Cori) · Projection kicker decided, the rail carries it · game hint "TAP 1 · TIE SILK" (kit) · scanline rings 7% everywhere (was 8% in the kit) · Gaps, Identity, Motion, Responsive, Orb fit.
+Open (on the overview): Cori's lines · tank = stick · node upper-right vs lower-right · Cori's curious mood is wine, which is never text · danger has no production use · Scope lacks Opening, Projection, Avatars, Orb & Cori · desktop bottom reserve beside the orb at 1024–1240.
+Next: settle the open points, then Scope.
+
+## 2026-11-22 — everything on the kit, projection everywhere
+Decided (user): the HUD dev controls (zoom, lines, unlock, reset) are dev builds only; the boost bar goes, the moth's trail is the boost indicator (Controls k-dev-hud).
+Kit: buttons action / quiet / danger with the five decided states as layers (ticks on action only, focus ring, press sparks, disabled faint); the rail as decided on Controls (stems, labels alternating, current gold + glow); a Projection layer on every surface piece (fine rings from the docked orb + a shimmering edge), the rail's line shimmers.
+Pages: Controls now on the kit (matrix, sizes, rail, Disengage). Drawn frames that stay page drawing (panels, menus, details, readouts, scanners on Shell, Containers, Layouts, Responsive) get the same rings + shimmer from their screen's orb. Projection page shows only the pulse on top of the kit.
+Layouts: the three phone screens get the docked kit orb (moth in his tank) bottom-right, under the content (user: phones have the orb too).
+Skills: design-bible "Draw from the kit, not by hand"; site-survey points to it.
+Next: user reviews on the canvas; then components in Alchemy.
+
+## 2026-11-22 — kit on the older pages
+ss-orb now carries the decided controller from Responsive (stick disc 0.7 R, dashed thrust rim, knob, button 2 on the ring top, gold node, side ?) beside the transmitter look (gear, turning parts, link ring). Hypothesis: the tank is the stick disc and the moth is the knob on the site.
+Shell, Containers, Layouts, Responsive: drawn skies (16:9), desktop rails, comms, Cori's plate, orbs (+ the moth in his tank), moths, Cori and LAUNCH buttons swapped for kit placements; text, frames and the user's edits kept (backups in the agent's scratchpad). Phone rails stay drawn (dots + current label is their own design); Controls untouched (its button-state matrix needs state layers the kit buttons don't have yet).
+Next: user reviews; button states as kit layers if Controls should follow.
+
+## 2026-11-22 — kit: vault pieces + pages rebuilt on them
+Alchemy: shape/icon assets can place assets (nesting; loops refused by the API and design:check; `texts` per placement).
+Vault kit (project star-survey): ss-orb, ss-moth, ss-cori, ss-plate, ss-rail, ss-comms, ss-frame-reading, ss-readout, ss-button-action/quiet, ss-sky; set pieces ss-screen-site / -load / -game. Story, Opening, Avatars, Projection, Orb & Cori now place them: edit a piece on Fab and every page follows.
+Next: older pages (Shell, Containers, Controls, Layouts, Responsive) on the kit, keeping their hand edits.
+
+## 2026-11-22 — topic: orb & cori (new, Components)
+Decided (user): the rail (nav bar) stays, a projection like every surface (Shell + Projection noted).
+Hypothesis (new page pages/orb.json): orb states transmitter → docked (moth in his tank, swims toward the stick) → field down (game) → recall (beam, pulse); buttons as on Responsive (? = call Cori). Cori: tour once (résumé → rail → entry → tank → LAUNCH), lands on gold spots (never over text; landing sends a pulse), idles every 8–20 s (loop 40 / rest on a corner 35 / visit the moth 25), speaks on landing somewhere new or on ?, REPLAY TOUR on her plate, calm = no flight.
+Open: Cori's lines per spot; idle weights; phone rests.
+Next: user reviews Orb & Cori; then components in Alchemy (orb states, Cori plate, projection layer on Frame/Plate).
+
+## 2026-11-22 — topic: projection (decided)
+Decided (user): finer rings (1px / 3px, 7%); noise = a slow shimmer / buzz; the pulse is the update — a ring from the orb that draws things in and gives the noise a new pattern, on appear, section change, Cori landing and every ~12 s (calm: no timed pulse). Numbers stay tunable on the real site.
+Next: the orb's transmitter + docked states and Cori's landing spots on Controls/Shell, then components.
+
+## 2026-11-22 — topic: projection (reworked)
+User: too noisy; it should come from the orb, more scanlines / procedural noise. Now: ring scanlines centred on the orb, on surfaces only (1px / 5px, 9%, slow outward drift); low-frequency procedural edge noise growing with distance from the orb (0.5 → 2.5px); a pulse ring from the orb draws things in on appear / section change / Cori landing. Dropped: grain (asset deleted), colour split, tear, rolling band, flicker.
+Open: ring pitch/strength; noise moving or still at rest.
+
+## 2026-11-22 — topic: projection (new, Foundations)
+Decided (user): every overlay element (anything that doesn't give off its own light) gets a distortion/noise effect, text the least. Hypothesis: the recipe — still grain (assets/feed-grain.png), 1.5px teal/ember colour split, 4px scanlines, slow edge wobble, rolling band ~8 s, flicker on appear, tear on appear / section change / Cori landing; reading text never warps or sits under grain; calm keeps only the still parts; ≤ 3 flashes/s.
+Open: strength and frequency of tear and band; animated or still grain.
+Next: user judges it on the canvas; then the orb states + Cori on Controls/Shell, then components.
+
+## 2026-11-22 — story: Cori is the fun
+Decided (user): C.O-R.I = Cosmic Operations – Research and Information. Mission (Play tab) = resurvey the stars and constellations of this sector; Cori helps and gathers updated info. The work is plain, Cori is the fun: the moth just remaps trails, the visitor just reads a portfolio; silk, the red thread, fireworks and press bursts are Cori's overlays (Effects noted). Cori is a little random as in the game: between tour stops and after, she flies about, rests on a corner, or visits the moth in his tank. Tour stops: orb → comms → rail → an entry → Play.
+Open: Cori's lines per stop, idle weights/timing, load length, callsign, scanlines.
+Next: user reviews; then the orb states + Cori on Controls/Shell, then components.
+
+## 2026-11-22 — topic: opening (welcome, tour, mission)
+Decided (user): Cori welcomes with a few words of lore ("Welcome. I'm C.O-R.I, Current Steward of this sector. Let me show you the lay of the stars."), then tours the site first (how the orb works, where to click); the tour ends on the last tab, Play = the mission with a touch of lore, then LAUNCH. Pause / back: Cori is the site guide again, the moth swims in his tank steering the orb. Story: lore only from Cori, a few words (no paragraphs). Opening now 10 screens.
+Open: what C.O-R.I stands for, tour stops + lines, mission text, load length, callsign, scanlines.
+Next: user reviews; then the orb's transmitter + docked states and Cori's tour on Controls/Shell, then components.
+
+## 2026-11-22 — topic: opening (reworked)
+Decided (user): the orb is the transmitter — the overlay's source and the controller of site and game. Load: orb in the middle establishing the link (many moving parts), a cocoon in its field becomes the moth, space flickers on, the orb docks bottom-right holding the moth in its field (fish tank). Cori spawns after loading, flies the site as in the game, lands on action items / POIs. PLAY drops the field, the moth flies to center; back to the site he beams into the orb, field up. Site and game stay separate, same theme, one overlay, one orb, one Cori. No work behind the game: the game is dessert (first trail / survey-log gating dropped).
+Open: load length (~6 s?), callsign, Cori's first landing, scanlines.
+Next: user reviews Opening; then the orb's transmitter + docked states on Controls/Shell, then components.
+
+## 2026-11-22 — topic: story (+ opening, avatars)
+Decided: the overlay rule (if it gives off its own light it's the real sky; everything else is AR overlay drawn by the feed). Premise: two park rangers mapping a new trail from far away; the moth = the engineer (SURVEYOR), the butterfly = Cori (C.O-R.I), the local guide in the game and on the site. Words: constellation = trail, silk = marker, tying = committing, fireworks = the map confirming, résumé entry = survey log. Visuals tell the story, interactions tell the start; no lore copy. Cori on the site: flies to what it talks about on a leader, ≤ 2 sentences, on arrival or the side button only.
+Hypothesis: Opening (7 screens, splash → first fireworks, ~45 s, always skippable) and Avatars (projection treatment: rim, 85% see-through, tracking ring, scanlines, ghost, callsign tag; Cori's plate replaces the bubble). Shell text: "Cori is the butterfly".
+Open: scanlines on/off; callsign (handle or name); first asterism; Cori's site lines.
+Next: the user judges Avatars + Opening on the canvas; then carry the treatment into the Containers/Shell scenes, then components.
+
 ## 2026-11-19 — bridge
 Wrote vault/palettes/star-survey.json (11 colors: plum, wine, ember, flame, gold, signal, void, surface, text, text-muted, text-faint) and projects/star-survey.json: theme from the decided tokens (Alchemy's token names filled with the bible's values + the bible's own: frame tints, tracking, display font, glow, motion steps); 6 pages = the sections (/about … /play, status idea, head titles, layout per the Layouts topic); 5 components copied from the library and restyled: Button (action/quiet/danger × sm/md/lg), Frame (from Card; tone reading/hud), Menu + Detail (from Tabs; vertical menu, side by side ≥600 container), Entry list (from Accordion; below 1024), Rail + comms (from Nav Bar). All pages export (HTML + TSX); /live/star-survey/work serves 200.
 Gaps (pages/gaps.json): 14 — backdrop layer, fixed overlay slots, in-place sections, content bounds; per-variant states, text-transform + fonts, backdrop filter, decorations, structured list items, reduced motion; leader line, press burst, orb stick, alive glow. Not built; the user picks.

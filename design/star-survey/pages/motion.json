@@ -1,1365 +1,1370 @@
 {
- "title": "Motion",
- "kicker": "Foundations",
- "topic": "motion",
- "updated": "2026-11-19",
- "background": "#0b0e16",
- "blocks": [],
- "elements": [
-  {
-   "id": "kicker",
-   "type": "text",
-   "x": 56,
-   "y": 30,
-   "w": 900,
-   "h": 26,
-   "text": "Foundations · decided",
-   "size": 16,
-   "weight": 700,
-   "font": "sans",
-   "color": "#F88F05",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "title",
-   "type": "text",
-   "x": 56,
-   "y": 58,
-   "w": 1300,
-   "h": 72,
-   "text": "",
-   "size": 52,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "top",
-   "bind": {
-    "topic": "motion",
-    "field": "title"
-   }
-  },
-  {
-   "id": "status",
-   "type": "status",
-   "x": 1840,
-   "y": 72,
-   "size": 22,
-   "topic": "motion"
-  },
-  {
-   "id": "back",
-   "type": "text",
-   "x": 1440,
-   "y": 40,
-   "w": 380,
-   "h": 30,
-   "text": "← Overview",
-   "size": 18,
-   "weight": 600,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "right",
-   "valign": "top",
-   "link": "index"
-  },
-  {
-   "id": "was",
-   "type": "text",
-   "x": 1440,
-   "y": 76,
-   "w": 380,
-   "h": 30,
-   "text": "was: 23 durations → as-is",
-   "size": 16,
-   "weight": 400,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "right",
-   "valign": "top",
-   "link": "asis-motion"
-  },
-  {
-   "id": "drift",
-   "type": "text",
-   "x": 56,
-   "y": 138,
-   "w": 1808,
-   "h": 60,
-   "text": "The UI answers fast, the sky drifts slow. Five durations, three easings, and a calm mode for people who ask for less motion.",
-   "size": 22,
-   "weight": 400,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "l-1",
-   "type": "line",
-   "name": "rule",
-   "from": {
-    "x": 56,
-    "y": 212
-   },
-   "to": {
-    "x": 1864,
-    "y": 212
-   },
-   "stroke": "#262c3b",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "t-2",
-   "type": "text",
-   "x": 56,
-   "y": 228,
-   "w": 1100,
-   "h": 24,
-   "text": "Durations",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "l-3",
-   "type": "line",
-   "name": "rule",
-   "from": {
-    "x": 76,
-    "y": 330
-   },
-   "to": {
-    "x": 1116,
-    "y": 330
-   },
-   "stroke": "#262c3b",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "t-4",
-   "type": "text",
-   "x": 46,
-   "y": 340,
-   "w": 60,
-   "h": 20,
-   "text": "0",
-   "size": 12,
-   "weight": 400,
-   "font": "mono",
-   "color": "#8b93a7",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "t-5",
-   "type": "text",
-   "x": 306,
-   "y": 340,
-   "w": 60,
-   "h": 20,
-   "text": "250",
-   "size": 12,
-   "weight": 400,
-   "font": "mono",
-   "color": "#8b93a7",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "t-6",
-   "type": "text",
-   "x": 566,
-   "y": 340,
-   "w": 60,
-   "h": 20,
-   "text": "500",
-   "size": 12,
-   "weight": 400,
-   "font": "mono",
-   "color": "#8b93a7",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "t-7",
-   "type": "text",
-   "x": 826,
-   "y": 340,
-   "w": 60,
-   "h": 20,
-   "text": "750",
-   "size": 12,
-   "weight": 400,
-   "font": "mono",
-   "color": "#8b93a7",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "t-8",
-   "type": "text",
-   "x": 1086,
-   "y": 340,
-   "w": 60,
-   "h": 20,
-   "text": "1000",
-   "size": 12,
-   "weight": 400,
-   "font": "mono",
-   "color": "#8b93a7",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "r-9",
-   "type": "rect",
-   "name": "dur fast bar",
-   "x": 76,
-   "y": 300,
-   "w": 156,
-   "h": 10,
-   "fill": "#F88F05",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 5,
-   "opacity": 0.25
-  },
-  {
-   "id": "r-10",
-   "type": "rect",
-   "name": "dur fast tick",
-   "x": 230,
-   "y": 290,
-   "w": 4,
-   "h": 40,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 2
-  },
-  {
-   "id": "t-11",
-   "type": "text",
-   "x": 162,
-   "y": 248,
-   "w": 140,
-   "h": 40,
-   "text": "fast 150\ntap, hover color",
-   "size": 12,
-   "weight": 400,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "r-12",
-   "type": "rect",
-   "name": "dur base bar",
-   "x": 76,
-   "y": 300,
-   "w": 208,
-   "h": 10,
-   "fill": "#F88F05",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 5,
-   "opacity": 0.37
-  },
-  {
-   "id": "r-13",
-   "type": "rect",
-   "name": "dur base tick",
-   "x": 282,
-   "y": 290,
-   "w": 4,
-   "h": 40,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 2
-  },
-  {
-   "id": "t-14",
-   "type": "text",
-   "x": 214,
-   "y": 368,
-   "w": 140,
-   "h": 40,
-   "text": "base 200\nfades, hover glow, scanner",
-   "size": 12,
-   "weight": 400,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "r-15",
-   "type": "rect",
-   "name": "dur enter bar",
-   "x": 76,
-   "y": 300,
-   "w": 312,
-   "h": 10,
-   "fill": "#F88F05",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 5,
-   "opacity": 0.49
-  },
-  {
-   "id": "r-16",
-   "type": "rect",
-   "name": "dur enter tick",
-   "x": 386,
-   "y": 290,
-   "w": 4,
-   "h": 40,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 2
-  },
-  {
-   "id": "t-17",
-   "type": "text",
-   "x": 318,
-   "y": 248,
-   "w": 140,
-   "h": 40,
-   "text": "enter 300\npanels, info bar, detail",
-   "size": 12,
-   "weight": 400,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "r-18",
-   "type": "rect",
-   "name": "dur slow bar",
-   "x": 76,
-   "y": 300,
-   "w": 520,
-   "h": 10,
-   "fill": "#F88F05",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 5,
-   "opacity": 0.61
-  },
-  {
-   "id": "r-19",
-   "type": "rect",
-   "name": "dur slow tick",
-   "x": 594,
-   "y": 290,
-   "w": 4,
-   "h": 40,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 2
-  },
-  {
-   "id": "t-20",
-   "type": "text",
-   "x": 526,
-   "y": 368,
-   "w": 140,
-   "h": 40,
-   "text": "slow 500\ndetail frame in, diamond, HUD in",
-   "size": 12,
-   "weight": 400,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "r-21",
-   "type": "rect",
-   "name": "dur scene bar",
-   "x": 76,
-   "y": 300,
-   "w": 1040,
-   "h": 10,
-   "fill": "#941E43",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 5,
-   "opacity": 0.73
-  },
-  {
-   "id": "r-22",
-   "type": "rect",
-   "name": "dur scene tick",
-   "x": 1114,
-   "y": 290,
-   "w": 4,
-   "h": 40,
-   "fill": "#FFD03B",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 2
-  },
-  {
-   "id": "t-23",
-   "type": "text",
-   "x": 1046,
-   "y": 248,
-   "w": 140,
-   "h": 40,
-   "text": "scene 1000\nhome ↔ game",
-   "size": 12,
-   "weight": 400,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "center",
-   "valign": "top"
-  },
-  {
-   "id": "t-24",
-   "type": "text",
-   "x": 1180,
-   "y": 228,
-   "w": 680,
-   "h": 24,
-   "text": "Easings",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "r-25",
-   "type": "rect",
-   "name": "ease standard box",
-   "x": 1180,
-   "y": 264,
-   "w": 120,
-   "h": 120,
-   "fill": "#1A0D24",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 6
-  },
-  {
-   "id": "p-26",
-   "type": "poly",
-   "name": "ease standard",
-   "x": 1188,
-   "y": 272,
-   "w": 104,
-   "h": 104,
-   "pts": [
-    [
-     0,
-     1
-    ],
-    [
-     0.0557,
-     0.9928
-    ],
-    [
-     0.1036,
-     0.972
-    ],
-    [
-     0.1449,
-     0.9393
-    ],
-    [
-     0.1808,
-     0.896
-    ],
-    [
-     0.2125,
-     0.8438
-    ],
-    [
-     0.2412,
-     0.784
-    ],
-    [
-     0.2681,
-     0.7183
-    ],
-    [
-     0.2944,
-     0.648
-    ],
-    [
-     0.3213,
-     0.5747
-    ],
-    [
-     0.35,
-     0.5
-    ],
-    [
-     0.3817,
-     0.4252
-    ],
-    [
-     0.4176,
-     0.352
-    ],
-    [
-     0.4589,
-     0.2817
-    ],
-    [
-     0.5068,
-     0.216
-    ],
-    [
-     0.5625,
-     0.1563
-    ],
-    [
-     0.6272,
-     0.104
-    ],
-    [
-     0.7021,
-     0.0608
-    ],
-    [
-     0.7884,
-     0.028
-    ],
-    [
-     0.8873,
-     0.0072
-    ],
-    [
-     1,
-     0
-    ]
-   ],
-   "open": true,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2.5
-  },
-  {
-   "id": "t-27",
-   "type": "text",
-   "x": 1180,
-   "y": 392,
-   "w": 220,
-   "h": 22,
-   "text": "standard",
-   "size": 16,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-28",
-   "type": "text",
-   "x": 1180,
-   "y": 414,
-   "w": 220,
-   "h": 20,
-   "text": "(0.4, 0, 0.2, 1)",
-   "size": 12,
-   "weight": 400,
-   "font": "mono",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-29",
-   "type": "text",
-   "x": 1180,
-   "y": 434,
-   "w": 220,
-   "h": 20,
-   "text": "moves, leader lines drawing in",
-   "size": 12,
-   "weight": 400,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "r-30",
-   "type": "rect",
-   "name": "ease enter box",
-   "x": 1410,
-   "y": 264,
-   "w": 120,
-   "h": 120,
-   "fill": "#1A0D24",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 6
-  },
-  {
-   "id": "p-31",
-   "type": "poly",
-   "name": "ease enter",
-   "x": 1418,
-   "y": 272,
-   "w": 104,
-   "h": 104,
-   "pts": [
-    [
-     0,
-     1
-    ],
-    [
-     0.0016,
-     0.9928
-    ],
-    [
-     0.0064,
-     0.972
-    ],
-    [
-     0.0148,
-     0.9393
-    ],
-    [
-     0.0272,
-     0.896
-    ],
-    [
-     0.0437,
-     0.8438
-    ],
-    [
-     0.0648,
-     0.784
-    ],
-    [
-     0.0906,
-     0.7183
-    ],
-    [
-     0.1216,
-     0.648
-    ],
-    [
-     0.158,
-     0.5747
-    ],
-    [
-     0.2,
-     0.5
-    ],
-    [
-     0.2481,
-     0.4252
-    ],
-    [
-     0.3024,
-     0.352
-    ],
-    [
-     0.3634,
-     0.2817
-    ],
-    [
-     0.4312,
-     0.216
-    ],
-    [
-     0.5062,
-     0.1563
-    ],
-    [
-     0.5888,
-     0.104
-    ],
-    [
-     0.6791,
-     0.0608
-    ],
-    [
-     0.7776,
-     0.028
-    ],
-    [
-     0.8844,
-     0.0072
-    ],
-    [
-     1,
-     0
-    ]
-   ],
-   "open": true,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2.5
-  },
-  {
-   "id": "t-32",
-   "type": "text",
-   "x": 1410,
-   "y": 392,
-   "w": 220,
-   "h": 22,
-   "text": "enter",
-   "size": 16,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-33",
-   "type": "text",
-   "x": 1410,
-   "y": 414,
-   "w": 220,
-   "h": 20,
-   "text": "(0, 0, 0.2, 1)",
-   "size": 12,
-   "weight": 400,
-   "font": "mono",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-34",
-   "type": "text",
-   "x": 1410,
-   "y": 434,
-   "w": 220,
-   "h": 20,
-   "text": "things arriving, hover",
-   "size": 12,
-   "weight": 400,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "r-35",
-   "type": "rect",
-   "name": "ease exit box",
-   "x": 1640,
-   "y": 264,
-   "w": 120,
-   "h": 120,
-   "fill": "#1A0D24",
-   "stroke": "none",
-   "strokeWidth": 1,
-   "radius": 6
-  },
-  {
-   "id": "p-36",
-   "type": "poly",
-   "name": "ease exit",
-   "x": 1648,
-   "y": 272,
-   "w": 104,
-   "h": 104,
-   "pts": [
-    [
-     0,
-     1
-    ],
-    [
-     0.0614,
-     0.9928
-    ],
-    [
-     0.1252,
-     0.972
-    ],
-    [
-     0.1908,
-     0.9393
-    ],
-    [
-     0.2576,
-     0.896
-    ],
-    [
-     0.325,
-     0.8438
-    ],
-    [
-     0.3924,
-     0.784
-    ],
-    [
-     0.4592,
-     0.7183
-    ],
-    [
-     0.5248,
-     0.648
-    ],
-    [
-     0.5886,
-     0.5747
-    ],
-    [
-     0.65,
-     0.5
-    ],
-    [
-     0.7084,
-     0.4252
-    ],
-    [
-     0.7632,
-     0.352
-    ],
-    [
-     0.8138,
-     0.2817
-    ],
-    [
-     0.8596,
-     0.216
-    ],
-    [
-     0.9,
-     0.1563
-    ],
-    [
-     0.9344,
-     0.104
-    ],
-    [
-     0.9622,
-     0.0608
-    ],
-    [
-     0.9828,
-     0.028
-    ],
-    [
-     0.9956,
-     0.0072
-    ],
-    [
-     1,
-     0
-    ]
-   ],
-   "open": true,
-   "fill": "none",
-   "stroke": "#3DBDB4",
-   "strokeWidth": 2.5
-  },
-  {
-   "id": "t-37",
-   "type": "text",
-   "x": 1640,
-   "y": 392,
-   "w": 220,
-   "h": 22,
-   "text": "exit",
-   "size": 16,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-38",
-   "type": "text",
-   "x": 1640,
-   "y": 414,
-   "w": 220,
-   "h": 20,
-   "text": "(0.4, 0, 1, 1)",
-   "size": 12,
-   "weight": 400,
-   "font": "mono",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-39",
-   "type": "text",
-   "x": 1640,
-   "y": 434,
-   "w": 220,
-   "h": 20,
-   "text": "things leaving (one step faster)",
-   "size": 12,
-   "weight": 400,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-40",
-   "type": "text",
-   "x": 1180,
-   "y": 470,
-   "w": 680,
-   "h": 24,
-   "text": "spring 300 / 30 — the rail's active dot only",
-   "size": 14,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "top"
-  },
-  {
-   "id": "t-41",
-   "type": "text",
-   "x": 56,
-   "y": 520,
-   "w": 860,
-   "h": 24,
-   "text": "Slow sky — decorative loops",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "t-42",
-   "type": "text",
-   "x": 56,
-   "y": 556,
-   "w": 320,
-   "h": 34,
-   "text": "orb ring",
-   "size": 17,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-43",
-   "type": "text",
-   "x": 386,
-   "y": 556,
-   "w": 500,
-   "h": 34,
-   "text": "60s linear spin",
-   "size": 16,
-   "weight": 400,
-   "font": "mono",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-44",
-   "type": "text",
-   "x": 56,
-   "y": 596,
-   "w": 320,
-   "h": 34,
-   "text": "crystal nebula / cloud",
-   "size": 17,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-45",
-   "type": "text",
-   "x": 386,
-   "y": 596,
-   "w": 500,
-   "h": 34,
-   "text": "8s / 12s color cycle",
-   "size": 16,
-   "weight": 400,
-   "font": "mono",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-46",
-   "type": "text",
-   "x": 56,
-   "y": 636,
-   "w": 320,
-   "h": 34,
-   "text": "sparkles",
-   "size": 17,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-47",
-   "type": "text",
-   "x": 386,
-   "y": 636,
-   "w": 500,
-   "h": 34,
-   "text": "3–7s twinkle, ease-in-out",
-   "size": 16,
-   "weight": 400,
-   "font": "mono",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-48",
-   "type": "text",
-   "x": 56,
-   "y": 676,
-   "w": 320,
-   "h": 34,
-   "text": "Cori dot, live dots",
-   "size": 17,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-49",
-   "type": "text",
-   "x": 386,
-   "y": 676,
-   "w": 500,
-   "h": 34,
-   "text": "2s pulse",
-   "size": 16,
-   "weight": 400,
-   "font": "mono",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-50",
-   "type": "text",
-   "x": 56,
-   "y": 716,
-   "w": 320,
-   "h": 34,
-   "text": "Cori target",
-   "size": 17,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-51",
-   "type": "text",
-   "x": 386,
-   "y": 716,
-   "w": 500,
-   "h": 34,
-   "text": "ping",
-   "size": 16,
-   "weight": 400,
-   "font": "mono",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-52",
-   "type": "text",
-   "x": 980,
-   "y": 520,
-   "w": 884,
-   "h": 24,
-   "text": "Calm — when the OS asks for reduced motion",
-   "size": 15,
-   "weight": 700,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "caps": true
-  },
-  {
-   "id": "t-53",
-   "type": "text",
-   "x": 980,
-   "y": 556,
-   "w": 300,
-   "h": 34,
-   "text": "decorative loops",
-   "size": 17,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-54",
-   "type": "text",
-   "x": 1290,
-   "y": 556,
-   "w": 574,
-   "h": 34,
-   "text": "stop (orb, crystals, sparkles, pulses, pings)",
-   "size": 15,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-55",
-   "type": "text",
-   "x": 980,
-   "y": 596,
-   "w": 300,
-   "h": 34,
-   "text": "moves, slides, scale",
-   "size": 17,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-56",
-   "type": "text",
-   "x": 1290,
-   "y": 596,
-   "w": 574,
-   "h": 34,
-   "text": "become fades (framer MotionConfig reducedMotion=\"user\")",
-   "size": 15,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-57",
-   "type": "text",
-   "x": 980,
-   "y": 636,
-   "w": 300,
-   "h": 34,
-   "text": "leader lines",
-   "size": 17,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-58",
-   "type": "text",
-   "x": 1290,
-   "y": 636,
-   "w": 574,
-   "h": 34,
-   "text": "appear whole instead of drawing in",
-   "size": 15,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-59",
-   "type": "text",
-   "x": 980,
-   "y": 676,
-   "w": 300,
-   "h": 34,
-   "text": "scroll between sections",
-   "size": 17,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-60",
-   "type": "text",
-   "x": 1290,
-   "y": 676,
-   "w": 574,
-   "h": 34,
-   "text": "instant, not smooth",
-   "size": 15,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-61",
-   "type": "text",
-   "x": 980,
-   "y": 716,
-   "w": 300,
-   "h": 34,
-   "text": "game play",
-   "size": 17,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-62",
-   "type": "text",
-   "x": 1290,
-   "y": 716,
-   "w": 574,
-   "h": 34,
-   "text": "untouched",
-   "size": 15,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-63",
-   "type": "text",
-   "x": 980,
-   "y": 756,
-   "w": 300,
-   "h": 34,
-   "text": "game cosmetic fx",
-   "size": 17,
-   "weight": 700,
-   "font": "sans",
-   "color": "#e8eaf0",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "t-64",
-   "type": "text",
-   "x": 1290,
-   "y": 756,
-   "w": 574,
-   "h": 34,
-   "text": "toned down: glitter, firework flashes (amounts in Effects)",
-   "size": 15,
-   "weight": 400,
-   "font": "sans",
-   "color": "#C9B8C4",
-   "align": "left",
-   "valign": "middle"
-  },
-  {
-   "id": "l-65",
-   "type": "line",
-   "name": "rule",
-   "from": {
-    "x": 56,
-    "y": 830
-   },
-   "to": {
-    "x": 1864,
-    "y": 830
-   },
-   "stroke": "#262c3b",
-   "strokeWidth": 2,
-   "arrow": "none"
-  },
-  {
-   "id": "t-66",
-   "type": "text",
-   "x": 56,
-   "y": 848,
-   "w": 1808,
-   "h": 120,
-   "text": "Was → now: 0.15 → fast · 0.2, 0.22, CSS duration-300 hovers → base · 0.3 → enter · 0.5 (card flip, now gone), 0.6 → slow · 1 → scene · [0.4,0,0.2,1] → standard · \"easeOut\", ease-out → enter · var(--ease-default) and var(--duration-default) get real values · reduced motion: none → calm.",
-   "size": 15,
-   "weight": 400,
-   "font": "sans",
-   "color": "#8b93a7",
-   "align": "left",
-   "valign": "top",
-   "link": "asis-motion"
-  }
- ],
- "knowledge": [
-  {
-   "id": "k-feel",
-   "kind": "decision",
-   "text": "Crisp UI, slow sky: UI motion in five durations — fast 150, base 200, enter 300, slow 500, scene 1000ms; only decorative loops drift slowly."
-  },
-  {
-   "id": "k-ease",
-   "kind": "decision",
-   "text": "Three easings: standard (0.4, 0, 0.2, 1) for moves and leader lines, enter (0, 0, 0.2, 1) for arrivals and hover, exit (0.4, 0, 1, 1) for leaving, one duration step faster. Spring 300/30 only for the rail dot."
-  },
-  {
-   "id": "k-calm",
-   "kind": "decision",
-   "text": "Reduced motion = calm: decorative loops stop, moves become fades, leader lines appear whole, section scroll is instant; game play untouched, game cosmetic fx toned down."
-  },
-  {
-   "id": "k-scope",
-   "kind": "evidence",
-   "text": "Game simulation timing (flight, camera, silk, sim steps) is gameplay, not UI motion, and isn't covered here."
-  }
- ],
- "agent": {
-  "brief": "UI motion uses only these durations and easings, as CSS variables (and the same numbers in a small motion.ts for framer-motion). Every animation has a calm version.",
-  "rules": [
-   "@theme: --duration-fast 150ms, --duration-base 200ms, --duration-enter 300ms, --duration-slow 500ms, --duration-scene 1000ms; --ease-standard cubic-bezier(.4,0,.2,1), --ease-enter cubic-bezier(0,0,.2,1), --ease-exit cubic-bezier(.4,0,1,1). Fixes Button's var(--duration-default) / var(--ease-default) → base / standard.",
-   "src/components/shared/lib/motion.ts: export DUR = { fast: .15, base: .2, enter: .3, slow: .5, scene: 1 } and EASE = { standard: [.4,0,.2,1], enter: [0,0,.2,1], exit: [.4,0,1,1] }; framer transitions import these.",
-   "Map: duration .15 → fast · .2, .22 → base · .3 → enter · .5, .6 → slow · 1 → scene · CSS duration-300 (hover glows, opacity) → base · [0.4,0,0.2,1] → standard · \"easeOut\", ease-out → enter · exits (AnimatePresence exit) use exit easing and one step down.",
-   "Stagger: deck staggerChildren .1, delayChildren .15 stay.",
-   "Calm: wrap the app in <MotionConfig reducedMotion=\"user\">. CSS: @media (prefers-reduced-motion: reduce) stops animate-spin (orb ring), animate-twinkle, animate-pulse, animate-ping, and sets scroll-behavior: auto. Crystal SVG <animate>: render without them when useReducedMotion() is true. Leader lines: when reduced, show them whole instead of drawing the stroke in. Navigation scrollTo behavior \"smooth\" → \"auto\" when reduced.",
-   "Game: expose prefersReducedMotion (matchMedia) to the sim/render layer; cosmetic fx (glitter, firework flashes, sparkles) read it. Amounts come from Effects. Flight, camera and silk physics never change."
+  "title": "Motion",
+  "kicker": "Foundations",
+  "topic": "motion",
+  "updated": "2026-11-22",
+  "background": "#0b0e16",
+  "blocks": [],
+  "elements": [
+    {
+      "id": "kicker",
+      "type": "text",
+      "x": 56,
+      "y": 30,
+      "w": 900,
+      "h": 26,
+      "text": "Foundations · decided",
+      "size": 16,
+      "weight": 700,
+      "font": "sans",
+      "color": "#F88F05",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 56,
+      "y": 58,
+      "w": 1300,
+      "h": 72,
+      "text": "",
+      "size": 52,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "top",
+      "bind": {
+        "topic": "motion",
+        "field": "title"
+      }
+    },
+    {
+      "id": "status",
+      "type": "status",
+      "x": 1840,
+      "y": 72,
+      "size": 22,
+      "topic": "motion"
+    },
+    {
+      "id": "back",
+      "type": "text",
+      "x": 1440,
+      "y": 40,
+      "w": 380,
+      "h": 30,
+      "text": "← Overview",
+      "size": 18,
+      "weight": 600,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "right",
+      "valign": "top",
+      "link": "index"
+    },
+    {
+      "id": "was",
+      "type": "text",
+      "x": 1440,
+      "y": 76,
+      "w": 380,
+      "h": 30,
+      "text": "was: 23 durations → as-is",
+      "size": 16,
+      "weight": 400,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "right",
+      "valign": "top",
+      "link": "asis-motion"
+    },
+    {
+      "id": "drift",
+      "type": "text",
+      "x": 56,
+      "y": 138,
+      "w": 1808,
+      "h": 60,
+      "text": "The UI answers fast, the sky drifts slow. Five durations, three easings, and a calm mode for people who ask for less motion.",
+      "size": 22,
+      "weight": 400,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "l-1",
+      "type": "line",
+      "name": "rule",
+      "from": {
+        "x": 56,
+        "y": 212
+      },
+      "to": {
+        "x": 1864,
+        "y": 212
+      },
+      "stroke": "#262c3b",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "t-2",
+      "type": "text",
+      "x": 56,
+      "y": 228,
+      "w": 1100,
+      "h": 24,
+      "text": "Durations",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
+    {
+      "id": "l-3",
+      "type": "line",
+      "name": "rule",
+      "from": {
+        "x": 76,
+        "y": 330
+      },
+      "to": {
+        "x": 1116,
+        "y": 330
+      },
+      "stroke": "#262c3b",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "t-4",
+      "type": "text",
+      "x": 46,
+      "y": 340,
+      "w": 60,
+      "h": 20,
+      "text": "0",
+      "size": 12,
+      "weight": 400,
+      "font": "mono",
+      "color": "#8b93a7",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "t-5",
+      "type": "text",
+      "x": 306,
+      "y": 340,
+      "w": 60,
+      "h": 20,
+      "text": "250",
+      "size": 12,
+      "weight": 400,
+      "font": "mono",
+      "color": "#8b93a7",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "t-6",
+      "type": "text",
+      "x": 566,
+      "y": 340,
+      "w": 60,
+      "h": 20,
+      "text": "500",
+      "size": 12,
+      "weight": 400,
+      "font": "mono",
+      "color": "#8b93a7",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "t-7",
+      "type": "text",
+      "x": 826,
+      "y": 340,
+      "w": 60,
+      "h": 20,
+      "text": "750",
+      "size": 12,
+      "weight": 400,
+      "font": "mono",
+      "color": "#8b93a7",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "t-8",
+      "type": "text",
+      "x": 1086,
+      "y": 340,
+      "w": 60,
+      "h": 20,
+      "text": "1000",
+      "size": 12,
+      "weight": 400,
+      "font": "mono",
+      "color": "#8b93a7",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "r-9",
+      "type": "rect",
+      "name": "dur fast bar",
+      "x": 76,
+      "y": 300,
+      "w": 156,
+      "h": 10,
+      "fill": "#F88F05",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 5,
+      "opacity": 0.25
+    },
+    {
+      "id": "r-10",
+      "type": "rect",
+      "name": "dur fast tick",
+      "x": 230,
+      "y": 290,
+      "w": 4,
+      "h": 40,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 2
+    },
+    {
+      "id": "t-11",
+      "type": "text",
+      "x": 162,
+      "y": 248,
+      "w": 140,
+      "h": 40,
+      "text": "fast 150\ntap, hover color",
+      "size": 12,
+      "weight": 400,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "r-12",
+      "type": "rect",
+      "name": "dur base bar",
+      "x": 76,
+      "y": 300,
+      "w": 208,
+      "h": 10,
+      "fill": "#F88F05",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 5,
+      "opacity": 0.37
+    },
+    {
+      "id": "r-13",
+      "type": "rect",
+      "name": "dur base tick",
+      "x": 282,
+      "y": 290,
+      "w": 4,
+      "h": 40,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 2
+    },
+    {
+      "id": "t-14",
+      "type": "text",
+      "x": 214,
+      "y": 368,
+      "w": 140,
+      "h": 40,
+      "text": "base 200\nfades, glow, plates",
+      "size": 12,
+      "weight": 400,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "r-15",
+      "type": "rect",
+      "name": "dur enter bar",
+      "x": 76,
+      "y": 300,
+      "w": 312,
+      "h": 10,
+      "fill": "#F88F05",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 5,
+      "opacity": 0.49
+    },
+    {
+      "id": "r-16",
+      "type": "rect",
+      "name": "dur enter tick",
+      "x": 386,
+      "y": 290,
+      "w": 4,
+      "h": 40,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 2
+    },
+    {
+      "id": "t-17",
+      "type": "text",
+      "x": 318,
+      "y": 248,
+      "w": 140,
+      "h": 40,
+      "text": "enter 300\npanels, readout, detail",
+      "size": 12,
+      "weight": 400,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "r-18",
+      "type": "rect",
+      "name": "dur slow bar",
+      "x": 76,
+      "y": 300,
+      "w": 520,
+      "h": 10,
+      "fill": "#F88F05",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 5,
+      "opacity": 0.61
+    },
+    {
+      "id": "r-19",
+      "type": "rect",
+      "name": "dur slow tick",
+      "x": 594,
+      "y": 290,
+      "w": 4,
+      "h": 40,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 2
+    },
+    {
+      "id": "t-20",
+      "type": "text",
+      "x": 526,
+      "y": 368,
+      "w": 140,
+      "h": 40,
+      "text": "slow 500\ndetail in, node, HUD in",
+      "size": 12,
+      "weight": 400,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "r-21",
+      "type": "rect",
+      "name": "dur scene bar",
+      "x": 76,
+      "y": 300,
+      "w": 1040,
+      "h": 10,
+      "fill": "#941E43",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 5,
+      "opacity": 0.73
+    },
+    {
+      "id": "r-22",
+      "type": "rect",
+      "name": "dur scene tick",
+      "x": 1114,
+      "y": 290,
+      "w": 4,
+      "h": 40,
+      "fill": "#FFD03B",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 2
+    },
+    {
+      "id": "t-23",
+      "type": "text",
+      "x": 1046,
+      "y": 248,
+      "w": 140,
+      "h": 40,
+      "text": "scene 1000\nhome ↔ game",
+      "size": 12,
+      "weight": 400,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "center",
+      "valign": "top"
+    },
+    {
+      "id": "t-24",
+      "type": "text",
+      "x": 1180,
+      "y": 228,
+      "w": 680,
+      "h": 24,
+      "text": "Easings",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
+    {
+      "id": "r-25",
+      "type": "rect",
+      "name": "ease standard box",
+      "x": 1180,
+      "y": 264,
+      "w": 120,
+      "h": 120,
+      "fill": "#1A0D24",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 6
+    },
+    {
+      "id": "p-26",
+      "type": "poly",
+      "name": "ease standard",
+      "x": 1188,
+      "y": 272,
+      "w": 104,
+      "h": 104,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.0557,
+          0.9928
+        ],
+        [
+          0.1036,
+          0.972
+        ],
+        [
+          0.1449,
+          0.9393
+        ],
+        [
+          0.1808,
+          0.896
+        ],
+        [
+          0.2125,
+          0.8438
+        ],
+        [
+          0.2412,
+          0.784
+        ],
+        [
+          0.2681,
+          0.7183
+        ],
+        [
+          0.2944,
+          0.648
+        ],
+        [
+          0.3213,
+          0.5747
+        ],
+        [
+          0.35,
+          0.5
+        ],
+        [
+          0.3817,
+          0.4252
+        ],
+        [
+          0.4176,
+          0.352
+        ],
+        [
+          0.4589,
+          0.2817
+        ],
+        [
+          0.5068,
+          0.216
+        ],
+        [
+          0.5625,
+          0.1563
+        ],
+        [
+          0.6272,
+          0.104
+        ],
+        [
+          0.7021,
+          0.0608
+        ],
+        [
+          0.7884,
+          0.028
+        ],
+        [
+          0.8873,
+          0.0072
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2.5
+    },
+    {
+      "id": "t-27",
+      "type": "text",
+      "x": 1180,
+      "y": 392,
+      "w": 220,
+      "h": 22,
+      "text": "standard",
+      "size": 16,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-28",
+      "type": "text",
+      "x": 1180,
+      "y": 414,
+      "w": 220,
+      "h": 20,
+      "text": "(0.4, 0, 0.2, 1)",
+      "size": 12,
+      "weight": 400,
+      "font": "mono",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-29",
+      "type": "text",
+      "x": 1180,
+      "y": 434,
+      "w": 220,
+      "h": 20,
+      "text": "moves, leader lines drawing in",
+      "size": 12,
+      "weight": 400,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "r-30",
+      "type": "rect",
+      "name": "ease enter box",
+      "x": 1410,
+      "y": 264,
+      "w": 120,
+      "h": 120,
+      "fill": "#1A0D24",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 6
+    },
+    {
+      "id": "p-31",
+      "type": "poly",
+      "name": "ease enter",
+      "x": 1418,
+      "y": 272,
+      "w": 104,
+      "h": 104,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.0016,
+          0.9928
+        ],
+        [
+          0.0064,
+          0.972
+        ],
+        [
+          0.0148,
+          0.9393
+        ],
+        [
+          0.0272,
+          0.896
+        ],
+        [
+          0.0437,
+          0.8438
+        ],
+        [
+          0.0648,
+          0.784
+        ],
+        [
+          0.0906,
+          0.7183
+        ],
+        [
+          0.1216,
+          0.648
+        ],
+        [
+          0.158,
+          0.5747
+        ],
+        [
+          0.2,
+          0.5
+        ],
+        [
+          0.2481,
+          0.4252
+        ],
+        [
+          0.3024,
+          0.352
+        ],
+        [
+          0.3634,
+          0.2817
+        ],
+        [
+          0.4312,
+          0.216
+        ],
+        [
+          0.5062,
+          0.1563
+        ],
+        [
+          0.5888,
+          0.104
+        ],
+        [
+          0.6791,
+          0.0608
+        ],
+        [
+          0.7776,
+          0.028
+        ],
+        [
+          0.8844,
+          0.0072
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2.5
+    },
+    {
+      "id": "t-32",
+      "type": "text",
+      "x": 1410,
+      "y": 392,
+      "w": 220,
+      "h": 22,
+      "text": "enter",
+      "size": 16,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-33",
+      "type": "text",
+      "x": 1410,
+      "y": 414,
+      "w": 220,
+      "h": 20,
+      "text": "(0, 0, 0.2, 1)",
+      "size": 12,
+      "weight": 400,
+      "font": "mono",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-34",
+      "type": "text",
+      "x": 1410,
+      "y": 434,
+      "w": 220,
+      "h": 20,
+      "text": "things arriving, hover",
+      "size": 12,
+      "weight": 400,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "r-35",
+      "type": "rect",
+      "name": "ease exit box",
+      "x": 1640,
+      "y": 264,
+      "w": 120,
+      "h": 120,
+      "fill": "#1A0D24",
+      "stroke": "none",
+      "strokeWidth": 1,
+      "radius": 6
+    },
+    {
+      "id": "p-36",
+      "type": "poly",
+      "name": "ease exit",
+      "x": 1648,
+      "y": 272,
+      "w": 104,
+      "h": 104,
+      "pts": [
+        [
+          0,
+          1
+        ],
+        [
+          0.0614,
+          0.9928
+        ],
+        [
+          0.1252,
+          0.972
+        ],
+        [
+          0.1908,
+          0.9393
+        ],
+        [
+          0.2576,
+          0.896
+        ],
+        [
+          0.325,
+          0.8438
+        ],
+        [
+          0.3924,
+          0.784
+        ],
+        [
+          0.4592,
+          0.7183
+        ],
+        [
+          0.5248,
+          0.648
+        ],
+        [
+          0.5886,
+          0.5747
+        ],
+        [
+          0.65,
+          0.5
+        ],
+        [
+          0.7084,
+          0.4252
+        ],
+        [
+          0.7632,
+          0.352
+        ],
+        [
+          0.8138,
+          0.2817
+        ],
+        [
+          0.8596,
+          0.216
+        ],
+        [
+          0.9,
+          0.1563
+        ],
+        [
+          0.9344,
+          0.104
+        ],
+        [
+          0.9622,
+          0.0608
+        ],
+        [
+          0.9828,
+          0.028
+        ],
+        [
+          0.9956,
+          0.0072
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "open": true,
+      "fill": "none",
+      "stroke": "#3DBDB4",
+      "strokeWidth": 2.5
+    },
+    {
+      "id": "t-37",
+      "type": "text",
+      "x": 1640,
+      "y": 392,
+      "w": 220,
+      "h": 22,
+      "text": "exit",
+      "size": 16,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-38",
+      "type": "text",
+      "x": 1640,
+      "y": 414,
+      "w": 220,
+      "h": 20,
+      "text": "(0.4, 0, 1, 1)",
+      "size": 12,
+      "weight": 400,
+      "font": "mono",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-39",
+      "type": "text",
+      "x": 1640,
+      "y": 434,
+      "w": 220,
+      "h": 20,
+      "text": "things leaving (one step faster)",
+      "size": 12,
+      "weight": 400,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-40",
+      "type": "text",
+      "x": 1180,
+      "y": 470,
+      "w": 680,
+      "h": 24,
+      "text": "spring 300 / 30 — the rail's active dot only",
+      "size": 14,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "t-41",
+      "type": "text",
+      "x": 56,
+      "y": 520,
+      "w": 860,
+      "h": 24,
+      "text": "Slow sky — decorative loops",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
+    {
+      "id": "t-42",
+      "type": "text",
+      "x": 56,
+      "y": 556,
+      "w": 320,
+      "h": 34,
+      "text": "orb parts",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-43",
+      "type": "text",
+      "x": 386,
+      "y": 556,
+      "w": 500,
+      "h": 34,
+      "text": "own speeds on load · ring 60s spin",
+      "size": 16,
+      "weight": 400,
+      "font": "mono",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-44",
+      "type": "text",
+      "x": 56,
+      "y": 596,
+      "w": 320,
+      "h": 34,
+      "text": "projection rings",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-45",
+      "type": "text",
+      "x": 386,
+      "y": 596,
+      "w": 500,
+      "h": 34,
+      "text": "slow outward drift + edge shimmer",
+      "size": 16,
+      "weight": 400,
+      "font": "mono",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-46",
+      "type": "text",
+      "x": 56,
+      "y": 636,
+      "w": 320,
+      "h": 34,
+      "text": "projection pulse",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-47",
+      "type": "text",
+      "x": 386,
+      "y": 636,
+      "w": 500,
+      "h": 34,
+      "text": "every ~12 s, and on events",
+      "size": 16,
+      "weight": 400,
+      "font": "mono",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-48",
+      "type": "text",
+      "x": 56,
+      "y": 676,
+      "w": 320,
+      "h": 34,
+      "text": "Cori dot, live dots",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-49",
+      "type": "text",
+      "x": 386,
+      "y": 676,
+      "w": 500,
+      "h": 34,
+      "text": "2s pulse",
+      "size": 16,
+      "weight": 400,
+      "font": "mono",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-50",
+      "type": "text",
+      "x": 56,
+      "y": 716,
+      "w": 320,
+      "h": 34,
+      "text": "Cori idles",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-51",
+      "type": "text",
+      "x": 386,
+      "y": 716,
+      "w": 500,
+      "h": 34,
+      "text": "every 8–20 s, at random",
+      "size": 16,
+      "weight": 400,
+      "font": "mono",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-52",
+      "type": "text",
+      "x": 980,
+      "y": 520,
+      "w": 884,
+      "h": 24,
+      "text": "Calm — when the OS asks for reduced motion",
+      "size": 15,
+      "weight": 700,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "caps": true
+    },
+    {
+      "id": "t-53",
+      "type": "text",
+      "x": 980,
+      "y": 556,
+      "w": 300,
+      "h": 34,
+      "text": "decorative loops",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-54",
+      "type": "text",
+      "x": 1290,
+      "y": 556,
+      "w": 574,
+      "h": 34,
+      "text": "stop (orb parts, drift, shimmer, timed pulse, idles)",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-55",
+      "type": "text",
+      "x": 980,
+      "y": 596,
+      "w": 300,
+      "h": 34,
+      "text": "moves, slides, scale",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-56",
+      "type": "text",
+      "x": 1290,
+      "y": 596,
+      "w": 574,
+      "h": 34,
+      "text": "become fades (framer MotionConfig reducedMotion=\"user\")",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-57",
+      "type": "text",
+      "x": 980,
+      "y": 636,
+      "w": 300,
+      "h": 34,
+      "text": "leader lines",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-58",
+      "type": "text",
+      "x": 1290,
+      "y": 636,
+      "w": 574,
+      "h": 34,
+      "text": "appear whole instead of drawing in",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-59",
+      "type": "text",
+      "x": 980,
+      "y": 676,
+      "w": 300,
+      "h": 34,
+      "text": "scroll between sections",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-60",
+      "type": "text",
+      "x": 1290,
+      "y": 676,
+      "w": 574,
+      "h": 34,
+      "text": "instant, not smooth",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-61",
+      "type": "text",
+      "x": 980,
+      "y": 716,
+      "w": 300,
+      "h": 34,
+      "text": "game play",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-62",
+      "type": "text",
+      "x": 1290,
+      "y": 716,
+      "w": 574,
+      "h": 34,
+      "text": "untouched",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-63",
+      "type": "text",
+      "x": 980,
+      "y": 756,
+      "w": 300,
+      "h": 34,
+      "text": "game cosmetic fx",
+      "size": 17,
+      "weight": 700,
+      "font": "sans",
+      "color": "#e8eaf0",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "t-64",
+      "type": "text",
+      "x": 1290,
+      "y": 756,
+      "w": 574,
+      "h": 34,
+      "text": "toned down: glitter, firework flashes (amounts in Effects)",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#C9B8C4",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "l-65",
+      "type": "line",
+      "name": "rule",
+      "from": {
+        "x": 56,
+        "y": 830
+      },
+      "to": {
+        "x": 1864,
+        "y": 830
+      },
+      "stroke": "#262c3b",
+      "strokeWidth": 2,
+      "arrow": "none"
+    },
+    {
+      "id": "t-66",
+      "type": "text",
+      "x": 56,
+      "y": 848,
+      "w": 1808,
+      "h": 120,
+      "text": "Was → now: 0.15 → fast · 0.2, 0.22, CSS duration-300 hovers → base · 0.3 → enter · 0.5 (card flip, now gone), 0.6 → slow · 1 → scene · [0.4,0,0.2,1] → standard · \"easeOut\", ease-out → enter · var(--ease-default) and var(--duration-default) get real values · reduced motion: none → calm.",
+      "size": 15,
+      "weight": 400,
+      "font": "sans",
+      "color": "#8b93a7",
+      "align": "left",
+      "valign": "top",
+      "link": "asis-motion"
+    }
   ],
-  "open": [
-   "How much game cosmetic fx tone down (Effects)"
-  ]
- }
+  "knowledge": [
+    {
+      "id": "k-feel",
+      "kind": "decision",
+      "text": "Crisp UI, slow sky: UI motion in five durations — fast 150, base 200, enter 300, slow 500, scene 1000ms; only decorative loops drift slowly."
+    },
+    {
+      "id": "k-ease",
+      "kind": "decision",
+      "text": "Three easings: standard (0.4, 0, 0.2, 1) for moves and leader lines, enter (0, 0, 0.2, 1) for arrivals and hover, exit (0.4, 0, 1, 1) for leaving, one duration step faster. Spring 300/30 only for the rail dot."
+    },
+    {
+      "id": "k-calm",
+      "kind": "decision",
+      "text": "Reduced motion = calm: decorative loops stop, moves become fades, leader lines appear whole, section scroll is instant; game play untouched, game cosmetic fx toned down."
+    },
+    {
+      "id": "k-scope",
+      "kind": "evidence",
+      "text": "Game simulation timing (flight, camera, silk, sim steps) is gameplay, not UI motion, and isn't covered here."
+    },
+    {
+      "id": "k-section-draw",
+      "kind": "decision",
+      "text": "A section change is the projection's draw-in (Projection k-draw-in): the pulse leaves the orb at 1.4px/ms and each block flickers on as it passes (about 1 s across a desktop screen), instead of the 300ms rise-in. Calm keeps the fade."
+    }
+  ],
+  "agent": {
+    "brief": "UI motion uses only these durations and easings, as CSS variables (and the same numbers in a small motion.ts for framer-motion). Every animation has a calm version.",
+    "rules": [
+      "@theme: --duration-fast 150ms, --duration-base 200ms, --duration-enter 300ms, --duration-slow 500ms, --duration-scene 1000ms; --ease-standard cubic-bezier(.4,0,.2,1), --ease-enter cubic-bezier(0,0,.2,1), --ease-exit cubic-bezier(.4,0,1,1). Fixes Button's var(--duration-default) / var(--ease-default) → base / standard.",
+      "src/components/shared/lib/motion.ts: export DUR = { fast: .15, base: .2, enter: .3, slow: .5, scene: 1 } and EASE = { standard: [.4,0,.2,1], enter: [0,0,.2,1], exit: [.4,0,1,1] }; framer transitions import these.",
+      "Map: duration .15 → fast · .2, .22 → base · .3 → enter · .5, .6 → slow · 1 → scene · CSS duration-300 (hover glows, opacity) → base · [0.4,0,0.2,1] → standard · \"easeOut\", ease-out → enter · exits (AnimatePresence exit) use exit easing and one step down.",
+      "Stagger: deck staggerChildren .1, delayChildren .15 stay.",
+      "Calm: wrap the app in <MotionConfig reducedMotion=\"user\">. CSS: @media (prefers-reduced-motion: reduce) stops animate-spin (orb ring), animate-twinkle, animate-pulse, animate-ping, and sets scroll-behavior: auto. Projection: drift, shimmer and the timed pulse stop; Cori appears instead of flying (Projection, Orb & Cori). Leader lines: when reduced, show them whole instead of drawing the stroke in. Navigation scrollTo behavior \"smooth\" → \"auto\" when reduced.",
+      "Game: expose prefersReducedMotion (matchMedia) to the sim/render layer; cosmetic fx (glitter, firework flashes, sparkles) read it. Amounts come from Effects. Flight, camera and silk physics never change."
+    ],
+    "open": [
+      "How much game cosmetic fx tone down (Effects)"
+    ]
+  }
 }
