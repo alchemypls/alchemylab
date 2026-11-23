@@ -8,6 +8,8 @@
 
 import * as clipping from 'polygon-clipping';
 import type { Polygon, Ring } from 'polygon-clipping';
+// The package's browser build has only a default export (Node's has named ones too): take union from whichever is there (as carve.ts does)
+const { union } = (clipping as unknown as { default?: typeof clipping }).default ?? clipping;
 import { blockFloor, WALL_H, type VaultAsset } from './vault';
 import { layerOf, layersOf } from './layers';
 import { inPolygon, polyFrom, type Pt, type VElement } from './vector';
@@ -64,7 +66,7 @@ export function wallSolid(walls: WallSpec[], z: number, cell: number, at: At, ta
       const [a0, a1, b0, b1] = w.d === 'a' ? [w.a - t, w.a + 1 + t, w.b - t, w.b + t] : [w.a - t, w.a + t, w.b - t, w.b + 1 + t];
       return [[[a0, b0], [a1, b0], [a1, b1], [a0, b1], [a0, b0]]];
     };
-    const merged = clipping.union(slab(group[0]), ...group.slice(1).map(slab));
+    const merged = union(slab(group[0]), ...group.slice(1).map(slab));
     // Which wall a point of the solid belongs to: the nearest wall line through it
     const atomAt = (m: Pt) => {
       let best: WallSpec | undefined, bd = Infinity;
