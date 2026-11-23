@@ -60,9 +60,16 @@ stands): on a flat floor any angle; on an isometric floor it's redrawn at the ne
 In a block, a flat shape that stands up (a ball, a post) gets `upright: true` (and `base`: px its bottom sits above the
 floor): seen from above it keeps its shape instead of slanting. On a flat floor it shows from
 above: floor-plane shapes exactly, wall-plane shapes as a thin band along their base edge (in their own fill, border and dash), wall text not at all. They
-can't contain `asset`, `image` or `status` elements, `bind` or `link`. Reference one with an `asset` element instead
+can't contain `image` or `status` elements, `bind` or `link`. Reference one with an `asset` element instead
 of redrawing it: editing the file changes every page using it. A shape places trimmed to its drawing; an icon places
 its whole sheet. `npm run -s design:check` validates them.
+
+**Kit pieces and set pieces.** A `shape` or `icon` may place other assets (`asset` elements inside it), so a set piece
+(a whole screen, a HUD corner) is built from kit pieces (a frame, a button, the orb): edit a kit piece and every set piece
+and page using it follows. A `block` can't place assets (structures do that for game pieces). No asset may lead back to
+itself (the API and `design:check` refuse a loop); nesting draws 4 deep at most. A placement's own words go in
+`texts: {<the asset's text id>: "words"}`: one plate asset, a different line each time. Lines scale with the placement,
+so draw kit pieces at the size they're mostly used.
 
 Palettes live in `vault/palettes/<id>.json`: `{ title, colors: [{ name, value: "#rrggbb" }] }`. When a bible has
 a palette, color its pages from it. Colors are copied into elements, not linked, so changing a palette later

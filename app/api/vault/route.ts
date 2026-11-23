@@ -12,7 +12,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { SLUG } from '@/lib/design/types';
 import { validateAsset } from '@/lib/design/validate';
-import { usesAsset } from '@/lib/design/vault';
+import { nestLoop, placedIn, usesAsset } from '@/lib/design/vault';
 import { validatePalette } from '@/lib/design/palette';
 import { log } from '@/lib/server/log';
 
@@ -41,8 +41,17 @@ function target(q: URLSearchParams): { type: VaultType; id: string } | Response 
   return { type, id };
 }
 
+// The vault's other assets, read once: what a nested placement points at
+async function vaultAssets(): Promise<Map<string, { elements?: unknown }>> {
+  const dir = TYPES.asset.dir, out = new Map<string, { elements?: unknown }>();
+  for (const f of await names(dir)) if (f.endsWith('.json')) { const a = await readJson(path.join(dir, f)).catch(() => null); if (a) out.set(f.slice(0, -5), a); }
+  return out;
+}
+
+// Pages that place it, and vault assets that place it (vault/<id>)
 async function usedIn(id: string): Promise<string[]> {
   const out: string[] = [];
+  (await vaultAssets()).forEach((a, other) => { if (other !== id && usesAsset(a, id)) out.push(`vault/${other}`); });
   for (const bible of await names(DESIGN)) {
     for (const f of await names(path.join(DESIGN, bible, 'pages'))) {
       if (!f.endsWith('.json')) continue;
@@ -73,7 +82,11 @@ export async function PUT(req: Request) {
   const { dir, validate } = TYPES[at.type];
   const body = await req.json().catch(() => undefined);
   const file = path.join(dir, `${at.id}.json`);
-  const issues = validate(body);
+  const issues = at.type === 'asset' ? validateAsset(body, at.id) : validate(body);
+  if (at.type === 'asset' && !issues.errors.length && placedIn(body ?? {}).length) {   // a set piece: its pieces mustn't lead back to it
+    const all = await vaultAssets(), loop = nestLoop(at.id, body, (x) => all.get(x));
+    if (loop) issues.errors.push(`places itself through ${loop.join(' → ')}`);
+  }
   if (issues.errors.length) { log.refused(file, 422, issues.errors[0], issues.errors); return fail(422, issues.errors[0], issues); }
 
   const current = await mtime(file), base = req.headers.get('x-base-mtime');

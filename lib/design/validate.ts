@@ -160,6 +160,7 @@ function validateElements(raw: unknown, ctx: BibleContext | undefined, errors: s
       if (!isStr(e.asset)) errors.push(`${name}.asset: required string`);
       else if (ctx?.vault && !ctx.vault.includes(e.asset)) warnings.push(`${name}: "${e.asset}" not in vault/assets/`);
       if (e.layers !== undefined && !strArr(e.layers)) errors.push(`${name}.layers: string[] of the asset's layer ids`);
+      if (e.texts !== undefined && !(isObj(e.texts) && Object.values(e.texts).every(isStr))) errors.push(`${name}.texts: {<the asset's text id>: string}`);
     }
     if (e.type === 'status') {
       if (!isStr(e.topic)) errors.push(`${name}.topic: required string`);
@@ -197,10 +198,12 @@ function validateElements(raw: unknown, ctx: BibleContext | undefined, errors: s
   }));
 }
 
-// A vault asset is a vector page with a kind. It can't hold anything that needs a bible or another asset.
-const NOT_IN_ASSET: VType[] = ['asset', 'image', 'status'];
+// A vault asset is a vector page with a kind. It can't hold anything that needs a bible. A shape or icon can place other
+// assets (a set piece from kit pieces; a loop through the vault is checked where the vault is at hand: nestLoop); a
+// block can't, since it's posed, projected and built into structures piece by piece.
+const NOT_IN_ASSET: VType[] = ['image', 'status'];
 
-export function validateAsset(raw: unknown): Issues {
+export function validateAsset(raw: unknown, id?: string): Issues {
   const { errors, warnings } = validatePage(raw);
   if (!isObj(raw)) return { errors, warnings };
   if (!ASSET_KINDS.includes(raw.kind as AssetKind)) errors.push(`kind: one of ${ASSET_KINDS.join(' | ')}`);
@@ -224,6 +227,10 @@ export function validateAsset(raw: unknown): Issues {
   if (!Array.isArray(raw.elements)) errors.push('elements: required array');
   else raw.elements.forEach((e, i) => {
     if (isObj(e) && NOT_IN_ASSET.includes(e.type as VType)) errors.push(`elements[${i}]: a vault asset can't contain "${String(e.type)}"`);
+    if (isObj(e) && e.type === 'asset') {
+      if (raw.kind === 'block') errors.push(`elements[${i}]: a block can't place another asset (a shape or icon can)`);
+      else if (id !== undefined && e.asset === id) errors.push(`elements[${i}]: an asset can't place itself`);
+    }
     if (isObj(e) && e.type === 'text' && e.bind !== undefined) errors.push(`elements[${i}].bind: a vault asset isn't part of a bible`);
     if (isObj(e) && e.link !== undefined) errors.push(`elements[${i}].link: a vault asset can't link to a page`);
   });

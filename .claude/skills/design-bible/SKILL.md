@@ -96,6 +96,32 @@ Goal: one topic (or one sub-target) becomes one page. Stay on it.
 - Page text is for readers: short and scannable. Full rationale goes in `knowledge[].why`.
 - Set `updated` to today's date on each write.
 
+## Draw from the kit, not by hand
+
+Anything that shows up on more than one page (a UI piece, a character, a screen, a game piece) is drawn **once** in
+the vault and placed everywhere, so changing it in one place changes every page. Copies drawn by hand drift: the
+older pages keep the old look.
+
+- **Kit pieces** are vault assets (`vault/assets/<prefix>-<name>.json`, `kind: shape`, `project: <bible id>`): one
+  file per recurring thing (a frame, a button, the controller, a character). Draw each at the size it's mostly
+  used: lines scale with the placement. Add a bounds rect at 0,0 the full size first, so its placed box is exact.
+- **States and variants are layers** on the piece (rest / hover / focus / press / disabled; open / folded; current
+  item), hidden but the default; a placement picks its own with `layers: [...]`. Words that change per use are
+  text elements with an id, replaced per placement with `texts: {<id>: "…"}`.
+- **Set pieces** (a whole screen, a HUD corner) are shapes that place kit pieces: edit a kit piece and every set
+  piece follows. Game set pieces on the isometric tile grid are structures instead.
+- **Pages place** kit pieces and set pieces (`type: asset`) and add only what's theirs: labels, callouts, arrows,
+  page-level notes. A look that depends on where something sits on the page (a ring centred on a moving element)
+  stays page drawing.
+- **A decided design is the source.** When a topic page already decides how a piece looks, build the kit piece
+  from that drawing (its proportions and colors), never from a newer sketch of yours.
+- **Generate kit and pages from one script** in the scratchpad (shared helpers: a placement helper per piece,
+  layer picks per state). Before re-running it over a page, check the page is still exactly what you last wrote
+  (its mtime, or its hash against `.render.json`'s): if the user edited it, edit that file in place instead of
+  regenerating it. Swapping hand-drawn copies on an existing page: back the page up, replace only the drawn copy
+  (same box, same draw order), keep everything else.
+- `npm run -s asset:render -- <id>…` draws kit pieces and set pieces (nested ones included) to check them.
+
 ## Log entry (prepend to log.md)
 
 ```

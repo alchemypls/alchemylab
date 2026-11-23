@@ -11,6 +11,7 @@ import { pageHash, validateAsset, validateBible, validatePage, type BibleContext
 import { validatePalette } from '../lib/design/palette';
 import { hiddenLayers } from '../lib/design/layers';
 import { unnamed, type VElement } from '../lib/design/vector';
+import { nestLoop, placedIn } from '../lib/design/vault';
 
 const ROOT = path.join(process.cwd(), 'design');
 const only = process.argv[2];
@@ -43,10 +44,18 @@ function names(page: unknown) {
 
 const VAULT = path.join(process.cwd(), 'vault', 'assets');
 const vault = ls(VAULT, '.json').map((f) => f.slice(0, -5));
+const vaultRead = new Map<string, { elements?: unknown }>();
+for (const id of vault) { try { vaultRead.set(id, JSON.parse(readFileSync(path.join(VAULT, `${id}.json`), 'utf8'))); } catch { /* reported below */ } }
 if (!only) for (const id of vault) {
   const file = `vault/assets/${id}.json`;
   let page: unknown;
-  report(file, () => validateAsset(page = JSON.parse(readFileSync(path.join(VAULT, `${id}.json`), 'utf8'))));
+  report(file, () => {
+    const issues = validateAsset(page = JSON.parse(readFileSync(path.join(VAULT, `${id}.json`), 'utf8')), id);
+    const loop = nestLoop(id, page as { elements?: unknown }, (x) => vaultRead.get(x));
+    if (loop) issues.errors.push(`places itself through ${loop.join(' → ')}`);
+    for (const x of placedIn(page as { elements?: unknown })) if (!vaultRead.has(x)) issues.warnings.push(`places "${x}", not in vault/assets/`);
+    return issues;
+  });
   if (page) hidden(file, page);
 }
 const PALETTES = path.join(process.cwd(), 'vault', 'palettes');

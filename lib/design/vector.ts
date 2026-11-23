@@ -100,6 +100,7 @@ export type VAsset = VBase & Box & {
   projected?: boolean; // a block standing on a floor of the other view (flat vs isometric): its drawing is projected onto it
   turn?: number;       // a block: degrees it's turned about where it stands. Top-down any angle; isometric in quarter turns (shownBlock)
   mirror?: boolean;    // mirrored: a block flips end to end along its columns (a left flipper from a right one); other assets flip sideways
+  texts?: Record<string, string>;   // this placement's own words: the asset's text element id → what it says here
 };
 
 export type VElement = VRect | VEllipse | VCapsule | VPoly | VLine | VText | VStroke | VImage | VStatus | VZone | VAsset;

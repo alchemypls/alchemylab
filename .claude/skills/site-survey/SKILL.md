@@ -119,3 +119,5 @@ rest is edited by hand to match the decisions.
 - Count, don't characterise: "6 button styles in 9 files" beats "buttons are inconsistent".
 - Personal data in the target (names, résumé text) stays on disk in the bible; it never goes to outside services.
 - Re-read any page before editing it — the user edits on the canvas too.
+- Decide and Bridge pages draw recurring UI (frames, buttons, the nav, the controller, characters, screens) from a vault
+  kit, as in the design-bible skill's "Draw from the kit, not by hand": decide a piece once, place it on every page.

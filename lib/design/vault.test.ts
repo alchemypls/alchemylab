@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { newAsset, partGuides, PARTS } from './vault';
+import { nestLoop, newAsset, partGuides, PARTS, withTexts } from './vault';
 import { validateAsset } from './validate';
 
 describe('parts', () => {
@@ -18,6 +18,25 @@ describe('parts', () => {
     expect(validateAsset({ ...wall, footprint: { cols: 2, rows: 1 } }).errors.length).toBe(1);
     expect(validateAsset({ ...wall, wall: { h: 0 } }).errors.length).toBe(1);
     expect(validateAsset({ ...newAsset('block', 'f', 'x', 'floor'), wall: { h: 2 } }).errors.length).toBe(1);
+  });
+});
+
+describe('assets placing assets', () => {
+  const placing = (...ids: string[]) => ({ ...newAsset('shape', 's', 'x'), elements: ids.map((a, i) => ({ id: `p${i}`, type: 'asset' as const, asset: a, x: 0, y: 0, w: 10, h: 10 })) });
+  it('a shape may place another asset; a block may not; nothing places itself', () => {
+    expect(validateAsset(placing('orb'), 'screen').errors).toEqual([]);
+    expect(validateAsset({ ...placing('orb'), kind: 'block' }).errors.length).toBe(1);
+    expect(validateAsset(placing('screen'), 'screen').errors.length).toBe(1);
+  });
+  it('finds a loop through the vault, and only one that leads back', () => {
+    const vault: Record<string, { elements?: unknown }> = { a: placing('b'), b: placing('c', 'kit'), c: placing('a'), kit: placing() };
+    expect(nestLoop('a', vault.a, (x) => vault[x])).toEqual(['a', 'b', 'c', 'a']);
+    expect(nestLoop('kit', vault.kit, (x) => vault[x])).toBeNull();
+    expect(nestLoop('screen', placing('b', 'kit'), (x) => vault[x])).toBeNull();   // b loops, but not back to screen
+  });
+  it("a placement's own words replace the asset's text by id, and nothing else", () => {
+    const els = [{ id: 't', type: 'text', x: 0, y: 0, w: 10, h: 10, text: 'Line' }, { id: 'u', type: 'text', x: 0, y: 0, w: 10, h: 10, text: 'Keep' }] as const;
+    expect(withTexts([...els], { t: 'Hello', r: 'x' }).map((e) => (e as { text: string }).text)).toEqual(['Hello', 'Keep']);
   });
 });
 

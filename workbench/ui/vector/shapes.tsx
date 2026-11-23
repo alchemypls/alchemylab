@@ -2,11 +2,11 @@
 
 // How each vector element draws, as SVG. Shared by VectorArtboard, the minimap, the vault thumbnails and the render scripts.
 
-import { useId, type ReactNode } from 'react';
+import { createContext, useContext, useId, type ReactNode } from 'react';
 import { drawOrder, layersOf } from '@/lib/design/layers';
 import { filterSteps } from '@/lib/design/fx';
 import { useAssetUrl } from '@/lib/assets';
-import { assetView, blockPose, projectedElements, tintElements, type VaultAsset } from '@/lib/design/vault';
+import { assetView, blockPose, NEST_MAX, projectedElements, tintElements, withTexts, type VaultAsset } from '@/lib/design/vault';
 import { linkTarget, type Bible, type TopicStatus } from '@/lib/design/types';
 import {
   capsulePath, dashProps, ellipsePath, extrusion, roofWalls, reshapedPath, reshapes, gridOf, lineControl, lineEnds, polyPath, rotateTransform, rubOrigin, smoothEllipse, zoneCorners, zonePoint,
@@ -21,7 +21,10 @@ import { toPoints } from './gesture';
 const FONT = { serif: SERIF, sans: SANS, mono: 'ui-monospace, "SF Mono", Menlo, monospace' } as const;
 
 type InlineEdit = { onChange: (text: string) => void; onDone: () => void };
-type Placement = Box & { asset: string; tint?: string; layers?: string[]; projected?: boolean; turn?: number; mirror?: boolean };
+type Placement = Box & { asset: string; tint?: string; layers?: string[]; projected?: boolean; turn?: number; mirror?: boolean; texts?: Record<string, string> };
+
+// The assets being drawn around this one (an asset placing assets): a loop or a nest too deep draws as a warning box
+const Nesting = createContext<string[]>([]);
 
 // The tracing image. Not part of the page, so it can't be clicked, erased or exported.
 export function TraceImage({ t }: { t: TraceBox }) {
@@ -184,11 +187,13 @@ const gridOfAsset = (a: VaultAsset) => !!gridOf(a).flat;
 // A vault asset in its box, live: it changes wherever it's placed when the asset changes.
 export function AssetDrawing({ el, solid }: { el: Placement; solid?: boolean }) {
   const { entries, loaded } = usePlacedVault();   // a structure comes built from its atoms, live
-  const asset = entries.find((e) => e.id === el.asset)?.asset;
-  if (!asset) return (   // missing from the vault: its box is all there is to click
+  const around = useContext(Nesting);
+  const loop = around.includes(el.asset) || around.length >= NEST_MAX;
+  const asset = loop ? undefined : entries.find((e) => e.id === el.asset)?.asset;
+  if (!asset) return (   // missing from the vault, or placed inside itself: its box is all there is to click
     <>
       {solid && <rect x={el.x} y={el.y} width={el.w} height={el.h} fill="transparent" pointerEvents="all" />}
-      {loaded && <rect x={el.x} y={el.y} width={el.w} height={el.h} fill="#dc2626" fillOpacity={0.08} stroke="#dc2626" strokeWidth={2} strokeDasharray="8 6" vectorEffect="non-scaling-stroke"><title>{`"${el.asset}" isn't in the vault`}</title></rect>}
+      {(loaded || loop) && <rect x={el.x} y={el.y} width={el.w} height={el.h} fill="#dc2626" fillOpacity={0.08} stroke="#dc2626" strokeWidth={2} strokeDasharray="8 6" vectorEffect="non-scaling-stroke"><title>{loop ? `"${el.asset}" places itself (or nests deeper than ${NEST_MAX})` : `"${el.asset}" isn't in the vault`}</title></rect>}
     </>
   );
   return <PosedAsset asset={asset} el={el} hit={solid} />;   // clicked where it's drawn, not anywhere in its box
@@ -202,8 +207,10 @@ export function PosedAsset({ asset, el, hit }: { asset: VaultAsset; el: Placemen
   // A block is posed (turned, mirrored, projected); any other asset only flips sideways when mirrored
   const pose = asset.kind === 'block' ? blockPose(asset, flat, el) : null, shown = pose?.shown ?? asset;
   const transform = pose ? pose.transform : el.mirror ? `matrix(-1 0 0 1 ${2 * v.x + v.w} 0)` : undefined;
-  const els = tintElements(projectedElements(shown, flat), el.tint);
+  const els = withTexts(tintElements(projectedElements(shown, flat), el.tint), el.texts);
+  const around = useContext(Nesting);
   return (
+    <Nesting.Provider value={[...around, el.asset]}>
     <svg data-asset={el.asset} x={el.x} y={el.y} width={el.w} height={el.h} viewBox={`${v.x} ${v.y} ${v.w} ${v.h}`} overflow="visible" pointerEvents={hit ? 'visiblePainted' : 'none'}>
       <g transform={transform}>
         {drawOrder(els, layersOf(shown), el.layers).map((x) => (
@@ -211,6 +218,7 @@ export function PosedAsset({ asset, el, hit }: { asset: VaultAsset; el: Placemen
         ))}
       </g>
     </svg>
+    </Nesting.Provider>
   );
 }
 

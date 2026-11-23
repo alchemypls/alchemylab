@@ -11,6 +11,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { PosedAsset } from '@/workbench/ui/vector/shapes';
 import { assetView, blockPose, blockProjection, type VaultAsset } from '@/lib/design/vault';
 import { gridOf } from '@/lib/design/vector';
+import { primeVault } from '@/workbench/hooks/useVault';
 
 const VAULT = path.join(process.cwd(), 'vault', 'assets'), OUT = path.join(process.cwd(), '.render');
 const argv = process.argv.slice(2);
@@ -24,6 +25,9 @@ const view = opt('view') ?? 'both', turn = Number(opt('turn') ?? 0), mirror = ar
 // React warns that layout effects don't run on a server; they only measure text, which a picture doesn't need
 const warn = console.error;
 console.error = (...a: unknown[]) => { if (!String(a[0]).includes('useLayoutEffect')) warn(...a); };
+
+// The whole vault, so an asset that places others (a set piece) draws them
+primeVault(readdirSync(VAULT).filter((f) => f.endsWith('.json')).map((f) => ({ id: f.slice(0, -5), mtime: null, asset: JSON.parse(readFileSync(path.join(VAULT, f), 'utf8')) })), []);
 
 const has = (cmd: string) => spawnSync('which', [cmd]).status === 0;
 const png = has('inkscape'), sheet = has('convert');

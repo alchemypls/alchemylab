@@ -88,4 +88,15 @@ describe('the vault', () => {
     expect(onDisk('vault/assets/post.json').title).toBe('Post');
     expect((await call(vault.DELETE, '/api/vault?asset=post&force=1', 'DELETE')).status).toBe(200);
   });
+
+  it("an asset placed inside another is in use too, and a save can't make a loop", async () => {
+    const SHAPE = { title: 'S', kind: 'shape', blocks: [] }, place = (a: string) => ({ ...SHAPE, elements: [{ id: 'p', type: 'asset', asset: a, x: 0, y: 0, w: 10, h: 10 }] });
+    await call(vault.PUT, '/api/vault?asset=kit', 'PUT', { ...SHAPE, elements: [] });
+    expect((await call(vault.PUT, '/api/vault?asset=screen', 'PUT', place('kit'))).status).toBe(200);
+    const r = await call(vault.DELETE, '/api/vault?asset=kit', 'DELETE');
+    expect([r.status, (await r.json()).usedIn]).toEqual([409, ['vault/screen']]);
+    const loop = await call(vault.PUT, '/api/vault?asset=kit', 'PUT', place('screen'));
+    expect([loop.status, (await loop.json()).error]).toEqual([422, 'places itself through kit → screen → kit']);
+    expect(onDisk('vault/assets/kit.json').elements).toEqual([]);
+  });
 });

@@ -377,9 +377,35 @@ export function tintElements(els: VElement[], tint?: string): VElement[] {
     const out = { ...e } as Record<string, unknown>;
     for (const k of ['fill', 'stroke', 'color', 'bg']) if (out[k]) out[k] = tint;
     if (e.type === 'stroke' || e.type === 'text') out.color = tint;
+    if (e.type === 'asset') out.tint = tint;   // a placed asset inside takes the tint too
     return out as unknown as VElement;
   });
 }
 
-export const usesAsset = (page: { elements?: unknown }, id: string) =>
-  Array.isArray(page.elements) && page.elements.some((e) => (e as { type?: string; asset?: string })?.type === 'asset' && (e as { asset?: string }).asset === id);
+export const usesAsset = (page: { elements?: unknown }, id: string) => placedIn(page).includes(id);
+
+// The vault assets a page or an asset places directly
+export const placedIn = (page: { elements?: unknown }): string[] =>
+  Array.isArray(page.elements) ? page.elements.flatMap((e) => ((e as { type?: string })?.type === 'asset' && typeof (e as { asset?: unknown }).asset === 'string' ? [(e as { asset: string }).asset] : [])) : [];
+
+// Assets place assets (a set piece built from kit pieces), so a vault can loop: a → b → a. Returns the loop from `id`
+// (ids in order, ending where it started), or null. `assetOf` reads the rest of the vault; `asset` is `id`'s new content
+export const NEST_MAX = 4;   // how deep assets may place assets; deeper ones draw as a warning box
+export function nestLoop(id: string, asset: { elements?: unknown }, assetOf: (id: string) => { elements?: unknown } | undefined): string[] | null {
+  const walk = (at: string, page: { elements?: unknown } | undefined, path: string[]): string[] | null => {
+    for (const next of page ? placedIn(page) : []) {
+      if (next === id) return [...path, next];
+      if (path.includes(next) || path.length > 16) continue;   // a loop elsewhere is that asset's own report
+      const found = walk(next, assetOf(next), [...path, next]);
+      if (found) return found;
+    }
+    return null;
+  };
+  return walk(id, asset, [id]);
+}
+
+// A placement's own words over the asset's text elements
+export function withTexts(els: VElement[], texts?: Record<string, string>): VElement[] {
+  if (!texts) return els;
+  return els.map((e) => (e.type === 'text' && texts[e.id] !== undefined ? { ...e, text: texts[e.id] } : e));
+}
