@@ -1,6 +1,8 @@
 // A bible's vector pages as one PDF to share, drawn by the canvas's own VectorArtboard and printed by Chrome
 // (real text, vector, each PDF page the artboard's size, topic links jump between pages).
-//   npm run bible:export -- <bible> [--html]   → .render/<bible>.pdf  (--html keeps .render/<bible>.html too)
+//   npm run bible:export -- <bible> [--html] [--handoff] [--out <file.pdf>]   → .render/<bible>.pdf  (--html keeps .render/<bible>.html too)
+// --handoff: the finished bible to hand over: the overview and the topics' pages only (no as-is survey pages, no Gaps:
+// pages no topic names), and on what's left, anything linking to a page left out goes too (with its group).
 // Needs Google Chrome or Chromium. Block pages (no elements) are left out.
 
 import os from "os";
@@ -14,7 +16,9 @@ import { fitBlocks, type VaultAsset } from '@/lib/design/vault';
 import { pageSize, type Bible, type DesignPage } from '@/lib/design/types';
 
 const argv = process.argv.slice(2);
-const bible = argv.find((a) => !a.startsWith('--'));
+const outAt = argv.indexOf('--out'), outFile = outAt >= 0 ? argv[outAt + 1] : undefined;
+const bible = argv.find((a, i) => !a.startsWith('--') && argv[i - 1] !== '--out');
+const handoff = argv.includes('--handoff');
 if (!bible) { console.error('usage: bible:export -- <bible> [--html]'); process.exit(1); }
 const dir = path.join('design', bible);
 if (!existsSync(path.join(dir, 'bible.json'))) { console.error(`no bible at ${dir}`); process.exit(1); }
@@ -33,8 +37,17 @@ const byId = new Map(placedNow().entries.map((e) => [e.id, e.asset as VaultAsset
 // Order: the index, then pages in topic order, then any page no topic names
 const doc = JSON.parse(readFileSync(path.join(dir, 'bible.json'), 'utf8')) as Bible;
 const files = readdirSync(path.join(dir, 'pages')).filter((f) => f.endsWith('.json')).map((f) => f.slice(0, -5));
-const order = Array.from(new Set(['index', ...doc.topics.map((t) => t.page).filter((p): p is string => !!p), ...files])).filter((p) => files.includes(p));
-const pages = order.map((id) => ({ id, page: JSON.parse(readFileSync(path.join(dir, 'pages', `${id}.json`), 'utf8')) as DesignPage }))
+const topicPages = ['index', ...doc.topics.map((t) => t.page).filter((p): p is string => !!p)];
+const order = Array.from(new Set([...topicPages, ...(handoff ? [] : files)])).filter((p) => files.includes(p));
+const leftOut = new Set(files.filter((f) => !order.includes(f)));
+// Handing off: a link to a page that isn't in it goes, and so does the rest of its group (a list of as-is links, its heading)
+const trimmed = (page: DesignPage): DesignPage => {
+  if (!handoff || !page.elements) return page;
+  const dead = (e: { link?: string }) => !!e.link && leftOut.has(e.link);
+  const groups = new Set(page.elements.filter((e) => dead(e as { link?: string }) && (e as { group?: string }).group).map((e) => (e as { group?: string }).group));
+  return { ...page, elements: page.elements.filter((e) => !dead(e as { link?: string }) && !groups.has((e as { group?: string }).group)) };
+};
+const pages = order.map((id) => ({ id, page: trimmed(JSON.parse(readFileSync(path.join(dir, 'pages', `${id}.json`), 'utf8')) as DesignPage) }))
   .filter(({ page }) => page.elements?.length);
 const skipped = order.filter((id) => !pages.some((p) => p.id === id));
 
@@ -86,7 +99,7 @@ for (const g of document.querySelectorAll('[data-link]')) {
 
 const OUT = path.join(process.cwd(), '.render');
 if (!existsSync(OUT)) mkdirSync(OUT, { recursive: true });
-const htmlFile = path.join(OUT, `${bible}.html`), pdfFile = path.join(OUT, `${bible}.pdf`);
+const htmlFile = path.join(OUT, `${bible}.html`), pdfFile = outFile ? path.resolve(outFile) : path.join(OUT, `${bible}.pdf`);
 writeFileSync(htmlFile, html);
 const profile = mkdtempSync(path.join(os.tmpdir(), "alchemy-pdf-"));
 const run = spawnSync(chrome, [`--user-data-dir=${profile}`, '--headless=new', '--disable-gpu', '--no-pdf-header-footer', '--virtual-time-budget=5000',

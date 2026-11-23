@@ -44,3 +44,6 @@ design/*/.render.json
 
 # emerge (code analysis, local)
 .emerge/
+
+# generated hand-off packages (npm run bible:handoff)
+/design/*/handoff/

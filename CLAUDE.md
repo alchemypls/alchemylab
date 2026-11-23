@@ -52,6 +52,7 @@ app/
   api/design/route.ts       — design bible files (design/<bible>/): list, bible.json, pages, assets; PUT writes (validated, x-base-mtime → 409 on conflict; &new=1 → 409 if it exists); DELETE a bible moves its folder to design/.trash/
   api/design/watch/route.ts — SSE: one message per changed file under design/ (shared fs.watch)
   api/design/fit/route.ts   — PUT: page fit report (with pageHash) → design/<bible>/.render.json
+  api/design/handoff/route.ts — POST: runs bible:handoff for a bible (Ideation's "hand off" button), one run at a time
   api/vault/route.ts        — vault assets and palettes (?type=palette / ?palette=id): list, PUT (validated, x-base-mtime → 409), DELETE (409 + usedIn unless force), ?uses=id
   api/vault/watch/route.ts  — SSE: one message per changed file under vault/
   api/projects/route.ts     — web projects (projects/<id>.json): list, get, PUT (validated, x-base-mtime → 409), DELETE
@@ -74,6 +75,10 @@ scripts/
   bible-export.tsx   — `npm run bible:export -- <bible> [--html]`: the bible's vector pages as one PDF to share (.render/<bible>.pdf): the real
                        VectorArtboard printed by headless Chrome, each PDF page the artboard's size, topic links jump between pages, images
                        embedded; eraser masks shrunk to their content first (a full-size mask makes Chrome rasterize). Block pages are left out
+  bible-handoff.tsx  — `npm run bible:handoff -- <bible>`: the finished bible packed to hand over, design/<bible>/handoff/ (replaced whole):
+                       the PDF (bible:export --handoff: overview + topic pages, no as-is or Gaps), AGENT.md (start here), briefs.md (every topic's
+                       decisions, leanings, questions and agent brief, flattened), and from projects/<bible>.json: tokens/, components/<id>/ (recipe,
+                       its CSS, a preview page), behaviors/*.js (reference), mockup/ (each page as HTML, links between them relinked; and as Next.js)
   asset-info.ts      — `npm run asset:info [-- <id>…]`: assets in inches, one line per asset or per element (read this, not the JSON)
   pen-bridge.py      — pen → JSON lines. `local`: grabs a USB tablet's evdev (EVIOCGRAB). `remarkable`: mirrors a Paper Pro pen over SSH (no grab — keeps inking on paper). Stdlib Python
   udev/70-alchemy-pen.rules — per-device `uaccess` rule so the bridge can read the tablet (never add the user to `input`)
@@ -257,7 +262,7 @@ npm run dev      # start dev server on :3000
 npm run build    # production build
 npm run lint     # ESLint
 npm test         # unit tests (Vitest); npm run test:watch while working
-npm run parts:build / asset:render / asset:info / page:render / bible:export   # vault parts as code, pictures of them and of pages, summaries (see scripts/)
+npm run parts:build / asset:render / asset:info / page:render / bible:export / bible:handoff   # vault parts as code, pictures of them and of pages, summaries (see scripts/)
 ```
 
 `npm test` runs a few tests (Vitest, Node only, `*.test.ts` next to the code), kept small on purpose: only what's easy to break and costly when it does. The edit ops every tool uses (duplicate, copy/paste, groups, floors carrying pieces, locked layers), the export (escaping, both formats ship the same, the mobile-first cascade), the API's guards on disk (stale saves 409, invalid 422, ids can't leave their folder, vault pieces in use), the phone gateway's allow-list, and every registered action and effect (tools.test.ts: the page still validates; flips and turns undo themselves). CI also runs `design:check` (every content file) and `parts:build -- --check` (each part matches its vault file). Add a test when a bug is fixed (one that failed first) or a new guard appears, not for coverage. Canvas interactions aren't automated: verify UI changes by running dev and exercising the canvas.

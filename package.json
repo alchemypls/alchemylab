@@ -14,7 +14,8 @@
     "page:render": "node scripts/run.cjs scripts/page-render.tsx",
     "bible:export": "node scripts/run.cjs scripts/bible-export.tsx",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "bible:handoff": "node scripts/run.cjs scripts/bible-handoff.tsx"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",

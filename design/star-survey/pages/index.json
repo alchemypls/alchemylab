@@ -63830,7 +63830,8 @@
       "stroke": "#262c3b",
       "strokeWidth": 2,
       "arrow": "none",
-      "id": "ov-735"
+      "id": "ov-735",
+      "group": "as-is survey"
     },
     {
       "type": "text",
@@ -63846,7 +63847,8 @@
       "align": "left",
       "valign": "top",
       "caps": true,
-      "id": "ov-736"
+      "id": "ov-736",
+      "group": "as-is survey"
     },
     {
       "type": "text",
@@ -63861,7 +63863,8 @@
       "color": "#9783A0",
       "align": "left",
       "valign": "top",
-      "id": "ov-737"
+      "id": "ov-737",
+      "group": "as-is survey"
     },
     {
       "type": "text",
@@ -63877,7 +63880,8 @@
       "align": "left",
       "valign": "top",
       "link": "asis-color",
-      "id": "ov-738"
+      "id": "ov-738",
+      "group": "as-is survey"
     },
     {
       "type": "text",
@@ -63893,7 +63897,8 @@
       "align": "left",
       "valign": "top",
       "link": "asis-type",
-      "id": "ov-739"
+      "id": "ov-739",
+      "group": "as-is survey"
     },
     {
       "type": "text",
@@ -63909,7 +63914,8 @@
       "align": "left",
       "valign": "top",
       "link": "asis-spacing",
-      "id": "ov-740"
+      "id": "ov-740",
+      "group": "as-is survey"
     },
     {
       "type": "text",
@@ -63925,7 +63931,8 @@
       "align": "left",
       "valign": "top",
       "link": "asis-shape",
-      "id": "ov-741"
+      "id": "ov-741",
+      "group": "as-is survey"
     },
     {
       "type": "text",
@@ -63941,7 +63948,8 @@
       "align": "left",
       "valign": "top",
       "link": "asis-motion",
-      "id": "ov-742"
+      "id": "ov-742",
+      "group": "as-is survey"
     },
     {
       "type": "text",
@@ -63957,7 +63965,8 @@
       "align": "left",
       "valign": "top",
       "link": "asis-containers",
-      "id": "ov-743"
+      "id": "ov-743",
+      "group": "as-is survey"
     },
     {
       "type": "text",
@@ -63973,7 +63982,8 @@
       "align": "left",
       "valign": "top",
       "link": "asis-controls",
-      "id": "ov-744"
+      "id": "ov-744",
+      "group": "as-is survey"
     },
     {
       "type": "text",
@@ -63989,7 +63999,8 @@
       "align": "left",
       "valign": "top",
       "link": "asis-content",
-      "id": "ov-745"
+      "id": "ov-745",
+      "group": "as-is survey"
     },
     {
       "type": "text",
@@ -64005,7 +64016,8 @@
       "align": "left",
       "valign": "top",
       "link": "asis-shell",
-      "id": "ov-746"
+      "id": "ov-746",
+      "group": "as-is survey"
     },
     {
       "type": "text",
@@ -64021,7 +64033,8 @@
       "align": "left",
       "valign": "top",
       "link": "asis-layouts",
-      "id": "ov-747"
+      "id": "ov-747",
+      "group": "as-is survey"
     },
     {
       "type": "text",
@@ -64037,7 +64050,8 @@
       "align": "left",
       "valign": "top",
       "link": "gaps",
-      "id": "ov-748"
+      "id": "ov-748",
+      "group": "as-is survey"
     }
   ],
   "knowledge": [

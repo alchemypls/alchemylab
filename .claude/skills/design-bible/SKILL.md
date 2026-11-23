@@ -122,6 +122,15 @@ older pages keep the old look.
   (same box, same draw order), keep everything else.
 - `npm run -s asset:render -- <id>…` draws kit pieces and set pieces (nested ones included) to check them.
 
+## Hand-off
+
+When the user says the bible is ready to hand over, run `npm run -s bible:handoff -- <bible>` (or they press **hand off**
+on the Ideation panel). It replaces `design/<bible>/handoff/`: the PDF without as-is or Gaps pages, `AGENT.md`,
+`briefs.md` (every topic's decisions, flattened), and from the web project its tokens, components, behaviors and the
+mockup as code. Everything comes from the files, so fix a page, not the package; then run it again. Check `briefs.md`
+reads right (a decision that's only in a drawing doesn't reach it: put it in the page's knowledge). The folder isn't
+committed.
+
 ## Log entry (prepend to log.md)
 
 ```

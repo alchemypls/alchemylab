@@ -21,7 +21,7 @@ import { removeBlock, resizeBlock } from '@/lib/design/ops';
 import { pageSize, type DesignPage } from '@/lib/design/types';
 import { fitBlocks, placeAsset } from '@/lib/design/vault';
 import { VAULT_DRAG } from '@/workbench/shell/FileVault';
-import { askText } from '@/workbench/ui/Ask';
+import { askText, tell } from '@/workbench/ui/Ask';
 
 // The Ideation canvas: one page of a design bible (design/<bible>/pages/<page>.json) fills the screen,
 // live from disk. The agent writes the files (design-bible skill); this draws them and edits them by hand.
@@ -225,6 +225,7 @@ export function IdeationCanvas() {
                   {doc.fit.fits ? 'fits' : `+${Math.round(doc.fit.overflowPx)}px`}
                 </span>
               )}
+              {bibleId && <HandOff bible={bibleId} />}
               {isVector && (
                 <PanelToggle on={gridOn} onClick={() => { setGridOn(!gridOn); if (tool === 'read') setTool('select'); }} title="Show the placement grid (G). It also shows while placing or editing a floor zone.">grid</PanelToggle>
               )}
@@ -245,5 +246,26 @@ export function IdeationCanvas() {
         />
       )}
     </div>
+  );
+}
+
+// Hand off: packs the finished bible into design/<bible>/handoff/ (the PDF, AGENT.md, briefs.md, and the web project's
+// tokens, components, behaviors and mockup) through /api/design/handoff. Pressed again it rebuilds the folder.
+function HandOff({ bible }: { bible: string }) {
+  const [busy, setBusy] = useState(false);
+  const run = async () => {
+    setBusy(true);
+    try {
+      const res = await fetch(`/api/design/handoff?bible=${encodeURIComponent(bible)}`, { method: 'POST' });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) await tell(`Hand-off failed: ${body.error ?? res.status}`);
+      else await tell(`Hand-off written to ${body.dir}/: ${(body.files ?? []).join(', ')}`);
+    } finally { setBusy(false); }
+  };
+  return (
+    <button onClick={run} disabled={busy} className="text-[10px] font-mono px-1.5 py-0.5 rounded border border-neutral-600 text-neutral-300 hover:text-white hover:border-neutral-400 disabled:opacity-50"
+      title="Pack the finished bible to hand over: design/<bible>/handoff/ (the PDF without the as-is pages, AGENT.md, briefs.md, and the web project's tokens, components and mockup)">
+      {busy ? 'packing…' : 'hand off'}
+    </button>
   );
 }
